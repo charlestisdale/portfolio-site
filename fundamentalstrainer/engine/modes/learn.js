@@ -9,7 +9,6 @@ export function renderLearnMode({ concept, relatedEdges = [], lessonContext = nu
   const scenarios = concept.assessmentSeeds?.scenarios || [];
   const pbqIdeas = concept.assessmentSeeds?.pbqIdeas || [];
   const mappings = getCertificationMappings(concept);
-  const transcriptSources = concept.sources?.transcripts || [];
 
   return `
     <article class="learn-mode card">
@@ -61,7 +60,7 @@ export function renderLearnMode({ concept, relatedEdges = [], lessonContext = nu
       ${scenarios.length ? renderScenarios(scenarios) : ""}
       ${pbqIdeas.length ? renderPbqIdeas(pbqIdeas) : ""}
       ${renderRelatedConcepts(relatedEdges)}
-      ${renderSources(transcriptSources, concept.quality)}
+      ${renderQuality(concept.quality)}
     </article>
   `;
 }
@@ -252,21 +251,14 @@ function renderRelatedConcepts(edges) {
   `;
 }
 
-function renderSources(transcripts, quality = {}) {
+function renderQuality(quality = {}) {
   return `
     <section class="learn-section learn-sources">
-      <h3>Source and quality</h3>
-      <div class="learn-section-grid">
-        <div>
-          <h4>Transcript references</h4>
-          ${transcripts.length ? renderSimpleList(transcripts.map(source => `${source.lessonId || "Lesson"}: ${source.lessonTitle || source.sourceFile || "Transcript"}`)) : `<p class="muted">No transcript references yet.</p>`}
-        </div>
-        <div>
-          <h4>Review status</h4>
-          <p>Confidence: <strong>${escapeHtml(quality.confidence || "Not set")}</strong></p>
-          <p>Needs review: <strong>${quality.needsHumanReview ? "Yes" : "No"}</strong></p>
-          ${(quality.reviewNotes || []).length ? renderSimpleList(quality.reviewNotes) : ""}
-        </div>
+      <h3>Quality</h3>
+      <div>
+        <p>Confidence: <strong>${escapeHtml(quality.confidence || "Not set")}</strong></p>
+        <p>Needs review: <strong>${quality.needsHumanReview ? "Yes" : "No"}</strong></p>
+        ${(quality.reviewNotes || []).length ? renderSimpleList(quality.reviewNotes) : ""}
       </div>
     </section>
   `;
