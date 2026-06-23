@@ -85,8 +85,12 @@ function resolvePrimaryLessonContext(concept) {
 
 function resolveObjectiveContext(concept) {
   return (concept.certificationMappings || [])
-    .flatMap(mapping => mapping.objectives || [])
-    .map(objective => knowledge.objective(objective.id))
+    .flatMap(mapping => (mapping.objectives || []).map(objective => ({ objective, certification: mapping.certification })))
+    .map(({ objective, certification }) => {
+      const id = String(objective.id || "");
+      const resolvedId = knowledge.objective(id).objective ? id : `${certification}.${id}`;
+      return knowledge.objective(resolvedId);
+    })
     .filter(item => item.objective);
 }
 
