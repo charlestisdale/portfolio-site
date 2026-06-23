@@ -269,7 +269,7 @@ function getPanelExists(mode) {
 
 function getDefaultMode() {
   const panels = [...document.querySelectorAll("[data-mode-panel]")];
-  if (panels.some(panel => panel.datasetMode === "dashboard")) return "dashboard";
+  if (panels.some(panel => panel.dataset.modePanel === "dashboard")) return "dashboard";
   if (panels.some(panel => panel.dataset.modePanel === "learn")) return "learn";
   return panels[0]?.dataset.modePanel || "learn";
 }
