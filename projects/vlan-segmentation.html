@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VLAN Segmentation and Access Control Design | Charles Tisdale</title>
+  <meta name="description" content="VLAN segmentation and access control design project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Network Segmentation • VLANs • ACLs • Host Firewalls</div>
+
+      <h1>Network Segmentation and Layered Access Control Design</h1>
+
+      <p>
+        I designed a segmented homelab network to separate systems by trust level and function, then controlled
+        inter-VLAN communication with router-based policy instead of broad default access.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">VLAN 10 Management</span>
+        <span class="tag">VLAN 20 Services</span>
+        <span class="tag">VLAN 30 Clients</span>
+        <span class="tag">VLAN 40 IoT</span>
+        <span class="tag">VLAN 50-60 Labs</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>VLAN 10</strong>
+            <p>Management network for administration and infrastructure access.</p>
+          </div>
+          <div class="detail-box">
+            <strong>VLAN 20</strong>
+            <p>Services network for hosted applications and internal service endpoints.</p>
+          </div>
+          <div class="detail-box">
+            <strong>VLAN 30</strong>
+            <p>Client network for user devices.</p>
+          </div>
+          <div class="detail-box">
+            <strong>VLAN 40</strong>
+            <p>Internet of Things (IoT) network for lower-trust smart devices.</p>
+          </div>
+          <div class="detail-box">
+            <strong>VLAN 50-60</strong>
+            <p>Lab networks, kept separate so Kali and other testing systems are isolated from the rest of the
+              environment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          A flatter network makes early setup easier, but it also creates too much trust between systems that should not
+          communicate freely. I wanted to separate management, services, clients, IoT, and lab traffic so that access
+          between networks had to be explicitly allowed.
+        </p>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I divided the network by both function and trust level, then treated inter-VLAN routing as a policy decision
+          rather than an automatic convenience. Management needed broad access for administration, while other networks
+          needed tighter boundaries. Lab networks were further separated because offensive tooling such as Kali should
+          not sit on the same trust level as the rest of the environment.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Created VLANs based on role and trust boundaries.</li>
+          <li>Used access and trunk ports to correctly segment Layer 2 traffic.</li>
+          <li>Relied on Layer 3 routing to control communication between VLANs.</li>
+          <li>Implemented router-based Access Control Lists (ACLs) to define allowed and denied traffic paths.</li>
+          <li>Applied host-level firewalls to enforce additional security controls at the system level:
+            <ul>
+              <li>Used Proxmox host firewall rules to protect the hypervisor and management interfaces.</li>
+              <li>Configured UFW (Uncomplicated Firewall) on Linux nodes to restrict inbound and outbound traffic.</li>
+              <li>Used iptables on TrueNAS to control service-level access and network exposure.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that VLAN segmentation alone is not enough to provide real
+          security. While VLANs separate broadcast domains at Layer 2, traffic is still routed at Layer 3 where policy
+          must be enforced. Adding host-based firewalls created a layered security model, ensuring that even if
+          network-level controls were misconfigured, individual systems still enforced their own access restrictions.
+        </p>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Tested expected connectivity between approved networks.</li>
+          <li>Verified blocked paths stayed blocked.</li>
+          <li>Confirmed management retained the broader access it needed.</li>
+          <li>Used troubleshooting to distinguish switching issues from routing or ACL issues.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design gave each part of the homelab a clearer trust boundary and made inter-VLAN access intentional
+          instead of automatic. It also gave me a better troubleshooting model because I could separate switching
+          problems, routing problems, and Access Control List (ACL) policy problems during testing. The design also
+          evolved from simple segmentation into a layered security model combining VLANs, routing policy, and host-based
+          firewalls.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I Learned</h2>
+        <ul>
+          <li>VLANs separate broadcast domains, but routed traffic still needs policy control.</li>
+          <li>Access Control List (ACL) order matters because rule evaluation is top-down.</li>
+          <li>Trust boundaries should be designed intentionally, not added later as an afterthought.</li>
+          <li>Segmentation only works when the intended behavior is tested and verified.</li>
+          <li>Effective security comes from layered controls, not a single mechanism.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <p>
+          The next step would be turning the policy model into a cleaner source-of-truth document with an explicit flow
+          matrix for every VLAN. That would make future rule changes easier to reason about and reduce the chance of
+          accidental over-permissive access as the environment grows.
+        </p>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

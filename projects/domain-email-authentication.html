@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dual-Domain Email Authentication and Identity Design | Charles Tisdale</title>
+  <meta name="description"
+    content="Dual-domain email authentication and professional identity setup project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">DNS • Email Security • Authentication • Identity Design</div>
+
+      <h1>Dual-Domain Email Authentication and Professional Identity Design</h1>
+
+      <p>
+        I designed and implemented a dual-domain email and identity setup using Google Workspace, separating my homelab
+        environment from my professional presence. I configured DNS and authentication standards across both domains to
+        ensure reliable email delivery, prevent spoofing, and maintain consistent security policies while keeping lab
+        and professional identities clearly isolated.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">DNS Records</span>
+        <span class="tag">Google Workspace</span>
+        <span class="tag">SPF</span>
+        <span class="tag">DKIM</span>
+        <span class="tag">DMARC</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Dual-Domain Design</strong>
+            <p>One domain (homelabdaddy.com) was used for lab services and experimentation, while a second domain
+              (Charlestisdale.com) was dedicated to professional communication.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Google Workspace</strong>
+            <p>Google Workspace was configured to manage email across both domains, requiring consistent DNS and
+              authentication configuration.</p>
+          </div>
+          <div class="detail-box">
+            <strong>DNS Management</strong>
+            <p>DNS records were configured and maintained for both domains, ensuring proper mail routing, verification,
+              and authentication.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Email Authentication Standards</strong>
+            <p>SPF, DKIM, and DMARC were implemented across both domains to ensure email integrity, prevent spoofing,
+              and improve deliverability.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          Using a single domain for both lab experimentation and professional communication can create risk and
+          confusion. Lab environments often change, break, or expose services during testing, which is not appropriate
+          for a professional identity. I needed a way to separate these environments while maintaining consistent and
+          secure email authentication across both domains.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Email authentication is required for modern deliverability and trust.</li>
+          <li>Unprotected domains can be spoofed, damaging reputation and security.</li>
+          <li>Separating lab and professional identity reduces risk and prevents accidental exposure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I separated my homelab and professional identity into two domains with different roles. The lab domain was
+          used for testing and services, while the professional domain was kept stable and controlled for communication.
+          I then applied consistent DNS structure and email authentication standards across both domains to ensure
+          reliability and security.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Configured DNS for two domains with different roles: homelab and professional.</li>
+          <li>Set up Google Workspace to manage email across both domains.</li>
+          <li>Configured MX records for proper mail routing on each domain.</li>
+          <li>Implemented SPF (Sender Policy Framework) on both domains to control authorized senders.</li>
+          <li>Enabled DKIM (DomainKeys Identified Mail) to sign outgoing email for each domain.</li>
+          <li>Configured DMARC (Domain-based Message Authentication, Reporting, and Conformance) policies, starting in
+            monitoring mode before moving toward stricter enforcement.</li>
+          <li>Validated DNS propagation and confirmed consistent behavior across both domains.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified successful email delivery without spam filtering issues.</li>
+          <li>Confirmed SPF, DKIM, and DMARC alignment using test messages and headers.</li>
+          <li>Ensured both domains were correctly recognized and validated by Google Workspace.</li>
+          <li>Tested sending and receiving across multiple providers to confirm trust.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design created a clear separation between lab and professional identity while maintaining secure and
+          reliable email authentication across both domains. The professional domain remains stable and trusted, while
+          the lab domain can be used for experimentation without impacting communication or reputation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that separating environments is just as important for
+          identity and communication as it is for infrastructure. Keeping lab and professional domains isolated reduces
+          risk, prevents accidental exposure, and makes it easier to maintain consistent security and reliability.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Move DMARC from monitoring to stricter enforcement policies over time.</li>
+          <li>Review DMARC reports to detect unauthorized sending attempts.</li>
+          <li>Document DNS configurations as a reusable template.</li>
+          <li>Expand email security practices across other services and systems.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

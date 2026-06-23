@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloudflare, Reverse Proxy, and Public Service Exposure | Charles Tisdale</title>
+  <meta name="description" content="Cloudflare, reverse proxy, and public service exposure project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Cloudflare • Reverse Proxy • Public Exposure • Access Design</div>
+
+      <h1>Cloudflare, Reverse Proxy, and Public Service Exposure</h1>
+
+      <p>
+        I designed a safer public access model for selected homelab services by separating internet-facing access from
+        internal management paths. Instead of exposing everything the same way, I used Cloudflare and reverse proxying
+        to control how services were published, which upstreams they targeted, and which systems were kept internal
+        only.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Cloudflare</span>
+        <span class="tag">Nginx Proxy Manager</span>
+        <span class="tag">TLS</span>
+        <span class="tag">Public Exposure</span>
+        <span class="tag">Service Publishing</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Cloudflare</strong>
+            <p>Cloudflare was used as the public-facing layer for selected services, helping manage DNS, secure
+              exposure, and external access paths.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Reverse Proxy Layer</strong>
+            <p>Nginx Proxy Manager was used to route requests to internal services, allowing cleaner subdomain-based
+              access and more control over which services were exposed.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Internal Service Network</strong>
+            <p>Applications lived on internal networks and were not all meant to be reachable in the same way. Some
+              needed controlled public access, while others were management-only.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Mixed Exposure Model</strong>
+            <p>Some services were published directly through Cloudflare, while others were routed through the reverse
+              proxy layer depending on their role, risk, and intended access pattern.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          Publishing services to the internet is not just a matter of making them reachable. It also requires deciding
+          which systems should be exposed at all, which path they should use, and how to avoid mixing public access with
+          administrative access. Without that separation, it becomes easier to point traffic at the wrong upstream,
+          expose a service too broadly, or create confusion during troubleshooting.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Public service exposure increases risk if access paths are not intentionally designed.</li>
+          <li>Management interfaces should not be treated the same way as user-facing applications.</li>
+          <li>Clear publishing rules make troubleshooting easier when DNS, proxying, or upstream targets fail.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I treated public exposure as a design decision instead of a default convenience. Services that needed external
+          access were evaluated individually, then assigned an access method that matched their purpose. I used
+          Cloudflare for external entry points and reverse proxying for controlled routing, while keeping internal
+          management paths separate from public-facing traffic. This reduced ambiguity and made it easier to reason
+          about what should be reachable from where.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Defined which services were allowed to be publicly reachable and which were to remain internal only.</li>
+          <li>Configured Cloudflare DNS records for published services using the correct upstream targets.</li>
+          <li>Used Nginx Proxy Manager to route subdomains to internal services where reverse proxying made sense.</li>
+          <li>Separated public access paths from management access paths so administrative interfaces were not exposed
+            in the same way as normal service traffic.</li>
+          <li>Validated that each published hostname pointed to the intended internal service and not to the wrong node
+            or stale address.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Tested external access to published services through their intended public hostnames.</li>
+          <li>Verified internal-only services stayed internal and were not accidentally exposed.</li>
+          <li>Confirmed reverse proxy targets matched the correct internal applications.</li>
+          <li>Used troubleshooting to distinguish DNS issues, proxy issues, and upstream service issues when something
+            failed.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design gave me a clearer boundary between public services and internal administration. Services
+          intended for external use had a defined publishing path, while management access stayed more controlled. It
+          also improved troubleshooting because I could break the path into layers: public DNS, Cloudflare, reverse
+          proxy, and internal upstream service.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that public exposure should be treated as an architecture
+          choice, not just a connectivity task. A service being reachable is not the same as it being safely and
+          intentionally published. Clear separation between public access, proxy routing, and internal management makes
+          the environment easier to secure and easier to troubleshoot.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Document a stricter source-of-truth list for which services are allowed public exposure.</li>
+          <li>Add more formal validation for upstream targets after infrastructure changes.</li>
+          <li>Further reduce management-plane exposure by tightening which interfaces can be reached externally.</li>
+          <li>Add architecture diagrams showing the full request path from public DNS to internal service.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

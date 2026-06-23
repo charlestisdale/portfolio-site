@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raspberry Pi Management Jump Box and Diagnostic Node | Charles Tisdale</title>
+  <meta name="description" content="Raspberry Pi management jump box and diagnostic node project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Remote Access • Troubleshooting • Diagnostics • Raspberry Pi</div>
+
+      <h1>Raspberry Pi Management Jump Box and Diagnostic Node</h1>
+
+      <p>
+        I built a dedicated Raspberry Pi management node to provide a reliable troubleshooting and access path into my
+        homelab environment. The goal was to maintain visibility and control even when primary systems, VPN access, or
+        internal services were degraded or unavailable.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">Tailscale</span>
+        <span class="tag">SSH</span>
+        <span class="tag">Diagnostics</span>
+        <span class="tag">Network Troubleshooting</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Raspberry Pi Node</strong>
+            <p>A Raspberry Pi was deployed as a lightweight, always-available management system separate from the main
+              Proxmox infrastructure.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Management Network</strong>
+            <p>The Pi was placed on the management VLAN, allowing it to reach infrastructure devices while remaining
+              isolated from client and lower-trust networks.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Remote Access</strong>
+            <p>Tailscale and SSH were used to provide secure remote access, giving a fallback path into the environment
+              when other access methods were unavailable.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Diagnostic Role</strong>
+            <p>The Pi was used as a central point for running networking tools, validating connectivity, and
+              troubleshooting service issues across the environment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          Troubleshooting depended too heavily on the same infrastructure that was experiencing issues. If DNS, VPN
+          access, or core services failed, it became harder to determine what was actually broken because the tools used
+          for debugging were affected by the same problems.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>A troubleshooting path should remain usable even when the main environment is degraded.</li>
+          <li>Relying on a single access method (such as one VPN or one host) creates a single point of failure.</li>
+          <li>Clear separation between management access and normal service operation improves reliability and
+            debugging.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I introduced a separate management node that could act as both a jump box and a diagnostic platform. Instead
+          of depending on the same systems being monitored, the Pi provided an independent path to test DNS resolution,
+          network reachability, and service availability. It also acted as a controlled entry point into the management
+          network.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Deployed a Raspberry Pi as a dedicated management and troubleshooting node.</li>
+          <li>Placed the Pi on the management VLAN to allow access to infrastructure systems.</li>
+          <li>Configured Tailscale for secure remote access and fallback connectivity.</li>
+          <li>Designed a structured SSH access model with key-based authentication and role-based identities.</li>
+          <li>Used the Pi as a central point to initiate connections to other nodes instead of exposing those nodes
+            directly.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>SSH Access Strategy and Resilient Management Paths</h2>
+
+        <p>
+          I designed a cross-platform SSH access workflow that prioritizes direct LAN access when systems are locally
+          reachable and automatically falls back to Tailscale when they are not. This allowed me to maintain consistent
+          access to infrastructure regardless of network conditions while avoiding reliance on a single access path.
+        </p>
+
+        <ul>
+          <li>Created SSH host aliases for all infrastructure systems to standardize access across environments.</li>
+          <li>Used <strong>Match exec</strong> rules to test local reachability and prefer LAN IP addresses when
+            available.</li>
+          <li>Automatically fell back to Tailscale IPs when direct LAN access was unavailable.</li>
+          <li>Used separate SSH keys based on node role instead of reusing a single key across all systems.</li>
+          <li>Maintained separate SSH configurations for PowerShell and WSL due to differences in command execution and
+            environment behavior.</li>
+          <li>Added a dedicated <strong>pi-recovery</strong> entry to ensure access even when overlay networking was
+            unavailable.</li>
+        </ul>
+
+        <p>
+          This approach made remote management more resilient and predictable. Instead of manually switching between
+          access methods, the system adapts automatically based on reachability, allowing me to focus on troubleshooting
+          rather than connection setup.
+        </p>
+
+        <pre><code>
+Match host node100 exec "ping -c 1 -W 1 192.168.20.100 >/dev/null 2>&1"
+    HostName 192.168.20.100
+
+Match host node100
+    HostName 100.73.82.66
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Networking and Diagnostic Tools</h2>
+        <p>
+          The jump box was equipped with a set of networking tools that allowed me to test and isolate issues across
+          different layers of the environment. This made it easier to determine whether problems were related to DNS,
+          routing, service availability, or firewall rules.
+        </p>
+        <ul>
+          <li>Used <strong>ping</strong> to test basic connectivity between systems.</li>
+          <li>Used <strong>traceroute</strong> to identify path and routing behavior.</li>
+          <li>Used <strong>dig / nslookup</strong> to verify DNS resolution and identify failures.</li>
+          <li>Used <strong>curl</strong> to test service endpoints and HTTP responses.</li>
+          <li>Used <strong>ss</strong> to inspect listening services and ports.</li>
+          <li>Used <strong>tcpdump</strong> to capture and analyze traffic when deeper inspection was needed.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified remote access through Tailscale even when other access paths were unavailable.</li>
+          <li>Confirmed the Pi could reach internal services across VLANs for troubleshooting.</li>
+          <li>Tested DNS resolution, service reachability, and routing behavior from the Pi.</li>
+          <li>Used the jump box to isolate issues without relying on affected systems.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The Raspberry Pi became a reliable management and troubleshooting platform that improved both access and
+          visibility. It reduced dependency on any single system for remote access and provided a consistent way to
+          diagnose problems across the environment.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that troubleshooting should not depend on the same systems
+          that might be failing. A separate management path makes it easier to isolate issues and maintain control
+          during outages. Building that path intentionally is more valuable than trying to debug from within a broken
+          environment.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Add automated health checks and scripts to speed up diagnostics.</li>
+          <li>Expand fallback access options beyond a single VPN path.</li>
+          <li>Improve documentation for troubleshooting workflows and common failure scenarios.</li>
+          <li>Integrate the jump box more directly with metrics and logging systems.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

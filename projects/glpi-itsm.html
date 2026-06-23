@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GLPI ITSM Lab | Charles Tisdale</title>
+    <meta name="description"
+        content="GLPI ITSM lab integrating Debian Linux, Active Directory LDAP authentication, Tailscale connectivity, and enterprise-style help desk workflows." />
+
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="/Charles Tisdale</a>
+            <div class="nav-links">
+                <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case Studies</a>
+                <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container project-hero">
+        <article class="panel project-shell">
+            <div class="eyebrow">ITSM • GLPI • LDAP • Debian Linux • Help Desk Workflows</div>
+
+            <h1>GLPI ITSM Lab</h1>
+
+            <p>
+                I deployed and configured a GLPI ITSM platform inside my homelab to simulate an enterprise help desk and
+                asset
+                management environment. The system was hosted on a Debian 12 LXC container and integrated with Active
+                Directory
+                through LDAP authentication, allowing domain users to sign into the ticketing system using centralized
+                identity.
+            </p>
+
+            <p>
+                This project focused on learning how ticketing systems fit into real IT operations, how identity-backed
+                authentication
+                works for internal applications, and how help desk workflows can be built around users, roles, tickets,
+                assets,
+                escalation paths, and documentation.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag">GLPI</span>
+                <span class="tag">ITSM</span>
+                <span class="tag">Debian 12</span>
+                <span class="tag">Apache</span>
+                <span class="tag">MariaDB</span>
+                <span class="tag">PHP</span>
+                <span class="tag">LDAP</span>
+                <span class="tag">Active Directory</span>
+                <span class="tag">Tailscale</span>
+            </div>
+
+            <section>
+                <h2>Environment</h2>
+
+                <div class="meta-grid">
+                    <div class="detail-box">
+                        <strong>GLPI</strong>
+                        <p>
+                            GLPI was used as the central ITSM platform for ticketing, user support workflows, asset
+                            tracking, and
+                            help desk process simulation.
+                        </p>
+                    </div>
+
+                    <div class="detail-box">
+                        <strong>Debian 12 LXC</strong>
+                        <p>
+                            The platform was deployed on a Debian 12 LXC container inside Proxmox, providing a
+                            lightweight Linux-based
+                            service host for the application stack.
+                        </p>
+                    </div>
+
+                    <div class="detail-box">
+                        <strong>Apache, MariaDB, and PHP</strong>
+                        <p>
+                            GLPI was installed using a traditional Linux web application stack with Apache, MariaDB, and
+                            PHP instead of
+                            a containerized Docker deployment.
+                        </p>
+                    </div>
+
+                    <div class="detail-box">
+                        <strong>Active Directory LDAP</strong>
+                        <p>
+                            GLPI was integrated with Active Directory using LDAP authentication so domain users could
+                            authenticate into
+                            the ticketing platform using centralized credentials.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Problem</h2>
+
+                <p>
+                    Enterprise IT teams rely on ticketing systems to track issues, document troubleshooting, assign
+                    work, escalate
+                    problems, and maintain accountability. Without an ITSM platform, support work becomes difficult to
+                    measure,
+                    prioritize, or hand off between technicians.
+                </p>
+
+                <p>
+                    I built this lab to better understand how help desk platforms are deployed, how they integrate with
+                    centralized
+                    identity systems, and how ticket workflows can be structured to reflect real operational support
+                    environments.
+                </p>
+            </section>
+
+            <section>
+                <h2>Why This Matters</h2>
+
+                <ul>
+                    <li>Ticketing systems are core tools in help desk, desktop support, NOC, SOC, and infrastructure
+                        roles.</li>
+                    <li>LDAP integration allows applications to use centralized identity instead of separate local
+                        accounts.</li>
+                    <li>Role-based access control helps separate end users, technicians, and administrators.</li>
+                    <li>Good ticket documentation improves troubleshooting, escalation, and knowledge transfer.</li>
+                    <li>ITSM workflows connect technical troubleshooting with real business operations.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Implementation</h2>
+
+                <ul>
+                    <li>Deployed GLPI on a Debian 12 LXC container inside Proxmox.</li>
+                    <li>Installed and configured Apache, MariaDB, PHP, and required GLPI dependencies.</li>
+                    <li>Configured the GLPI database and application files with appropriate Linux permissions.</li>
+                    <li>Removed installation files and applied basic post-install hardening steps.</li>
+                    <li>Created a least-privilege Active Directory LDAP bind account for GLPI authentication.</li>
+                    <li>Configured LDAP authentication between GLPI and Active Directory.</li>
+                    <li>Imported Active Directory users into GLPI.</li>
+                    <li>Validated user login through LDAP-backed authentication.</li>
+                </ul>
+
+                <figure class="zoomable">
+                    <div class="diagram">
+                        <img src="/images/glpi-dashboard.png"
+                            alt="GLPI dashboard showing the ticketing system interface"
+                            class="zoomable-image" />
+                    </div>
+                    <figcaption class="diagram-caption">
+                        GLPI deployed as the central ITSM platform for help desk workflow simulation.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Validation</h2>
+
+                <ul>
+                    <li>Confirmed GLPI web access from the homelab network.</li>
+                    <li>Verified Apache, MariaDB, and PHP were functioning correctly for the GLPI application stack.
+                    </li>
+                    <li>Tested LDAP connectivity from GLPI to the Active Directory domain controller.</li>
+                    <li>Imported Active Directory users into GLPI and confirmed account visibility.</li>
+                    <li>Tested user login using LDAP-backed Active Directory credentials.</li>
+                    <li>Troubleshot login issues related to first-login password reset requirements.</li>
+                </ul>
+
+                <figure class="zoomable">
+                    <div class="diagram">
+                        <img src="/images/glpi-ldap-users.png"
+                            alt="GLPI showing imported LDAP users from Active Directory"
+                            class="zoomable-image" />
+                    </div>
+                    <figcaption class="diagram-caption">
+                        GLPI user records imported from Active Directory through LDAP integration.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Outcome</h2>
+
+                <p>
+                    The final deployment created a working ITSM environment where Active Directory users could
+                    authenticate into GLPI
+                    through LDAP and participate in a centralized help desk workflow. This connected identity
+                    management, Linux systems
+                    administration, web application deployment, and IT operations into one practical lab.
+                </p>
+
+                <p>
+                    The project gave me hands-on experience with service deployment, authentication troubleshooting,
+                    Linux permissions,
+                    database-backed applications, and the operational side of support workflows.
+                </p>
+            </section>
+
+            <section>
+                <h2>Key Lesson</h2>
+
+                <p>
+                    The biggest lesson from this project was that ticketing systems are not just places to record
+                    problems. They are
+                    operational systems that connect users, technicians, assets, documentation, escalation paths, and
+                    accountability.
+                </p>
+
+                <p>
+                    Integrating GLPI with Active Directory also reinforced how important centralized identity is for
+                    internal business
+                    applications. When LDAP, DNS, permissions, or password state are misconfigured, application login
+                    failures can look
+                    like GLPI problems even when the root cause is actually in the identity path.
+                </p>
+            </section>
+
+            <section>
+                <h2>What I'd Improve Next</h2>
+
+                <ul>
+                    <li>Create realistic help desk tickets for password resets, VPN issues, software installs, access
+                        requests, and printer problems.</li>
+                    <li>Map Active Directory groups to GLPI technician roles for stronger RBAC.</li>
+                    <li>Build escalation workflows between Tier 1 and Tier 2 support roles.</li>
+                    <li>Configure email-to-ticket functionality.</li>
+                    <li>Add asset inventory and link devices to users and tickets.</li>
+                    <li>Integrate monitoring alerts into GLPI for automated ticket generation.</li>
+                </ul>
+            </section>
+
+            <a class="back-link" href="/projects/">← Back to Projects</a>
+        </article>
+    </main>
+
+    <footer class="footer container">
+        Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+    </footer>
+
+    <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="image-modal-content" id="imageModalContent" alt="" />
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
+
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let movedDuringDrag = false;
+      let startX = 0;
+      let startY = 0;
+      let pinchStartDistance = 0;
+      let pinchStartScale = scale;
+
+      function clampScale(value) {
+        return Math.min(Math.max(value, 1), 3);
+      }
+
+      function applyTransform() {
+        modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetTransform() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        movedDuringDrag = false;
+        modalImg.classList.remove("is-dragging");
+        applyTransform();
+      }
+
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        resetTransform();
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalImg.classList.remove("is-dragging");
+        modalImg.style.transform = "";
+        document.body.style.overflow = "";
+        isDragging = false;
+        movedDuringDrag = false;
+      }
+
+      function getDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.hypot(dx, dy);
+      }
+
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
+        }
+      });
+
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        if (movedDuringDrag) {
+          movedDuringDrag = false;
+          return;
+        }
+
+        if (scale > 1) {
+          resetTransform();
+        } else {
+          scale = 1.7;
+          applyTransform();
+        }
+      });
+
+      modalImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+
+        e.preventDefault();
+        isDragging = true;
+        movedDuringDrag = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        modalImg.classList.add("is-dragging");
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const newX = e.clientX - startX;
+        const newY = e.clientY - startY;
+
+        if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+          movedDuringDrag = true;
+        }
+
+        translateX = newX;
+        translateY = newY;
+        applyTransform();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      modalImg.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          movedDuringDrag = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+          modalImg.classList.add("is-dragging");
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          pinchStartDistance = getDistance(e.touches);
+          pinchStartScale = scale;
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          e.preventDefault();
+
+          const newX = e.touches[0].clientX - startX;
+          const newY = e.touches[0].clientY - startY;
+
+          if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+            movedDuringDrag = true;
+          }
+
+          translateX = newX;
+          translateY = newY;
+          applyTransform();
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+
+          const newDistance = getDistance(e.touches);
+          scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
+          applyTransform();
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchend", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

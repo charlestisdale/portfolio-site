@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Fundamentals Trainer | Charles Tisdale</title>
+    <meta name="description" content="Practice A+, Networking, Hardware, Mobile Devices, Cloud, Virtualization, Printers, and Troubleshooting." />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .trainer-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .trainer-card {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 1rem;
+        }
+
+        .trainer-button,
+        .trainer-select,
+        .trainer-input {
+            border-radius: .75rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+            color: inherit;
+            padding: .75rem .9rem;
+            font: inherit;
+        }
+
+        .trainer-button {
+            cursor: pointer;
+        }
+
+        .trainer-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .trainer-button.primary {
+            background: rgba(59, 130, 246, 0.22);
+            border-color: rgba(96, 165, 250, 0.45);
+        }
+
+        .trainer-input {
+            width: min(100%, 28rem);
+        }
+
+        .trainer-select {
+            background: rgba(15, 23, 42, .95);
+            color: #fff;
+        }
+
+        .trainer-select option {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        .trainer-input::placeholder {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .question {
+            font-size: clamp(1.35rem, 3vw, 2.1rem);
+            line-height: 1.15;
+            margin: .75rem 0;
+            min-height: 120px;
+        }
+
+        .subtitle {
+            opacity: .75;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .answer-button {
+            min-height: 4rem;
+            text-align: left;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: .85rem;
+        }
+
+        .feedback.correct {
+            display: block;
+            background: rgba(34, 197, 94, 0.14);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+        }
+
+        .feedback.wrong {
+            display: block;
+            background: rgba(239, 68, 68, 0.14);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            padding: .9rem;
+            border-radius: .85rem;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: .8rem;
+            opacity: .7;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: .2rem .5rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .weak-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+
+        .status-note {
+            opacity: .75;
+            font-size: .95rem;
+        }
+
+        @media(max-width:760px) {
+
+            .answer-grid,
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="/">Charles Tisdale</a>
+            <div class="nav-links">
+                <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case Studies</a>
+                <a href="/ports/">Ports Trainer</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container hero">
+        <article class="panel project-shell">
+            <div class="eyebrow">Networking • CompTIA A+ • Standards Practice</div>
+
+            <h1>IT Fundamentals Trainer</h1>
+
+            <p>
+                Practice ports, cable standards, Ethernet speeds, PoE power, Wi-Fi generations, fiber types,
+                connectors, cellular terms, DNS, email, cloud models, storage, printers, and virtualization.
+            </p>
+
+            <p class="status-note" id="loadStatus">Loading question bank...</p>
+
+            <section class="project-section">
+                <h2>Quiz Mode</h2>
+
+                <div class="trainer-controls">
+                    <select id="categoryFilter" class="trainer-select">
+                        <option value="all">All Categories</option>
+                        <option value="weak">Weak Areas Only</option>
+                    </select>
+
+                    <select id="questionMode" class="trainer-select">
+                        <option value="normal">Normal Mode</option>
+                        <option value="hard">Hard Mode</option>
+                    </select>
+
+                    <select id="difficulty" class="trainer-select">
+                        <option value="multiple">Multiple Choice</option>
+                        <option value="typed">Typed Answer</option>
+                    </select>
+
+                    <button id="newQuestionBtn" class="trainer-button primary">New Question</button>
+                    <button id="resetBtn" class="trainer-button">Reset Stats</button>
+                </div>
+
+                <div class="trainer-card">
+                    <div class="subtitle" id="subtitle">Choose the best answer.</div>
+
+                    <div class="question" id="question">Loading question...</div>
+
+                    <div id="imageContainer" style="display:none;text-align:center;">
+                        <img id="questionImage"
+                            style="max-width:500px;max-height:300px;width:100%;object-fit:contain;">
+                    </div>
+
+                    <div id="answerGrid" class="answer-grid"></div>
+
+                    <div id="typedArea" class="trainer-controls" style="display:none;">
+                        <input id="typedAnswer" class="trainer-input" type="text" placeholder="Type your answer..." />
+                        <button id="submitTypedBtn" class="trainer-button primary">Submit</button>
+                    </div>
+
+                    <div id="feedback" class="feedback"></div>
+
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <span class="stat-label">Correct</span>
+                            <span class="stat-value" id="correctStat">0</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="stat-label">Wrong</span>
+                            <span class="stat-value" id="wrongStat">0</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value" id="accuracyStat">0%</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="stat-label">Streak</span>
+                            <span class="stat-value" id="streakStat">0</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="stat-label">XP</span>
+                            <span class="stat-value" id="xpStat">0</span>
+                        </div>
+                    </div>
+
+                    <div class="weak-list" id="weakList"></div>
+                </div>
+            </section>
+
+            <a class="back-link" href="/">← Back to Home</a>
+        </article>
+    </main>
+
+    <footer class="footer container">
+        <p>Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning</p>
+        <p><a class="footer-link" href="/privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        let bank = [];
+
+        const categoryNames = {
+            ethernet: "Ethernet",
+            copper: "Copper Cabling",
+            fiber: "Fiber",
+            poe: "PoE",
+            wifi: "Wi-Fi",
+            cellular: "Cellular",
+            mobile: "Mobile Devices",
+            connectors: "Connectors",
+            connector_images: "Connector Identification",
+            cloud: "Cloud",
+            virtualization: "Virtualization",
+            ports: "Ports",
+            email: "Email",
+            dns: "DNS",
+            storage: "Storage",
+            printers: "Printers",
+            scenario: "Scenario Questions",
+            networking: "Networking",
+            displays: "Displays",
+            troubleshooting: "Troubleshooting",
+            hardware: "Hardware",
+            commands: "Commands"
+        };
+
+        const statsKey = "CharlesStandardsTrainerStatsV2";
+
+        const stats = JSON.parse(localStorage.getItem(statsKey)) || {
+            correct: 0,
+            wrong: 0,
+            streak: 0,
+            xp: 0,
+            misses: {}
+        };
+
+        let current = null;
+        let answered = false;
+
+        const categoryFilter = document.getElementById("categoryFilter");
+        const difficulty = document.getElementById("difficulty");
+        const newQuestionBtn = document.getElementById("newQuestionBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const subtitle = document.getElementById("subtitle");
+        const question = document.getElementById("question");
+        const answerGrid = document.getElementById("answerGrid");
+        const typedArea = document.getElementById("typedArea");
+        const typedAnswer = document.getElementById("typedAnswer");
+        const submitTypedBtn = document.getElementById("submitTypedBtn");
+        const feedback = document.getElementById("feedback");
+        const correctStat = document.getElementById("correctStat");
+        const wrongStat = document.getElementById("wrongStat");
+        const accuracyStat = document.getElementById("accuracyStat");
+        const streakStat = document.getElementById("streakStat");
+        const xpStat = document.getElementById("xpStat");
+        const weakList = document.getElementById("weakList");
+        const loadStatus = document.getElementById("loadStatus");
+        const imageContainer = document.getElementById("imageContainer");
+        const questionImage = document.getElementById("questionImage");
+
+        function save() {
+            localStorage.setItem(statsKey, JSON.stringify(stats));
+        }
+
+        function shuffle(array) {
+            return [...array].sort(() => Math.random() - 0.5);
+        }
+
+        function norm(value) {
+            return String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+        }
+
+        function categoryLabel(category) {
+            return categoryNames[category] || category;
+        }
+
+        function populateCategories() {
+            const categories = [...new Set(bank.map(item => item.category))].sort();
+
+            categories.forEach(category => {
+                const option = document.createElement("option");
+                option.value = category;
+                option.textContent = categoryLabel(category);
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filteredBank() {
+            const category = categoryFilter.value;
+
+            if (category === "all") {
+                return bank;
+            }
+
+            if (category === "weak") {
+                const weakCategories = Object.keys(stats.misses).filter(category => stats.misses[category] > 0);
+                const weakQuestions = bank.filter(item => weakCategories.includes(item.category));
+
+                return weakQuestions.length ? weakQuestions : bank;
+            }
+
+            return bank.filter(item => item.category === category);
+        }
+
+        function updateStats() {
+            const total = stats.correct + stats.wrong;
+            const accuracy = total ? Math.round((stats.correct / total) * 100) : 0;
+
+            correctStat.textContent = stats.correct;
+            wrongStat.textContent = stats.wrong;
+            accuracyStat.textContent = accuracy + "%";
+            streakStat.textContent = stats.streak;
+            xpStat.textContent = stats.xp;
+
+            weakList.innerHTML = "";
+
+            const weakAreas = Object.entries(stats.misses)
+                .filter(entry => entry[1] > 0)
+                .sort((a, b) => b[1] - a[1]);
+
+            if (!weakAreas.length) {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.textContent = "No weak areas yet";
+                weakList.appendChild(span);
+                return;
+            }
+
+            weakAreas.forEach(([category, misses]) => {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.textContent = categoryLabel(category) + ": " + misses + " misses";
+                weakList.appendChild(span);
+            });
+        }
+
+        function newQuestion() {
+            if (!bank.length) {
+                return;
+            }
+
+            answered = false;
+            feedback.className = "feedback";
+            feedback.textContent = "";
+            typedAnswer.value = "";
+
+            const pool = filteredBank();
+            const mode = document.getElementById("questionMode")?.value || "normal";
+
+            let weightedPool = [];
+
+            pool.forEach(questionItem => {
+                let weight = 1;
+
+                if (mode === "hard") {
+                    if (questionItem.category === "scenario") {
+                        weight = 5;
+                    }
+
+                    const misses = stats.misses[questionItem.category] || 0;
+
+                    if (misses > 0) {
+                        weight += misses;
+                    }
+                }
+
+                for (let i = 0; i < weight; i++) {
+                    weightedPool.push(questionItem);
+                }
+            });
+
+            current = weightedPool[Math.floor(Math.random() * weightedPool.length)];
+
+            subtitle.textContent = categoryLabel(current.category) + " Practice";
+            question.textContent = current.question;
+
+            if (current.image) {
+                questionImage.src = current.image;
+                questionImage.alt = current.answer || "Question image";
+                imageContainer.style.display = "block";
+            } else {
+                questionImage.src = "";
+                questionImage.alt = "";
+                imageContainer.style.display = "none";
+            }
+
+            if (difficulty.value === "typed") {
+                answerGrid.style.display = "none";
+                typedArea.style.display = "flex";
+                typedAnswer.focus();
+                return;
+            }
+
+            typedArea.style.display = "none";
+            answerGrid.style.display = "grid";
+            answerGrid.innerHTML = "";
+
+            shuffle(current.options).forEach(optionText => {
+                const button = document.createElement("button");
+                button.className = "trainer-button answer-button";
+                button.textContent = optionText;
+                button.addEventListener("click", () => check(optionText));
+                answerGrid.appendChild(button);
+            });
+        }
+
+        function check(answer) {
+            if (answered || !current) {
+                return;
+            }
+
+            answered = true;
+
+            const correct = norm(answer) === norm(current.answer);
+
+            if (correct) {
+                stats.correct++;
+                stats.streak++;
+                stats.xp += difficulty.value === "typed" ? 20 : 10;
+
+                if (stats.misses[current.category]) {
+                    stats.misses[current.category] = Math.max(0, stats.misses[current.category] - 1);
+                }
+
+                feedback.className = "feedback correct";
+                feedback.innerHTML = "<strong>Correct.</strong> " + current.note;
+            } else {
+                stats.wrong++;
+                stats.streak = 0;
+                stats.misses[current.category] = (stats.misses[current.category] || 0) + 1;
+
+                feedback.className = "feedback wrong";
+                feedback.innerHTML = "<strong>Not quite.</strong> Correct answer: <strong>" + current.answer + "</strong>. " + current.note;
+            }
+
+            save();
+            updateStats();
+
+            Array.from(answerGrid.children).forEach(button => {
+                if (norm(button.textContent) === norm(current.answer)) {
+                    button.classList.add("primary");
+                }
+            });
+        }
+
+        async function loadQuestions() {
+            try {
+                const response = await fetch("./questions.json", { cache: "no-store" });
+
+                if (!response.ok) {
+                    throw new Error("Could not load questions.json");
+                }
+
+                bank = await response.json();
+
+                populateCategories();
+
+                loadStatus.textContent = "Loaded " + bank.length + " questions from questions.json.";
+
+                updateStats();
+                newQuestion();
+            } catch (error) {
+                loadStatus.textContent = "Could not load questions.json. Make sure it is in the same folder as this index.html file.";
+                question.textContent = "Question bank failed to load.";
+                console.error(error);
+            }
+        }
+
+        newQuestionBtn.addEventListener("click", newQuestion);
+
+        categoryFilter.addEventListener("change", () => {
+            newQuestion();
+        });
+
+        difficulty.addEventListener("change", newQuestion);
+
+        resetBtn.addEventListener("click", () => {
+            stats.correct = 0;
+            stats.wrong = 0;
+            stats.streak = 0;
+            stats.xp = 0;
+            stats.misses = {};
+            save();
+            updateStats();
+        });
+
+        submitTypedBtn.addEventListener("click", () => check(typedAnswer.value));
+
+        typedAnswer.addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+                check(typedAnswer.value);
+            }
+        });
+
+        updateStats();
+        loadQuestions();
+    </script>
+</body>
+
+</html>

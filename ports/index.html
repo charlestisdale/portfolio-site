@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Port Trainer | Charles Tisdale</title>
+
+    <meta name="description" content="Interactive CompTIA A+ port number trainer for learning common protocols, ports, and transport types." />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .trainer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .trainer-card {
+            grid-column: span 12;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .trainer-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .trainer-button,
+        .trainer-select,
+        .trainer-input {
+            border-radius: .75rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+            color: inherit;
+            padding: .75rem .9rem;
+            font: inherit;
+        }
+
+        .trainer-button {
+            cursor: pointer;
+            transition: transform .15s ease, border-color .15s ease, background .15s ease;
+        }
+
+        .trainer-button:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .trainer-button.primary {
+            background: rgba(59, 130, 246, 0.22);
+            border-color: rgba(96, 165, 250, 0.45);
+        }
+
+        .trainer-input {
+            width: min(100%, 24rem);
+        }
+
+        .quiz-question {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            line-height: 1.15;
+            margin: .75rem 0;
+        }
+
+        .quiz-subtitle {
+            opacity: .78;
+            margin-bottom: 1rem;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .answer-button {
+            min-height: 4rem;
+            text-align: left;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            padding: .9rem;
+            border-radius: .85rem;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: .8rem;
+            opacity: .7;
+        }
+
+        .stat-value {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: .85rem;
+            display: none;
+        }
+
+        .feedback.correct {
+            display: block;
+            background: rgba(34, 197, 94, .14);
+            border: 1px solid rgba(34, 197, 94, .35);
+        }
+
+        .feedback.wrong {
+            display: block;
+            background: rgba(239, 68, 68, .14);
+            border: 1px solid rgba(239, 68, 68, .35);
+        }
+
+        .port-table-wrap {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .port-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 760px;
+        }
+
+        .port-table th,
+        .port-table td {
+            padding: .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .port-table th {
+            font-size: .85rem;
+            opacity: .76;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: .2rem .5rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: .1rem .15rem .1rem 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 760px) {
+            .answer-grid,
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="/">Charles Tisdale</a>
+
+            <div class="nav-links">
+                <a href="/projects/">Projects</a>
+                <a href="/case-studies/">Case Studies</a>
+                <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container project-hero">
+
+        <article class="panel project-shell">
+
+            <div class="eyebrow">
+                Networking • CompTIA A+ • Port Practice
+            </div>
+
+            <h1>Port Trainer</h1>
+
+            <p>
+                Practice common networking ports by protocol, port number, transport type,
+                and real-world purpose. Progress is stored locally in your browser.
+            </p>
+
+            <section class="project-section">
+
+                <h2>Practice Mode</h2>
+
+                <div class="trainer-controls">
+                    <select id="questionMode" class="trainer-select" aria-label="Question mode">
+                        <option value="protocolToPort">Protocol → Port</option>
+                        <option value="portToProtocol">Port → Protocol</option>
+                        <option value="purposeToProtocol">Purpose → Protocol</option>
+                        <option value="transport">Protocol → TCP/UDP</option>
+                    </select>
+
+                    <select id="categoryFilter" class="trainer-select" aria-label="Category filter">
+                        <option value="all">All Categories</option>
+                        <option value="web">Web</option>
+                        <option value="email">Email</option>
+                        <option value="remote">Remote Access</option>
+                        <option value="infra">Infrastructure</option>
+                        <option value="file">File Transfer / Sharing</option>
+                        <option value="directory">Directory / Authentication</option>
+                    </select>
+
+                    <button id="newQuestionBtn" class="trainer-button primary">New Question</button>
+                    <button id="resetStatsBtn" class="trainer-button">Reset Stats</button>
+                </div>
+
+                <div class="trainer-grid">
+                    <div class="trainer-card">
+                        <div class="quiz-subtitle" id="quizSubtitle">Choose the best answer.</div>
+                        <div class="quiz-question" id="quizQuestion">Loading question...</div>
+
+                        <div class="answer-grid" id="answerGrid"></div>
+
+                        <div id="feedback" class="feedback"></div>
+
+                        <div class="stats-row">
+                            <div class="stat-box">
+                                <span class="stat-label">Correct</span>
+                                <span class="stat-value" id="correctStat">0</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Wrong</span>
+                                <span class="stat-value" id="wrongStat">0</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Accuracy</span>
+                                <span class="stat-value" id="accuracyStat">0%</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Streak</span>
+                                <span class="stat-value" id="streakStat">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Port Reference</h2>
+
+                <p>
+                    Use search and category filters to review the ports directly.
+                    This list focuses on common A+ and entry-level help desk expectations.
+                </p>
+
+                <div class="trainer-controls">
+                    <input id="searchBox" class="trainer-input" type="search" placeholder="Search protocol, port, purpose, or keyword..." />
+                    <button id="showAllBtn" class="trainer-button">Show All</button>
+                </div>
+
+                <div class="port-table-wrap">
+                    <table class="port-table">
+                        <thead>
+                            <tr>
+                                <th>Protocol</th>
+                                <th>Port</th>
+                                <th>Transport</th>
+                                <th>Purpose</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="portTableBody"></tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <a class="back-link" href="/">
+                ← Back to Home
+            </a>
+
+        </article>
+
+    </main>
+
+    <footer class="footer container">
+
+        <p>
+            Built on charlestisdale.com • Focused on networking,
+            cybersecurity, and hands-on infrastructure learning
+        </p>
+
+        <p>
+            <a class="footer-link" href="/privacy.html">
+                Privacy Policy
+            </a>
+        </p>
+
+    </footer>
+
+    <script>
+        const ports = [
+            { protocol: "FTP Data", port: "20", transport: "TCP", purpose: "Transfers file data in active FTP sessions.", category: "file" },
+            { protocol: "FTP Control", port: "21", transport: "TCP", purpose: "Controls FTP login, commands, and session management.", category: "file" },
+            { protocol: "SSH", port: "22", transport: "TCP", purpose: "Secure remote command-line access and tunneling.", category: "remote" },
+            { protocol: "SFTP", port: "22", transport: "TCP", purpose: "Secure file transfer over SSH.", category: "file" },
+            { protocol: "Telnet", port: "23", transport: "TCP", purpose: "Unencrypted remote terminal access.", category: "remote" },
+            { protocol: "SMTP", port: "25", transport: "TCP", purpose: "Mail server-to-server message transfer.", category: "email" },
+            { protocol: "DNS", port: "53", transport: "TCP/UDP", purpose: "Resolves domain names to IP addresses. UDP is common; TCP is used for zone transfers and large responses.", category: "infra" },
+            { protocol: "DHCP Server", port: "67", transport: "UDP", purpose: "Server-side DHCP address assignment.", category: "infra" },
+            { protocol: "DHCP Client", port: "68", transport: "UDP", purpose: "Client-side DHCP address assignment.", category: "infra" },
+            { protocol: "TFTP", port: "69", transport: "UDP", purpose: "Simple file transfer often used for network boot or device configs.", category: "file" },
+            { protocol: "HTTP", port: "80", transport: "TCP", purpose: "Unencrypted web traffic.", category: "web" },
+            { protocol: "POP3", port: "110", transport: "TCP", purpose: "Downloads email from a mailbox to a client.", category: "email" },
+            { protocol: "NTP", port: "123", transport: "UDP", purpose: "Synchronizes system time across devices.", category: "infra" },
+            { protocol: "NetBIOS", port: "137-139", transport: "TCP/UDP", purpose: "Legacy Windows name/session/file sharing services.", category: "file" },
+            { protocol: "IMAP", port: "143", transport: "TCP", purpose: "Accesses and syncs email while leaving it on the server.", category: "email" },
+            { protocol: "SNMP", port: "161", transport: "UDP", purpose: "Monitors and manages network devices.", category: "infra" },
+            { protocol: "SNMP Trap", port: "162", transport: "UDP", purpose: "Device-generated SNMP alerts sent to a manager.", category: "infra" },
+            { protocol: "LDAP", port: "389", transport: "TCP/UDP", purpose: "Directory queries and authentication lookups.", category: "directory" },
+            { protocol: "HTTPS", port: "443", transport: "TCP", purpose: "Encrypted web traffic using TLS.", category: "web" },
+            { protocol: "SMB/CIFS", port: "445", transport: "TCP", purpose: "Windows file sharing, printer sharing, and domain access.", category: "file" },
+            { protocol: "SMTPS", port: "465", transport: "TCP", purpose: "SMTP over implicit TLS.", category: "email" },
+            { protocol: "SMTP Submission", port: "587", transport: "TCP", purpose: "Authenticated email submission from clients to mail servers.", category: "email" },
+            { protocol: "LDAPS", port: "636", transport: "TCP", purpose: "LDAP over TLS.", category: "directory" },
+            { protocol: "IMAPS", port: "993", transport: "TCP", purpose: "IMAP over TLS.", category: "email" },
+            { protocol: "POP3S", port: "995", transport: "TCP", purpose: "POP3 over TLS.", category: "email" },
+            { protocol: "SQL Server", port: "1433", transport: "TCP", purpose: "Microsoft SQL Server database connections.", category: "infra" },
+            { protocol: "RDP", port: "3389", transport: "TCP/UDP", purpose: "Microsoft Remote Desktop access.", category: "remote" }
+        ];
+
+        const categoryNames = {
+            web: "Web",
+            email: "Email",
+            remote: "Remote Access",
+            infra: "Infrastructure",
+            file: "File Transfer / Sharing",
+            directory: "Directory / Authentication"
+        };
+
+        let currentQuestion = null;
+        let answered = false;
+
+        const statsKey = "CharlesPortTrainerStats";
+        const stats = JSON.parse(localStorage.getItem(statsKey)) || {
+            correct: 0,
+            wrong: 0,
+            streak: 0
+        };
+
+        const questionMode = document.getElementById("questionMode");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const newQuestionBtn = document.getElementById("newQuestionBtn");
+        const resetStatsBtn = document.getElementById("resetStatsBtn");
+        const quizSubtitle = document.getElementById("quizSubtitle");
+        const quizQuestion = document.getElementById("quizQuestion");
+        const answerGrid = document.getElementById("answerGrid");
+        const feedback = document.getElementById("feedback");
+        const correctStat = document.getElementById("correctStat");
+        const wrongStat = document.getElementById("wrongStat");
+        const accuracyStat = document.getElementById("accuracyStat");
+        const streakStat = document.getElementById("streakStat");
+        const searchBox = document.getElementById("searchBox");
+        const showAllBtn = document.getElementById("showAllBtn");
+        const portTableBody = document.getElementById("portTableBody");
+
+        function saveStats() {
+            localStorage.setItem(statsKey, JSON.stringify(stats));
+        }
+
+        function updateStats() {
+            const total = stats.correct + stats.wrong;
+            const accuracy = total ? Math.round((stats.correct / total) * 100) : 0;
+
+            correctStat.textContent = stats.correct;
+            wrongStat.textContent = stats.wrong;
+            accuracyStat.textContent = `${accuracy}%`;
+            streakStat.textContent = stats.streak;
+        }
+
+        function filteredPorts() {
+            const category = categoryFilter.value;
+            if (category === "all") return ports;
+            return ports.filter(item => item.category === category);
+        }
+
+        function randomItem(items) {
+            return items[Math.floor(Math.random() * items.length)];
+        }
+
+        function shuffle(items) {
+            return [...items].sort(() => Math.random() - 0.5);
+        }
+
+        function uniqueValues(key) {
+            return [...new Set(ports.map(item => item[key]))];
+        }
+
+        function buildAnswers(correctAnswer, answerPool) {
+            const wrongAnswers = shuffle(answerPool.filter(answer => answer !== correctAnswer)).slice(0, 3);
+            return shuffle([correctAnswer, ...wrongAnswers]);
+        }
+
+        function makeQuestion() {
+            answered = false;
+            feedback.className = "feedback";
+            feedback.textContent = "";
+
+            const available = filteredPorts();
+            const item = randomItem(available);
+            const mode = questionMode.value;
+
+            let prompt = "";
+            let correctAnswer = "";
+            let answerPool = [];
+            let subtitle = "Choose the best answer.";
+
+            if (mode === "protocolToPort") {
+                prompt = `What port does ${item.protocol} use?`;
+                correctAnswer = item.port;
+                answerPool = uniqueValues("port");
+                subtitle = "Protocol → Port";
+            }
+
+            if (mode === "portToProtocol") {
+                prompt = `Which protocol commonly uses port ${item.port}?`;
+                correctAnswer = item.protocol;
+                answerPool = uniqueValues("protocol");
+                subtitle = "Port → Protocol";
+            }
+
+            if (mode === "purposeToProtocol") {
+                prompt = item.purpose;
+                correctAnswer = item.protocol;
+                answerPool = uniqueValues("protocol");
+                subtitle = "Purpose → Protocol";
+            }
+
+            if (mode === "transport") {
+                prompt = `Which transport does ${item.protocol} commonly use?`;
+                correctAnswer = item.transport;
+                answerPool = uniqueValues("transport");
+                subtitle = "Protocol → TCP/UDP";
+            }
+
+            currentQuestion = {
+                item,
+                correctAnswer
+            };
+
+            quizSubtitle.textContent = subtitle;
+            quizQuestion.textContent = prompt;
+            answerGrid.innerHTML = "";
+
+            buildAnswers(correctAnswer, answerPool).forEach(answer => {
+                const button = document.createElement("button");
+                button.className = "trainer-button answer-button";
+                button.textContent = answer;
+                button.addEventListener("click", () => checkAnswer(answer));
+                answerGrid.appendChild(button);
+            });
+        }
+
+        function checkAnswer(answer) {
+            if (answered || !currentQuestion) return;
+            answered = true;
+
+            const isCorrect = answer === currentQuestion.correctAnswer;
+            const item = currentQuestion.item;
+
+            if (isCorrect) {
+                stats.correct++;
+                stats.streak++;
+                feedback.className = "feedback correct";
+                feedback.innerHTML = `<strong>Correct.</strong> ${item.protocol} uses port ${item.port} over ${item.transport}.`;
+            } else {
+                stats.wrong++;
+                stats.streak = 0;
+                feedback.className = "feedback wrong";
+                feedback.innerHTML = `<strong>Not quite.</strong> The correct answer is <strong>${currentQuestion.correctAnswer}</strong>. ${item.protocol} uses port ${item.port} over ${item.transport}.`;
+            }
+
+            saveStats();
+            updateStats();
+
+            [...answerGrid.children].forEach(button => {
+                if (button.textContent === currentQuestion.correctAnswer) {
+                    button.classList.add("primary");
+                }
+            });
+        }
+
+        function renderTable() {
+            const query = searchBox.value.trim().toLowerCase();
+            const category = categoryFilter.value;
+
+            const rows = ports.filter(item => {
+                const matchesCategory = category === "all" || item.category === category;
+                const searchable = `${item.protocol} ${item.port} ${item.transport} ${item.purpose} ${categoryNames[item.category]}`.toLowerCase();
+                const matchesSearch = !query || searchable.includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            portTableBody.innerHTML = "";
+
+            rows.forEach(item => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td><strong>${item.protocol}</strong></td>
+                    <td>${item.port}</td>
+                    <td><span class="tag">${item.transport}</span></td>
+                    <td>${item.purpose}</td>
+                    <td><span class="tag">${categoryNames[item.category]}</span></td>
+                `;
+                portTableBody.appendChild(tr);
+            });
+        }
+
+        newQuestionBtn.addEventListener("click", makeQuestion);
+
+        resetStatsBtn.addEventListener("click", () => {
+            stats.correct = 0;
+            stats.wrong = 0;
+            stats.streak = 0;
+            saveStats();
+            updateStats();
+        });
+
+        questionMode.addEventListener("change", makeQuestion);
+        categoryFilter.addEventListener("change", () => {
+            renderTable();
+            makeQuestion();
+        });
+        searchBox.addEventListener("input", renderTable);
+        showAllBtn.addEventListener("click", () => {
+            searchBox.value = "";
+            categoryFilter.value = "all";
+            renderTable();
+            makeQuestion();
+        });
+
+        updateStats();
+        renderTable();
+        makeQuestion();
+    </script>
+
+</body>
+
+</html>

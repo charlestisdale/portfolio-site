@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End-to-End Packet Flow Analysis Across a Segmented Network | Charles Tisdale</title>
+  <meta name="description"
+    content="End-to-end packet flow analysis across a segmented homelab network by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Packet Flow • VLANs • Routing • ACLs • Troubleshooting</div>
+
+      <h1>End-to-End Packet Flow Analysis Across a Segmented Homelab</h1>
+
+      <p class="muted">
+        This Case Studies analyzes how traffic flows through a segmented network under normal,
+        denied, and failure conditions. It focuses on how DNS resolution, routing, access
+        control, reverse proxying, and remote access paths behave across different scenarios.
+      </p>
+
+      <strong>Why I made this</strong>
+      <p>
+        I built this to understand why services behave differently depending on access path,
+        whether from internal clients, through Nginx Proxy Manager (NPM), through Cloudflare,
+        through Tailscale, or during DNS failures and ACL denies.
+      </p>
+
+      <strong>Environment</strong>
+      <ul>
+        <li>VLAN segmentation across management, services, and client networks</li>
+        <li>Nginx Proxy Manager (NPM)</li>
+        <li>AdGuard Home for DNS</li>
+        <li>Cloudflare and external DNS</li>
+        <li>Tailscale remote access</li>
+        <li>Router-based Access Control Lists (ACLs)</li>
+      </ul>
+
+      <section>
+        <h2>Baseline Internal Service Path</h2>
+
+        <p class="muted">
+          This scenario shows the normal internal path a client follows to reach a service
+          through the reverse proxy. It establishes the expected behavior of DNS resolution,
+          routing, access control, and proxy forwarding.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/baseline-flow.svg"
+              alt="Baseline internal service flow through DNS, routing, ACL evaluation, and Nginx Proxy Manager"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Baseline internal service flow from a VLAN 30 client through DNS resolution,
+            inter-VLAN routing, ACL evaluation, and reverse proxy forwarding to a backend service.
+          </figcaption>
+        </figure>
+
+        <strong>Purpose</strong>
+        <p>
+          Define the expected traffic path from a client device to a backend service.
+        </p>
+
+        <strong>What Happens</strong>
+        <p>
+          A client in VLAN 30 resolves a service hostname through AdGuard Home and receives
+          the IP address of Nginx Proxy Manager in VLAN 10. Because the destination is not
+          local, the client sends traffic to its default gateway. The switch forwards the
+          frame with the correct VLAN tag, and the router performs a Layer 3 routing decision.
+          After ACL evaluation allows the traffic, the request is forwarded to Nginx Proxy
+          Manager, which then proxies it to the backend service in VLAN 20.
+        </p>
+
+        <strong>Why It Matters</strong>
+        <p>
+          This baseline defines how the network is expected to behave. All troubleshooting,
+          deny, and failure scenarios can be compared against this path.
+        </p>
+      </section>
+
+      <section>
+        <h2>Step-by-Step Packet Flow</h2>
+
+        <p class="muted">
+          This breakdown follows the same scenario step-by-step from DNS resolution to the
+          final response.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/step-by-step-flow.svg"
+              alt="Step-by-step packet flow from client to service through DNS, router, and reverse proxy"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Step-by-step packet flow from a VLAN 30 client to a backend service through DNS
+            resolution, inter-VLAN routing, ACL evaluation, and reverse proxy forwarding.
+          </figcaption>
+        </figure>
+
+        <ol>
+          <li>
+            <strong>DNS Resolution:</strong>
+            The client queries AdGuard Home and receives the IP address of Nginx Proxy Manager.
+          </li>
+          <li>
+            <strong>Destination Check:</strong>
+            The client determines that the destination is not on the local subnet.
+          </li>
+          <li>
+            <strong>ARP for Default Gateway:</strong>
+            The client resolves the MAC address of the default gateway using Address Resolution
+            Protocol (ARP).
+          </li>
+          <li>
+            <strong>Frame Creation:</strong>
+            The client builds a frame using the gateway MAC as the Layer 2 destination and
+            sends it to the switch.
+          </li>
+          <li>
+            <strong>Switch Forwarding:</strong>
+            The switch tags the traffic for VLAN 30 and forwards it across the trunk toward
+            the router.
+          </li>
+          <li>
+            <strong>Routing Decision:</strong>
+            The router removes the Layer 2 frame, evaluates the destination IP address, and
+            determines the correct routed path.
+          </li>
+          <li>
+            <strong>ACL Evaluation:</strong>
+            The router checks policy and allows HTTP/HTTPS traffic from VLAN 30 to VLAN 10.
+          </li>
+          <li>
+            <strong>Forward to Proxy:</strong>
+            The router rebuilds the Layer 2 frame for the destination VLAN and sends the
+            traffic to Nginx Proxy Manager.
+          </li>
+          <li>
+            <strong>Proxy Forwarding:</strong>
+            Nginx Proxy Manager forwards the request to the backend service in VLAN 20.
+          </li>
+          <li>
+            <strong>Response Path:</strong>
+            The backend service responds, and the traffic returns through the path in reverse.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>ACL Deny Scenario</h2>
+
+        <p class="muted">
+          This scenario shows what changes when routing still works, but policy blocks the request before it reaches the
+          reverse proxy.
+          It highlights the router as the enforcement point between segmented networks.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/acl-deny-flow.svg"
+              alt="ACL deny scenario showing traffic blocked by router policy before reaching Nginx Proxy Manager"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            ACL deny scenario showing successful DNS resolution and routing toward the router,
+            followed by a policy block before the request reaches Nginx Proxy Manager.
+          </figcaption>
+        </figure>
+
+        <strong>Purpose</strong>
+        <p>
+          Show how a request can fail even when DNS resolution and routing logic are correct, because Access Control
+          List (ACL) policy denies the traffic.
+        </p>
+
+        <strong>What Happens</strong>
+        <p>
+          The client still resolves the service hostname and sends traffic toward its default gateway because the
+          destination is remote.
+          The switch forwards the frame normally, and the router evaluates the packet at Layer 3.
+          Unlike the baseline scenario, the router finds a deny rule that matches the traffic.
+          The packet is dropped at the policy layer, so it never reaches Nginx Proxy Manager or the backend service.
+        </p>
+
+        <strong>Why It Matters</strong>
+        <p>
+          This scenario shows that successful DNS resolution does not guarantee successful connectivity.
+          A request can fail after name resolution if router policy blocks traffic between VLANs.
+          This is important during troubleshooting because an ACL deny can look like an application or proxy problem
+          if the traffic path is not understood clearly.
+        </p>
+
+        <h3>Step-by-Step ACL Deny Flow</h3>
+
+        <p class="muted">
+          This breakdown follows the denied path from initial DNS resolution to the policy drop at the router.
+        </p>
+
+        <ol>
+          <li>
+            <strong>DNS Resolution:</strong>
+            The client queries AdGuard Home and successfully receives the IP address of Nginx Proxy Manager.
+          </li>
+          <li>
+            <strong>Destination Check:</strong>
+            The client determines that the destination is on a remote subnet and must be reached through the default
+            gateway.
+          </li>
+          <li>
+            <strong>ARP for Default Gateway:</strong>
+            The client resolves the MAC address of the default gateway and prepares the frame.
+          </li>
+          <li>
+            <strong>Frame Sent to Switch:</strong>
+            The client sends the frame to the switch, which associates it with the correct VLAN and forwards it toward
+            the router.
+          </li>
+          <li>
+            <strong>Routing Decision:</strong>
+            The router removes the Layer 2 framing, evaluates the destination IP, and selects the routed path.
+          </li>
+          <li>
+            <strong>ACL Evaluation:</strong>
+            The router checks the traffic against its Access Control List (ACL) rules and finds a matching deny entry.
+          </li>
+          <li>
+            <strong>Traffic Dropped:</strong>
+            The packet is discarded at the router and never reaches Nginx Proxy Manager.
+          </li>
+          <li>
+            <strong>Connection Fails:</strong>
+            From the client perspective, the service does not load even though DNS resolution succeeded.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>DNS Failure Scenario</h2>
+
+        <p class="muted">
+          This scenario shows what happens when the request fails before the application connection even begins.
+          It highlights DNS as a dependency that must succeed before routing, policy evaluation, and reverse proxy
+          forwarding can matter.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/dns-failure-flow.svg"
+              alt="DNS failure scenario showing service access failing before connection begins"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            DNS failure scenario showing service access failing before a usable destination IP
+            is learned and before any routed application traffic begins.
+          </figcaption>
+        </figure>
+
+        <strong>Purpose</strong>
+        <p>
+          Show how service access can fail before any meaningful packet path to the application is established, simply
+          because the hostname cannot be resolved.
+        </p>
+
+        <strong>What Happens</strong>
+        <p>
+          The client attempts to access a service by hostname, but the DNS query fails or returns no usable answer.
+          Because the client never receives a valid destination IP address, it cannot determine where to send the
+          application traffic.
+          That means there is no successful connection attempt to the reverse proxy or backend service.
+          Unlike the ACL deny scenario, the failure occurs before the routed application flow even starts.
+        </p>
+
+        <strong>Why It Matters</strong>
+        <p>
+          DNS failures can easily be mistaken for general connectivity or application outages.
+          In reality, the client may never reach the network path required for the service at all.
+          Understanding this distinction makes troubleshooting faster because it separates name resolution problems from
+          routing, firewall, proxy, or application problems.
+        </p>
+
+        <h3>Step-by-Step DNS Failure Flow</h3>
+
+        <p class="muted">
+          This breakdown follows the failure from the initial DNS request to the point where the application connection
+          cannot start.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Service Request by Hostname:</strong>
+            The client attempts to reach the service using its hostname rather than a raw IP address.
+          </li>
+          <li>
+            <strong>DNS Query Sent:</strong>
+            The client sends a DNS query to AdGuard Home or another configured resolver.
+          </li>
+          <li>
+            <strong>DNS Fails:</strong>
+            The resolver does not respond correctly, returns no record, or otherwise fails to provide a usable
+            destination IP.
+          </li>
+          <li>
+            <strong>No Destination IP Learned:</strong>
+            Because the hostname was not resolved, the client does not know where to send the application traffic.
+          </li>
+          <li>
+            <strong>No Routed Application Flow:</strong>
+            The client cannot build a normal connection toward Nginx Proxy Manager or the backend service because it
+            lacks a valid destination IP.
+          </li>
+          <li>
+            <strong>Service Access Fails Early:</strong>
+            From the client perspective, the service appears unavailable, but the failure happened at name resolution
+            rather than at routing, ACL, or proxy forwarding.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Cloudflare Public Access Scenario</h2>
+
+        <p class="muted">
+          This scenario shows how service access changes when the request comes from outside the home network through
+          Cloudflare instead of from an internal client VLAN.
+          It highlights the difference between internal access paths and public-facing access paths.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/cloudflare-flow.svg"
+              alt="Cloudflare public access flow through external DNS, Cloudflare, and internal service publishing"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Public access flow from an external client through public DNS and Cloudflare to the
+            internal publishing path and backend service.
+          </figcaption>
+        </figure>
+
+        <strong>Purpose</strong>
+        <p>
+          Show how an external user reaches a published service through Cloudflare and how that path differs from
+          internal reverse proxy access.
+        </p>
+
+        <strong>What Happens</strong>
+        <p>
+          An external client requests a service using its public hostname. Public DNS resolves that hostname through
+          Cloudflare, and the request is sent across the internet to the Cloudflare edge.
+          Cloudflare then forwards the request to the published homelab service path. Depending on the service design,
+          that traffic may be sent to a reverse proxy or through a Cloudflare Tunnel before reaching the backend
+          application.
+          This path differs from internal access because it depends on public DNS, Cloudflare’s edge, and external
+          connectivity rather than only internal VLAN routing and local DNS.
+        </p>
+
+        <strong>Why It Matters</strong>
+        <p>
+          Public access introduces a different troubleshooting model.
+          A failure may come from public DNS, Cloudflare configuration, external reachability, reverse proxy rules,
+          tunnel configuration, or the backend service itself.
+          Understanding this path helps separate internet-facing problems from internal VLAN, ACL, or local DNS issues.
+        </p>
+
+        <h3>Step-by-Step Cloudflare Flow</h3>
+
+        <p class="muted">
+          This breakdown follows the request from an external client to the published internal service.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Public Hostname Request:</strong>
+            An external client attempts to reach the service using its public hostname.
+          </li>
+          <li>
+            <strong>Public DNS Resolution:</strong>
+            The client resolves the hostname using public DNS records managed through Cloudflare.
+          </li>
+          <li>
+            <strong>Traffic Sent to Cloudflare:</strong>
+            The request is sent across the internet to Cloudflare’s edge network.
+          </li>
+          <li>
+            <strong>Cloudflare Processes the Request:</strong>
+            Cloudflare applies its configured proxy, DNS, and service publishing behavior before forwarding the request
+            toward the homelab environment.
+          </li>
+          <li>
+            <strong>Traffic Reaches the Internal Publishing Path:</strong>
+            The request is passed to the internal exposure path, such as a reverse proxy or Cloudflare Tunnel endpoint.
+          </li>
+          <li>
+            <strong>Service Selection:</strong>
+            The reverse proxy or tunnel target forwards the request to the correct backend application.
+          </li>
+          <li>
+            <strong>Backend Response:</strong>
+            The backend service responds, and the response is returned back through Cloudflare to the external client.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Tailscale Remote Access Scenario</h2>
+
+        <p class="muted">
+          This scenario shows how remote administrative access differs from both internal client access and public
+          Cloudflare-based access.
+          It highlights the use of an encrypted overlay path for direct remote access without exposing services
+          publicly.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/tailscale-flow.svg"
+              alt="Tailscale remote access flow through encrypted overlay connection to internal resources"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Remote access flow from an off-site client through the Tailscale mesh and encrypted
+            WireGuard-based overlay to internal homelab resources.
+          </figcaption>
+        </figure>
+
+        <strong>Purpose</strong>
+        <p>
+          Show how remote access can reach internal systems securely through Tailscale without relying on public service
+          exposure.
+        </p>
+
+        <strong>What Happens</strong>
+        <p>
+          A remote device connects to the homelab through Tailscale over an encrypted WireGuard-based overlay network.
+          Instead of reaching the service through public DNS and Cloudflare, the remote device uses the private
+          Tailscale path to communicate directly with internal resources.
+          This changes the troubleshooting model because the request depends on overlay connectivity, Tailscale node
+          reachability, and access design rather than public exposure or standard local VLAN access.
+        </p>
+
+        <strong>Why It Matters</strong>
+        <p>
+          Tailscale provides a separate administrative path that can remain available even when public publishing
+          methods are not being used.
+          It also reduces public exposure by allowing internal resources to be reached through authenticated encrypted
+          tunnels.
+          Understanding this path is useful because failures here usually point to overlay connectivity, node
+          availability, routing design, or remote access configuration rather than Cloudflare or traditional internal
+          DNS-only issues.
+        </p>
+
+        <h3>Step-by-Step Tailscale Flow</h3>
+
+        <p class="muted">
+          This breakdown follows remote traffic from an off-site device to an internal homelab resource through the
+          Tailscale overlay.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Remote Access Attempt:</strong>
+            A remote device attempts to reach an internal resource while outside the home network.
+          </li>
+          <li>
+            <strong>Tailscale Connection Established:</strong>
+            The device connects to the Tailscale mesh using its authenticated encrypted overlay connection.
+          </li>
+          <li>
+            <strong>Private Overlay Path Selected:</strong>
+            The remote device uses the Tailscale route to reach the target internal node or subnet.
+          </li>
+          <li>
+            <strong>Traffic Enters the Homelab Through Tailscale:</strong>
+            The request reaches the destination system through the overlay path instead of through public internet
+            exposure.
+          </li>
+          <li>
+            <strong>Target Resource Responds:</strong>
+            The internal node or service responds across the same encrypted overlay connection.
+          </li>
+          <li>
+            <strong>Secure Remote Access Completed:</strong>
+            The user reaches the service or management interface without publishing that service directly to the
+            internet.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Key Lessons</h2>
+
+        <ul>
+          <li>
+            Understanding packet flow step-by-step makes troubleshooting significantly faster and more accurate.
+          </li>
+          <li>
+            Domain Name System (DNS), routing, Access Control Lists (ACLs), and reverse proxy behavior must be viewed as
+            one continuous system rather than separate components.
+          </li>
+          <li>
+            A successful DNS response does not guarantee connectivity. Traffic can still fail at routing, policy
+            enforcement, or proxy forwarding.
+          </li>
+          <li>
+            Failures at different layers look similar from the client perspective, but occur at completely different
+            points in the path.
+          </li>
+          <li>
+            Public access through Cloudflare and remote access through Tailscale follow different paths and require
+            different troubleshooting approaches than internal VLAN traffic.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I Would Improve Next</h2>
+
+        <ul>
+          <li>
+            Expand the Case Studies with packet captures to show real traffic behavior alongside the diagrams.
+          </li>
+          <li>
+            Add a Network Address Translation (NAT) scenario to demonstrate how internal traffic is translated when
+            accessing external resources.
+          </li>
+          <li>
+            Include additional failure paths such as reverse proxy misconfiguration or backend service downtime.
+          </li>
+          <li>
+            Build a reusable troubleshooting framework based on these scenarios to standardize how issues are diagnosed
+            across the network.
+          </li>
+          <li>
+            Extend the diagrams into an interactive format to better visualize packet flow across different layers and
+            scenarios.
+          </li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/case-studies">← Back to Case Studies</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="image-modal-content" id="imageModalContent" alt="" />
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
+
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+
+      let scale = 1.8;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let movedDuringDrag = false;
+      let startX = 0;
+      let startY = 0;
+      let pinchStartDistance = 0;
+      let pinchStartScale = scale;
+
+      function clampScale(value) {
+        return Math.min(Math.max(value, 1), 3);
+      }
+
+      function applyTransform() {
+        modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetTransform(openZoomed = true) {
+        scale = openZoomed ? 1.7 : 1;
+        translateX = 0;
+        translateY = 0;
+        movedDuringDrag = false;
+        modalImg.classList.remove("is-dragging");
+        applyTransform();
+      }
+
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        resetTransform(true);
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalImg.classList.remove("is-dragging");
+        modalImg.style.transform = "";
+        document.body.style.overflow = "";
+        isDragging = false;
+        movedDuringDrag = false;
+      }
+
+      function getDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.hypot(dx, dy);
+      }
+
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
+        }
+      });
+
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (movedDuringDrag) {
+          movedDuringDrag = false;
+          return;
+        }
+
+        if (scale > 1) {
+          resetTransform(false);
+        } else {
+          resetTransform(true);
+        }
+      });
+
+      modalImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+        e.preventDefault();
+        isDragging = true;
+        movedDuringDrag = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        modalImg.classList.add("is-dragging");
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const newX = e.clientX - startX;
+        const newY = e.clientY - startY;
+
+        if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+          movedDuringDrag = true;
+        }
+
+        translateX = newX;
+        translateY = newY;
+        applyTransform();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      modalImg.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          movedDuringDrag = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+          modalImg.classList.add("is-dragging");
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          pinchStartDistance = getDistance(e.touches);
+          pinchStartScale = scale;
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          e.preventDefault();
+          const newX = e.touches[0].clientX - startX;
+          const newY = e.touches[0].clientY - startY;
+
+          if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+            movedDuringDrag = true;
+          }
+
+          translateX = newX;
+          translateY = newY;
+          applyTransform();
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+          const newDistance = getDistance(e.touches);
+          scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
+          applyTransform();
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchend", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

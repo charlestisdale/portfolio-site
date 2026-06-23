@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Remote Access Design with Tailscale and WireGuard | Charles Tisdale</title>
+  <meta name="description"
+    content="Secure remote access design project using Tailscale and WireGuard by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Remote Access • Tailscale • WireGuard • VPN Design</div>
+
+      <h1>Secure Remote Access Design with Tailscale and WireGuard</h1>
+
+      <p>
+        I designed a secure remote access solution for my homelab using Tailscale, which is built on the WireGuard
+        protocol, to maintain encrypted connectivity to internal systems from outside the house. The goal was to create
+        reliable remote administration without exposing services directly to the public internet.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Tailscale</span>
+        <span class="tag">WireGuard</span>
+        <span class="tag">Subnet Routing</span>
+        <span class="tag">Remote Administration</span>
+        <span class="tag">Encrypted Access</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Proxmox Host</strong>
+            <p>Primary virtualization platform used to host infrastructure and application nodes.</p>
+          </div>
+          <div class="detail-box">
+            <strong>TrueNAS</strong>
+            <p>Storage and service platform connected into the secure remote access design.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Raspberry Pi</strong>
+            <p>Management and fallback access node for remote troubleshooting and administration.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Node100-109</strong>
+            <p>Lab and service nodes connected to the Tailscale mesh for infrastructure access.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Laptop and Phone</strong>
+            <p>Client devices used to securely access the homelab from external networks.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          I originally used a manually managed WireGuard setup for remote access, but it was slower, less reliable, and
+          required more manual configuration across devices. I needed a remote access design that would let me securely
+          manage the lab from anywhere without depending on exposed ports, inconsistent connectivity, or higher
+          operational overhead.
+        </p>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I moved from a traditional manually configured WireGuard deployment to Tailscale, which still uses WireGuard
+          encryption underneath but simplifies peer discovery, authentication, key handling, and connectivity between
+          devices. The design focused on creating secure encrypted access to internal systems whether I was at home or
+          on an outside network, while also extending access into internal lab subnets through Tailscale subnet routing.
+        </p>
+        <p>
+          This let me treat remote access as a controlled overlay on top of the existing homelab instead of as a set of
+          individually exposed internet-facing services. It also made the design more practical to maintain across
+          Proxmox, TrueNAS, Raspberry Pi, multiple lab nodes, my laptop, and my phone.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Deployed Tailscale on Proxmox, TrueNAS, Raspberry Pi, Nodes 100-109, laptop, and phone.</li>
+          <li>Used Tailscale's WireGuard-based encrypted tunnels to secure communication between remote devices and
+            internal lab systems.</li>
+          <li>Configured subnet routing so remote devices could reach internal lab networks through designated
+            Tailscale-connected nodes.</li>
+          <li>Used the overlay network to maintain secure access to infrastructure even when away from home.</li>
+          <li>Avoided exposing services directly to the internet, reducing attack surface compared to a port-forwarded
+            design.</li>
+          <li>Used the setup to securely route traffic across untrusted networks, such as public or external Wi-Fi
+            connections, through an encrypted channel.</li>
+          <li>Identified DNS complications caused by Tailscale MagicDNS, especially where its resolver behavior
+            interfered with the existing internal DNS structure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that a secure remote access design depends on more than just
+          encryption. The VPN itself can be strong, but reliability, routing behavior, DNS handling, and ease of
+          administration all affect whether the design is practical in the real world. Tailscale preserved the security
+          benefits of WireGuard while removing much of the manual complexity that made the original setup harder to
+          maintain.
+        </p>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified I could securely access lab systems from outside the house.</li>
+          <li>Confirmed encrypted connectivity between remote client devices and internal Tailscale-connected nodes.
+          </li>
+          <li>Tested access across multiple systems including Proxmox, TrueNAS, Raspberry Pi, and service nodes.</li>
+          <li>Confirmed subnet routing provided access beyond only directly installed Tailscale endpoints.</li>
+          <li>Observed and troubleshot DNS issues related to MagicDNS and internal name resolution behavior.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design gave me a more reliable and maintainable way to securely access the homelab from anywhere.
+          Instead of relying on individually exposed services or a more fragile manually managed VPN configuration, I
+          now use an encrypted overlay network that allows remote administration of infrastructure and internal systems
+          while keeping the environment private.
+        </p>
+        <p>
+          It also improved security when connecting from outside networks by protecting traffic inside encrypted
+          tunnels, which reduces the risk of interception on untrusted connections and keeps lab access consistent
+          whether I am at home or away.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I Learned</h2>
+        <ul>
+          <li>WireGuard provides strong security, but managing it manually across many systems adds complexity.</li>
+          <li>Tailscale simplifies encrypted connectivity while still using WireGuard as the underlying protocol.</li>
+          <li>Subnet routing is useful for reaching internal networks without requiring every device to run a client
+            directly.</li>
+          <li>DNS behavior matters in overlay networks, especially when MagicDNS interacts with an existing DNS design.
+          </li>
+          <li>Reliable security design depends on routing, usability, and maintainability, not just encryption alone.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <p>
+          The next step would be refining the design with stricter access control and a clearer source-of-truth document
+          for remote access paths, subnet routing behavior, and DNS expectations. I would also like to further document
+          which nodes should act as routing points so that the design is easier to troubleshoot and scale as the lab
+          grows.
+        </p>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

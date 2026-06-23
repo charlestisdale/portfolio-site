@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects | Charles Tisdale</title>
+  <meta name="description" content="All portfolio projects by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Portfolio • Case Studies • Infrastructure Projects</div>
+      <h1>All Projects</h1>
+      <p>
+        This page collects my networking, cybersecurity, and homelab infrastructure projects in one place.
+      </p>
+
+      <section>
+        <div class="card-grid">
+          <a href="/projects/hybrid-identity.html" class="panel project-card">
+            <span class="project-type">Hybrid Identity</span>
+            <h3>Hybrid Identity Infrastructure Lab</h3>
+            <p>I designed and deployed a hybrid identity environment with Active Directory,
+              Microsoft Entra ID, Entra Connect synchronization, hybrid device join, and LDAP-based authentication
+              into a centralized ITSM platform</p>
+            <div class="tag-row">
+              <span class="tag">Hybrid Identity</span>
+              <span class="tag">Active Directory</span>
+              <span class="tag">Microsoft Entra ID</span>
+              <span class="tag">LDAP</span>
+              <span class="tag">ITSM</span>
+            </div>
+          </a>
+
+          <a href="/projects/glpi-itsm.html" class="panel project-card">
+            <span class="project-type">GLPI ITSM Lab</span>
+            <h3>Ticketing Systems</h3>
+            <p>Designed and deployed a GLPI ITSM platform integrated with Active Directory to better understand
+              enterprise help desk workflows, centralized authentication, ticket operations, and role-based
+              access control concepts. </p>
+            <div class="tag-row">
+              <span class="tag">GLPI</span>
+              <span class="tag">ITSM</span>
+              <span class="tag">Active Directory</span>
+              <span class="tag">Tailscale</span>
+            </div>
+          </a>
+
+          <a href="/projects/split-dns-architecture.html" class="panel project-card">
+            <span class="project-type">DNS and Service Design</span>
+            <h3>Split DNS with AdGuard and Bootstrap Resilience</h3>
+            <p>Reworked DNS responsibilities so infrastructure devices were not fully dependent on the same internal DNS
+              stack they needed in order to recover or boot correctly.</p>
+            <div class="tag-row">
+              <span class="tag">AdGuard Home</span>
+              <span class="tag">DNS</span>
+              <span class="tag">Resilience</span>
+              <span class="tag">Dependency Mapping</span>
+            </div>
+          </a>
+
+          <a href="/projects/vlan-segmentation.html" class="panel project-card">
+            <span class="project-type">Network Segmentation</span>
+            <h3>VLAN Segmentation and Access Control Design</h3>
+            <p>Designed a segmented homelab network with management, services, clients, IoT, and lab VLANs, then applied
+              narrow Layer 3 access rules instead of broad trust between networks.</p>
+            <div class="tag-row">
+              <span class="tag">VLANs</span>
+              <span class="tag">ACLs</span>
+              <span class="tag">Router Policy</span>
+              <span class="tag">Troubleshooting</span>
+            </div>
+          </a>
+
+          <a href="/projects/cloudflare-reverse-proxy.html" class="panel project-card">
+            <span class="project-type">Web and Edge Access</span>
+            <h3>Cloudflare, Reverse Proxy, and Public Service Exposure</h3>
+            <p>Published selected services behind Cloudflare and reverse proxying while separating public access from
+              internal management paths and validating the correct upstream targets.</p>
+            <div class="tag-row">
+              <span class="tag">Cloudflare</span>
+              <span class="tag">Nginx Proxy Manager</span>
+              <span class="tag">TLS</span>
+              <span class="tag">Public Exposure</span>
+            </div>
+          </a>
+
+          <a href="/projects/metrics-node-hardening.html" class="panel project-card">
+            <span class="project-type">Observability</span>
+            <h3>Metrics Node Hardening and Visibility Improvements</h3>
+            <p>Audited a monitoring node with multiple exposed services, improved visibility and management access
+              patterns, and extended diagnostics through a Raspberry Pi jump box and read-only AI-assisted analysis.</p>
+            <div class="tag-row">
+              <span class="tag">Grafana</span>
+              <span class="tag">VictoriaMetrics</span>
+              <span class="tag">Homepage</span>
+              <span class="tag">Host Hardening</span>
+            </div>
+          </a>
+
+          <a href="/projects/raspberry-pi-jump-box.html" class="panel project-card">
+            <span class="project-type">Remote Access</span>
+            <h3>Raspberry Pi Management Jump Box</h3>
+            <p>Built a dedicated management node to provide redundant remote access, internal troubleshooting
+              capability, and a safer path for administration when primary tooling is unavailable.</p>
+            <div class="tag-row">
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">Tailscale</span>
+              <span class="tag">SSH</span>
+              <span class="tag">Diagnostics</span>
+            </div>
+          </a>
+
+          <a href="/projects/domain-email-authentication.html" class="panel project-card">
+            <span class="project-type">Professional Buildout</span>
+            <h3>Dual-Domain Email Authentication and Identity Design</h3>
+            <p>Configured separate homelab and professional domains with Google Workspace and implemented SPF, DKIM, and
+              DMARC to ensure secure, authenticated, and reliable email delivery.</p>
+            <div class="tag-row">
+              <span class="tag">DNS Records</span>
+              <span class="tag">Google Workspace</span>
+              <span class="tag">SPF</span>
+              <span class="tag">DKIM</span>
+              <span class="tag">DMARC</span>
+            </div>
+          </a>
+
+          <a href="/projects/tailscale-remote-access.html" class="panel project-card">
+            <span class="project-type">Remote Access</span>
+            <h3>Secure Remote Access Design with Tailscale and WireGuard.</h3>
+            <p>Designed a secure remote access solution using Tailscale (WireGuard-based) with subnet routing to access
+              internal networks without public exposure.</p>
+            <div class="tag-row">
+              <span class="tag">Tailscale</span>
+              <span class="tag">Wireguard</span>
+              <span class="tag">Mesh VPN</span>
+              <span class="tag">Remote Access</span>
+              <span class="tag">Overlay Network</span>
+            </div>
+          </a>
+
+          <a href="/projects/packet-flow.html" class="panel project-card">
+            <span class="project-type">Networking Fundamentals</span>
+            <h3>End-to-End Packet Flow Analysis Across a Segmented Network.</h3>
+            <p>Traced how traffic moves from a client VLAN to an internal service through DNS resolution, switching,
+              routing, VLAN tagging, and ACL evaluation to build a stronger troubleshooting model.</p>
+            <div class="tag-row">
+              <span class="tag">Packet Flow</span>
+              <span class="tag">VLAN Behavior</span>
+              <span class="tag">ACL Placement</span>
+              <span class="tag">DNS Dependancy</span>
+              <span class="tag">Troubleshooting Flow</span>
+            </div>
+          </a>
+
+
+        </div>
+      </section>
+
+
+      <a class="back-link" href="/">← Back to Home</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

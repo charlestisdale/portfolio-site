@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrics Node Hardening and Visibility Improvements | Charles Tisdale</title>
+  <meta name="description" content="Metrics node hardening and visibility improvements project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Monitoring • Hardening • Diagnostics • Raspberry Pi • AI Direction</div>
+
+      <h1>Metrics Node Hardening and Visibility Improvements</h1>
+
+      <p>
+        I audited a dedicated metrics node that had multiple services exposed too broadly, then worked toward a safer
+        and more useful design by improving visibility, tightening access paths, and separating management functions
+        more clearly. As part of that effort, I also expanded troubleshooting capability with a Raspberry Pi management
+        node and began shaping a metrics-based AI assistant direction for read-only diagnostics.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Grafana</span>
+        <span class="tag">VictoriaMetrics</span>
+        <span class="tag">Hardening</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">AI Diagnostics</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Dedicated Metrics Node</strong>
+            <p>A dedicated monitoring node was used to host dashboards, metrics services, and supporting visibility
+              tools for the homelab environment.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Monitoring Stack</strong>
+            <p>The node supported services such as Grafana, VictoriaMetrics, Homepage, exporters, and related monitoring
+              components that improved visibility into system health and service status.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Management Jump Box</strong>
+            <p>A Raspberry Pi management node was built to provide a separate troubleshooting path with networking
+              tools, remote access support, and internal diagnostics capability.</p>
+          </div>
+          <div class="detail-box">
+            <strong>AI Diagnostic Direction</strong>
+            <p>The long-term direction included using metrics and reports as input to a read-only AI assistant that
+              could help interpret system state, summarize issues, and support troubleshooting without changing
+              infrastructure directly.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          The metrics node was valuable for visibility, but it also created risk because multiple services were exposed
+          too broadly and not all of them were aligned with a safer management-only access model. At the same time,
+          troubleshooting depended too heavily on the primary environment, which meant I needed a more independent way
+          to test connectivity, inspect services, and understand failures when the main stack was degraded.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Monitoring systems improve visibility, but they can also become an unnecessary exposure point if
+            dashboards and exporters are reachable too broadly.</li>
+          <li>A management and diagnostics path should remain useful even when parts of the main environment are
+            unstable.</li>
+          <li>Good observability is not just about collecting metrics. It also requires secure access, reliable
+            troubleshooting workflows, and clear operational interpretation.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I treated the project as both a visibility improvement and a hardening exercise. The first goal was to reduce
+          unnecessary exposure on the metrics node by moving toward safer management-only access patterns. The second
+          goal was to improve operational troubleshooting by adding a Raspberry Pi management node with networking tools
+          that could validate connectivity, DNS behavior, service reachability, and recovery paths. The third goal was
+          to move toward a future model where metrics and health reports could feed a read-only AI assistant that helps
+          interpret issues instead of only presenting raw dashboards.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Audited the metrics node to identify services that were bound too broadly or exposed beyond what was
+            necessary for normal operation.</li>
+          <li>Worked toward restricting dashboards, user interfaces, and exporters to safer management-oriented access
+            paths instead of broad network exposure.</li>
+          <li>Used a Raspberry Pi as a separate management and troubleshooting node so testing could continue even if
+            parts of the main environment were degraded.</li>
+          <li>Equipped the Raspberry Pi with networking tools for troubleshooting, including commands and workflows for
+            testing connectivity, DNS resolution, service reachability, and packet behavior.</li>
+          <li>Built visibility around the idea that metrics should support decision-making, not just display graphs,
+            leading toward an AI-assisted diagnostic workflow based on read-only reports and interpretations.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Raspberry Pi Troubleshooting and Networking Tools</h2>
+        <p>
+          The Raspberry Pi management node became an important part of the project because it provided a separate
+          internal troubleshooting platform. Instead of depending entirely on the systems being monitored, I could use
+          the Pi to test name resolution, network reachability, service availability, and path behavior from a more
+          controlled management position.
+        </p>
+        <ul>
+          <li>Used the Pi as a dedicated jump box for remote administration and internal testing.</li>
+          <li>Used networking tools such as ping, traceroute, nslookup or dig, curl, ss, and tcpdump to validate
+            connectivity and isolate failure points.</li>
+          <li>Improved resilience by maintaining a troubleshooting path that was separate from the primary metrics node
+            itself.</li>
+          <li>Created a better operational workflow for checking whether problems were caused by DNS, routing, service
+            failure, or firewall behavior.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Metrics AI Direction</h2>
+        <p>
+          A major next step for this project was defining an AI-assisted diagnostic direction. Instead of allowing an AI
+          system to directly change infrastructure, the idea was to keep it read-only and use it to interpret reports,
+          summarize health data, explain likely causes, and recommend next actions. That creates a safer path toward
+          automation while still improving the usefulness of collected metrics.
+        </p>
+        <ul>
+          <li>Use deterministic pipelines to gather logs, metrics, and health reports.</li>
+          <li>Feed those reports into a local reasoning model for explanation and prioritization.</li>
+          <li>Keep the AI role read-only so it supports diagnostics without becoming an uncontrolled management layer.
+          </li>
+          <li>Focus on turning raw monitoring output into actionable operational guidance.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified monitoring services remained reachable through intended management paths.</li>
+          <li>Validated that troubleshooting from the Raspberry Pi could still reach internal services, test DNS
+            behavior, and inspect connectivity during failures.</li>
+          <li>Confirmed the environment was becoming easier to reason about by separating exposure, monitoring, and
+            troubleshooting roles more clearly.</li>
+          <li>Used testing and audits to distinguish between visibility improvements and actual security improvements,
+            rather than assuming one automatically created the other.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The project moved the environment toward a better balance of visibility and control. The metrics node became
+          easier to think about as a management-focused system instead of a broadly exposed utility box, the Raspberry
+          Pi added a more independent troubleshooting path, and the AI direction created a foundation for turning
+          monitoring data into clearer operational insight.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that observability is not just about adding more dashboards.
+          It also requires controlling who can reach those systems, preserving a trusted troubleshooting path, and
+          building ways to interpret data in a useful way. Visibility without access control can create risk, and raw
+          data without good interpretation still leaves too much operational guesswork.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Finish tightening access so all monitoring interfaces follow a clear management-only exposure model.</li>
+          <li>Expand the Raspberry Pi management node with more structured troubleshooting scripts and repeatable health
+            checks.</li>
+          <li>Improve documentation for which ports, dashboards, and exporters should be reachable from which networks.
+          </li>
+          <li>Continue developing the metrics AI assistant as a read-only diagnostic layer backed by reports, metrics,
+            and local reasoning.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split DNS Architecture and DNS Resilience Redesign | Charles Tisdale</title>
+  <meta name="description" content="Split DNS Architecture and DNS Resilience Redesign project by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">DNS Architecture • AdGuard Home • Resilience • Proxmox</div>
+
+      <h1>Split DNS Architecture and DNS Resilience Redesign</h1>
+
+      <p>
+        I redesigned DNS in my homelab after repeated failures exposed a dependency problem: systems needed stable name
+        resolution to recover, but parts of the environment were too dependent on the same internal DNS layer that was
+        failing. I responded by separating DNS policy by device role and moving AdGuard Home onto its own Proxmox node
+        to reduce shared-service risk and improve resilience.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">AdGuard Home</span>
+        <span class="tag">Split DNS</span>
+        <span class="tag">Resilience</span>
+        <span class="tag">Proxmox</span>
+        <span class="tag">Dependency Mapping</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Proxmox-hosted homelab</strong>
+            <p>The environment runs on Proxmox with services separated by role, allowing infrastructure decisions to be
+              tied to function and trust level rather than convenience alone.</p>
+          </div>
+          <div class="detail-box">
+            <strong>AdGuard Home</strong>
+            <p>AdGuard Home provides internal DNS and local rewrites for internal service access, making it an important
+              dependency for normal day-to-day operation.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Separate Management, Services, and Client Roles</strong>
+            <p>DNS behavior is assigned by role: management uses public DNS, services use AdGuard Home with public
+              fallback, and other devices use AdGuard Home only.</p>
+          </div>
+          <div class="detail-box">
+            <strong>DNS had previously been colocated with other services</strong>
+            <p>DNS was moved multiple times after failures exposed architectural weaknesses. It was eventually placed on
+              its own node instead of being bundled with unrelated services.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          My DNS design changed multiple times because failures in the environment kept exposing weak spots. I initially
+          tried to improve resilience, but some of those changes added complexity without truly reducing dependency
+          risk. DNS was also sharing space with other services, which increased the chance that one problem could affect
+          multiple functions at once. The core issue was that recovery paths were not independent enough from the DNS
+          service they depended on.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>If core infrastructure depends on broken internal DNS, recovery becomes slower and more confusing.</li>
+          <li>DNS should support recovery, not block it.</li>
+          <li>Infrastructure devices need a more independent resolution path than normal clients.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I split DNS behavior by role instead of using one policy for everything. Management systems were assigned
+          public DNS so they would keep an independent recovery path. Service systems were configured to use AdGuard
+          Home with public DNS backup so they could still use internal resolution while retaining a fallback option.
+          Other systems used AdGuard only, keeping client behavior centralized and consistent. I then moved DNS onto its
+          own Proxmox node so it was no longer bundled with unrelated services.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+        <ul>
+          <li>Defined DNS policy by device role instead of using one resolver pattern for everything.</li>
+          <li>Assigned management systems to public DNS so recovery would not depend on the internal resolver layer.
+          </li>
+          <li>Configured service systems to use AdGuard Home with public DNS backup.</li>
+          <li>Kept clients and other non-core systems on AdGuard Home only for centralized filtering and internal
+            resolution.</li>
+          <li>Moved DNS onto its own dedicated Proxmox node after repeated failures showed that colocating it with
+            unrelated services increased risk.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Verified management systems could still resolve names without relying entirely on AdGuard.</li>
+          <li>Verified service-side resolution still worked with internal DNS and had fallback protection.</li>
+          <li>Verified clients continued using AdGuard as intended.</li>
+          <li>Tested after migration to ensure DNS worked cleanly from its new dedicated node.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          The final design gave the environment a cleaner separation of responsibilities and reduced the risk of
+          circular dependency during failures. DNS became easier to reason about, troubleshooting became more direct,
+          and the service was placed in a role better aligned with how critical it is to the rest of the environment.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <ul>
+          <li>Trying to add resilience without first mapping dependencies can make systems more fragile.</li>
+          <li>Isolating core services can be more valuable than layering on more complexity.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Add documented failover testing.</li>
+          <li>Maintain a DNS dependency map.</li>
+          <li>Add a secondary internal resolver for true redundancy.</li>
+          <li>Document exact client and infrastructure DNS policy as a source of truth.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hybrid Identity Infrastructure Lab | Charles Tisdale</title>
+  <meta name="description"
+    content="Hybrid identity infrastructure lab integrating Active Directory, Microsoft Entra ID, Entra Connect, GLPI, LDAP, PowerShell automation, and Tailscale." />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Hybrid Identity • Active Directory • Microsoft Entra ID • LDAP • ITSM</div>
+
+      <h1>Hybrid Identity Infrastructure Lab</h1>
+
+      <p>
+        I designed and deployed a hybrid identity environment integrating Active Directory, Microsoft Entra ID,
+        Entra Connect synchronization, hybrid device join, and LDAP-based authentication into a centralized ITSM
+        platform. The environment spans both Microsoft Azure and my segmented homelab infrastructure, with secure
+        connectivity provided through a private Tailscale overlay network instead of exposing identity services directly
+        to the internet.
+      </p>
+
+      <p>
+        The project focused on understanding how enterprise identity systems interact across cloud and on-premises
+        environments, how authentication and synchronization workflows function internally, and how to troubleshoot
+        real-world identity, DNS, registration, and synchronization failures.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Active Directory</span>
+        <span class="tag">Microsoft Entra ID</span>
+        <span class="tag">Entra Connect</span>
+        <span class="tag">LDAP</span>
+        <span class="tag">GLPI</span>
+        <span class="tag">Tailscale</span>
+        <span class="tag">PowerShell</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Microsoft Azure</strong>
+            <p>
+              Azure hosted the Windows infrastructure for the environment, including the Active Directory domain
+              controller and client workstation used for hybrid identity testing.
+            </p>
+          </div>
+
+          <div class="detail-box">
+            <strong>Active Directory + Entra ID</strong>
+            <p>
+              Active Directory served as the authoritative identity source while Microsoft Entra ID extended
+              authentication, synchronization, MFA, and hybrid identity functionality into the cloud.
+            </p>
+          </div>
+
+          <div class="detail-box">
+            <strong>GLPI ITSM Platform</strong>
+            <p>
+              GLPI was deployed on a Debian 12 LXC container inside the homelab and integrated with Active Directory
+              using LDAP authentication.
+            </p>
+          </div>
+
+          <div class="detail-box">
+            <strong>Tailscale Overlay Network</strong>
+            <p>
+              Tailscale provided secure private connectivity between the Azure-hosted Active Directory environment and
+              the local homelab infrastructure without exposing LDAP, Kerberos, SMB, or internal DNS publicly.
+            </p>
+          </div>
+        </div>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/azurevms.png"
+              alt="Azure virtual machines used for the hybrid identity lab"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Azure-hosted Windows infrastructure used for the Active Directory domain controller and test workstation.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Architecture Overview</h2>
+
+        <p>
+          The environment combined cloud-hosted Active Directory infrastructure with locally hosted services that
+          depended on centralized identity authentication. Identity objects flowed from Active Directory into Microsoft
+          Entra ID through Entra Connect synchronization, while GLPI consumed those same identities through LDAP
+          authentication.
+        </p>
+
+        <p>
+          Tailscale was used as a secure overlay network to connect the Azure environment back to the homelab without
+          exposing internal authentication protocols publicly.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/hybrid-identity-architecture.png"
+              alt="Hybrid identity architecture showing Azure, Active Directory, Entra ID, Tailscale, GLPI, and homelab services"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Hybrid identity architecture showing the relationship between Azure, Active Directory, Entra ID, Entra
+            Connect, Tailscale, and GLPI.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+
+        <p>
+          Modern enterprise environments rarely operate entirely on-premises or entirely in the cloud. Organizations
+          commonly maintain traditional Active Directory environments while extending authentication, device management,
+          and identity services into cloud platforms such as Microsoft Entra ID.
+        </p>
+
+        <p>
+          I built this environment to better understand hybrid identity architecture, centralized authentication
+          workflows, enterprise provisioning, and how identity systems interact across Windows, Linux, cloud, and
+          internal infrastructure.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+
+        <ul>
+          <li>Hybrid identity environments are common in modern enterprise infrastructure.</li>
+          <li>Identity systems become critical failure points when synchronization or authentication breaks.</li>
+          <li>Understanding LDAP, Entra Connect, and hybrid join workflows improves troubleshooting ability.</li>
+          <li>Centralized identity affects authentication, RBAC, MFA, ticketing systems, and operational security.</li>
+          <li>Least privilege and proper service account design are essential in enterprise authentication environments.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+
+        <p>
+          I first established the Active Directory environment inside Microsoft Azure using separate Windows virtual
+          machines for the domain controller and client workstation. Once the domain infrastructure was operational, I
+          configured Microsoft Entra ID integration and hybrid device synchronization through Entra Connect.
+        </p>
+
+        <p>
+          GLPI was then deployed locally inside a Debian 12 LXC container within my homelab environment. To securely
+          connect the Azure-hosted infrastructure back to the homelab without exposing authentication services publicly,
+          I implemented a private Tailscale overlay network between both environments.
+        </p>
+
+        <p>
+          One of the largest challenges involved hybrid synchronization and identity configuration. Because the internal
+          Active Directory environment used a non-routable <code>.local</code> domain, Microsoft Entra integration
+          required configuring a public UPN suffix tied to a domain I owned.
+        </p>
+      </section>
+
+      <section>
+        <h2>Implementation</h2>
+
+        <ul>
+          <li>Created departmental Organizational Units and security groups inside Active Directory.</li>
+          <li>Configured Microsoft Entra Connect for password hash synchronization and hybrid device join.</li>
+          <li>Implemented automated user provisioning workflows using PowerShell and CSV imports.</li>
+          <li>Configured hybrid identity synchronization between Active Directory and Microsoft Entra ID.</li>
+          <li>Integrated GLPI with Active Directory using LDAP authentication and a least-privilege service account.</li>
+          <li>Used Tailscale overlay networking to securely connect Azure-hosted infrastructure with homelab services.</li>
+          <li>Validated successful hybrid device registration using <code>dsregcmd /status</code>.</li>
+        </ul>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/aduc-ou-structure.png"
+              alt="Active Directory Users and Computers showing department OUs and security groups"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Active Directory OU and group structure used to organize departments, users, service accounts, and RBAC
+            groups.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Automation</h2>
+
+        <p>
+          User onboarding was automated using PowerShell and CSV-driven provisioning workflows. The script dynamically
+          generated usernames, assigned Organizational Units, configured UPNs, enabled accounts, and applied
+          department-based group memberships automatically.
+        </p>
+
+        <p>
+          This helped simulate enterprise onboarding workflows while reducing manual administrative overhead and
+          ensuring consistent identity configuration across the environment.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/powershell-provisioning.png"
+              alt="PowerShell script used to automate Active Directory user provisioning"
+              class="zoomable-image screenshot-small" />
+          </div>
+          <figcaption class="diagram-caption">
+            PowerShell-based user provisioning workflow used to create AD users, assign OUs, configure UPNs, and apply
+            group memberships.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>GLPI LDAP Integration</h2>
+
+        <p>
+          GLPI was configured to authenticate users against Active Directory using LDAP. This allowed users created in
+          AD to authenticate into the ticketing platform without maintaining separate local GLPI identities.
+        </p>
+
+        <p>
+          This reinforced the difference between identity sources, synchronization layers, and identity-consuming
+          applications.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/glpi-ldap-users.png"
+              alt="GLPI showing imported LDAP users from Active Directory"
+              class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            GLPI consuming Active Directory identities through LDAP authentication and imported user records.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+
+        <ul>
+          <li>
+            Initial LDAP and authentication testing failed because the homelab environment was using public DNS servers
+            that could not resolve internal Active Directory zones. After identifying the DNS dependency, I used
+            Tailscale connectivity and internal resolution paths to allow GLPI to reach the Azure-hosted domain
+            controller.
+          </li>
+
+          <li>
+            After synchronization began working, I discovered that my provisioning script required users to reset their
+            password at first login. This caused GLPI login issues until the users completed the initial password reset.
+          </li>
+
+          <li>
+            Verified successful hybrid device registration using <code>dsregcmd /status</code>, confirming the Azure AD
+            join state, domain join state, and device authentication status.
+          </li>
+        </ul>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/dsregcmd-status.png"
+              alt="dsregcmd status output showing successful hybrid join validation"
+              class="zoomable-image screenshot-med" />
+          </div>
+          <figcaption class="diagram-caption">
+            Hybrid device join validation using <code>dsregcmd /status</code> to confirm domain join, Azure AD join,
+            and device authentication status.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+
+        <p>
+          The final environment demonstrated how enterprise identity systems, cloud authentication, Linux services,
+          synchronization layers, and secure networking workflows interact across hybrid infrastructure.
+        </p>
+
+        <p>
+          Rather than following a fixed deployment guide, the project required diagnosing synchronization failures, DNS
+          dependencies, LDAP authentication issues, and hybrid registration problems across multiple platforms.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+
+        <p>
+          One of the biggest lessons from this project was realizing how dependent enterprise environments become on
+          centralized identity systems. When synchronization, DNS resolution, device registration, or authentication
+          workflows fail, the impact can spread across multiple services simultaneously.
+        </p>
+
+        <p>
+          The project also reinforced the importance of least privilege design, proper service account usage, internal
+          DNS architecture, and structured troubleshooting methodologies.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+
+        <ul>
+          <li>Expand Group Policy deployment and centralized workstation management.</li>
+          <li>Further automate onboarding and identity lifecycle workflows.</li>
+          <li>Integrate SIEM tooling for authentication and identity monitoring.</li>
+          <li>Connect homelab monitoring systems into GLPI for automated ticket generation and alerting workflows.</li>
+          <li>Implement additional RBAC mappings between Active Directory groups and GLPI technician roles.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/projects/">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="image-modal-content" id="imageModalContent" alt="" />
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
+
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let movedDuringDrag = false;
+      let startX = 0;
+      let startY = 0;
+      let pinchStartDistance = 0;
+      let pinchStartScale = scale;
+
+      function clampScale(value) {
+        return Math.min(Math.max(value, 1), 3);
+      }
+
+      function applyTransform() {
+        modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetTransform() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        movedDuringDrag = false;
+        modalImg.classList.remove("is-dragging");
+        applyTransform();
+      }
+
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        resetTransform();
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalImg.classList.remove("is-dragging");
+        modalImg.style.transform = "";
+        document.body.style.overflow = "";
+        isDragging = false;
+        movedDuringDrag = false;
+      }
+
+      function getDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.hypot(dx, dy);
+      }
+
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
+        }
+      });
+
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        if (movedDuringDrag) {
+          movedDuringDrag = false;
+          return;
+        }
+
+        if (scale > 1) {
+          resetTransform();
+        } else {
+          scale = 1.7;
+          applyTransform();
+        }
+      });
+
+      modalImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+
+        e.preventDefault();
+        isDragging = true;
+        movedDuringDrag = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        modalImg.classList.add("is-dragging");
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const newX = e.clientX - startX;
+        const newY = e.clientY - startY;
+
+        if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+          movedDuringDrag = true;
+        }
+
+        translateX = newX;
+        translateY = newY;
+        applyTransform();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      modalImg.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          movedDuringDrag = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+          modalImg.classList.add("is-dragging");
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          pinchStartDistance = getDistance(e.touches);
+          pinchStartScale = scale;
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          e.preventDefault();
+
+          const newX = e.touches[0].clientX - startX;
+          const newY = e.touches[0].clientY - startY;
+
+          if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+            movedDuringDrag = true;
+          }
+
+          translateX = newX;
+          translateY = newY;
+          applyTransform();
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+
+          const newDistance = getDistance(e.touches);
+          scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
+          applyTransform();
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchend", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

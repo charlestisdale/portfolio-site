@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Tisdale | Network & Cybersecurity Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Ian Tisdale, showcasing networking, cybersecurity, and homelab projects." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <section class="panel hero-copy">
+        <div class="eyebrow">Networking • Cybersecurity • Homelab Infrastructure</div>
+        <h1>Building real networking and infrastructure skills through hands-on lab work.</h1>
+        <p>
+          I am an aspiring network and cybersecurity professional focused on learning by building, breaking,
+          troubleshooting, and documenting real systems. My portfolio highlights lab projects involving VLAN design, DNS
+          architecture, reverse proxying, observability, and layered access control.
+        </p>
+        <p>
+          Instead of listing tools without context, I show the problem, the approach, the technical decisions, and what
+          changed after the fix.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#projects">View Projects</a>
+          <a class="btn btn-secondary" href="/case-studies.html">Read Case Studies</a>
+          <a class="btn btn-secondary" href="mailto:charles.i.tisdale@gmail.com">Email Me</a>
+        </div>
+      </section>
+
+      <aside class="panel hero-side">
+        <div class="status-card">
+          <h3>About Me:</h3>
+          <p>I finished getting an Associate's Degree in Cybersecurity, and I'm planning on transferring to USF to
+            pursue a Bachelor's in Information Technology. I focus on building real skills through hands-on lab work,
+            troubleshooting, and infrastructure design. My strongest work happens where networking, troubleshooting, and
+            methodical thinking overlap.</p>
+        </div>
+
+        <div class="status-card">
+          <h3>Current Focus:</h3>
+          <p>Networking fundamentals, CCNA preparation, security-minded infrastructure design, and translating homelab
+            work into portfolio-ready case studies. I am also focusing on strengthening my understanding of packet flow,
+            routing behavior, and real-world network troubleshooting so I can diagnose issues beyond surface-level
+            symptoms.
+          </p>
+        </div>
+
+        <div class="status-card">
+          <h3>What I want to be hired for:</h3>
+          <p>Entry-level networking, infrastructure, or security-adjacent roles where troubleshooting, documentation,
+            and careful systems thinking matter.</p>
+        </div>
+
+        <div class="status-card">
+          <h3>What I want this portfolio to show:</h3>
+          <p>I am not trying to look like I already know everything. I want to show that I can think through real
+            technical problems, learn quickly, document clearly, and improve systems with intention.</p>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="projects">
+      <div class="section-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>These selected projects turn lab work into employer-readable case studies. Each one centers on a real
+            problem, what I changed, and what I learned.</p>
+          <p><a class="accent" href="/projects/">View all projects →</a></p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <a href="/projects/vlan-segmentation.html" class="panel project-card">
+          <span class="project-type">Network Segmentation</span>
+          <h3>VLAN Segmentation and Access Control Design</h3>
+          <p>Designed a segmented homelab network with management, services, clients, IoT, and lab VLANs, then applied
+            narrow Layer 3 access rules instead of broad trust between networks.</p>
+          <div class="tag-row">
+            <span class="tag">VLANs</span>
+            <span class="tag">ACLs</span>
+            <span class="tag">Router Policy</span>
+            <span class="tag">Troubleshooting</span>
+          </div>
+        </a>
+
+        <a href="/projects/split-dns-architecture.html" class="panel project-card">
+          <span class="project-type">DNS and Service Design</span>
+          <h3>Split DNS with AdGuard and Bootstrap Resilience</h3>
+          <p>Reworked DNS responsibilities so infrastructure devices were not fully dependent on the same internal DNS
+            stack they needed in order to recover or boot correctly.</p>
+          <div class="tag-row">
+            <span class="tag">AdGuard Home</span>
+            <span class="tag">DNS</span>
+            <span class="tag">Resilience</span>
+            <span class="tag">Dependency Mapping</span>
+          </div>
+        </a>
+
+        <a href="/projects/packet-flow.html" class="panel project-card">
+          <span class="project-type">Networking Fundamentals</span>
+          <h3>End-to-End Packet Flow Analysis Across a Segmented Network.</h3>
+          <p>Traced how traffic moves from a client VLAN to an internal service through DNS resolution, switching,
+            routing, VLAN tagging, and ACL evaluation to build a stronger troubleshooting model.</p>
+          <div class="tag-row">
+            <span class="tag">Packet Flow</span>
+            <span class="tag">VLAN Behavior</span>
+            <span class="tag">ACL Placement</span>
+            <span class="tag">DNS Dependancy</span>
+            <span class="tag">Troubleshooting Flow</span>
+          </div>
+        </a>
+
+        <a href="/projects/cloudflare-reverse-proxy.html" class="panel project-card">
+          <span class="project-type">Web and Edge Access</span>
+          <h3>Cloudflare, Reverse Proxy, and Public Service Exposure</h3>
+          <p>Published selected services behind Cloudflare and reverse proxying while separating public access from
+            internal management paths and validating the correct upstream targets.</p>
+          <div class="tag-row">
+            <span class="tag">Cloudflare</span>
+            <span class="tag">Nginx Proxy Manager</span>
+            <span class="tag">TLS</span>
+            <span class="tag">Public Exposure</span>
+          </div>
+        </a>
+
+        <a href="/projects/metrics-node-hardening.html" class="panel project-card">
+          <span class="project-type">Observability</span>
+          <h3>Metrics Node Hardening and Visibility Improvements</h3>
+          <p>Audited a monitoring node with multiple exposed services, improved visibility and management access
+            patterns, and extended diagnostics through a Raspberry Pi jump box and read-only AI-assisted analysis.</p>
+          <div class="tag-row">
+            <span class="tag">Grafana</span>
+            <span class="tag">VictoriaMetrics</span>
+            <span class="tag">Homepage</span>
+            <span class="tag">Host Hardening</span>
+          </div>
+        </a>
+
+        <a href="/projects/raspberry-pi-jump-box.html" class="panel project-card">
+          <span class="project-type">Remote Access</span>
+          <h3>Raspberry Pi Management Jump Box</h3>
+          <p>Built a dedicated management node to provide redundant remote access, internal troubleshooting capability,
+            and a safer path for administration when primary tooling is unavailable.</p>
+          <div class="tag-row">
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">Tailscale</span>
+            <span class="tag">SSH</span>
+            <span class="tag">Diagnostics</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Use these links to connect with me and view more of my work as the portfolio expands.</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="panel details">
+          <h3>Email</h3>
+          <p class="muted"><a class="accent" href="mailto:charles.i.tisdale@gmail.com">ian@iantisdale.com</a></p>
+        </article>
+        <article class="panel details">
+          <h3>GitHub</h3>
+          <p class="muted"><a class="accent" href="https://github.com/charles.tisdale" target="_blank"
+              rel="noopener noreferrer">github.com/iantisdale</a></p>
+        </article>
+        <article class="panel details">
+          <h3>LinkedIn</h3>
+          <p class="muted"><a class="accent" href="https://www.linkedin.com/in/charles-tisdale-665548119" target="_blank"
+              rel="noopener noreferrer">linkedin.com/in/charles-tisdale-665548119</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>
+      Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+    </p>
+
+    <p>
+      <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
+</body>
+
+</html>

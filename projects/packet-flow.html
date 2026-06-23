@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End-to-End Packet Flow Analysis Across a Segmented Network | Charles Tisdale</title>
+  <meta name="description"
+    content="End-to-end packet flow analysis across a segmented homelab network by Charles Tisdale." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/projects/">Projects</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/fundamentalstrainer/">IT Fundamentals Trainer</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container project-hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">Packet Flow • VLANs • Routing • ACLs • Troubleshooting</div>
+
+      <h1>End-to-End Packet Flow Analysis Across a Segmented Network</h1>
+
+      <p>
+        I created this project to explain how traffic actually moves through my segmented homelab instead of treating
+        networking as a set of isolated features. Using a client on one VLAN accessing a service on another, I traced
+        the path step by step through DNS resolution, Layer 2 framing, inter-VLAN routing, Access Control List (ACL)
+        evaluation, and return traffic.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Packet Flow</span>
+        <span class="tag">VLANs</span>
+        <span class="tag">Routing</span>
+        <span class="tag">ACLs</span>
+        <span class="tag">Troubleshooting</span>
+      </div>
+
+      <section>
+        <h2>Environment</h2>
+        <div class="meta-grid">
+          <div class="detail-box">
+            <strong>Client VLAN</strong>
+            <p>A client device on VLAN 30 initiates traffic toward an internal service using a hostname instead of a raw
+              IP address.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Services VLAN</strong>
+            <p>The destination service lives on VLAN 20, requiring inter-VLAN routing to move traffic between networks.
+            </p>
+          </div>
+          <div class="detail-box">
+            <strong>Router and Policy Layer</strong>
+            <p>The router provides Layer 3 forwarding between VLANs and enforces Access Control Lists (ACLs) to
+              determine what traffic is allowed.</p>
+          </div>
+          <div class="detail-box">
+            <strong>Name Resolution</strong>
+            <p>Domain Name System (DNS) is part of the workflow because the client resolves the service name before it
+              can begin the actual connection.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          It is easy to configure VLANs, routes, and ACLs as separate features without fully understanding how they
+          interact during real traffic flow. I wanted a project that explains what actually happens from the moment a
+          client requests a service to the moment the response comes back, because troubleshooting depends on
+          understanding that full path.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <ul>
+          <li>Traffic problems are easier to solve when the full packet path is understood instead of guessed.</li>
+          <li>Segmentation, routing, and policy controls only make sense when viewed as one system.</li>
+          <li>Understanding packet flow is foundational for networking, security, and troubleshooting work.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Scenario</h2>
+        <p>
+          The scenario used in this project is a client on VLAN 30 accessing an internal service on VLAN 20 by hostname
+          through Nginx Proxy Manager. That makes the path useful because it includes DNS resolution, inter-VLAN
+          routing, Access Control List (ACL) evaluation, and reverse proxy forwarding.
+        </p>
+
+        <figure class="zoomable">
+          <div class="diagram">
+            <img src="/images/packet-flow.svg" alt="Packet Flow Diagram" class="zoomable-image" />
+          </div>
+          <figcaption class="diagram-caption">
+            Packet flow from a VLAN 30 client to a VLAN 20 backend service through DNS resolution, inter-VLAN routing,
+            Access Control List (ACL) evaluation, and reverse proxy forwarding.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Step-by-Step Packet Flow</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>1. The client resolves the service name</strong>
+            <p>The client first uses DNS to resolve the hostname into an IP address. In my environment, AdGuard Home
+              uses a DNS rewrite so the requested hostname resolves to the IP address of Nginx Proxy Manager (NPM). At
+              this stage, DNS only returns the IP address. It does not forward the actual application traffic.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>2. The client checks whether the destination is local</strong>
+            <p>The client compares its own subnet to the destination IP. Because Nginx Proxy Manager is on a different
+              VLAN and subnet, the client determines that the traffic must be sent to its default gateway.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>3. The client uses Address Resolution Protocol (ARP) for the default gateway</strong>
+            <p>If the client does not already know the Media Access Control (MAC) address of the default gateway, it
+              uses Address Resolution Protocol (ARP) to learn it. The client does not ARP for Nginx Proxy Manager
+              directly because that destination is remote.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>4. The client builds the frame and sends it to the switch</strong>
+            <p>The client creates a Layer 3 packet with the destination IP of Nginx Proxy Manager and a Layer 2 frame
+              addressed to the default gateway MAC. The client sends an untagged frame into its access port, and the
+              switch associates it with the correct VLAN.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>5. The switch forwards the traffic toward the router</strong>
+            <p>As traffic moves across a trunk, the switch adds the appropriate Institute of Electrical and Electronics
+              Engineers (IEEE) 802.1Q VLAN tag so the router knows which VLAN the frame came from.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>6. The router processes the packet at Layer 3</strong>
+            <p>The router removes the incoming Layer 2 framing, examines the destination IP address, determines that the
+              packet should be forwarded toward VLAN 20, and evaluates any Access Control List (ACL) policy applied to
+              that traffic path.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>7. The Access Control List (ACL) is evaluated</strong>
+            <p>The router checks the packet against the configured policy in top-down order. In my network, VLAN 30 is
+              allowed to reach Nginx Proxy Manager on ports 80 and 443, while other unauthorized traffic from VLAN 30 to
+              VLAN 20 is denied. If the traffic matches an allow rule, it continues. If it matches a deny rule, the flow
+              stops at this point.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>8. The router rebuilds the Layer 2 frame for the destination VLAN</strong>
+            <p>After making the forwarding decision, the router creates a new Layer 2 frame for VLAN 20. The source and
+              destination MAC addresses are different from the original frame, but the Layer 3 destination IP remains
+              the same.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>9. Nginx Proxy Manager receives the request</strong>
+            <p>Nginx Proxy Manager receives the HTTP or HTTPS request because the hostname resolved to its IP address.
+              Nginx Proxy Manager then uses the requested hostname to determine which backend service should receive the
+              traffic.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>10. Nginx Proxy Manager forwards the request to the backend service</strong>
+            <p>After matching the hostname to the correct proxy host configuration, Nginx Proxy Manager forwards the
+              request to the intended internal application. At this point, the full path succeeded because DNS,
+              switching, routing, ACL policy, and reverse proxying all worked together correctly.</p>
+          </div>
+
+          <div class="timeline-item">
+            <strong>11. Return traffic follows the reverse path</strong>
+            <p>The backend service returns the response to Nginx Proxy Manager, which then sends the response back to
+              the client. If the response crosses VLAN boundaries, the router again evaluates policy, rebuilds Layer 2
+              framing for the destination VLAN, and forwards the traffic back toward the client.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Key Technical Points</h2>
+        <ul>
+          <li>The client only uses Address Resolution Protocol (ARP) for local neighbors, such as the default gateway,
+            not for remote destinations.</li>
+          <li>The Layer 2 frame changes at each routed hop, but the destination IP address remains the same end to end.
+          </li>
+          <li>VLAN separation at Layer 2 does not prevent Layer 3 communication unless routing policy also controls it.
+          </li>
+          <li>Access Control Lists (ACLs) matter because the router is the decision point between segmented networks.
+          </li>
+          <li>Domain Name System (DNS) problems can look like connectivity problems, and reverse proxy misconfiguration
+            can look like routing or service failure even when the packet path is working correctly.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Validation</h2>
+        <ul>
+          <li>Tested name resolution separately from application connectivity.</li>
+          <li>Verified that the client used the default gateway for remote traffic.</li>
+          <li>Confirmed expected flows were allowed and blocked flows were denied by policy.</li>
+          <li>Used troubleshooting tools to separate Domain Name System (DNS), switching, routing, and Access Control
+            List (ACL) issues.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <p>
+          This project gave me a clearer mental model for how segmented networking actually behaves under normal
+          operation and during troubleshooting. Instead of viewing VLANs, routing, and ACLs as separate topics, I
+          learned to see them as one continuous traffic path.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Lesson</h2>
+        <p>
+          One of the biggest lessons from this project was that strong troubleshooting depends on understanding packet
+          flow step by step. When I know where a frame is built, where a packet is routed, where policy is evaluated,
+          and where name resolution fits in, I can diagnose problems much more accurately.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'd Improve Next</h2>
+        <ul>
+          <li>Add a failure-path version showing what changes when an ACL blocks the request.</li>
+          <li>Expand the project with a second example that includes internet-bound traffic and Network Address
+            Translation (NAT).</li>
+          <li>Include packet capture examples to show what the path looks like during real troubleshooting.</li>
+          <li>Add a second diagram showing how the reverse path differs once Nginx Proxy Manager creates a new session
+            to the backend.</li>
+        </ul>
+      </section>
+
+      <a class="back-link" href="/#projects">← Back to Projects</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning
+  </footer>
+
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <button class="image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="image-modal-content" id="imageModalContent" alt="">
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imageModalContent");
+      const closeBtn = modal.querySelector(".image-modal-close");
+      const zoomableImages = document.querySelectorAll(".zoomable-image");
+
+      if (!modal || !modalImg || !closeBtn || !zoomableImages.length) return;
+
+      let scale = 1.8;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let movedDuringDrag = false;
+      let startX = 0;
+      let startY = 0;
+      let pinchStartDistance = 0;
+      let pinchStartScale = scale;
+
+      function clampScale(value) {
+        return Math.min(Math.max(value, 1), 3);
+      }
+
+      function applyTransform() {
+        modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetTransform(openZoomed = true) {
+        scale = openZoomed ? 1.8 : 1;
+        translateX = 0;
+        translateY = 0;
+        movedDuringDrag = false;
+        modalImg.classList.remove("is-dragging");
+        applyTransform();
+      }
+
+      function openModal(img) {
+        modalImg.src = img.dataset.full || img.src;
+        modalImg.alt = img.alt || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        resetTransform(true);
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        modalImg.alt = "";
+        modalImg.classList.remove("is-dragging");
+        modalImg.style.transform = "";
+        document.body.style.overflow = "";
+        isDragging = false;
+        movedDuringDrag = false;
+      }
+
+      function getDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.hypot(dx, dy);
+      }
+
+      zoomableImages.forEach((img) => {
+        img.addEventListener("click", () => openModal(img));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(img);
+          }
+        });
+
+        if (!img.hasAttribute("tabindex")) {
+          img.setAttribute("tabindex", "0");
+        }
+      });
+
+      modalImg.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (movedDuringDrag) {
+          movedDuringDrag = false;
+          return;
+        }
+
+        if (scale > 1) {
+          resetTransform(false);
+        } else {
+          resetTransform(true);
+        }
+      });
+
+      modalImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+        e.preventDefault();
+        isDragging = true;
+        movedDuringDrag = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        modalImg.classList.add("is-dragging");
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const newX = e.clientX - startX;
+        const newY = e.clientY - startY;
+
+        if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+          movedDuringDrag = true;
+        }
+
+        translateX = newX;
+        translateY = newY;
+        applyTransform();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      modalImg.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          movedDuringDrag = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+          modalImg.classList.add("is-dragging");
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          pinchStartDistance = getDistance(e.touches);
+          pinchStartScale = scale;
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          e.preventDefault();
+          const newX = e.touches[0].clientX - startX;
+          const newY = e.touches[0].clientY - startY;
+
+          if (Math.abs(newX - translateX) > 2 || Math.abs(newY - translateY) > 2) {
+            movedDuringDrag = true;
+          }
+
+          translateX = newX;
+          translateY = newY;
+          applyTransform();
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+          const newDistance = getDistance(e.touches);
+          scale = clampScale((newDistance / pinchStartDistance) * pinchStartScale);
+          applyTransform();
+        }
+      }, { passive: false });
+
+      modalImg.addEventListener("touchend", () => {
+        isDragging = false;
+        modalImg.classList.remove("is-dragging");
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
