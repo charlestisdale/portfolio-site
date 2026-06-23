@@ -140,7 +140,8 @@ function createBrowserJobRunner() {
       "Preparing dry-run filesystem writes"
     ]);
 
-    if (payload.shouldFail) {
+    const currentJob = context.getJob();
+    if (payload.shouldFail && currentJob.attempts.current === 1) {
       context.log("error", "Demo merge apply intentionally failed so retry can be tested.");
       throw new Error("Demo merge apply failed. Use Retry to requeue it.");
     }
