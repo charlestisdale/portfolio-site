@@ -25,6 +25,8 @@ if (typeof document !== "undefined") {
     const button = event.target.closest("button[data-graph-scope]");
     if (!button) return;
     const selectedScope = setGraphScope(button.dataset.graphScope);
-    window.dispatchEvent(new CustomEvent("graphscopechange", { detail: { scope: selectedScope } }));
+    if (typeof window.__renderKnowledgeGraphScope === "function") {
+      window.__renderKnowledgeGraphScope(selectedScope);
+    }
   });
 }
