@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportType": "transcript-import-review",
+  "generatedAt": "2026-06-23T00:00:00.000Z",
+  "source": {
+    "sourceFile": "sample-windows-tools.en.srt",
+    "lessonId": "sample",
+    "lessonTitle": "Sample Windows Tools Import",
+    "captionCount": 6,
+    "malformedCaptionCount": 0,
+    "segmentCount": 2
+  },
+  "summary": {
+    "existingKnowledgeObjectsChecked": 2,
+    "candidateCount": 2,
+    "cleanCandidateCount": 1,
+    "possibleDuplicateCount": 1,
+    "likelyDuplicateCount": 0,
+    "relationshipSuggestionCount": 2,
+    "commandCandidateCount": 1,
+    "toolCandidateCount": 1,
+    "conceptCandidateCount": 0
+  },
+  "candidates": [
+    {
+      "candidateId": "candidate.sample.task-manager",
+      "proposedKnowledgeId": "windows.task-manager",
+      "slug": "task-manager",
+      "title": "Task Manager",
+      "aliases": ["Windows Task Manager"],
+      "type": "tool",
+      "status": "import-review",
+      "domains": ["windows", "software-troubleshooting"],
+      "learning": {
+        "summary": "Candidate concept extracted from Sample Windows Tools Import.",
+        "facts": [
+          { "text": "Task Manager can show running apps, background processes, performance, startup apps, users, details, and services.", "importance": "needs-review" }
+        ]
+      },
+      "duplicateReview": {
+        "status": "possible-duplicate",
+        "matches": [
+          {
+            "knowledgeId": "windows.task-manager",
+            "title": "Task Manager",
+            "score": 1,
+            "reasons": ["Title is nearly identical.", "Proposed ID strongly matches existing ID."]
+          }
+        ]
+      },
+      "relationshipReview": [
+        {
+          "sourceId": "windows.task-manager",
+          "targetId": "windows.event-viewer",
+          "targetTitle": "Event Viewer",
+          "type": "contrasts_with",
+          "strength": "strong",
+          "confidence": 0.82,
+          "method": "rule",
+          "notes": "Task Manager shows live activity; Event Viewer shows historical logs.",
+          "reviewStatus": "needs-review"
+        }
+      ],
+      "evidence": [
+        {
+          "startTime": "00:00:01,000",
+          "endTime": "00:00:08,000",
+          "captionSequences": [1, 2],
+          "text": "Task Manager is a Windows tool that lets you see running applications, background processes, performance, startup apps, and services."
+        }
+      ],
+      "quality": {
+        "confidence": "low",
+        "needsHumanReview": true
+      }
+    },
+    {
+      "candidateId": "candidate.sample.ipconfig",
+      "proposedKnowledgeId": "commands.ipconfig",
+      "slug": "ipconfig",
+      "title": "ipconfig",
+      "aliases": [],
+      "type": "command",
+      "status": "import-review",
+      "domains": ["networking", "commands"],
+      "learning": {
+        "summary": "Candidate command extracted from Sample Windows Tools Import.",
+        "facts": [
+          { "text": "ipconfig displays IP configuration and is commonly used when troubleshooting DHCP or DNS issues.", "importance": "needs-review" }
+        ],
+        "commands": [
+          {
+            "command": "ipconfig /all",
+            "purpose": "Shows detailed IP configuration, including MAC address, DHCP, DNS, and lease information.",
+            "tags": ["transcript-command"]
+          }
+        ]
+      },
+      "duplicateReview": {
+        "status": "no-match",
+        "matches": []
+      },
+      "relationshipReview": [
+        {
+          "sourceId": "commands.ipconfig",
+          "targetId": "networking.dhcp",
+          "targetTitle": "DHCP",
+          "type": "troubleshoots",
+          "strength": "strong",
+          "confidence": 0.82,
+          "method": "rule",
+          "notes": "ipconfig is commonly used while troubleshooting IP configuration, DHCP, and DNS problems.",
+          "reviewStatus": "needs-review"
+        }
+      ],
+      "evidence": [
+        {
+          "startTime": "00:00:09,000",
+          "endTime": "00:00:15,000",
+          "captionSequences": [3, 4],
+          "text": "The ipconfig command can show the IP address, subnet mask, default gateway, DNS servers, and DHCP lease details."
+        }
+      ],
+      "quality": {
+        "confidence": "low",
+        "needsHumanReview": true
+      }
+    }
+  ]
+}
