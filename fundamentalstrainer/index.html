@@ -18,14 +18,19 @@
     </section>
 
     <nav class="mode-nav card" aria-label="Learning platform modes">
-      <button class="mode-tab active" data-mode-target="learn" type="button">Learn</button>
+      <button class="mode-tab active" data-mode-target="dashboard" type="button">Dashboard</button>
+      <button class="mode-tab" data-mode-target="learn" type="button">Learn</button>
       <button class="mode-tab" data-mode-target="search" type="button">Search</button>
       <button class="mode-tab" data-mode-target="jobs" type="button">Jobs</button>
       <button class="mode-tab" data-mode-target="graph" type="button">Graph</button>
       <button class="mode-tab" data-mode-target="commands" type="button">Commands</button>
     </nav>
 
-    <section class="mode-panel active" data-mode-panel="learn">
+    <section class="mode-panel active" data-mode-panel="dashboard">
+      <section id="dashboardView"></section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="learn">
       <section id="conceptView" class="content"></section>
     </section>
 
