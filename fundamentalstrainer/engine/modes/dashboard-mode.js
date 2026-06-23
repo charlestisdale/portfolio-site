@@ -1,4 +1,4 @@
-export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [], progressSummary = null, activeProgress = null, assessmentSummary = null } = {}) {
+export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [], progressSummary = null, activeProgress = null, assessmentSummary = null, recommendations = null } = {}) {
   const certification = certificationState?.certification;
   const knowledge = certificationState?.knowledge || [];
   const lessons = certificationState?.lessons || [];
@@ -8,6 +8,7 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
   const domains = stats?.domains || [];
   const activeJobs = jobs.filter(job => ["queued", "running", "retrying"].includes(job.status));
   const failedJobs = jobs.filter(job => job.status === "failed");
+  const recommendationList = recommendations?.recommendations || [];
   const progress = progressSummary || {
     notStarted: knowledge.length,
     learning: 0,
@@ -33,6 +34,7 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         </div>
         <div class="dashboard-actions">
           <button type="button" data-mode-jump="learn">Continue Learning</button>
+          <button type="button" data-mode-jump="path">Study Path</button>
           <button type="button" data-mode-jump="search">Search Concepts</button>
           <button type="button" data-mode-jump="assessment">Practice</button>
           <button type="button" data-mode-jump="jobs">View Jobs</button>
@@ -49,6 +51,15 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
       </section>
 
       <section class="dashboard-grid">
+        <article class="dashboard-card dashboard-card--wide">
+          <h3>Recommended next</h3>
+          ${recommendationList.length ? `
+            <div class="dashboard-recommendation-list">
+              ${recommendationList.map(renderRecommendation).join("")}
+            </div>
+          ` : `<p class="muted">No recommendations available yet.</p>`}
+        </article>
+
         <article class="dashboard-card">
           <h3>Continue Learning</h3>
           ${activeConcept ? `
@@ -108,6 +119,16 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         </article>
       </section>
     </section>
+  `;
+}
+
+function renderRecommendation(item) {
+  return `
+    <button type="button" class="dashboard-recommendation" data-id="${escapeHtml(item.id)}">
+      <strong>${escapeHtml(item.title)}</strong>
+      <span>${escapeHtml(item.summary)}</span>
+      <small>${escapeHtml(item.reasons.slice(0, 3).join(" · "))}</small>
+    </button>
   `;
 }
 
