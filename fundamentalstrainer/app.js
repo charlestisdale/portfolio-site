@@ -1,5 +1,6 @@
 import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderLearnMode } from "./engine/modes/learn.js";
+import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
 import { JobType } from "./engine/jobs/job-types.js";
 import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
@@ -8,6 +9,7 @@ const certificationId = "a-plus-220-1202";
 const knowledge = new KnowledgeEngine();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
+let searchFilters = {};
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -20,7 +22,7 @@ const jobsActivity = document.querySelector("#jobsActivity");
 async function loadPlatform() {
   await knowledge.loadCertification(certificationId);
   renderStats();
-  renderResults(knowledge.search(""));
+  renderSearch();
   renderCommands();
   startJobsActivityPanel();
 
@@ -40,15 +42,17 @@ function renderStats() {
   `;
 }
 
-function renderResults(searchResults) {
-  const rows = searchResults.map(result => result.object || result);
-
-  results.innerHTML = rows.map(item => `
-    <button class="result ${item.id === activeConceptId ? "active" : ""}" data-id="${escapeHtml(item.id)}">
-      <strong>${escapeHtml(item.title)}</strong><br />
-      <span>${escapeHtml(item.id)}</span>
-    </button>
-  `).join("");
+function renderSearch() {
+  const searchResults = knowledge.search(searchBox.value, { filters: searchFilters });
+  results.innerHTML = `
+    ${renderSearchControls({ objects: knowledge.all(), filters: searchFilters })}
+    ${renderSearchResults({
+      query: searchBox.value,
+      results: searchResults,
+      totalObjects: knowledge.all().length,
+      filters: searchFilters
+    })}
+  `;
 }
 
 function renderConcept(id, { updateHash = true } = {}) {
@@ -68,7 +72,7 @@ function renderConcept(id, { updateHash = true } = {}) {
   });
 
   renderRelated(id);
-  renderResults(knowledge.search(searchBox.value));
+  renderSearch();
 
   if (updateHash) {
     history.replaceState(null, "", `#learn=${encodeURIComponent(id)}`);
@@ -242,12 +246,36 @@ function readConceptIdFromHash() {
   return params.get("learn");
 }
 
-searchBox.addEventListener("input", () => renderResults(knowledge.search(searchBox.value)));
+function updateSearchFilter(name, value) {
+  searchFilters = {
+    ...searchFilters,
+    [name]: value || undefined
+  };
+
+  searchFilters = Object.fromEntries(Object.entries(searchFilters).filter(([, filterValue]) => Boolean(filterValue)));
+  renderSearch();
+}
+
+searchBox.addEventListener("input", () => renderSearch());
 
 results.addEventListener("click", event => {
+  const resetButton = event.target.closest("button[data-search-reset]");
+  if (resetButton) {
+    searchFilters = {};
+    searchBox.value = "";
+    renderSearch();
+    return;
+  }
+
   const button = event.target.closest("button[data-id]");
   if (!button) return;
   renderConcept(button.dataset.id);
+});
+
+results.addEventListener("change", event => {
+  const filter = event.target.closest("select[data-search-filter]");
+  if (!filter) return;
+  updateSearchFilter(filter.dataset.searchFilter, filter.value);
 });
 
 relatedView.addEventListener("click", event => {
