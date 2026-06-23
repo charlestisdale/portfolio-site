@@ -2,6 +2,8 @@ import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderLearnMode } from "./engine/modes/learn.js";
 import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
 import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
+import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
+import { generateAssessmentFromKnowledge, gradeAssessment } from "./engine/assessment/index.js";
 import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
 import { JobType } from "./engine/jobs/job-types.js";
@@ -16,11 +18,15 @@ let searchFilters = {};
 let activeMode = getDefaultMode();
 let certificationState = null;
 let jobActivityPanel = null;
+let currentAssessment = null;
+let assessmentAnswers = {};
+let currentAssessmentGrade = null;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
 const conceptView = document.querySelector("#conceptView");
 const dashboardView = document.querySelector("#dashboardView");
+const assessmentView = document.querySelector("#assessmentView");
 const platformStats = document.querySelector("#platformStats");
 const relatedView = document.querySelector("#relatedView");
 const commandView = document.querySelector("#commandView");
@@ -34,6 +40,7 @@ async function loadPlatform() {
   renderStats();
   renderSearch();
   renderCommands();
+  renderAssessment();
   startJobsActivityPanel();
 
   const hashState = readHashState();
@@ -81,6 +88,37 @@ function renderSearch() {
       filters: searchFilters
     })}
   `;
+}
+
+function renderAssessment() {
+  if (!assessmentView) return;
+  assessmentView.innerHTML = renderAssessmentMode({
+    assessment: currentAssessment,
+    answers: assessmentAnswers,
+    grade: currentAssessmentGrade
+  });
+}
+
+function generateAssessment() {
+  currentAssessment = generateAssessmentFromKnowledge(knowledge.all(), { limit: 10 });
+  assessmentAnswers = {};
+  currentAssessmentGrade = null;
+  renderAssessment();
+}
+
+function selectAssessmentAnswer(questionId, answerId) {
+  assessmentAnswers = {
+    ...assessmentAnswers,
+    [questionId]: answerId
+  };
+  currentAssessmentGrade = null;
+  renderAssessment();
+}
+
+function gradeCurrentAssessment() {
+  if (!currentAssessment) return;
+  currentAssessmentGrade = gradeAssessment(currentAssessment.questions, assessmentAnswers);
+  renderAssessment();
 }
 
 function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
@@ -174,6 +212,7 @@ function setMode(mode, { updateHash = true } = {}) {
   activeMode = validMode;
 
   if (validMode === "dashboard") renderDashboard();
+  if (validMode === "assessment") renderAssessment();
 
   for (const tab of modeTabs) {
     tab.classList.toggle("active", tab.dataset.modeTarget === validMode);
@@ -369,6 +408,25 @@ if (dashboardView) {
     const conceptButton = event.target.closest("button[data-id]");
     if (!conceptButton) return;
     renderConcept(conceptButton.dataset.id);
+  });
+}
+
+if (assessmentView) {
+  assessmentView.addEventListener("click", event => {
+    const actionButton = event.target.closest("button[data-assessment-action]");
+    if (actionButton?.dataset.assessmentAction === "generate") {
+      generateAssessment();
+      return;
+    }
+
+    if (actionButton?.dataset.assessmentAction === "grade") {
+      gradeCurrentAssessment();
+      return;
+    }
+
+    const answerButton = event.target.closest("button[data-assessment-question][data-assessment-answer]");
+    if (!answerButton) return;
+    selectAssessmentAnswer(answerButton.dataset.assessmentQuestion, answerButton.dataset.assessmentAnswer);
   });
 }
 
