@@ -1,4 +1,5 @@
-import { JobStatus, JobTypeLabels, TerminalJobStatuses } from "./index.js";
+import { JobStatus, TerminalJobStatuses } from "./job-status.js";
+import { JobTypeLabels } from "./job-types.js";
 
 const ACTIVE_STATUSES = new Set([JobStatus.QUEUED, JobStatus.RUNNING, JobStatus.RETRYING]);
 const RETRYABLE_STATUSES = new Set([JobStatus.FAILED, JobStatus.CANCELED]);
