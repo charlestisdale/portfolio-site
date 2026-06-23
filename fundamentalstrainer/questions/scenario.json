@@ -1,0 +1,422 @@
+[
+  {
+    "category": "scenario",
+    "question": "A technician needs to connect two buildings that are 2 kilometers apart. Which cable type is the BEST choice?",
+    "answer": "Single-mode fiber",
+    "options": [
+      "Cat6",
+      "Cat6a",
+      "Single-mode fiber",
+      "Coaxial"
+    ],
+    "note": "Single-mode fiber is designed for long-distance communication."
+  },
+  {
+    "category": "scenario",
+    "question": "A user needs access to email from multiple devices while keeping messages synchronized. Which protocol should be used?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "SMTP",
+      "IMAP",
+      "LDAP"
+    ],
+    "note": "IMAP keeps email synchronized across devices."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants Microsoft 365 email and applications without managing servers. Which cloud model best fits?",
+    "answer": "SaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Hybrid cloud"
+    ],
+    "note": "Microsoft 365 is Software as a Service."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician installs a wireless network and notices interference from neighboring networks. Which channels should be selected on 2.4 GHz?",
+    "answer": "1, 6, and 11",
+    "options": [
+      "1, 6, and 11",
+      "2, 7, and 12",
+      "3, 8, and 13",
+      "1, 5, and 9"
+    ],
+    "note": "1, 6, and 11 are the non-overlapping channels."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports slow wireless speeds but excellent signal strength. The AP is using 2.4 GHz in a crowded apartment complex. What is the BEST recommendation?",
+    "answer": "Move clients to 5 GHz",
+    "options": [
+      "Replace the NIC",
+      "Move clients to 5 GHz",
+      "Change to Cat5",
+      "Disable encryption"
+    ],
+    "note": "5 GHz usually experiences less interference."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician must power a wireless access point through the network cable. Which technology should be used?",
+    "answer": "PoE",
+    "options": [
+      "VPN",
+      "PoE",
+      "NAT",
+      "DNS"
+    ],
+    "note": "Power over Ethernet delivers power and data."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants fault tolerance for two hard drives with an exact copy of data on both drives. Which RAID level should be used?",
+    "answer": "RAID 1",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 1 mirrors data."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs the highest disk performance and does not care about redundancy. Which RAID level should be selected?",
+    "answer": "RAID 0",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 0 provides striping without redundancy."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can browse websites using IP addresses but cannot access websites using names. What is the MOST likely issue?",
+    "answer": "DNS problem",
+    "options": [
+      "DHCP problem",
+      "DNS problem",
+      "SMTP problem",
+      "PoE problem"
+    ],
+    "note": "Name resolution failures point to DNS."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants to deploy virtual machines directly on physical hardware without a host operating system. Which hypervisor type should be used?",
+    "answer": "Type 1",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Emulator"
+    ],
+    "note": "Type 1 hypervisors run directly on hardware."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician is configuring a smartphone for contactless payments. Which technology must be enabled?",
+    "answer": "NFC",
+    "options": [
+      "GPS",
+      "Bluetooth",
+      "NFC",
+      "LTE"
+    ],
+    "note": "NFC enables tap-to-pay functionality."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports that all printed pages have unfused toner that wipes off easily. Which printer component is most likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Transfer roller",
+      "Drum"
+    ],
+    "note": "The fuser melts toner onto paper."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs a 10 Gbps copper Ethernet connection over a full 100-meter run. Which cable should be installed?",
+    "answer": "Cat6a",
+    "options": [
+      "Cat5e",
+      "Cat6",
+      "Cat6a",
+      "Cat3"
+    ],
+    "note": "Cat6a is the standard answer for 10GBASE-T at 100 meters."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated first?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "LDAP"
+    ],
+    "note": "SMTP handles outbound mail."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants cloud-hosted virtual servers while retaining responsibility for the operating system and applications. Which cloud model is being used?",
+    "answer": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "IaaS provides infrastructure only."
+  },
+  {
+    "category": "scenario",
+    "question": "A workstation receives an IP address of 169.254.12.100. What is the MOST likely issue?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate the client could not contact DHCP."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can access resources on the local network but cannot reach websites on the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants cloud-hosted desktops that employees can access from anywhere. Which service should be implemented?",
+    "answer": "DaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "DaaS"
+    ],
+    "note": "Desktop as a Service provides cloud-hosted desktops."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports a very dim laptop display, but an external monitor works normally. What is the MOST likely cause?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "DNS issue",
+      "Bad NIC",
+      "RAM failure"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician installs a new access point in a warehouse. No power outlet is available nearby. What is the BEST solution?",
+    "answer": "PoE",
+    "options": [
+      "PoE",
+      "VPN",
+      "NAT",
+      "VLAN"
+    ],
+    "note": "PoE provides power and data through the Ethernet cable."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants the fastest storage possible for a database server. Which storage technology is BEST?",
+    "answer": "NVMe SSD",
+    "options": [
+      "HDD",
+      "DVD",
+      "SATA SSD",
+      "NVMe SSD"
+    ],
+    "note": "NVMe SSDs provide the highest performance."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs to connect two switches in different buildings with heavy electrical equipment between them. Which medium is BEST?",
+    "answer": "Fiber optic cable",
+    "options": [
+      "Cat5e",
+      "Cat6",
+      "Coaxial",
+      "Fiber optic cable"
+    ],
+    "note": "Fiber is immune to EMI."
+  },
+  {
+    "category": "scenario",
+    "question": "A user can send email but cannot receive email. Which protocols should be investigated first?",
+    "answer": "IMAP or POP3",
+    "options": [
+      "SMTP",
+      "IMAP or POP3",
+      "DNS",
+      "HTTPS"
+    ],
+    "note": "Receiving email relies on IMAP or POP3."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs remote command-line access to a Linux server across the network. Which protocol should be used?",
+    "answer": "SSH",
+    "options": [
+      "Telnet",
+      "SSH",
+      "RDP",
+      "FTP"
+    ],
+    "note": "SSH provides secure remote shell access."
+  },
+  {
+    "category": "scenario",
+    "question": "A network administrator wants secure web traffic between users and a website. Which port should be allowed through the firewall?",
+    "answer": "443",
+    "options": [
+      "80",
+      "22",
+      "443",
+      "3389"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports that a computer loses the correct date and time whenever it is unplugged. Which component should be replaced?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "Power supply"
+    ],
+    "note": "The CMOS battery maintains firmware settings."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician wants to run multiple operating systems on a single physical server. Which technology should be used?",
+    "answer": "Virtualization",
+    "options": [
+      "RAID",
+      "Virtualization",
+      "PoE",
+      "DNS"
+    ],
+    "note": "Virtualization allows multiple VMs on one host."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician installs a new GPU. Which motherboard slot is MOST likely required?",
+    "answer": "PCIe x16",
+    "options": [
+      "PCIe x1",
+      "PCIe x4",
+      "PCIe x16",
+      "DIMM"
+    ],
+    "note": "Graphics cards typically use PCIe x16 slots."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs to connect a laptop to a projector using a modern reversible connector. Which connector is MOST likely used?",
+    "answer": "USB-C",
+    "options": [
+      "RJ11",
+      "USB-C",
+      "BNC",
+      "SC"
+    ],
+    "note": "USB-C commonly supports video output."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports that webpages load very slowly, but file downloads are fast once they start. What service is MOST likely causing the issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DNS delays often affect the start of connections."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician must install a wireless network in a densely populated apartment building. Which band should be preferred when possible?",
+    "answer": "5 GHz",
+    "options": [
+      "2.4 GHz",
+      "5 GHz",
+      "900 MHz",
+      "Bluetooth"
+    ],
+    "note": "5 GHz generally experiences less interference."
+  },
+  {
+    "category": "scenario",
+    "question": "A company wants a cloud solution where developers only upload code and the provider manages the operating system. Which model should be used?",
+    "answer": "PaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Private Cloud"
+    ],
+    "note": "PaaS provides a managed application platform."
+  },
+  {
+    "category": "scenario",
+    "question": "A user reports a laser printer frequently feeds multiple sheets at once. Which component should be inspected first?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Toner cartridge",
+      "Print queue"
+    ],
+    "note": "Worn rollers commonly cause paper feed issues."
+  },
+  {
+    "category": "scenario",
+    "question": "A technician needs a network cable for a 10 Gbps connection over 90 meters. Which cable should be installed?",
+    "answer": "Cat6a",
+    "options": [
+      "Cat5",
+      "Cat5e",
+      "Cat6",
+      "Cat6a"
+    ],
+    "note": "Cat6a is rated for 10 Gbps up to 100 meters."
+  },
+  {
+    "category": "scenario",
+    "question": "A company needs redundancy and performance for a storage array and has four drives available. Which RAID level is BEST?",
+    "answer": "RAID 10",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "note": "RAID 10 provides both performance and fault tolerance."
+  }
+]

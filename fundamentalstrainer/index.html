@@ -185,8 +185,7 @@
             <h1>IT Fundamentals Trainer</h1>
 
             <p>
-                Practice ports, cable standards, Ethernet speeds, PoE power, Wi-Fi generations, fiber types,
-                connectors, cellular terms, DNS, email, cloud models, storage, printers, and virtualization.
+                Pick a test, then practice only the categories that belong to it. Categories are loaded from separate JSON files, so A+ Core 1, Core 2, CCNA, or any future test can have its own question set.
             </p>
 
             <p class="status-note" id="loadStatus">Loading question bank...</p>
@@ -195,6 +194,10 @@
                 <h2>Quiz Mode</h2>
 
                 <div class="trainer-controls">
+                    <select id="testFilter" class="trainer-select">
+                        <option value="">Loading tests...</option>
+                    </select>
+
                     <select id="categoryFilter" class="trainer-select">
                         <option value="all">All Categories</option>
                         <option value="weak">Weak Areas Only</option>
@@ -275,6 +278,8 @@
 
     <script>
         let bank = [];
+        let tests = [];
+        let activeTest = null;
 
         const categoryNames = {
             ethernet: "Ethernet",
@@ -301,21 +306,17 @@
             commands: "Commands"
         };
 
-        const statsKey = "CharlesStandardsTrainerStatsV2";
+        const statsKeyBase = "CharlesStandardsTrainerStatsV3";
+        let statsKey = statsKeyBase + ":all";
 
-        const stats = JSON.parse(localStorage.getItem(statsKey)) || {
-            correct: 0,
-            wrong: 0,
-            streak: 0,
-            xp: 0,
-            misses: {}
-        };
-
+        let stats = loadStats(statsKey);
         let current = null;
         let answered = false;
 
+        const testFilter = document.getElementById("testFilter");
         const categoryFilter = document.getElementById("categoryFilter");
         const difficulty = document.getElementById("difficulty");
+        const questionMode = document.getElementById("questionMode");
         const newQuestionBtn = document.getElementById("newQuestionBtn");
         const resetBtn = document.getElementById("resetBtn");
         const subtitle = document.getElementById("subtitle");
@@ -335,6 +336,14 @@
         const imageContainer = document.getElementById("imageContainer");
         const questionImage = document.getElementById("questionImage");
 
+        function defaultStats() {
+            return { correct: 0, wrong: 0, streak: 0, xp: 0, misses: {} };
+        }
+
+        function loadStats(key) {
+            return JSON.parse(localStorage.getItem(key)) || defaultStats();
+        }
+
         function save() {
             localStorage.setItem(statsKey, JSON.stringify(stats));
         }
@@ -351,7 +360,16 @@
             return categoryNames[category] || category;
         }
 
+        function clearCategoryOptions() {
+            categoryFilter.innerHTML = `
+                <option value="all">All Categories</option>
+                <option value="weak">Weak Areas Only</option>
+            `;
+        }
+
         function populateCategories() {
+            clearCategoryOptions();
+
             const categories = [...new Set(bank.map(item => item.category))].sort();
 
             categories.forEach(category => {
@@ -359,6 +377,17 @@
                 option.value = category;
                 option.textContent = categoryLabel(category);
                 categoryFilter.appendChild(option);
+            });
+        }
+
+        function populateTests() {
+            testFilter.innerHTML = "";
+
+            tests.forEach(test => {
+                const option = document.createElement("option");
+                option.value = test.id;
+                option.textContent = test.name;
+                testFilter.appendChild(option);
             });
         }
 
@@ -413,6 +442,7 @@
 
         function newQuestion() {
             if (!bank.length) {
+                question.textContent = "No questions loaded for this test.";
                 return;
             }
 
@@ -422,7 +452,7 @@
             typedAnswer.value = "";
 
             const pool = filteredBank();
-            const mode = document.getElementById("questionMode")?.value || "normal";
+            const mode = questionMode?.value || "normal";
 
             let weightedPool = [];
 
@@ -448,7 +478,7 @@
 
             current = weightedPool[Math.floor(Math.random() * weightedPool.length)];
 
-            subtitle.textContent = categoryLabel(current.category) + " Practice";
+            subtitle.textContent = activeTest.name + " • " + categoryLabel(current.category) + " Practice";
             question.textContent = current.question;
 
             if (current.image) {
@@ -520,43 +550,80 @@
             });
         }
 
-        async function loadQuestions() {
+        async function fetchJson(path) {
+            const response = await fetch(path, { cache: "no-store" });
+
+            if (!response.ok) {
+                throw new Error("Could not load " + path);
+            }
+
+            return response.json();
+        }
+
+        async function loadTest(testId) {
+            activeTest = tests.find(test => test.id === testId) || tests[0];
+            statsKey = statsKeyBase + ":" + activeTest.id;
+            stats = loadStats(statsKey);
+
+            categoryFilter.disabled = true;
+            newQuestionBtn.disabled = true;
+            loadStatus.textContent = "Loading " + activeTest.name + "...";
+            question.textContent = "Loading question bank...";
+            answerGrid.innerHTML = "";
+            typedArea.style.display = "none";
+            imageContainer.style.display = "none";
+            feedback.className = "feedback";
+            feedback.textContent = "";
+
             try {
-                const response = await fetch("./questions.json", { cache: "no-store" });
-
-                if (!response.ok) {
-                    throw new Error("Could not load questions.json");
-                }
-
-                bank = await response.json();
+                const categoryFiles = await Promise.all(activeTest.files.map(fetchJson));
+                bank = categoryFiles.flat();
 
                 populateCategories();
+                categoryFilter.value = "all";
 
-                loadStatus.textContent = "Loaded " + bank.length + " questions from questions.json.";
+                loadStatus.textContent = "Loaded " + bank.length + " questions for " + activeTest.name + ".";
 
                 updateStats();
                 newQuestion();
             } catch (error) {
-                loadStatus.textContent = "Could not load questions.json. Make sure it is in the same folder as this index.html file.";
+                bank = [];
+                clearCategoryOptions();
+                loadStatus.textContent = "Could not load questions for " + activeTest.name + ". Check tests.json and the questions folder paths.";
                 question.textContent = "Question bank failed to load.";
+                console.error(error);
+            } finally {
+                categoryFilter.disabled = false;
+                newQuestionBtn.disabled = false;
+            }
+        }
+
+        async function loadApp() {
+            try {
+                const manifest = await fetchJson("./tests.json");
+                tests = manifest.tests || [];
+
+                if (!tests.length) {
+                    throw new Error("tests.json does not contain any tests.");
+                }
+
+                populateTests();
+                await loadTest(testFilter.value || tests[0].id);
+            } catch (error) {
+                loadStatus.textContent = "Could not load tests.json. Make sure it is in the same folder as this index.html file.";
+                question.textContent = "Test list failed to load.";
                 console.error(error);
             }
         }
 
+        testFilter.addEventListener("change", () => loadTest(testFilter.value));
         newQuestionBtn.addEventListener("click", newQuestion);
-
-        categoryFilter.addEventListener("change", () => {
-            newQuestion();
-        });
-
+        categoryFilter.addEventListener("change", newQuestion);
         difficulty.addEventListener("change", newQuestion);
+        questionMode.addEventListener("change", newQuestion);
 
         resetBtn.addEventListener("click", () => {
-            stats.correct = 0;
-            stats.wrong = 0;
-            stats.streak = 0;
-            stats.xp = 0;
-            stats.misses = {};
+            stats = defaultStats();
             save();
             updateStats();
         });
@@ -570,7 +637,7 @@
         });
 
         updateStats();
-        loadQuestions();
+        loadApp();
     </script>
 </body>
 

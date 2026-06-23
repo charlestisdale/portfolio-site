@@ -1,0 +1,92 @@
+{
+  "tests": [
+    {
+      "id": "a-plus-core-1",
+      "name": "CompTIA A+ Core 1",
+      "files": [
+        "questions/storage.json",
+        "questions/printers.json",
+        "questions/mobile.json",
+        "questions/cellular.json",
+        "questions/wifi.json",
+        "questions/cloud.json",
+        "questions/virtualization.json",
+        "questions/networking.json",
+        "questions/ports.json",
+        "questions/dns.json",
+        "questions/email.json",
+        "questions/ethernet.json",
+        "questions/copper.json",
+        "questions/fiber.json",
+        "questions/poe.json",
+        "questions/connectors.json",
+        "questions/connector_images.json",
+        "questions/displays.json",
+        "questions/scenario.json",
+        "questions/troubleshooting.json",
+        "questions/commands.json"
+      ]
+    },
+    {
+      "id": "a-plus-core-2",
+      "name": "CompTIA A+ Core 2",
+      "files": [
+        "questions/commands.json",
+        "questions/troubleshooting.json",
+        "questions/cloud.json",
+        "questions/virtualization.json",
+        "questions/dns.json",
+        "questions/email.json",
+        "questions/ports.json",
+        "questions/networking.json",
+        "questions/scenario.json",
+        "questions/storage.json",
+        "questions/wifi.json"
+      ]
+    },
+    {
+      "id": "ccna",
+      "name": "CCNA",
+      "files": [
+        "questions/networking.json",
+        "questions/ethernet.json",
+        "questions/copper.json",
+        "questions/fiber.json",
+        "questions/poe.json",
+        "questions/wifi.json",
+        "questions/ports.json",
+        "questions/dns.json",
+        "questions/commands.json",
+        "questions/troubleshooting.json",
+        "questions/scenario.json"
+      ]
+    },
+    {
+      "id": "all",
+      "name": "All Questions",
+      "files": [
+        "questions/cellular.json",
+        "questions/cloud.json",
+        "questions/commands.json",
+        "questions/connector_images.json",
+        "questions/connectors.json",
+        "questions/copper.json",
+        "questions/displays.json",
+        "questions/dns.json",
+        "questions/email.json",
+        "questions/ethernet.json",
+        "questions/fiber.json",
+        "questions/mobile.json",
+        "questions/networking.json",
+        "questions/poe.json",
+        "questions/ports.json",
+        "questions/printers.json",
+        "questions/scenario.json",
+        "questions/storage.json",
+        "questions/troubleshooting.json",
+        "questions/virtualization.json",
+        "questions/wifi.json"
+      ]
+    }
+  ]
+}
