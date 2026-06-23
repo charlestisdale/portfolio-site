@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-06-23T18:29:42.404Z",
+  "imports": [
+    {
+      "id": "IMPORT-APLUS-1202-LESSON-16-SAMPLE",
+      "label": "lesson-16-sample • IMPORT-APLUS-1202-LESSON-16-SAMPLE • 2 candidates",
+      "path": "./data/imports/pending/sample-lesson-16-candidates.json",
+      "certificationId": "a-plus-220-1202",
+      "lessonId": "lesson-16-sample",
+      "candidateCount": 2,
+      "status": "pending-review"
+    }
+  ]
+}

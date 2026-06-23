@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ingestion Review | IT Learning Platform</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Human-in-the-loop ingestion</p>
+      <h1>Import Review</h1>
+      <p>Review transcript-derived candidates before they become trusted knowledge objects.</p>
+      <p class="muted">Static-site note: approval decisions are exported as JSON. Save the file into <code>data/imports/approved/</code>, then run <code>npm run ingest:merge</code>.</p>
+      <nav class="mode-tabs">
+        <a href="./index.html">Learning UI</a>
+        <a class="active" href="./review.html">Review UI</a>
+      </nav>
+    </section>
+
+    <section class="toolbar-card">
+      <label>
+        Pending import
+        <select id="importSelect"></select>
+      </label>
+      <label>
+        Filter
+        <select id="decisionFilter">
+          <option value="all">All candidates</option>
+          <option value="undecided">Undecided</option>
+          <option value="create-new">Create new</option>
+          <option value="merge-existing">Merge existing</option>
+          <option value="ignore">Ignore</option>
+        </select>
+      </label>
+      <button id="exportBtn" type="button">Export Review JSON</button>
+    </section>
+
+    <section id="summary" class="summary-grid"></section>
+    <section id="candidateList" class="candidate-list"></section>
+  </main>
+
+  <script type="module" src="./engine/review/review-app.js"></script>
+</body>
+</html>

@@ -129,3 +129,82 @@ rel.commands.ipconfig.uses.networking.dhcp
 ```
 
 This supports future concept maps, prerequisite paths, AI tutor context, analytics, and assessment generation.
+
+
+## Transcript Ingestion Review System
+
+The platform now uses a safe import pipeline:
+
+```text
+raw transcript
+→ cleaned transcript
+→ candidate concepts
+→ duplicate detection
+→ human review
+→ import report
+→ approved draft knowledge objects
+```
+
+Useful commands:
+
+```bash
+npm run ingest:extract -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
+npm run ingest:duplicates -- --file=data/imports/pending/16-candidates.json
+npm run ingest:report -- --file=data/imports/pending/16-candidates.json
+npm run ingest:merge -- --file=data/imports/pending/16-candidates.json
+```
+
+The merge command is a dry run by default. Use `--dry-run=false` only after every candidate has been reviewed.
+
+See `tools/ingestion/review-workflow.md`.
+
+## Ingestion Review UI
+
+A browser-based review interface is available at:
+
+```text
+review.html
+```
+
+Build the pending-import manifest first:
+
+```bash
+npm run review:manifest
+```
+
+Then serve the folder locally:
+
+```bash
+python -m http.server 8000
+```
+
+Open:
+
+```text
+http://localhost:8000/review.html
+```
+
+The review UI lets you approve, reject, or merge transcript-derived candidate concepts before they are allowed into the trusted knowledge base.
+
+## Knowledge Engine
+
+The platform now includes a certification-neutral internal Knowledge Engine under `engine/knowledge/`. UI code should use this API instead of loading raw knowledge JSON directly.
+
+Important calls:
+
+```js
+knowledge.get(id)
+knowledge.search(query)
+knowledge.related(id)
+knowledge.objective(objectiveId)
+knowledge.lesson(lessonId)
+knowledge.certification(certId)
+knowledge.commands()
+knowledge.scenarios()
+knowledge.examTips()
+knowledge.pbqIdeas()
+knowledge.statistics()
+knowledge.graph()
+```
+
+See `docs/knowledge-engine.md` for usage and design rules.

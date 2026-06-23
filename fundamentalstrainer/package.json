@@ -8,6 +8,11 @@
     "clean:srt": "node tools/ingestion/clean-srt.mjs",
     "create:import": "node tools/ingestion/create-import-record.mjs",
     "validate:architecture": "node tools/validate-architecture.mjs",
-    "validate:all": "npm run validate:knowledge && npm run validate:architecture"
+    "validate:all": "npm run validate:knowledge && npm run validate:architecture",
+    "ingest:extract": "node tools/ingestion/extract-concepts.mjs",
+    "ingest:duplicates": "node tools/ingestion/detect-duplicates.mjs",
+    "ingest:report": "node tools/ingestion/build-import-report.mjs",
+    "ingest:merge": "node tools/ingestion/merge-review.mjs",
+    "review:manifest": "node tools/ingestion/build-review-manifest.mjs"
   }
 }
