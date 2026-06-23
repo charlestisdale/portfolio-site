@@ -16,3 +16,10 @@ export { JobRegistry } from "./job-registry.js";
 export { InMemoryJobStore } from "./job-store.js";
 export { JobRunner } from "./job-runner.js";
 export { createJobPipeline, enqueuePipeline, summarizePipelineJobs } from "./job-pipeline.js";
+export {
+  registerPlatformJobHandlers,
+  registerImportTranscriptJob,
+  registerMergePlanCreateJob,
+  registerMergePlanApplyJob,
+  registerValidationJob
+} from "./platform-job-handlers.js";
