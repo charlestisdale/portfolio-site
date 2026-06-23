@@ -11,8 +11,9 @@ const knowledge = new KnowledgeEngine();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
 let searchFilters = {};
-let activeMode = "dashboard";
+let activeMode = getDefaultMode();
 let certificationState = null;
+let jobActivityPanel = null;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -38,10 +39,11 @@ async function loadPlatform() {
   const initialConceptId = knowledge.get(hashState.learn) ? hashState.learn : first?.id;
   if (initialConceptId) renderConcept(initialConceptId, { updateHash: false, switchMode: false });
   renderDashboard();
-  setMode(hashState.mode || "dashboard", { updateHash: false });
+  setMode(hashState.mode || getDefaultMode(), { updateHash: false });
 }
 
 function renderStats() {
+  if (!platformStats) return;
   const stats = knowledge.statistics();
   platformStats.innerHTML = `
     <div><strong>${stats.knowledgeObjects}</strong><span>Knowledge Objects</span></div>
@@ -52,6 +54,8 @@ function renderStats() {
 }
 
 function renderDashboard() {
+  if (!dashboardView) return;
+
   dashboardView.innerHTML = renderDashboardMode({
     certificationState,
     stats: knowledge.statistics(),
@@ -61,6 +65,8 @@ function renderDashboard() {
 }
 
 function renderSearch() {
+  if (!searchBox || !results) return;
+
   const searchResults = knowledge.search(searchBox.value, { filters: searchFilters });
   results.innerHTML = `
     ${renderSearchControls({ objects: knowledge.all(), filters: searchFilters })}
@@ -75,7 +81,7 @@ function renderSearch() {
 
 function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
   const concept = knowledge.get(id);
-  if (!concept) return;
+  if (!concept || !conceptView) return;
 
   activeConceptId = id;
   const relatedEdges = knowledge.related(id);
@@ -93,7 +99,7 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
   renderSearch();
   renderDashboard();
 
-  if (switchMode) setMode("learn", { updateHash: false });
+  if (switchMode) setMode(getPanelExists("learn") ? "learn" : getDefaultMode(), { updateHash: false });
   if (updateHash) writeHashState({ mode: activeMode, learn: id });
 }
 
@@ -118,6 +124,8 @@ function resolveObjectiveContext(concept) {
 }
 
 function renderRelated(id) {
+  if (!relatedView) return;
+
   const edges = knowledge.related(id);
 
   if (!edges.length) {
@@ -138,6 +146,8 @@ function renderRelated(id) {
 }
 
 function renderCommands() {
+  if (!commandView) return;
+
   const commands = knowledge.commands();
   commandView.innerHTML = commands.length ? commands.map(command => `
     <li><code>${escapeHtml(command.command)}</code> — ${escapeHtml(command.purpose)} <span class="pill">${escapeHtml(command.title)}</span></li>
@@ -145,7 +155,7 @@ function renderCommands() {
 }
 
 function setMode(mode, { updateHash = true } = {}) {
-  const validMode = modePanels.some(panel => panel.dataset.modePanel === mode) ? mode : "dashboard";
+  const validMode = getPanelExists(mode) ? mode : getDefaultMode();
   activeMode = validMode;
 
   if (validMode === "dashboard") renderDashboard();
@@ -162,8 +172,21 @@ function setMode(mode, { updateHash = true } = {}) {
   if (updateHash) writeHashState({ mode: validMode, learn: activeConceptId });
 }
 
+function getPanelExists(mode) {
+  return modePanels.some(panel => panel.dataset.modePanel === mode);
+}
+
+function getDefaultMode() {
+  const panels = [...document.querySelectorAll("[data-mode-panel]")];
+  if (panels.some(panel => panel.dataset.modePanel === "dashboard")) return "dashboard";
+  if (panels.some(panel => panel.dataset.modePanel === "learn")) return "learn";
+  return panels[0]?.dataset.modePanel || "learn";
+}
+
 function startJobsActivityPanel() {
-  const panel = new JobActivityPanel({
+  if (!jobsActivity || jobActivityPanel) return;
+
+  jobActivityPanel = new JobActivityPanel({
     root: jobsActivity,
     runner: jobs,
     onSeedDemoJobs: () => {
@@ -172,7 +195,7 @@ function startJobsActivityPanel() {
     }
   });
 
-  panel.start();
+  jobActivityPanel.start();
 }
 
 function createBrowserJobRunner() {
@@ -311,60 +334,68 @@ modeTabs.forEach(tab => {
   tab.addEventListener("click", () => setMode(tab.dataset.modeTarget));
 });
 
-dashboardView.addEventListener("click", event => {
-  const modeJump = event.target.closest("button[data-mode-jump]");
-  if (modeJump) {
-    setMode(modeJump.dataset.modeJump);
-    return;
-  }
+if (dashboardView) {
+  dashboardView.addEventListener("click", event => {
+    const modeJump = event.target.closest("button[data-mode-jump]");
+    if (modeJump) {
+      setMode(modeJump.dataset.modeJump);
+      return;
+    }
 
-  const domainButton = event.target.closest("button[data-dashboard-domain]");
-  if (domainButton) {
-    searchFilters = { domain: domainButton.dataset.dashboardDomain };
-    searchBox.value = "";
-    renderSearch();
-    setMode("search");
-    return;
-  }
+    const domainButton = event.target.closest("button[data-dashboard-domain]");
+    if (domainButton) {
+      searchFilters = { domain: domainButton.dataset.dashboardDomain };
+      if (searchBox) searchBox.value = "";
+      renderSearch();
+      setMode("search");
+      return;
+    }
 
-  const conceptButton = event.target.closest("button[data-id]");
-  if (!conceptButton) return;
-  renderConcept(conceptButton.dataset.id);
-});
+    const conceptButton = event.target.closest("button[data-id]");
+    if (!conceptButton) return;
+    renderConcept(conceptButton.dataset.id);
+  });
+}
 
-searchBox.addEventListener("input", () => renderSearch());
+if (searchBox) searchBox.addEventListener("input", () => renderSearch());
 
-results.addEventListener("click", event => {
-  const resetButton = event.target.closest("button[data-search-reset]");
-  if (resetButton) {
-    searchFilters = {};
-    searchBox.value = "";
-    renderSearch();
-    return;
-  }
+if (results) {
+  results.addEventListener("click", event => {
+    const resetButton = event.target.closest("button[data-search-reset]");
+    if (resetButton) {
+      searchFilters = {};
+      if (searchBox) searchBox.value = "";
+      renderSearch();
+      return;
+    }
 
-  const button = event.target.closest("button[data-id]");
-  if (!button) return;
-  renderConcept(button.dataset.id);
-});
+    const button = event.target.closest("button[data-id]");
+    if (!button) return;
+    renderConcept(button.dataset.id);
+  });
 
-results.addEventListener("change", event => {
-  const filter = event.target.closest("select[data-search-filter]");
-  if (!filter) return;
-  updateSearchFilter(filter.dataset.searchFilter, filter.value);
-});
+  results.addEventListener("change", event => {
+    const filter = event.target.closest("select[data-search-filter]");
+    if (!filter) return;
+    updateSearchFilter(filter.dataset.searchFilter, filter.value);
+  });
+}
 
-relatedView.addEventListener("click", event => {
-  const button = event.target.closest("button[data-id]");
-  if (!button) return;
-  renderConcept(button.dataset.id);
-});
+if (relatedView) {
+  relatedView.addEventListener("click", event => {
+    const button = event.target.closest("button[data-id]");
+    if (!button) return;
+    renderConcept(button.dataset.id);
+  });
+}
 
-conceptView.addEventListener("click", event => {
-  const button = event.target.closest("button[data-id]");
-  if (!button) return;
-  renderConcept(button.dataset.id);
-});
+if (conceptView) {
+  conceptView.addEventListener("click", event => {
+    const button = event.target.closest("button[data-id]");
+    if (!button) return;
+    renderConcept(button.dataset.id);
+  });
+}
 
 window.addEventListener("hashchange", () => {
   const hashState = readHashState();
@@ -375,7 +406,8 @@ window.addEventListener("hashchange", () => {
 });
 
 loadPlatform().catch(error => {
-  conceptView.innerHTML = `<pre>${escapeHtml(error.stack || error.message)}</pre>`;
+  const errorTarget = conceptView || dashboardView || document.querySelector("main") || document.body;
+  errorTarget.innerHTML = `<pre>${escapeHtml(error.stack || error.message)}</pre>`;
 });
 
 function escapeHtml(value) {
