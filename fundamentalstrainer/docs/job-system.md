@@ -26,14 +26,15 @@ fundamentalstrainer/engine/jobs/
 Modules:
 
 ```text
-job-status.js      Shared job statuses and terminal-state helpers.
-job-types.js       Platform job type constants.
-job-record.js      Canonical job record model and state transitions.
-job-registry.js    Registry for job handlers.
-job-store.js       In-memory job persistence.
-job-runner.js      In-memory queue and runner.
-job-pipeline.js    Ordered pipeline helper.
-index.js           Public exports.
+job-status.js             Shared job statuses and terminal-state helpers.
+job-types.js              Platform job type constants.
+job-record.js             Canonical job record model and state transitions.
+job-registry.js           Registry for job handlers.
+job-store.js              In-memory job persistence.
+job-runner.js             In-memory queue and runner.
+job-pipeline.js           Ordered pipeline helper.
+platform-job-handlers.js  Registers handlers for import, merge, apply, and validation jobs.
+index.js                  Public exports.
 ```
 
 ## Job Record Shape
@@ -69,30 +70,60 @@ canceled
 retrying
 ```
 
+## Platform Job Handlers
+
+The platform now has handler registration for core workflow jobs:
+
+```text
+IMPORT_TRANSCRIPT
+  -> runTranscriptImportPipeline()
+
+MERGE_PLAN_CREATE
+  -> planReviewedImportMerge()
+
+MERGE_PLAN_APPLY
+  -> writeMergePlanFiles()
+
+VALIDATION_RUN
+  -> validation dependency, or placeholder result until validation is wired in
+```
+
 ## Example Usage
 
 ```js
-import { JobRunner, JobType } from "./engine/jobs/index.js";
+import {
+  JobRunner,
+  JobType,
+  registerPlatformJobHandlers
+} from "./engine/jobs/index.js";
 
 const runner = new JobRunner();
 
-runner.register(JobType.IMPORT_TRANSCRIPT, async (payload, job) => {
-  job.progress({ current: 1, total: 3, label: "Cleaning transcript" });
-  job.log("info", "Transcript cleaned.");
-
-  job.progress({ current: 2, total: 3, label: "Extracting concepts" });
-  job.log("info", "Concept candidates extracted.");
-
-  job.progress({ current: 3, total: 3, label: "Generating import report" });
-  return { reportPath: payload.outputPath };
+registerPlatformJobHandlers(runner, {
+  readText: async path => "...srt text...",
+  readJson: async path => ({ /* json */ }),
+  writeJson: async (path, data) => console.log(path, data),
+  getExistingObjects: async () => [],
+  getKnowledgeIndex: async () => ({ objects: [] }),
+  getRelationshipGraph: async certificationId => ({
+    schemaVersion: "1.0.0",
+    certification: certificationId,
+    relationships: []
+  }),
+  projectRoot: "."
 });
 
 const queued = runner.enqueue({
   type: JobType.IMPORT_TRANSCRIPT,
   title: "Import lesson 16 transcript",
   payload: {
-    sourceFile: "16-Example.en.srt",
-    outputPath: "content/imports/review-queue/16-example.json"
+    sourcePath: "transcripts/16-example.en.srt",
+    outputPath: "content/imports/review-queue/16-example.json",
+    lessonId: "16",
+    lessonTitle: "Example Lesson",
+    certificationId: "a-plus-220-1202",
+    examCode: "220-1202",
+    domainHints: ["windows"]
   },
   maxAttempts: 2
 });
@@ -110,8 +141,9 @@ const pipeline = createJobPipeline({
   title: "Import A+ Core 2 lesson 16",
   steps: [
     { type: JobType.IMPORT_TRANSCRIPT, title: "Import transcript" },
-    { type: JobType.REVIEW_PACKAGE_CREATE, title: "Create review package" },
-    { type: JobType.VALIDATION_RUN, title: "Validate import report" }
+    { type: JobType.MERGE_PLAN_CREATE, title: "Create merge plan" },
+    { type: JobType.MERGE_PLAN_APPLY, title: "Apply merge plan" },
+    { type: JobType.VALIDATION_RUN, title: "Validate content" }
   ]
 });
 
@@ -141,23 +173,16 @@ Later, the same job model can be backed by:
 5. Failed jobs should support retry metadata.
 6. Job records should be serializable JSON.
 7. The in-memory runner is a foundation, not a final backend.
+8. The job system should call the Knowledge Engine API and tool services; it should not replace them.
 
 ## Next Step
 
-Wire existing import and merge tools into job handlers:
+Add a Jobs/Activity panel to the UI so users can see:
 
-```text
-IMPORT_TRANSCRIPT
-  -> runTranscriptImportPipeline()
-
-MERGE_PLAN_CREATE
-  -> planReviewedImportMerge()
-
-MERGE_PLAN_APPLY
-  -> writeMergePlanFiles()
-
-VALIDATION_RUN
-  -> validation system
-```
-
-After that, the UI can show a Jobs/Activity panel with progress, status, and logs.
+- Queued jobs
+- Running jobs
+- Progress percentage
+- Logs
+- Results
+- Failures
+- Retry/cancel actions
