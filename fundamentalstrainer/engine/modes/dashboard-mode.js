@@ -1,4 +1,4 @@
-export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [] } = {}) {
+export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [], progressSummary = null, activeProgress = null } = {}) {
   const certification = certificationState?.certification;
   const knowledge = certificationState?.knowledge || [];
   const lessons = certificationState?.lessons || [];
@@ -8,6 +8,14 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
   const domains = stats?.domains || [];
   const activeJobs = jobs.filter(job => ["queued", "running", "retrying"].includes(job.status));
   const failedJobs = jobs.filter(job => job.status === "failed");
+  const progress = progressSummary || {
+    notStarted: knowledge.length,
+    learning: 0,
+    reviewed: 0,
+    mastered: 0,
+    percentStarted: 0,
+    percentMastered: 0
+  };
 
   return `
     <section class="dashboard-mode card">
@@ -28,8 +36,8 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         ${renderStat("Concepts", stats?.knowledgeObjects ?? knowledge.length)}
         ${renderStat("Lessons", stats?.lessons ?? lessons.length)}
         ${renderStat("Objectives", stats?.objectives ?? objectives.length)}
-        ${renderStat("Graph Edges", stats?.relationships ?? 0)}
-        ${renderStat("Draft", draftCount)}
+        ${renderStat("Started", `${progress.percentStarted}%`)}
+        ${renderStat("Mastered", `${progress.percentMastered}%`)}
         ${renderStat("Needs Review", needsReviewCount)}
       </section>
 
@@ -37,12 +45,22 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         <article class="dashboard-card">
           <h3>Continue Learning</h3>
           ${activeConcept ? `
-            <p class="muted">Current concept</p>
+            <p class="muted">Current concept · ${escapeHtml(formatLabel(activeProgress?.status || "not-started"))}</p>
             <button class="dashboard-concept-link" type="button" data-id="${escapeHtml(activeConcept.id)}">
               <strong>${escapeHtml(activeConcept.title)}</strong>
               <span>${escapeHtml(activeConcept.learning?.summary || activeConcept.id)}</span>
             </button>
           ` : `<p class="muted">No concept selected yet.</p>`}
+        </article>
+
+        <article class="dashboard-card">
+          <h3>Learning Progress</h3>
+          <ul class="dashboard-list">
+            <li><strong>${escapeHtml(progress.learning)}</strong><span>currently learning</span></li>
+            <li><strong>${escapeHtml(progress.reviewed)}</strong><span>reviewed concepts</span></li>
+            <li><strong>${escapeHtml(progress.mastered)}</strong><span>mastered concepts</span></li>
+            <li><strong>${escapeHtml(progress.notStarted)}</strong><span>not started</span></li>
+          </ul>
         </article>
 
         <article class="dashboard-card">
