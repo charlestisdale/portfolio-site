@@ -1,20 +1,48 @@
 {
+  "schemaVersion": "1.0.0",
   "certification": "a-plus-220-1202",
   "relationships": [
     {
-      "from": "ipconfig",
-      "to": "dhcp",
-      "type": "uses-or-verifies"
+      "schemaVersion": "1.0.0",
+      "id": "rel.commands.ipconfig.uses.networking.dhcp",
+      "sourceId": "commands.ipconfig",
+      "targetId": "networking.dhcp",
+      "type": "uses",
+      "strength": "strong",
+      "direction": "outbound",
+      "status": "draft",
+      "evidence": ["a-plus-220-1202.lesson-11"],
+      "notes": "ipconfig can release and renew DHCP leases.",
+      "createdAt": "2026-06-23",
+      "updatedAt": "2026-06-23"
     },
     {
-      "from": "ipconfig",
-      "to": "dns",
-      "type": "troubleshoots"
+      "schemaVersion": "1.0.0",
+      "id": "rel.commands.ipconfig.uses.networking.dns",
+      "sourceId": "commands.ipconfig",
+      "targetId": "networking.dns",
+      "type": "uses",
+      "strength": "strong",
+      "direction": "outbound",
+      "status": "draft",
+      "evidence": ["a-plus-220-1202.lesson-11"],
+      "notes": "ipconfig can show DNS servers and flush the DNS resolver cache.",
+      "createdAt": "2026-06-23",
+      "updatedAt": "2026-06-23"
     },
     {
-      "from": "windows-firewall",
-      "to": "network-profiles",
-      "type": "depends-on"
+      "schemaVersion": "1.0.0",
+      "id": "rel.windows.task-manager.troubleshoots.windows.processes",
+      "sourceId": "windows.task-manager",
+      "targetId": "windows.processes",
+      "type": "troubleshoots",
+      "strength": "strong",
+      "direction": "outbound",
+      "status": "draft",
+      "evidence": ["a-plus-220-1202.lesson-07"],
+      "notes": "Task Manager is used to view and manage running processes.",
+      "createdAt": "2026-06-23",
+      "updatedAt": "2026-06-23"
     }
   ]
 }

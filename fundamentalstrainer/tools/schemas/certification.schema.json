@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://charlestisdale.com/schemas/certification.schema.json",
+  "title": "Certification Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "name", "vendor", "status", "objectiveManifest", "lessonManifest", "knowledgeIndex"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "name": { "type": "string" },
+    "vendor": { "type": "string" },
+    "examCode": { "type": "string" },
+    "version": { "type": "string" },
+    "status": { "enum": ["planned", "active", "archived"] },
+    "domains": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "objectiveManifest": { "type": "string" },
+    "lessonManifest": { "type": "string" },
+    "knowledgeIndex": { "type": "string" },
+    "relationshipGraph": { "type": "string" },
+    "assessmentRoot": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

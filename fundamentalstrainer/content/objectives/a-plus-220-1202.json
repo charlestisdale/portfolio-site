@@ -1,9 +1,50 @@
 {
-  "certificationId": "a-plus-220-1202",
+  "schemaVersion": "1.0.0",
+  "certification": "a-plus-220-1202",
+  "source": "CompTIA A+ Core 2 220-1202 objectives; detailed subobjectives should be filled as transcript ingestion continues.",
   "objectives": [
-    { "id": "1.0", "name": "Operating Systems", "weight": null },
-    { "id": "2.0", "name": "Security", "weight": null },
-    { "id": "3.0", "name": "Software Troubleshooting", "weight": null },
-    { "id": "4.0", "name": "Operational Procedures", "weight": null }
+    {
+      "id": "a-plus-220-1202.1.0",
+      "name": "Operating Systems",
+      "order": 1,
+      "weight": null,
+      "children": [
+        {
+          "id": "a-plus-220-1202.1.1",
+          "name": "Identify basic features of Microsoft Windows editions",
+          "order": 1,
+          "knowledgeIds": [],
+          "children": []
+        },
+        {
+          "id": "a-plus-220-1202.1.5",
+          "name": "Given a scenario, use the appropriate Windows settings and tools",
+          "order": 5,
+          "knowledgeIds": ["commands.ipconfig", "windows.task-manager"],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "a-plus-220-1202.2.0",
+      "name": "Security",
+      "order": 2,
+      "weight": null,
+      "children": []
+    },
+    {
+      "id": "a-plus-220-1202.3.0",
+      "name": "Software Troubleshooting",
+      "order": 3,
+      "weight": null,
+      "children": []
+    },
+    {
+      "id": "a-plus-220-1202.4.0",
+      "name": "Operational Procedures",
+      "order": 4,
+      "weight": null,
+      "children": []
+    }
   ]
 }

@@ -6,6 +6,8 @@
   "scripts": {
     "validate:knowledge": "node tools/validate-knowledge.mjs",
     "clean:srt": "node tools/ingestion/clean-srt.mjs",
-    "create:import": "node tools/ingestion/create-import-record.mjs"
+    "create:import": "node tools/ingestion/create-import-record.mjs",
+    "validate:architecture": "node tools/validate-architecture.mjs",
+    "validate:all": "npm run validate:knowledge && npm run validate:architecture"
   }
 }

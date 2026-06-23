@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "media.commands.ipconfig-output-001",
+  "type": "simulated-output",
+  "path": "content/media/screenshots/ipconfig-output-001.png",
+  "title": "Simulated ipconfig output",
+  "altText": "A Windows command prompt showing simulated ipconfig output.",
+  "sourceKnowledgeIds": ["commands.ipconfig"],
+  "sourceLessonIds": ["a-plus-220-1202.lesson-11"],
+  "status": "draft"
+}

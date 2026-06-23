@@ -80,3 +80,52 @@ content/knowledge/commands/ipconfig.json
 ```
 
 Important rule: do not write quiz questions directly during transcript ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
+
+## Data architecture layer
+
+The project now includes canonical architecture documentation and schemas for the full content ecosystem, not only knowledge objects.
+
+```text
+docs/data-architecture.md
+docs/id-conventions.md
+docs/relationship-types.md
+```
+
+Additional schemas:
+
+```text
+tools/schemas/certification.schema.json
+tools/schemas/objective.schema.json
+tools/schemas/lesson.schema.json
+tools/schemas/relationship.schema.json
+tools/schemas/assessment.schema.json
+tools/schemas/media.schema.json
+tools/schemas/progress.schema.json
+tools/schemas/search-index.schema.json
+```
+
+Validate both knowledge content and architecture references:
+
+```bash
+npm run validate:all
+```
+
+## ID rule summary
+
+Knowledge objects use reusable concept IDs like:
+
+```text
+commands.ipconfig
+windows.task-manager
+networking.dns
+```
+
+Certification mapping belongs inside manifests and knowledge objects. Do not create certification-specific duplicates like `a-plus-220-1202.commands.ipconfig` unless the concept truly only exists in that certification.
+
+Relationships are graph edges:
+
+```text
+rel.commands.ipconfig.uses.networking.dhcp
+```
+
+This supports future concept maps, prerequisite paths, AI tutor context, analytics, and assessment generation.
