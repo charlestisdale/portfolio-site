@@ -12,7 +12,7 @@ The workflow is:
 Reviewed Import JSON
   -> Merge Planner
   -> Write Plan
-  -> Human/Script applies writes
+  -> Apply Layer
   -> Validation
   -> Knowledge Base
 ```
@@ -29,6 +29,7 @@ Modules:
 object-builder.js        Builds or merges canonical knowledge objects.
 relationship-builder.js  Converts approved relationship suggestions into graph edges.
 merge-planner.js         Produces a non-destructive merge plan.
+apply-plan.js            Applies a merge plan to a virtual file map.
 index.js                 Public exports.
 ```
 
@@ -57,6 +58,20 @@ summary
 
 This means the app can show exactly what will change before anything is applied.
 
+## Apply Layer
+
+The apply layer currently writes to a virtual file map instead of the real repository filesystem.
+
+Exports:
+
+```js
+applyMergePlanToVirtualFiles(plan, currentFiles)
+buildFileMapFromMergePlan(plan)
+validateMergePlan(plan)
+```
+
+This gives us a safe checkpoint before adding a Node.js filesystem writer.
+
 ## Safety Rules
 
 1. Reviewed imports create a plan first, not direct writes.
@@ -65,11 +80,15 @@ This means the app can show exactly what will change before anything is applied.
 4. Existing reviewed content is not overwritten.
 5. Relationship suggestions remain draft graph edges.
 6. Validation should run after applying a merge plan.
+7. The first apply layer writes virtually before writing to disk.
 
 ## Example Usage
 
 ```js
-import { planReviewedImportMerge } from "./tools/merge/index.js";
+import {
+  planReviewedImportMerge,
+  applyMergePlanToVirtualFiles
+} from "./tools/merge/index.js";
 
 const plan = planReviewedImportMerge({
   reviewedImport,
@@ -82,12 +101,14 @@ const plan = planReviewedImportMerge({
   }
 });
 
+const result = applyMergePlanToVirtualFiles(plan, {});
 console.log(plan.summary);
+console.log(result.summary);
 ```
 
 ## Next Step
 
-The next layer should be an apply script that takes a merge plan and writes:
+The next layer should be a Node.js filesystem script that takes a merge plan and writes:
 
 - New or updated knowledge object JSON files
 - `content/indexes/knowledge-index.json`
