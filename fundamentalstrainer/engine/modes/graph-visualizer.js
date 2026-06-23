@@ -2,6 +2,7 @@ const VIEWBOX_WIDTH = 760;
 const VIEWBOX_HEIGHT = 420;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
+const GRAPH_SCOPES = ["focused", "expanded"];
 
 const RELATIONSHIP_LABELS = {
   troubleshoots: "troubleshooting",
@@ -15,12 +16,13 @@ const RELATIONSHIP_LABELS = {
   networking: "networking"
 };
 
-export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [] } = {}) {
+export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [], scope = "focused" } = {}) {
   const sourceNodes = graph?.nodes || [];
   const sourceEdges = graph?.edges || [];
+  const graphScope = GRAPH_SCOPES.includes(scope) ? scope : "focused";
   const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const activeId = activeConcept?.id || null;
-  const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId });
+  const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
   const layout = layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId });
   const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related_to")).sort();
 
@@ -38,7 +40,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       <header class="graph-visualizer__header">
         <div>
           <h3>Interactive graph</h3>
-          <p class="muted">Focused view: active concept plus direct relationships. Dashed nodes are missing Knowledge Objects that should be created or fixed.</p>
+          <p class="muted">${escapeHtml(getScopeDescription(graphScope))}</p>
         </div>
         <div class="graph-visualizer__tools" aria-label="Graph summary">
           <span class="pill">${escapeHtml(graphModel.nodes.length)} visible nodes</span>
@@ -47,6 +49,14 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
           ${graphModel.missingCount ? `<span class="pill">${escapeHtml(graphModel.missingCount)} missing nodes</span>` : ""}
         </div>
       </header>
+
+      <div class="graph-scope-toggle" aria-label="Graph scope">
+        ${GRAPH_SCOPES.map(item => `
+          <button class="graph-scope-button ${item === graphScope ? "active" : ""}" data-graph-scope="${escapeHtml(item)}" type="button" aria-pressed="${item === graphScope ? "true" : "false"}">
+            ${escapeHtml(capitalize(item))}
+          </button>
+        `).join("")}
+      </div>
 
       <div class="graph-legend" aria-label="Relationship types">
         ${relationshipTypes.map(type => `<span class="graph-legend__item graph-edge-type--${classToken(type)}">${escapeHtml(formatRelationshipLabel(type))}</span>`).join("")}
@@ -65,7 +75,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   `;
 }
 
-function buildVisibleGraphModel({ nodeMap, edges, activeId }) {
+function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
   const resolvedNodeMap = new Map(nodeMap);
   const candidateIds = new Set();
   const candidateEdges = [];
@@ -77,6 +87,17 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId }) {
         candidateIds.add(edge.sourceId);
         candidateIds.add(edge.targetId);
         candidateEdges.push(edge);
+      }
+    }
+
+    if (scope === "expanded") {
+      const directIds = new Set(candidateIds);
+      for (const edge of edges) {
+        if (directIds.has(edge.sourceId) || directIds.has(edge.targetId)) {
+          candidateIds.add(edge.sourceId);
+          candidateIds.add(edge.targetId);
+          candidateEdges.push(edge);
+        }
       }
     }
   } else {
@@ -95,7 +116,7 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId }) {
   const fallbackNodes = activeId ? [] : [...resolvedNodeMap.values()].filter(node => !candidateIds.has(node.id) && !node.missing);
   const nodes = [...activeNodes, ...fallbackNodes].slice(0, MAX_VISIBLE_NODES);
   const visibleIds = new Set(nodes.map(node => node.id));
-  const visibleEdges = candidateEdges.filter(edge => visibleIds.has(edge.sourceId) && visibleIds.has(edge.targetId));
+  const visibleEdges = uniqueEdges(candidateEdges).filter(edge => visibleIds.has(edge.sourceId) && visibleIds.has(edge.targetId));
 
   return {
     nodes,
@@ -233,6 +254,13 @@ function renderNode(node, point, { activeId }) {
   `;
 }
 
+function getScopeDescription(scope) {
+  if (scope === "expanded") {
+    return "Expanded view: active concept, direct relationships, and nearby context. Dashed nodes are missing Knowledge Objects that should be created or fixed.";
+  }
+  return "Focused view: active concept plus direct relationships. Dashed nodes are missing Knowledge Objects that should be created or fixed.";
+}
+
 function formatRelationshipLabel(type) {
   const key = String(type || "related_to");
   return RELATIONSHIP_LABELS[key] || key.replaceAll("_", " ");
@@ -240,6 +268,21 @@ function formatRelationshipLabel(type) {
 
 function unique(values) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function uniqueEdges(edges) {
+  const seen = new Set();
+  return edges.filter(edge => {
+    const key = edge.id || `${edge.sourceId}::${edge.type}::${edge.targetId}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function capitalize(value) {
+  const text = String(value || "");
+  return `${text.slice(0, 1).toUpperCase()}${text.slice(1)}`;
 }
 
 function classToken(value) {
