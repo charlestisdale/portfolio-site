@@ -1,4 +1,4 @@
-export function renderLearnMode({ concept, relatedEdges = [], lessonContext = null, objectiveContext = [] } = {}) {
+export function renderLearnMode({ concept, relatedEdges = [], lessonContext = null, objectiveContext = [], progress = null } = {}) {
   if (!concept) return `<article class="card"><p>Select a concept.</p></article>`;
 
   const facts = concept.learning?.facts || [];
@@ -18,6 +18,7 @@ export function renderLearnMode({ concept, relatedEdges = [], lessonContext = nu
           <p class="eyebrow">Learn Mode</p>
           <h2>${escapeHtml(concept.title)}</h2>
           <p class="learn-summary">${escapeHtml(concept.learning?.summary || "No summary available yet.")}</p>
+          ${renderProgressControls(concept.id, progress)}
         </div>
         <div class="learn-meta-card">
           ${renderMetaRow("Status", concept.status)}
@@ -67,6 +68,33 @@ export function renderLearnMode({ concept, relatedEdges = [], lessonContext = nu
 
 export function renderKnowledgeObject(item) {
   return renderLearnMode({ concept: item });
+}
+
+function renderProgressControls(knowledgeId, progress) {
+  const status = progress?.status || "not-started";
+  const label = formatLabel(status);
+  const nextLabel = getNextProgressLabel(status);
+
+  return `
+    <section class="learn-progress-card" aria-label="Learning progress">
+      <div>
+        <span class="muted">Progress</span>
+        <strong>${escapeHtml(label)}</strong>
+        ${progress?.updatedAt ? `<small>Updated ${escapeHtml(formatDate(progress.updatedAt))}</small>` : `<small>No progress saved yet.</small>`}
+      </div>
+      <div class="learn-progress-actions">
+        <button type="button" data-progress-action="cycle" data-id="${escapeHtml(knowledgeId)}">${escapeHtml(nextLabel)}</button>
+        <button type="button" data-progress-action="reset" data-id="${escapeHtml(knowledgeId)}">Reset</button>
+      </div>
+    </section>
+  `;
+}
+
+function getNextProgressLabel(status) {
+  if (status === "not-started") return "Start Learning";
+  if (status === "learning") return "Mark Reviewed";
+  if (status === "reviewed") return "Mark Mastered";
+  return "Restart";
 }
 
 function renderMetaRow(label, value) {
@@ -246,6 +274,22 @@ function renderSources(transcripts, quality = {}) {
 
 function getCertificationMappings(concept) {
   return (concept.certificationMappings || []).map(mapping => `${mapping.certification}${mapping.examCode ? ` ${mapping.examCode}` : ""}`);
+}
+
+function formatLabel(value) {
+  return String(value || "")
+    .replaceAll("-", " ")
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  }).format(new Date(value));
 }
 
 function escapeHtml(value) {
