@@ -1,0 +1,117 @@
+/* Assessment Mode */
+.assessment-mode {
+  display: grid;
+  gap: 1rem;
+}
+
+.assessment-mode h2,
+.assessment-mode h3,
+.assessment-mode p {
+  margin-top: 0;
+}
+
+.assessment-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.assessment-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.assessment-hero button,
+.assessment-actions button,
+.assessment-answer {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: .75rem;
+  background: rgba(59, 130, 246, 0.16);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: .7rem .9rem;
+}
+
+.assessment-question-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.assessment-question-card,
+.assessment-grade-summary {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: .9rem;
+  background: rgba(2, 6, 23, 0.34);
+  padding: 1rem;
+}
+
+.assessment-question-card header {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  align-items: center;
+  margin-bottom: .75rem;
+}
+
+.assessment-answer-list {
+  display: grid;
+  gap: .6rem;
+}
+
+.assessment-answer {
+  text-align: left;
+  background: rgba(255, 255, 255, .04);
+}
+
+.assessment-answer.selected {
+  border-color: rgba(147, 197, 253, .7);
+  background: rgba(59, 130, 246, 0.22);
+}
+
+.assessment-answer.correct {
+  border-color: rgba(74, 222, 128, .75);
+  background: rgba(34, 197, 94, .16);
+}
+
+.assessment-answer.incorrect {
+  border-color: rgba(248, 113, 113, .75);
+  background: rgba(239, 68, 68, .16);
+}
+
+.assessment-feedback {
+  margin-top: .8rem;
+  border-radius: .75rem;
+  padding: .8rem;
+}
+
+.assessment-feedback.correct {
+  background: rgba(34, 197, 94, .12);
+}
+
+.assessment-feedback.incorrect {
+  background: rgba(239, 68, 68, .12);
+}
+
+.assessment-grade-summary {
+  display: flex;
+  gap: .75rem;
+  align-items: baseline;
+}
+
+.assessment-grade-summary strong {
+  font-size: 2rem;
+}
+
+@media (max-width: 760px) {
+  .assessment-hero {
+    display: grid;
+  }
+
+  .assessment-actions {
+    justify-content: start;
+  }
+}
