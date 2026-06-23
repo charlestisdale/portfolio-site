@@ -1,10 +1,12 @@
 import { KnowledgeEngine } from "./engine/knowledge/index.js";
-import { renderKnowledgeObject } from "./engine/modes/learn.js";
+import { renderLearnMode } from "./engine/modes/learn.js";
 import { JobRunner, JobType } from "./engine/jobs/index.js";
 import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
 
+const certificationId = "a-plus-220-1202";
 const knowledge = new KnowledgeEngine();
 const jobs = createBrowserJobRunner();
+let activeConceptId = null;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -15,14 +17,16 @@ const commandView = document.querySelector("#commandView");
 const jobsActivity = document.querySelector("#jobsActivity");
 
 async function loadPlatform() {
-  await knowledge.loadCertification("a-plus-220-1202");
+  await knowledge.loadCertification(certificationId);
   renderStats();
   renderResults(knowledge.search(""));
   renderCommands();
   startJobsActivityPanel();
 
+  const hashConceptId = readConceptIdFromHash();
   const first = knowledge.all()[0];
-  if (first) renderConcept(first.id);
+  const initialConceptId = knowledge.get(hashConceptId) ? hashConceptId : first?.id;
+  if (initialConceptId) renderConcept(initialConceptId, { updateHash: !hashConceptId });
 }
 
 function renderStats() {
@@ -39,17 +43,51 @@ function renderResults(searchResults) {
   const rows = searchResults.map(result => result.object || result);
 
   results.innerHTML = rows.map(item => `
-    <button class="result" data-id="${escapeHtml(item.id)}">
+    <button class="result ${item.id === activeConceptId ? "active" : ""}" data-id="${escapeHtml(item.id)}">
       <strong>${escapeHtml(item.title)}</strong><br />
       <span>${escapeHtml(item.id)}</span>
     </button>
   `).join("");
 }
 
-function renderConcept(id) {
+function renderConcept(id, { updateHash = true } = {}) {
   const concept = knowledge.get(id);
-  conceptView.innerHTML = renderKnowledgeObject(concept);
+  if (!concept) return;
+
+  activeConceptId = id;
+  const relatedEdges = knowledge.related(id);
+  const lessonContext = resolvePrimaryLessonContext(concept);
+  const objectiveContext = resolveObjectiveContext(concept);
+
+  conceptView.innerHTML = renderLearnMode({
+    concept,
+    relatedEdges,
+    lessonContext,
+    objectiveContext
+  });
+
   renderRelated(id);
+  renderResults(knowledge.search(searchBox.value));
+
+  if (updateHash) {
+    history.replaceState(null, "", `#learn=${encodeURIComponent(id)}`);
+  }
+}
+
+function resolvePrimaryLessonContext(concept) {
+  const lessonMapping = (concept.certificationMappings || [])
+    .flatMap(mapping => mapping.lessons || [])
+    .find(Boolean);
+
+  if (!lessonMapping) return null;
+  return knowledge.lesson(lessonMapping.lessonId || lessonMapping.id || lessonMapping.order);
+}
+
+function resolveObjectiveContext(concept) {
+  return (concept.certificationMappings || [])
+    .flatMap(mapping => mapping.objectives || [])
+    .map(objective => knowledge.objective(objective.id))
+    .filter(item => item.objective);
 }
 
 function renderRelated(id) {
@@ -193,6 +231,12 @@ function sleep(ms) {
   return new Promise(resolve => window.setTimeout(resolve, ms));
 }
 
+function readConceptIdFromHash() {
+  const hash = window.location.hash.replace(/^#/, "");
+  const params = new URLSearchParams(hash);
+  return params.get("learn");
+}
+
 searchBox.addEventListener("input", () => renderResults(knowledge.search(searchBox.value)));
 
 results.addEventListener("click", event => {
@@ -205,6 +249,17 @@ relatedView.addEventListener("click", event => {
   const button = event.target.closest("button[data-id]");
   if (!button) return;
   renderConcept(button.dataset.id);
+});
+
+conceptView.addEventListener("click", event => {
+  const button = event.target.closest("button[data-id]");
+  if (!button) return;
+  renderConcept(button.dataset.id);
+});
+
+window.addEventListener("hashchange", () => {
+  const conceptId = readConceptIdFromHash();
+  if (conceptId && conceptId !== activeConceptId) renderConcept(conceptId, { updateHash: false });
 });
 
 loadPlatform().catch(error => {
