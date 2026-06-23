@@ -6,6 +6,7 @@ import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
 import { renderGraphMode } from "./engine/modes/graph-mode.js";
 import { renderStudyPathMode } from "./engine/modes/study-path-mode.js";
 import { buildStudyPath } from "./engine/study-paths/index.js";
+import { buildRecommendations } from "./engine/recommendations/index.js";
 import { generateAssessmentFromKnowledge, gradeAssessment, LocalAssessmentAttemptStore } from "./engine/assessment/index.js";
 import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
@@ -80,6 +81,13 @@ function renderDashboard() {
     activeProgress: activeConceptId ? progressStore.get(activeConceptId) : null,
     progressSummary: progressStore.summarize(knowledge.all()),
     assessmentSummary: assessmentAttemptStore.summarize(),
+    recommendations: buildRecommendations({
+      certificationState,
+      knowledgeEngine: knowledge,
+      progressStore,
+      activeConceptId,
+      limit: 4
+    }),
     jobs: jobs.list()
   });
 }
