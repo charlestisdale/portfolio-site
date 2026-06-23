@@ -95,6 +95,38 @@ export class JobRunner {
     return this.store.update(jobId, current => markJobCanceled(current, reason));
   }
 
+  retry(jobId, reason = "Manual retry requested.") {
+    const job = this.store.get(jobId);
+    if (!job) return null;
+    if (!isTerminalJobStatus(job.status)) return job;
+
+    const retryableStatus = job.status === JobStatus.FAILED || job.status === JobStatus.CANCELED;
+    if (!retryableStatus) return job;
+
+    const updated = this.store.update(jobId, current => {
+      current.status = JobStatus.QUEUED;
+      current.error = null;
+      current.finishedAt = null;
+      current.progress = {
+        current: 0,
+        total: current.progress?.total || 1,
+        percent: 0,
+        label: "Queued for retry"
+      };
+
+      if (current.attempts.current >= current.attempts.max) {
+        current.attempts.max = current.attempts.current + 1;
+      }
+
+      addJobLog(current, "info", reason);
+      return current;
+    });
+
+    this.queue.push(jobId);
+    this.tick();
+    return updated;
+  }
+
   get(id) {
     return this.store.get(id);
   }
