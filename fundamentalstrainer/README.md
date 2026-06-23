@@ -51,3 +51,32 @@ node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
 - `data/imports/a-plus-220-1202/import-record.template.json`
 - `content/indexes/knowledge-index.json`
 - `content/relationships/a-plus-220-1202.graph.json`
+
+## Canonical knowledge object schema
+
+The platform now uses `tools/knowledge-object.schema.json` as the canonical shape for every concept. The template lives at:
+
+```text
+content/knowledge/_templates/knowledge-object.template.json
+```
+
+Field rules are documented in:
+
+```text
+tools/knowledge-object-field-guide.md
+```
+
+Validate all knowledge objects with:
+
+```bash
+npm run validate:knowledge
+```
+
+The current sample objects are:
+
+```text
+content/knowledge/windows/task-manager.json
+content/knowledge/commands/ipconfig.json
+```
+
+Important rule: do not write quiz questions directly during transcript ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.

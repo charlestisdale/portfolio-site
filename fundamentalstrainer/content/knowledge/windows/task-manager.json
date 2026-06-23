@@ -1,47 +1,217 @@
 {
+  "schemaVersion": "1.0.0",
   "id": "windows.task-manager",
+  "slug": "task-manager",
   "title": "Task Manager",
-  "certifications": ["a-plus-220-1202"],
-  "objectives": ["1.0"],
-  "lessons": ["07 Task Manager"],
-  "summary": "Task Manager is a Windows utility used to view and manage running apps, background processes, performance, startup apps, users, details, and services.",
-  "facts": [
-    "The Processes tab shows running apps and background processes.",
-    "The Performance tab shows live CPU, memory, disk, network, and GPU activity.",
-    "The Startup tab can enable or disable startup apps.",
-    "The Services tab can view services and open the full Services console."
+  "aliases": [
+    "Windows Task Manager"
   ],
-  "commands": [],
-  "examples": [
-    "Use Task Manager to end a frozen app.",
-    "Use the Startup tab to reduce boot-time startup programs."
+  "type": "tool",
+  "status": "draft",
+  "domains": [
+    "windows",
+    "software-troubleshooting"
   ],
-  "relatedConcepts": [
-    "windows.services",
-    "windows.event-viewer",
-    "windows.performance-monitor"
-  ],
-  "commonMistakes": [
-    "Confusing Task Manager with Event Viewer. Task Manager shows current activity; Event Viewer shows logs.",
-    "Assuming disabling startup apps uninstalls them. It only prevents automatic startup."
-  ],
-  "examTips": [
-    "For a frozen application, Task Manager is usually the first tool to end the task."
-  ],
-  "scenarios": [
-    "A user says an application is frozen and will not close. Use Task Manager to end the process."
-  ],
-  "pbqIdeas": [
-    "Identify which Task Manager tab should be used for startup apps, performance graphs, processes, or services."
-  ],
-  "transcriptReferences": [
+  "difficulty": "foundational",
+  "importance": "exam-critical",
+  "certificationMappings": [
     {
-      "lesson": "07 Task Manager",
-      "sourceFile": "07-Task Manager - CompTIA A+ 220-1202.en.srt",
-      "timestamps": []
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": [
+            "Windows tools",
+            "System utilities"
+          ]
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "07",
+          "title": "Task Manager",
+          "order": 7
+        }
+      ]
     }
   ],
-  "sourceVideos": ["Professor Messer A+ Core 2 220-1202 - 07 Task Manager"],
-  "status": "draft",
-  "lastReviewed": null
+  "learning": {
+    "summary": "Task Manager is a Windows utility used to view and manage running apps, background processes, performance, startup apps, users, details, and services.",
+    "explanation": "Use Task Manager when you need a quick view of what is running on a Windows system or need to stop an unresponsive app. It is a live activity tool, not a historical log viewer.",
+    "facts": [
+      {
+        "text": "The Processes tab shows running apps and background processes.",
+        "importance": "exam-critical",
+        "tags": [
+          "tabs"
+        ]
+      },
+      {
+        "text": "The Performance tab shows live CPU, memory, disk, network, and GPU activity.",
+        "importance": "high",
+        "tags": [
+          "performance"
+        ]
+      },
+      {
+        "text": "The Startup tab can enable or disable startup apps.",
+        "importance": "high",
+        "tags": [
+          "startup"
+        ]
+      },
+      {
+        "text": "The Services tab can view services and open the full Services console.",
+        "importance": "medium",
+        "tags": [
+          "services"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "Use Task Manager to end a frozen app.",
+        "context": "Software troubleshooting",
+        "tags": [
+          "frozen-app"
+        ]
+      },
+      {
+        "text": "Use the Startup tab to reduce boot-time startup programs.",
+        "context": "System performance",
+        "tags": [
+          "startup"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "For a frozen application, Task Manager is usually the first tool to end the task.",
+        "difficulty": "easy",
+        "tags": [
+          "troubleshooting"
+        ]
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing Task Manager with Event Viewer. Task Manager shows current activity; Event Viewer shows logs.",
+        "difficulty": "medium",
+        "tags": [
+          "tool-selection"
+        ]
+      },
+      {
+        "text": "Assuming disabling startup apps uninstalls them. It only prevents automatic startup.",
+        "difficulty": "easy",
+        "tags": [
+          "startup"
+        ]
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "A user says an application is frozen and will not close.",
+        "expectedAction": "Open Task Manager and end the affected process or application.",
+        "difficulty": "easy",
+        "tags": [
+          "frozen-app"
+        ]
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Match each Task Manager tab to its use: Processes, Performance, Startup, Users, Details, Services.",
+        "skillsTested": [
+          "Identify Windows tools",
+          "Select the correct troubleshooting utility"
+        ],
+        "difficulty": "medium",
+        "assetsNeeded": [
+          "Task Manager tab screenshot"
+        ]
+      }
+    ],
+    "questionTargets": [
+      {
+        "type": "matching",
+        "promptFocus": "Match Task Manager tabs to their purposes.",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [
+      "windows.windows-tools"
+    ],
+    "children": [],
+    "related": [
+      {
+        "id": "windows.services",
+        "reason": "Task Manager can display services and open the full Services console.",
+        "strength": "strong"
+      },
+      {
+        "id": "windows.performance-monitor",
+        "reason": "Both are used to evaluate system performance, but Performance Monitor is more detailed.",
+        "strength": "medium"
+      },
+      {
+        "id": "windows.event-viewer",
+        "reason": "Often compared with Task Manager during troubleshooting.",
+        "strength": "medium"
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "windows.event-viewer",
+        "reason": "Task Manager shows live activity; Event Viewer shows historical logs.",
+        "strength": "strong"
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "transcripts": [
+      {
+        "lessonId": "07",
+        "lessonTitle": "Task Manager",
+        "sourceFile": "07-Task Manager - CompTIA A+ 220-1202.en.srt",
+        "startTime": null,
+        "endTime": null,
+        "quote": "",
+        "notes": "Initial transcript ingestion."
+      }
+    ],
+    "videos": [
+      {
+        "title": "Professor Messer A+ Core 2 220-1202 - 07 Task Manager",
+        "url": null,
+        "provider": "Professor Messer",
+        "lessonId": "07"
+      }
+    ],
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-23",
+    "updatedAt": "2026-06-23",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "medium",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Verify objective mapping against official 220-1202 objectives before marking reviewed."
+    ]
+  }
 }

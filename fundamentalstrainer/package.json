@@ -1,0 +1,11 @@
+{
+  "name": "it-learning-platform-starter",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "validate:knowledge": "node tools/validate-knowledge.mjs",
+    "clean:srt": "node tools/ingestion/clean-srt.mjs",
+    "create:import": "node tools/ingestion/create-import-record.mjs"
+  }
+}

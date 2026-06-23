@@ -1,22 +1,131 @@
 {
-  "id": "",
-  "title": "",
+  "schemaVersion": "1.0.0",
+  "id": "domain.concept-slug",
+  "slug": "concept-slug",
+  "title": "Concept Title",
   "aliases": [],
-  "certifications": [],
-  "objectives": [],
-  "lessons": [],
-  "domain": "",
-  "summary": "",
-  "facts": [],
-  "commands": [],
-  "examples": [],
-  "relatedConcepts": [],
-  "commonMistakes": [],
-  "examTips": [],
-  "scenarios": [],
-  "pbqIdeas": [],
-  "transcriptReferences": [],
-  "sourceVideos": [],
-  "status": "draft",
-  "lastReviewed": null
+  "type": "concept",
+  "status": "stub",
+  "domains": [
+    "windows"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "00",
+          "title": "Lesson Title",
+          "order": 0
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "One or two sentence authoritative summary.",
+    "explanation": "Longer teaching explanation goes here.",
+    "facts": [
+      {
+        "text": "Atomic fact that can generate questions or flashcards.",
+        "importance": "medium",
+        "tags": []
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "Concrete example or use case.",
+        "context": "",
+        "tags": []
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Exam-focused tip.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Common misunderstanding to test against.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Scenario stem.",
+        "expectedAction": "Expected answer or action.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Interactive task idea.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": []
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "transcripts": [
+      {
+        "lessonId": "00",
+        "lessonTitle": "Lesson Title",
+        "sourceFile": "filename.srt",
+        "startTime": null,
+        "endTime": null,
+        "quote": "",
+        "notes": ""
+      }
+    ],
+    "videos": [
+      {
+        "title": "Video title",
+        "url": null,
+        "provider": "Professor Messer",
+        "lessonId": "00"
+      }
+    ],
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-23",
+    "updatedAt": "2026-06-23",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "low",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "New object created from transcript ingestion; needs review."
+    ]
+  }
 }

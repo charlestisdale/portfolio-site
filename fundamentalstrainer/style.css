@@ -19,3 +19,13 @@ input { width: 100%; box-sizing: border-box; padding: .8rem; border-radius: .75r
 code { background: rgba(255,255,255,.08); padding: .1rem .3rem; border-radius: .3rem; }
 li { margin: .35rem 0; }
 @media(max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+
+.pill {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .1rem .45rem;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  font-size: .75rem;
+  opacity: .8;
+}

@@ -1,67 +1,589 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Knowledge Object",
+  "$id": "https://charlestisdale.com/schemas/knowledge-object.schema.json",
+  "title": "IT Learning Platform Knowledge Object",
+  "description": "Canonical source record for one reusable learning concept. Assessments, flashcards, PBQs, search, analytics, and study guides should be generated from this object instead of hand-maintained duplicate question banks.",
   "type": "object",
+  "additionalProperties": false,
   "required": [
+    "schemaVersion",
     "id",
+    "slug",
     "title",
-    "certifications",
-    "objectives",
-    "summary",
-    "facts",
-    "relatedConcepts",
-    "transcriptReferences",
-    "sourceVideos"
+    "type",
+    "status",
+    "domains",
+    "certificationMappings",
+    "learning",
+    "assessmentSeeds",
+    "relationships",
+    "sources",
+    "quality"
   ],
   "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
     "id": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$",
+      "description": "Stable unique id using domain.slug, such as commands.ipconfig or windows.task-manager."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
-    "certifications": {
+    "aliases": {
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "uniqueItems": true,
+      "default": []
     },
-    "objectives": {
+    "type": {
+      "enum": [
+        "concept",
+        "command",
+        "tool",
+        "protocol",
+        "service",
+        "file-system",
+        "operating-system",
+        "procedure",
+        "security-control",
+        "hardware",
+        "troubleshooting-pattern"
+      ]
+    },
+    "status": {
+      "enum": [
+        "stub",
+        "draft",
+        "needs-review",
+        "reviewed",
+        "deprecated"
+      ]
+    },
+    "domains": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
-        "type": "string"
+        "enum": [
+          "windows",
+          "linux",
+          "macos",
+          "mobile",
+          "networking",
+          "security",
+          "commands",
+          "hardware",
+          "cloud",
+          "virtualization",
+          "operational-procedures",
+          "software-troubleshooting"
+        ]
       }
     },
-    "lessons": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+    "difficulty": {
+      "enum": [
+        "foundational",
+        "intermediate",
+        "advanced"
+      ],
+      "default": "foundational"
     },
-    "summary": {
-      "type": "string"
+    "importance": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "exam-critical"
+      ],
+      "default": "medium"
     },
-    "facts": {
+    "certificationMappings": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "commands": {
-      "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "certification",
+          "objectives"
+        ],
         "properties": {
-          "command": {
+          "certification": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "examCode": {
             "type": "string"
           },
-          "platform": {
+          "objectives": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "subtopics": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                }
+              }
+            }
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "lessonId",
+                "title"
+              ],
+              "properties": {
+                "lessonId": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "default": []
+          }
+        }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "explanation",
+        "facts",
+        "examples"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "explanation": {
+          "type": "string",
+          "default": ""
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          },
+          "default": []
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/command"
+          },
+          "default": []
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/example"
+          },
+          "default": []
+        },
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/table"
+          },
+          "default": []
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/media"
+          },
+          "default": []
+        },
+        "notes": {
+          "type": "array",
+          "items": {
             "type": "string"
           },
-          "purpose": {
+          "default": []
+        }
+      }
+    },
+    "assessmentSeeds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "examTips",
+        "commonMistakes",
+        "scenarios",
+        "pbqIdeas"
+      ],
+      "properties": {
+        "examTips": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/seedText"
+          },
+          "default": []
+        },
+        "commonMistakes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/seedText"
+          },
+          "default": []
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scenario"
+          },
+          "default": []
+        },
+        "pbqIdeas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pbqIdea"
+          },
+          "default": []
+        },
+        "questionTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "promptFocus"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "multiple-choice",
+                  "true-false",
+                  "fill-blank",
+                  "matching",
+                  "ordering",
+                  "image",
+                  "scenario",
+                  "pbq",
+                  "flashcard"
+                ]
+              },
+              "promptFocus": {
+                "type": "string"
+              },
+              "difficulty": {
+                "enum": [
+                  "easy",
+                  "medium",
+                  "hard"
+                ]
+              }
+            }
+          },
+          "default": []
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prerequisites",
+        "parents",
+        "children",
+        "related",
+        "contrastsWith",
+        "replacedBy"
+      ],
+      "properties": {
+        "prerequisites": {
+          "type": "array",
+          "items": {
             "type": "string"
           },
-          "examples": {
+          "default": []
+        },
+        "parents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationship"
+          },
+          "default": []
+        },
+        "contrastsWith": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationship"
+          },
+          "default": []
+        },
+        "replacedBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transcripts",
+        "videos",
+        "references"
+      ],
+      "properties": {
+        "transcripts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transcriptRef"
+          },
+          "default": []
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/videoRef"
+          },
+          "default": []
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/externalRef"
+          },
+          "default": []
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "createdAt",
+        "updatedAt",
+        "lastReviewedAt",
+        "reviewedBy",
+        "confidence",
+        "needsHumanReview",
+        "reviewNotes"
+      ],
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "lastReviewedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "needsHumanReview": {
+          "type": "boolean"
+        },
+        "reviewNotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "importance": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "exam-critical"
+          ],
+          "default": "medium"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "purpose"
+      ],
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "windows",
+              "linux",
+              "macos",
+              "network-device",
+              "cross-platform"
+            ]
+          },
+          "default": []
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "syntax": {
+          "type": "string"
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "example": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "headers",
+        "rows"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
             "type": "array",
             "items": {
               "type": "string"
@@ -70,89 +592,239 @@
         }
       }
     },
-    "examples": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "relatedConcepts": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "commonMistakes": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "examTips": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "scenarios": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "pbqIdeas": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "transcriptReferences": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "lesson": {
-            "type": "string"
-          },
-          "file": {
-            "type": "string"
-          },
-          "quote": {
-            "type": "string"
-          },
-          "notes": {
-            "type": "string"
-          }
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "path",
+        "alt"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "screenshot",
+            "diagram",
+            "icon",
+            "photo"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
         }
       }
     },
-    "sourceVideos": {
-      "type": "array",
-      "items": {
-        "type": "string"
+    "seedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "difficulty": {
+          "enum": [
+            "easy",
+            "medium",
+            "hard"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
       }
     },
-    "status": {
-      "enum": [
-        "draft",
-        "reviewed",
-        "deprecated"
-      ]
-    },
-    "lastReviewed": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "aliases": {
-      "type": "array",
-      "items": {
-        "type": "string"
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "situation",
+        "expectedAction"
+      ],
+      "properties": {
+        "situation": {
+          "type": "string"
+        },
+        "expectedAction": {
+          "type": "string"
+        },
+        "difficulty": {
+          "enum": [
+            "easy",
+            "medium",
+            "hard"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
       }
     },
-    "domain": {
-      "type": "string"
+    "pbqIdea": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task",
+        "skillsTested"
+      ],
+      "properties": {
+        "task": {
+          "type": "string"
+        },
+        "skillsTested": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "difficulty": {
+          "enum": [
+            "easy",
+            "medium",
+            "hard"
+          ]
+        },
+        "assetsNeeded": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "strength": {
+          "enum": [
+            "weak",
+            "medium",
+            "strong"
+          ],
+          "default": "medium"
+        }
+      }
+    },
+    "transcriptRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lessonId",
+        "sourceFile"
+      ],
+      "properties": {
+        "lessonId": {
+          "type": "string"
+        },
+        "lessonTitle": {
+          "type": "string"
+        },
+        "sourceFile": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "endTime": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quote": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "videoRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provider": {
+          "type": "string"
+        },
+        "lessonId": {
+          "type": "string"
+        }
+      }
+    },
+    "externalRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "type"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "enum": [
+            "official-docs",
+            "exam-objectives",
+            "vendor-docs",
+            "book",
+            "lab-note",
+            "other"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
     }
   }
 }
