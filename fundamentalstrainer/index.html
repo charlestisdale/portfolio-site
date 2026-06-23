@@ -23,6 +23,7 @@
     <nav class="mode-nav card">
       <button class="mode-tab active" data-mode-target="dashboard" type="button">Dashboard</button>
       <button class="mode-tab" data-mode-target="learn" type="button">Learn</button>
+      <button class="mode-tab" data-mode-target="path" type="button">Path</button>
       <button class="mode-tab" data-mode-target="search" type="button">Search</button>
       <button class="mode-tab" data-mode-target="assessment" type="button">Assessment</button>
       <button class="mode-tab" data-mode-target="jobs" type="button">Jobs</button>
@@ -36,6 +37,10 @@
 
     <section class="mode-panel" data-mode-panel="learn">
       <section id="conceptView" class="content"></section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="path">
+      <section id="studyPathView"></section>
     </section>
 
     <section class="mode-panel" data-mode-panel="search">
@@ -70,6 +75,6 @@
     </section>
   </main>
 
-  <script type="module" src="app.js?v=20260623-assessment-foundation"></script>
+  <script type="module" src="app.js?v=20260623-study-paths"></script>
 </body>
 </html>
