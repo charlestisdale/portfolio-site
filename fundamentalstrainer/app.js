@@ -177,11 +177,14 @@ function enqueueDemoJobs() {
 }
 
 async function runSteppedJob(context, steps) {
+  context.throwIfCanceled();
   context.progress({ current: 0, total: steps.length, label: steps[0] || "Starting" });
 
   for (const [index, step] of steps.entries()) {
+    context.throwIfCanceled();
     context.log("info", step);
     await sleep(450);
+    context.throwIfCanceled();
     context.progress({ current: index + 1, total: steps.length, label: step });
   }
 }
