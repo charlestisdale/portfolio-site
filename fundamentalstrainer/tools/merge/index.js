@@ -14,3 +14,9 @@ export {
   rebuildKnowledgeIndex,
   knowledgePathForObject
 } from "./merge-planner.js";
+
+export {
+  applyMergePlanToVirtualFiles,
+  buildFileMapFromMergePlan,
+  validateMergePlan
+} from "./apply-plan.js";
