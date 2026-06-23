@@ -26,6 +26,7 @@
 
 .assessment-hero button,
 .assessment-actions button,
+.assessment-history button,
 .assessment-answer {
   border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: .75rem;
@@ -42,14 +43,16 @@
 }
 
 .assessment-question-card,
-.assessment-grade-summary {
+.assessment-grade-summary,
+.assessment-history {
   border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: .9rem;
   background: rgba(2, 6, 23, 0.34);
   padding: 1rem;
 }
 
-.assessment-question-card header {
+.assessment-question-card header,
+.assessment-history header {
   display: flex;
   justify-content: space-between;
   gap: .75rem;
@@ -57,7 +60,8 @@
   margin-bottom: .75rem;
 }
 
-.assessment-answer-list {
+.assessment-answer-list,
+.assessment-history-list {
   display: grid;
   gap: .6rem;
 }
@@ -106,12 +110,35 @@
   font-size: 2rem;
 }
 
+.assessment-history-list article {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .75rem;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: .75rem;
+  padding: .75rem;
+}
+
+.assessment-history-list article strong {
+  font-size: 1.25rem;
+}
+
+.assessment-history-list article small {
+  opacity: .72;
+}
+
 @media (max-width: 760px) {
-  .assessment-hero {
+  .assessment-hero,
+  .assessment-history header {
     display: grid;
   }
 
   .assessment-actions {
     justify-content: start;
+  }
+
+  .assessment-history-list article {
+    grid-template-columns: 1fr;
   }
 }
