@@ -3,33 +3,89 @@
 This project is organized as a reusable learning platform instead of a single quiz app.
 
 ## Core rule
+
 The `engine/` folder must not contain certification-specific content. All certification-specific data belongs in `content/`.
 
+Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, and future AI tutoring should be generated from canonical knowledge objects instead of separate duplicate content sets.
+
 ## Current phase
-Knowledge ingestion only. Do not generate quiz questions yet.
+
+The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, and assessment attempt history.
+
+The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
 ## Architecture
 
 ```text
 engine/                  Reusable learning engine only
 content/                 Certification/objective/knowledge data
-data/transcripts/raw/    Original transcript files
-data/transcripts/cleaned Cleaned transcript text
-data/imports/            Per-lesson ingestion records
+data/transcripts/raw/    Local/private raw source files only
+data/transcripts/cleaned Local/private cleaned source text only
+data/imports/            Local/private ingestion and review records
 tools/                   Schemas and ingestion utilities
+docs/                    Architecture and safety documentation
 ```
 
-## Transcript workflow
-1. Add raw `.srt` files to `data/transcripts/raw/<certification>/`.
-2. Clean transcripts into `data/transcripts/cleaned/<certification>/`.
-3. Create an import record in `data/imports/<certification>/`.
-4. Extract or merge concepts into `content/knowledge/`.
-5. Review knowledge objects for duplicates and relationships.
-6. Generate assessments later from knowledge objects.
+## Public safety boundary
 
-## Example commands
+The deployed learner app should allow users to:
 
-Clean a transcript:
+- learn from existing reviewed content
+- search concepts
+- generate practice assessments
+- save local browser progress
+- save local browser assessment history
+
+The deployed learner app should not allow users to:
+
+- upload files into the real knowledge base
+- modify trusted content
+- write directly to GitHub or content files
+- access raw source material
+- access private source provenance records
+- trigger real merge/write jobs
+
+See:
+
+```text
+docs/admin-upload-security.md
+```
+
+## Source provenance rule
+
+Public-facing content should use generic wording such as:
+
+- reviewed source material
+- imported study material
+- training source reference
+- transcript reference
+
+Avoid public labels that expose exact third-party source names, video titles, course names, providers, or raw transcript text unless the material is owned, licensed, or explicitly approved for public use.
+
+Specific provenance can remain in private/admin-only records when needed for review and audit.
+
+## Safe ingestion workflow
+
+No source material should enter the trusted knowledge base directly.
+
+```text
+source material
+→ cleaner
+→ candidate extraction
+→ duplicate detection
+→ human review
+→ import report
+→ merge plan
+→ dry run
+→ controlled write or pull request
+→ validation
+```
+
+The merge command should stay dry-run-first. Use real writes only after review and validation.
+
+## Example local commands
+
+Clean a local/private transcript:
 
 ```bash
 node tools/ingestion/clean-srt.mjs \
@@ -43,18 +99,52 @@ Create an import record:
 node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
 ```
 
+Review/import commands:
+
+```bash
+npm run ingest:extract -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
+npm run ingest:duplicates -- --file=data/imports/pending/16-candidates.json
+npm run ingest:report -- --file=data/imports/pending/16-candidates.json
+npm run ingest:merge -- --file=data/imports/pending/16-candidates.json
+```
+
+Build the pending-import manifest for local review:
+
+```bash
+npm run review:manifest
+```
+
+Then serve the folder locally:
+
+```bash
+python -m http.server 8000
+```
+
+Open:
+
+```text
+http://localhost:8000/review.html
+```
+
+The review UI is for local/admin review. It should not become a public upload feature without the backend controls documented in `docs/admin-upload-security.md`.
+
 ## Important files
-- `tools/knowledge-object.schema.json`
-- `tools/import-record.schema.json`
-- `tools/ingestion-workflow.md`
-- `content/knowledge/_templates/knowledge-object.template.json`
-- `data/imports/a-plus-220-1202/import-record.template.json`
-- `content/indexes/knowledge-index.json`
-- `content/relationships/a-plus-220-1202.graph.json`
+
+```text
+tools/knowledge-object.schema.json
+tools/import-record.schema.json
+tools/ingestion-workflow.md
+tools/ingestion/review-workflow.md
+content/knowledge/_templates/knowledge-object.template.json
+data/imports/a-plus-220-1202/import-record.template.json
+content/indexes/knowledge-index.json
+content/relationships/a-plus-220-1202.graph.json
+docs/admin-upload-security.md
+```
 
 ## Canonical knowledge object schema
 
-The platform now uses `tools/knowledge-object.schema.json` as the canonical shape for every concept. The template lives at:
+The platform uses `tools/knowledge-object.schema.json` as the canonical shape for every concept. The template lives at:
 
 ```text
 content/knowledge/_templates/knowledge-object.template.json
@@ -72,6 +162,12 @@ Validate all knowledge objects with:
 npm run validate:knowledge
 ```
 
+Validate both knowledge content and architecture references:
+
+```bash
+npm run validate:all
+```
+
 The current sample objects are:
 
 ```text
@@ -79,11 +175,11 @@ content/knowledge/windows/task-manager.json
 content/knowledge/commands/ipconfig.json
 ```
 
-Important rule: do not write quiz questions directly during transcript ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
+Important rule: do not write quiz questions directly during ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
 
 ## Data architecture layer
 
-The project now includes canonical architecture documentation and schemas for the full content ecosystem, not only knowledge objects.
+The project includes canonical architecture documentation and schemas for the full content ecosystem.
 
 ```text
 docs/data-architecture.md
@@ -102,12 +198,6 @@ tools/schemas/assessment.schema.json
 tools/schemas/media.schema.json
 tools/schemas/progress.schema.json
 tools/schemas/search-index.schema.json
-```
-
-Validate both knowledge content and architecture references:
-
-```bash
-npm run validate:all
 ```
 
 ## ID rule summary
@@ -130,65 +220,9 @@ rel.commands.ipconfig.uses.networking.dhcp
 
 This supports future concept maps, prerequisite paths, AI tutor context, analytics, and assessment generation.
 
-
-## Transcript Ingestion Review System
-
-The platform now uses a safe import pipeline:
-
-```text
-raw transcript
-→ cleaned transcript
-→ candidate concepts
-→ duplicate detection
-→ human review
-→ import report
-→ approved draft knowledge objects
-```
-
-Useful commands:
-
-```bash
-npm run ingest:extract -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
-npm run ingest:duplicates -- --file=data/imports/pending/16-candidates.json
-npm run ingest:report -- --file=data/imports/pending/16-candidates.json
-npm run ingest:merge -- --file=data/imports/pending/16-candidates.json
-```
-
-The merge command is a dry run by default. Use `--dry-run=false` only after every candidate has been reviewed.
-
-See `tools/ingestion/review-workflow.md`.
-
-## Ingestion Review UI
-
-A browser-based review interface is available at:
-
-```text
-review.html
-```
-
-Build the pending-import manifest first:
-
-```bash
-npm run review:manifest
-```
-
-Then serve the folder locally:
-
-```bash
-python -m http.server 8000
-```
-
-Open:
-
-```text
-http://localhost:8000/review.html
-```
-
-The review UI lets you approve, reject, or merge transcript-derived candidate concepts before they are allowed into the trusted knowledge base.
-
 ## Knowledge Engine
 
-The platform now includes a certification-neutral internal Knowledge Engine under `engine/knowledge/`. UI code should use this API instead of loading raw knowledge JSON directly.
+The platform includes a certification-neutral internal Knowledge Engine under `engine/knowledge/`. UI code should use this API instead of loading raw knowledge JSON directly.
 
 Important calls:
 
