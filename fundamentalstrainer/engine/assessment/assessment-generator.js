@@ -1,35 +1,45 @@
 export const AssessmentQuestionType = Object.freeze({
   MULTIPLE_CHOICE: "multiple-choice",
-  TRUE_FALSE: "true-false"
+  TRUE_FALSE: "true-false",
+  SCENARIO: "scenario"
 });
 
 export function generateAssessmentFromKnowledge(knowledgeObjects = [], options = {}) {
   const {
     limit = 10,
-    types = [AssessmentQuestionType.MULTIPLE_CHOICE, AssessmentQuestionType.TRUE_FALSE]
+    types = [
+      AssessmentQuestionType.MULTIPLE_CHOICE,
+      AssessmentQuestionType.SCENARIO,
+      AssessmentQuestionType.TRUE_FALSE
+    ]
   } = options;
 
   const availableObjects = knowledgeObjects.filter(object => object?.id && object?.learning);
   const questions = [];
+  const usedQuestionIds = new Set();
 
   for (const object of availableObjects) {
     if (questions.length >= limit) break;
 
-    if (types.includes(AssessmentQuestionType.MULTIPLE_CHOICE)) {
-      const question = generateMultipleChoiceQuestion(object, availableObjects);
-      if (question) questions.push(question);
-      if (questions.length >= limit) break;
-    }
+    const candidates = [
+      types.includes(AssessmentQuestionType.MULTIPLE_CHOICE) ? generateFactQuestion(object, availableObjects) : null,
+      types.includes(AssessmentQuestionType.MULTIPLE_CHOICE) ? generateCommandQuestion(object, availableObjects) : null,
+      types.includes(AssessmentQuestionType.SCENARIO) ? generateScenarioQuestion(object, availableObjects) : null,
+      types.includes(AssessmentQuestionType.MULTIPLE_CHOICE) ? generateCommonMistakeQuestion(object, availableObjects) : null,
+      types.includes(AssessmentQuestionType.TRUE_FALSE) ? generateTrueFalseQuestion(object) : null
+    ].filter(Boolean);
 
-    if (types.includes(AssessmentQuestionType.TRUE_FALSE)) {
-      const question = generateTrueFalseQuestion(object);
-      if (question) questions.push(question);
+    for (const question of candidates) {
+      if (questions.length >= limit) break;
+      if (usedQuestionIds.has(question.id)) continue;
+      usedQuestionIds.add(question.id);
+      questions.push(question);
     }
   }
 
   return {
     schemaVersion: "1.0.0",
-    generator: "knowledge-assessment-generator",
+    generator: "knowledge-assessment-generator-v2",
     generatedAt: new Date().toISOString(),
     summary: {
       requestedLimit: limit,
@@ -65,37 +75,103 @@ export function gradeAssessment(questions = [], answers = {}) {
   };
 }
 
-function generateMultipleChoiceQuestion(object, allObjects) {
-  const facts = object.learning?.facts || [];
-  const primaryFact = facts.find(fact => fact.text) || null;
+function generateFactQuestion(object, allObjects) {
+  const fact = selectBestFact(object);
   const summary = object.learning?.summary;
+  if (!fact && !summary) return null;
 
-  if (!primaryFact && !summary) return null;
-
-  const correctText = primaryFact?.text || summary;
-  const distractors = buildDistractors(object, allObjects, 3);
+  const correctText = fact?.text || summary;
+  const distractors = buildDistractors({ sourceObject: object, allObjects, count: 3, prefer: "facts" });
   if (distractors.length < 2) return null;
 
-  const answers = shuffle([
-    createAnswer("correct", correctText),
-    ...distractors.map((text, index) => createAnswer(`distractor-${index + 1}`, text))
-  ]);
-
-  return {
-    id: `${object.id}.mcq.1`,
+  return createQuestion({
+    id: `${object.id}.fact.1`,
     type: AssessmentQuestionType.MULTIPLE_CHOICE,
-    sourceKnowledgeId: object.id,
-    prompt: `Which statement best describes ${object.title}?`,
-    answers,
-    correctAnswerId: answers.find(answer => answer.source === "correct")?.id,
-    explanation: object.learning?.explanation || object.learning?.summary || correctText,
-    difficulty: object.difficulty || "foundational",
-    tags: object.domains || []
-  };
+    object,
+    prompt: `Which statement is true about ${object.title}?`,
+    correctText,
+    distractors,
+    explanation: object.learning?.explanation || correctText,
+    tags: ["fact", ...(object.domains || [])]
+  });
+}
+
+function generateCommandQuestion(object, allObjects) {
+  const command = object.learning?.commands?.find(item => item.command && item.purpose);
+  if (!command) return null;
+
+  const distractors = allObjects
+    .flatMap(item => item.learning?.commands || [])
+    .filter(item => item.command !== command.command && item.purpose)
+    .map(item => item.purpose)
+    .filter(uniqueText)
+    .slice(0, 3);
+
+  if (distractors.length < 2) return null;
+
+  return createQuestion({
+    id: `${object.id}.command.1`,
+    type: AssessmentQuestionType.MULTIPLE_CHOICE,
+    object,
+    prompt: `What is ${command.command} used for?`,
+    correctText: command.purpose,
+    distractors,
+    explanation: `${command.command}: ${command.purpose}`,
+    tags: ["command", ...(object.domains || [])]
+  });
+}
+
+function generateScenarioQuestion(object, allObjects) {
+  const scenario = object.assessmentSeeds?.scenarios?.find(item => item.situation && item.expectedAction);
+  if (!scenario) return null;
+
+  const distractors = allObjects
+    .flatMap(item => item.assessmentSeeds?.scenarios || [])
+    .filter(item => item.expectedAction && item.expectedAction !== scenario.expectedAction)
+    .map(item => item.expectedAction)
+    .filter(uniqueText)
+    .slice(0, 3);
+
+  if (distractors.length < 2) {
+    distractors.push(...buildDistractors({ sourceObject: object, allObjects, count: 3 - distractors.length, prefer: "summaries" }));
+  }
+
+  if (distractors.length < 2) return null;
+
+  return createQuestion({
+    id: `${object.id}.scenario.1`,
+    type: AssessmentQuestionType.SCENARIO,
+    object,
+    prompt: scenario.situation,
+    correctText: scenario.expectedAction,
+    distractors,
+    explanation: scenario.expectedAction,
+    tags: ["scenario", ...(scenario.tags || []), ...(object.domains || [])]
+  });
+}
+
+function generateCommonMistakeQuestion(object, allObjects) {
+  const mistake = object.assessmentSeeds?.commonMistakes?.find(item => item.text);
+  if (!mistake) return null;
+
+  const correctText = mistake.text;
+  const distractors = buildDistractors({ sourceObject: object, allObjects, count: 3, prefer: "facts" });
+  if (distractors.length < 2) return null;
+
+  return createQuestion({
+    id: `${object.id}.mistake.1`,
+    type: AssessmentQuestionType.MULTIPLE_CHOICE,
+    object,
+    prompt: `Which is a common mistake involving ${object.title}?`,
+    correctText,
+    distractors,
+    explanation: correctText,
+    tags: ["common-mistake", ...(object.domains || [])]
+  });
 }
 
 function generateTrueFalseQuestion(object) {
-  const fact = (object.learning?.facts || []).find(item => item.text);
+  const fact = selectBestFact(object);
   const statement = fact?.text || object.learning?.summary;
   if (!statement) return null;
 
@@ -111,17 +187,49 @@ function generateTrueFalseQuestion(object) {
     correctAnswerId: `${object.id}.tf.1.true`,
     explanation: object.learning?.explanation || object.learning?.summary || statement,
     difficulty: object.difficulty || "foundational",
-    tags: object.domains || []
+    tags: ["true-false", ...(object.domains || [])]
   };
 }
 
-function buildDistractors(sourceObject, allObjects, count) {
-  return allObjects
+function createQuestion({ id, type, object, prompt, correctText, distractors, explanation, tags = [] }) {
+  const answers = shuffle([
+    createAnswer("correct", correctText),
+    ...distractors.slice(0, 3).map((text, index) => createAnswer(`distractor-${index + 1}`, text))
+  ]);
+
+  return {
+    id,
+    type,
+    sourceKnowledgeId: object.id,
+    prompt,
+    answers,
+    correctAnswerId: answers.find(answer => answer.source === "correct")?.id,
+    explanation,
+    difficulty: object.difficulty || "foundational",
+    tags
+  };
+}
+
+function selectBestFact(object) {
+  const facts = object.learning?.facts || [];
+  return facts.find(fact => fact.importance === "exam-critical" && fact.text)
+    || facts.find(fact => fact.importance === "high" && fact.text)
+    || facts.find(fact => fact.text)
+    || null;
+}
+
+function buildDistractors({ sourceObject, allObjects, count, prefer = "summaries" }) {
+  const values = allObjects
     .filter(object => object.id !== sourceObject.id)
-    .map(object => object.learning?.summary || object.learning?.facts?.[0]?.text || object.title)
+    .flatMap(object => {
+      if (prefer === "facts") return (object.learning?.facts || []).map(fact => fact.text);
+      return [object.learning?.summary, object.learning?.facts?.[0]?.text, object.title];
+    })
     .filter(Boolean)
     .filter(text => text !== sourceObject.learning?.summary)
-    .slice(0, count);
+    .filter(uniqueText);
+
+  return values.slice(0, count);
 }
 
 function createAnswer(idSuffix, text) {
@@ -130,6 +238,10 @@ function createAnswer(idSuffix, text) {
     text,
     source: idSuffix === "correct" ? "correct" : "distractor"
   };
+}
+
+function uniqueText(value, index, values) {
+  return values.indexOf(value) === index;
 }
 
 function shuffle(values) {
