@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="mode-shell.css" />
   <link rel="stylesheet" href="dashboard-mode.css" />
   <link rel="stylesheet" href="progress.css" />
+  <link rel="stylesheet" href="assessment-mode.css" />
 </head>
 <body>
   <main class="shell">
@@ -23,6 +24,7 @@
       <button class="mode-tab active" data-mode-target="dashboard" type="button">Dashboard</button>
       <button class="mode-tab" data-mode-target="learn" type="button">Learn</button>
       <button class="mode-tab" data-mode-target="search" type="button">Search</button>
+      <button class="mode-tab" data-mode-target="assessment" type="button">Assessment</button>
       <button class="mode-tab" data-mode-target="jobs" type="button">Jobs</button>
       <button class="mode-tab" data-mode-target="graph" type="button">Graph</button>
       <button class="mode-tab" data-mode-target="commands" type="button">Commands</button>
@@ -42,6 +44,10 @@
         <input id="searchBox" placeholder="Search ipconfig, Task Manager, DHCP..." />
         <div id="results"></div>
       </aside>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="assessment">
+      <section id="assessmentView"></section>
     </section>
 
     <section class="mode-panel" data-mode-panel="jobs">
@@ -64,6 +70,6 @@
     </section>
   </main>
 
-  <script type="module" src="app.js?v=20260623-progress-foundation"></script>
+  <script type="module" src="app.js?v=20260623-assessment-foundation"></script>
 </body>
 </html>
