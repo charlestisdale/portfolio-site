@@ -3,7 +3,7 @@ import { renderLearnMode } from "./engine/modes/learn.js";
 import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
 import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
 import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
-import { generateAssessmentFromKnowledge, gradeAssessment } from "./engine/assessment/index.js";
+import { generateAssessmentFromKnowledge, gradeAssessment, LocalAssessmentAttemptStore } from "./engine/assessment/index.js";
 import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
 import { JobType } from "./engine/jobs/job-types.js";
@@ -12,6 +12,7 @@ import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
 const certificationId = "a-plus-220-1202";
 const knowledge = new KnowledgeEngine();
 const progressStore = new LocalProgressStore();
+const assessmentAttemptStore = new LocalAssessmentAttemptStore();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
 let searchFilters = {};
@@ -21,6 +22,7 @@ let jobActivityPanel = null;
 let currentAssessment = null;
 let assessmentAnswers = {};
 let currentAssessmentGrade = null;
+let currentAttemptSaved = false;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -71,6 +73,7 @@ function renderDashboard() {
     activeConcept: knowledge.get(activeConceptId),
     activeProgress: activeConceptId ? progressStore.get(activeConceptId) : null,
     progressSummary: progressStore.summarize(knowledge.all()),
+    assessmentSummary: assessmentAttemptStore.summarize(),
     jobs: jobs.list()
   });
 }
@@ -95,7 +98,9 @@ function renderAssessment() {
   assessmentView.innerHTML = renderAssessmentMode({
     assessment: currentAssessment,
     answers: assessmentAnswers,
-    grade: currentAssessmentGrade
+    grade: currentAssessmentGrade,
+    attempts: assessmentAttemptStore.list({ limit: 5 }),
+    attemptSummary: assessmentAttemptStore.summarize()
   });
 }
 
@@ -103,6 +108,7 @@ function generateAssessment() {
   currentAssessment = generateAssessmentFromKnowledge(knowledge.all(), { limit: 10 });
   assessmentAnswers = {};
   currentAssessmentGrade = null;
+  currentAttemptSaved = false;
   renderAssessment();
 }
 
@@ -112,13 +118,32 @@ function selectAssessmentAnswer(questionId, answerId) {
     [questionId]: answerId
   };
   currentAssessmentGrade = null;
+  currentAttemptSaved = false;
   renderAssessment();
 }
 
 function gradeCurrentAssessment() {
   if (!currentAssessment) return;
   currentAssessmentGrade = gradeAssessment(currentAssessment.questions, assessmentAnswers);
+
+  if (!currentAttemptSaved) {
+    assessmentAttemptStore.saveAttempt({
+      assessment: currentAssessment,
+      answers: assessmentAnswers,
+      grade: currentAssessmentGrade,
+      mode: "practice"
+    });
+    currentAttemptSaved = true;
+  }
+
   renderAssessment();
+  renderDashboard();
+}
+
+function clearAssessmentHistory() {
+  assessmentAttemptStore.clear();
+  renderAssessment();
+  renderDashboard();
 }
 
 function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
@@ -421,6 +446,11 @@ if (assessmentView) {
 
     if (actionButton?.dataset.assessmentAction === "grade") {
       gradeCurrentAssessment();
+      return;
+    }
+
+    if (actionButton?.dataset.assessmentAction === "clear-history") {
+      clearAssessmentHistory();
       return;
     }
 
