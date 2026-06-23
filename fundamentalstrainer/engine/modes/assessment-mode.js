@@ -1,4 +1,6 @@
-export function renderAssessmentMode({ assessment = null, answers = {}, grade = null } = {}) {
+export function renderAssessmentMode({ assessment = null, answers = {}, grade = null, attempts = [], attemptSummary = null } = {}) {
+  const history = renderAttemptHistory(attempts, attemptSummary);
+
   if (!assessment) {
     return `
       <section class="assessment-mode card">
@@ -10,6 +12,7 @@ export function renderAssessmentMode({ assessment = null, answers = {}, grade = 
           </div>
           <button type="button" data-assessment-action="generate">Generate Practice Set</button>
         </header>
+        ${history}
       </section>
     `;
   }
@@ -33,6 +36,8 @@ export function renderAssessmentMode({ assessment = null, answers = {}, grade = 
       <div class="assessment-question-list">
         ${assessment.questions.map((question, index) => renderQuestion(question, index, answers, grade)).join("")}
       </div>
+
+      ${history}
     </section>
   `;
 }
@@ -42,6 +47,31 @@ function renderGradeSummary(grade) {
     <section class="assessment-grade-summary">
       <strong>${escapeHtml(grade.percent)}%</strong>
       <span>${escapeHtml(grade.correct)} correct out of ${escapeHtml(grade.total)}</span>
+    </section>
+  `;
+}
+
+function renderAttemptHistory(attempts, summary) {
+  return `
+    <section class="assessment-history">
+      <header>
+        <div>
+          <h3>Recent Attempts</h3>
+          <p class="muted">${escapeHtml(summary?.totalAttempts || 0)} saved attempt${summary?.totalAttempts === 1 ? "" : "s"}${summary?.best ? ` · Best ${escapeHtml(summary.best.score.percent)}%` : ""}</p>
+        </div>
+        ${attempts.length ? `<button type="button" data-assessment-action="clear-history">Clear History</button>` : ""}
+      </header>
+      ${attempts.length ? `
+        <div class="assessment-history-list">
+          ${attempts.map(attempt => `
+            <article>
+              <strong>${escapeHtml(attempt.score.percent)}%</strong>
+              <span>${escapeHtml(attempt.score.correct)} / ${escapeHtml(attempt.score.total)} correct</span>
+              <small>${escapeHtml(formatDate(attempt.createdAt))}</small>
+            </article>
+          `).join("")}
+        </div>
+      ` : `<p class="muted">No graded attempts saved yet.</p>`}
     </section>
   `;
 }
@@ -92,6 +122,15 @@ function formatLabel(value) {
     .replaceAll("-", " ")
     .replaceAll("_", " ")
     .replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  }).format(new Date(value));
 }
 
 function escapeHtml(value) {
