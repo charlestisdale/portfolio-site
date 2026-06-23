@@ -4,15 +4,15 @@ const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 
 const RELATIONSHIP_LABELS = {
-  troubleshoots: "helps troubleshoot",
+  troubleshoots: "troubleshooting",
   troubleshooting: "troubleshooting",
   uses: "uses",
   depends_on: "depends on",
   prerequisite: "prerequisite",
   related_to: "related to",
   command: "command",
-  security: "security link",
-  networking: "networking link"
+  security: "security",
+  networking: "networking"
 };
 
 export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [] } = {}) {
@@ -38,7 +38,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       <header class="graph-visualizer__header">
         <div>
           <h3>Interactive graph</h3>
-          <p class="muted">This focused view shows the active Knowledge Object and its direct relationships. Dashed nodes are missing relationship targets that need content created or relationships fixed.</p>
+          <p class="muted">Focused view: active concept plus direct relationships. Dashed nodes are missing Knowledge Objects that should be created or fixed.</p>
         </div>
         <div class="graph-visualizer__tools" aria-label="Graph summary">
           <span class="pill">${escapeHtml(graphModel.nodes.length)} visible nodes</span>
@@ -50,7 +50,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
 
       <div class="graph-legend" aria-label="Relationship types">
         ${relationshipTypes.map(type => `<span class="graph-legend__item graph-edge-type--${classToken(type)}">${escapeHtml(formatRelationshipLabel(type))}</span>`).join("")}
-        ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing target</span>` : ""}
+        ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
       <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization">
@@ -169,12 +169,17 @@ function renderEdges(edges, layout) {
     const target = layout.get(edge.targetId);
     if (!source || !target) return "";
     const type = edge.type || "related_to";
-    const label = getEdgeLabelPosition(source, target, index);
+    const label = formatRelationshipLabel(type);
+    const labelPosition = getEdgeLabelPosition(source, target, index);
+    const labelWidth = estimateLabelWidth(label);
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
         <line x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}"></line>
-        <text x="${label.x}" y="${label.y}">${escapeHtml(formatRelationshipLabel(type))}</text>
+        <g class="graph-edge-label">
+          <rect x="${labelPosition.x - labelWidth / 2}" y="${labelPosition.y - 12}" width="${labelWidth}" height="18" rx="9"></rect>
+          <text x="${labelPosition.x}" y="${labelPosition.y}">${escapeHtml(label)}</text>
+        </g>
       </g>
     `;
   }).join("");
@@ -193,12 +198,16 @@ function getEdgeLabelPosition(source, target, index = 0) {
     y: dx / length
   };
   const direction = index % 2 === 0 ? 1 : -1;
-  const verticalBias = Math.abs(dx) < 24 ? -18 : 0;
+  const verticalBias = Math.abs(dx) < 24 ? -20 : 0;
 
   return {
-    x: clamp(midpoint.x + perpendicular.x * 28 * direction, 40, VIEWBOX_WIDTH - 40),
-    y: clamp(midpoint.y + perpendicular.y * 28 * direction + verticalBias, 26, VIEWBOX_HEIGHT - 26)
+    x: clamp(midpoint.x + perpendicular.x * 32 * direction, 52, VIEWBOX_WIDTH - 52),
+    y: clamp(midpoint.y + perpendicular.y * 32 * direction + verticalBias, 30, VIEWBOX_HEIGHT - 30)
   };
+}
+
+function estimateLabelWidth(label) {
+  return Math.max(44, Math.min(150, String(label).length * 7.2 + 18));
 }
 
 function clamp(value, min, max) {
