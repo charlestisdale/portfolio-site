@@ -1,3 +1,5 @@
+import { renderKnowledgeGraphVisualizer } from "./graph-visualizer.js";
+
 export function renderGraphMode({ activeConcept = null, edges = [], stats = {}, graph = null } = {}) {
   const nodes = graph?.nodes || [];
   const missing = stats.missingRelationshipTargets || [];
@@ -18,6 +20,7 @@ export function renderGraphMode({ activeConcept = null, edges = [], stats = {}, 
         </div>
       </header>
 
+      ${renderKnowledgeGraphVisualizer({ graph, activeConcept, activeEdges: edges })}
       ${activeConcept ? renderActiveConcept(activeConcept, edges) : renderEmptyState(nodes)}
       ${missing.length ? renderMissingTargets(missing) : ""}
     </section>
