@@ -1,6 +1,7 @@
 import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderLearnMode } from "./engine/modes/learn.js";
 import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
+import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
 import { JobType } from "./engine/jobs/job-types.js";
 import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
@@ -10,11 +11,13 @@ const knowledge = new KnowledgeEngine();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
 let searchFilters = {};
-let activeMode = "learn";
+let activeMode = "dashboard";
+let certificationState = null;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
 const conceptView = document.querySelector("#conceptView");
+const dashboardView = document.querySelector("#dashboardView");
 const platformStats = document.querySelector("#platformStats");
 const relatedView = document.querySelector("#relatedView");
 const commandView = document.querySelector("#commandView");
@@ -24,6 +27,7 @@ const modePanels = [...document.querySelectorAll("[data-mode-panel]")];
 
 async function loadPlatform() {
   await knowledge.loadCertification(certificationId);
+  certificationState = knowledge.certification(certificationId);
   renderStats();
   renderSearch();
   renderCommands();
@@ -33,7 +37,8 @@ async function loadPlatform() {
   const first = knowledge.all()[0];
   const initialConceptId = knowledge.get(hashState.learn) ? hashState.learn : first?.id;
   if (initialConceptId) renderConcept(initialConceptId, { updateHash: false, switchMode: false });
-  setMode(hashState.mode || "learn", { updateHash: false });
+  renderDashboard();
+  setMode(hashState.mode || "dashboard", { updateHash: false });
 }
 
 function renderStats() {
@@ -44,6 +49,15 @@ function renderStats() {
     <div><strong>${stats.commands}</strong><span>Commands</span></div>
     <div><strong>${stats.pbqIdeas}</strong><span>PBQ Seeds</span></div>
   `;
+}
+
+function renderDashboard() {
+  dashboardView.innerHTML = renderDashboardMode({
+    certificationState,
+    stats: knowledge.statistics(),
+    activeConcept: knowledge.get(activeConceptId),
+    jobs: jobs.list()
+  });
 }
 
 function renderSearch() {
@@ -77,6 +91,7 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
 
   renderRelated(id);
   renderSearch();
+  renderDashboard();
 
   if (switchMode) setMode("learn", { updateHash: false });
   if (updateHash) writeHashState({ mode: activeMode, learn: id });
@@ -130,8 +145,10 @@ function renderCommands() {
 }
 
 function setMode(mode, { updateHash = true } = {}) {
-  const validMode = modePanels.some(panel => panel.dataset.modePanel === mode) ? mode : "learn";
+  const validMode = modePanels.some(panel => panel.dataset.modePanel === mode) ? mode : "dashboard";
   activeMode = validMode;
+
+  if (validMode === "dashboard") renderDashboard();
 
   for (const tab of modeTabs) {
     tab.classList.toggle("active", tab.dataset.modeTarget === validMode);
@@ -149,7 +166,10 @@ function startJobsActivityPanel() {
   const panel = new JobActivityPanel({
     root: jobsActivity,
     runner: jobs,
-    onSeedDemoJobs: enqueueDemoJobs
+    onSeedDemoJobs: () => {
+      enqueueDemoJobs();
+      renderDashboard();
+    }
   });
 
   panel.start();
@@ -253,6 +273,8 @@ async function runSteppedJob(context, steps) {
     context.throwIfCanceled();
     context.progress({ current: index + 1, total: steps.length, label: step });
   }
+
+  renderDashboard();
 }
 
 function sleep(ms) {
@@ -287,6 +309,27 @@ function updateSearchFilter(name, value) {
 
 modeTabs.forEach(tab => {
   tab.addEventListener("click", () => setMode(tab.dataset.modeTarget));
+});
+
+dashboardView.addEventListener("click", event => {
+  const modeJump = event.target.closest("button[data-mode-jump]");
+  if (modeJump) {
+    setMode(modeJump.dataset.modeJump);
+    return;
+  }
+
+  const domainButton = event.target.closest("button[data-dashboard-domain]");
+  if (domainButton) {
+    searchFilters = { domain: domainButton.dataset.dashboardDomain };
+    searchBox.value = "";
+    renderSearch();
+    setMode("search");
+    return;
+  }
+
+  const conceptButton = event.target.closest("button[data-id]");
+  if (!conceptButton) return;
+  renderConcept(conceptButton.dataset.id);
 });
 
 searchBox.addEventListener("input", () => renderSearch());
