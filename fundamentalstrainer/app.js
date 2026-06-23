@@ -1,6 +1,7 @@
 import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderLearnMode } from "./engine/modes/learn.js";
-import { JobRunner, JobType } from "./engine/jobs/index.js";
+import { JobRunner } from "./engine/jobs/job-runner.js";
+import { JobType } from "./engine/jobs/job-types.js";
 import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
 
 const certificationId = "a-plus-220-1202";
