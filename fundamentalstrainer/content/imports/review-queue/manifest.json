@@ -1,5 +1,11 @@
 {
   "schemaVersion": "1.0.0",
   "description": "Pending transcript import reports for human review.",
-  "imports": []
+  "imports": [
+    {
+      "id": "sample-windows-tools-import",
+      "label": "Sample Windows Tools Import",
+      "path": "sample-windows-tools-import.json"
+    }
+  ]
 }
