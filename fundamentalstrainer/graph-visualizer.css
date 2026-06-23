@@ -29,9 +29,14 @@
   opacity: .86;
 }
 
+.graph-legend__item--missing {
+  border-style: dashed;
+  opacity: .7;
+}
+
 .graph-canvas {
   position: relative;
-  min-height: 460px;
+  min-height: 420px;
   overflow: auto;
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: .9rem;
@@ -47,7 +52,7 @@
   position: absolute;
   inset: 0;
   min-width: 760px;
-  min-height: 460px;
+  min-height: 420px;
 }
 
 .graph-canvas__edges {
@@ -79,7 +84,8 @@
   stroke: rgba(52, 211, 153, .58);
 }
 
-.graph-edge-type--troubleshooting line {
+.graph-edge-type--troubleshooting line,
+.graph-edge-type--troubleshoots line {
   stroke: rgba(251, 191, 36, .62);
 }
 
@@ -134,8 +140,21 @@
 }
 
 .graph-visual-node--missing {
-  opacity: .62;
+  cursor: not-allowed;
+  opacity: .72;
   border-style: dashed;
+  background: rgba(30, 41, 59, .6);
+}
+
+.graph-visual-node--missing strong {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: .78rem;
+}
+
+.graph-visual-node--missing:hover,
+.graph-visual-node--missing:focus-visible {
+  border-color: rgba(251, 191, 36, .58);
+  background: rgba(30, 41, 59, .6);
 }
 
 @media (max-width: 900px) {
