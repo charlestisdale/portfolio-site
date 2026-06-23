@@ -1,3 +1,5 @@
+import { getGraphScope } from "./graph-scope.js";
+
 const VIEWBOX_WIDTH = 760;
 const VIEWBOX_HEIGHT = 420;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
@@ -16,7 +18,7 @@ const RELATIONSHIP_LABELS = {
   networking: "networking"
 };
 
-export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [], scope = "focused" } = {}) {
+export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [], scope = getGraphScope() } = {}) {
   const sourceNodes = graph?.nodes || [];
   const sourceEdges = graph?.edges || [];
   const graphScope = GRAPH_SCOPES.includes(scope) ? scope : "focused";
