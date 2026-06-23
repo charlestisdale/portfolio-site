@@ -10,6 +10,7 @@ const knowledge = new KnowledgeEngine();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
 let searchFilters = {};
+let activeMode = "learn";
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -18,6 +19,8 @@ const platformStats = document.querySelector("#platformStats");
 const relatedView = document.querySelector("#relatedView");
 const commandView = document.querySelector("#commandView");
 const jobsActivity = document.querySelector("#jobsActivity");
+const modeTabs = [...document.querySelectorAll("[data-mode-target]")];
+const modePanels = [...document.querySelectorAll("[data-mode-panel]")];
 
 async function loadPlatform() {
   await knowledge.loadCertification(certificationId);
@@ -26,10 +29,11 @@ async function loadPlatform() {
   renderCommands();
   startJobsActivityPanel();
 
-  const hashConceptId = readConceptIdFromHash();
+  const hashState = readHashState();
   const first = knowledge.all()[0];
-  const initialConceptId = knowledge.get(hashConceptId) ? hashConceptId : first?.id;
-  if (initialConceptId) renderConcept(initialConceptId, { updateHash: !hashConceptId });
+  const initialConceptId = knowledge.get(hashState.learn) ? hashState.learn : first?.id;
+  if (initialConceptId) renderConcept(initialConceptId, { updateHash: false, switchMode: false });
+  setMode(hashState.mode || "learn", { updateHash: false });
 }
 
 function renderStats() {
@@ -55,7 +59,7 @@ function renderSearch() {
   `;
 }
 
-function renderConcept(id, { updateHash = true } = {}) {
+function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
   const concept = knowledge.get(id);
   if (!concept) return;
 
@@ -74,9 +78,8 @@ function renderConcept(id, { updateHash = true } = {}) {
   renderRelated(id);
   renderSearch();
 
-  if (updateHash) {
-    history.replaceState(null, "", `#learn=${encodeURIComponent(id)}`);
-  }
+  if (switchMode) setMode("learn", { updateHash: false });
+  if (updateHash) writeHashState({ mode: activeMode, learn: id });
 }
 
 function resolvePrimaryLessonContext(concept) {
@@ -124,6 +127,22 @@ function renderCommands() {
   commandView.innerHTML = commands.length ? commands.map(command => `
     <li><code>${escapeHtml(command.command)}</code> — ${escapeHtml(command.purpose)} <span class="pill">${escapeHtml(command.title)}</span></li>
   `).join("") : "<li>No commands loaded yet.</li>";
+}
+
+function setMode(mode, { updateHash = true } = {}) {
+  const validMode = modePanels.some(panel => panel.dataset.modePanel === mode) ? mode : "learn";
+  activeMode = validMode;
+
+  for (const tab of modeTabs) {
+    tab.classList.toggle("active", tab.dataset.modeTarget === validMode);
+    tab.setAttribute("aria-selected", String(tab.dataset.modeTarget === validMode));
+  }
+
+  for (const panel of modePanels) {
+    panel.classList.toggle("active", panel.dataset.modePanel === validMode);
+  }
+
+  if (updateHash) writeHashState({ mode: validMode, learn: activeConceptId });
 }
 
 function startJobsActivityPanel() {
@@ -240,10 +259,20 @@ function sleep(ms) {
   return new Promise(resolve => window.setTimeout(resolve, ms));
 }
 
-function readConceptIdFromHash() {
+function readHashState() {
   const hash = window.location.hash.replace(/^#/, "");
   const params = new URLSearchParams(hash);
-  return params.get("learn");
+  return {
+    mode: params.get("mode"),
+    learn: params.get("learn")
+  };
+}
+
+function writeHashState({ mode = activeMode, learn = activeConceptId } = {}) {
+  const params = new URLSearchParams();
+  if (mode) params.set("mode", mode);
+  if (learn) params.set("learn", learn);
+  history.replaceState(null, "", `#${params.toString()}`);
 }
 
 function updateSearchFilter(name, value) {
@@ -255,6 +284,10 @@ function updateSearchFilter(name, value) {
   searchFilters = Object.fromEntries(Object.entries(searchFilters).filter(([, filterValue]) => Boolean(filterValue)));
   renderSearch();
 }
+
+modeTabs.forEach(tab => {
+  tab.addEventListener("click", () => setMode(tab.dataset.modeTarget));
+});
 
 searchBox.addEventListener("input", () => renderSearch());
 
@@ -291,8 +324,11 @@ conceptView.addEventListener("click", event => {
 });
 
 window.addEventListener("hashchange", () => {
-  const conceptId = readConceptIdFromHash();
-  if (conceptId && conceptId !== activeConceptId) renderConcept(conceptId, { updateHash: false });
+  const hashState = readHashState();
+  if (hashState.learn && hashState.learn !== activeConceptId) {
+    renderConcept(hashState.learn, { updateHash: false, switchMode: false });
+  }
+  if (hashState.mode && hashState.mode !== activeMode) setMode(hashState.mode, { updateHash: false });
 });
 
 loadPlatform().catch(error => {
