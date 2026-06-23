@@ -1,4 +1,4 @@
-export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [], progressSummary = null, activeProgress = null } = {}) {
+export function renderDashboardMode({ certificationState, stats, activeConcept, jobs = [], progressSummary = null, activeProgress = null, assessmentSummary = null } = {}) {
   const certification = certificationState?.certification;
   const knowledge = certificationState?.knowledge || [];
   const lessons = certificationState?.lessons || [];
@@ -16,6 +16,12 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
     percentStarted: 0,
     percentMastered: 0
   };
+  const attempts = assessmentSummary || {
+    totalAttempts: 0,
+    latest: null,
+    best: null,
+    averagePercent: 0
+  };
 
   return `
     <section class="dashboard-mode card">
@@ -28,6 +34,7 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         <div class="dashboard-actions">
           <button type="button" data-mode-jump="learn">Continue Learning</button>
           <button type="button" data-mode-jump="search">Search Concepts</button>
+          <button type="button" data-mode-jump="assessment">Practice</button>
           <button type="button" data-mode-jump="jobs">View Jobs</button>
         </div>
       </header>
@@ -38,7 +45,7 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
         ${renderStat("Objectives", stats?.objectives ?? objectives.length)}
         ${renderStat("Started", `${progress.percentStarted}%`)}
         ${renderStat("Mastered", `${progress.percentMastered}%`)}
-        ${renderStat("Needs Review", needsReviewCount)}
+        ${renderStat("Best Practice", attempts.best ? `${attempts.best.score.percent}%` : "—")}
       </section>
 
       <section class="dashboard-grid">
@@ -60,6 +67,16 @@ export function renderDashboardMode({ certificationState, stats, activeConcept, 
             <li><strong>${escapeHtml(progress.reviewed)}</strong><span>reviewed concepts</span></li>
             <li><strong>${escapeHtml(progress.mastered)}</strong><span>mastered concepts</span></li>
             <li><strong>${escapeHtml(progress.notStarted)}</strong><span>not started</span></li>
+          </ul>
+        </article>
+
+        <article class="dashboard-card">
+          <h3>Assessment Performance</h3>
+          <ul class="dashboard-list">
+            <li><strong>${escapeHtml(attempts.totalAttempts)}</strong><span>saved attempts</span></li>
+            <li><strong>${attempts.latest ? `${escapeHtml(attempts.latest.score.percent)}%` : "—"}</strong><span>latest score</span></li>
+            <li><strong>${attempts.best ? `${escapeHtml(attempts.best.score.percent)}%` : "—"}</strong><span>best score</span></li>
+            <li><strong>${attempts.totalAttempts ? `${escapeHtml(attempts.averagePercent)}%` : "—"}</strong><span>average score</span></li>
           </ul>
         </article>
 
