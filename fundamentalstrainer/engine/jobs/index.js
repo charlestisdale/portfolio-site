@@ -14,7 +14,7 @@ export {
 } from "./job-record.js";
 export { JobRegistry } from "./job-registry.js";
 export { InMemoryJobStore } from "./job-store.js";
-export { JobRunner } from "./job-runner.js";
+export { JobRunner, JobCanceledError } from "./job-runner.js";
 export { createJobPipeline, enqueuePipeline, summarizePipelineJobs } from "./job-pipeline.js";
 export {
   registerPlatformJobHandlers,
