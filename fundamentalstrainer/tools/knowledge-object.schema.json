@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge Object",
+  "type": "object",
+  "required": ["id", "title", "certifications", "objectives", "summary", "facts", "relatedConcepts", "transcriptReferences", "sourceVideos"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "certifications": { "type": "array", "items": { "type": "string" } },
+    "objectives": { "type": "array", "items": { "type": "string" } },
+    "lessons": { "type": "array", "items": { "type": "string" } },
+    "summary": { "type": "string" },
+    "facts": { "type": "array", "items": { "type": "string" } },
+    "commands": { "type": "array" },
+    "examples": { "type": "array", "items": { "type": "string" } },
+    "relatedConcepts": { "type": "array", "items": { "type": "string" } },
+    "commonMistakes": { "type": "array", "items": { "type": "string" } },
+    "examTips": { "type": "array", "items": { "type": "string" } },
+    "scenarios": { "type": "array", "items": { "type": "string" } },
+    "pbqIdeas": { "type": "array", "items": { "type": "string" } },
+    "transcriptReferences": { "type": "array" },
+    "sourceVideos": { "type": "array", "items": { "type": "string" } },
+    "status": { "enum": ["draft", "reviewed", "deprecated"] },
+    "lastReviewed": { "type": ["string", "null"] }
+  }
+}

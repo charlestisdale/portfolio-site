@@ -1,0 +1,9 @@
+{
+  "certificationId": "a-plus-220-1202",
+  "objectives": [
+    { "id": "1.0", "name": "Operating Systems", "weight": null },
+    { "id": "2.0", "name": "Security", "weight": null },
+    { "id": "3.0", "name": "Software Troubleshooting", "weight": null },
+    { "id": "4.0", "name": "Operational Procedures", "weight": null }
+  ]
+}

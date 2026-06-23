@@ -1,0 +1,13 @@
+{
+  "id": "a-plus-220-1202",
+  "name": "CompTIA A+ Core 2",
+  "version": "220-1202",
+  "vendor": "CompTIA",
+  "status": "in-progress",
+  "objectivesPath": "../objectives/a-plus-220-1202.json",
+  "knowledgeRoots": [
+    "../knowledge/windows",
+    "../knowledge/networking",
+    "../knowledge/commands"
+  ]
+}

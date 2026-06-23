@@ -1,0 +1,21 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body { margin: 0; }
+.shell { width: min(1120px, calc(100% - 2rem)); margin: 2rem auto; }
+.card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; padding: 1.25rem; }
+.hero { margin-bottom: 1rem; }
+.eyebrow { color: #93c5fd; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
+.grid { display: grid; grid-template-columns: 320px 1fr; gap: 1rem; }
+input { width: 100%; box-sizing: border-box; padding: .8rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.14); background: rgba(15,23,42,.9); color: inherit; }
+.result { width: 100%; text-align: left; margin-top: .6rem; padding: .75rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); color: inherit; cursor: pointer; }
+.result:hover { background: rgba(255,255,255,.08); }
+.result span { opacity: .7; font-size: .85rem; }
+.content .card { min-height: 520px; }
+code { background: rgba(255,255,255,.08); padding: .1rem .3rem; border-radius: .3rem; }
+li { margin: .35rem 0; }
+@media(max-width: 800px) { .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,64 @@
+{
+  "id": "commands.ipconfig",
+  "title": "ipconfig",
+  "certifications": ["a-plus-220-1202"],
+  "objectives": ["1.4"],
+  "lessons": ["10 Windows Command Line Tools", "11 The Windows Network Command Line"],
+  "summary": "ipconfig is a Windows command-line tool used to view and troubleshoot IP configuration information.",
+  "facts": [
+    "ipconfig shows IPv4 address, IPv6 address, subnet mask, and default gateway information.",
+    "ipconfig /all shows detailed adapter information, including DNS servers and MAC address.",
+    "ipconfig /release releases a DHCP lease.",
+    "ipconfig /renew requests a new DHCP lease.",
+    "ipconfig /flushdns clears the local DNS resolver cache."
+  ],
+  "commands": [
+    { "command": "ipconfig", "purpose": "View basic IP configuration." },
+    { "command": "ipconfig /all", "purpose": "View detailed adapter configuration." },
+    { "command": "ipconfig /release", "purpose": "Release DHCP lease." },
+    { "command": "ipconfig /renew", "purpose": "Renew DHCP lease." },
+    { "command": "ipconfig /flushdns", "purpose": "Clear DNS resolver cache." }
+  ],
+  "examples": [
+    "Use ipconfig /all to confirm which DNS server a Windows client is using.",
+    "Use ipconfig /release and ipconfig /renew when troubleshooting DHCP assignment issues."
+  ],
+  "relatedConcepts": [
+    "networking.dhcp",
+    "networking.dns",
+    "networking.default-gateway",
+    "networking.tcp-ip",
+    "commands.ping"
+  ],
+  "commonMistakes": [
+    "Using ipconfig to test connectivity. ipconfig shows configuration; ping tests reachability.",
+    "Forgetting that /flushdns clears cache but does not fix an incorrect DNS server setting."
+  ],
+  "examTips": [
+    "For checking a client's assigned IP address, default gateway, or DNS server, think ipconfig."
+  ],
+  "scenarios": [
+    "A Windows client has an APIPA address. Use ipconfig to confirm the address and then troubleshoot DHCP."
+  ],
+  "pbqIdeas": [
+    "Given command output, identify whether the issue is DNS, DHCP, default gateway, or subnet related."
+  ],
+  "transcriptReferences": [
+    {
+      "lesson": "10 Windows Command Line Tools",
+      "sourceFile": "10-Windows Command Line Tools - CompTIA A+ 220-1202 - 1.5.en.srt",
+      "timestamps": []
+    },
+    {
+      "lesson": "11 The Windows Network Command Line",
+      "sourceFile": "11-The Windows Network Command Line - CompTIA A+ 220-1202 - 1.5.en.srt",
+      "timestamps": []
+    }
+  ],
+  "sourceVideos": [
+    "Professor Messer A+ Core 2 220-1202 - 10 Windows Command Line Tools",
+    "Professor Messer A+ Core 2 220-1202 - 11 The Windows Network Command Line"
+  ],
+  "status": "draft",
+  "lastReviewed": null
+}
