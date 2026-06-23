@@ -64,13 +64,16 @@
   stroke-width: 2;
 }
 
-.graph-edge text {
-  fill: rgba(226, 232, 240, .58);
+.graph-edge-label rect {
+  fill: rgba(2, 6, 23, .9);
+  stroke: rgba(148, 163, 184, .28);
+  stroke-width: 1;
+}
+
+.graph-edge-label text {
+  fill: rgba(241, 245, 249, .9);
   font-size: 11px;
-  paint-order: stroke;
-  stroke: rgba(2, 6, 23, .88);
-  stroke-width: 4px;
-  stroke-linejoin: round;
+  font-weight: 700;
   text-anchor: middle;
 }
 
