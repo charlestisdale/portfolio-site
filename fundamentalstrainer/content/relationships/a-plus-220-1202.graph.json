@@ -1,0 +1,20 @@
+{
+  "certification": "a-plus-220-1202",
+  "relationships": [
+    {
+      "from": "ipconfig",
+      "to": "dhcp",
+      "type": "uses-or-verifies"
+    },
+    {
+      "from": "ipconfig",
+      "to": "dns",
+      "type": "troubleshoots"
+    },
+    {
+      "from": "windows-firewall",
+      "to": "network-profiles",
+      "type": "depends-on"
+    }
+  ]
+}

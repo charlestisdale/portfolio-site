@@ -1,0 +1,8 @@
+{
+  "generatedBy": "manual-starter",
+  "description": "Central index of knowledge object files. Keep this certification-neutral when possible.",
+  "objects": [
+    "content/knowledge/windows/task-manager.json",
+    "content/knowledge/commands/ipconfig.json"
+  ]
+}
