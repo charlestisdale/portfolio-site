@@ -30,7 +30,8 @@
 
 .dashboard-actions button,
 .dashboard-tags button,
-.dashboard-concept-link {
+.dashboard-concept-link,
+.dashboard-recommendation {
   border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: .8rem;
   background: rgba(59, 130, 246, 0.16);
@@ -38,6 +39,14 @@
   cursor: pointer;
   font: inherit;
   padding: .7rem .9rem;
+}
+
+.dashboard-actions button:hover,
+.dashboard-tags button:hover,
+.dashboard-concept-link:hover,
+.dashboard-recommendation:hover {
+  border-color: rgba(147, 197, 253, .5);
+  background: rgba(59, 130, 246, 0.24);
 }
 
 .dashboard-stat-grid {
@@ -52,6 +61,10 @@
   border-radius: .9rem;
   background: rgba(2, 6, 23, 0.34);
   padding: 1rem;
+}
+
+.dashboard-card--wide {
+  grid-column: 1 / -1;
 }
 
 .dashboard-stat-grid strong {
@@ -90,22 +103,35 @@
   padding-bottom: 0;
 }
 
-.dashboard-tags {
+.dashboard-tags,
+.dashboard-recommendation-list {
   display: flex;
   gap: .55rem;
   flex-wrap: wrap;
 }
 
-.dashboard-concept-link {
+.dashboard-concept-link,
+.dashboard-recommendation {
   display: grid;
   gap: .35rem;
   width: 100%;
   text-align: left;
 }
 
-.dashboard-concept-link span {
+.dashboard-recommendation {
+  flex: 1 1 220px;
+  background: rgba(15, 23, 42, 0.78);
+}
+
+.dashboard-concept-link span,
+.dashboard-recommendation span,
+.dashboard-recommendation small {
   opacity: .78;
   line-height: 1.45;
+}
+
+.dashboard-recommendation small {
+  font-size: .78rem;
 }
 
 @media (max-width: 900px) {
