@@ -28,6 +28,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const layout = layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId });
   const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related_to")).sort();
 
+  registerScopeRenderer({ graph, activeConcept, activeEdges });
+
   if (!sourceNodes.length) {
     return `
       <section class="graph-visualizer graph-visualizer--empty">
@@ -75,6 +77,15 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       </div>
     </section>
   `;
+}
+
+function registerScopeRenderer(renderState) {
+  if (typeof window === "undefined") return;
+  window.__renderKnowledgeGraphScope = nextScope => {
+    const mount = document.querySelector(".graph-visualizer");
+    if (!mount) return;
+    mount.outerHTML = renderKnowledgeGraphVisualizer({ ...renderState, scope: nextScope });
+  };
 }
 
 function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
