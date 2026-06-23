@@ -13,6 +13,13 @@ import {
 import { InMemoryJobStore } from "./job-store.js";
 import { JobRegistry } from "./job-registry.js";
 
+export class JobCanceledError extends Error {
+  constructor(message = "Job canceled by user.") {
+    super(message);
+    this.name = "JobCanceledError";
+  }
+}
+
 export class JobRunner {
   constructor({ registry = new JobRegistry(), store = new InMemoryJobStore(), concurrency = 1 } = {}) {
     this.registry = registry;
@@ -20,6 +27,7 @@ export class JobRunner {
     this.concurrency = Math.max(1, concurrency);
     this.queue = [];
     this.running = new Set();
+    this.cancellationRequests = new Map();
   }
 
   register(type, handler, options = {}) {
@@ -54,16 +62,25 @@ export class JobRunner {
 
   async run(jobId) {
     this.running.add(jobId);
+    this.cancellationRequests.delete(jobId);
 
     try {
       let job = this.store.update(jobId, markJobRunning);
       const handlerEntry = this.registry.get(job.type);
       const context = this.createContext(job.id);
       const result = await handlerEntry.handler(job.payload, context, job);
-      this.store.update(job.id, current => markJobSucceeded(current, result));
+
+      if (this.isCancellationRequested(job.id)) {
+        this.store.update(job.id, current => markJobCanceled(current, this.getCancellationReason(job.id)));
+      } else {
+        this.store.update(job.id, current => markJobSucceeded(current, result));
+      }
     } catch (error) {
       const current = this.store.get(jobId);
-      if (current && canRetryJob(current)) {
+
+      if (error instanceof JobCanceledError || this.isCancellationRequested(jobId)) {
+        if (current) this.store.update(jobId, job => markJobCanceled(job, error.message || this.getCancellationReason(jobId)));
+      } else if (current && canRetryJob(current)) {
         this.store.update(jobId, job => markJobRetrying(job, error));
         this.store.update(jobId, job => {
           job.status = JobStatus.QUEUED;
@@ -75,6 +92,7 @@ export class JobRunner {
       }
     } finally {
       this.running.delete(jobId);
+      this.cancellationRequests.delete(jobId);
       this.tick();
     }
   }
@@ -85,8 +103,9 @@ export class JobRunner {
 
     this.queue = this.queue.filter(id => id !== jobId);
     if (this.running.has(jobId)) {
+      this.cancellationRequests.set(jobId, reason);
       this.store.update(jobId, current => {
-        addJobLog(current, "warn", "Cancel requested while job is running.");
+        addJobLog(current, "warn", "Cancel requested. The running job will stop at the next safe checkpoint.");
         return current;
       });
       return this.store.get(jobId);
@@ -122,6 +141,7 @@ export class JobRunner {
       return current;
     });
 
+    this.cancellationRequests.delete(jobId);
     this.queue.push(jobId);
     this.tick();
     return updated;
@@ -135,11 +155,25 @@ export class JobRunner {
     return this.store.list(filters);
   }
 
+  isCancellationRequested(jobId) {
+    return this.cancellationRequests.has(jobId);
+  }
+
+  getCancellationReason(jobId) {
+    return this.cancellationRequests.get(jobId) || "Job canceled by user.";
+  }
+
   createContext(jobId) {
     return {
       getJob: () => this.store.get(jobId),
       progress: progress => this.store.update(jobId, job => updateJobProgress(job, progress)),
-      log: (level, message, data = null) => this.store.update(jobId, job => addJobLog(job, level, message, data))
+      log: (level, message, data = null) => this.store.update(jobId, job => addJobLog(job, level, message, data)),
+      isCanceled: () => this.isCancellationRequested(jobId),
+      throwIfCanceled: () => {
+        if (this.isCancellationRequested(jobId)) {
+          throw new JobCanceledError(this.getCancellationReason(jobId));
+        }
+      }
     };
   }
 }
