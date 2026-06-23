@@ -4,6 +4,8 @@ import { renderSearchControls, renderSearchResults } from "./engine/modes/search
 import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
 import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
 import { renderGraphMode } from "./engine/modes/graph-mode.js";
+import { renderStudyPathMode } from "./engine/modes/study-path-mode.js";
+import { buildStudyPath } from "./engine/study-paths/index.js";
 import { generateAssessmentFromKnowledge, gradeAssessment, LocalAssessmentAttemptStore } from "./engine/assessment/index.js";
 import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
@@ -29,6 +31,7 @@ const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
 const conceptView = document.querySelector("#conceptView");
 const dashboardView = document.querySelector("#dashboardView");
+const studyPathView = document.querySelector("#studyPathView");
 const assessmentView = document.querySelector("#assessmentView");
 const platformStats = document.querySelector("#platformStats");
 const relatedView = document.querySelector("#relatedView");
@@ -45,6 +48,7 @@ async function loadPlatform() {
   renderCommands();
   renderAssessment();
   renderGraph();
+  renderStudyPath();
   startJobsActivityPanel();
 
   const hashState = readHashState();
@@ -118,6 +122,18 @@ function renderGraph() {
   });
 }
 
+function renderStudyPath() {
+  if (!studyPathView) return;
+
+  studyPathView.innerHTML = renderStudyPathMode({
+    path: buildStudyPath({
+      certificationState,
+      knowledgeEngine: knowledge,
+      progressStore
+    })
+  });
+}
+
 function generateAssessment() {
   currentAssessment = generateAssessmentFromKnowledge(knowledge.all(), { limit: 10 });
   assessmentAnswers = {};
@@ -180,6 +196,7 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
   renderGraph();
   renderSearch();
   renderDashboard();
+  renderStudyPath();
 
   if (switchMode) setMode(getPanelExists("learn") ? "learn" : getDefaultMode(), { updateHash: false });
   if (updateHash) writeHashState({ mode: activeMode, learn: id });
@@ -193,6 +210,7 @@ function updateConceptProgress(knowledgeId, action) {
 
   renderConcept(knowledgeId, { updateHash: true, switchMode: false });
   renderDashboard();
+  renderStudyPath();
 }
 
 function resolvePrimaryLessonContext(concept) {
@@ -231,6 +249,7 @@ function setMode(mode, { updateHash = true } = {}) {
   if (validMode === "dashboard") renderDashboard();
   if (validMode === "assessment") renderAssessment();
   if (validMode === "graph") renderGraph();
+  if (validMode === "path") renderStudyPath();
 
   for (const tab of modeTabs) {
     tab.classList.toggle("active", tab.dataset.modeTarget === validMode);
@@ -250,7 +269,7 @@ function getPanelExists(mode) {
 
 function getDefaultMode() {
   const panels = [...document.querySelectorAll("[data-mode-panel]")];
-  if (panels.some(panel => panel.dataset.modePanel === "dashboard")) return "dashboard";
+  if (panels.some(panel => panel.datasetMode === "dashboard")) return "dashboard";
   if (panels.some(panel => panel.dataset.modePanel === "learn")) return "learn";
   return panels[0]?.dataset.modePanel || "learn";
 }
@@ -426,6 +445,15 @@ if (dashboardView) {
     const conceptButton = event.target.closest("button[data-id]");
     if (!conceptButton) return;
     renderConcept(conceptButton.dataset.id);
+  });
+}
+
+if (studyPathView) {
+  studyPathView.addEventListener("click", event => {
+    const button = event.target.closest("button[data-id]");
+    if (!button) return;
+    renderConcept(button.dataset.id);
+    setMode("learn");
   });
 }
 
