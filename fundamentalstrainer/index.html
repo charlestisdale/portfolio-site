@@ -16,26 +16,43 @@
       <div id="platformStats" class="summary-grid"></div>
     </section>
 
-    <section id="jobsActivity" class="jobs-activity-mount"></section>
+    <nav class="mode-nav card" aria-label="Learning platform modes">
+      <button class="mode-tab active" data-mode-target="learn" type="button">Learn</button>
+      <button class="mode-tab" data-mode-target="search" type="button">Search</button>
+      <button class="mode-tab" data-mode-target="jobs" type="button">Jobs</button>
+      <button class="mode-tab" data-mode-target="graph" type="button">Graph</button>
+      <button class="mode-tab" data-mode-target="commands" type="button">Commands</button>
+    </nav>
 
-    <section class="grid">
-      <aside class="card">
+    <section class="mode-panel active" data-mode-panel="learn">
+      <section id="conceptView" class="content"></section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="search">
+      <aside class="card search-mode-card">
         <h2>Concept Search</h2>
         <input id="searchBox" placeholder="Search ipconfig, Task Manager, DHCP..." />
         <div id="results"></div>
       </aside>
-      <section id="conceptView" class="content"></section>
     </section>
 
-    <section class="grid lower-grid">
-      <aside class="card">
+    <section class="mode-panel" data-mode-panel="jobs">
+      <section id="jobsActivity" class="jobs-activity-mount"></section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="graph">
+      <section class="card">
         <h2>Related Graph</h2>
+        <p class="muted">Select a concept in Learn or Search mode to view its graph relationships.</p>
         <div id="relatedView"></div>
-      </aside>
-      <aside class="card">
+      </section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="commands">
+      <section class="card">
         <h2>Command Index</h2>
         <ul id="commandView"></ul>
-      </aside>
+      </section>
     </section>
   </main>
 
