@@ -147,23 +147,45 @@ function distributeAround(layout, nodes, radius, startDegrees) {
 }
 
 function renderEdges(edges, layout) {
-  return edges.map(edge => {
+  return edges.map((edge, index) => {
     const source = layout.get(edge.sourceId);
     const target = layout.get(edge.targetId);
     if (!source || !target) return "";
     const type = edge.type || "related_to";
-    const midpoint = {
-      x: (source.x + target.x) / 2,
-      y: (source.y + target.y) / 2
-    };
+    const label = getEdgeLabelPosition(source, target, index);
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
         <line x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}"></line>
-        <text x="${midpoint.x}" y="${midpoint.y}">${escapeHtml(type)}</text>
+        <text x="${label.x}" y="${label.y}">${escapeHtml(type)}</text>
       </g>
     `;
   }).join("");
+}
+
+function getEdgeLabelPosition(source, target, index = 0) {
+  const midpoint = {
+    x: (source.x + target.x) / 2,
+    y: (source.y + target.y) / 2
+  };
+  const dx = target.x - source.x;
+  const dy = target.y - source.y;
+  const length = Math.hypot(dx, dy) || 1;
+  const perpendicular = {
+    x: -dy / length,
+    y: dx / length
+  };
+  const direction = index % 2 === 0 ? 1 : -1;
+  const verticalBias = Math.abs(dx) < 24 ? -18 : 0;
+
+  return {
+    x: clamp(midpoint.x + perpendicular.x * 28 * direction, 40, VIEWBOX_WIDTH - 40),
+    y: clamp(midpoint.y + perpendicular.y * 28 * direction + verticalBias, 26, VIEWBOX_HEIGHT - 26)
+  };
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function renderNode(node, point, { activeId }) {
