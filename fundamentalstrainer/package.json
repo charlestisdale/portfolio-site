@@ -13,6 +13,7 @@
     "ingest:duplicates": "node tools/ingestion/detect-duplicates.mjs",
     "ingest:report": "node tools/ingestion/build-import-report.mjs",
     "ingest:merge": "node tools/ingestion/merge-review.mjs",
+    "ingest:audit": "node tools/ingestion/audit-transcripts.mjs",
     "review:manifest": "node tools/ingestion/build-review-manifest.mjs"
   }
 }
