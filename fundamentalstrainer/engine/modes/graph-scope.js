@@ -19,3 +19,12 @@ export function setGraphScope(scope) {
   }
   return scope;
 }
+
+if (typeof document !== "undefined") {
+  document.addEventListener("click", event => {
+    const button = event.target.closest("button[data-graph-scope]");
+    if (!button) return;
+    const selectedScope = setGraphScope(button.dataset.graphScope);
+    window.dispatchEvent(new CustomEvent("graphscopechange", { detail: { scope: selectedScope } }));
+  });
+}
