@@ -20,3 +20,9 @@ export {
   buildFileMapFromMergePlan,
   validateMergePlan
 } from "./apply-plan.js";
+
+export {
+  writeMergePlanFiles,
+  loadJsonFile,
+  safeResolve
+} from "./write-plan-files.js";
