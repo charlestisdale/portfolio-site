@@ -3,6 +3,7 @@ import { renderLearnMode } from "./engine/modes/learn.js";
 import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
 import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
 import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
+import { renderGraphMode } from "./engine/modes/graph-mode.js";
 import { generateAssessmentFromKnowledge, gradeAssessment, LocalAssessmentAttemptStore } from "./engine/assessment/index.js";
 import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
@@ -43,6 +44,7 @@ async function loadPlatform() {
   renderSearch();
   renderCommands();
   renderAssessment();
+  renderGraph();
   startJobsActivityPanel();
 
   const hashState = readHashState();
@@ -101,6 +103,18 @@ function renderAssessment() {
     grade: currentAssessmentGrade,
     attempts: assessmentAttemptStore.list({ limit: 5 }),
     attemptSummary: assessmentAttemptStore.summarize()
+  });
+}
+
+function renderGraph() {
+  if (!relatedView) return;
+
+  const activeConcept = activeConceptId ? knowledge.get(activeConceptId) : null;
+  relatedView.innerHTML = renderGraphMode({
+    activeConcept,
+    edges: activeConceptId ? knowledge.related(activeConceptId) : [],
+    stats: knowledge.statistics(),
+    graph: knowledge.graph()
   });
 }
 
@@ -163,7 +177,7 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
     progress: progressStore.get(id)
   });
 
-  renderRelated(id);
+  renderGraph();
   renderSearch();
   renderDashboard();
 
@@ -201,28 +215,6 @@ function resolveObjectiveContext(concept) {
     .filter(item => item.objective);
 }
 
-function renderRelated(id) {
-  if (!relatedView) return;
-
-  const edges = knowledge.related(id);
-
-  if (!edges.length) {
-    relatedView.innerHTML = "<p>No graph relationships yet.</p>";
-    return;
-  }
-
-  relatedView.innerHTML = edges.map(edge => {
-    const neighbor = edge.directionFromSource === "outbound" ? edge.target : edge.source;
-    const missing = edge.directionFromSource === "outbound" ? edge.targetId : edge.sourceId;
-    return `
-      <button class="result" ${neighbor ? `data-id="${escapeHtml(neighbor.id)}"` : "disabled"}>
-        <strong>${escapeHtml(edge.type)}</strong>: ${escapeHtml(neighbor?.title || missing)}<br />
-        <span>${escapeHtml(edge.notes || edge.strength || "")}</span>
-      </button>
-    `;
-  }).join("");
-}
-
 function renderCommands() {
   if (!commandView) return;
 
@@ -238,6 +230,7 @@ function setMode(mode, { updateHash = true } = {}) {
 
   if (validMode === "dashboard") renderDashboard();
   if (validMode === "assessment") renderAssessment();
+  if (validMode === "graph") renderGraph();
 
   for (const tab of modeTabs) {
     tab.classList.toggle("active", tab.dataset.modeTarget === validMode);
@@ -489,6 +482,7 @@ if (relatedView) {
     const button = event.target.closest("button[data-id]");
     if (!button) return;
     renderConcept(button.dataset.id);
+    setMode("learn");
   });
 }
 
