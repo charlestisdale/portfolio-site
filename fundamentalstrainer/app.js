@@ -2,12 +2,14 @@ import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderLearnMode } from "./engine/modes/learn.js";
 import { renderSearchControls, renderSearchResults } from "./engine/modes/search-mode.js";
 import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
+import { LocalProgressStore } from "./engine/progress/index.js";
 import { JobRunner } from "./engine/jobs/job-runner.js";
 import { JobType } from "./engine/jobs/job-types.js";
 import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
 
 const certificationId = "a-plus-220-1202";
 const knowledge = new KnowledgeEngine();
+const progressStore = new LocalProgressStore();
 const jobs = createBrowserJobRunner();
 let activeConceptId = null;
 let searchFilters = {};
@@ -60,6 +62,8 @@ function renderDashboard() {
     certificationState,
     stats: knowledge.statistics(),
     activeConcept: knowledge.get(activeConceptId),
+    activeProgress: activeConceptId ? progressStore.get(activeConceptId) : null,
+    progressSummary: progressStore.summarize(knowledge.all()),
     jobs: jobs.list()
   });
 }
@@ -92,7 +96,8 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
     concept,
     relatedEdges,
     lessonContext,
-    objectiveContext
+    objectiveContext,
+    progress: progressStore.get(id)
   });
 
   renderRelated(id);
@@ -101,6 +106,16 @@ function renderConcept(id, { updateHash = true, switchMode = true } = {}) {
 
   if (switchMode) setMode(getPanelExists("learn") ? "learn" : getDefaultMode(), { updateHash: false });
   if (updateHash) writeHashState({ mode: activeMode, learn: id });
+}
+
+function updateConceptProgress(knowledgeId, action) {
+  if (!knowledge.get(knowledgeId)) return;
+
+  if (action === "reset") progressStore.reset(knowledgeId);
+  else progressStore.cycleStatus(knowledgeId);
+
+  renderConcept(knowledgeId, { updateHash: true, switchMode: false });
+  renderDashboard();
 }
 
 function resolvePrimaryLessonContext(concept) {
@@ -391,6 +406,12 @@ if (relatedView) {
 
 if (conceptView) {
   conceptView.addEventListener("click", event => {
+    const progressButton = event.target.closest("button[data-progress-action]");
+    if (progressButton) {
+      updateConceptProgress(progressButton.dataset.id, progressButton.dataset.progressAction);
+      return;
+    }
+
     const button = event.target.closest("button[data-id]");
     if (!button) return;
     renderConcept(button.dataset.id);
