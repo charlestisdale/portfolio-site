@@ -1,0 +1,434 @@
+[
+  {
+    "category": "ports",
+    "question": "Which port does HTTPS use?",
+    "answer": "443",
+    "options": [
+      "80",
+      "110",
+      "143",
+      "443"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does HTTP use?",
+    "answer": "80",
+    "options": [
+      "25",
+      "53",
+      "80",
+      "443"
+    ],
+    "note": "HTTP uses TCP 80."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SSH use?",
+    "answer": "22",
+    "options": [
+      "21",
+      "22",
+      "23",
+      "3389"
+    ],
+    "note": "SSH uses TCP 22."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does RDP use?",
+    "answer": "3389",
+    "options": [
+      "389",
+      "445",
+      "1433",
+      "3389"
+    ],
+    "note": "RDP commonly uses 3389."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DNS use?",
+    "answer": "53",
+    "options": [
+      "25",
+      "53",
+      "67",
+      "110"
+    ],
+    "note": "DNS uses port 53, commonly UDP and sometimes TCP."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMTP use?",
+    "answer": "25",
+    "options": [
+      "25",
+      "53",
+      "110",
+      "143"
+    ],
+    "note": "SMTP uses TCP 25."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure email protocol uses port 993?",
+    "answer": "IMAPS",
+    "options": [
+      "POP3",
+      "IMAPS",
+      "SMTP",
+      "DNS"
+    ],
+    "note": "IMAPS uses TCP 993."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure email protocol uses port 995?",
+    "answer": "POP3S",
+    "options": [
+      "POP3S",
+      "IMAPS",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "POP3S uses TCP 995."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does LDAP use?",
+    "answer": "389",
+    "options": [
+      "389",
+      "636",
+      "445",
+      "3389"
+    ],
+    "note": "LDAP uses TCP/UDP 389."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure LDAP port is commonly used?",
+    "answer": "636",
+    "options": [
+      "389",
+      "636",
+      "443",
+      "993"
+    ],
+    "note": "LDAPS uses TCP 636."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMB use?",
+    "answer": "445",
+    "options": [
+      "21",
+      "22",
+      "389",
+      "445"
+    ],
+    "note": "Windows file sharing uses TCP 445."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use for server responses?",
+    "answer": "68",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "69"
+    ],
+    "note": "Client receives DHCP on UDP 68."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use on the server?",
+    "answer": "67",
+    "options": [
+      "67",
+      "68",
+      "69",
+      "161"
+    ],
+    "note": "DHCP server listens on UDP 67."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does IMAP use?",
+    "answer": "143",
+    "options": [
+      "110",
+      "143",
+      "993",
+      "995"
+    ],
+    "note": "IMAP uses TCP 143."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does POP3 use?",
+    "answer": "110",
+    "options": [
+      "110",
+      "143",
+      "993",
+      "995"
+    ],
+    "note": "POP3 uses TCP 110."
+  },
+  {
+    "category": "ports",
+    "question": "Which port is commonly used by SQL Server?",
+    "answer": "1433",
+    "options": [
+      "3306",
+      "1521",
+      "1433",
+      "5432"
+    ],
+    "note": "Microsoft SQL Server uses TCP 1433."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMTP use?",
+    "answer": "25",
+    "options": [
+      "25",
+      "53",
+      "110",
+      "143"
+    ],
+    "note": "SMTP uses TCP 25."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does POP3 use?",
+    "answer": "110",
+    "options": [
+      "25",
+      "110",
+      "143",
+      "443"
+    ],
+    "note": "POP3 uses TCP 110."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does IMAP use?",
+    "answer": "143",
+    "options": [
+      "110",
+      "143",
+      "993",
+      "995"
+    ],
+    "note": "IMAP uses TCP 143."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does IMAPS use?",
+    "answer": "993",
+    "options": [
+      "143",
+      "993",
+      "995",
+      "636"
+    ],
+    "note": "IMAPS uses TCP 993."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does POP3S use?",
+    "answer": "995",
+    "options": [
+      "993",
+      "995",
+      "110",
+      "25"
+    ],
+    "note": "POP3S uses TCP 995."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does LDAP use?",
+    "answer": "389",
+    "options": [
+      "389",
+      "636",
+      "445",
+      "1433"
+    ],
+    "note": "LDAP uses TCP/UDP 389."
+  },
+  {
+    "category": "ports",
+    "question": "Which secure port does LDAPS use?",
+    "answer": "636",
+    "options": [
+      "389",
+      "636",
+      "443",
+      "993"
+    ],
+    "note": "LDAPS uses TCP 636."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SMB use?",
+    "answer": "445",
+    "options": [
+      "445",
+      "389",
+      "3389",
+      "22"
+    ],
+    "note": "Windows file sharing commonly uses TCP 445."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use on the server?",
+    "answer": "67",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "69"
+    ],
+    "note": "DHCP servers listen on UDP 67."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does DHCP use on the client?",
+    "answer": "68",
+    "options": [
+      "53",
+      "67",
+      "68",
+      "69"
+    ],
+    "note": "DHCP clients receive responses on UDP 68."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does TFTP use?",
+    "answer": "69",
+    "options": [
+      "21",
+      "22",
+      "69",
+      "161"
+    ],
+    "note": "TFTP uses UDP 69."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SNMP use?",
+    "answer": "161",
+    "options": [
+      "69",
+      "161",
+      "162",
+      "389"
+    ],
+    "note": "SNMP uses UDP 161."
+  },
+  {
+    "category": "ports",
+    "question": "Which port is used for SNMP traps?",
+    "answer": "162",
+    "options": [
+      "161",
+      "162",
+      "389",
+      "445"
+    ],
+    "note": "SNMP traps use UDP 162."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does FTP use for the control connection?",
+    "answer": "21",
+    "options": [
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "note": "FTP control traffic uses TCP 21."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does FTP use for data transfer?",
+    "answer": "20",
+    "options": [
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "note": "FTP data transfers traditionally use TCP 20."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does Telnet use?",
+    "answer": "23",
+    "options": [
+      "21",
+      "22",
+      "23",
+      "25"
+    ],
+    "note": "Telnet uses TCP 23 and is not encrypted."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does SQL Server commonly use?",
+    "answer": "1433",
+    "options": [
+      "143",
+      "389",
+      "1433",
+      "3306"
+    ],
+    "note": "Microsoft SQL Server commonly uses TCP 1433."
+  },
+  {
+    "category": "ports",
+    "question": "Which port does MySQL commonly use?",
+    "answer": "3306",
+    "options": [
+      "1433",
+      "3306",
+      "3389",
+      "5432"
+    ],
+    "note": "MySQL commonly uses TCP 3306."
+  },
+  {
+    "category": "ports",
+    "question": "A user can connect to a web server securely in a browser. Which port is MOST likely being used?",
+    "answer": "443",
+    "options": [
+      "80",
+      "443",
+      "22",
+      "3389"
+    ],
+    "note": "HTTPS uses TCP 443."
+  },
+  {
+    "category": "ports",
+    "question": "A technician is remotely controlling a Windows workstation. Which port is MOST likely being used?",
+    "answer": "3389",
+    "options": [
+      "22",
+      "80",
+      "389",
+      "3389"
+    ],
+    "note": "Remote Desktop Protocol uses TCP 3389."
+  }
+]

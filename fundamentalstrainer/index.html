@@ -198,6 +198,10 @@
                         <option value="">Loading tests...</option>
                     </select>
 
+                    <select id="objectiveFilter" class="trainer-select">
+                        <option value="all">All Objectives</option>
+                    </select>
+
                     <select id="categoryFilter" class="trainer-select">
                         <option value="all">All Categories</option>
                         <option value="weak">Weak Areas Only</option>
@@ -280,6 +284,7 @@
         let bank = [];
         let tests = [];
         let activeTest = null;
+        let activeObjective = null;
 
         const categoryNames = {
             ethernet: "Ethernet",
@@ -303,7 +308,15 @@
             displays: "Displays",
             troubleshooting: "Troubleshooting",
             hardware: "Hardware",
-            commands: "Commands"
+            commands: "Commands",
+            operating_systems: "Operating Systems",
+            filesystem: "File Systems",
+            windows: "Windows",
+            linux: "Linux",
+            macos: "macOS",
+            chromeos: "ChromeOS",
+            ios_android: "iOS and Android",
+            compatibility: "Compatibility"
         };
 
         const statsKeyBase = "CharlesStandardsTrainerStatsV3";
@@ -314,6 +327,7 @@
         let answered = false;
 
         const testFilter = document.getElementById("testFilter");
+        const objectiveFilter = document.getElementById("objectiveFilter");
         const categoryFilter = document.getElementById("categoryFilter");
         const difficulty = document.getElementById("difficulty");
         const questionMode = document.getElementById("questionMode");
@@ -389,6 +403,44 @@
                 option.textContent = test.name;
                 testFilter.appendChild(option);
             });
+        }
+
+        function populateObjectives() {
+            objectiveFilter.innerHTML = "";
+
+            const allOption = document.createElement("option");
+            allOption.value = "all";
+            allOption.textContent = "All Objectives";
+            objectiveFilter.appendChild(allOption);
+
+            (activeTest.objectives || []).forEach(objective => {
+                const option = document.createElement("option");
+                option.value = objective.id;
+                option.textContent = objective.name;
+                objectiveFilter.appendChild(option);
+            });
+        }
+
+        function filesForSelection() {
+            if (!activeTest) {
+                return [];
+            }
+
+            if (!activeObjective || activeObjective === "all") {
+                return activeTest.files || [];
+            }
+
+            const objective = (activeTest.objectives || []).find(item => item.id === activeObjective);
+            return objective ? objective.files : [];
+        }
+
+        function selectedObjectiveName() {
+            if (!activeObjective || activeObjective === "all") {
+                return "All Objectives";
+            }
+
+            const objective = (activeTest.objectives || []).find(item => item.id === activeObjective);
+            return objective ? objective.name : "Selected Objective";
         }
 
         function filteredBank() {
@@ -478,7 +530,7 @@
 
             current = weightedPool[Math.floor(Math.random() * weightedPool.length)];
 
-            subtitle.textContent = activeTest.name + " • " + categoryLabel(current.category) + " Practice";
+            subtitle.textContent = activeTest.name + " • " + selectedObjectiveName() + " • " + categoryLabel(current.category) + " Practice";
             question.textContent = current.question;
 
             if (current.image) {
@@ -560,14 +612,19 @@
             return response.json();
         }
 
-        async function loadTest(testId) {
+        async function loadTest(testId, objectiveId = "all") {
             activeTest = tests.find(test => test.id === testId) || tests[0];
-            statsKey = statsKeyBase + ":" + activeTest.id;
+            activeObjective = objectiveId;
+            statsKey = statsKeyBase + ":" + activeTest.id + ":" + activeObjective;
             stats = loadStats(statsKey);
 
+            populateObjectives();
+            objectiveFilter.value = activeObjective;
+
+            objectiveFilter.disabled = true;
             categoryFilter.disabled = true;
             newQuestionBtn.disabled = true;
-            loadStatus.textContent = "Loading " + activeTest.name + "...";
+            loadStatus.textContent = "Loading " + activeTest.name + " • " + selectedObjectiveName() + "...";
             question.textContent = "Loading question bank...";
             answerGrid.innerHTML = "";
             typedArea.style.display = "none";
@@ -576,13 +633,14 @@
             feedback.textContent = "";
 
             try {
-                const categoryFiles = await Promise.all(activeTest.files.map(fetchJson));
+                const files = filesForSelection();
+                const categoryFiles = await Promise.all(files.map(fetchJson));
                 bank = categoryFiles.flat();
 
                 populateCategories();
                 categoryFilter.value = "all";
 
-                loadStatus.textContent = "Loaded " + bank.length + " questions for " + activeTest.name + ".";
+                loadStatus.textContent = "Loaded " + bank.length + " questions for " + activeTest.name + " • " + selectedObjectiveName() + ".";
 
                 updateStats();
                 newQuestion();
@@ -593,6 +651,7 @@
                 question.textContent = "Question bank failed to load.";
                 console.error(error);
             } finally {
+                objectiveFilter.disabled = false;
                 categoryFilter.disabled = false;
                 newQuestionBtn.disabled = false;
             }
@@ -616,7 +675,8 @@
             }
         }
 
-        testFilter.addEventListener("change", () => loadTest(testFilter.value));
+        testFilter.addEventListener("change", () => loadTest(testFilter.value, "all"));
+        objectiveFilter.addEventListener("change", () => loadTest(testFilter.value, objectiveFilter.value));
         newQuestionBtn.addEventListener("click", newQuestion);
         categoryFilter.addEventListener("change", newQuestion);
         difficulty.addEventListener("change", newQuestion);

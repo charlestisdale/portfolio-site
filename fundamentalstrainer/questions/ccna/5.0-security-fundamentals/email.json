@@ -1,0 +1,302 @@
+[
+  {
+    "category": "email",
+    "question": "Which protocol sends mail between mail servers?",
+    "answer": "SMTP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "SNMP"
+    ],
+    "note": "SMTP is used to send email."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol leaves mail on the server and synchronizes folders?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "SMTP",
+      "IMAP",
+      "SNMP"
+    ],
+    "note": "IMAP synchronizes mail while keeping it on the server."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol retrieves email and typically removes it from the server?",
+    "answer": "POP3",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "POP3 traditionally downloads mail locally."
+  },
+  {
+    "category": "email",
+    "question": "What does SPF help prevent?",
+    "answer": "Email spoofing",
+    "options": [
+      "Email spoofing",
+      "Malware",
+      "Encryption failures",
+      "DNS poisoning"
+    ],
+    "note": "SPF validates sending hosts."
+  },
+  {
+    "category": "email",
+    "question": "What does DKIM provide?",
+    "answer": "Message signing",
+    "options": [
+      "Message signing",
+      "Encryption",
+      "Compression",
+      "Spam filtering"
+    ],
+    "note": "DKIM digitally signs email."
+  },
+  {
+    "category": "email",
+    "question": "What does DMARC do?",
+    "answer": "Provides policy for SPF and DKIM failures",
+    "options": [
+      "Provides policy for SPF and DKIM failures",
+      "Encrypts email",
+      "Routes mail",
+      "Creates MX records"
+    ],
+    "note": "DMARC tells receivers what action to take."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol typically downloads email to a device and may remove it from the server?",
+    "answer": "POP3",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "LDAP"
+    ],
+    "note": "POP3 traditionally downloads mail locally."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol is used to send outbound email?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "SNMP"
+    ],
+    "note": "SMTP handles outgoing mail."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol is best for accessing email from multiple devices?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "FTP"
+    ],
+    "note": "IMAP synchronizes messages across devices."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 25 by default?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "DNS"
+    ],
+    "note": "SMTP commonly uses TCP 25."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 110?",
+    "answer": "POP3",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "POP3 uses TCP 110."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol uses TCP port 143?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "IMAP uses TCP 143."
+  },
+  {
+    "category": "email",
+    "question": "Which secure email protocol uses TCP port 993?",
+    "answer": "IMAPS",
+    "options": [
+      "POP3S",
+      "IMAPS",
+      "SMTP",
+      "SMTPS"
+    ],
+    "note": "IMAPS is secure IMAP."
+  },
+  {
+    "category": "email",
+    "question": "Which secure email protocol uses TCP port 995?",
+    "answer": "POP3S",
+    "options": [
+      "IMAPS",
+      "SMTP",
+      "POP3S",
+      "DNS"
+    ],
+    "note": "POP3S is secure POP3."
+  },
+  {
+    "category": "email",
+    "question": "What does SPF help prevent?",
+    "answer": "Email spoofing",
+    "options": [
+      "Email spoofing",
+      "Encryption failures",
+      "DNS outages",
+      "Password reuse"
+    ],
+    "note": "SPF validates authorized sending servers."
+  },
+  {
+    "category": "email",
+    "question": "What does DKIM provide?",
+    "answer": "Message signing",
+    "options": [
+      "Message signing",
+      "Encryption",
+      "Compression",
+      "Routing"
+    ],
+    "note": "DKIM digitally signs email messages."
+  },
+  {
+    "category": "email",
+    "question": "What does DMARC do?",
+    "answer": "Provides policy for SPF and DKIM failures",
+    "options": [
+      "Provides policy for SPF and DKIM failures",
+      "Encrypts email",
+      "Creates MX records",
+      "Filters DNS traffic"
+    ],
+    "note": "DMARC tells receivers how to handle failed messages."
+  },
+  {
+    "category": "email",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated first?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "POP3",
+      "IMAP",
+      "DNS"
+    ],
+    "note": "SMTP handles outbound mail."
+  },
+  {
+    "category": "email",
+    "question": "A user can send email but cannot receive email. Which protocols should be investigated?",
+    "answer": "POP3 or IMAP",
+    "options": [
+      "SMTP",
+      "POP3 or IMAP",
+      "LDAP",
+      "SNMP"
+    ],
+    "note": "Receiving mail uses POP3 or IMAP."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol keeps messages stored on the mail server by default?",
+    "answer": "IMAP",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "FTP"
+    ],
+    "note": "IMAP is designed for synchronization."
+  },
+  {
+    "category": "email",
+    "question": "Which protocol was originally designed for a single computer downloading email?",
+    "answer": "POP3",
+    "options": [
+      "POP3",
+      "IMAP",
+      "SMTP",
+      "HTTPS"
+    ],
+    "note": "POP3 predates multi-device synchronization."
+  },
+  {
+    "category": "email",
+    "question": "Which DNS record is required for receiving email for a domain?",
+    "answer": "MX",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "MX records identify mail servers."
+  },
+  {
+    "category": "email",
+    "question": "What does SMTP stand for?",
+    "answer": "Simple Mail Transfer Protocol",
+    "options": [
+      "Simple Mail Transfer Protocol",
+      "Secure Mail Transfer Protocol",
+      "System Mail Transfer Process",
+      "Simple Message Transport Protocol"
+    ],
+    "note": "SMTP is used for sending email."
+  },
+  {
+    "category": "email",
+    "question": "What does IMAP stand for?",
+    "answer": "Internet Message Access Protocol",
+    "options": [
+      "Internet Message Access Protocol",
+      "Internet Mail Authentication Protocol",
+      "Integrated Mail Access Protocol",
+      "Internet Messaging Application Protocol"
+    ],
+    "note": "IMAP synchronizes mail across devices."
+  },
+  {
+    "category": "email",
+    "question": "What does POP3 stand for?",
+    "answer": "Post Office Protocol Version 3",
+    "options": [
+      "Post Office Protocol Version 3",
+      "Post Office Process Version 3",
+      "Personal Office Protocol Version 3",
+      "Primary Office Protocol Version 3"
+    ],
+    "note": "POP3 downloads email from a server."
+  }
+]

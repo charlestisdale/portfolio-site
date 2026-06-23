@@ -1,0 +1,242 @@
+[
+  {
+    "category": "connectors",
+    "question": "Which connector is most commonly used for Ethernet networking?",
+    "answer": "RJ45",
+    "options": [
+      "RJ45",
+      "RJ11",
+      "USB-C",
+      "LC"
+    ],
+    "note": "RJ45 is the standard Ethernet connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for telephone lines?",
+    "answer": "RJ11",
+    "options": [
+      "RJ11",
+      "RJ45",
+      "LC",
+      "USB-A"
+    ],
+    "note": "RJ11 is typically used for analog phone connections."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for modern fiber transceivers?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "SC",
+      "ST",
+      "RJ45"
+    ],
+    "note": "LC connectors are small and common on SFP modules."
+  },
+  {
+    "category": "connectors",
+    "question": "Which fiber connector uses a square push-pull design?",
+    "answer": "SC",
+    "options": [
+      "SC",
+      "LC",
+      "ST",
+      "BNC"
+    ],
+    "note": "SC connectors are square and easy to identify."
+  },
+  {
+    "category": "connectors",
+    "question": "Which fiber connector uses a twist-lock mechanism?",
+    "answer": "ST",
+    "options": [
+      "ST",
+      "SC",
+      "LC",
+      "RJ11"
+    ],
+    "note": "ST connectors use a bayonet-style lock."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used for cable television and cable Internet?",
+    "answer": "F-type",
+    "options": [
+      "F-type",
+      "BNC",
+      "RJ45",
+      "RJ11"
+    ],
+    "note": "F-type connectors are used with coaxial cable."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector was commonly used with older coaxial Ethernet networks?",
+    "answer": "BNC",
+    "options": [
+      "BNC",
+      "F-type",
+      "LC",
+      "RJ45"
+    ],
+    "note": "BNC connectors were used on legacy coax Ethernet."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector is analog?",
+    "answer": "VGA",
+    "options": [
+      "VGA",
+      "HDMI",
+      "DisplayPort",
+      "DVI-D"
+    ],
+    "note": "VGA is an analog video standard."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector commonly carries digital video and audio?",
+    "answer": "HDMI",
+    "options": [
+      "HDMI",
+      "VGA",
+      "RJ45",
+      "RJ11"
+    ],
+    "note": "HDMI carries both video and audio."
+  },
+  {
+    "category": "connectors",
+    "question": "Which display connector is commonly used on gaming monitors and supports high refresh rates?",
+    "answer": "DisplayPort",
+    "options": [
+      "DisplayPort",
+      "VGA",
+      "RJ11",
+      "F-type"
+    ],
+    "note": "DisplayPort is very common on PCs."
+  },
+  {
+    "category": "connectors",
+    "question": "Which DVI connector supports both analog and digital signals?",
+    "answer": "DVI-I",
+    "options": [
+      "DVI-I",
+      "DVI-D",
+      "HDMI",
+      "VGA"
+    ],
+    "note": "DVI-I supports integrated analog and digital."
+  },
+  {
+    "category": "connectors",
+    "question": "Which USB connector is reversible and common on modern devices?",
+    "answer": "USB-C",
+    "options": [
+      "USB-C",
+      "USB-A",
+      "USB-B",
+      "Mini-USB"
+    ],
+    "note": "USB-C can be inserted either direction."
+  },
+  {
+    "category": "connectors",
+    "question": "Which USB connector is the traditional rectangular USB connector?",
+    "answer": "USB-A",
+    "options": [
+      "USB-A",
+      "USB-C",
+      "Lightning",
+      "Micro-USB"
+    ],
+    "note": "USB-A is still very common on PCs."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used on printers?",
+    "answer": "USB-B",
+    "options": [
+      "USB-B",
+      "USB-A",
+      "USB-C",
+      "Lightning"
+    ],
+    "note": "USB-B is often called the printer connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector was commonly used on Android phones before USB-C?",
+    "answer": "Micro-USB",
+    "options": [
+      "Micro-USB",
+      "Lightning",
+      "USB-B",
+      "RJ11"
+    ],
+    "note": "Micro-USB was the standard before USB-C."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is primarily associated with Apple iPhones prior to USB-C adoption?",
+    "answer": "Lightning",
+    "options": [
+      "Lightning",
+      "USB-C",
+      "Micro-USB",
+      "USB-B"
+    ],
+    "note": "Lightning was Apple's proprietary connector."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector combines PCIe, DisplayPort, video, data, and power into one port?",
+    "answer": "Thunderbolt",
+    "options": [
+      "Thunderbolt",
+      "RJ45",
+      "HDMI",
+      "BNC"
+    ],
+    "note": "Thunderbolt uses the USB-C connector shape."
+  },
+  {
+    "category": "connectors",
+    "question": "Which connector is commonly used to attach external monitors to laptops?",
+    "answer": "HDMI",
+    "options": [
+      "HDMI",
+      "RJ11",
+      "LC",
+      "USB-B"
+    ],
+    "note": "HDMI is extremely common on laptops and monitors."
+  },
+  {
+    "category": "connectors",
+    "question": "A technician needs to connect a network cable to a switch. Which connector is required?",
+    "answer": "RJ45",
+    "options": [
+      "RJ45",
+      "RJ11",
+      "LC",
+      "F-type"
+    ],
+    "note": "Ethernet switches use RJ45 ports."
+  },
+  {
+    "category": "connectors",
+    "question": "A technician needs to connect a fiber patch cable to an SFP transceiver. Which connector is MOST likely used?",
+    "answer": "LC",
+    "options": [
+      "LC",
+      "ST",
+      "SC",
+      "RJ45"
+    ],
+    "note": "LC is the most common connector on modern SFP modules."
+  }
+]

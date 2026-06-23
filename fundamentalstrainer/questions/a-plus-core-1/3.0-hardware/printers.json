@@ -1,0 +1,746 @@
+[
+  {
+    "category": "printers",
+    "question": "What printer process uses a corona wire or transfer roller?",
+    "answer": "Laser",
+    "options": [
+      "Inkjet",
+      "Laser",
+      "Thermal",
+      "Impact"
+    ],
+    "note": "Laser printers use electrostatic charge during printing."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses liquid ink sprayed onto paper?",
+    "answer": "Inkjet",
+    "options": [
+      "Laser",
+      "Thermal",
+      "Impact",
+      "Inkjet"
+    ],
+    "note": "Inkjet sprays ink droplets."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type commonly uses toner?",
+    "answer": "Laser",
+    "options": [
+      "Inkjet",
+      "Laser",
+      "Thermal",
+      "Impact"
+    ],
+    "note": "Laser printers use toner."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type is commonly used for receipts?",
+    "answer": "Thermal",
+    "options": [
+      "Inkjet",
+      "Laser",
+      "Thermal",
+      "Dot Matrix"
+    ],
+    "note": "Thermal printers are common in retail."
+  },
+  {
+    "category": "printers",
+    "question": "What does IPP stand for?",
+    "answer": "Internet Printing Protocol",
+    "options": [
+      "Internet Printing Protocol",
+      "Internal Print Process",
+      "Internet Print Path",
+      "Integrated Printer Platform"
+    ],
+    "note": "IPP is a network printing protocol."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component melts toner onto paper?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Transfer roller",
+      "Pickup roller",
+      "Corona wire"
+    ],
+    "note": "The fuser uses heat and pressure."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer component applies a charge to the drum?",
+    "answer": "Corona wire",
+    "options": [
+      "Corona wire",
+      "Fuser",
+      "Pickup roller",
+      "Transfer belt"
+    ],
+    "note": "Older laser printers use a corona wire."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses an impact print head and ribbon?",
+    "answer": "Dot matrix",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Dot matrix"
+    ],
+    "note": "Dot matrix is an impact printer."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component melts toner onto the paper?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Transfer roller",
+      "Pickup roller",
+      "Imaging drum"
+    ],
+    "note": "The fuser uses heat and pressure to bond toner to paper."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component applies toner to the paper?",
+    "answer": "Transfer roller",
+    "options": [
+      "Transfer roller",
+      "Pickup roller",
+      "Fuser",
+      "Maintenance kit"
+    ],
+    "note": "The transfer roller moves toner from the drum to the paper."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component creates the image that attracts toner?",
+    "answer": "Imaging drum",
+    "options": [
+      "Imaging drum",
+      "Fuser",
+      "Pickup roller",
+      "Duplexer"
+    ],
+    "note": "The drum holds the electrostatic image."
+  },
+  {
+    "category": "printers",
+    "question": "What printer component pulls paper from the tray?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Transfer roller",
+      "Fuser",
+      "Corona wire"
+    ],
+    "note": "The pickup roller feeds paper into the printer."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses toner instead of liquid ink?",
+    "answer": "Laser",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Impact"
+    ],
+    "note": "Laser printers use toner powder."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type sprays liquid ink onto paper?",
+    "answer": "Inkjet",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Dot Matrix"
+    ],
+    "note": "Inkjet printers spray microscopic droplets of ink."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type is commonly used for cash register receipts?",
+    "answer": "Thermal",
+    "options": [
+      "Thermal",
+      "Laser",
+      "Inkjet",
+      "Impact"
+    ],
+    "note": "Thermal printers use heat-sensitive paper."
+  },
+  {
+    "category": "printers",
+    "question": "Which printer type uses a ribbon and print head that strikes the paper?",
+    "answer": "Dot Matrix",
+    "options": [
+      "Dot Matrix",
+      "Laser",
+      "Thermal",
+      "Inkjet"
+    ],
+    "note": "Dot matrix is an impact printer."
+  },
+  {
+    "category": "printers",
+    "question": "What does duplex printing mean?",
+    "answer": "Printing on both sides of the page",
+    "options": [
+      "Printing on both sides of the page",
+      "Printing in color",
+      "Printing over the network",
+      "Printing at double speed"
+    ],
+    "note": "Duplexing means two-sided printing."
+  },
+  {
+    "category": "printers",
+    "question": "What does IPP stand for?",
+    "answer": "Internet Printing Protocol",
+    "options": [
+      "Internet Printing Protocol",
+      "Internal Printer Process",
+      "Integrated Print Platform",
+      "Internet Print Path"
+    ],
+    "note": "IPP is a common network printing protocol."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer prints pages where toner wipes off with your finger. Which component is most likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Transfer roller",
+      "Drum"
+    ],
+    "note": "A bad fuser cannot properly bond toner to paper."
+  },
+  {
+    "category": "printers",
+    "question": "A printer frequently pulls multiple sheets at once. Which component is the most likely cause?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Transfer roller",
+      "Toner cartridge"
+    ],
+    "note": "Worn pickup rollers commonly cause paper feed issues."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer produces completely blank pages. Which component should be investigated first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Duplexer",
+      "Paper tray",
+      "Print server"
+    ],
+    "note": "An empty or defective toner cartridge can cause blank pages."
+  },
+  {
+    "category": "printers",
+    "question": "What consumable is replaced in a laser printer?",
+    "answer": "Toner",
+    "options": [
+      "Toner",
+      "Ink",
+      "Ribbon",
+      "Thermal paper"
+    ],
+    "note": "Laser printers use toner powder."
+  },
+  {
+    "category": "printers",
+    "question": "What consumable is replaced in an inkjet printer?",
+    "answer": "Ink cartridge",
+    "options": [
+      "Ink cartridge",
+      "Toner cartridge",
+      "Drum",
+      "Fuser"
+    ],
+    "note": "Inkjet printers use liquid ink cartridges."
+  },
+  {
+    "category": "printers",
+    "question": "What is the first step in the laser printing process?",
+    "answer": "Processing",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Fusing"
+    ],
+    "note": "Remember: Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning."
+  },
+  {
+    "category": "printers",
+    "question": "Which step of laser printing permanently bonds toner to paper?",
+    "answer": "Fusing",
+    "options": [
+      "Charging",
+      "Developing",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The fusing stage uses heat and pressure."
+  },
+  {
+    "category": "printers",
+    "question": "What is a print server used for?",
+    "answer": "Managing network printers",
+    "options": [
+      "Managing network printers",
+      "Providing DNS",
+      "Hosting websites",
+      "Providing DHCP"
+    ],
+    "note": "Print servers allow multiple users to share printers."
+  },
+  {
+    "category": "printers",
+    "question": "What is the first step in the laser printing process?",
+    "answer": "Processing",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Developing"
+    ],
+    "note": "Processing converts the print job into a format the printer can understand."
+  },
+  {
+    "category": "printers",
+    "question": "What is the second step in the laser printing process?",
+    "answer": "Charging",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Developing"
+    ],
+    "note": "The charging phase places a uniform electrostatic charge on the imaging drum."
+  },
+  {
+    "category": "printers",
+    "question": "What is the third step in the laser printing process?",
+    "answer": "Exposing",
+    "options": [
+      "Charging",
+      "Exposing",
+      "Developing",
+      "Transferring"
+    ],
+    "note": "The laser writes the image onto the drum during the exposing phase."
+  },
+  {
+    "category": "printers",
+    "question": "What is the fourth step in the laser printing process?",
+    "answer": "Developing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "Toner is applied to the latent image during developing."
+  },
+  {
+    "category": "printers",
+    "question": "What is the fifth step in the laser printing process?",
+    "answer": "Transferring",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The transfer roller moves toner from the drum to the paper."
+  },
+  {
+    "category": "printers",
+    "question": "What is the sixth step in the laser printing process?",
+    "answer": "Fusing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "Heat and pressure permanently bond toner to paper during fusing."
+  },
+  {
+    "category": "printers",
+    "question": "What is the final step in the laser printing process?",
+    "answer": "Cleaning",
+    "options": [
+      "Charging",
+      "Exposing",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The cleaning phase removes leftover toner from the drum."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step is the print job converted into a printable format?",
+    "answer": "Processing",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Developing"
+    ],
+    "note": "Processing occurs before any physical printing begins."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step is a uniform charge applied to the imaging drum?",
+    "answer": "Charging",
+    "options": [
+      "Processing",
+      "Charging",
+      "Transferring",
+      "Cleaning"
+    ],
+    "note": "The charging stage prepares the drum to receive the image."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step does the laser remove portions of the drum's charge?",
+    "answer": "Exposing",
+    "options": [
+      "Charging",
+      "Exposing",
+      "Developing",
+      "Fusing"
+    ],
+    "note": "The laser creates the electrostatic image during exposing."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step is toner attracted to the latent image on the drum?",
+    "answer": "Developing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "Developing applies toner to the charged image."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step is toner moved from the drum to the paper?",
+    "answer": "Transferring",
+    "options": [
+      "Exposing",
+      "Developing",
+      "Transferring",
+      "Cleaning"
+    ],
+    "note": "The transfer roller transfers toner to the paper."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step are heat and pressure applied?",
+    "answer": "Fusing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The fuser melts toner into the paper fibers."
+  },
+  {
+    "category": "printers",
+    "question": "During which laser printing step is excess toner removed from the drum?",
+    "answer": "Cleaning",
+    "options": [
+      "Charging",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "Cleaning prepares the drum for the next print cycle."
+  },
+  {
+    "category": "printers",
+    "question": "A technician sees toner correctly transferred to the paper, but it wipes off with a finger. Which laser printing step is failing?",
+    "answer": "Fusing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Fusing",
+      "Cleaning"
+    ],
+    "note": "The fuser is responsible for permanently bonding toner to paper."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer's imaging drum never receives a uniform charge. Which step is failing?",
+    "answer": "Charging",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Developing"
+    ],
+    "note": "Charging creates the electrostatic foundation for the print image."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer receives a print job but never begins creating an image on the drum. Which step occurs first?",
+    "answer": "Processing",
+    "options": [
+      "Processing",
+      "Charging",
+      "Exposing",
+      "Developing"
+    ],
+    "note": "The printer must process the document before printing can begin."
+  },
+  {
+    "category": "printers",
+    "question": "Which sequence correctly represents the laser printing process?",
+    "answer": "Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning",
+    "options": [
+      "Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning",
+      "Charging, Processing, Exposing, Developing, Fusing, Transferring, Cleaning",
+      "Processing, Exposing, Charging, Developing, Transferring, Cleaning, Fusing",
+      "Charging, Exposing, Developing, Processing, Transferring, Fusing, Cleaning"
+    ],
+    "note": "Memorize P-C-E-D-T-F-C for the A+ exam."
+  },
+  {
+    "category": "printers",
+    "question": "What type of printer maintenance kit commonly includes a fuser and pickup rollers?",
+    "answer": "Laser printer maintenance kit",
+    "options": [
+      "Inkjet maintenance kit",
+      "Laser printer maintenance kit",
+      "Thermal printer kit",
+      "Dot matrix kit"
+    ],
+    "note": "Laser printer maintenance kits commonly contain fusers and rollers."
+  },
+  {
+    "category": "printers",
+    "question": "What is the second step in the laser printing process?",
+    "answer": "Charging",
+    "options": [
+      "Charging",
+      "Exposing",
+      "Developing",
+      "Fusing"
+    ],
+    "note": "The laser printing process is Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning."
+  },
+  {
+    "category": "printers",
+    "question": "Which laser printing step uses the laser to create an electrostatic image on the drum?",
+    "answer": "Exposing",
+    "options": [
+      "Charging",
+      "Exposing",
+      "Developing",
+      "Cleaning"
+    ],
+    "note": "The exposing phase uses the laser to write the image onto the drum."
+  },
+  {
+    "category": "printers",
+    "question": "Which laser printing step applies toner to the latent image on the drum?",
+    "answer": "Developing",
+    "options": [
+      "Developing",
+      "Transferring",
+      "Cleaning",
+      "Processing"
+    ],
+    "note": "The developing stage applies toner to the charged image."
+  },
+  {
+    "category": "printers",
+    "question": "What printer language is commonly used by Hewlett-Packard printers?",
+    "answer": "PCL",
+    "options": [
+      "PostScript",
+      "PCL",
+      "IPP",
+      "SMB"
+    ],
+    "note": "PCL stands for Printer Command Language."
+  },
+  {
+    "category": "printers",
+    "question": "What printer language is commonly used in professional publishing environments?",
+    "answer": "PostScript",
+    "options": [
+      "PCL",
+      "IPP",
+      "PostScript",
+      "RAW"
+    ],
+    "note": "PostScript is commonly used in graphic design and publishing."
+  },
+  {
+    "category": "printers",
+    "question": "What does a print spooler do?",
+    "answer": "Stores print jobs temporarily",
+    "options": [
+      "Stores print jobs temporarily",
+      "Prints test pages",
+      "Cleans the printer",
+      "Configures toner levels"
+    ],
+    "note": "The print spooler queues print jobs before printing."
+  },
+  {
+    "category": "printers",
+    "question": "A user sends a document to print, but nothing prints and multiple jobs are stuck in the queue. What service should be checked first?",
+    "answer": "Print spooler",
+    "options": [
+      "DNS",
+      "Print spooler",
+      "DHCP",
+      "SNMP"
+    ],
+    "note": "Restarting the print spooler often resolves stuck print queues."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer produces ghost images repeated down the page. Which component is the most likely cause?",
+    "answer": "Imaging drum",
+    "options": [
+      "Pickup roller",
+      "Imaging drum",
+      "Fuser",
+      "Paper tray"
+    ],
+    "note": "A failing imaging drum commonly causes ghosting."
+  },
+  {
+    "category": "printers",
+    "question": "A printer reports a paper jam but no paper is visible. What should be checked first?",
+    "answer": "Paper path",
+    "options": [
+      "Toner level",
+      "Paper path",
+      "IP address",
+      "Print server"
+    ],
+    "note": "Small pieces of paper are often stuck somewhere in the paper path."
+  },
+  {
+    "category": "printers",
+    "question": "What printer type is best suited for producing multi-part carbon-copy forms?",
+    "answer": "Dot Matrix",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Dot Matrix"
+    ],
+    "note": "Dot matrix printers are impact printers and can print through multiple layers."
+  },
+  {
+    "category": "printers",
+    "question": "What printer type requires special heat-sensitive paper?",
+    "answer": "Thermal",
+    "options": [
+      "Laser",
+      "Inkjet",
+      "Thermal",
+      "Dot Matrix"
+    ],
+    "note": "Thermal printers use chemically treated paper that darkens when heated."
+  },
+  {
+    "category": "printers",
+    "question": "What network port is commonly used by IPP?",
+    "answer": "631",
+    "options": [
+      "515",
+      "9100",
+      "631",
+      "443"
+    ],
+    "note": "IPP uses TCP port 631."
+  },
+  {
+    "category": "printers",
+    "question": "What network port is commonly associated with RAW printing?",
+    "answer": "9100",
+    "options": [
+      "9100",
+      "631",
+      "515",
+      "25"
+    ],
+    "note": "Port 9100 is commonly used for RAW printing."
+  },
+  {
+    "category": "printers",
+    "question": "What network port is commonly associated with Line Printer Daemon (LPD)?",
+    "answer": "515",
+    "options": [
+      "9100",
+      "631",
+      "515",
+      "3389"
+    ],
+    "note": "LPD/LPR printing commonly uses TCP port 515."
+  },
+  {
+    "category": "printers",
+    "question": "A laser printer prints pages with vertical streaks on every page. What consumable is the most likely cause?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Pickup roller",
+      "Toner cartridge",
+      "Paper tray",
+      "Print spooler"
+    ],
+    "note": "Damaged or low toner cartridges often cause streaking."
+  },
+  {
+    "category": "printers",
+    "question": "What should be calibrated on an inkjet printer if colors appear inaccurate?",
+    "answer": "Print heads",
+    "options": [
+      "Print heads",
+      "Fuser",
+      "Pickup rollers",
+      "Transfer roller"
+    ],
+    "note": "Inkjet printers often require print head alignment and calibration."
+  },
+  {
+    "category": "printers",
+    "question": "A user reports faded output from a laser printer. What should be checked first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Pickup roller",
+      "Toner cartridge",
+      "Print spooler",
+      "Paper tray"
+    ],
+    "note": "Low toner is a common cause of faded print output."
+  }
+]

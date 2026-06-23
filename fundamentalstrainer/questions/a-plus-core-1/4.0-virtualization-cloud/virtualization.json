@@ -1,0 +1,302 @@
+[
+  {
+    "category": "virtualization",
+    "question": "Which hypervisor runs directly on hardware?",
+    "answer": "Type 1",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Emulator"
+    ],
+    "note": "Type 1 is bare-metal."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which hypervisor runs on top of a host OS?",
+    "answer": "Type 2",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "IaaS",
+      "VLAN"
+    ],
+    "note": "VirtualBox and VMware Workstation are Type 2 examples."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is Intel's CPU virtualization technology called?",
+    "answer": "VT-x",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "Hyper-V",
+      "OFDMA"
+    ],
+    "note": "Intel virtualization is VT-x."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is AMD's CPU virtualization technology called?",
+    "answer": "AMD-V",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "VLAN-V",
+      "802.3at"
+    ],
+    "note": "AMD virtualization is AMD-V."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which Microsoft hypervisor is built into Windows Server?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "VMware",
+      "KVM",
+      "VirtualBox"
+    ],
+    "note": "Hyper-V is Microsoft's hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "What does VDI stand for?",
+    "answer": "Virtual Desktop Infrastructure",
+    "options": [
+      "Virtual Desktop Infrastructure",
+      "Virtual Device Interface",
+      "Virtual Data Integration",
+      "Visual Desktop Interface"
+    ],
+    "note": "VDI hosts desktops centrally."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which virtualization technology is built into modern AMD CPUs?",
+    "answer": "AMD-V",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "Hyper-V",
+      "SR-IOV"
+    ],
+    "note": "AMD-V enables hardware virtualization."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which virtualization technology is built into modern Intel CPUs?",
+    "answer": "VT-x",
+    "options": [
+      "VT-x",
+      "AMD-V",
+      "Hyper-V",
+      "SR-IOV"
+    ],
+    "note": "VT-x is Intel's virtualization extension."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which Microsoft hypervisor is built into Windows Server?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "VirtualBox",
+      "VMware Workstation",
+      "Docker"
+    ],
+    "note": "Hyper-V is Microsoft's Type 1 hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "Type 1 hypervisors run directly on hardware."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 2 hypervisor?",
+    "answer": "VirtualBox",
+    "options": [
+      "Hyper-V",
+      "ESXi",
+      "VirtualBox",
+      "Proxmox"
+    ],
+    "note": "VirtualBox runs on top of a host operating system."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor?",
+    "answer": "VMware ESXi",
+    "options": [
+      "VMware ESXi",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "ESXi is a bare-metal hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which is an example of a Type 1 hypervisor commonly used in homelabs?",
+    "answer": "Proxmox",
+    "options": [
+      "Proxmox",
+      "VirtualBox",
+      "VMware Workstation",
+      "Parallels"
+    ],
+    "note": "Proxmox VE is a Type 1 hypervisor."
+  },
+  {
+    "category": "virtualization",
+    "question": "What does VDI stand for?",
+    "answer": "Virtual Desktop Infrastructure",
+    "options": [
+      "Virtual Desktop Infrastructure",
+      "Virtual Device Interface",
+      "Visual Desktop Integration",
+      "Virtual Drive Infrastructure"
+    ],
+    "note": "VDI provides centrally hosted desktops."
+  },
+  {
+    "category": "virtualization",
+    "question": "What does DaaS stand for?",
+    "answer": "Desktop as a Service",
+    "options": [
+      "Desktop as a Service",
+      "Data as a Service",
+      "Device as a Service",
+      "Drive as a Service"
+    ],
+    "note": "DaaS provides cloud-hosted desktops."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is required in the BIOS before most hypervisors can run virtual machines efficiently?",
+    "answer": "Hardware virtualization support",
+    "options": [
+      "Hardware virtualization support",
+      "RAID support",
+      "Secure Boot disabled",
+      "TPM disabled"
+    ],
+    "note": "VT-x or AMD-V should be enabled."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which Intel technology should be enabled to support virtualization?",
+    "answer": "VT-x",
+    "options": [
+      "VT-x",
+      "Hyper-Threading",
+      "Turbo Boost",
+      "SpeedStep"
+    ],
+    "note": "VT-x enables hardware-assisted virtualization."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which AMD technology should be enabled to support virtualization?",
+    "answer": "AMD-V",
+    "options": [
+      "AMD-V",
+      "Infinity Fabric",
+      "StoreMI",
+      "Precision Boost"
+    ],
+    "note": "AMD-V enables hardware-assisted virtualization."
+  },
+  {
+    "category": "virtualization",
+    "question": "What is the primary benefit of virtualization?",
+    "answer": "Running multiple operating systems on one physical computer",
+    "options": [
+      "Running multiple operating systems on one physical computer",
+      "Increasing monitor resolution",
+      "Replacing DNS",
+      "Improving Wi-Fi coverage"
+    ],
+    "note": "Virtualization improves hardware utilization."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which technology allows multiple virtual machines to share a single physical host?",
+    "answer": "Hypervisor",
+    "options": [
+      "Hypervisor",
+      "Switch",
+      "Router",
+      "Firewall"
+    ],
+    "note": "The hypervisor manages virtual machines."
+  },
+  {
+    "category": "virtualization",
+    "question": "A company wants users to access Windows desktops remotely from a centralized server. What solution should be used?",
+    "answer": "VDI",
+    "options": [
+      "VDI",
+      "RAID",
+      "VPN",
+      "NAT"
+    ],
+    "note": "VDI centrally hosts desktop environments."
+  },
+  {
+    "category": "virtualization",
+    "question": "A technician installs VirtualBox on Windows 11 and creates a Linux VM. What type of hypervisor is VirtualBox?",
+    "answer": "Type 2",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Emulator"
+    ],
+    "note": "VirtualBox relies on the host operating system."
+  },
+  {
+    "category": "virtualization",
+    "question": "A technician installs Proxmox directly onto a server. What type of hypervisor is being used?",
+    "answer": "Type 1",
+    "options": [
+      "Type 1",
+      "Type 2",
+      "Container",
+      "Desktop as a Service"
+    ],
+    "note": "Proxmox runs directly on hardware."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which technology is lighter weight because it shares the host operating system kernel?",
+    "answer": "Container",
+    "options": [
+      "Container",
+      "Virtual machine",
+      "RAID",
+      "VDI"
+    ],
+    "note": "Containers share the host OS kernel."
+  },
+  {
+    "category": "virtualization",
+    "question": "Which consumes more resources?",
+    "answer": "Virtual machine",
+    "options": [
+      "Virtual machine",
+      "Container",
+      "Both are equal",
+      "Neither"
+    ],
+    "note": "Each VM runs its own operating system."
+  }
+]

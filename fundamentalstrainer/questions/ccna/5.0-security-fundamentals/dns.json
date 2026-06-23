@@ -1,0 +1,290 @@
+[
+  {
+    "category": "dns",
+    "question": "Which DNS record identifies mail servers for a domain?",
+    "answer": "MX",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "TXT"
+    ],
+    "note": "MX records point to mail servers."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record maps a hostname to an IPv4 address?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "A records map names to IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record maps a hostname to an IPv6 address?",
+    "answer": "AAAA",
+    "options": [
+      "A",
+      "AAAA",
+      "CNAME",
+      "SRV"
+    ],
+    "note": "AAAA records map names to IPv6 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is commonly used for SPF?",
+    "answer": "TXT",
+    "options": [
+      "A",
+      "MX",
+      "TXT",
+      "PTR"
+    ],
+    "note": "SPF is stored in TXT records."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record performs reverse lookups?",
+    "answer": "PTR",
+    "options": [
+      "A",
+      "AAAA",
+      "PTR",
+      "CNAME"
+    ],
+    "note": "PTR maps IP to hostname."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record aliases one hostname to another?",
+    "answer": "CNAME",
+    "options": [
+      "MX",
+      "TXT",
+      "PTR",
+      "CNAME"
+    ],
+    "note": "CNAME creates aliases."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record identifies authoritative name servers?",
+    "answer": "NS",
+    "options": [
+      "NS",
+      "MX",
+      "PTR",
+      "TXT"
+    ],
+    "note": "NS records point to authoritative DNS servers."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is commonly used for autodiscover and SIP services?",
+    "answer": "SRV",
+    "options": [
+      "SRV",
+      "PTR",
+      "TXT",
+      "AAAA"
+    ],
+    "note": "SRV records locate services."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is commonly used for SPF, DKIM, and verification data?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "MX",
+      "A",
+      "PTR"
+    ],
+    "note": "TXT stores miscellaneous text data."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record aliases one hostname to another?",
+    "answer": "CNAME",
+    "options": [
+      "A",
+      "AAAA",
+      "CNAME",
+      "MX"
+    ],
+    "note": "CNAME creates an alias for another hostname."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record performs reverse lookups?",
+    "answer": "PTR",
+    "options": [
+      "A",
+      "AAAA",
+      "PTR",
+      "TXT"
+    ],
+    "note": "PTR records map IP addresses back to hostnames."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record identifies authoritative name servers for a domain?",
+    "answer": "NS",
+    "options": [
+      "NS",
+      "MX",
+      "TXT",
+      "PTR"
+    ],
+    "note": "NS records point to authoritative DNS servers."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record commonly stores SPF information?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "MX",
+      "AAAA",
+      "NS"
+    ],
+    "note": "SPF records are stored as TXT records."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is commonly used for DKIM information?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "PTR",
+      "MX",
+      "AAAA"
+    ],
+    "note": "DKIM public keys are commonly stored in TXT records."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record is used to locate services such as SIP or Active Directory services?",
+    "answer": "SRV",
+    "options": [
+      "SRV",
+      "TXT",
+      "MX",
+      "PTR"
+    ],
+    "note": "SRV records identify service locations."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you create to point mail.example.com to an email server?",
+    "answer": "MX",
+    "options": [
+      "MX",
+      "A",
+      "PTR",
+      "TXT"
+    ],
+    "note": "MX records identify mail servers."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you use to map www.example.com to 192.168.1.10?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "PTR",
+      "MX"
+    ],
+    "note": "A records map hostnames to IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "What record would you use to map www.example.com to 2001:db8::1?",
+    "answer": "AAAA",
+    "options": [
+      "AAAA",
+      "A",
+      "MX",
+      "PTR"
+    ],
+    "note": "AAAA records map hostnames to IPv6 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "A user can browse websites using IP addresses but not hostnames. Which service is MOST likely failing?",
+    "answer": "DNS",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "LDAP"
+    ],
+    "note": "Name resolution failures usually indicate a DNS problem."
+  },
+  {
+    "category": "dns",
+    "question": "A DNS lookup returns an IPv4 address. Which record type was queried?",
+    "answer": "A",
+    "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "PTR"
+    ],
+    "note": "A records return IPv4 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "A DNS lookup returns an IPv6 address. Which record type was queried?",
+    "answer": "AAAA",
+    "options": [
+      "AAAA",
+      "A",
+      "NS",
+      "TXT"
+    ],
+    "note": "AAAA records return IPv6 addresses."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record would be checked first when troubleshooting email delivery to a domain?",
+    "answer": "MX",
+    "options": [
+      "MX",
+      "PTR",
+      "TXT",
+      "AAAA"
+    ],
+    "note": "MX records determine where mail is delivered."
+  },
+  {
+    "category": "dns",
+    "question": "Which DNS record type is most commonly associated with SPF, DKIM, and domain verification?",
+    "answer": "TXT",
+    "options": [
+      "TXT",
+      "NS",
+      "PTR",
+      "SRV"
+    ],
+    "note": "TXT records store miscellaneous verification information."
+  },
+  {
+    "category": "dns",
+    "question": "What does DNS stand for?",
+    "answer": "Domain Name System",
+    "options": [
+      "Domain Name System",
+      "Dynamic Network Service",
+      "Distributed Name Service",
+      "Data Naming System"
+    ],
+    "note": "DNS translates names into IP addresses."
+  }
+]

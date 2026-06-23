@@ -1,0 +1,290 @@
+[
+  {
+    "category": "commands",
+    "question": "Which Windows command displays IP configuration information?",
+    "answer": "ipconfig",
+    "options": [
+      "ipconfig",
+      "ping",
+      "tracert",
+      "nslookup"
+    ],
+    "note": "ipconfig displays network configuration information."
+  },
+  {
+    "category": "commands",
+    "question": "Which command tests basic network connectivity?",
+    "answer": "ping",
+    "options": [
+      "ping",
+      "ipconfig",
+      "netstat",
+      "nslookup"
+    ],
+    "note": "ping uses ICMP to test connectivity."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the route packets take across a network?",
+    "answer": "tracert",
+    "options": [
+      "tracert",
+      "ping",
+      "ipconfig",
+      "net use"
+    ],
+    "note": "tracert shows each hop along a route."
+  },
+  {
+    "category": "commands",
+    "question": "Which command queries DNS servers?",
+    "answer": "nslookup",
+    "options": [
+      "nslookup",
+      "netstat",
+      "hostname",
+      "ping"
+    ],
+    "note": "nslookup is commonly used for DNS troubleshooting."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays active network connections?",
+    "answer": "netstat",
+    "options": [
+      "netstat",
+      "ping",
+      "nslookup",
+      "tracert"
+    ],
+    "note": "netstat displays listening ports and active connections."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the computer's hostname?",
+    "answer": "hostname",
+    "options": [
+      "hostname",
+      "netstat",
+      "ping",
+      "arp"
+    ],
+    "note": "hostname displays the local computer name."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the local ARP table?",
+    "answer": "arp",
+    "options": [
+      "arp",
+      "route",
+      "ping",
+      "hostname"
+    ],
+    "note": "ARP entries map IP addresses to MAC addresses."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays the local routing table?",
+    "answer": "route",
+    "options": [
+      "route",
+      "arp",
+      "ping",
+      "hostname"
+    ],
+    "note": "route displays network routes."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays a computer's MAC address information?",
+    "answer": "ipconfig /all",
+    "options": [
+      "ipconfig /all",
+      "ping",
+      "tracert",
+      "hostname"
+    ],
+    "note": "ipconfig /all shows physical addresses and more."
+  },
+  {
+    "category": "commands",
+    "question": "Which command releases a DHCP lease?",
+    "answer": "ipconfig /release",
+    "options": [
+      "ipconfig /release",
+      "ipconfig /renew",
+      "ping",
+      "arp -a"
+    ],
+    "note": "Release gives up the current DHCP address."
+  },
+  {
+    "category": "commands",
+    "question": "Which command requests a new DHCP lease?",
+    "answer": "ipconfig /renew",
+    "options": [
+      "ipconfig /renew",
+      "ipconfig /release",
+      "tracert",
+      "hostname"
+    ],
+    "note": "Renew requests a new DHCP configuration."
+  },
+  {
+    "category": "commands",
+    "question": "Which command flushes the DNS resolver cache?",
+    "answer": "ipconfig /flushdns",
+    "options": [
+      "ipconfig /flushdns",
+      "ipconfig /renew",
+      "arp -d",
+      "netstat"
+    ],
+    "note": "Useful when troubleshooting DNS issues."
+  },
+  {
+    "category": "commands",
+    "question": "Which command displays currently running processes in Windows?",
+    "answer": "tasklist",
+    "options": [
+      "tasklist",
+      "services.msc",
+      "msconfig",
+      "taskkill"
+    ],
+    "note": "tasklist displays running processes."
+  },
+  {
+    "category": "commands",
+    "question": "Which command terminates a running process?",
+    "answer": "taskkill",
+    "options": [
+      "taskkill",
+      "tasklist",
+      "hostname",
+      "net use"
+    ],
+    "note": "taskkill ends processes from the command line."
+  },
+  {
+    "category": "commands",
+    "question": "Which command checks system file integrity in Windows?",
+    "answer": "sfc /scannow",
+    "options": [
+      "sfc /scannow",
+      "chkdsk",
+      "diskpart",
+      "gpupdate"
+    ],
+    "note": "SFC repairs protected Windows files."
+  },
+  {
+    "category": "commands",
+    "question": "Which command checks a disk for file system errors?",
+    "answer": "chkdsk",
+    "options": [
+      "chkdsk",
+      "diskpart",
+      "sfc",
+      "gpupdate"
+    ],
+    "note": "CHKDSK verifies file system integrity."
+  },
+  {
+    "category": "commands",
+    "question": "Which command is used to manage disks and partitions?",
+    "answer": "diskpart",
+    "options": [
+      "diskpart",
+      "chkdsk",
+      "sfc",
+      "netstat"
+    ],
+    "note": "DiskPart is a powerful disk management tool."
+  },
+  {
+    "category": "commands",
+    "question": "Which command forces Group Policy to update immediately?",
+    "answer": "gpupdate /force",
+    "options": [
+      "gpupdate /force",
+      "ipconfig /renew",
+      "sfc /scannow",
+      "arp -a"
+    ],
+    "note": "Useful in Active Directory environments."
+  },
+  {
+    "category": "commands",
+    "question": "A technician suspects a DNS issue. Which command should be used first?",
+    "answer": "nslookup",
+    "options": [
+      "nslookup",
+      "diskpart",
+      "taskkill",
+      "gpupdate"
+    ],
+    "note": "nslookup directly tests DNS resolution."
+  },
+  {
+    "category": "commands",
+    "question": "A technician wants to verify basic connectivity to a server. Which command should be used?",
+    "answer": "ping",
+    "options": [
+      "ping",
+      "hostname",
+      "diskpart",
+      "tasklist"
+    ],
+    "note": "Ping is usually the first network test."
+  },
+  {
+    "category": "commands",
+    "question": "A technician needs to determine where network traffic is failing between two sites. Which command should be used?",
+    "answer": "tracert",
+    "options": [
+      "tracert",
+      "ping",
+      "hostname",
+      "arp"
+    ],
+    "note": "Tracert shows every hop along the route."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command commonly displays network interface information?",
+    "answer": "ifconfig",
+    "options": [
+      "ifconfig",
+      "dir",
+      "tasklist",
+      "gpupdate"
+    ],
+    "note": "Older Linux systems commonly use ifconfig."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command is the modern replacement for many ifconfig functions?",
+    "answer": "ip",
+    "options": [
+      "ip",
+      "hostname",
+      "ping",
+      "chkdsk"
+    ],
+    "note": "The ip command is the modern Linux networking tool."
+  },
+  {
+    "category": "commands",
+    "question": "Which Linux command performs DNS lookups similar to nslookup?",
+    "answer": "dig",
+    "options": [
+      "dig",
+      "dir",
+      "tasklist",
+      "gpupdate"
+    ],
+    "note": "dig provides detailed DNS query information."
+  }
+]

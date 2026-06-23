@@ -1,0 +1,722 @@
+[
+  {
+    "category": "troubleshooting",
+    "question": "A PC powers on but nothing appears on the screen. What should be checked first?",
+    "answer": "Monitor connection",
+    "options": [
+      "Monitor connection",
+      "Printer cable",
+      "DNS server",
+      "Speaker volume"
+    ],
+    "note": "Always verify physical connections first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer receives a 169.254.x.x address. What is the MOST likely problem?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate DHCP was unavailable."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can ping 8.8.8.8 but cannot browse to google.com. What is the MOST likely issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "Switch",
+      "Router"
+    ],
+    "note": "IP connectivity works but name resolution fails."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can access local resources but not the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer prints pages with toner that wipes off easily. Which component is likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Drum",
+      "Paper tray"
+    ],
+    "note": "The fuser bonds toner to paper."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A printer pulls multiple sheets at once. Which component is most likely worn?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Drum",
+      "Toner"
+    ],
+    "note": "Worn rollers often cause misfeeds."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports poor wireless speeds despite excellent signal strength. What is the MOST likely cause?",
+    "answer": "Interference",
+    "options": [
+      "Interference",
+      "Weak signal",
+      "Bad monitor",
+      "Low battery"
+    ],
+    "note": "Strong signal does not eliminate interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop battery drains very quickly. What should be checked first?",
+    "answer": "Power settings",
+    "options": [
+      "Power settings",
+      "Printer settings",
+      "DNS",
+      "VPN"
+    ],
+    "note": "Power plans can dramatically affect battery life."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports that the screen is very dim but still visible. What is the likely issue?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "Bad NIC",
+      "DNS issue",
+      "Bad RAM"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A system suddenly shuts down during heavy workloads. What is the MOST likely cause?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "DHCP",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal protection can trigger shutdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A network link is only negotiating 100 Mbps instead of 1 Gbps. What should be checked first?",
+    "answer": "Cable quality",
+    "options": [
+      "Cable quality",
+      "Printer driver",
+      "Monitor resolution",
+      "DNS"
+    ],
+    "note": "Bad cable pairs often cause speed fallback."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot connect to Wi-Fi but can connect with Ethernet. What should be checked first?",
+    "answer": "Wireless adapter",
+    "options": [
+      "Wireless adapter",
+      "Printer queue",
+      "Monitor brightness",
+      "RAM"
+    ],
+    "note": "Verify the wireless adapter is enabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A phone cannot make calls but has Wi-Fi access. What should be checked first?",
+    "answer": "Cellular signal",
+    "options": [
+      "Cellular signal",
+      "DNS",
+      "Printer driver",
+      "GPU"
+    ],
+    "note": "Calling requires cellular service."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a single colored dot that never changes on the display. What is it?",
+    "answer": "Stuck pixel",
+    "options": [
+      "Stuck pixel",
+      "Burn-in",
+      "Backlight issue",
+      "Screen tearing"
+    ],
+    "note": "A stuck pixel remains fixed."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC repeatedly reboots during startup. What should be checked first?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "Printer",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal issues can cause reboot loops."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A hard drive is making clicking noises. What is the MOST likely issue?",
+    "answer": "Drive failure",
+    "options": [
+      "Drive failure",
+      "DNS failure",
+      "Printer jam",
+      "Wi-Fi interference"
+    ],
+    "note": "Clicking drives are often failing mechanically."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot access a shared folder but can browse the Internet. What should be checked first?",
+    "answer": "Permissions",
+    "options": [
+      "Permissions",
+      "Monitor brightness",
+      "Bluetooth",
+      "Battery"
+    ],
+    "note": "Access problems often involve permissions."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer produces blank pages. What should be checked first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Paper tray",
+      "Duplexer",
+      "Print queue"
+    ],
+    "note": "Empty or defective toner can produce blank pages."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports no audio from speakers. What should be checked first?",
+    "answer": "Volume and mute settings",
+    "options": [
+      "Volume and mute settings",
+      "DNS",
+      "Printer queue",
+      "IP address"
+    ],
+    "note": "Always check the simple things first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop does not charge even when plugged in. What should be checked first?",
+    "answer": "Power adapter",
+    "options": [
+      "Power adapter",
+      "Wi-Fi",
+      "DNS",
+      "Display resolution"
+    ],
+    "note": "Verify power delivery before replacing components."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "IMAP",
+      "POP3",
+      "DNS"
+    ],
+    "note": "SMTP handles outgoing email."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports slow Internet access on a 2.4 GHz network in an apartment complex. What is the BEST recommendation?",
+    "answer": "Move to 5 GHz",
+    "options": [
+      "Move to 5 GHz",
+      "Replace the monitor",
+      "Disable DNS",
+      "Use a printer cable"
+    ],
+    "note": "5 GHz often experiences less interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A workstation cannot obtain an IP address. Which service should be checked first?",
+    "answer": "DHCP",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DHCP assigns IP addresses."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports frequent paper jams. Which component is commonly responsible?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Drum",
+      "Toner",
+      "Fuser"
+    ],
+    "note": "Paper handling problems often involve rollers."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer shows the wrong date and time after every reboot. What component is likely failing?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "GPU"
+    ],
+    "note": "The CMOS battery maintains BIOS settings."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A monitor displays 'No Signal'. What should be checked first?",
+    "answer": "Video cable connection",
+    "options": [
+      "Video cable connection",
+      "DNS",
+      "Printer driver",
+      "Speaker volume"
+    ],
+    "note": "Verify the monitor is receiving a signal."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot find nearby Bluetooth devices. What should be checked first?",
+    "answer": "Bluetooth is enabled",
+    "options": [
+      "Bluetooth is enabled",
+      "DNS",
+      "SMTP",
+      "DHCP"
+    ],
+    "note": "Bluetooth may simply be disabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC boots directly into BIOS every time. What should be checked first?",
+    "answer": "Boot drive detection",
+    "options": [
+      "Boot drive detection",
+      "Printer queue",
+      "DNS",
+      "Wi-Fi password"
+    ],
+    "note": "The system may not see a bootable drive."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a very slow computer after opening many applications. Which resource is MOST likely exhausted?",
+    "answer": "RAM",
+    "options": [
+      "RAM",
+      "DNS",
+      "SMTP",
+      "Bluetooth"
+    ],
+    "note": "Insufficient memory often causes slowdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What is the FIRST step of the CompTIA troubleshooting process?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Establish a theory",
+      "Implement a solution",
+      "Document findings"
+    ],
+    "note": "Always start by identifying the problem and gathering information."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC powers on but nothing appears on the screen. What should be checked first?",
+    "answer": "Monitor connection",
+    "options": [
+      "Monitor connection",
+      "Printer cable",
+      "DNS server",
+      "Speaker volume"
+    ],
+    "note": "Always verify physical connections first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer receives a 169.254.x.x address. What is the MOST likely problem?",
+    "answer": "DHCP failure",
+    "options": [
+      "DHCP failure",
+      "DNS failure",
+      "Gateway failure",
+      "Printer failure"
+    ],
+    "note": "APIPA addresses indicate DHCP was unavailable."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can ping 8.8.8.8 but cannot browse to google.com. What is the MOST likely issue?",
+    "answer": "DNS",
+    "options": [
+      "DNS",
+      "DHCP",
+      "Switch",
+      "Router"
+    ],
+    "note": "IP connectivity works but name resolution fails."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can access local resources but not the Internet. What should be checked first?",
+    "answer": "Default gateway",
+    "options": [
+      "Default gateway",
+      "Monitor cable",
+      "Printer queue",
+      "Bluetooth"
+    ],
+    "note": "Traffic leaving the subnet requires a gateway."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer prints pages with toner that wipes off easily. Which component is likely failing?",
+    "answer": "Fuser",
+    "options": [
+      "Fuser",
+      "Pickup roller",
+      "Drum",
+      "Paper tray"
+    ],
+    "note": "The fuser bonds toner to paper."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A printer pulls multiple sheets at once. Which component is most likely worn?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Fuser",
+      "Drum",
+      "Toner"
+    ],
+    "note": "Worn rollers often cause misfeeds."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports poor wireless speeds despite excellent signal strength. What is the MOST likely cause?",
+    "answer": "Interference",
+    "options": [
+      "Interference",
+      "Weak signal",
+      "Bad monitor",
+      "Low battery"
+    ],
+    "note": "Strong signal does not eliminate interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop battery drains very quickly. What should be checked first?",
+    "answer": "Power settings",
+    "options": [
+      "Power settings",
+      "Printer settings",
+      "DNS",
+      "VPN"
+    ],
+    "note": "Power plans can dramatically affect battery life."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports that the screen is very dim but still visible. What is the likely issue?",
+    "answer": "Backlight failure",
+    "options": [
+      "Backlight failure",
+      "Bad NIC",
+      "DNS issue",
+      "Bad RAM"
+    ],
+    "note": "A failed backlight often leaves a faint image."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A system suddenly shuts down during heavy workloads. What is the MOST likely cause?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "DHCP",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal protection can trigger shutdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A network link is only negotiating 100 Mbps instead of 1 Gbps. What should be checked first?",
+    "answer": "Cable quality",
+    "options": [
+      "Cable quality",
+      "Printer driver",
+      "Monitor resolution",
+      "DNS"
+    ],
+    "note": "Bad cable pairs often cause speed fallback."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot connect to Wi-Fi but can connect with Ethernet. What should be checked first?",
+    "answer": "Wireless adapter",
+    "options": [
+      "Wireless adapter",
+      "Printer queue",
+      "Monitor brightness",
+      "RAM"
+    ],
+    "note": "Verify the wireless adapter is enabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A phone cannot make calls but has Wi-Fi access. What should be checked first?",
+    "answer": "Cellular signal",
+    "options": [
+      "Cellular signal",
+      "DNS",
+      "Printer driver",
+      "GPU"
+    ],
+    "note": "Calling requires cellular service."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a single colored dot that never changes on the display. What is it?",
+    "answer": "Stuck pixel",
+    "options": [
+      "Stuck pixel",
+      "Burn-in",
+      "Backlight issue",
+      "Screen tearing"
+    ],
+    "note": "A stuck pixel remains fixed."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC repeatedly reboots during startup. What should be checked first?",
+    "answer": "Overheating",
+    "options": [
+      "Overheating",
+      "Printer",
+      "DNS",
+      "Bluetooth"
+    ],
+    "note": "Thermal issues can cause reboot loops."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A hard drive is making clicking noises. What is the MOST likely issue?",
+    "answer": "Drive failure",
+    "options": [
+      "Drive failure",
+      "DNS failure",
+      "Printer jam",
+      "Wi-Fi interference"
+    ],
+    "note": "Clicking drives are often failing mechanically."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot access a shared folder but can browse the Internet. What should be checked first?",
+    "answer": "Permissions",
+    "options": [
+      "Permissions",
+      "Monitor brightness",
+      "Bluetooth",
+      "Battery"
+    ],
+    "note": "Access problems often involve permissions."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laser printer produces blank pages. What should be checked first?",
+    "answer": "Toner cartridge",
+    "options": [
+      "Toner cartridge",
+      "Paper tray",
+      "Duplexer",
+      "Print queue"
+    ],
+    "note": "Empty or defective toner can produce blank pages."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports no audio from speakers. What should be checked first?",
+    "answer": "Volume and mute settings",
+    "options": [
+      "Volume and mute settings",
+      "DNS",
+      "Printer queue",
+      "IP address"
+    ],
+    "note": "Always check the simple things first."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A laptop does not charge even when plugged in. What should be checked first?",
+    "answer": "Power adapter",
+    "options": [
+      "Power adapter",
+      "Wi-Fi",
+      "DNS",
+      "Display resolution"
+    ],
+    "note": "Verify power delivery before replacing components."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user can receive email but cannot send email. Which protocol should be investigated?",
+    "answer": "SMTP",
+    "options": [
+      "SMTP",
+      "IMAP",
+      "POP3",
+      "DNS"
+    ],
+    "note": "SMTP handles outgoing email."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports slow Internet access on a 2.4 GHz network in an apartment complex. What is the BEST recommendation?",
+    "answer": "Move to 5 GHz",
+    "options": [
+      "Move to 5 GHz",
+      "Replace the monitor",
+      "Disable DNS",
+      "Use a printer cable"
+    ],
+    "note": "5 GHz often experiences less interference."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A workstation cannot obtain an IP address. Which service should be checked first?",
+    "answer": "DHCP",
+    "options": [
+      "DHCP",
+      "DNS",
+      "SMTP",
+      "RDP"
+    ],
+    "note": "DHCP assigns IP addresses."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports frequent paper jams. Which component is commonly responsible?",
+    "answer": "Pickup roller",
+    "options": [
+      "Pickup roller",
+      "Drum",
+      "Toner",
+      "Fuser"
+    ],
+    "note": "Paper handling problems often involve rollers."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A computer shows the wrong date and time after every reboot. What component is likely failing?",
+    "answer": "CMOS battery",
+    "options": [
+      "CMOS battery",
+      "RAM",
+      "CPU",
+      "GPU"
+    ],
+    "note": "The CMOS battery maintains BIOS settings."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A monitor displays 'No Signal'. What should be checked first?",
+    "answer": "Video cable connection",
+    "options": [
+      "Video cable connection",
+      "DNS",
+      "Printer driver",
+      "Speaker volume"
+    ],
+    "note": "Verify the monitor is receiving a signal."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user cannot find nearby Bluetooth devices. What should be checked first?",
+    "answer": "Bluetooth is enabled",
+    "options": [
+      "Bluetooth is enabled",
+      "DNS",
+      "SMTP",
+      "DHCP"
+    ],
+    "note": "Bluetooth may simply be disabled."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A PC boots directly into BIOS every time. What should be checked first?",
+    "answer": "Boot drive detection",
+    "options": [
+      "Boot drive detection",
+      "Printer queue",
+      "DNS",
+      "Wi-Fi password"
+    ],
+    "note": "The system may not see a bootable drive."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "A user reports a very slow computer after opening many applications. Which resource is MOST likely exhausted?",
+    "answer": "RAM",
+    "options": [
+      "RAM",
+      "DNS",
+      "SMTP",
+      "Bluetooth"
+    ],
+    "note": "Insufficient memory often causes slowdowns."
+  },
+  {
+    "category": "troubleshooting",
+    "question": "What is the FIRST step of the CompTIA troubleshooting process?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Establish a theory",
+      "Implement a solution",
+      "Document findings"
+    ],
+    "note": "Always start by identifying the problem and gathering information."
+  }
+]

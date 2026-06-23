@@ -1,0 +1,434 @@
+[
+  {
+    "category": "mobile",
+    "question": "What component stores cellular subscriber information?",
+    "answer": "SIM card",
+    "options": [
+      "SD card",
+      "SIM card",
+      "eMMC",
+      "NFC"
+    ],
+    "note": "SIM stores subscriber identity."
+  },
+  {
+    "category": "mobile",
+    "question": "What technology allows contactless payments?",
+    "answer": "NFC",
+    "options": [
+      "Bluetooth",
+      "Wi-Fi",
+      "NFC",
+      "GPS"
+    ],
+    "note": "NFC is Near Field Communication."
+  },
+  {
+    "category": "mobile",
+    "question": "What does GPS provide?",
+    "answer": "Location services",
+    "options": [
+      "Internet access",
+      "Location services",
+      "Cellular calling",
+      "Authentication"
+    ],
+    "note": "GPS provides geolocation."
+  },
+  {
+    "category": "mobile",
+    "question": "What type of mobile authentication uses a fingerprint?",
+    "answer": "Biometric",
+    "options": [
+      "PIN",
+      "Password",
+      "Biometric",
+      "Pattern"
+    ],
+    "note": "Fingerprints are biometric authentication."
+  },
+  {
+    "category": "mobile",
+    "question": "What feature allows a lost phone to be remotely erased?",
+    "answer": "Remote wipe",
+    "options": [
+      "Remote wipe",
+      "Tethering",
+      "NFC",
+      "Airplane mode"
+    ],
+    "note": "Remote wipe protects lost devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What wireless technology is commonly used for smartwatches and earbuds?",
+    "answer": "Bluetooth",
+    "options": [
+      "NFC",
+      "Bluetooth",
+      "GPS",
+      "LTE"
+    ],
+    "note": "Bluetooth provides short-range wireless communication."
+  },
+  {
+    "category": "mobile",
+    "question": "What cellular technology is considered 5G?",
+    "answer": "NR",
+    "options": [
+      "LTE",
+      "HSPA+",
+      "EDGE",
+      "NR"
+    ],
+    "note": "NR (New Radio) is the 5G cellular standard."
+  },
+  {
+    "category": "mobile",
+    "question": "What cellular technology is commonly associated with 4G?",
+    "answer": "LTE",
+    "options": [
+      "LTE",
+      "HSPA+",
+      "EDGE",
+      "GSM"
+    ],
+    "note": "LTE is the primary 4G cellular technology."
+  },
+  {
+    "category": "mobile",
+    "question": "What cellular technology is considered 3G?",
+    "answer": "HSPA+",
+    "options": [
+      "LTE",
+      "NR",
+      "HSPA+",
+      "5G"
+    ],
+    "note": "HSPA+ is a 3G cellular standard."
+  },
+  {
+    "category": "mobile",
+    "question": "What component detects touch input on a smartphone?",
+    "answer": "Digitizer",
+    "options": [
+      "LCD",
+      "Digitizer",
+      "Accelerometer",
+      "GPS"
+    ],
+    "note": "The digitizer detects touch input."
+  },
+  {
+    "category": "mobile",
+    "question": "What display technology allows pixels to turn off individually for true blacks?",
+    "answer": "OLED",
+    "options": [
+      "LCD",
+      "OLED",
+      "TN",
+      "IPS"
+    ],
+    "note": "OLED displays provide excellent contrast and black levels."
+  },
+  {
+    "category": "mobile",
+    "question": "What connector is commonly found on modern Android smartphones?",
+    "answer": "USB-C",
+    "options": [
+      "Lightning",
+      "Micro USB",
+      "USB-C",
+      "Mini USB"
+    ],
+    "note": "USB-C is the current standard connector on most Android devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What connector was commonly used on older Android smartphones?",
+    "answer": "Micro USB",
+    "options": [
+      "USB-C",
+      "Lightning",
+      "Mini USB",
+      "Micro USB"
+    ],
+    "note": "Micro USB was common before USB-C."
+  },
+  {
+    "category": "mobile",
+    "question": "What connector was commonly used on older Apple iPhones?",
+    "answer": "Lightning",
+    "options": [
+      "USB-C",
+      "Micro USB",
+      "Lightning",
+      "Mini USB"
+    ],
+    "note": "Lightning was Apple's proprietary connector."
+  },
+  {
+    "category": "mobile",
+    "question": "What feature allows a smartphone to share its cellular connection with other devices?",
+    "answer": "Mobile hotspot",
+    "options": [
+      "Airplane mode",
+      "Mobile hotspot",
+      "NFC",
+      "VPN"
+    ],
+    "note": "A mobile hotspot shares cellular data with other devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What smartphone setting should be checked first if mobile data is not working?",
+    "answer": "APN settings",
+    "options": [
+      "Screen timeout",
+      "Bluetooth settings",
+      "APN settings",
+      "Brightness settings"
+    ],
+    "note": "Incorrect APN settings can prevent cellular data access."
+  },
+  {
+    "category": "mobile",
+    "question": "What authentication factor does facial recognition represent?",
+    "answer": "Biometric",
+    "options": [
+      "PIN",
+      "Password",
+      "Biometric",
+      "Token"
+    ],
+    "note": "Facial recognition is a biometric authentication factor."
+  },
+  {
+    "category": "mobile",
+    "question": "What sensor automatically rotates a phone's display when the device is turned?",
+    "answer": "Accelerometer",
+    "options": [
+      "GPS",
+      "Accelerometer",
+      "Gyroscope",
+      "Digitizer"
+    ],
+    "note": "The accelerometer detects changes in device orientation."
+  },
+  {
+    "category": "mobile",
+    "question": "What sensor adjusts screen brightness automatically based on surrounding light?",
+    "answer": "Ambient light sensor",
+    "options": [
+      "GPS",
+      "Gyroscope",
+      "Ambient light sensor",
+      "Accelerometer"
+    ],
+    "note": "The ambient light sensor helps conserve battery life."
+  },
+  {
+    "category": "mobile",
+    "question": "What mode disables cellular, Wi-Fi, and Bluetooth radios?",
+    "answer": "Airplane mode",
+    "options": [
+      "Battery saver",
+      "Airplane mode",
+      "VPN mode",
+      "Silent mode"
+    ],
+    "note": "Airplane mode disables wireless communications."
+  },
+  {
+    "category": "mobile",
+    "question": "What technology allows a smartphone to connect to a wireless local area network?",
+    "answer": "Wi-Fi",
+    "options": [
+      "Bluetooth",
+      "Wi-Fi",
+      "GPS",
+      "NFC"
+    ],
+    "note": "Wi-Fi provides wireless network connectivity."
+  },
+  {
+    "category": "mobile",
+    "question": "What type of battery is commonly used in smartphones?",
+    "answer": "Lithium-ion",
+    "options": [
+      "NiCad",
+      "Lead-acid",
+      "Lithium-ion",
+      "Alkaline"
+    ],
+    "note": "Lithium-ion batteries are the most common smartphone battery type."
+  },
+  {
+    "category": "mobile",
+    "question": "What should be checked first if a smartphone battery drains unusually fast?",
+    "answer": "Running applications",
+    "options": [
+      "Wallpaper",
+      "Running applications",
+      "SIM card",
+      "Screen resolution"
+    ],
+    "note": "Background applications are a common cause of battery drain."
+  },
+  {
+    "category": "mobile",
+    "question": "What wireless technology is commonly used to connect a phone to a car stereo or wireless headset?",
+    "answer": "Bluetooth",
+    "options": [
+      "GPS",
+      "NFC",
+      "Bluetooth",
+      "Infrared"
+    ],
+    "note": "Bluetooth is commonly used for hands-free communication and audio."
+  },
+  {
+    "category": "mobile",
+    "question": "What does MDM stand for?",
+    "answer": "Mobile Device Management",
+    "options": [
+      "Mobile Data Management",
+      "Mobile Device Management",
+      "Managed Device Monitoring",
+      "Mobile Directory Management"
+    ],
+    "note": "MDM allows organizations to manage and secure mobile devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What does MAM stand for?",
+    "answer": "Mobile Application Management",
+    "options": [
+      "Mobile Access Management",
+      "Managed Application Monitoring",
+      "Mobile Application Management",
+      "Mobile Asset Management"
+    ],
+    "note": "MAM focuses on managing and securing applications rather than entire devices."
+  },
+  {
+    "category": "mobile",
+    "question": "Which technology manages an entire smartphone or tablet?",
+    "answer": "MDM",
+    "options": [
+      "VPN",
+      "MAM",
+      "MDM",
+      "NFC"
+    ],
+    "note": "MDM provides management of the entire device."
+  },
+  {
+    "category": "mobile",
+    "question": "Which technology focuses on securing company applications without controlling the entire device?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "VPN",
+      "GPS"
+    ],
+    "note": "MAM manages applications and their data rather than the whole device."
+  },
+  {
+    "category": "mobile",
+    "question": "A company wants to remotely wipe a lost corporate smartphone. Which solution should be used?",
+    "answer": "MDM",
+    "options": [
+      "GPS",
+      "MAM",
+      "MDM",
+      "NFC"
+    ],
+    "note": "MDM solutions commonly support remote device wipe."
+  },
+  {
+    "category": "mobile",
+    "question": "A company wants to remove only corporate email and applications from an employee-owned phone. Which solution is best?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "Bluetooth",
+      "Remote desktop"
+    ],
+    "note": "MAM can remove corporate apps and data without wiping personal information."
+  },
+  {
+    "category": "mobile",
+    "question": "What can MDM commonly push to mobile devices automatically?",
+    "answer": "Wi-Fi profiles",
+    "options": [
+      "Screen protectors",
+      "Wi-Fi profiles",
+      "Battery upgrades",
+      "SIM cards"
+    ],
+    "note": "MDM solutions can deploy Wi-Fi, VPN, and security configurations."
+  },
+  {
+    "category": "mobile",
+    "question": "What can MDM commonly deploy to allow secure remote access to company resources?",
+    "answer": "VPN profiles",
+    "options": [
+      "Wallpaper images",
+      "Bluetooth pairings",
+      "VPN profiles",
+      "GPS routes"
+    ],
+    "note": "VPN configurations are frequently deployed through MDM."
+  },
+  {
+    "category": "mobile",
+    "question": "Which solution is commonly used to enforce passcode requirements on company-owned devices?",
+    "answer": "MDM",
+    "options": [
+      "MAM",
+      "MDM",
+      "NFC",
+      "GPS"
+    ],
+    "note": "MDM can enforce security policies such as passcodes and encryption."
+  },
+  {
+    "category": "mobile",
+    "question": "A company uses BYOD and wants employees to keep personal photos and apps private while securing work applications. Which solution is best?",
+    "answer": "MAM",
+    "options": [
+      "MDM",
+      "MAM",
+      "VPN",
+      "Airplane mode"
+    ],
+    "note": "MAM is commonly used in BYOD environments to separate personal and corporate data."
+  },
+  {
+    "category": "mobile",
+    "question": "What mobile management solution is most commonly associated with Microsoft Intune device management?",
+    "answer": "MDM",
+    "options": [
+      "MAM",
+      "MDM",
+      "NFC",
+      "GPS"
+    ],
+    "note": "Intune provides MDM capabilities for managing devices."
+  },
+  {
+    "category": "mobile",
+    "question": "What mobile management solution is most commonly associated with protecting corporate applications and data?",
+    "answer": "MAM",
+    "options": [
+      "MAM",
+      "MDM",
+      "Bluetooth",
+      "NFC"
+    ],
+    "note": "MAM policies protect company applications and data."
+  }
+]
