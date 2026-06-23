@@ -1,66 +1,172 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+
 const args = Object.fromEntries(process.argv.slice(2).map(arg => {
   const [key, ...rest] = arg.replace(/^--/, "").split("=");
   return [key, rest.join("=") || true];
 }));
+
 const inputFile = args.file;
 const dryRun = args["dry-run"] !== "false";
+
 if (!inputFile) {
   console.error("Usage: node tools/ingestion/merge-review.mjs --file=data/imports/pending/16-candidates.json [--dry-run=false]");
   process.exit(1);
 }
+
 const root = process.cwd();
 const inputPath = path.resolve(root, inputFile);
 const data = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 const approved = data.candidates.filter(c => ["create-new", "merge-existing"].includes(c.reviewDecision));
+
 if (data.candidates.some(c => c.reviewDecision === "undecided")) {
   console.error("Merge blocked: at least one candidate is still undecided.");
   process.exit(1);
 }
-function knowledgePath(category, slug) { return path.resolve(root, "content/knowledge", category, `${slug}.json`); }
-function makeObject(c) {
+
+function firstDomain(candidate) {
+  return candidate.domains?.[0] || candidate.category || "windows";
+}
+
+function knowledgePath(candidate) {
+  return path.resolve(root, "content", "knowledge", firstDomain(candidate), `${candidate.slug}.json`);
+}
+
+function ensureFactObjects(facts) {
+  return (facts || []).map(fact => {
+    if (typeof fact === "string") {
+      return { text: fact, importance: "medium", tags: [] };
+    }
+    return {
+      text: fact.text || "Imported fact needs review.",
+      importance: fact.importance || "medium",
+      tags: fact.tags || []
+    };
+  });
+}
+
+function ensureExamTipObjects(items) {
+  return (items || []).map(item => {
+    if (typeof item === "string") return { text: item, difficulty: "medium", tags: [] };
+    return { text: item.text || "Imported exam tip needs review.", difficulty: item.difficulty || "medium", tags: item.tags || [] };
+  });
+}
+
+function ensureExampleObjects(items) {
+  return (items || []).map(item => {
+    if (typeof item === "string") return { text: item, context: "Imported transcript review", tags: [] };
+    return { text: item.text || "Imported example needs review.", context: item.context || "Imported transcript review", tags: item.tags || [] };
+  });
+}
+
+function makeObject(candidate) {
+  const domains = candidate.domains?.length ? candidate.domains : [candidate.category || "windows"];
+  const today = new Date().toISOString().slice(0, 10);
   return {
-    id: c.proposedKnowledgeId,
-    slug: c.slug,
-    title: c.title,
-    aliases: c.aliases || [],
-    status: "draft",
-    type: "concept",
-    categories: [c.category],
-    certifications: [{ certificationId: data.certificationId, objectiveIds: [], lessonIds: [data.lessonId] }],
-    summary: c.summaryDraft || "Draft created from transcript ingestion review. Needs human expansion.",
-    explanation: "",
-    facts: c.factsDraft || [],
-    commands: [],
-    examples: [],
-    commonMistakes: [],
-    examTips: c.examTipsDraft || [],
-    scenarios: [],
-    pbqIdeas: [],
-    relationships: { prerequisites: [], related: [], parent: null, children: [] },
-    sources: { transcriptRefs: [{ lessonId: data.lessonId, sourceTranscript: data.sourceTranscript, evidence: c.evidence }], sourceVideos: [], references: [] },
-    analytics: { difficulty: "unknown", examFrequency: "unknown", masteryWeight: 1 }
+    schemaVersion: "1.0.0",
+    id: candidate.proposedKnowledgeId,
+    slug: candidate.slug,
+    title: candidate.title,
+    aliases: candidate.aliases || [],
+    type: candidate.type || "concept",
+    status: "needs-review",
+    domains,
+    difficulty: "foundational",
+    importance: candidate.confidence >= 0.85 ? "high" : "medium",
+    certificationMappings: [
+      {
+        certification: data.certificationId,
+        examCode: data.certificationId.includes("220-1202") ? "220-1202" : "",
+        objectives: [
+          {
+            id: "unmapped",
+            name: "Needs objective mapping",
+            weight: null,
+            subtopics: []
+          }
+        ],
+        lessons: [
+          {
+            lessonId: data.lessonId,
+            title: data.lessonTitle || `Lesson ${data.lessonId}`,
+            order: Number.parseInt(data.lessonId, 10) || null
+          }
+        ]
+      }
+    ],
+    learning: {
+      summary: candidate.summaryDraft || `${candidate.title} was imported as a draft concept and needs human review.`,
+      explanation: candidate.explanationDraft || "",
+      facts: ensureFactObjects(candidate.factsDraft),
+      commands: [],
+      examples: ensureExampleObjects(candidate.examplesDraft),
+      tables: [],
+      media: [],
+      notes: ["Imported from a private/admin transcript review record. Verify before marking reviewed."]
+    },
+    assessmentSeeds: {
+      examTips: ensureExamTipObjects(candidate.examTipsDraft),
+      commonMistakes: candidate.commonMistakesDraft || [],
+      scenarios: candidate.scenariosDraft || [],
+      pbqIdeas: candidate.pbqIdeasDraft || [],
+      questionTargets: []
+    },
+    relationships: {
+      prerequisites: [],
+      parents: [],
+      children: [],
+      related: (candidate.suggestedRelationships || []).map(id => ({
+        id,
+        reason: "Suggested during transcript import review.",
+        strength: "weak"
+      })),
+      contrastsWith: [],
+      replacedBy: []
+    },
+    sources: {
+      references: []
+    },
+    quality: {
+      createdAt: today,
+      updatedAt: today,
+      lastReviewedAt: null,
+      reviewedBy: null,
+      confidence: candidate.confidence >= 0.85 ? "medium" : "low",
+      needsHumanReview: true,
+      reviewNotes: [
+        `Created from import record ${data.id}.`,
+        "Private transcript evidence remains in data/imports and should not be copied into public knowledge JSON.",
+        "Map certification objectives before marking reviewed."
+      ]
+    }
   };
 }
-const actions=[];
-for (const c of approved) {
-  if (c.reviewDecision === "create-new") {
-    const out = knowledgePath(c.category, c.slug);
-    actions.push({ action:"create", title:c.title, path:path.relative(root,out) });
+
+const actions = [];
+for (const candidate of approved) {
+  if (candidate.reviewDecision === "create-new") {
+    const out = knowledgePath(candidate);
+    actions.push({ action: "create", title: candidate.title, id: candidate.proposedKnowledgeId, path: path.relative(root, out) });
     if (!dryRun) {
-      fs.mkdirSync(path.dirname(out), { recursive:true });
-      if (!fs.existsSync(out)) fs.writeFileSync(out, JSON.stringify(makeObject(c), null, 2));
+      fs.mkdirSync(path.dirname(out), { recursive: true });
+      if (!fs.existsSync(out)) fs.writeFileSync(out, JSON.stringify(makeObject(candidate), null, 2));
     }
   } else {
-    actions.push({ action:"manual-merge-required", title:c.title, target:c.possibleDuplicates?.[0]?.knowledgeId || null });
+    actions.push({
+      action: "manual-merge-required",
+      title: candidate.title,
+      target: candidate.possibleDuplicates?.[0]?.knowledgeId || null,
+      reason: "Merge-existing decisions require human editing so existing reviewed fields are not overwritten."
+    });
   }
 }
+
 if (!dryRun) {
   data.status = "merged";
   const approvedDir = path.resolve(root, "data/imports/approved");
-  fs.mkdirSync(approvedDir, { recursive:true });
+  fs.mkdirSync(approvedDir, { recursive: true });
   fs.writeFileSync(path.join(approvedDir, path.basename(inputFile)), JSON.stringify(data, null, 2));
 }
+
 console.log(JSON.stringify({ dryRun, approvedCount: approved.length, actions }, null, 2));
