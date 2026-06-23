@@ -1,4 +1,3 @@
-
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -35,6 +34,8 @@ const allowedTypes = new Set([
 ]);
 
 const allowedStatuses = new Set(["stub", "draft", "needs-review", "reviewed", "deprecated"]);
+const privateSourceFields = ["transcripts", "videos"];
+const publicSourceKeys = new Set(["references"]);
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -61,6 +62,26 @@ function isArray(value) {
   return Array.isArray(value);
 }
 
+function validatePublicSources(obj, file, errors) {
+  if (!obj.sources || typeof obj.sources !== "object" || Array.isArray(obj.sources)) return;
+
+  for (const field of privateSourceFields) {
+    if (field in obj.sources) {
+      fail(errors, file, `sources.${field} is private/admin provenance and must not be stored in public knowledge JSON`);
+    }
+  }
+
+  for (const key of Object.keys(obj.sources)) {
+    if (!publicSourceKeys.has(key)) {
+      fail(errors, file, `sources.${key} is not allowed in public knowledge JSON`);
+    }
+  }
+
+  if (!isArray(obj.sources.references)) {
+    fail(errors, file, "sources.references must be an array");
+  }
+}
+
 function validateObject(obj, file, allIds, errors) {
   for (const field of requiredTopLevel) {
     if (!(field in obj)) fail(errors, file, `missing top-level field "${field}"`);
@@ -80,6 +101,8 @@ function validateObject(obj, file, allIds, errors) {
   if (!obj.relationships) fail(errors, file, "relationships is required");
   if (!obj.sources) fail(errors, file, "sources is required");
   if (!obj.quality) fail(errors, file, "quality is required");
+
+  validatePublicSources(obj, file, errors);
 
   const relatedIds = [
     ...(obj.relationships?.prerequisites || []),
