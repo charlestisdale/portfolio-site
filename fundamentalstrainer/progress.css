@@ -1,0 +1,49 @@
+/* Learning Progress */
+.learn-progress-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: .9rem;
+  background: rgba(2, 6, 23, 0.34);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.learn-progress-card strong,
+.learn-progress-card small {
+  display: block;
+}
+
+.learn-progress-card small {
+  opacity: .72;
+  margin-top: .2rem;
+}
+
+.learn-progress-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.learn-progress-actions button {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: .75rem;
+  background: rgba(59, 130, 246, 0.16);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: .65rem .85rem;
+}
+
+@media (max-width: 700px) {
+  .learn-progress-card {
+    display: grid;
+  }
+
+  .learn-progress-actions {
+    justify-content: start;
+  }
+}
