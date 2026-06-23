@@ -1,5 +1,17 @@
 import { renderKnowledgeGraphVisualizer } from "./graph-visualizer.js";
 
+const RELATIONSHIP_LABELS = {
+  troubleshoots: "troubleshooting",
+  troubleshooting: "troubleshooting",
+  uses: "uses",
+  depends_on: "depends on",
+  prerequisite: "prerequisite",
+  related_to: "related to",
+  command: "command",
+  security: "security",
+  networking: "networking"
+};
+
 export function renderGraphMode({ activeConcept = null, edges = [], stats = {}, graph = null } = {}) {
   const nodes = graph?.nodes || [];
   const missing = stats.missingRelationshipTargets || [];
@@ -54,7 +66,7 @@ function renderEdge(edge) {
 
   return `
     <button class="graph-edge-card" ${neighbor ? `data-id="${escapeHtml(neighbor.id)}"` : "disabled"}>
-      <span class="pill">${escapeHtml(edge.type || "related")}</span>
+      <span class="pill">${escapeHtml(formatRelationshipLabel(edge.type || "related"))}</span>
       <strong>${escapeHtml(neighbor?.title || missing)}</strong>
       <small>${escapeHtml(directionLabel)} · ${escapeHtml(edge.strength || "unrated")}</small>
       ${edge.notes ? `<p>${escapeHtml(edge.notes)}</p>` : ""}
@@ -82,6 +94,11 @@ function renderMissingTargets(missing) {
       </ul>
     </section>
   `;
+}
+
+function formatRelationshipLabel(type) {
+  const key = String(type || "related_to");
+  return RELATIONSHIP_LABELS[key] || key.replaceAll("_", " ");
 }
 
 function escapeHtml(value) {
