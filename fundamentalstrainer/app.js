@@ -1,7 +1,10 @@
 import { KnowledgeEngine } from "./engine/knowledge/index.js";
 import { renderKnowledgeObject } from "./engine/modes/learn.js";
+import { JobRunner, JobType } from "./engine/jobs/index.js";
+import { JobActivityPanel } from "./engine/jobs/job-activity-panel.js";
 
 const knowledge = new KnowledgeEngine();
+const jobs = createBrowserJobRunner();
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
@@ -9,12 +12,14 @@ const conceptView = document.querySelector("#conceptView");
 const platformStats = document.querySelector("#platformStats");
 const relatedView = document.querySelector("#relatedView");
 const commandView = document.querySelector("#commandView");
+const jobsActivity = document.querySelector("#jobsActivity");
 
 async function loadPlatform() {
   await knowledge.loadCertification("a-plus-220-1202");
   renderStats();
   renderResults(knowledge.search(""));
   renderCommands();
+  startJobsActivityPanel();
 
   const first = knowledge.all()[0];
   if (first) renderConcept(first.id);
@@ -72,6 +77,116 @@ function renderCommands() {
   commandView.innerHTML = commands.length ? commands.map(command => `
     <li><code>${escapeHtml(command.command)}</code> — ${escapeHtml(command.purpose)} <span class="pill">${escapeHtml(command.title)}</span></li>
   `).join("") : "<li>No commands loaded yet.</li>";
+}
+
+function startJobsActivityPanel() {
+  const panel = new JobActivityPanel({
+    root: jobsActivity,
+    runner: jobs,
+    onSeedDemoJobs: enqueueDemoJobs
+  });
+
+  panel.start();
+}
+
+function createBrowserJobRunner() {
+  const runner = new JobRunner({ concurrency: 2 });
+
+  runner.register(JobType.VALIDATION_RUN, async (payload, context) => {
+    await runSteppedJob(context, [
+      "Loading validation rules",
+      "Checking knowledge object schemas",
+      "Checking relationship integrity",
+      "Building validation summary"
+    ]);
+
+    return {
+      warnings: payload.expectedWarnings ?? 0,
+      message: "Validation completed in browser demo mode."
+    };
+  });
+
+  runner.register(JobType.SEARCH_INDEX_REBUILD, async (payload, context) => {
+    await runSteppedJob(context, [
+      "Reading knowledge objects",
+      "Tokenizing searchable fields",
+      "Writing in-memory index",
+      "Refreshing search metadata"
+    ]);
+
+    return {
+      indexedObjects: knowledge.all().length,
+      message: "Search index rebuild completed in browser demo mode."
+    };
+  });
+
+  runner.register(JobType.GRAPH_REBUILD, async (payload, context) => {
+    await runSteppedJob(context, [
+      "Reading relationship files",
+      "Resolving source and target nodes",
+      "Checking orphaned edges",
+      "Publishing graph cache"
+    ]);
+
+    return {
+      relationships: knowledge.statistics().relationships,
+      message: "Graph rebuild completed in browser demo mode."
+    };
+  });
+
+  runner.register(JobType.MERGE_PLAN_APPLY, async (payload, context) => {
+    await runSteppedJob(context, [
+      "Loading merge plan",
+      "Preparing dry-run filesystem writes"
+    ]);
+
+    if (payload.shouldFail) {
+      context.log("error", "Demo merge apply intentionally failed so retry can be tested.");
+      throw new Error("Demo merge apply failed. Use Retry to requeue it.");
+    }
+
+    return { message: "Merge plan applied in browser demo mode." };
+  });
+
+  return runner;
+}
+
+function enqueueDemoJobs() {
+  jobs.enqueue({
+    type: JobType.VALIDATION_RUN,
+    title: "Validate knowledge base",
+    payload: { expectedWarnings: 3 }
+  });
+
+  jobs.enqueue({
+    type: JobType.SEARCH_INDEX_REBUILD,
+    title: "Rebuild search index"
+  });
+
+  jobs.enqueue({
+    type: JobType.GRAPH_REBUILD,
+    title: "Rebuild knowledge graph"
+  });
+
+  jobs.enqueue({
+    type: JobType.MERGE_PLAN_APPLY,
+    title: "Apply reviewed merge plan",
+    payload: { shouldFail: true }
+  });
+}
+
+async function runSteppedJob(context, steps) {
+  context.progress({ current: 0, total: steps.length, label: steps[0] || "Starting" });
+
+  for (const [index, step] of steps.entries()) {
+    context.log("info", step);
+    await sleep(450);
+    context.progress({ current: index + 1, total: steps.length, label: step });
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => window.setTimeout(resolve, ms));
 }
 
 searchBox.addEventListener("input", () => renderResults(knowledge.search(searchBox.value)));
