@@ -318,6 +318,99 @@ li { margin: .35rem 0; }
   }
 }
 
+/* Graph Mode */
+.graph-mode {
+  display: grid;
+  gap: 1rem;
+}
+
+.graph-mode h2,
+.graph-mode h3,
+.graph-mode p {
+  margin-top: 0;
+}
+
+.graph-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.graph-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.graph-summary-grid article,
+.graph-node-card,
+.graph-edge-card,
+.graph-empty,
+.graph-missing {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: .9rem;
+  background: rgba(2, 6, 23, 0.34);
+  padding: 1rem;
+}
+
+.graph-summary-grid strong {
+  display: block;
+  font-size: 1.55rem;
+}
+
+.graph-summary-grid span,
+.graph-edge-card small {
+  opacity: .72;
+}
+
+.graph-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.graph-node-card--active {
+  border-color: rgba(147, 197, 253, .42);
+}
+
+.graph-edge-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.graph-edge-card {
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  gap: .35rem;
+  text-align: left;
+  font: inherit;
+  width: 100%;
+}
+
+.graph-edge-card:hover {
+  border-color: rgba(147, 197, 253, .5);
+  background: rgba(255,255,255,.06);
+}
+
+.graph-edge-card:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+.graph-missing ul {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .graph-hero,
+  .graph-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Jobs Activity Panel */
 .jobs-activity-mount {
   margin-bottom: 1rem;
