@@ -69,6 +69,33 @@ Avoid exposing exact third-party source names, course names, video titles, raw t
 
 Specific provenance can be kept in private/admin-only records when needed for review and audit purposes.
 
+## Public UI rule
+
+The public learner UI must not render fields that expose source provenance, including:
+
+- `sources.transcripts`
+- `sources.videos`
+- raw transcript filenames
+- provider names
+- video titles
+- private review notes that identify source material
+
+Learner-facing pages should show quality and review status only. Source provenance belongs in private/admin tooling.
+
+## Repository cleanup rule
+
+Before treating the public repository as polished portfolio material, remove or generalize source-specific provenance inside public JSON content files. Existing sample content may still contain legacy provenance metadata from early development, but the learner UI should not expose it.
+
+Preferred public JSON shape:
+
+```json
+"sources": {
+  "references": []
+}
+```
+
+Private/admin records may keep detailed provenance separately.
+
 ## Current implementation note
 
 The current static portfolio app should continue to treat `content/` as read-only learner content. Import tooling may exist for local development, but it should not become a public upload feature without the backend controls described above.
