@@ -1,3 +1,10 @@
+import {
+  candidateReviewKey,
+  getReviewRecord,
+  reviewSummary,
+  serializeRelationships
+} from "../review/candidate-review-store.js";
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -77,12 +84,115 @@ function renderImportRows(imports, folderReport) {
   `;
 }
 
+function renderFactsValue(candidate) {
+  return (candidate.factsDraft || [])
+    .map(fact => typeof fact === "string" ? fact : fact.text)
+    .filter(Boolean)
+    .join("\n");
+}
+
+function renderEvidence(candidate) {
+  const evidence = candidate.evidence || [];
+  if (!evidence.length) return `<p class="muted">No evidence linked yet.</p>`;
+
+  return `
+    <details class="candidate-evidence-detail">
+      <summary>Evidence (${formatNumber(evidence.length)})</summary>
+      <ol class="candidate-evidence-list">
+        ${evidence.slice(0, 8).map(item => {
+          const text = typeof item === "string" ? item : item.quote || item.text || item.excerpt || item.id || JSON.stringify(item);
+          return `<li>${escapeHtml(text)}</li>`;
+        }).join("")}
+      </ol>
+    </details>
+  `;
+}
+
+function primeCandidateCache(preview, candidates) {
+  if (typeof window === "undefined") return;
+  window.__importReviewCandidateCache = {};
+  for (const candidate of candidates) {
+    const key = candidateReviewKey(preview, candidate);
+    window.__importReviewCandidateCache[key] = { preview, candidate };
+  }
+}
+
+function renderCandidateCard(preview, candidate) {
+  const key = candidateReviewKey(preview, candidate);
+  const record = getReviewRecord(key);
+  const summaryValue = record?.edits?.summary || candidate.summaryDraft || "";
+  const factsValue = record?.edits?.facts?.join("\n") || renderFactsValue(candidate);
+  const relationshipValue = record?.edits?.relationships?.map(item => `${item.id} | ${item.type || "related"} | ${item.reason || ""}`).join("\n") || serializeRelationships(candidate);
+  const titleValue = record?.edits?.title || candidate.title || "";
+  const notesValue = record?.edits?.notes || "";
+  const mergeTargetValue = record?.mergeTarget || record?.edits?.mergeTarget || "";
+
+  return `
+    <article class="candidate-preview-item candidate-review-item" data-review-candidate="${escapeHtml(key)}">
+      <div class="candidate-review-header">
+        <div>
+          <h3>${escapeHtml(candidate.title)}</h3>
+          <p><code>${escapeHtml(candidate.proposedKnowledgeId)}</code></p>
+          <p class="muted">${escapeHtml(candidate.type)} · ${escapeHtml((candidate.domains || []).join(", "))}</p>
+        </div>
+        <span class="pill review-status-pill" data-review-status="${escapeHtml(record?.decision || "undecided")}">${escapeHtml(record?.decision || candidate.reviewDecision || "undecided")}</span>
+      </div>
+
+      <label class="review-field">
+        <span>Title</span>
+        <input data-review-field="title" value="${escapeHtml(titleValue)}" />
+      </label>
+
+      <label class="review-field">
+        <span>Summary</span>
+        <textarea data-review-field="summary" rows="4">${escapeHtml(summaryValue)}</textarea>
+      </label>
+
+      <label class="review-field">
+        <span>Facts <small class="muted">one per line</small></span>
+        <textarea data-review-field="facts" rows="5">${escapeHtml(factsValue)}</textarea>
+      </label>
+
+      <label class="review-field">
+        <span>Relationships <small class="muted">knowledge-id | type | reason</small></span>
+        <textarea data-review-field="relationships" rows="4">${escapeHtml(relationshipValue)}</textarea>
+      </label>
+
+      <label class="review-field">
+        <span>Merge target <small class="muted">use when this candidate duplicates an existing object</small></span>
+        <input data-review-field="mergeTarget" value="${escapeHtml(mergeTargetValue)}" placeholder="windows.task-manager" />
+      </label>
+
+      <label class="review-field">
+        <span>Reviewer notes</span>
+        <textarea data-review-field="notes" rows="3">${escapeHtml(notesValue)}</textarea>
+      </label>
+
+      ${renderEvidence(candidate)}
+
+      <div class="import-metric-strip compact">
+        <span><strong>${formatNumber(candidate.factsDraft?.length || 0)}</strong> facts</span>
+        <span><strong>${formatNumber(candidate.evidence?.length || 0)}</strong> evidence</span>
+        <span><strong>${formatNumber(candidate.suggestedRelationships?.length || 0)}</strong> relationships</span>
+      </div>
+
+      <div class="candidate-review-actions">
+        <button type="button" data-review-action="save">Save edits</button>
+        <button type="button" data-review-action="approve">Approve</button>
+        <button type="button" data-review-action="merge">Merge</button>
+        <button type="button" data-review-action="reject">Reject</button>
+        <button type="button" data-review-action="reset">Reset</button>
+      </div>
+    </article>
+  `;
+}
+
 function renderCandidatePreview(preview) {
   if (!preview) {
     return `
       <section class="card import-preview-card">
-        <h2>Candidate Preview</h2>
-        <p class="muted">Select a lesson to preview its pending candidates.</p>
+        <h2>Candidate Review</h2>
+        <p class="muted">Select a lesson to preview and review its pending candidates.</p>
       </section>
     `;
   }
@@ -90,35 +200,27 @@ function renderCandidatePreview(preview) {
   if (preview.error) {
     return `
       <section class="card import-preview-card">
-        <h2>Candidate Preview</h2>
+        <h2>Candidate Review</h2>
         <p class="error-text">${escapeHtml(preview.error)}</p>
       </section>
     `;
   }
 
   const candidates = preview.candidates || [];
+  primeCandidateCache(preview, candidates);
+
   return `
     <section class="card import-preview-card">
-      <p class="eyebrow">${escapeHtml(preview.lessonId || "")}</p>
-      <h2>${escapeHtml(preview.lessonTitle || preview.id || "Candidate Preview")}</h2>
-      <p class="muted">${formatNumber(candidates.length)} candidate(s). This is read-only until review actions are added.</p>
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">${escapeHtml(preview.lessonId || "")}</p>
+          <h2>${escapeHtml(preview.lessonTitle || preview.id || "Candidate Review")}</h2>
+          <p class="muted">${formatNumber(candidates.length)} candidate(s). Review decisions are saved locally in your browser until exported.</p>
+        </div>
+        <button class="review-export-button" type="button" data-review-export>Export approved JSON</button>
+      </div>
       <div class="candidate-preview-list">
-        ${candidates.slice(0, 12).map(candidate => `
-          <article class="candidate-preview-item">
-            <div>
-              <h3>${escapeHtml(candidate.title)}</h3>
-              <p><code>${escapeHtml(candidate.proposedKnowledgeId)}</code></p>
-              <p class="muted">${escapeHtml(candidate.type)} · ${escapeHtml((candidate.domains || []).join(", "))}</p>
-            </div>
-            <p>${escapeHtml(candidate.summaryDraft || "No draft summary yet.")}</p>
-            <div class="import-metric-strip compact">
-              <span><strong>${formatNumber(candidate.factsDraft?.length || 0)}</strong> facts</span>
-              <span><strong>${formatNumber(candidate.evidence?.length || 0)}</strong> evidence</span>
-              <span><strong>${formatNumber(candidate.suggestedRelationships?.length || 0)}</strong> relationships</span>
-              <span><strong>${escapeHtml(candidate.reviewDecision || "undecided")}</strong></span>
-            </div>
-          </article>
-        `).join("")}
+        ${candidates.slice(0, 12).map(candidate => renderCandidateCard(preview, candidate)).join("")}
       </div>
     </section>
   `;
@@ -127,6 +229,7 @@ function renderCandidatePreview(preview) {
 export function renderImportCenterMode({ state, selectedPreview } = {}) {
   const imports = state?.manifest?.imports || [];
   const totals = state?.folderReport?.totals || {};
+  const reviewed = reviewSummary();
   const topImports = [...imports]
     .filter(item => item.candidateCount > 0)
     .sort((a, b) => (b.candidateCount || 0) - (a.candidateCount || 0));
@@ -150,14 +253,20 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
         <ol>
           <li>Put raw sources in <code>data/transcripts/raw/&lt;cert&gt;/</code>.</li>
           <li>Run <code>npm run ingest:folder -- --cert=a-plus-220-1202</code>.</li>
-          <li>Run <code>npm run review:manifest</code>.</li>
-          <li>Review candidates before merge.</li>
+          <li>Review candidates in this tab.</li>
+          <li>Export approved Knowledge Objects for merge.</li>
         </ol>
+        <div class="import-metric-strip compact">
+          <span><strong>${formatNumber(reviewed.approved)}</strong> approved</span>
+          <span><strong>${formatNumber(reviewed.rejected)}</strong> rejected</span>
+          <span><strong>${formatNumber(reviewed.merge)}</strong> merge</span>
+          <span><strong>${formatNumber(reviewed.edited)}</strong> edited</span>
+        </div>
       </section>
     </section>
 
     <section class="import-center-layout">
-      <section class="card">
+      <section class="card import-queue-card">
         <div class="section-heading-row">
           <div>
             <p class="eyebrow">Review Queue</p>
