@@ -75,8 +75,8 @@
 .graph-canvas__nodes {
   position: absolute;
   inset: 0;
-  min-width: 760px;
-  min-height: 420px;
+  min-width: 980px;
+  min-height: 620px;
 }
 
 .graph-canvas__edges {
@@ -125,9 +125,11 @@
 }
 
 .graph-visual-node {
+  box-sizing: border-box;
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 10.75rem;
+  width: 11.75rem;
+  min-height: 4.125rem;
   border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: .85rem;
   background: rgba(15, 23, 42, .94);
