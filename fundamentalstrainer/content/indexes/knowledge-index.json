@@ -1,8 +1,5 @@
 {
-  "generatedBy": "manual-starter",
-  "description": "Central index of knowledge object files. Keep this certification-neutral when possible.",
-  "objects": [
-    "content/knowledge/windows/task-manager.json",
-    "content/knowledge/commands/ipconfig.json"
-  ]
+  "generatedBy": "discovery-reset",
+  "description": "Canonical Knowledge Object index intentionally cleared so new reviewed Discovery Package output can be distinguished from old starter topics.",
+  "objects": []
 }
