@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { normalizeCandidateDraft } from "./normalizers/candidate-draft-normalizer.mjs";
+import { auditCandidateQuality, summarizeCandidateQuality } from "./normalizers/candidate-quality-auditor.mjs";
 
 const args = Object.fromEntries(process.argv.slice(2).map(arg => {
   const [key, ...rest] = arg.replace(/^--/, "").split("=");
@@ -51,30 +52,38 @@ const updatedCandidates = candidates.map(candidate => {
   factsAfter += draft.factsDraft.length;
   normalized += 1;
 
-  return {
+  const updatedCandidate = {
     ...candidate,
     summaryDraft: draft.summaryDraft,
     explanationDraft: draft.explanationDraft,
     factsDraft: draft.factsDraft,
     suggestedRelationships: draft.suggestedRelationships
   };
+
+  return {
+    ...updatedCandidate,
+    quality: auditCandidateQuality(updatedCandidate)
+  };
 });
 
+const qualitySummary = summarizeCandidateQuality(updatedCandidates);
 const output = {
   ...data,
   candidates: updatedCandidates,
   metrics: {
     ...(data.metrics || {}),
     candidatesWithFactDrafts: updatedCandidates.filter(candidate => candidate.factsDraft?.length).length,
-    relationshipsSuggested: updatedCandidates.reduce((sum, candidate) => sum + (candidate.suggestedRelationships?.length || 0), 0)
+    relationshipsSuggested: updatedCandidates.reduce((sum, candidate) => sum + (candidate.suggestedRelationships?.length || 0), 0),
+    quality: qualitySummary
   },
   normalization: {
     normalizedAt: new Date().toISOString(),
     normalizedCandidates: normalized,
     factsBefore,
-    factsAfter
+    factsAfter,
+    quality: qualitySummary
   }
 };
 
 fs.writeFileSync(filePath, JSON.stringify(output, null, 2));
-console.log(JSON.stringify({ file: inputFile, normalized, factsBefore, factsAfter }, null, 2));
+console.log(JSON.stringify({ file: inputFile, normalized, factsBefore, factsAfter, quality: qualitySummary }, null, 2));
