@@ -142,6 +142,11 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onpointerdown="window.__startKnowledgeGraphPan?.(event)">
         <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
           <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
+            <defs>
+              <marker id="graph-arrowhead" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                <path d="M 0 0 L 9 4.5 L 0 9 z" class="graph-arrowhead"></path>
+              </marker>
+            </defs>
             ${renderEdges(graphModel.edges, layout, graphModel.nodes)}
           </svg>
           <div class="graph-canvas__nodes">
@@ -687,7 +692,7 @@ function relaxLayout(layout, nodes, fixedId = null) {
 function renderEdges(edges, layout, nodes = []) {
   const nodeLookup = new Map(nodes.map(node => [node.id, node]));
 
-  return edges.map(edge => {
+  return edges.map((edge, index) => {
     const sourceCenter = layout.get(edge.sourceId);
     const targetCenter = layout.get(edge.targetId);
     if (!sourceCenter || !targetCenter) return "";
@@ -699,13 +704,36 @@ function renderEdges(edges, layout, nodes = []) {
       sourceNode: nodeLookup.get(edge.sourceId),
       targetNode: nodeLookup.get(edge.targetId)
     });
+    const path = getCurvedEdgePath(line.source, line.target, index);
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
-        <line x1="${line.source.x}" y1="${line.source.y}" x2="${line.target.x}" y2="${line.target.y}"></line>
+        <path d="${path}" marker-end="url(#graph-arrowhead)"></path>
       </g>
     `;
   }).join("");
+}
+
+function getCurvedEdgePath(source, target, index = 0) {
+  const dx = target.x - source.x;
+  const dy = target.y - source.y;
+  const length = Math.hypot(dx, dy) || 1;
+  const midpoint = {
+    x: (source.x + target.x) / 2,
+    y: (source.y + target.y) / 2
+  };
+  const normal = {
+    x: -dy / length,
+    y: dx / length
+  };
+  const direction = index % 2 === 0 ? 1 : -1;
+  const curve = clamp(length * 0.12, 14, 46) * direction;
+  const control = {
+    x: midpoint.x + normal.x * curve,
+    y: midpoint.y + normal.y * curve
+  };
+
+  return `M ${source.x} ${source.y} Q ${control.x} ${control.y} ${target.x} ${target.y}`;
 }
 
 function getClippedEdgeLine({ sourceCenter, targetCenter, sourceNode, targetNode }) {
@@ -747,7 +775,7 @@ function getNodeCardSize(node) {
 function clamp(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
-  return Math.min(Math.max(number, min), max);
+  return Math.min(Math.max(number), max);
 }
 
 function renderNode(node, point, { activeId }) {
