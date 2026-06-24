@@ -16,14 +16,45 @@
 
 .graph-visualizer__tools,
 .graph-legend,
-.graph-scope-toggle {
+.graph-scope-toggle,
+.graph-search {
   display: flex;
   gap: .5rem;
   flex-wrap: wrap;
 }
 
-.graph-scope-toggle {
+.graph-scope-toggle,
+.graph-search {
   align-items: center;
+}
+
+.graph-search {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: .85rem;
+  background: rgba(15, 23, 42, .48);
+  padding: .65rem;
+}
+
+.graph-search label {
+  color: rgba(226, 232, 240, .88);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.graph-search input {
+  min-width: min(24rem, 100%);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 999px;
+  background: rgba(2, 6, 23, .74);
+  color: inherit;
+  font: inherit;
+  font-size: .82rem;
+  padding: .42rem .75rem;
+}
+
+.graph-search input:focus-visible {
+  border-color: rgba(147, 197, 253, .65);
+  outline: none;
 }
 
 .graph-scope-button {
@@ -168,6 +199,11 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, .2), 0 18px 44px rgba(0, 0, 0, .3);
 }
 
+.graph-visual-node--search-hit {
+  border-color: rgba(253, 224, 71, .95);
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, .24), 0 20px 48px rgba(0, 0, 0, .38);
+}
+
 .graph-visual-node--missing {
   cursor: not-allowed;
   opacity: .72;
@@ -189,6 +225,10 @@
 @media (max-width: 900px) {
   .graph-visualizer__header {
     display: grid;
+  }
+
+  .graph-search input {
+    min-width: 100%;
   }
 
   .graph-canvas {
