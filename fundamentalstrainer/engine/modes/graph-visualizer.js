@@ -234,10 +234,15 @@ function registerScopeRenderer(renderState) {
     const visualizer = node.closest(".graph-visualizer");
     const canvas = node.closest("[data-graph-canvas]");
     const layoutKey = visualizer?.dataset.graphLayoutKey;
+    const viewportKey = visualizer?.dataset.graphViewportKey;
     const nodeId = node.dataset.id;
-    if (!canvas || !layoutKey || !nodeId) return;
+    if (!canvas || !layoutKey || !viewportKey || !nodeId) return;
 
-    const viewport = readStoredViewports()[visualizer?.dataset.graphViewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
+    const viewports = readStoredViewports();
+    const viewport = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
+    viewports[viewportKey] = viewport;
+    writeStoredViewports(viewports);
+
     const start = { x: event.clientX, y: event.clientY };
     const startX = Number(node.dataset.graphX || 0);
     const startY = Number(node.dataset.graphY || 0);
@@ -278,6 +283,9 @@ function registerScopeRenderer(renderState) {
           y: Number(node.dataset.graphY || startY)
         };
         writeStoredLayouts(layouts);
+        const latestViewports = readStoredViewports();
+        latestViewports[viewportKey] ||= viewport;
+        writeStoredViewports(latestViewports);
         window.__knowledgeGraphSuppressClickUntil = Date.now() + 450;
         stopEvent?.preventDefault?.();
         stopEvent?.stopPropagation?.();
@@ -637,31 +645,6 @@ function getNodeCardSize(node) {
     width: NODE_CARD_WIDTH,
     height: hasWrappedTitle ? NODE_CARD_TALL_HEIGHT : NODE_CARD_HEIGHT
   };
-}
-
-function getEdgeLabelPosition(source, target, index = 0) {
-  const midpoint = {
-    x: (source.x + target.x) / 2,
-    y: (source.y + target.y) / 2
-  };
-  const dx = target.x - source.x;
-  const dy = target.y - source.y;
-  const length = Math.hypot(dx, dy) || 1;
-  const perpendicular = {
-    x: -dy / length,
-    y: dx / length
-  };
-  const direction = index % 2 === 0 ? 1 : -1;
-  const verticalBias = Math.abs(dx) < 24 ? -20 : 0;
-
-  return {
-    x: clamp(midpoint.x + perpendicular.x * 36 * direction, 52, VIEWBOX_WIDTH - 52),
-    y: clamp(midpoint.y + perpendicular.y * 36 * direction + verticalBias, 30, VIEWBOX_HEIGHT - 30)
-  };
-}
-
-function estimateLabelWidth(label) {
-  return Math.max(44, Math.min(170, String(label).length * 7.2 + 18));
 }
 
 function clamp(value, min, max) {
