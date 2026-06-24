@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assessment-mode.css" />
   <link rel="stylesheet" href="study-path-mode.css" />
   <link rel="stylesheet" href="graph-visualizer.css" />
+  <link rel="stylesheet" href="import-center-mode.css" />
 </head>
 <body>
   <main class="shell">
@@ -24,6 +25,7 @@
 
     <nav class="mode-nav card">
       <button class="mode-tab active" data-mode-target="dashboard" type="button">Dashboard</button>
+      <button class="mode-tab" data-mode-target="import" type="button">Import</button>
       <button class="mode-tab" data-mode-target="learn" type="button">Learn</button>
       <button class="mode-tab" data-mode-target="path" type="button">Path</button>
       <button class="mode-tab" data-mode-target="search" type="button">Search</button>
@@ -35,6 +37,10 @@
 
     <section class="mode-panel active" data-mode-panel="dashboard">
       <section id="dashboardView"></section>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="import">
+      <section id="importCenterView"></section>
     </section>
 
     <section class="mode-panel" data-mode-panel="learn">
@@ -77,6 +83,6 @@
     </section>
   </main>
 
-  <script type="module" src="app.js?v=20260623-study-paths"></script>
+  <script type="module" src="app.js?v=20260624-import-center"></script>
 </body>
 </html>
