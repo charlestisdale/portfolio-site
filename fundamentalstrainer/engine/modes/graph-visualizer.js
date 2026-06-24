@@ -17,7 +17,7 @@ const ZOOM_BUTTON_STEP = 1.16;
 const NODE_CARD_WIDTH = 188;
 const NODE_CARD_HEIGHT = 66;
 const NODE_CARD_TALL_HEIGHT = 84;
-const NODE_EDGE_GAP = 10;
+const NODE_EDGE_GAP = 2;
 const NODE_COLLISION_PADDING_X = 24;
 const NODE_COLLISION_PADDING_Y = 18;
 const LAYOUT_RELAXATION_PASSES = 18;
@@ -582,29 +582,22 @@ function relaxLayout(layout, nodes, fixedId = null) {
 function renderEdges(edges, layout, nodes = []) {
   const nodeLookup = new Map(nodes.map(node => [node.id, node]));
 
-  return edges.map((edge, index) => {
+  return edges.map(edge => {
     const sourceCenter = layout.get(edge.sourceId);
     const targetCenter = layout.get(edge.targetId);
     if (!sourceCenter || !targetCenter) return "";
 
     const type = edge.type || "related";
-    const label = formatRelationshipLabel(type);
     const line = getClippedEdgeLine({
       sourceCenter,
       targetCenter,
       sourceNode: nodeLookup.get(edge.sourceId),
       targetNode: nodeLookup.get(edge.targetId)
     });
-    const labelPosition = getEdgeLabelPosition(line.source, line.target, index);
-    const labelWidth = estimateLabelWidth(label);
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
         <line x1="${line.source.x}" y1="${line.source.y}" x2="${line.target.x}" y2="${line.target.y}"></line>
-        <g class="graph-edge-label">
-          <rect x="${labelPosition.x - labelWidth / 2}" y="${labelPosition.y - 12}" width="${labelWidth}" height="18" rx="9"></rect>
-          <text x="${labelPosition.x}" y="${labelPosition.y}">${escapeHtml(label)}</text>
-        </g>
       </g>
     `;
   }).join("");
