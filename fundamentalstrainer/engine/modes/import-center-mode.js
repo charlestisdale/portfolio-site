@@ -21,7 +21,7 @@ function formatNumber(value) {
 function statusMessage(state) {
   if (state.loading) return "Loading local import data…";
   if (state.error) return state.error;
-  if (!state.manifest && !state.folderReport) return "No local import data found yet. Run npm run ingest:folder -- --cert=a-plus-220-1202, then npm run review:manifest.";
+  if (!state.manifest && !state.folderReport) return "No local import data found yet. Run npm run ingest:folder -- --cert=a-plus-220-1202 to parse transcripts, build evidence, generate candidates, normalize them, and refresh the review manifest.";
   return "Local import data loaded. Review generated candidates before merging into Knowledge Objects.";
 }
 
@@ -297,10 +297,11 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
         <ol>
           <li>Put raw sources in <code>data/transcripts/raw/&lt;cert&gt;/</code>.</li>
           <li>Run <code>npm run ingest:folder -- --cert=a-plus-220-1202</code>.</li>
-          <li>Run <code>npm run ingest:postprocess</code>.</li>
-          <li>Review candidates in this tab.</li>
+          <li>Review generated evidence, quality warnings, and candidate drafts in this tab.</li>
+          <li>Approve, edit, merge, or reject each candidate.</li>
           <li>Export approved Knowledge Objects for merge.</li>
         </ol>
+        <p class="muted">For one file, run <code>npm run ingest:transcript -- --file=&lt;path-to-srt&gt; --cert=a-plus-220-1202</code>. Folder import uses the same transcript import function for every source file.</p>
         <div class="import-metric-strip compact">
           <span><strong>${formatNumber(reviewed.approved)}</strong> approved</span>
           <span><strong>${formatNumber(reviewed.rejected)}</strong> rejected</span>
