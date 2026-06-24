@@ -5,6 +5,7 @@ const VIEWBOX_HEIGHT = 420;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
+const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v1";
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -34,10 +35,11 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const sourceNodes = graph?.nodes || [];
   const sourceEdges = graph?.edges || [];
   const graphScope = GRAPH_SCOPES.includes(scope) ? scope : "focused";
-  const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const activeId = activeConcept?.id || null;
+  const layoutKey = graphLayoutKey({ activeId, scope: graphScope });
+  const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
-  const layout = layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId });
+  const layout = applySavedLayout(layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId }), layoutKey);
   const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related")).sort();
 
   registerScopeRenderer({ graph, activeConcept, activeEdges });
@@ -52,7 +54,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   }
 
   return `
-    <section class="graph-visualizer" aria-label="Interactive knowledge graph">
+    <section class="graph-visualizer" aria-label="Interactive knowledge graph" data-graph-layout-key="${escapeHtml(layoutKey)}">
       <header class="graph-visualizer__header">
         <div>
           <h3>Interactive graph</h3>
@@ -73,6 +75,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
             ${escapeHtml(capitalize(item))}
           </button>
         `).join("")}
+        <button class="graph-scope-button" data-graph-reset-layout="${escapeHtml(layoutKey)}" type="button">Reset layout</button>
       </div>
 
       <div class="graph-legend" aria-label="Relationship types">
@@ -81,7 +84,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
-      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization">
+      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas>
         <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
           ${renderEdges(graphModel.edges, layout)}
         </svg>
@@ -95,11 +98,117 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
 
 function registerScopeRenderer(renderState) {
   if (typeof window === "undefined") return;
+
   window.__renderKnowledgeGraphScope = nextScope => {
     const mount = document.querySelector(".graph-visualizer");
     if (!mount) return;
     mount.outerHTML = renderKnowledgeGraphVisualizer({ ...renderState, scope: nextScope });
   };
+
+  window.__resetKnowledgeGraphLayout = layoutKey => {
+    const layouts = readStoredLayouts();
+    delete layouts[layoutKey];
+    writeStoredLayouts(layouts);
+    const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
+    window.__renderKnowledgeGraphScope(scope);
+  };
+
+  window.__startKnowledgeGraphDrag = event => {
+    const node = event.currentTarget;
+    if (!node || node.disabled) return;
+    if (event.button !== undefined && event.button !== 0) return;
+
+    const visualizer = node.closest(".graph-visualizer");
+    const canvas = node.closest("[data-graph-canvas]");
+    const layoutKey = visualizer?.dataset.graphLayoutKey;
+    const nodeId = node.dataset.id;
+    if (!canvas || !layoutKey || !nodeId) return;
+
+    const start = { x: event.clientX, y: event.clientY };
+    const startX = Number(node.dataset.graphX || 0);
+    const startY = Number(node.dataset.graphY || 0);
+    let didDrag = false;
+
+    node.setPointerCapture?.(event.pointerId);
+    node.classList.add("graph-visual-node--dragging");
+    event.preventDefault();
+    event.stopPropagation();
+
+    const move = moveEvent => {
+      const rect = canvas.getBoundingClientRect();
+      const dx = ((moveEvent.clientX - start.x) / rect.width) * VIEWBOX_WIDTH;
+      const dy = ((moveEvent.clientY - start.y) / rect.height) * VIEWBOX_HEIGHT;
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
+      const next = {
+        x: clamp(startX + dx, 30, VIEWBOX_WIDTH - 30),
+        y: clamp(startY + dy, 24, VIEWBOX_HEIGHT - 24)
+      };
+      node.dataset.graphX = String(next.x);
+      node.dataset.graphY = String(next.y);
+      node.style.left = `${(next.x / VIEWBOX_WIDTH) * 100}%`;
+      node.style.top = `${(next.y / VIEWBOX_HEIGHT) * 100}%`;
+    };
+
+    const stop = stopEvent => {
+      node.releasePointerCapture?.(event.pointerId);
+      node.classList.remove("graph-visual-node--dragging");
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
+
+      if (didDrag) {
+        const layouts = readStoredLayouts();
+        layouts[layoutKey] ||= {};
+        layouts[layoutKey][nodeId] = {
+          x: Number(node.dataset.graphX || startX),
+          y: Number(node.dataset.graphY || startY)
+        };
+        writeStoredLayouts(layouts);
+        window.__knowledgeGraphSuppressClickUntil = Date.now() + 450;
+        stopEvent?.preventDefault?.();
+        stopEvent?.stopPropagation?.();
+        const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
+        window.__renderKnowledgeGraphScope(scope);
+      }
+    };
+
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", stop, { once: true });
+    window.addEventListener("pointercancel", stop, { once: true });
+  };
+}
+
+function readStoredLayouts() {
+  try {
+    return JSON.parse(window.localStorage.getItem(GRAPH_LAYOUT_STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeStoredLayouts(layouts) {
+  try {
+    window.localStorage.setItem(GRAPH_LAYOUT_STORAGE_KEY, JSON.stringify(layouts));
+  } catch {
+    // Ignore localStorage failures. Dragging should still work for the current session.
+  }
+}
+
+function graphLayoutKey({ activeId, scope }) {
+  return `${scope}:${activeId || "all"}`;
+}
+
+function applySavedLayout(layout, layoutKey) {
+  if (typeof window === "undefined") return layout;
+  const saved = readStoredLayouts()[layoutKey] || {};
+  for (const [nodeId, point] of Object.entries(saved)) {
+    if (!layout.has(nodeId)) continue;
+    layout.set(nodeId, {
+      x: clamp(Number(point.x), 30, VIEWBOX_WIDTH - 30),
+      y: clamp(Number(point.y), 24, VIEWBOX_HEIGHT - 24)
+    });
+  }
+  return layout;
 }
 
 function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
@@ -262,7 +371,9 @@ function estimateLabelWidth(label) {
 }
 
 function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
+  const number = Number(value);
+  if (!Number.isFinite(number)) return min;
+  return Math.min(Math.max(number, min), max);
 }
 
 function renderNode(node, point, { activeId }) {
@@ -278,7 +389,7 @@ function renderNode(node, point, { activeId }) {
   const disabled = node.missing ? "disabled" : `data-id="${escapeHtml(node.id)}"`;
 
   return `
-    <button class="${classes}" ${disabled} style="${style}" type="button" title="${escapeHtml(node.id)}">
+    <button class="${classes}" ${disabled} style="${style}" type="button" title="${escapeHtml(node.id)}" data-graph-x="${escapeHtml(point.x)}" data-graph-y="${escapeHtml(point.y)}" onpointerdown="window.__startKnowledgeGraphDrag?.(event)">
       <strong>${escapeHtml(node.title || node.id)}</strong>
       <span>${escapeHtml(primaryDomain)}</span>
     </button>
@@ -287,9 +398,9 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: active concept, direct relationships, stubs, and nearby typed context.";
+    return "Expanded view: drag nodes to clean up overlap. Reset layout restores the generated view.";
   }
-  return "Focused view: active concept plus direct typed relationships. Stub nodes mark referenced concepts that still need full discovery.";
+  return "Focused view: drag nodes to clean up overlap. Stub nodes mark referenced concepts that still need full discovery.";
 }
 
 function formatRelationshipLabel(type) {
