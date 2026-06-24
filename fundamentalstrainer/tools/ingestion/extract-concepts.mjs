@@ -27,13 +27,13 @@ if (!fs.existsSync(sourcePath)) {
 const rawText = fs.readFileSync(sourcePath, "utf8");
 const paragraphs = rawText
   .split(/\n{2,}/)
-  .map((text, index) => ({ paragraph: index + 1, text: text.replace(/\s+/g, " ").trim() }))
+  .map((text, index) => ({ paragraph: index + 1, text: cleanGeneratedText(text) }))
   .filter(item => item.text);
 
 const sentences = paragraphs.flatMap(paragraph => {
   const parts = paragraph.text.match(/[^.!?]+[.!?]*/g) || [paragraph.text];
   return parts
-    .map(text => text.trim())
+    .map(text => cleanGeneratedText(text))
     .filter(Boolean)
     .map((text, index) => ({ paragraph: paragraph.paragraph, sentence: index + 1, text }));
 });
@@ -99,13 +99,72 @@ function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function safeSnippet(text, max = 260) {
-  const cleaned = String(text || "").replace(/\s+/g, " ").trim();
+function normalizeWhitespace(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function collapseAdjacentPhraseRepeats(text) {
+  const words = normalizeWhitespace(text).split(" ").filter(Boolean);
+  const output = [];
+
+  for (let i = 0; i < words.length;) {
+    let collapsed = false;
+    for (let size = Math.min(14, Math.floor((words.length - i) / 2)); size >= 2; size--) {
+      const chunk = words.slice(i, i + size).join(" ").toLowerCase();
+      const next = words.slice(i + size, i + size * 2).join(" ").toLowerCase();
+      const third = words.slice(i + size * 2, i + size * 3).join(" ").toLowerCase();
+      if (chunk && chunk === next) {
+        output.push(...words.slice(i, i + size));
+        i += size * (third === chunk ? 3 : 2);
+        collapsed = true;
+        break;
+      }
+    }
+    if (!collapsed) {
+      output.push(words[i]);
+      i += 1;
+    }
+  }
+
+  return output.join(" ");
+}
+
+function cleanGeneratedText(text) {
+  let cleaned = normalizeWhitespace(text)
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/\b(Google Androi)\b/gi, "Google Android");
+
+  // Run twice because caption overlap can leave nested repeated phrases.
+  cleaned = collapseAdjacentPhraseRepeats(cleaned);
+  cleaned = collapseAdjacentPhraseRepeats(cleaned);
+  return cleaned;
+}
+
+function safeSnippet(text, max = 240) {
+  const cleaned = cleanGeneratedText(text);
   return cleaned.length > max ? cleaned.slice(0, max - 1).trimEnd() + "…" : cleaned;
 }
 
 function sentenceLooksUseful(text) {
-  return /\b(is|are|was|were|runs|based on|allows|provides|uses|used|develop|install|supports|designed|open-source|open source|kernel|operating system|application|app store|play store|compatib)\b/i.test(text);
+  return /\b(is|are|was|were|runs|based on|allows|provides|uses|used|develop|install|supports|designed|open-source|open source|kernel|operating system|application|app store|play store|compatib|maintained|consortium|hardware)\b/i.test(text);
+}
+
+function isTautology(concept, text) {
+  const title = escapeRegex(concept.title);
+  return new RegExp(`^${title}\\s+is\\s+${title}\\.?$`, "i").test(cleanGeneratedText(text));
+}
+
+function candidateFactText(concept, text) {
+  const cleaned = safeSnippet(text, 220);
+  if (!sentenceLooksUseful(cleaned)) return null;
+  if (isTautology(concept, cleaned)) return null;
+  if (cleaned.length < 24) return null;
+  return cleaned;
+}
+
+function fallbackSummary(item) {
+  const domain = item.domains?.[0] ? ` in ${item.domains[0].replaceAll("-", " ")}` : "";
+  return `${item.title} is a ${item.type || "concept"}${domain} that was identified from the lesson transcript and needs human review.`;
 }
 
 function findConceptMentions(sentence) {
@@ -154,9 +213,11 @@ function addMention(concept, evidence, term, confidence = 0.85) {
   }
 
   const item = mentions.get(concept.id);
+  const cleanedEvidence = { ...evidence, text: cleanGeneratedText(evidence.text) };
+  const fact = candidateFactText(concept, cleanedEvidence.text);
   item.confidence = Math.max(item.confidence, confidence);
-  if (item.evidence.length < 8) item.evidence.push({ ...evidence, matchedTerm: term });
-  if (sentenceLooksUseful(evidence.text)) item.factTexts.add(safeSnippet(evidence.text));
+  if (item.evidence.length < 8) item.evidence.push({ ...cleanedEvidence, matchedTerm: term });
+  if (fact) item.factTexts.add(fact);
 }
 
 for (const sentence of sentences) {
@@ -176,7 +237,7 @@ for (const sentence of sentences) {
             source: source.concept.id,
             target: target.concept.id,
             type: relationshipType(source.concept, target.concept, sentence.text),
-            evidence: safeSnippet(sentence.text, 220)
+            evidence: safeSnippet(sentence.text, 200)
           });
         }
       }
@@ -189,7 +250,7 @@ function relationshipsFor(id) {
     .filter(item => item.source === id)
     .filter(item => !item.target.startsWith(id + "."))
     .slice(0, 8)
-    .map(item => ({ id: item.target, type: item.type, evidence: item.evidence }));
+    .map(item => ({ id: item.target, type: item.type, reason: item.evidence, evidence: item.evidence }));
 }
 
 const candidates = [...mentions.values()]
@@ -197,11 +258,12 @@ const candidates = [...mentions.values()]
   .sort((a, b) => b.confidence - a.confidence || a.title.localeCompare(b.title))
   .map((item, index) => {
     const factTexts = [...item.factTexts].slice(0, 6);
+    const summary = factTexts[0] || fallbackSummary(item);
     const evidence = item.evidence.map(e => ({
       paragraph: e.paragraph,
       sentence: e.sentence,
       matchedTerm: e.matchedTerm,
-      text: e.text
+      text: cleanGeneratedText(e.text)
     }));
 
     return {
@@ -214,8 +276,8 @@ const candidates = [...mentions.values()]
       domains: item.domains,
       aliases: item.aliases,
       confidence: Number(item.confidence.toFixed(2)),
-      summaryDraft: factTexts[0] || `${item.title} appears in the transcript and needs human review before becoming trusted learning content.`,
-      explanationDraft: factTexts.join(" "),
+      summaryDraft: summary,
+      explanationDraft: factTexts.length ? factTexts.join(" ") : summary,
       factsDraft: factTexts.map(text => ({
         text,
         importance: item.confidence >= 0.85 ? "high" : "medium",
