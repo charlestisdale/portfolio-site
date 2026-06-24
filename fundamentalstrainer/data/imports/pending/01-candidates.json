@@ -1,0 +1,1688 @@
+{
+  "id": "IMPORT-A-PLUS-220-1202-01",
+  "certificationId": "a-plus-220-1202",
+  "lessonId": "01",
+  "lessonTitle": "Operating Systems Overview",
+  "sourceTranscript": "data/transcripts/cleaned/a-plus-220-1202/01-Operating Systems Overview.txt",
+  "status": "pending-review",
+  "createdAt": "2026-06-24T12:27:41.165Z",
+  "metrics": {
+    "transcriptParagraphs": 358,
+    "transcriptSentences": 358,
+    "candidates": 13,
+    "highConfidenceCandidates": 8,
+    "candidatesWithFactDrafts": 13,
+    "relationshipsSuggested": 68
+  },
+  "notes": [
+    "Auto-extracted candidates from a controlled concept catalog. Review every candidate before merging into content/knowledge.",
+    "This script does not create certification-specific concept IDs.",
+    "Evidence belongs in private import records; public knowledge objects should keep only generic source references."
+  ],
+  "candidates": [
+    {
+      "candidateId": "CAND-001",
+      "title": "Android",
+      "slug": "android",
+      "proposedKnowledgeId": "mobile.android",
+      "type": "operating-system",
+      "category": "mobile",
+      "domains": [
+        "mobile",
+        "operating-systems",
+        "linux"
+      ],
+      "aliases": [
+        "Google Android"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "Of course, the other large manufacturer of software for mobile manufacturer of software for mobile manufacturer of software for mobile devices is Google through the use of devices is Google through the use of devices is Google through the use of Google Androi…",
+      "explanationDraft": "Of course, the other large manufacturer of software for mobile manufacturer of software for mobile manufacturer of software for mobile devices is Google through the use of devices is Google through the use of devices is Google through the use of Google Androi… Google Android is Google Android. Google Android is maintained by a consortium of companies maintained by a consortium of companies maintained by a consortium of companies known as the Open Handset Alliance. And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux. Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Android is supported by many different suppor… You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android software develope…",
+      "factsDraft": [
+        {
+          "text": "Of course, the other large manufacturer of software for mobile manufacturer of software for mobile manufacturer of software for mobile devices is Google through the use of devices is Google through the use of devices is Google through the use of Google Androi…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        },
+        {
+          "text": "Google Android is Google Android.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        },
+        {
+          "text": "Google Android is maintained by a consortium of companies maintained by a consortium of companies maintained by a consortium of companies known as the Open Handset Alliance.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        },
+        {
+          "text": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        },
+        {
+          "text": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Android is supported by many different suppor…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        },
+        {
+          "text": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android software develope…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems",
+            "linux"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 310,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "Of course, the other large manufacturer of software for mobile manufacturer of software for mobile manufacturer of software for mobile devices is Google through the use of devices is Google through the use of devices is Google through the use of Google Android."
+        },
+        {
+          "paragraph": 311,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "Google Android is Google Android."
+        },
+        {
+          "paragraph": 312,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "Google Android is Google Android."
+        },
+        {
+          "paragraph": 313,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "Google Android is maintained by a consortium of companies maintained by a consortium of companies maintained by a consortium of companies known as the Open Handset Alliance."
+        },
+        {
+          "paragraph": 316,
+          "sentence": 1,
+          "matchedTerm": "Android",
+          "text": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        },
+        {
+          "paragraph": 319,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Android is supported by many different supported by many different supported by many different manufacturers and there are many manufacturers and there are many manufacturers and there are many different types of hardware available different types of hardware available different types of hardware available that can use Google Android."
+        },
+        {
+          "paragraph": 320,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "You can that can use Google Android."
+        },
+        {
+          "paragraph": 321,
+          "sentence": 1,
+          "matchedTerm": "Google Android",
+          "text": "You can that can use Google Android."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "depends_on",
+          "evidence": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        },
+        {
+          "id": "software.open-source-software",
+          "type": "depends_on",
+          "evidence": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        },
+        {
+          "id": "linux.linux",
+          "type": "depends_on",
+          "evidence": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        },
+        {
+          "id": "mobile.ios",
+          "type": "contrasts_with",
+          "evidence": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Andro…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "contrasts_with",
+          "evidence": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Andro…"
+        },
+        {
+          "id": "software.software-development-kit",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        },
+        {
+          "id": "windows.windows",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-002",
+      "title": "App Store",
+      "slug": "app-store",
+      "proposedKnowledgeId": "software.app-store",
+      "type": "tool",
+      "category": "software",
+      "domains": [
+        "software",
+        "macos",
+        "mobile"
+      ],
+      "aliases": [
+        "Apple App Store"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "Before these applications you write are available in applications you write are available in applications you write are available in the Apple App Store, they need to be the Apple App Store, they need to be the Apple App Store, they need to be tested and appr…",
+      "explanationDraft": "Before these applications you write are available in applications you write are available in applications you write are available in the Apple App Store, they need to be the Apple App Store, they need to be the Apple App Store, they need to be tested and appr… Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c…",
+      "factsDraft": [
+        {
+          "text": "Before these applications you write are available in applications you write are available in applications you write are available in the Apple App Store, they need to be the Apple App Store, they need to be the Apple App Store, they need to be tested and appr…",
+          "importance": "high",
+          "tags": [
+            "software",
+            "macos",
+            "mobile"
+          ]
+        },
+        {
+          "text": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c…",
+          "importance": "high",
+          "tags": [
+            "software",
+            "macos",
+            "mobile"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 304,
+          "sentence": 1,
+          "matchedTerm": "Apple App Store",
+          "text": "Before these applications you write are available in applications you write are available in applications you write are available in the Apple App Store, they need to be the Apple App Store, they need to be the Apple App Store, they need to be tested and approved by Apple directly."
+        },
+        {
+          "paragraph": 307,
+          "sentence": 1,
+          "matchedTerm": "App Store",
+          "text": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on can purchase and download to use on can purchase and download to use on their iOS or iPad OS their iOS or iPad OS their iOS or iPad OS devices."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyo…"
+        },
+        {
+          "id": "mobile.ios",
+          "type": "related_to",
+          "evidence": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyo…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "related_to",
+          "evidence": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyo…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-003",
+      "title": "Google Play Store",
+      "slug": "google-play-store",
+      "proposedKnowledgeId": "software.google-play-store",
+      "type": "tool",
+      "category": "software",
+      "domains": [
+        "software",
+        "mobile"
+      ],
+      "aliases": [
+        "Play Store"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "You can also make those apps available from the make those apps available from the make those apps available from the Google Play Store and a number of Google Play Store and a number of Google Play Store and a number of thirdparty sites as well.",
+      "explanationDraft": "You can also make those apps available from the make those apps available from the make those apps available from the Google Play Store and a number of Google Play Store and a number of Google Play Store and a number of thirdparty sites as well.",
+      "factsDraft": [
+        {
+          "text": "You can also make those apps available from the make those apps available from the make those apps available from the Google Play Store and a number of Google Play Store and a number of Google Play Store and a number of thirdparty sites as well.",
+          "importance": "high",
+          "tags": [
+            "software",
+            "mobile"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 325,
+          "sentence": 1,
+          "matchedTerm": "Google Play Store",
+          "text": "You can also make those apps available from the make those apps available from the make those apps available from the Google Play Store and a number of Google Play Store and a number of Google Play Store and a number of thirdparty sites as well."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-004",
+      "title": "iOS",
+      "slug": "ios",
+      "proposedKnowledgeId": "mobile.ios",
+      "type": "operating-system",
+      "category": "mobile",
+      "domains": [
+        "mobile",
+        "operating-systems"
+      ],
+      "aliases": [
+        "Apple iOS",
+        "iPhone OS"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a diff…",
+      "explanationDraft": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a diff… Unlike Linux, which is an Apple iOS. And iOS is an source code of iOS. And iOS is an operating system that will only run on operating system that will only run on operating system that will only run on Apple hardware. If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's… Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c…",
+      "factsDraft": [
+        {
+          "text": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a diff…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Unlike Linux, which is an Apple iOS.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And iOS is an source code of iOS.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And iOS is an operating system that will only run on operating system that will only run on operating system that will only run on Apple hardware.",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c…",
+          "importance": "high",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 289,
+          "sentence": 1,
+          "matchedTerm": "Apple iOS",
+          "text": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a different operating system known as different operating system known as different operating system known as Apple iOS."
+        },
+        {
+          "paragraph": 290,
+          "sentence": 1,
+          "matchedTerm": "Apple iOS",
+          "text": "Unlike Linux, which is an Apple iOS."
+        },
+        {
+          "paragraph": 291,
+          "sentence": 1,
+          "matchedTerm": "Apple iOS",
+          "text": "Unlike Linux, which is an Apple iOS."
+        },
+        {
+          "paragraph": 295,
+          "sentence": 1,
+          "matchedTerm": "iOS",
+          "text": "You do not have access to the source code of iOS."
+        },
+        {
+          "paragraph": 296,
+          "sentence": 1,
+          "matchedTerm": "iOS",
+          "text": "And iOS is an source code of iOS."
+        },
+        {
+          "paragraph": 297,
+          "sentence": 1,
+          "matchedTerm": "iOS",
+          "text": "And iOS is an source code of iOS."
+        },
+        {
+          "paragraph": 298,
+          "sentence": 1,
+          "matchedTerm": "iOS",
+          "text": "And iOS is an operating system that will only run on operating system that will only run on operating system that will only run on Apple hardware."
+        },
+        {
+          "paragraph": 301,
+          "sentence": 1,
+          "matchedTerm": "iOS",
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's software developers kit that runs on the software developers kit that runs on the software developers kit that runs on the Mac OS operating system."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "contrasts_with",
+          "evidence": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a run…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an Apple iOS."
+        },
+        {
+          "id": "software.software-development-kit",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "software.app-store",
+          "type": "related_to",
+          "evidence": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyo…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "contrasts_with",
+          "evidence": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Andro…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-005",
+      "title": "Kernel",
+      "slug": "kernel",
+      "proposedKnowledgeId": "operating-systems.kernel",
+      "type": "concept",
+      "category": "operating-systems",
+      "domains": [
+        "operating-systems"
+      ],
+      "aliases": [
+        "OS kernel"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a differe…",
+      "explanationDraft": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a differe…",
+      "factsDraft": [
+        {
+          "text": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a differe…",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 250,
+          "sentence": 1,
+          "matchedTerm": "Kernel",
+          "text": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a different look and feel than using a a different look and feel than using a a different look and feel than using a traditional Linux operating system."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "linux.chromeos",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-006",
+      "title": "Linux",
+      "slug": "linux",
+      "proposedKnowledgeId": "linux.linux",
+      "type": "operating-system",
+      "category": "linux",
+      "domains": [
+        "linux",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "confidence": 0.9,
+      "summaryDraft": "Linux is an operating desktop as well.",
+      "explanationDraft": "Linux is an operating desktop as well. Linux is an operating system that is absolutely free. But with Linux, there are install. But with Linux, there are different distributions of Linux. Generally, you would install the Linux distribution that fit best with Linux distribution that fit best with Linux distribution that fit best with your needs. One of the significant advantages of Linux is there's no cost advantages of Linux is there's no cost advantages of Linux is there's no cost to use it.",
+      "factsDraft": [
+        {
+          "text": "Linux is an operating desktop as well.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Linux is an operating system that is absolutely free.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "But with Linux, there are install.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "But with Linux, there are different distributions of Linux.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Generally, you would install the Linux distribution that fit best with Linux distribution that fit best with Linux distribution that fit best with your needs.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "One of the significant advantages of Linux is there's no cost advantages of Linux is there's no cost advantages of Linux is there's no cost to use it.",
+          "importance": "high",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 31,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "paragraph": 131,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "Linux is an operating desktop as well."
+        },
+        {
+          "paragraph": 132,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "Linux is an operating desktop as well."
+        },
+        {
+          "paragraph": 133,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "Linux is an operating system that is absolutely free."
+        },
+        {
+          "paragraph": 140,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "But with Linux, there are install."
+        },
+        {
+          "paragraph": 141,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "But with Linux, there are install."
+        },
+        {
+          "paragraph": 142,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "But with Linux, there are different distributions of Linux."
+        },
+        {
+          "paragraph": 143,
+          "sentence": 1,
+          "matchedTerm": "Linux",
+          "text": "different distributions of Linux."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "windows.windows",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "Mac OS is also designed for security in mind and you may find fewer security in mind and you may find fewer security in mind and you may find fewer security concerns with Mac OS as security concerns with Mac OS as secur…"
+        },
+        {
+          "id": "operating-systems.kernel",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "linux.chromeos",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "mobile.ios",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an Apple iOS."
+        },
+        {
+          "id": "software.open-source-software",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "depends_on",
+          "evidence": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-007",
+      "title": "Operating System",
+      "slug": "operating-system",
+      "proposedKnowledgeId": "operating-systems.operating-system",
+      "type": "operating-system",
+      "category": "operating-systems",
+      "domains": [
+        "operating-systems"
+      ],
+      "aliases": [
+        "OS",
+        "operating systems"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "That link is the operating system.",
+      "explanationDraft": "That link is the operating system. Your operating system and your monitor. Your operating system is also the platform used by your is also the platform used by your is also the platform used by your application. If you're running an executable in an operating system, that executable in an operating system, that executable in an operating system, that application was specifically written to application was specifically written to application was specifically written t… This operating system allows us to put operating system allows us to put operating system allows us to put information into the computer, have the information into the computer, have the information into the computer, have the computer process that informatio… When you need to store a file, remove a file or change what file, remove a file or change what file, remove a file or change what happens to be on that storage device, happens to be on that storage device, happens to be on that storage device, the operating s…",
+      "factsDraft": [
+        {
+          "text": "That link is the operating system.",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Your operating system and your monitor.",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Your operating system is also the platform used by your is also the platform used by your is also the platform used by your application.",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "If you're running an executable in an operating system, that executable in an operating system, that executable in an operating system, that application was specifically written to application was specifically written to application was specifically written t…",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "This operating system allows us to put operating system allows us to put operating system allows us to put information into the computer, have the information into the computer, have the information into the computer, have the computer process that informatio…",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "When you need to store a file, remove a file or change what file, remove a file or change what file, remove a file or change what happens to be on that storage device, happens to be on that storage device, happens to be on that storage device, the operating s…",
+          "importance": "high",
+          "tags": [
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 4,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "That link is the operating system."
+        },
+        {
+          "paragraph": 17,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "Your operating system and your monitor."
+        },
+        {
+          "paragraph": 18,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "Your operating system and your monitor."
+        },
+        {
+          "paragraph": 19,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "Your operating system is also the platform used by your is also the platform used by your is also the platform used by your application."
+        },
+        {
+          "paragraph": 22,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "If you're running an executable in an operating system, that executable in an operating system, that executable in an operating system, that application was specifically written to application was specifically written to application was specifically written to run in that OS."
+        },
+        {
+          "paragraph": 23,
+          "sentence": 1,
+          "matchedTerm": "OS",
+          "text": "And of course, our run in that OS."
+        },
+        {
+          "paragraph": 24,
+          "sentence": 1,
+          "matchedTerm": "OS",
+          "text": "And of course, our run in that OS."
+        },
+        {
+          "paragraph": 28,
+          "sentence": 1,
+          "matchedTerm": "Operating System",
+          "text": "This operating system allows us to put operating system allows us to put operating system allows us to put information into the computer, have the information into the computer, have the information into the computer, have the computer process that information, and computer process that information, and computer process that information, and then provide us with an then provide us with an then provide us with an output."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "windows.windows",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "linux.linux",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administr…"
+        },
+        {
+          "id": "linux.chromeos",
+          "type": "related_to",
+          "evidence": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS."
+        },
+        {
+          "id": "operating-systems.kernel",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "related_to",
+          "evidence": "iPad OS includes a desktop those apps."
+        },
+        {
+          "id": "mobile.ios",
+          "type": "contrasts_with",
+          "evidence": "Although it looks very similar, the operating system that very similar, the operating system that very similar, the operating system that runs on Apple's iPhones are actually a runs on Apple's iPhones are actually a run…"
+        },
+        {
+          "id": "software.open-source-software",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-008",
+      "title": "Windows",
+      "slug": "windows",
+      "proposedKnowledgeId": "windows.windows",
+      "type": "operating-system",
+      "category": "windows",
+      "domains": [
+        "windows",
+        "operating-systems"
+      ],
+      "aliases": [
+        "Microsoft Windows"
+      ],
+      "confidence": 0.9,
+      "summaryDraft": "One of the most popular operating systems in the world is operating systems in the world is operating systems in the world is Microsoft Windows.",
+      "explanationDraft": "One of the most popular operating systems in the world is operating systems in the world is operating systems in the world is Microsoft Windows. There are many different versions of Microsoft Windows. This popularity of Windows provides it with popularity of Windows provides it with popularity of Windows provides it with the advantage of very large industry the advantage of very large industry the advantage of very large industry support. If you need to find an additional piece of hardware, install additional piece of hardware, install additional piece of hardware, install new software, or find support for your new software, or find support for your new software, or find support for your syste… Although we're talking about Microsoft Although we're talking about Microsoft Although we're talking about Microsoft Windows, as it's a single OS, there are Windows, as it's a single OS, there are Windows, as it's a single OS, there are actually many differen… And because Windows is so popular, there are because Windows is so popular, there are because Windows is so popular, there are many developers writing their software many developers writing their software many developers writing their software to run in this…",
+      "factsDraft": [
+        {
+          "text": "One of the most popular operating systems in the world is operating systems in the world is operating systems in the world is Microsoft Windows.",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "There are many different versions of Microsoft Windows.",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "This popularity of Windows provides it with popularity of Windows provides it with popularity of Windows provides it with the advantage of very large industry the advantage of very large industry the advantage of very large industry support.",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "If you need to find an additional piece of hardware, install additional piece of hardware, install additional piece of hardware, install new software, or find support for your new software, or find support for your new software, or find support for your syste…",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Although we're talking about Microsoft Although we're talking about Microsoft Although we're talking about Microsoft Windows, as it's a single OS, there are Windows, as it's a single OS, there are Windows, as it's a single OS, there are actually many differen…",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And because Windows is so popular, there are because Windows is so popular, there are because Windows is so popular, there are many developers writing their software many developers writing their software many developers writing their software to run in this…",
+          "importance": "high",
+          "tags": [
+            "windows",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 31,
+          "sentence": 1,
+          "matchedTerm": "Windows",
+          "text": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "paragraph": 67,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "One of the most popular operating systems in the world is operating systems in the world is operating systems in the world is Microsoft Windows."
+        },
+        {
+          "paragraph": 68,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "It has a significant Microsoft Windows."
+        },
+        {
+          "paragraph": 69,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "It has a significant Microsoft Windows."
+        },
+        {
+          "paragraph": 73,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "There are many different versions of Microsoft Windows."
+        },
+        {
+          "paragraph": 74,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "You might find of Microsoft Windows."
+        },
+        {
+          "paragraph": 75,
+          "sentence": 1,
+          "matchedTerm": "Microsoft Windows",
+          "text": "You might find of Microsoft Windows."
+        },
+        {
+          "paragraph": 76,
+          "sentence": 1,
+          "matchedTerm": "Windows",
+          "text": "You might find Windows 10, Windows 11, Windows Server, Windows 10, Windows 11, Windows Server, Windows 10, Windows 11, Windows Server, and certainly there will be newer and certainly there will be newer and certainly there will be newer Windows versions as time goes on."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "linux.linux",
+          "type": "related_to",
+          "evidence": "In this course, you'll learn a lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and lot about Windows, MacOss, Linux, and many other operating systems."
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "Mac OS is also designed for security in mind and you may find fewer security in mind and you may find fewer security in mind and you may find fewer security concerns with Mac OS as security concerns with Mac OS as secur…"
+        },
+        {
+          "id": "software.software-development-kit",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-009",
+      "title": "ChromeOS",
+      "slug": "chromeos",
+      "proposedKnowledgeId": "linux.chromeos",
+      "type": "operating-system",
+      "category": "linux",
+      "domains": [
+        "linux",
+        "operating-systems"
+      ],
+      "aliases": [
+        "Chrome OS"
+      ],
+      "confidence": 0.82,
+      "summaryDraft": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS.",
+      "explanationDraft": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS. Chrome OS operating system is Chrome OS. Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a differe… The objective of Chrome OS was to have most objective of Chrome OS was to have most objective of Chrome OS was to have most of the operating system revolve around of the operating system revolve around of the operating system revolve around the browser itself. And that, of course, is why this is the Chrome OS. Most of the this is the Chrome OS.",
+      "factsDraft": [
+        {
+          "text": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS.",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Chrome OS operating system is Chrome OS.",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a differe…",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "The objective of Chrome OS was to have most objective of Chrome OS was to have most objective of Chrome OS was to have most of the operating system revolve around of the operating system revolve around of the operating system revolve around the browser itself.",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And that, of course, is why this is the Chrome OS.",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Most of the this is the Chrome OS.",
+          "importance": "medium",
+          "tags": [
+            "linux",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 247,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS."
+        },
+        {
+          "paragraph": 248,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Chrome OS operating system is Chrome OS."
+        },
+        {
+          "paragraph": 249,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Chrome OS operating system is Chrome OS."
+        },
+        {
+          "paragraph": 250,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on the Linux kernel, it does have a different look and feel than using a a different look and feel than using a a different look and feel than using a traditional Linux operating system."
+        },
+        {
+          "paragraph": 253,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "The objective of Chrome OS was to have most objective of Chrome OS was to have most objective of Chrome OS was to have most of the operating system revolve around of the operating system revolve around of the operating system revolve around the browser itself."
+        },
+        {
+          "paragraph": 259,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "And that, of course, is why this is the Chrome OS."
+        },
+        {
+          "paragraph": 260,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Most of the this is the Chrome OS."
+        },
+        {
+          "paragraph": 261,
+          "sentence": 1,
+          "matchedTerm": "Chrome OS",
+          "text": "Most of the this is the Chrome OS."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "Another OS that has taken a bit of a departure from the traditional of a departure from the traditional of a departure from the traditional operating system is Chrome OS."
+        },
+        {
+          "id": "operating-systems.kernel",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "depends_on",
+          "evidence": "Chrome OS was created by Google and although it's was created by Google and although it's was created by Google and although it's based on the Linux kernel, it does have based on the Linux kernel, it does have based on…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-010",
+      "title": "iPadOS",
+      "slug": "ipados",
+      "proposedKnowledgeId": "mobile.ipados",
+      "type": "operating-system",
+      "category": "mobile",
+      "domains": [
+        "mobile",
+        "operating-systems"
+      ],
+      "aliases": [
+        "iPad OS"
+      ],
+      "confidence": 0.82,
+      "summaryDraft": "iPad OS includes a desktop browser, specifically Safari, which is a browser, specifically Safari, which is a browser, specifically Safari, which is a different version than what you might different version than what you might different version than what you m…",
+      "explanationDraft": "iPad OS includes a desktop browser, specifically Safari, which is a browser, specifically Safari, which is a browser, specifically Safari, which is a different version than what you might different version than what you might different version than what you m… There's also keyboard support, multitasking, and much keyboard support, multitasking, and much keyboard support, multitasking, and much more that supports the hardware that more that supports the hardware that more that supports the hardware that iPad OS is b… Although it looks iPad OS is based on. If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's… Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c… Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Android is supported by many different suppor…",
+      "factsDraft": [
+        {
+          "text": "iPad OS includes a desktop browser, specifically Safari, which is a browser, specifically Safari, which is a browser, specifically Safari, which is a different version than what you might different version than what you might different version than what you m…",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "There's also keyboard support, multitasking, and much keyboard support, multitasking, and much keyboard support, multitasking, and much more that supports the hardware that more that supports the hardware that more that supports the hardware that iPad OS is b…",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Although it looks iPad OS is based on.",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on c…",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Android is supported by many different suppor…",
+          "importance": "medium",
+          "tags": [
+            "mobile",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 278,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "iPad OS includes a desktop those apps."
+        },
+        {
+          "paragraph": 279,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "iPad OS includes a desktop those apps."
+        },
+        {
+          "paragraph": 280,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "iPad OS includes a desktop browser, specifically Safari, which is a browser, specifically Safari, which is a browser, specifically Safari, which is a different version than what you might different version than what you might different version than what you might find on an iPhone."
+        },
+        {
+          "paragraph": 286,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "There's also keyboard support, multitasking, and much keyboard support, multitasking, and much keyboard support, multitasking, and much more that supports the hardware that more that supports the hardware that more that supports the hardware that iPad OS is based on."
+        },
+        {
+          "paragraph": 287,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "Although it looks iPad OS is based on."
+        },
+        {
+          "paragraph": 288,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "Although it looks iPad OS is based on."
+        },
+        {
+          "paragraph": 301,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's software developers kit that runs on the software developers kit that runs on the software developers kit that runs on the Mac OS operating system."
+        },
+        {
+          "paragraph": 307,
+          "sentence": 1,
+          "matchedTerm": "iPad OS",
+          "text": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyone can purchase and download to use on can purchase and download to use on can purchase and download to use on their iOS or iPad OS their iOS or iPad OS their iOS or iPad OS devices."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "iPad OS includes a desktop those apps."
+        },
+        {
+          "id": "software.software-development-kit",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ios",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "software.app-store",
+          "type": "related_to",
+          "evidence": "Once Apple approves them, they're Once Apple approves them, they're Once Apple approves them, they're available in the App Store where anyone available in the App Store where anyone available in the App Store where anyo…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "contrasts_with",
+          "evidence": "Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Unlike iOS or iPad OS which only runs on Apple hardware, Google Android is Apple hardware, Google Android is Apple hardware, Google Andro…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-011",
+      "title": "macOS",
+      "slug": "macos",
+      "proposedKnowledgeId": "macos.macos",
+      "type": "operating-system",
+      "category": "macos",
+      "domains": [
+        "macos",
+        "operating-systems"
+      ],
+      "aliases": [
+        "Mac OS",
+        "MacOS",
+        "Mac"
+      ],
+      "confidence": 0.82,
+      "summaryDraft": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administrative tasks is Apple's Mac OS.",
+      "explanationDraft": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administrative tasks is Apple's Mac OS. administrative tasks is Apple's Mac OS. Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple hardware exclusively. One of the things that Mac OS is very well known for is that Mac OS is very well known for is that Mac OS is very well known for is its ease of use. And certainly Mac OS is its ease of use. And certainly Mac OS is well known for its user interface and well known for its user interface and well known for its user interface and overall usability.",
+      "factsDraft": [
+        {
+          "text": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administrative tasks is Apple's Mac OS.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "administrative tasks is Apple's Mac OS.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple hardware exclusively.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "One of the things that Mac OS is very well known for is that Mac OS is very well known for is that Mac OS is very well known for is its ease of use.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And certainly Mac OS is its ease of use.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        },
+        {
+          "text": "And certainly Mac OS is well known for its user interface and well known for its user interface and well known for its user interface and overall usability.",
+          "importance": "medium",
+          "tags": [
+            "macos",
+            "operating-systems"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 190,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administrative tasks is Apple's Mac OS."
+        },
+        {
+          "paragraph": 191,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "administrative tasks is Apple's Mac OS."
+        },
+        {
+          "paragraph": 192,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "administrative tasks is Apple's Mac OS."
+        },
+        {
+          "paragraph": 193,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple Mac OS is a desktop that runs on Apple hardware exclusively."
+        },
+        {
+          "paragraph": 199,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "One of the things that Mac OS is very well known for is that Mac OS is very well known for is that Mac OS is very well known for is its ease of use."
+        },
+        {
+          "paragraph": 200,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "And certainly Mac OS is its ease of use."
+        },
+        {
+          "paragraph": 201,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "And certainly Mac OS is its ease of use."
+        },
+        {
+          "paragraph": 202,
+          "sentence": 1,
+          "matchedTerm": "Mac OS",
+          "text": "And certainly Mac OS is well known for its user interface and well known for its user interface and well known for its user interface and overall usability."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "And one of the other large operating systems that you will operating systems that you will operating systems that you will undoubtedly run into in your undoubtedly run into in your undoubtedly run into in your administr…"
+        },
+        {
+          "id": "windows.windows",
+          "type": "related_to",
+          "evidence": "Mac OS is also designed for security in mind and you may find fewer security in mind and you may find fewer security in mind and you may find fewer security concerns with Mac OS as security concerns with Mac OS as secur…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "related_to",
+          "evidence": "Mac OS is also designed for security in mind and you may find fewer security in mind and you may find fewer security in mind and you may find fewer security concerns with Mac OS as security concerns with Mac OS as secur…"
+        },
+        {
+          "id": "software.software-development-kit",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ios",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-012",
+      "title": "Open Source Software",
+      "slug": "open-source-software",
+      "proposedKnowledgeId": "software.open-source-software",
+      "type": "concept",
+      "category": "software",
+      "domains": [
+        "software",
+        "linux"
+      ],
+      "aliases": [
+        "open-source",
+        "open source"
+      ],
+      "confidence": 0.82,
+      "summaryDraft": "This is open-source software that is created and open-source software that is created and open-source software that is created and maintained by thousands of individuals maintained by thousands of individuals maintained by thousands of individuals all over th…",
+      "explanationDraft": "This is open-source software that is created and open-source software that is created and open-source software that is created and maintained by thousands of individuals maintained by thousands of individuals maintained by thousands of individuals all over th… Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed Apple operating systems are closed sourc… And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux.",
+      "factsDraft": [
+        {
+          "text": "This is open-source software that is created and open-source software that is created and open-source software that is created and maintained by thousands of individuals maintained by thousands of individuals maintained by thousands of individuals all over th…",
+          "importance": "medium",
+          "tags": [
+            "software",
+            "linux"
+          ]
+        },
+        {
+          "text": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed Apple operating systems are closed sourc…",
+          "importance": "medium",
+          "tags": [
+            "software",
+            "linux"
+          ]
+        },
+        {
+          "text": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux.",
+          "importance": "medium",
+          "tags": [
+            "software",
+            "linux"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 136,
+          "sentence": 1,
+          "matchedTerm": "open-source",
+          "text": "This is open-source software that is created and open-source software that is created and open-source software that is created and maintained by thousands of individuals maintained by thousands of individuals maintained by thousands of individuals all over the world."
+        },
+        {
+          "paragraph": 292,
+          "sentence": 1,
+          "matchedTerm": "open-source",
+          "text": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed Apple operating systems are closed source."
+        },
+        {
+          "paragraph": 316,
+          "sentence": 1,
+          "matchedTerm": "open-source",
+          "text": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "contrasts_with",
+          "evidence": "Unlike Linux, which is an open-source operating system, all of the open-source operating system, all of the open-source operating system, all of the Apple operating systems are closed Apple operating systems are closed…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "depends_on",
+          "evidence": "And Android itself is an open-source Android itself is an open-source Android itself is an open-source operating system that's based on Linux."
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    },
+    {
+      "candidateId": "CAND-013",
+      "title": "Software Development Kit",
+      "slug": "software-development-kit",
+      "proposedKnowledgeId": "software.software-development-kit",
+      "type": "concept",
+      "category": "software",
+      "domains": [
+        "software"
+      ],
+      "aliases": [
+        "SDK",
+        "software developers kit",
+        "software developer kit"
+      ],
+      "confidence": 0.82,
+      "summaryDraft": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…",
+      "explanationDraft": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's… You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android software develope…",
+      "factsDraft": [
+        {
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…",
+          "importance": "medium",
+          "tags": [
+            "software"
+          ]
+        },
+        {
+          "text": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android software develope…",
+          "importance": "medium",
+          "tags": [
+            "software"
+          ]
+        }
+      ],
+      "examplesDraft": [],
+      "examTipsDraft": [],
+      "commonMistakesDraft": [],
+      "scenariosDraft": [],
+      "pbqIdeasDraft": [],
+      "evidence": [
+        {
+          "paragraph": 301,
+          "sentence": 1,
+          "matchedTerm": "software developers kit",
+          "text": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's software developers kit that runs on the software developers kit that runs on the software developers kit that runs on the Mac OS operating system."
+        },
+        {
+          "paragraph": 322,
+          "sentence": 1,
+          "matchedTerm": "software developers kit",
+          "text": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android software developers kit."
+        },
+        {
+          "paragraph": 323,
+          "sentence": 1,
+          "matchedTerm": "software developers kit",
+          "text": "You can also software developers kit."
+        },
+        {
+          "paragraph": 324,
+          "sentence": 1,
+          "matchedTerm": "software developers kit",
+          "text": "You can also software developers kit."
+        }
+      ],
+      "possibleDuplicates": [],
+      "suggestedRelationships": [
+        {
+          "id": "operating-systems.operating-system",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "macos.macos",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ios",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "mobile.ipados",
+          "type": "related_to",
+          "evidence": "If you want to develop applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even applications for iPad OS, iOS, or even Mac OS, then you'll need to use Apple's Mac OS, then you'll need to use Apple's…"
+        },
+        {
+          "id": "windows.windows",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        },
+        {
+          "id": "linux.linux",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        },
+        {
+          "id": "mobile.android",
+          "type": "related_to",
+          "evidence": "You can develop apps for Google Android using develop apps for Google Android using develop apps for Google Android using Windows, Mac OS and Linux using Android Windows, Mac OS and Linux using Android Windows, Mac OS a…"
+        }
+      ],
+      "reviewDecision": "undecided",
+      "reviewNotes": ""
+    }
+  ]
+}
