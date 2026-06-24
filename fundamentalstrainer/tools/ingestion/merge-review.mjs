@@ -35,9 +35,7 @@ function knowledgePath(candidate) {
 
 function ensureFactObjects(facts) {
   return (facts || []).map(fact => {
-    if (typeof fact === "string") {
-      return { text: fact, importance: "medium", tags: [] };
-    }
+    if (typeof fact === "string") return { text: fact, importance: "medium", tags: [] };
     return {
       text: fact.text || "Imported fact needs review.",
       importance: fact.importance || "medium",
@@ -60,9 +58,34 @@ function ensureExampleObjects(items) {
   });
 }
 
+function normalizeRelationship(item) {
+  if (typeof item === "string") {
+    return { id: item, reason: "Suggested during transcript import review.", strength: "weak" };
+  }
+
+  return {
+    id: item.id,
+    reason: item.evidence || item.reason || "Suggested during transcript import review.",
+    strength: item.type === "depends_on" || item.type === "contrasts_with" ? "medium" : "weak"
+  };
+}
+
+function relationshipBuckets(candidate) {
+  const relationships = (candidate.suggestedRelationships || [])
+    .map(normalizeRelationship)
+    .filter(item => item.id && item.id !== candidate.proposedKnowledgeId);
+
+  return {
+    related: relationships.filter(item => !/contrast/i.test(item.reason)).slice(0, 12),
+    contrastsWith: relationships.filter(item => /contrast|different|unlike/i.test(item.reason)).slice(0, 12)
+  };
+}
+
 function makeObject(candidate) {
   const domains = candidate.domains?.length ? candidate.domains : [candidate.category || "windows"];
   const today = new Date().toISOString().slice(0, 10);
+  const buckets = relationshipBuckets(candidate);
+
   return {
     schemaVersion: "1.0.0",
     id: candidate.proposedKnowledgeId,
@@ -116,12 +139,8 @@ function makeObject(candidate) {
       prerequisites: [],
       parents: [],
       children: [],
-      related: (candidate.suggestedRelationships || []).map(id => ({
-        id,
-        reason: "Suggested during transcript import review.",
-        strength: "weak"
-      })),
-      contrastsWith: [],
+      related: buckets.related,
+      contrastsWith: buckets.contrastsWith,
       replacedBy: []
     },
     sources: {
