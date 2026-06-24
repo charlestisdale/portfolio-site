@@ -156,7 +156,13 @@ export class KnowledgeEngine {
 
   graph() {
     return {
-      nodes: this.all().map(object => ({ id: object.id, title: object.title, type: object.type, domains: object.domains || [] })),
+      nodes: this.all().map(object => ({
+        id: object.id,
+        title: object.title,
+        type: object.type,
+        status: object.status,
+        domains: object.domains || []
+      })),
       edges: this.graphStore.all()
     };
   }
