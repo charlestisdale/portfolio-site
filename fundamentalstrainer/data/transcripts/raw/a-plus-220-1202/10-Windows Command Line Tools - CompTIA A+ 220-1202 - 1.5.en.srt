@@ -1,0 +1,7945 @@
+1
+00:00:02,000 --> 00:00:03,590
+
+If you're performing any type of
+
+2
+00:00:03,590 --> 00:00:03,600
+If you're performing any type of
+ 
+
+3
+00:00:03,600 --> 00:00:05,829
+If you're performing any type of
+administration of an operating system,
+
+4
+00:00:05,829 --> 00:00:05,839
+administration of an operating system,
+ 
+
+5
+00:00:05,839 --> 00:00:08,390
+administration of an operating system,
+whether it's Windows, Linux, Mac OS, or
+
+6
+00:00:08,390 --> 00:00:08,400
+whether it's Windows, Linux, Mac OS, or
+ 
+
+7
+00:00:08,400 --> 00:00:10,390
+whether it's Windows, Linux, Mac OS, or
+anything else, you'll probably be
+
+8
+00:00:10,390 --> 00:00:10,400
+anything else, you'll probably be
+ 
+
+9
+00:00:10,400 --> 00:00:12,549
+anything else, you'll probably be
+spending a lot of time at the command
+
+10
+00:00:12,549 --> 00:00:12,559
+spending a lot of time at the command
+ 
+
+11
+00:00:12,559 --> 00:00:14,549
+spending a lot of time at the command
+line. In this video, we'll focus on the
+
+12
+00:00:14,549 --> 00:00:14,559
+line. In this video, we'll focus on the
+ 
+
+13
+00:00:14,559 --> 00:00:16,230
+line. In this video, we'll focus on the
+Windows command line, and you'll
+
+14
+00:00:16,230 --> 00:00:16,240
+Windows command line, and you'll
+ 
+
+15
+00:00:16,240 --> 00:00:18,070
+Windows command line, and you'll
+probably find some utilities that might
+
+16
+00:00:18,070 --> 00:00:18,080
+probably find some utilities that might
+ 
+
+17
+00:00:18,080 --> 00:00:19,910
+probably find some utilities that might
+make your troubleshooting process that
+
+18
+00:00:19,910 --> 00:00:19,920
+make your troubleshooting process that
+ 
+
+19
+00:00:19,920 --> 00:00:22,950
+make your troubleshooting process that
+much faster. Although there is a single
+
+20
+00:00:22,950 --> 00:00:22,960
+much faster. Although there is a single
+ 
+
+21
+00:00:22,960 --> 00:00:25,109
+much faster. Although there is a single
+command line inside of Windows, you can
+
+22
+00:00:25,109 --> 00:00:25,119
+command line inside of Windows, you can
+ 
+
+23
+00:00:25,119 --> 00:00:27,189
+command line inside of Windows, you can
+find that command prompt by going to the
+
+24
+00:00:27,189 --> 00:00:27,199
+find that command prompt by going to the
+ 
+
+25
+00:00:27,199 --> 00:00:30,070
+find that command prompt by going to the
+search and typing in cmd. You'll see all
+
+26
+00:00:30,070 --> 00:00:30,080
+search and typing in cmd. You'll see all
+ 
+
+27
+00:00:30,080 --> 00:00:32,229
+search and typing in cmd. You'll see all
+the options for the Windows command
+
+28
+00:00:32,229 --> 00:00:32,239
+the options for the Windows command
+ 
+
+29
+00:00:32,239 --> 00:00:34,310
+the options for the Windows command
+prompt. One of the things you'll notice
+
+30
+00:00:34,310 --> 00:00:34,320
+prompt. One of the things you'll notice
+ 
+
+31
+00:00:34,320 --> 00:00:37,030
+prompt. One of the things you'll notice
+in this list is you can simply open the
+
+32
+00:00:37,030 --> 00:00:37,040
+in this list is you can simply open the
+ 
+
+33
+00:00:37,040 --> 00:00:39,430
+in this list is you can simply open the
+command prompt, but you could also run
+
+34
+00:00:39,430 --> 00:00:39,440
+command prompt, but you could also run
+ 
+
+35
+00:00:39,440 --> 00:00:42,069
+command prompt, but you could also run
+this prompt as an administrator. That's
+
+36
+00:00:42,069 --> 00:00:42,079
+this prompt as an administrator. That's
+ 
+
+37
+00:00:42,079 --> 00:00:44,069
+this prompt as an administrator. That's
+because there are some utilities that
+
+38
+00:00:44,069 --> 00:00:44,079
+because there are some utilities that
+ 
+
+39
+00:00:44,079 --> 00:00:46,709
+because there are some utilities that
+will not run if you have normal rights
+
+40
+00:00:46,709 --> 00:00:46,719
+will not run if you have normal rights
+ 
+
+41
+00:00:46,719 --> 00:00:49,110
+will not run if you have normal rights
+on the system. You will only be able to
+
+42
+00:00:49,110 --> 00:00:49,120
+on the system. You will only be able to
+ 
+
+43
+00:00:49,120 --> 00:00:51,270
+on the system. You will only be able to
+run these utilities if you are an
+
+44
+00:00:51,270 --> 00:00:51,280
+run these utilities if you are an
+ 
+
+45
+00:00:51,280 --> 00:00:53,990
+run these utilities if you are an
+administrator on that system. These
+
+46
+00:00:53,990 --> 00:00:54,000
+administrator on that system. These
+ 
+
+47
+00:00:54,000 --> 00:00:55,990
+administrator on that system. These
+standard privileges will work for almost
+
+48
+00:00:55,990 --> 00:00:56,000
+standard privileges will work for almost
+ 
+
+49
+00:00:56,000 --> 00:00:58,150
+standard privileges will work for almost
+all utilities that you'll use. But if
+
+50
+00:00:58,150 --> 00:00:58,160
+all utilities that you'll use. But if
+ 
+
+51
+00:00:58,160 --> 00:00:59,910
+all utilities that you'll use. But if
+you're going to be making changes to the
+
+52
+00:00:59,910 --> 00:00:59,920
+you're going to be making changes to the
+ 
+
+53
+00:00:59,920 --> 00:01:02,069
+you're going to be making changes to the
+configuration of the operating system or
+
+54
+00:01:02,069 --> 00:01:02,079
+configuration of the operating system or
+ 
+
+55
+00:01:02,079 --> 00:01:03,830
+configuration of the operating system or
+modifying the way an application is
+
+56
+00:01:03,830 --> 00:01:03,840
+modifying the way an application is
+ 
+
+57
+00:01:03,840 --> 00:01:05,670
+modifying the way an application is
+working, then you'll probably need to
+
+58
+00:01:05,670 --> 00:01:05,680
+working, then you'll probably need to
+ 
+
+59
+00:01:05,680 --> 00:01:08,670
+working, then you'll probably need to
+run as administrator or with elevated
+
+60
+00:01:08,670 --> 00:01:08,680
+run as administrator or with elevated
+ 
+
+61
+00:01:08,680 --> 00:01:10,550
+run as administrator or with elevated
+privileges. This gives you the
+
+62
+00:01:10,550 --> 00:01:10,560
+privileges. This gives you the
+ 
+
+63
+00:01:10,560 --> 00:01:12,390
+privileges. This gives you the
+additional permissions that allow you to
+
+64
+00:01:12,390 --> 00:01:12,400
+additional permissions that allow you to
+ 
+
+65
+00:01:12,400 --> 00:01:14,230
+additional permissions that allow you to
+make some of these critical system
+
+66
+00:01:14,230 --> 00:01:14,240
+make some of these critical system
+ 
+
+67
+00:01:14,240 --> 00:01:16,390
+make some of these critical system
+changes. To be able to run in an
+
+68
+00:01:16,390 --> 00:01:16,400
+changes. To be able to run in an
+ 
+
+69
+00:01:16,400 --> 00:01:18,230
+changes. To be able to run in an
+elevated prompt, you'll need to be a
+
+70
+00:01:18,230 --> 00:01:18,240
+elevated prompt, you'll need to be a
+ 
+
+71
+00:01:18,240 --> 00:01:20,870
+elevated prompt, you'll need to be a
+member of the administrators group. To
+
+72
+00:01:20,870 --> 00:01:20,880
+member of the administrators group. To
+ 
+
+73
+00:01:20,880 --> 00:01:22,550
+member of the administrators group. To
+be able to start this, you can simply
+
+74
+00:01:22,550 --> 00:01:22,560
+be able to start this, you can simply
+ 
+
+75
+00:01:22,560 --> 00:01:24,950
+be able to start this, you can simply
+type in cmd and choose the option to run
+
+76
+00:01:24,950 --> 00:01:24,960
+type in cmd and choose the option to run
+ 
+
+77
+00:01:24,960 --> 00:01:27,590
+type in cmd and choose the option to run
+as administrator. You can also right
+
+78
+00:01:27,590 --> 00:01:27,600
+as administrator. You can also right
+ 
+
+79
+00:01:27,600 --> 00:01:29,510
+as administrator. You can also right
+mouseclick on the command prompt and
+
+80
+00:01:29,510 --> 00:01:29,520
+mouseclick on the command prompt and
+ 
+
+81
+00:01:29,520 --> 00:01:31,670
+mouseclick on the command prompt and
+choose run as administrator. Or you can
+
+82
+00:01:31,670 --> 00:01:31,680
+choose run as administrator. Or you can
+ 
+
+83
+00:01:31,680 --> 00:01:34,310
+choose run as administrator. Or you can
+use the shortcut control shift enter and
+
+84
+00:01:34,310 --> 00:01:34,320
+use the shortcut control shift enter and
+ 
+
+85
+00:01:34,320 --> 00:01:36,550
+use the shortcut control shift enter and
+it will start the command prompt in this
+
+86
+00:01:36,550 --> 00:01:36,560
+it will start the command prompt in this
+ 
+
+87
+00:01:36,560 --> 00:01:37,789
+it will start the command prompt in this
+elevated
+
+88
+00:01:37,789 --> 00:01:37,799
+elevated
+ 
+
+89
+00:01:37,799 --> 00:01:40,870
+elevated
+mode. Let's try this on my Windows 11
+
+90
+00:01:40,870 --> 00:01:40,880
+mode. Let's try this on my Windows 11
+ 
+
+91
+00:01:40,880 --> 00:01:42,310
+mode. Let's try this on my Windows 11
+system. We'll go down to the search
+
+92
+00:01:42,310 --> 00:01:42,320
+system. We'll go down to the search
+ 
+
+93
+00:01:42,320 --> 00:01:45,270
+system. We'll go down to the search
+menu. We'll type in cmd and you can see
+
+94
+00:01:45,270 --> 00:01:45,280
+menu. We'll type in cmd and you can see
+ 
+
+95
+00:01:45,280 --> 00:01:47,270
+menu. We'll type in cmd and you can see
+that the command prompt was the best
+
+96
+00:01:47,270 --> 00:01:47,280
+that the command prompt was the best
+ 
+
+97
+00:01:47,280 --> 00:01:49,510
+that the command prompt was the best
+match that Windows found. For this
+
+98
+00:01:49,510 --> 00:01:49,520
+match that Windows found. For this
+ 
+
+99
+00:01:49,520 --> 00:01:51,749
+match that Windows found. For this
+command prompt, we can open it, run as
+
+100
+00:01:51,749 --> 00:01:51,759
+command prompt, we can open it, run as
+ 
+
+101
+00:01:51,759 --> 00:01:54,389
+command prompt, we can open it, run as
+administrator, open a file location, pin
+
+102
+00:01:54,389 --> 00:01:54,399
+administrator, open a file location, pin
+ 
+
+103
+00:01:54,399 --> 00:01:56,830
+administrator, open a file location, pin
+it to our start menu, or pin it to the
+
+104
+00:01:56,830 --> 00:01:56,840
+it to our start menu, or pin it to the
+ 
+
+105
+00:01:56,840 --> 00:01:59,350
+it to our start menu, or pin it to the
+taskbar. In this example, we'll choose
+
+106
+00:01:59,350 --> 00:01:59,360
+taskbar. In this example, we'll choose
+ 
+
+107
+00:01:59,360 --> 00:02:01,590
+taskbar. In this example, we'll choose
+open to run it with normal rights and
+
+108
+00:02:01,590 --> 00:02:01,600
+open to run it with normal rights and
+ 
+
+109
+00:02:01,600 --> 00:02:03,910
+open to run it with normal rights and
+permissions. And the window pops open
+
+110
+00:02:03,910 --> 00:02:03,920
+permissions. And the window pops open
+ 
+
+111
+00:02:03,920 --> 00:02:06,230
+permissions. And the window pops open
+that shows our command prompt. Since I'm
+
+112
+00:02:06,230 --> 00:02:06,240
+that shows our command prompt. Since I'm
+ 
+
+113
+00:02:06,240 --> 00:02:08,790
+that shows our command prompt. Since I'm
+logged in as professor, it shows us at
+
+114
+00:02:08,790 --> 00:02:08,800
+logged in as professor, it shows us at
+ 
+
+115
+00:02:08,800 --> 00:02:10,510
+logged in as professor, it shows us at
+the menu
+
+116
+00:02:10,510 --> 00:02:10,520
+the menu
+ 
+
+117
+00:02:10,520 --> 00:02:12,110
+the menu
+cusers
+
+118
+00:02:12,110 --> 00:02:12,120
+cusers
+ 
+
+119
+00:02:12,120 --> 00:02:13,990
+cusers
+back/professor. When you first start the
+
+120
+00:02:13,990 --> 00:02:14,000
+back/professor. When you first start the
+ 
+
+121
+00:02:14,000 --> 00:02:15,910
+back/professor. When you first start the
+command prompt, it's simply an empty
+
+122
+00:02:15,910 --> 00:02:15,920
+command prompt, it's simply an empty
+ 
+
+123
+00:02:15,920 --> 00:02:17,750
+command prompt, it's simply an empty
+window. It's waiting for you to put in
+
+124
+00:02:17,750 --> 00:02:17,760
+window. It's waiting for you to put in
+ 
+
+125
+00:02:17,760 --> 00:02:19,750
+window. It's waiting for you to put in
+the commands that you'll need to perform
+
+126
+00:02:19,750 --> 00:02:19,760
+the commands that you'll need to perform
+ 
+
+127
+00:02:19,760 --> 00:02:22,150
+the commands that you'll need to perform
+the functions on that operating system.
+
+128
+00:02:22,150 --> 00:02:22,160
+the functions on that operating system.
+ 
+
+129
+00:02:22,160 --> 00:02:23,990
+the functions on that operating system.
+But there are some prompts you can use
+
+130
+00:02:23,990 --> 00:02:24,000
+But there are some prompts you can use
+ 
+
+131
+00:02:24,000 --> 00:02:26,309
+But there are some prompts you can use
+to determine what options might be
+
+132
+00:02:26,309 --> 00:02:26,319
+to determine what options might be
+ 
+
+133
+00:02:26,319 --> 00:02:28,309
+to determine what options might be
+available to you. For example, you can
+
+134
+00:02:28,309 --> 00:02:28,319
+available to you. For example, you can
+ 
+
+135
+00:02:28,319 --> 00:02:30,229
+available to you. For example, you can
+simply type in the word help and it will
+
+136
+00:02:30,229 --> 00:02:30,239
+simply type in the word help and it will
+ 
+
+137
+00:02:30,239 --> 00:02:32,309
+simply type in the word help and it will
+list out all of the commands available
+
+138
+00:02:32,309 --> 00:02:32,319
+list out all of the commands available
+ 
+
+139
+00:02:32,319 --> 00:02:34,710
+list out all of the commands available
+at that particular prompt. If you're
+
+140
+00:02:34,710 --> 00:02:34,720
+at that particular prompt. If you're
+ 
+
+141
+00:02:34,720 --> 00:02:36,470
+at that particular prompt. If you're
+looking for help with a specific
+
+142
+00:02:36,470 --> 00:02:36,480
+looking for help with a specific
+ 
+
+143
+00:02:36,480 --> 00:02:38,390
+looking for help with a specific
+utility, you can put that utility name
+
+144
+00:02:38,390 --> 00:02:38,400
+utility, you can put that utility name
+ 
+
+145
+00:02:38,400 --> 00:02:40,710
+utility, you can put that utility name
+in the help prompt. So you can type in
+
+146
+00:02:40,710 --> 00:02:40,720
+in the help prompt. So you can type in
+ 
+
+147
+00:02:40,720 --> 00:02:43,750
+in the help prompt. So you can type in
+help diir or help check disk and you'll
+
+148
+00:02:43,750 --> 00:02:43,760
+help diir or help check disk and you'll
+ 
+
+149
+00:02:43,760 --> 00:02:45,430
+help diir or help check disk and you'll
+get a set of information that is
+
+150
+00:02:45,430 --> 00:02:45,440
+get a set of information that is
+ 
+
+151
+00:02:45,440 --> 00:02:47,830
+get a set of information that is
+specific to that utility. Another
+
+152
+00:02:47,830 --> 00:02:47,840
+specific to that utility. Another
+ 
+
+153
+00:02:47,840 --> 00:02:49,750
+specific to that utility. Another
+shortcut is to type in the name of the
+
+154
+00:02:49,750 --> 00:02:49,760
+shortcut is to type in the name of the
+ 
+
+155
+00:02:49,760 --> 00:02:51,509
+shortcut is to type in the name of the
+command that you'd like help with and
+
+156
+00:02:51,509 --> 00:02:51,519
+command that you'd like help with and
+ 
+
+157
+00:02:51,519 --> 00:02:53,830
+command that you'd like help with and
+then use a forward slash and a question
+
+158
+00:02:53,830 --> 00:02:53,840
+then use a forward slash and a question
+ 
+
+159
+00:02:53,840 --> 00:02:56,309
+then use a forward slash and a question
+mark. That will also present the same
+
+160
+00:02:56,309 --> 00:02:56,319
+mark. That will also present the same
+ 
+
+161
+00:02:56,319 --> 00:02:57,309
+mark. That will also present the same
+help
+
+162
+00:02:57,309 --> 00:02:57,319
+help
+ 
+
+163
+00:02:57,319 --> 00:02:59,670
+help
+information. Let's try the help option
+
+164
+00:02:59,670 --> 00:02:59,680
+information. Let's try the help option
+ 
+
+165
+00:02:59,680 --> 00:03:01,350
+information. Let's try the help option
+with our command prompt. We'll just type
+
+166
+00:03:01,350 --> 00:03:01,360
+with our command prompt. We'll just type
+ 
+
+167
+00:03:01,360 --> 00:03:03,990
+with our command prompt. We'll just type
+in help and hit enter. And you can see a
+
+168
+00:03:03,990 --> 00:03:04,000
+in help and hit enter. And you can see a
+ 
+
+169
+00:03:04,000 --> 00:03:05,830
+in help and hit enter. And you can see a
+lot of information scrolls down the
+
+170
+00:03:05,830 --> 00:03:05,840
+lot of information scrolls down the
+ 
+
+171
+00:03:05,840 --> 00:03:07,990
+lot of information scrolls down the
+screen. We'll move back up and you can
+
+172
+00:03:07,990 --> 00:03:08,000
+screen. We'll move back up and you can
+ 
+
+173
+00:03:08,000 --> 00:03:10,390
+screen. We'll move back up and you can
+see all of these individual utilities
+
+174
+00:03:10,390 --> 00:03:10,400
+see all of these individual utilities
+ 
+
+175
+00:03:10,400 --> 00:03:12,070
+see all of these individual utilities
+that you could run at the command
+
+176
+00:03:12,070 --> 00:03:12,080
+that you could run at the command
+ 
+
+177
+00:03:12,080 --> 00:03:14,470
+that you could run at the command
+prompt. Let's try a help that might have
+
+178
+00:03:14,470 --> 00:03:14,480
+prompt. Let's try a help that might have
+ 
+
+179
+00:03:14,480 --> 00:03:16,229
+prompt. Let's try a help that might have
+something to do with looking at a
+
+180
+00:03:16,229 --> 00:03:16,239
+something to do with looking at a
+ 
+
+181
+00:03:16,239 --> 00:03:18,229
+something to do with looking at a
+directory of files. So, we'll type in
+
+182
+00:03:18,229 --> 00:03:18,239
+directory of files. So, we'll type in
+ 
+
+183
+00:03:18,239 --> 00:03:21,670
+directory of files. So, we'll type in
+help diir and hit enter. And now we get
+
+184
+00:03:21,670 --> 00:03:21,680
+help diir and hit enter. And now we get
+ 
+
+185
+00:03:21,680 --> 00:03:24,589
+help diir and hit enter. And now we get
+the help that's specific to the diir
+
+186
+00:03:24,589 --> 00:03:24,599
+the help that's specific to the diir
+ 
+
+187
+00:03:24,599 --> 00:03:27,430
+the help that's specific to the diir
+command. I'm going to press crl c to
+
+188
+00:03:27,430 --> 00:03:27,440
+command. I'm going to press crl c to
+ 
+
+189
+00:03:27,440 --> 00:03:29,509
+command. I'm going to press crl c to
+exit out of that list. And let's try
+
+190
+00:03:29,509 --> 00:03:29,519
+exit out of that list. And let's try
+ 
+
+191
+00:03:29,519 --> 00:03:31,910
+exit out of that list. And let's try
+looking at the same information but
+
+192
+00:03:31,910 --> 00:03:31,920
+looking at the same information but
+ 
+
+193
+00:03:31,920 --> 00:03:33,830
+looking at the same information but
+querying it in a different way. We'll
+
+194
+00:03:33,830 --> 00:03:33,840
+querying it in a different way. We'll
+ 
+
+195
+00:03:33,840 --> 00:03:37,670
+querying it in a different way. We'll
+type diir slashquest mark and you'll
+
+196
+00:03:37,670 --> 00:03:37,680
+type diir slashquest mark and you'll
+ 
+
+197
+00:03:37,680 --> 00:03:39,910
+type diir slashquest mark and you'll
+notice that it displays exactly the same
+
+198
+00:03:39,910 --> 00:03:39,920
+notice that it displays exactly the same
+ 
+
+199
+00:03:39,920 --> 00:03:41,910
+notice that it displays exactly the same
+information. We're just pulling that up
+
+200
+00:03:41,910 --> 00:03:41,920
+information. We're just pulling that up
+ 
+
+201
+00:03:41,920 --> 00:03:43,830
+information. We're just pulling that up
+by using different methods at the
+
+202
+00:03:43,830 --> 00:03:43,840
+by using different methods at the
+ 
+
+203
+00:03:43,840 --> 00:03:44,750
+by using different methods at the
+command
+
+204
+00:03:44,750 --> 00:03:44,760
+command
+ 
+
+205
+00:03:44,760 --> 00:03:47,750
+command
+line. The diir command is probably one
+
+206
+00:03:47,750 --> 00:03:47,760
+line. The diir command is probably one
+ 
+
+207
+00:03:47,760 --> 00:03:49,509
+line. The diir command is probably one
+of the most common commands that you'll
+
+208
+00:03:49,509 --> 00:03:49,519
+of the most common commands that you'll
+ 
+
+209
+00:03:49,519 --> 00:03:52,309
+of the most common commands that you'll
+use. This displays a list of the files
+
+210
+00:03:52,309 --> 00:03:52,319
+use. This displays a list of the files
+ 
+
+211
+00:03:52,319 --> 00:03:55,030
+use. This displays a list of the files
+and directories in a specific folder. If
+
+212
+00:03:55,030 --> 00:03:55,040
+and directories in a specific folder. If
+ 
+
+213
+00:03:55,040 --> 00:03:57,110
+and directories in a specific folder. If
+you use the diir command by itself, it
+
+214
+00:03:57,110 --> 00:03:57,120
+you use the diir command by itself, it
+ 
+
+215
+00:03:57,120 --> 00:03:58,710
+you use the diir command by itself, it
+shows you all of that information in
+
+216
+00:03:58,710 --> 00:03:58,720
+shows you all of that information in
+ 
+
+217
+00:03:58,720 --> 00:04:00,630
+shows you all of that information in
+your current folder. But you could also
+
+218
+00:04:00,630 --> 00:04:00,640
+your current folder. But you could also
+ 
+
+219
+00:04:00,640 --> 00:04:03,030
+your current folder. But you could also
+specify a drive letter and folder names
+
+220
+00:04:03,030 --> 00:04:03,040
+specify a drive letter and folder names
+ 
+
+221
+00:04:03,040 --> 00:04:05,030
+specify a drive letter and folder names
+to view information that may be in a
+
+222
+00:04:05,030 --> 00:04:05,040
+to view information that may be in a
+ 
+
+223
+00:04:05,040 --> 00:04:07,270
+to view information that may be in a
+different folder. All of the commands
+
+224
+00:04:07,270 --> 00:04:07,280
+different folder. All of the commands
+ 
+
+225
+00:04:07,280 --> 00:04:09,429
+different folder. All of the commands
+you type in at the command prompt are
+
+226
+00:04:09,429 --> 00:04:09,439
+you type in at the command prompt are
+ 
+
+227
+00:04:09,439 --> 00:04:11,990
+you type in at the command prompt are
+based on your current working directory.
+
+228
+00:04:11,990 --> 00:04:12,000
+based on your current working directory.
+ 
+
+229
+00:04:12,000 --> 00:04:14,149
+based on your current working directory.
+If you're listing out files by typing in
+
+230
+00:04:14,149 --> 00:04:14,159
+If you're listing out files by typing in
+ 
+
+231
+00:04:14,159 --> 00:04:16,629
+If you're listing out files by typing in
+diir, it shows you all the files in your
+
+232
+00:04:16,629 --> 00:04:16,639
+diir, it shows you all the files in your
+ 
+
+233
+00:04:16,639 --> 00:04:18,629
+diir, it shows you all the files in your
+current working directory. If you need
+
+234
+00:04:18,629 --> 00:04:18,639
+current working directory. If you need
+ 
+
+235
+00:04:18,639 --> 00:04:20,550
+current working directory. If you need
+to change the directory that you're in,
+
+236
+00:04:20,550 --> 00:04:20,560
+to change the directory that you're in,
+ 
+
+237
+00:04:20,560 --> 00:04:22,830
+to change the directory that you're in,
+you could use the cd command or the
+
+238
+00:04:22,830 --> 00:04:22,840
+you could use the cd command or the
+ 
+
+239
+00:04:22,840 --> 00:04:25,749
+you could use the cd command or the
+chdir command to change that working
+
+240
+00:04:25,749 --> 00:04:25,759
+chdir command to change that working
+ 
+
+241
+00:04:25,759 --> 00:04:27,990
+chdir command to change that working
+directory. We often will change this
+
+242
+00:04:27,990 --> 00:04:28,000
+directory. We often will change this
+ 
+
+243
+00:04:28,000 --> 00:04:30,550
+directory. We often will change this
+directory by using a backslash to
+
+244
+00:04:30,550 --> 00:04:30,560
+directory by using a backslash to
+ 
+
+245
+00:04:30,560 --> 00:04:33,030
+directory by using a backslash to
+specify a deliminator between the
+
+246
+00:04:33,030 --> 00:04:33,040
+specify a deliminator between the
+ 
+
+247
+00:04:33,040 --> 00:04:35,189
+specify a deliminator between the
+different folder names or between a
+
+248
+00:04:35,189 --> 00:04:35,199
+different folder names or between a
+ 
+
+249
+00:04:35,199 --> 00:04:37,590
+different folder names or between a
+volume and a folder name. And there may
+
+250
+00:04:37,590 --> 00:04:37,600
+volume and a folder name. And there may
+ 
+
+251
+00:04:37,600 --> 00:04:39,350
+volume and a folder name. And there may
+be times where we need to simply move
+
+252
+00:04:39,350 --> 00:04:39,360
+be times where we need to simply move
+ 
+
+253
+00:04:39,360 --> 00:04:41,590
+be times where we need to simply move
+back one directory in the tree that
+
+254
+00:04:41,590 --> 00:04:41,600
+back one directory in the tree that
+ 
+
+255
+00:04:41,600 --> 00:04:43,909
+back one directory in the tree that
+we're using. And to be able to move back
+
+256
+00:04:43,909 --> 00:04:43,919
+we're using. And to be able to move back
+ 
+
+257
+00:04:43,919 --> 00:04:46,150
+we're using. And to be able to move back
+one working directory, all we would need
+
+258
+00:04:46,150 --> 00:04:46,160
+one working directory, all we would need
+ 
+
+259
+00:04:46,160 --> 00:04:49,590
+one working directory, all we would need
+to type in is a cd dot dot. The two dots
+
+260
+00:04:49,590 --> 00:04:49,600
+to type in is a cd dot dot. The two dots
+ 
+
+261
+00:04:49,600 --> 00:04:51,990
+to type in is a cd dot dot. The two dots
+together or two periods together refer
+
+262
+00:04:51,990 --> 00:04:52,000
+together or two periods together refer
+ 
+
+263
+00:04:52,000 --> 00:04:54,629
+together or two periods together refer
+to the folder that's just above or just
+
+264
+00:04:54,629 --> 00:04:54,639
+to the folder that's just above or just
+ 
+
+265
+00:04:54,639 --> 00:04:56,390
+to the folder that's just above or just
+backwards from the folder that we're
+
+266
+00:04:56,390 --> 00:04:56,400
+backwards from the folder that we're
+ 
+
+267
+00:04:56,400 --> 00:04:59,430
+backwards from the folder that we're
+working in. Three more useful navigation
+
+268
+00:04:59,430 --> 00:04:59,440
+working in. Three more useful navigation
+ 
+
+269
+00:04:59,440 --> 00:05:02,230
+working in. Three more useful navigation
+commands that we'll use are the make
+
+270
+00:05:02,230 --> 00:05:02,240
+commands that we'll use are the make
+ 
+
+271
+00:05:02,240 --> 00:05:04,870
+commands that we'll use are the make
+directory, change directory, and remove
+
+272
+00:05:04,870 --> 00:05:04,880
+directory, change directory, and remove
+ 
+
+273
+00:05:04,880 --> 00:05:07,550
+directory, change directory, and remove
+directory commands. These are the
+
+274
+00:05:07,550 --> 00:05:07,560
+directory commands. These are the
+ 
+
+275
+00:05:07,560 --> 00:05:12,469
+directory commands. These are the
+mkdir, chdir, and rmdir commands. We'll
+
+276
+00:05:12,469 --> 00:05:12,479
+mkdir, chdir, and rmdir commands. We'll
+ 
+
+277
+00:05:12,479 --> 00:05:14,469
+mkdir, chdir, and rmdir commands. We'll
+be able to use those to be able to
+
+278
+00:05:14,469 --> 00:05:14,479
+be able to use those to be able to
+ 
+
+279
+00:05:14,479 --> 00:05:16,950
+be able to use those to be able to
+create directories, move into that
+
+280
+00:05:16,950 --> 00:05:16,960
+create directories, move into that
+ 
+
+281
+00:05:16,960 --> 00:05:19,189
+create directories, move into that
+directory, and then remove the directory
+
+282
+00:05:19,189 --> 00:05:19,199
+directory, and then remove the directory
+ 
+
+283
+00:05:19,199 --> 00:05:21,830
+directory, and then remove the directory
+once we're done. Let's try using some of
+
+284
+00:05:21,830 --> 00:05:21,840
+once we're done. Let's try using some of
+ 
+
+285
+00:05:21,840 --> 00:05:25,270
+once we're done. Let's try using some of
+these commands at my prompt of C back/
+
+286
+00:05:25,270 --> 00:05:25,280
+these commands at my prompt of C back/
+ 
+
+287
+00:05:25,280 --> 00:05:27,749
+these commands at my prompt of C back/
+users back/professor. That is the
+
+288
+00:05:27,749 --> 00:05:27,759
+users back/professor. That is the
+ 
+
+289
+00:05:27,759 --> 00:05:29,909
+users back/professor. That is the
+current working directory that I'm using
+
+290
+00:05:29,909 --> 00:05:29,919
+current working directory that I'm using
+ 
+
+291
+00:05:29,919 --> 00:05:33,110
+current working directory that I'm using
+on this computer. If we perform a diir
+
+292
+00:05:33,110 --> 00:05:33,120
+on this computer. If we perform a diir
+ 
+
+293
+00:05:33,120 --> 00:05:35,510
+on this computer. If we perform a diir
+command, and hit enter, you can see that
+
+294
+00:05:35,510 --> 00:05:35,520
+command, and hit enter, you can see that
+ 
+
+295
+00:05:35,520 --> 00:05:37,909
+command, and hit enter, you can see that
+there are a number of directories. These
+
+296
+00:05:37,909 --> 00:05:37,919
+there are a number of directories. These
+ 
+
+297
+00:05:37,919 --> 00:05:39,990
+there are a number of directories. These
+are all listed on the right side. things
+
+298
+00:05:39,990 --> 00:05:40,000
+are all listed on the right side. things
+ 
+
+299
+00:05:40,000 --> 00:05:42,629
+are all listed on the right side. things
+like contacts, desktop, documents,
+
+300
+00:05:42,629 --> 00:05:42,639
+like contacts, desktop, documents,
+ 
+
+301
+00:05:42,639 --> 00:05:45,110
+like contacts, desktop, documents,
+downloads, and others. You can see they
+
+302
+00:05:45,110 --> 00:05:45,120
+downloads, and others. You can see they
+ 
+
+303
+00:05:45,120 --> 00:05:47,189
+downloads, and others. You can see they
+are marked as directories. They have the
+
+304
+00:05:47,189 --> 00:05:47,199
+are marked as directories. They have the
+ 
+
+305
+00:05:47,199 --> 00:05:50,070
+are marked as directories. They have the
+DIIR next to them. And there's a single
+
+306
+00:05:50,070 --> 00:05:50,080
+DIIR next to them. And there's a single
+ 
+
+307
+00:05:50,080 --> 00:05:52,550
+DIIR next to them. And there's a single
+file that's in this directory. It's 95
+
+308
+00:05:52,550 --> 00:05:52,560
+file that's in this directory. It's 95
+ 
+
+309
+00:05:52,560 --> 00:05:56,270
+file that's in this directory. It's 95
+bytes in length, and its name
+
+310
+00:05:56,270 --> 00:05:56,280
+
+ 
+
+311
+00:05:56,280 --> 00:05:57,830
+
+is.acibility.properties. What I'd like
+
+312
+00:05:57,830 --> 00:05:57,840
+is.acibility.properties. What I'd like
+ 
+
+313
+00:05:57,840 --> 00:06:00,550
+is.acibility.properties. What I'd like
+to do is look at what files may be in my
+
+314
+00:06:00,550 --> 00:06:00,560
+to do is look at what files may be in my
+ 
+
+315
+00:06:00,560 --> 00:06:02,710
+to do is look at what files may be in my
+documents folder. One way that we can
+
+316
+00:06:02,710 --> 00:06:02,720
+documents folder. One way that we can
+ 
+
+317
+00:06:02,720 --> 00:06:04,870
+documents folder. One way that we can
+move into that folder as our current
+
+318
+00:06:04,870 --> 00:06:04,880
+move into that folder as our current
+ 
+
+319
+00:06:04,880 --> 00:06:06,870
+move into that folder as our current
+working directory is to use the cd
+
+320
+00:06:06,870 --> 00:06:06,880
+working directory is to use the cd
+ 
+
+321
+00:06:06,880 --> 00:06:09,590
+working directory is to use the cd
+command. And since this directory is one
+
+322
+00:06:09,590 --> 00:06:09,600
+command. And since this directory is one
+ 
+
+323
+00:06:09,600 --> 00:06:11,990
+command. And since this directory is one
+ahead of where I am right now, which is
+
+324
+00:06:11,990 --> 00:06:12,000
+ahead of where I am right now, which is
+ 
+
+325
+00:06:12,000 --> 00:06:15,029
+ahead of where I am right now, which is
+under the C col users back/professor
+
+326
+00:06:15,029 --> 00:06:15,039
+under the C col users back/professor
+ 
+
+327
+00:06:15,039 --> 00:06:17,110
+under the C col users back/professor
+directory, all I have to type in is a
+
+328
+00:06:17,110 --> 00:06:17,120
+directory, all I have to type in is a
+ 
+
+329
+00:06:17,120 --> 00:06:20,469
+directory, all I have to type in is a
+space and the word documents. I typed in
+
+330
+00:06:20,469 --> 00:06:20,479
+space and the word documents. I typed in
+ 
+
+331
+00:06:20,479 --> 00:06:23,670
+space and the word documents. I typed in
+capital D OC and I hit the tab key to
+
+332
+00:06:23,670 --> 00:06:23,680
+capital D OC and I hit the tab key to
+ 
+
+333
+00:06:23,680 --> 00:06:25,909
+capital D OC and I hit the tab key to
+autocomplete that word. And you can see
+
+334
+00:06:25,909 --> 00:06:25,919
+autocomplete that word. And you can see
+ 
+
+335
+00:06:25,919 --> 00:06:29,350
+autocomplete that word. And you can see
+it says CD documents. When I hit enter,
+
+336
+00:06:29,350 --> 00:06:29,360
+it says CD documents. When I hit enter,
+ 
+
+337
+00:06:29,360 --> 00:06:31,270
+it says CD documents. When I hit enter,
+you'll notice now the prompt changes to
+
+338
+00:06:31,270 --> 00:06:31,280
+you'll notice now the prompt changes to
+ 
+
+339
+00:06:31,280 --> 00:06:33,469
+you'll notice now the prompt changes to
+users back/professor back
+
+340
+00:06:33,469 --> 00:06:33,479
+users back/professor back
+ 
+
+341
+00:06:33,479 --> 00:06:36,309
+users back/professor back
+slashdocuments. And if I use the diir
+
+342
+00:06:36,309 --> 00:06:36,319
+slashdocuments. And if I use the diir
+ 
+
+343
+00:06:36,319 --> 00:06:38,309
+slashdocuments. And if I use the diir
+command now, you can see there is a
+
+344
+00:06:38,309 --> 00:06:38,319
+command now, you can see there is a
+ 
+
+345
+00:06:38,319 --> 00:06:40,469
+command now, you can see there is a
+completely different set of directories
+
+346
+00:06:40,469 --> 00:06:40,479
+completely different set of directories
+ 
+
+347
+00:06:40,479 --> 00:06:43,270
+completely different set of directories
+inside the documents folder. Let's say
+
+348
+00:06:43,270 --> 00:06:43,280
+inside the documents folder. Let's say
+ 
+
+349
+00:06:43,280 --> 00:06:45,029
+inside the documents folder. Let's say
+you're starting a brand new project
+
+350
+00:06:45,029 --> 00:06:45,039
+you're starting a brand new project
+ 
+
+351
+00:06:45,039 --> 00:06:47,430
+you're starting a brand new project
+associated with computer security and
+
+352
+00:06:47,430 --> 00:06:47,440
+associated with computer security and
+ 
+
+353
+00:06:47,440 --> 00:06:49,270
+associated with computer security and
+you would like to store all of the files
+
+354
+00:06:49,270 --> 00:06:49,280
+you would like to store all of the files
+ 
+
+355
+00:06:49,280 --> 00:06:51,430
+you would like to store all of the files
+associated with that project into its
+
+356
+00:06:51,430 --> 00:06:51,440
+associated with that project into its
+ 
+
+357
+00:06:51,440 --> 00:06:53,670
+associated with that project into its
+own folder. To be able to do that, we
+
+358
+00:06:53,670 --> 00:06:53,680
+own folder. To be able to do that, we
+ 
+
+359
+00:06:53,680 --> 00:06:55,510
+own folder. To be able to do that, we
+need to make that folder for the
+
+360
+00:06:55,510 --> 00:06:55,520
+need to make that folder for the
+ 
+
+361
+00:06:55,520 --> 00:06:57,430
+need to make that folder for the
+security project. So inside of my
+
+362
+00:06:57,430 --> 00:06:57,440
+security project. So inside of my
+ 
+
+363
+00:06:57,440 --> 00:06:59,350
+security project. So inside of my
+documents folder, I'm going to use the
+
+364
+00:06:59,350 --> 00:06:59,360
+documents folder, I'm going to use the
+ 
+
+365
+00:06:59,360 --> 00:07:02,309
+documents folder, I'm going to use the
+md command to make a directory. And
+
+366
+00:07:02,309 --> 00:07:02,319
+md command to make a directory. And
+ 
+
+367
+00:07:02,319 --> 00:07:03,830
+md command to make a directory. And
+we're going to call that directory
+
+368
+00:07:03,830 --> 00:07:03,840
+we're going to call that directory
+ 
+
+369
+00:07:03,840 --> 00:07:06,070
+we're going to call that directory
+security. Notice I don't get any
+
+370
+00:07:06,070 --> 00:07:06,080
+security. Notice I don't get any
+ 
+
+371
+00:07:06,080 --> 00:07:08,070
+security. Notice I don't get any
+response back when I hit enter. It
+
+372
+00:07:08,070 --> 00:07:08,080
+response back when I hit enter. It
+ 
+
+373
+00:07:08,080 --> 00:07:10,309
+response back when I hit enter. It
+simply puts me at another prompt. But if
+
+374
+00:07:10,309 --> 00:07:10,319
+simply puts me at another prompt. But if
+ 
+
+375
+00:07:10,319 --> 00:07:12,710
+simply puts me at another prompt. But if
+I type diir again and look at the
+
+376
+00:07:12,710 --> 00:07:12,720
+I type diir again and look at the
+ 
+
+377
+00:07:12,720 --> 00:07:14,550
+I type diir again and look at the
+directories, you can see that I have a
+
+378
+00:07:14,550 --> 00:07:14,560
+directories, you can see that I have a
+ 
+
+379
+00:07:14,560 --> 00:07:17,510
+directories, you can see that I have a
+new directory called security. If you
+
+380
+00:07:17,510 --> 00:07:17,520
+new directory called security. If you
+ 
+
+381
+00:07:17,520 --> 00:07:20,070
+new directory called security. If you
+wanted to type in the entire path to be
+
+382
+00:07:20,070 --> 00:07:20,080
+wanted to type in the entire path to be
+ 
+
+383
+00:07:20,080 --> 00:07:22,309
+wanted to type in the entire path to be
+able to create that directory, you could
+
+384
+00:07:22,309 --> 00:07:22,319
+able to create that directory, you could
+ 
+
+385
+00:07:22,319 --> 00:07:24,710
+able to create that directory, you could
+do that at this command prompt as well.
+
+386
+00:07:24,710 --> 00:07:24,720
+do that at this command prompt as well.
+ 
+
+387
+00:07:24,720 --> 00:07:26,950
+do that at this command prompt as well.
+For example, if you wanted another one
+
+388
+00:07:26,950 --> 00:07:26,960
+For example, if you wanted another one
+ 
+
+389
+00:07:26,960 --> 00:07:28,550
+For example, if you wanted another one
+of these folders, but you wanted to call
+
+390
+00:07:28,550 --> 00:07:28,560
+of these folders, but you wanted to call
+ 
+
+391
+00:07:28,560 --> 00:07:31,990
+of these folders, but you wanted to call
+it security 2, you could type in MD to
+
+392
+00:07:31,990 --> 00:07:32,000
+it security 2, you could type in MD to
+ 
+
+393
+00:07:32,000 --> 00:07:34,550
+it security 2, you could type in MD to
+make that directory and then specify the
+
+394
+00:07:34,550 --> 00:07:34,560
+make that directory and then specify the
+ 
+
+395
+00:07:34,560 --> 00:07:36,909
+make that directory and then specify the
+entire path. For example, this would be
+
+396
+00:07:36,909 --> 00:07:36,919
+entire path. For example, this would be
+ 
+
+397
+00:07:36,919 --> 00:07:40,629
+entire path. For example, this would be
+users professor documents and then we
+
+398
+00:07:40,629 --> 00:07:40,639
+users professor documents and then we
+ 
+
+399
+00:07:40,639 --> 00:07:44,230
+users professor documents and then we
+would call this security 2. Notice again
+
+400
+00:07:44,230 --> 00:07:44,240
+would call this security 2. Notice again
+ 
+
+401
+00:07:44,240 --> 00:07:46,390
+would call this security 2. Notice again
+we don't get any type of response to
+
+402
+00:07:46,390 --> 00:07:46,400
+we don't get any type of response to
+ 
+
+403
+00:07:46,400 --> 00:07:48,469
+we don't get any type of response to
+that command. We're simply put back at
+
+404
+00:07:48,469 --> 00:07:48,479
+that command. We're simply put back at
+ 
+
+405
+00:07:48,479 --> 00:07:50,469
+that command. We're simply put back at
+the command prompt. But if we use the
+
+406
+00:07:50,469 --> 00:07:50,479
+the command prompt. But if we use the
+ 
+
+407
+00:07:50,479 --> 00:07:52,390
+the command prompt. But if we use the
+diir command, you can see that there is
+
+408
+00:07:52,390 --> 00:07:52,400
+diir command, you can see that there is
+ 
+
+409
+00:07:52,400 --> 00:07:54,830
+diir command, you can see that there is
+a new folder called security
+
+410
+00:07:54,830 --> 00:07:54,840
+a new folder called security
+ 
+
+411
+00:07:54,840 --> 00:07:58,070
+a new folder called security
+2. Just as we can make a directory, we
+
+412
+00:07:58,070 --> 00:07:58,080
+2. Just as we can make a directory, we
+ 
+
+413
+00:07:58,080 --> 00:08:01,029
+2. Just as we can make a directory, we
+can also remove a directory. And as we
+
+414
+00:08:01,029 --> 00:08:01,039
+can also remove a directory. And as we
+ 
+
+415
+00:08:01,039 --> 00:08:03,909
+can also remove a directory. And as we
+use md to make a directory, we would use
+
+416
+00:08:03,909 --> 00:08:03,919
+use md to make a directory, we would use
+ 
+
+417
+00:08:03,919 --> 00:08:06,790
+use md to make a directory, we would use
+rd to remove a directory. Let's say we
+
+418
+00:08:06,790 --> 00:08:06,800
+rd to remove a directory. Let's say we
+ 
+
+419
+00:08:06,800 --> 00:08:08,629
+rd to remove a directory. Let's say we
+would like to remove that brand new
+
+420
+00:08:08,629 --> 00:08:08,639
+would like to remove that brand new
+ 
+
+421
+00:08:08,639 --> 00:08:11,189
+would like to remove that brand new
+directory we created called security 2.
+
+422
+00:08:11,189 --> 00:08:11,199
+directory we created called security 2.
+ 
+
+423
+00:08:11,199 --> 00:08:14,390
+directory we created called security 2.
+We will type in rd space security 2. And
+
+424
+00:08:14,390 --> 00:08:14,400
+We will type in rd space security 2. And
+ 
+
+425
+00:08:14,400 --> 00:08:16,469
+We will type in rd space security 2. And
+if we type diir, you can see the
+
+426
+00:08:16,469 --> 00:08:16,479
+if we type diir, you can see the
+ 
+
+427
+00:08:16,479 --> 00:08:19,950
+if we type diir, you can see the
+security to folder is no longer on our
+
+428
+00:08:19,950 --> 00:08:19,960
+security to folder is no longer on our
+ 
+
+429
+00:08:19,960 --> 00:08:22,790
+security to folder is no longer on our
+drive. At the beginning of that long set
+
+430
+00:08:22,790 --> 00:08:22,800
+drive. At the beginning of that long set
+ 
+
+431
+00:08:22,800 --> 00:08:25,909
+drive. At the beginning of that long set
+of folder names was a drive letter. We
+
+432
+00:08:25,909 --> 00:08:25,919
+of folder names was a drive letter. We
+ 
+
+433
+00:08:25,919 --> 00:08:28,550
+of folder names was a drive letter. We
+saw a C colon right next to our users
+
+434
+00:08:28,550 --> 00:08:28,560
+saw a C colon right next to our users
+ 
+
+435
+00:08:28,560 --> 00:08:31,270
+saw a C colon right next to our users
+professor folder. For example, each one
+
+436
+00:08:31,270 --> 00:08:31,280
+professor folder. For example, each one
+ 
+
+437
+00:08:31,280 --> 00:08:33,190
+professor folder. For example, each one
+of the partitions on our computer is
+
+438
+00:08:33,190 --> 00:08:33,200
+of the partitions on our computer is
+ 
+
+439
+00:08:33,200 --> 00:08:35,350
+of the partitions on our computer is
+assigned a drive letter so that we can
+
+440
+00:08:35,350 --> 00:08:35,360
+assigned a drive letter so that we can
+ 
+
+441
+00:08:35,360 --> 00:08:37,990
+assigned a drive letter so that we can
+access it from our Windows Explorer and
+
+442
+00:08:37,990 --> 00:08:38,000
+access it from our Windows Explorer and
+ 
+
+443
+00:08:38,000 --> 00:08:40,469
+access it from our Windows Explorer and
+from the command line. The primary drive
+
+444
+00:08:40,469 --> 00:08:40,479
+from the command line. The primary drive
+ 
+
+445
+00:08:40,479 --> 00:08:42,550
+from the command line. The primary drive
+of your Windows system is usually
+
+446
+00:08:42,550 --> 00:08:42,560
+of your Windows system is usually
+ 
+
+447
+00:08:42,560 --> 00:08:45,670
+of your Windows system is usually
+assigned the drive letter of C. If you
+
+448
+00:08:45,670 --> 00:08:45,680
+assigned the drive letter of C. If you
+ 
+
+449
+00:08:45,680 --> 00:08:47,590
+assigned the drive letter of C. If you
+look at your Windows Explorer or you
+
+450
+00:08:47,590 --> 00:08:47,600
+look at your Windows Explorer or you
+ 
+
+451
+00:08:47,600 --> 00:08:49,190
+look at your Windows Explorer or you
+look at the command line, you'll see
+
+452
+00:08:49,190 --> 00:08:49,200
+look at the command line, you'll see
+ 
+
+453
+00:08:49,200 --> 00:08:51,430
+look at the command line, you'll see
+that we put that with the C reference
+
+454
+00:08:51,430 --> 00:08:51,440
+that we put that with the C reference
+ 
+
+455
+00:08:51,440 --> 00:08:54,070
+that we put that with the C reference
+and then the colon to specify that we
+
+456
+00:08:54,070 --> 00:08:54,080
+and then the colon to specify that we
+ 
+
+457
+00:08:54,080 --> 00:08:56,870
+and then the colon to specify that we
+are referring to the name of a drive. To
+
+458
+00:08:56,870 --> 00:08:56,880
+are referring to the name of a drive. To
+ 
+
+459
+00:08:56,880 --> 00:08:59,190
+are referring to the name of a drive. To
+then specify the entire path, we would
+
+460
+00:08:59,190 --> 00:08:59,200
+then specify the entire path, we would
+ 
+
+461
+00:08:59,200 --> 00:09:01,430
+then specify the entire path, we would
+use the drive letter and all of the
+
+462
+00:09:01,430 --> 00:09:01,440
+use the drive letter and all of the
+ 
+
+463
+00:09:01,440 --> 00:09:03,670
+use the drive letter and all of the
+folder names up to our current working
+
+464
+00:09:03,670 --> 00:09:03,680
+folder names up to our current working
+ 
+
+465
+00:09:03,680 --> 00:09:06,269
+folder names up to our current working
+directory. For example, we would use C
+
+466
+00:09:06,269 --> 00:09:06,279
+directory. For example, we would use C
+ 
+
+467
+00:09:06,279 --> 00:09:10,150
+directory. For example, we would use C
+col/ users back/p profofessor to specify
+
+468
+00:09:10,150 --> 00:09:10,160
+col/ users back/p profofessor to specify
+ 
+
+469
+00:09:10,160 --> 00:09:13,190
+col/ users back/p profofessor to specify
+that is the C col drive. We are working
+
+470
+00:09:13,190 --> 00:09:13,200
+that is the C col drive. We are working
+ 
+
+471
+00:09:13,200 --> 00:09:15,509
+that is the C col drive. We are working
+in the users folder and inside of the
+
+472
+00:09:15,509 --> 00:09:15,519
+in the users folder and inside of the
+ 
+
+473
+00:09:15,519 --> 00:09:18,190
+in the users folder and inside of the
+users folder is the professor
+
+474
+00:09:18,190 --> 00:09:18,200
+users folder is the professor
+ 
+
+475
+00:09:18,200 --> 00:09:21,030
+users folder is the professor
+folder. You can see this visually if you
+
+476
+00:09:21,030 --> 00:09:21,040
+folder. You can see this visually if you
+ 
+
+477
+00:09:21,040 --> 00:09:23,190
+folder. You can see this visually if you
+look at the file explorer inside of
+
+478
+00:09:23,190 --> 00:09:23,200
+look at the file explorer inside of
+ 
+
+479
+00:09:23,200 --> 00:09:25,269
+look at the file explorer inside of
+Windows, it's this folder that we have
+
+480
+00:09:25,269 --> 00:09:25,279
+Windows, it's this folder that we have
+ 
+
+481
+00:09:25,279 --> 00:09:27,110
+Windows, it's this folder that we have
+right down at the bottom. And you can
+
+482
+00:09:27,110 --> 00:09:27,120
+right down at the bottom. And you can
+ 
+
+483
+00:09:27,120 --> 00:09:29,030
+right down at the bottom. And you can
+see that I have a number of options for
+
+484
+00:09:29,030 --> 00:09:29,040
+see that I have a number of options for
+ 
+
+485
+00:09:29,040 --> 00:09:31,430
+see that I have a number of options for
+quick access at the top. We also have
+
+486
+00:09:31,430 --> 00:09:31,440
+quick access at the top. We also have
+ 
+
+487
+00:09:31,440 --> 00:09:34,230
+quick access at the top. We also have
+one for this PC and a list of a number
+
+488
+00:09:34,230 --> 00:09:34,240
+one for this PC and a list of a number
+ 
+
+489
+00:09:34,240 --> 00:09:36,550
+one for this PC and a list of a number
+of folders. And right in the middle is a
+
+490
+00:09:36,550 --> 00:09:36,560
+of folders. And right in the middle is a
+ 
+
+491
+00:09:36,560 --> 00:09:39,110
+of folders. And right in the middle is a
+folder called local disk. And if I
+
+492
+00:09:39,110 --> 00:09:39,120
+folder called local disk. And if I
+ 
+
+493
+00:09:39,120 --> 00:09:41,350
+folder called local disk. And if I
+highlight that and expand it, you can
+
+494
+00:09:41,350 --> 00:09:41,360
+highlight that and expand it, you can
+ 
+
+495
+00:09:41,360 --> 00:09:43,269
+highlight that and expand it, you can
+see all of the different folders that
+
+496
+00:09:43,269 --> 00:09:43,279
+see all of the different folders that
+ 
+
+497
+00:09:43,279 --> 00:09:45,990
+see all of the different folders that
+are contained on my C colon drive. And
+
+498
+00:09:45,990 --> 00:09:46,000
+are contained on my C colon drive. And
+ 
+
+499
+00:09:46,000 --> 00:09:48,389
+are contained on my C colon drive. And
+you'll notice there is a users folder on
+
+500
+00:09:48,389 --> 00:09:48,399
+you'll notice there is a users folder on
+ 
+
+501
+00:09:48,399 --> 00:09:50,870
+you'll notice there is a users folder on
+that drive. If I expand that folder,
+
+502
+00:09:50,870 --> 00:09:50,880
+that drive. If I expand that folder,
+ 
+
+503
+00:09:50,880 --> 00:09:52,790
+that drive. If I expand that folder,
+you'll see there is professors and
+
+504
+00:09:52,790 --> 00:09:52,800
+you'll see there is professors and
+ 
+
+505
+00:09:52,800 --> 00:09:55,030
+you'll see there is professors and
+public inside of that folder. If I
+
+506
+00:09:55,030 --> 00:09:55,040
+public inside of that folder. If I
+ 
+
+507
+00:09:55,040 --> 00:09:57,110
+public inside of that folder. If I
+expand the professor's folder, then you
+
+508
+00:09:57,110 --> 00:09:57,120
+expand the professor's folder, then you
+ 
+
+509
+00:09:57,120 --> 00:09:58,870
+expand the professor's folder, then you
+will see that there are a number of
+
+510
+00:09:58,870 --> 00:09:58,880
+will see that there are a number of
+ 
+
+511
+00:09:58,880 --> 00:10:01,190
+will see that there are a number of
+files including my documents folder, my
+
+512
+00:10:01,190 --> 00:10:01,200
+files including my documents folder, my
+ 
+
+513
+00:10:01,200 --> 00:10:03,350
+files including my documents folder, my
+downloads folder, and others. Let's
+
+514
+00:10:03,350 --> 00:10:03,360
+downloads folder, and others. Let's
+ 
+
+515
+00:10:03,360 --> 00:10:05,430
+downloads folder, and others. Let's
+expand out the documents folder. And
+
+516
+00:10:05,430 --> 00:10:05,440
+expand out the documents folder. And
+ 
+
+517
+00:10:05,440 --> 00:10:07,670
+expand out the documents folder. And
+inside, you'll see our backup folder,
+
+518
+00:10:07,670 --> 00:10:07,680
+inside, you'll see our backup folder,
+ 
+
+519
+00:10:07,680 --> 00:10:10,310
+inside, you'll see our backup folder,
+our drive 102 folder, and our security
+
+520
+00:10:10,310 --> 00:10:10,320
+our drive 102 folder, and our security
+ 
+
+521
+00:10:10,320 --> 00:10:12,070
+our drive 102 folder, and our security
+folder. And if we look at the command
+
+522
+00:10:12,070 --> 00:10:12,080
+folder. And if we look at the command
+ 
+
+523
+00:10:12,080 --> 00:10:14,389
+folder. And if we look at the command
+prompt, that is exactly the same folder
+
+524
+00:10:14,389 --> 00:10:14,399
+prompt, that is exactly the same folder
+ 
+
+525
+00:10:14,399 --> 00:10:18,030
+prompt, that is exactly the same folder
+names that we have under C back/ users
+
+526
+00:10:18,030 --> 00:10:18,040
+names that we have under C back/ users
+ 
+
+527
+00:10:18,040 --> 00:10:20,670
+names that we have under C back/ users
+back/professor back/d
+
+528
+00:10:20,670 --> 00:10:20,680
+back/professor back/d
+ 
+
+529
+00:10:20,680 --> 00:10:22,949
+back/professor back/d
+documents. In a previous video, we
+
+530
+00:10:22,949 --> 00:10:22,959
+documents. In a previous video, we
+ 
+
+531
+00:10:22,959 --> 00:10:24,949
+documents. In a previous video, we
+talked about file systems that could be
+
+532
+00:10:24,949 --> 00:10:24,959
+talked about file systems that could be
+ 
+
+533
+00:10:24,959 --> 00:10:27,750
+talked about file systems that could be
+used to create the storage areas on a
+
+534
+00:10:27,750 --> 00:10:27,760
+used to create the storage areas on a
+ 
+
+535
+00:10:27,760 --> 00:10:29,590
+used to create the storage areas on a
+particular partition. For example,
+
+536
+00:10:29,590 --> 00:10:29,600
+particular partition. For example,
+ 
+
+537
+00:10:29,600 --> 00:10:31,430
+particular partition. For example,
+inside of Windows, it's very common to
+
+538
+00:10:31,430 --> 00:10:31,440
+inside of Windows, it's very common to
+ 
+
+539
+00:10:31,440 --> 00:10:34,550
+inside of Windows, it's very common to
+see the NTFS file system. There may be
+
+540
+00:10:34,550 --> 00:10:34,560
+see the NTFS file system. There may be
+ 
+
+541
+00:10:34,560 --> 00:10:36,550
+see the NTFS file system. There may be
+times when that file system becomes
+
+542
+00:10:36,550 --> 00:10:36,560
+times when that file system becomes
+ 
+
+543
+00:10:36,560 --> 00:10:37,949
+times when that file system becomes
+corrupted. There might be
+
+544
+00:10:37,949 --> 00:10:37,959
+corrupted. There might be
+ 
+
+545
+00:10:37,959 --> 00:10:40,230
+corrupted. There might be
+inconsistencies in what we have in the
+
+546
+00:10:40,230 --> 00:10:40,240
+inconsistencies in what we have in the
+ 
+
+547
+00:10:40,240 --> 00:10:43,110
+inconsistencies in what we have in the
+file system index compared to the actual
+
+548
+00:10:43,110 --> 00:10:43,120
+file system index compared to the actual
+ 
+
+549
+00:10:43,120 --> 00:10:45,430
+file system index compared to the actual
+files that are stored on that drive.
+
+550
+00:10:45,430 --> 00:10:45,440
+files that are stored on that drive.
+ 
+
+551
+00:10:45,440 --> 00:10:47,269
+files that are stored on that drive.
+This occasionally will occur because of
+
+552
+00:10:47,269 --> 00:10:47,279
+This occasionally will occur because of
+ 
+
+553
+00:10:47,279 --> 00:10:49,269
+This occasionally will occur because of
+an interruption in power and the system
+
+554
+00:10:49,269 --> 00:10:49,279
+an interruption in power and the system
+ 
+
+555
+00:10:49,279 --> 00:10:51,269
+an interruption in power and the system
+turns off or there could be a problem
+
+556
+00:10:51,269 --> 00:10:51,279
+turns off or there could be a problem
+ 
+
+557
+00:10:51,279 --> 00:10:53,670
+turns off or there could be a problem
+with the drive itself. To be able to
+
+558
+00:10:53,670 --> 00:10:53,680
+with the drive itself. To be able to
+ 
+
+559
+00:10:53,680 --> 00:10:55,750
+with the drive itself. To be able to
+check our file system and make sure that
+
+560
+00:10:55,750 --> 00:10:55,760
+check our file system and make sure that
+ 
+
+561
+00:10:55,760 --> 00:10:57,910
+check our file system and make sure that
+it matches the files on the drive, we
+
+562
+00:10:57,910 --> 00:10:57,920
+it matches the files on the drive, we
+ 
+
+563
+00:10:57,920 --> 00:11:00,230
+it matches the files on the drive, we
+need to run the utility check disk.
+
+564
+00:11:00,230 --> 00:11:00,240
+need to run the utility check disk.
+ 
+
+565
+00:11:00,240 --> 00:11:01,910
+need to run the utility check disk.
+Check disk will search through our
+
+566
+00:11:01,910 --> 00:11:01,920
+Check disk will search through our
+ 
+
+567
+00:11:01,920 --> 00:11:03,910
+Check disk will search through our
+logical file system. It'll look through
+
+568
+00:11:03,910 --> 00:11:03,920
+logical file system. It'll look through
+ 
+
+569
+00:11:03,920 --> 00:11:06,310
+logical file system. It'll look through
+the index and compare that index to the
+
+570
+00:11:06,310 --> 00:11:06,320
+the index and compare that index to the
+ 
+
+571
+00:11:06,320 --> 00:11:08,550
+the index and compare that index to the
+files on our system and make sure that
+
+572
+00:11:08,550 --> 00:11:08,560
+files on our system and make sure that
+ 
+
+573
+00:11:08,560 --> 00:11:11,110
+files on our system and make sure that
+everything matches up properly from the
+
+574
+00:11:11,110 --> 00:11:11,120
+everything matches up properly from the
+ 
+
+575
+00:11:11,120 --> 00:11:13,430
+everything matches up properly from the
+file system perspective. To be able to
+
+576
+00:11:13,430 --> 00:11:13,440
+file system perspective. To be able to
+ 
+
+577
+00:11:13,440 --> 00:11:15,030
+file system perspective. To be able to
+run check disk, you simply use the
+
+578
+00:11:15,030 --> 00:11:15,040
+run check disk, you simply use the
+ 
+
+579
+00:11:15,040 --> 00:11:17,190
+run check disk, you simply use the
+chkdsk
+
+580
+00:11:17,190 --> 00:11:17,200
+chkdsk
+ 
+
+581
+00:11:17,200 --> 00:11:19,350
+chkdsk
+utility. And if you want check disk to
+
+582
+00:11:19,350 --> 00:11:19,360
+utility. And if you want check disk to
+ 
+
+583
+00:11:19,360 --> 00:11:21,990
+utility. And if you want check disk to
+be able to fix any problems, you use the
+
+584
+00:11:21,990 --> 00:11:22,000
+be able to fix any problems, you use the
+ 
+
+585
+00:11:22,000 --> 00:11:25,430
+be able to fix any problems, you use the
+/f option along with that command.
+
+586
+00:11:25,430 --> 00:11:25,440
+/f option along with that command.
+ 
+
+587
+00:11:25,440 --> 00:11:27,750
+/f option along with that command.
+Because checkis could make changes to
+
+588
+00:11:27,750 --> 00:11:27,760
+Because checkis could make changes to
+ 
+
+589
+00:11:27,760 --> 00:11:30,470
+Because checkis could make changes to
+the underlying file system, it requires
+
+590
+00:11:30,470 --> 00:11:30,480
+the underlying file system, it requires
+ 
+
+591
+00:11:30,480 --> 00:11:32,470
+the underlying file system, it requires
+administrative access to be able to do
+
+592
+00:11:32,470 --> 00:11:32,480
+administrative access to be able to do
+ 
+
+593
+00:11:32,480 --> 00:11:34,150
+administrative access to be able to do
+this. So when you run the checkis
+
+594
+00:11:34,150 --> 00:11:34,160
+this. So when you run the checkis
+ 
+
+595
+00:11:34,160 --> 00:11:35,829
+this. So when you run the checkis
+command, make sure you're running it at
+
+596
+00:11:35,829 --> 00:11:35,839
+command, make sure you're running it at
+ 
+
+597
+00:11:35,839 --> 00:11:38,350
+command, make sure you're running it at
+an administrator prompt inside of
+
+598
+00:11:38,350 --> 00:11:38,360
+an administrator prompt inside of
+ 
+
+599
+00:11:38,360 --> 00:11:40,949
+an administrator prompt inside of
+Windows. If you're not only concerned
+
+600
+00:11:40,949 --> 00:11:40,959
+Windows. If you're not only concerned
+ 
+
+601
+00:11:40,959 --> 00:11:43,829
+Windows. If you're not only concerned
+about the index of your file system, but
+
+602
+00:11:43,829 --> 00:11:43,839
+about the index of your file system, but
+ 
+
+603
+00:11:43,839 --> 00:11:46,310
+about the index of your file system, but
+also the ability of that drive to
+
+604
+00:11:46,310 --> 00:11:46,320
+also the ability of that drive to
+ 
+
+605
+00:11:46,320 --> 00:11:48,470
+also the ability of that drive to
+properly store data, you may want to
+
+606
+00:11:48,470 --> 00:11:48,480
+properly store data, you may want to
+ 
+
+607
+00:11:48,480 --> 00:11:51,430
+properly store data, you may want to
+perform a sector by sector diagnostic of
+
+608
+00:11:51,430 --> 00:11:51,440
+perform a sector by sector diagnostic of
+ 
+
+609
+00:11:51,440 --> 00:11:53,910
+perform a sector by sector diagnostic of
+the entire drive. One way to do that in
+
+610
+00:11:53,910 --> 00:11:53,920
+the entire drive. One way to do that in
+ 
+
+611
+00:11:53,920 --> 00:11:57,269
+the entire drive. One way to do that in
+check disk is to use the chkdsk command
+
+612
+00:11:57,269 --> 00:11:57,279
+check disk is to use the chkdsk command
+ 
+
+613
+00:11:57,279 --> 00:12:00,150
+check disk is to use the chkdsk command
+again, but instead of the slashf, we're
+
+614
+00:12:00,150 --> 00:12:00,160
+again, but instead of the slashf, we're
+ 
+
+615
+00:12:00,160 --> 00:12:03,030
+again, but instead of the slashf, we're
+going to use slashr. This command
+
+616
+00:12:03,030 --> 00:12:03,040
+going to use slashr. This command
+ 
+
+617
+00:12:03,040 --> 00:12:05,030
+going to use slashr. This command
+usually takes much longer than the
+
+618
+00:12:05,030 --> 00:12:05,040
+usually takes much longer than the
+ 
+
+619
+00:12:05,040 --> 00:12:07,509
+usually takes much longer than the
+slashf because it will go sector by
+
+620
+00:12:07,509 --> 00:12:07,519
+slashf because it will go sector by
+ 
+
+621
+00:12:07,519 --> 00:12:09,990
+slashf because it will go sector by
+sector through the entire drive, making
+
+622
+00:12:09,990 --> 00:12:10,000
+sector through the entire drive, making
+ 
+
+623
+00:12:10,000 --> 00:12:12,150
+sector through the entire drive, making
+sure that every sector is able to be
+
+624
+00:12:12,150 --> 00:12:12,160
+sure that every sector is able to be
+ 
+
+625
+00:12:12,160 --> 00:12:14,949
+sure that every sector is able to be
+read or to be written to. This is going
+
+626
+00:12:14,949 --> 00:12:14,959
+read or to be written to. This is going
+ 
+
+627
+00:12:14,959 --> 00:12:17,430
+read or to be written to. This is going
+to also recover anything that might be
+
+628
+00:12:17,430 --> 00:12:17,440
+to also recover anything that might be
+ 
+
+629
+00:12:17,440 --> 00:12:19,670
+to also recover anything that might be
+readable on your drive that doesn't
+
+630
+00:12:19,670 --> 00:12:19,680
+readable on your drive that doesn't
+ 
+
+631
+00:12:19,680 --> 00:12:22,629
+readable on your drive that doesn't
+currently exist in your file system. The
+
+632
+00:12:22,629 --> 00:12:22,639
+currently exist in your file system. The
+ 
+
+633
+00:12:22,639 --> 00:12:25,350
+currently exist in your file system. The
+slash r option is also going to perform
+
+634
+00:12:25,350 --> 00:12:25,360
+slash r option is also going to perform
+ 
+
+635
+00:12:25,360 --> 00:12:27,509
+slash r option is also going to perform
+the same checks that we performed with
+
+636
+00:12:27,509 --> 00:12:27,519
+the same checks that we performed with
+ 
+
+637
+00:12:27,519 --> 00:12:30,150
+the same checks that we performed with
+the slashf option. So if you're running
+
+638
+00:12:30,150 --> 00:12:30,160
+the slashf option. So if you're running
+ 
+
+639
+00:12:30,160 --> 00:12:32,870
+the slashf option. So if you're running
+a slash R, it's effectively performing a
+
+640
+00:12:32,870 --> 00:12:32,880
+a slash R, it's effectively performing a
+ 
+
+641
+00:12:32,880 --> 00:12:35,829
+a slash R, it's effectively performing a
+slashf and also looking at every sector
+
+642
+00:12:35,829 --> 00:12:35,839
+slashf and also looking at every sector
+ 
+
+643
+00:12:35,839 --> 00:12:38,470
+slashf and also looking at every sector
+on the drive. One common thing you may
+
+644
+00:12:38,470 --> 00:12:38,480
+on the drive. One common thing you may
+ 
+
+645
+00:12:38,480 --> 00:12:40,389
+on the drive. One common thing you may
+find when running a check disk on your
+
+646
+00:12:40,389 --> 00:12:40,399
+find when running a check disk on your
+ 
+
+647
+00:12:40,399 --> 00:12:42,710
+find when running a check disk on your
+local drive is that the volume will be
+
+648
+00:12:42,710 --> 00:12:42,720
+local drive is that the volume will be
+ 
+
+649
+00:12:42,720 --> 00:12:45,110
+local drive is that the volume will be
+locked. It will only be able to perform
+
+650
+00:12:45,110 --> 00:12:45,120
+locked. It will only be able to perform
+ 
+
+651
+00:12:45,120 --> 00:12:47,269
+locked. It will only be able to perform
+this check function when the system is
+
+652
+00:12:47,269 --> 00:12:47,279
+this check function when the system is
+ 
+
+653
+00:12:47,279 --> 00:12:49,350
+this check function when the system is
+starting up. This is exactly what
+
+654
+00:12:49,350 --> 00:12:49,360
+starting up. This is exactly what
+ 
+
+655
+00:12:49,360 --> 00:12:51,269
+starting up. This is exactly what
+happened when I tried to run the checkis
+
+656
+00:12:51,269 --> 00:12:51,279
+happened when I tried to run the checkis
+ 
+
+657
+00:12:51,279 --> 00:12:53,269
+happened when I tried to run the checkis
+command with the /f. It said the type of
+
+658
+00:12:53,269 --> 00:12:53,279
+command with the /f. It said the type of
+ 
+
+659
+00:12:53,279 --> 00:12:56,150
+command with the /f. It said the type of
+the file system is NTFS but check this
+
+660
+00:12:56,150 --> 00:12:56,160
+the file system is NTFS but check this
+ 
+
+661
+00:12:56,160 --> 00:12:58,470
+the file system is NTFS but check this
+cannot run because the volume is in use
+
+662
+00:12:58,470 --> 00:12:58,480
+cannot run because the volume is in use
+ 
+
+663
+00:12:58,480 --> 00:13:00,710
+cannot run because the volume is in use
+by another process. Would you like to
+
+664
+00:13:00,710 --> 00:13:00,720
+by another process. Would you like to
+ 
+
+665
+00:13:00,720 --> 00:13:02,310
+by another process. Would you like to
+schedule this volume to be checked the
+
+666
+00:13:02,310 --> 00:13:02,320
+schedule this volume to be checked the
+ 
+
+667
+00:13:02,320 --> 00:13:04,069
+schedule this volume to be checked the
+next time the system restarts? And I
+
+668
+00:13:04,069 --> 00:13:04,079
+next time the system restarts? And I
+ 
+
+669
+00:13:04,079 --> 00:13:06,069
+next time the system restarts? And I
+said yes and it confirmed that this
+
+670
+00:13:06,069 --> 00:13:06,079
+said yes and it confirmed that this
+ 
+
+671
+00:13:06,079 --> 00:13:08,150
+said yes and it confirmed that this
+volume will be checked the next time the
+
+672
+00:13:08,150 --> 00:13:08,160
+volume will be checked the next time the
+ 
+
+673
+00:13:08,160 --> 00:13:10,550
+volume will be checked the next time the
+system restarts. When I reboot my
+
+674
+00:13:10,550 --> 00:13:10,560
+system restarts. When I reboot my
+ 
+
+675
+00:13:10,560 --> 00:13:12,389
+system restarts. When I reboot my
+computer, it will go through a scanning
+
+676
+00:13:12,389 --> 00:13:12,399
+computer, it will go through a scanning
+ 
+
+677
+00:13:12,399 --> 00:13:14,910
+computer, it will go through a scanning
+and repairing process. You'll see the
+
+678
+00:13:14,910 --> 00:13:14,920
+and repairing process. You'll see the
+ 
+
+679
+00:13:14,920 --> 00:13:17,670
+and repairing process. You'll see the
+percentages slowly increment as it's
+
+680
+00:13:17,670 --> 00:13:17,680
+percentages slowly increment as it's
+ 
+
+681
+00:13:17,680 --> 00:13:19,829
+percentages slowly increment as it's
+performing its test. And once it's done
+
+682
+00:13:19,829 --> 00:13:19,839
+performing its test. And once it's done
+ 
+
+683
+00:13:19,839 --> 00:13:21,990
+performing its test. And once it's done
+with the test, it will continue through
+
+684
+00:13:21,990 --> 00:13:22,000
+with the test, it will continue through
+ 
+
+685
+00:13:22,000 --> 00:13:24,350
+with the test, it will continue through
+with the rest of the boot
+
+686
+00:13:24,350 --> 00:13:24,360
+with the rest of the boot
+ 
+
+687
+00:13:24,360 --> 00:13:26,389
+with the rest of the boot
+process. When you perform the
+
+688
+00:13:26,389 --> 00:13:26,399
+process. When you perform the
+ 
+
+689
+00:13:26,399 --> 00:13:28,389
+process. When you perform the
+installation of an operating system, one
+
+690
+00:13:28,389 --> 00:13:28,399
+installation of an operating system, one
+ 
+
+691
+00:13:28,399 --> 00:13:30,550
+installation of an operating system, one
+of the first things it asks for is what
+
+692
+00:13:30,550 --> 00:13:30,560
+of the first things it asks for is what
+ 
+
+693
+00:13:30,560 --> 00:13:32,230
+of the first things it asks for is what
+drive do you want to install this
+
+694
+00:13:32,230 --> 00:13:32,240
+drive do you want to install this
+ 
+
+695
+00:13:32,240 --> 00:13:34,470
+drive do you want to install this
+operating system on? And once you select
+
+696
+00:13:34,470 --> 00:13:34,480
+operating system on? And once you select
+ 
+
+697
+00:13:34,480 --> 00:13:36,550
+operating system on? And once you select
+the drive, it asks what file system you
+
+698
+00:13:36,550 --> 00:13:36,560
+the drive, it asks what file system you
+ 
+
+699
+00:13:36,560 --> 00:13:38,710
+the drive, it asks what file system you
+would like to use on that drive. Then it
+
+700
+00:13:38,710 --> 00:13:38,720
+would like to use on that drive. Then it
+ 
+
+701
+00:13:38,720 --> 00:13:41,030
+would like to use on that drive. Then it
+performs a format of the drive which
+
+702
+00:13:41,030 --> 00:13:41,040
+performs a format of the drive which
+ 
+
+703
+00:13:41,040 --> 00:13:43,750
+performs a format of the drive which
+initializes the entire file system and
+
+704
+00:13:43,750 --> 00:13:43,760
+initializes the entire file system and
+ 
+
+705
+00:13:43,760 --> 00:13:45,990
+initializes the entire file system and
+makes it ready to begin writing files to
+
+706
+00:13:45,990 --> 00:13:46,000
+makes it ready to begin writing files to
+ 
+
+707
+00:13:46,000 --> 00:13:48,310
+makes it ready to begin writing files to
+that storage device. If you wanted to
+
+708
+00:13:48,310 --> 00:13:48,320
+that storage device. If you wanted to
+ 
+
+709
+00:13:48,320 --> 00:13:50,389
+that storage device. If you wanted to
+perform that initialization process
+
+710
+00:13:50,389 --> 00:13:50,399
+perform that initialization process
+ 
+
+711
+00:13:50,399 --> 00:13:52,310
+perform that initialization process
+yourself, you would use the format
+
+712
+00:13:52,310 --> 00:13:52,320
+yourself, you would use the format
+ 
+
+713
+00:13:52,320 --> 00:13:54,470
+yourself, you would use the format
+command. This will format that
+
+714
+00:13:54,470 --> 00:13:54,480
+command. This will format that
+ 
+
+715
+00:13:54,480 --> 00:13:56,870
+command. This will format that
+particular partition with a file system
+
+716
+00:13:56,870 --> 00:13:56,880
+particular partition with a file system
+ 
+
+717
+00:13:56,880 --> 00:13:59,350
+particular partition with a file system
+that you specify. If you don't specify
+
+718
+00:13:59,350 --> 00:13:59,360
+that you specify. If you don't specify
+ 
+
+719
+00:13:59,360 --> 00:14:01,990
+that you specify. If you don't specify
+any file system like I did here, it will
+
+720
+00:14:01,990 --> 00:14:02,000
+any file system like I did here, it will
+ 
+
+721
+00:14:02,000 --> 00:14:04,790
+any file system like I did here, it will
+default to the FAT32 file system. You
+
+722
+00:14:04,790 --> 00:14:04,800
+default to the FAT32 file system. You
+ 
+
+723
+00:14:04,800 --> 00:14:07,750
+default to the FAT32 file system. You
+can see that I use the format Kon option
+
+724
+00:14:07,750 --> 00:14:07,760
+can see that I use the format Kon option
+ 
+
+725
+00:14:07,760 --> 00:14:09,829
+can see that I use the format Kon option
+here because the disc that I wanted to
+
+726
+00:14:09,829 --> 00:14:09,839
+here because the disc that I wanted to
+ 
+
+727
+00:14:09,839 --> 00:14:11,990
+here because the disc that I wanted to
+format had the drive letter assigned to
+
+728
+00:14:11,990 --> 00:14:12,000
+format had the drive letter assigned to
+ 
+
+729
+00:14:12,000 --> 00:14:15,110
+format had the drive letter assigned to
+it of K. The format process will verify
+
+730
+00:14:15,110 --> 00:14:15,120
+it of K. The format process will verify
+ 
+
+731
+00:14:15,120 --> 00:14:17,509
+it of K. The format process will verify
+the size of the partition. format it
+
+732
+00:14:17,509 --> 00:14:17,519
+the size of the partition. format it
+ 
+
+733
+00:14:17,519 --> 00:14:18,949
+the size of the partition. format it
+with the file system that you've
+
+734
+00:14:18,949 --> 00:14:18,959
+with the file system that you've
+ 
+
+735
+00:14:18,959 --> 00:14:21,269
+with the file system that you've
+specified and at the end it will tell
+
+736
+00:14:21,269 --> 00:14:21,279
+specified and at the end it will tell
+ 
+
+737
+00:14:21,279 --> 00:14:23,350
+specified and at the end it will tell
+you all of the information associated
+
+738
+00:14:23,350 --> 00:14:23,360
+you all of the information associated
+ 
+
+739
+00:14:23,360 --> 00:14:26,389
+you all of the information associated
+with that format process. This format
+
+740
+00:14:26,389 --> 00:14:26,399
+with that format process. This format
+ 
+
+741
+00:14:26,399 --> 00:14:28,470
+with that format process. This format
+command will only run if you are an
+
+742
+00:14:28,470 --> 00:14:28,480
+command will only run if you are an
+ 
+
+743
+00:14:28,480 --> 00:14:30,629
+command will only run if you are an
+administrator on that system. That's
+
+744
+00:14:30,629 --> 00:14:30,639
+administrator on that system. That's
+ 
+
+745
+00:14:30,639 --> 00:14:33,030
+administrator on that system. That's
+because format completely erases
+
+746
+00:14:33,030 --> 00:14:33,040
+because format completely erases
+ 
+
+747
+00:14:33,040 --> 00:14:35,110
+because format completely erases
+everything that's on a partition. So you
+
+748
+00:14:35,110 --> 00:14:35,120
+everything that's on a partition. So you
+ 
+
+749
+00:14:35,120 --> 00:14:37,110
+everything that's on a partition. So you
+want to be very sure you're choosing the
+
+750
+00:14:37,110 --> 00:14:37,120
+want to be very sure you're choosing the
+ 
+
+751
+00:14:37,120 --> 00:14:39,750
+want to be very sure you're choosing the
+right drive whenever you use this format
+
+752
+00:14:39,750 --> 00:14:39,760
+right drive whenever you use this format
+ 
+
+753
+00:14:39,760 --> 00:14:42,069
+right drive whenever you use this format
+command. And if you aren't quite sure
+
+754
+00:14:42,069 --> 00:14:42,079
+command. And if you aren't quite sure
+ 
+
+755
+00:14:42,079 --> 00:14:43,990
+command. And if you aren't quite sure
+that you're choosing the right drive,
+
+756
+00:14:43,990 --> 00:14:44,000
+that you're choosing the right drive,
+ 
+
+757
+00:14:44,000 --> 00:14:45,750
+that you're choosing the right drive,
+make sure you have a backup of the
+
+758
+00:14:45,750 --> 00:14:45,760
+make sure you have a backup of the
+ 
+
+759
+00:14:45,760 --> 00:14:49,310
+make sure you have a backup of the
+system before running any format
+
+760
+00:14:49,310 --> 00:14:49,320
+system before running any format
+ 
+
+761
+00:14:49,320 --> 00:14:51,750
+system before running any format
+commands. We talked about formatting a
+
+762
+00:14:51,750 --> 00:14:51,760
+commands. We talked about formatting a
+ 
+
+763
+00:14:51,760 --> 00:14:53,829
+commands. We talked about formatting a
+partition, but what about the process of
+
+764
+00:14:53,829 --> 00:14:53,839
+partition, but what about the process of
+ 
+
+765
+00:14:53,839 --> 00:14:55,750
+partition, but what about the process of
+creating the partition from the very
+
+766
+00:14:55,750 --> 00:14:55,760
+creating the partition from the very
+ 
+
+767
+00:14:55,760 --> 00:14:57,430
+creating the partition from the very
+beginning? Fortunately, there's a
+
+768
+00:14:57,430 --> 00:14:57,440
+beginning? Fortunately, there's a
+ 
+
+769
+00:14:57,440 --> 00:14:59,110
+beginning? Fortunately, there's a
+utility that combines all of these
+
+770
+00:14:59,110 --> 00:14:59,120
+utility that combines all of these
+ 
+
+771
+00:14:59,120 --> 00:15:01,110
+utility that combines all of these
+functions together and more. This
+
+772
+00:15:01,110 --> 00:15:01,120
+functions together and more. This
+ 
+
+773
+00:15:01,120 --> 00:15:03,990
+functions together and more. This
+command is the disk part command for
+
+774
+00:15:03,990 --> 00:15:04,000
+command is the disk part command for
+ 
+
+775
+00:15:04,000 --> 00:15:06,790
+command is the disk part command for
+disk partitioning. You again have to run
+
+776
+00:15:06,790 --> 00:15:06,800
+disk partitioning. You again have to run
+ 
+
+777
+00:15:06,800 --> 00:15:09,269
+disk partitioning. You again have to run
+this as an administrator command prompt.
+
+778
+00:15:09,269 --> 00:15:09,279
+this as an administrator command prompt.
+ 
+
+779
+00:15:09,279 --> 00:15:11,670
+this as an administrator command prompt.
+You run the disk part utility and it
+
+780
+00:15:11,670 --> 00:15:11,680
+You run the disk part utility and it
+ 
+
+781
+00:15:11,680 --> 00:15:13,509
+You run the disk part utility and it
+simply starts up and puts you at a
+
+782
+00:15:13,509 --> 00:15:13,519
+simply starts up and puts you at a
+ 
+
+783
+00:15:13,519 --> 00:15:15,910
+simply starts up and puts you at a
+command prompt that says disk part. From
+
+784
+00:15:15,910 --> 00:15:15,920
+command prompt that says disk part. From
+ 
+
+785
+00:15:15,920 --> 00:15:17,430
+command prompt that says disk part. From
+here you can list the volumes that are
+
+786
+00:15:17,430 --> 00:15:17,440
+here you can list the volumes that are
+ 
+
+787
+00:15:17,440 --> 00:15:19,269
+here you can list the volumes that are
+on your system. You can format a
+
+788
+00:15:19,269 --> 00:15:19,279
+on your system. You can format a
+ 
+
+789
+00:15:19,279 --> 00:15:21,269
+on your system. You can format a
+partition and run other commands to
+
+790
+00:15:21,269 --> 00:15:21,279
+partition and run other commands to
+ 
+
+791
+00:15:21,279 --> 00:15:24,030
+partition and run other commands to
+perform diagnostics of those storage
+
+792
+00:15:24,030 --> 00:15:24,040
+perform diagnostics of those storage
+ 
+
+793
+00:15:24,040 --> 00:15:26,629
+perform diagnostics of those storage
+drives. Let's run disk part. But notice
+
+794
+00:15:26,629 --> 00:15:26,639
+drives. Let's run disk part. But notice
+ 
+
+795
+00:15:26,639 --> 00:15:28,710
+drives. Let's run disk part. But notice
+that we are running in a normal command
+
+796
+00:15:28,710 --> 00:15:28,720
+that we are running in a normal command
+ 
+
+797
+00:15:28,720 --> 00:15:30,629
+that we are running in a normal command
+prompt. I'm going to run disk part
+
+798
+00:15:30,629 --> 00:15:30,639
+prompt. I'm going to run disk part
+ 
+
+799
+00:15:30,639 --> 00:15:32,230
+prompt. I'm going to run disk part
+anyway. And since we're running as a
+
+800
+00:15:32,230 --> 00:15:32,240
+anyway. And since we're running as a
+ 
+
+801
+00:15:32,240 --> 00:15:34,710
+anyway. And since we're running as a
+regular user, user account control asks
+
+802
+00:15:34,710 --> 00:15:34,720
+regular user, user account control asks
+ 
+
+803
+00:15:34,720 --> 00:15:36,710
+regular user, user account control asks
+us if we'd like to allow this app to
+
+804
+00:15:36,710 --> 00:15:36,720
+us if we'd like to allow this app to
+ 
+
+805
+00:15:36,720 --> 00:15:39,269
+us if we'd like to allow this app to
+make changes to the device. It specifies
+
+806
+00:15:39,269 --> 00:15:39,279
+make changes to the device. It specifies
+ 
+
+807
+00:15:39,279 --> 00:15:41,750
+make changes to the device. It specifies
+that this is the disk part utility and
+
+808
+00:15:41,750 --> 00:15:41,760
+that this is the disk part utility and
+ 
+
+809
+00:15:41,760 --> 00:15:44,710
+that this is the disk part utility and
+we say yes, we do want to run disk part.
+
+810
+00:15:44,710 --> 00:15:44,720
+we say yes, we do want to run disk part.
+ 
+
+811
+00:15:44,720 --> 00:15:46,949
+we say yes, we do want to run disk part.
+Notice that the disk part utility now
+
+812
+00:15:46,949 --> 00:15:46,959
+Notice that the disk part utility now
+ 
+
+813
+00:15:46,959 --> 00:15:49,509
+Notice that the disk part utility now
+starts in a separate command prompt that
+
+814
+00:15:49,509 --> 00:15:49,519
+starts in a separate command prompt that
+ 
+
+815
+00:15:49,519 --> 00:15:52,150
+starts in a separate command prompt that
+is set up already as an administrator
+
+816
+00:15:52,150 --> 00:15:52,160
+is set up already as an administrator
+ 
+
+817
+00:15:52,160 --> 00:15:54,629
+is set up already as an administrator
+command prompt. Inside of here, we can
+
+818
+00:15:54,629 --> 00:15:54,639
+command prompt. Inside of here, we can
+ 
+
+819
+00:15:54,639 --> 00:15:57,110
+command prompt. Inside of here, we can
+run things like the help command and it
+
+820
+00:15:57,110 --> 00:15:57,120
+run things like the help command and it
+ 
+
+821
+00:15:57,120 --> 00:15:58,790
+run things like the help command and it
+will show us all the options available
+
+822
+00:15:58,790 --> 00:15:58,800
+will show us all the options available
+ 
+
+823
+00:15:58,800 --> 00:16:01,269
+will show us all the options available
+when running the disk part utility. For
+
+824
+00:16:01,269 --> 00:16:01,279
+when running the disk part utility. For
+ 
+
+825
+00:16:01,279 --> 00:16:03,990
+when running the disk part utility. For
+example, there is a command to list
+
+826
+00:16:03,990 --> 00:16:04,000
+example, there is a command to list
+ 
+
+827
+00:16:04,000 --> 00:16:07,110
+example, there is a command to list
+different items. We can perform the list
+
+828
+00:16:07,110 --> 00:16:07,120
+different items. We can perform the list
+ 
+
+829
+00:16:07,120 --> 00:16:09,030
+different items. We can perform the list
+command and hit enter. We could list
+
+830
+00:16:09,030 --> 00:16:09,040
+command and hit enter. We could list
+ 
+
+831
+00:16:09,040 --> 00:16:11,910
+command and hit enter. We could list
+disk, list partition, list volume, or
+
+832
+00:16:11,910 --> 00:16:11,920
+disk, list partition, list volume, or
+ 
+
+833
+00:16:11,920 --> 00:16:14,710
+disk, list partition, list volume, or
+list a virtual disc. In this case, we'll
+
+834
+00:16:14,710 --> 00:16:14,720
+list a virtual disc. In this case, we'll
+ 
+
+835
+00:16:14,720 --> 00:16:16,790
+list a virtual disc. In this case, we'll
+choose the list command. Let's look at
+
+836
+00:16:16,790 --> 00:16:16,800
+choose the list command. Let's look at
+ 
+
+837
+00:16:16,800 --> 00:16:19,189
+choose the list command. Let's look at
+the volumes available, and it will show
+
+838
+00:16:19,189 --> 00:16:19,199
+the volumes available, and it will show
+ 
+
+839
+00:16:19,199 --> 00:16:21,430
+the volumes available, and it will show
+us all the individual volumes configured
+
+840
+00:16:21,430 --> 00:16:21,440
+us all the individual volumes configured
+ 
+
+841
+00:16:21,440 --> 00:16:24,150
+us all the individual volumes configured
+on the system. We have a volume zero,
+
+842
+00:16:24,150 --> 00:16:24,160
+on the system. We have a volume zero,
+ 
+
+843
+00:16:24,160 --> 00:16:26,629
+on the system. We have a volume zero,
+which is assigned a drive letter of D
+
+844
+00:16:26,629 --> 00:16:26,639
+which is assigned a drive letter of D
+ 
+
+845
+00:16:26,639 --> 00:16:29,990
+which is assigned a drive letter of D
+that is specified as a CDROM or optical
+
+846
+00:16:29,990 --> 00:16:30,000
+that is specified as a CDROM or optical
+ 
+
+847
+00:16:30,000 --> 00:16:32,710
+that is specified as a CDROM or optical
+drive in the system. We also have volume
+
+848
+00:16:32,710 --> 00:16:32,720
+drive in the system. We also have volume
+ 
+
+849
+00:16:32,720 --> 00:16:35,430
+drive in the system. We also have volume
+one. It's given the letter C. It's an
+
+850
+00:16:35,430 --> 00:16:35,440
+one. It's given the letter C. It's an
+ 
+
+851
+00:16:35,440 --> 00:16:40,550
+one. It's given the letter C. It's an
+NTFS partition and it's 255 GB in size.
+
+852
+00:16:40,550 --> 00:16:40,560
+NTFS partition and it's 255 GB in size.
+ 
+
+853
+00:16:40,560 --> 00:16:42,949
+NTFS partition and it's 255 GB in size.
+It's also a healthy partition and this
+
+854
+00:16:42,949 --> 00:16:42,959
+It's also a healthy partition and this
+ 
+
+855
+00:16:42,959 --> 00:16:44,870
+It's also a healthy partition and this
+is the partition we use when we're
+
+856
+00:16:44,870 --> 00:16:44,880
+is the partition we use when we're
+ 
+
+857
+00:16:44,880 --> 00:16:46,949
+is the partition we use when we're
+booting our system. There's also a
+
+858
+00:16:46,949 --> 00:16:46,959
+booting our system. There's also a
+ 
+
+859
+00:16:46,959 --> 00:16:49,269
+booting our system. There's also a
+hidden partition. This is volume two.
+
+860
+00:16:49,269 --> 00:16:49,279
+hidden partition. This is volume two.
+ 
+
+861
+00:16:49,279 --> 00:16:51,670
+hidden partition. This is volume two.
+That is probably our recovery partition.
+
+862
+00:16:51,670 --> 00:16:51,680
+That is probably our recovery partition.
+ 
+
+863
+00:16:51,680 --> 00:16:53,430
+That is probably our recovery partition.
+And then we have a separate system
+
+864
+00:16:53,430 --> 00:16:53,440
+And then we have a separate system
+ 
+
+865
+00:16:53,440 --> 00:16:55,590
+And then we have a separate system
+partition. This is a relatively small
+
+866
+00:16:55,590 --> 00:16:55,600
+partition. This is a relatively small
+ 
+
+867
+00:16:55,600 --> 00:16:57,509
+partition. This is a relatively small
+partition that's probably used by our
+
+868
+00:16:57,509 --> 00:16:57,519
+partition that's probably used by our
+ 
+
+869
+00:16:57,519 --> 00:16:59,910
+partition that's probably used by our
+BIOS. We can use the additional tools
+
+870
+00:16:59,910 --> 00:16:59,920
+BIOS. We can use the additional tools
+ 
+
+871
+00:16:59,920 --> 00:17:01,749
+BIOS. We can use the additional tools
+inside of disk part to be able to gain
+
+872
+00:17:01,749 --> 00:17:01,759
+inside of disk part to be able to gain
+ 
+
+873
+00:17:01,759 --> 00:17:03,670
+inside of disk part to be able to gain
+more information about what's inside of
+
+874
+00:17:03,670 --> 00:17:03,680
+more information about what's inside of
+ 
+
+875
+00:17:03,680 --> 00:17:05,990
+more information about what's inside of
+those partitions or to format a
+
+876
+00:17:05,990 --> 00:17:06,000
+those partitions or to format a
+ 
+
+877
+00:17:06,000 --> 00:17:08,150
+those partitions or to format a
+partition and clear everything out to
+
+878
+00:17:08,150 --> 00:17:08,160
+partition and clear everything out to
+ 
+
+879
+00:17:08,160 --> 00:17:09,150
+partition and clear everything out to
+start
+
+880
+00:17:09,150 --> 00:17:09,160
+start
+ 
+
+881
+00:17:09,160 --> 00:17:11,750
+start
+new. There may be times when you need to
+
+882
+00:17:11,750 --> 00:17:11,760
+new. There may be times when you need to
+ 
+
+883
+00:17:11,760 --> 00:17:13,750
+new. There may be times when you need to
+take a file that you've created and
+
+884
+00:17:13,750 --> 00:17:13,760
+take a file that you've created and
+ 
+
+885
+00:17:13,760 --> 00:17:16,470
+take a file that you've created and
+create a separate copy of that file. Not
+
+886
+00:17:16,470 --> 00:17:16,480
+create a separate copy of that file. Not
+ 
+
+887
+00:17:16,480 --> 00:17:18,390
+create a separate copy of that file. Not
+surprisingly, the command to do that is
+
+888
+00:17:18,390 --> 00:17:18,400
+surprisingly, the command to do that is
+ 
+
+889
+00:17:18,400 --> 00:17:21,350
+surprisingly, the command to do that is
+the copy command. Two of the more common
+
+890
+00:17:21,350 --> 00:17:21,360
+the copy command. Two of the more common
+ 
+
+891
+00:17:21,360 --> 00:17:24,470
+the copy command. Two of the more common
+copy command options are the -v that
+
+892
+00:17:24,470 --> 00:17:24,480
+copy command options are the -v that
+ 
+
+893
+00:17:24,480 --> 00:17:26,069
+copy command options are the -v that
+verifies that new files have been
+
+894
+00:17:26,069 --> 00:17:26,079
+verifies that new files have been
+ 
+
+895
+00:17:26,079 --> 00:17:29,029
+verifies that new files have been
+written correctly and slashy which
+
+896
+00:17:29,029 --> 00:17:29,039
+written correctly and slashy which
+ 
+
+897
+00:17:29,039 --> 00:17:31,669
+written correctly and slashy which
+suppresses any prompts when you want to
+
+898
+00:17:31,669 --> 00:17:31,679
+suppresses any prompts when you want to
+ 
+
+899
+00:17:31,679 --> 00:17:33,950
+suppresses any prompts when you want to
+overwrite a destination
+
+900
+00:17:33,950 --> 00:17:33,960
+overwrite a destination
+ 
+
+901
+00:17:33,960 --> 00:17:36,950
+overwrite a destination
+file. Let's copy some files around on
+
+902
+00:17:36,950 --> 00:17:36,960
+file. Let's copy some files around on
+ 
+
+903
+00:17:36,960 --> 00:17:38,950
+file. Let's copy some files around on
+our computer. I'm going to start in the
+
+904
+00:17:38,950 --> 00:17:38,960
+our computer. I'm going to start in the
+ 
+
+905
+00:17:38,960 --> 00:17:41,950
+our computer. I'm going to start in the
+directory users back/professor
+
+906
+00:17:41,950 --> 00:17:41,960
+directory users back/professor
+ 
+
+907
+00:17:41,960 --> 00:17:43,470
+directory users back/professor
+back/doccuments
+
+908
+00:17:43,470 --> 00:17:43,480
+back/doccuments
+ 
+
+909
+00:17:43,480 --> 00:17:45,950
+back/doccuments
+back/missions
+
+910
+00:17:45,950 --> 00:17:45,960
+back/missions
+ 
+
+911
+00:17:45,960 --> 00:17:49,270
+back/missions
+back/pkx447. And if we perform a diir in
+
+912
+00:17:49,270 --> 00:17:49,280
+back/pkx447. And if we perform a diir in
+ 
+
+913
+00:17:49,280 --> 00:17:51,270
+back/pkx447. And if we perform a diir in
+that directory, you'll see there is a
+
+914
+00:17:51,270 --> 00:17:51,280
+that directory, you'll see there is a
+ 
+
+915
+00:17:51,280 --> 00:17:53,950
+that directory, you'll see there is a
+single file named
+
+916
+00:17:53,950 --> 00:17:53,960
+single file named
+ 
+
+917
+00:17:53,960 --> 00:17:56,070
+single file named
+report.txt. I have a number of other
+
+918
+00:17:56,070 --> 00:17:56,080
+report.txt. I have a number of other
+ 
+
+919
+00:17:56,080 --> 00:17:58,549
+report.txt. I have a number of other
+drives on my system and I'd like to copy
+
+920
+00:17:58,549 --> 00:17:58,559
+drives on my system and I'd like to copy
+ 
+
+921
+00:17:58,559 --> 00:18:01,430
+drives on my system and I'd like to copy
+this report to one of those drives. We
+
+922
+00:18:01,430 --> 00:18:01,440
+this report to one of those drives. We
+ 
+
+923
+00:18:01,440 --> 00:18:03,590
+this report to one of those drives. We
+will use the copy command. And in this
+
+924
+00:18:03,590 --> 00:18:03,600
+will use the copy command. And in this
+ 
+
+925
+00:18:03,600 --> 00:18:05,029
+will use the copy command. And in this
+case, we're just simply going to use
+
+926
+00:18:05,029 --> 00:18:05,039
+case, we're just simply going to use
+ 
+
+927
+00:18:05,039 --> 00:18:07,990
+case, we're just simply going to use
+copy without any extra options. We will
+
+928
+00:18:07,990 --> 00:18:08,000
+copy without any extra options. We will
+ 
+
+929
+00:18:08,000 --> 00:18:11,350
+copy without any extra options. We will
+choose the report.ext command because I
+
+930
+00:18:11,350 --> 00:18:11,360
+choose the report.ext command because I
+ 
+
+931
+00:18:11,360 --> 00:18:13,669
+choose the report.ext command because I
+need to specify the source of what I'm
+
+932
+00:18:13,669 --> 00:18:13,679
+need to specify the source of what I'm
+ 
+
+933
+00:18:13,679 --> 00:18:15,909
+need to specify the source of what I'm
+copying. And now I need to specify the
+
+934
+00:18:15,909 --> 00:18:15,919
+copying. And now I need to specify the
+ 
+
+935
+00:18:15,919 --> 00:18:17,909
+copying. And now I need to specify the
+destination of where this file may be
+
+936
+00:18:17,909 --> 00:18:17,919
+destination of where this file may be
+ 
+
+937
+00:18:17,919 --> 00:18:19,830
+destination of where this file may be
+going. And in this case I'm sending it
+
+938
+00:18:19,830 --> 00:18:19,840
+going. And in this case I'm sending it
+ 
+
+939
+00:18:19,840 --> 00:18:23,590
+going. And in this case I'm sending it
+to a drive X. So I will specify X colon.
+
+940
+00:18:23,590 --> 00:18:23,600
+to a drive X. So I will specify X colon.
+ 
+
+941
+00:18:23,600 --> 00:18:25,909
+to a drive X. So I will specify X colon.
+And when I hit enter, it says that one
+
+942
+00:18:25,909 --> 00:18:25,919
+And when I hit enter, it says that one
+ 
+
+943
+00:18:25,919 --> 00:18:28,549
+And when I hit enter, it says that one
+file has been copied. Now I'd like to
+
+944
+00:18:28,549 --> 00:18:28,559
+file has been copied. Now I'd like to
+ 
+
+945
+00:18:28,559 --> 00:18:30,789
+file has been copied. Now I'd like to
+perform the same copy command, but I
+
+946
+00:18:30,789 --> 00:18:30,799
+perform the same copy command, but I
+ 
+
+947
+00:18:30,799 --> 00:18:33,029
+perform the same copy command, but I
+would like to verify the contents of
+
+948
+00:18:33,029 --> 00:18:33,039
+would like to verify the contents of
+ 
+
+949
+00:18:33,039 --> 00:18:35,750
+would like to verify the contents of
+that file after I copy it. Normally,
+
+950
+00:18:35,750 --> 00:18:35,760
+that file after I copy it. Normally,
+ 
+
+951
+00:18:35,760 --> 00:18:37,430
+that file after I copy it. Normally,
+this would not be done unless we're
+
+952
+00:18:37,430 --> 00:18:37,440
+this would not be done unless we're
+ 
+
+953
+00:18:37,440 --> 00:18:40,310
+this would not be done unless we're
+copying across a wide area network or to
+
+954
+00:18:40,310 --> 00:18:40,320
+copying across a wide area network or to
+ 
+
+955
+00:18:40,320 --> 00:18:42,470
+copying across a wide area network or to
+a location where we're not quite sure
+
+956
+00:18:42,470 --> 00:18:42,480
+a location where we're not quite sure
+ 
+
+957
+00:18:42,480 --> 00:18:44,390
+a location where we're not quite sure
+that the file is going to get there in
+
+958
+00:18:44,390 --> 00:18:44,400
+that the file is going to get there in
+ 
+
+959
+00:18:44,400 --> 00:18:47,110
+that the file is going to get there in
+one piece. This confirms that we were
+
+960
+00:18:47,110 --> 00:18:47,120
+one piece. This confirms that we were
+ 
+
+961
+00:18:47,120 --> 00:18:49,350
+one piece. This confirms that we were
+able to not only copy the file, but that
+
+962
+00:18:49,350 --> 00:18:49,360
+able to not only copy the file, but that
+ 
+
+963
+00:18:49,360 --> 00:18:51,029
+able to not only copy the file, but that
+everything in the file was able to be
+
+964
+00:18:51,029 --> 00:18:51,039
+everything in the file was able to be
+ 
+
+965
+00:18:51,039 --> 00:18:53,750
+everything in the file was able to be
+copied exactly as the original. To do
+
+966
+00:18:53,750 --> 00:18:53,760
+copied exactly as the original. To do
+ 
+
+967
+00:18:53,760 --> 00:18:55,830
+copied exactly as the original. To do
+this, we'll use the copy command. I will
+
+968
+00:18:55,830 --> 00:18:55,840
+this, we'll use the copy command. I will
+ 
+
+969
+00:18:55,840 --> 00:18:59,190
+this, we'll use the copy command. I will
+use the /v option in this case. And
+
+970
+00:18:59,190 --> 00:18:59,200
+use the /v option in this case. And
+ 
+
+971
+00:18:59,200 --> 00:19:01,510
+use the /v option in this case. And
+again, we'll choose the report.txt txt
+
+972
+00:19:01,510 --> 00:19:01,520
+again, we'll choose the report.txt txt
+ 
+
+973
+00:19:01,520 --> 00:19:04,350
+again, we'll choose the report.txt txt
+as our source and the X colon as our
+
+974
+00:19:04,350 --> 00:19:04,360
+as our source and the X colon as our
+ 
+
+975
+00:19:04,360 --> 00:19:06,710
+as our source and the X colon as our
+destination. Now, since we've already
+
+976
+00:19:06,710 --> 00:19:06,720
+destination. Now, since we've already
+ 
+
+977
+00:19:06,720 --> 00:19:09,750
+destination. Now, since we've already
+copied this file to that X drive, it's
+
+978
+00:19:09,750 --> 00:19:09,760
+copied this file to that X drive, it's
+ 
+
+979
+00:19:09,760 --> 00:19:11,430
+copied this file to that X drive, it's
+going to give us a prompt when we hit
+
+980
+00:19:11,430 --> 00:19:11,440
+going to give us a prompt when we hit
+ 
+
+981
+00:19:11,440 --> 00:19:14,310
+going to give us a prompt when we hit
+enter that says this report.ext file
+
+982
+00:19:14,310 --> 00:19:14,320
+enter that says this report.ext file
+ 
+
+983
+00:19:14,320 --> 00:19:17,190
+enter that says this report.ext file
+already exists. Do you want to overwrite
+
+984
+00:19:17,190 --> 00:19:17,200
+already exists. Do you want to overwrite
+ 
+
+985
+00:19:17,200 --> 00:19:19,430
+already exists. Do you want to overwrite
+this file? You of course have to be very
+
+986
+00:19:19,430 --> 00:19:19,440
+this file? You of course have to be very
+ 
+
+987
+00:19:19,440 --> 00:19:21,430
+this file? You of course have to be very
+careful when answering this question
+
+988
+00:19:21,430 --> 00:19:21,440
+careful when answering this question
+ 
+
+989
+00:19:21,440 --> 00:19:23,350
+careful when answering this question
+because if you choose yes, it will
+
+990
+00:19:23,350 --> 00:19:23,360
+because if you choose yes, it will
+ 
+
+991
+00:19:23,360 --> 00:19:25,750
+because if you choose yes, it will
+overwrite that document. If you choose
+
+992
+00:19:25,750 --> 00:19:25,760
+overwrite that document. If you choose
+ 
+
+993
+00:19:25,760 --> 00:19:28,390
+overwrite that document. If you choose
+no, it will not overwrite the contents
+
+994
+00:19:28,390 --> 00:19:28,400
+no, it will not overwrite the contents
+ 
+
+995
+00:19:28,400 --> 00:19:30,710
+no, it will not overwrite the contents
+of that destination. And if you choose
+
+996
+00:19:30,710 --> 00:19:30,720
+of that destination. And if you choose
+ 
+
+997
+00:19:30,720 --> 00:19:33,430
+of that destination. And if you choose
+all, it will overwrite anything else
+
+998
+00:19:33,430 --> 00:19:33,440
+all, it will overwrite anything else
+ 
+
+999
+00:19:33,440 --> 00:19:35,669
+all, it will overwrite anything else
+that you've specified to copy in that
+
+1000
+00:19:35,669 --> 00:19:35,679
+that you've specified to copy in that
+ 
+
+1001
+00:19:35,679 --> 00:19:37,590
+that you've specified to copy in that
+single command. We could be copying
+
+1002
+00:19:37,590 --> 00:19:37,600
+single command. We could be copying
+ 
+
+1003
+00:19:37,600 --> 00:19:39,669
+single command. We could be copying
+multiple files simultaneously. For
+
+1004
+00:19:39,669 --> 00:19:39,679
+multiple files simultaneously. For
+ 
+
+1005
+00:19:39,679 --> 00:19:41,990
+multiple files simultaneously. For
+example, in this case, we would like to
+
+1006
+00:19:41,990 --> 00:19:42,000
+example, in this case, we would like to
+ 
+
+1007
+00:19:42,000 --> 00:19:44,150
+example, in this case, we would like to
+overwrite that file. So, we'll choose Y
+
+1008
+00:19:44,150 --> 00:19:44,160
+overwrite that file. So, we'll choose Y
+ 
+
+1009
+00:19:44,160 --> 00:19:47,190
+overwrite that file. So, we'll choose Y
+for yes and hit enter. And one file has
+
+1010
+00:19:47,190 --> 00:19:47,200
+for yes and hit enter. And one file has
+ 
+
+1011
+00:19:47,200 --> 00:19:49,590
+for yes and hit enter. And one file has
+been copied. But what if we were running
+
+1012
+00:19:49,590 --> 00:19:49,600
+been copied. But what if we were running
+ 
+
+1013
+00:19:49,600 --> 00:19:51,909
+been copied. But what if we were running
+this copy command as part of an
+
+1014
+00:19:51,909 --> 00:19:51,919
+this copy command as part of an
+ 
+
+1015
+00:19:51,919 --> 00:19:54,549
+this copy command as part of an
+automated batch file that runs at 3 in
+
+1016
+00:19:54,549 --> 00:19:54,559
+automated batch file that runs at 3 in
+ 
+
+1017
+00:19:54,559 --> 00:19:56,310
+automated batch file that runs at 3 in
+the morning? We're not going to be here
+
+1018
+00:19:56,310 --> 00:19:56,320
+the morning? We're not going to be here
+ 
+
+1019
+00:19:56,320 --> 00:19:58,789
+the morning? We're not going to be here
+to press the Y button to confirm that we
+
+1020
+00:19:58,789 --> 00:19:58,799
+to press the Y button to confirm that we
+ 
+
+1021
+00:19:58,799 --> 00:20:01,350
+to press the Y button to confirm that we
+want to overwrite that destination. So
+
+1022
+00:20:01,350 --> 00:20:01,360
+want to overwrite that destination. So
+ 
+
+1023
+00:20:01,360 --> 00:20:03,909
+want to overwrite that destination. So
+to be able to bypass that prompt, we
+
+1024
+00:20:03,909 --> 00:20:03,919
+to be able to bypass that prompt, we
+ 
+
+1025
+00:20:03,919 --> 00:20:07,350
+to be able to bypass that prompt, we
+will use the copy command with the /v,
+
+1026
+00:20:07,350 --> 00:20:07,360
+will use the copy command with the /v,
+ 
+
+1027
+00:20:07,360 --> 00:20:10,710
+will use the copy command with the /v,
+but we'll also specify /y. And then
+
+1028
+00:20:10,710 --> 00:20:10,720
+but we'll also specify /y. And then
+ 
+
+1029
+00:20:10,720 --> 00:20:12,470
+but we'll also specify /y. And then
+we'll use the same parameters. Our
+
+1030
+00:20:12,470 --> 00:20:12,480
+we'll use the same parameters. Our
+ 
+
+1031
+00:20:12,480 --> 00:20:15,510
+we'll use the same parameters. Our
+source is still the report.txt file and
+
+1032
+00:20:15,510 --> 00:20:15,520
+source is still the report.txt file and
+ 
+
+1033
+00:20:15,520 --> 00:20:18,630
+source is still the report.txt file and
+the destination is still the X drive.
+
+1034
+00:20:18,630 --> 00:20:18,640
+the destination is still the X drive.
+ 
+
+1035
+00:20:18,640 --> 00:20:21,110
+the destination is still the X drive.
+This time when I hit enter, notice that
+
+1036
+00:20:21,110 --> 00:20:21,120
+This time when I hit enter, notice that
+ 
+
+1037
+00:20:21,120 --> 00:20:23,110
+This time when I hit enter, notice that
+we don't get a prompt asking us if we'd
+
+1038
+00:20:23,110 --> 00:20:23,120
+we don't get a prompt asking us if we'd
+ 
+
+1039
+00:20:23,120 --> 00:20:25,190
+we don't get a prompt asking us if we'd
+like to overwrite the file. Since we
+
+1040
+00:20:25,190 --> 00:20:25,200
+like to overwrite the file. Since we
+ 
+
+1041
+00:20:25,200 --> 00:20:27,990
+like to overwrite the file. Since we
+specified /y, it knows that we
+
+1042
+00:20:27,990 --> 00:20:28,000
+specified /y, it knows that we
+ 
+
+1043
+00:20:28,000 --> 00:20:30,470
+specified /y, it knows that we
+automatically want to choose yes and it
+
+1044
+00:20:30,470 --> 00:20:30,480
+automatically want to choose yes and it
+ 
+
+1045
+00:20:30,480 --> 00:20:32,549
+automatically want to choose yes and it
+copies the file and tells us that one
+
+1046
+00:20:32,549 --> 00:20:32,559
+copies the file and tells us that one
+ 
+
+1047
+00:20:32,559 --> 00:20:34,110
+copies the file and tells us that one
+file has been
+
+1048
+00:20:34,110 --> 00:20:34,120
+file has been
+ 
+
+1049
+00:20:34,120 --> 00:20:36,390
+file has been
+copied. If you're running a relatively
+
+1050
+00:20:36,390 --> 00:20:36,400
+copied. If you're running a relatively
+ 
+
+1051
+00:20:36,400 --> 00:20:38,789
+copied. If you're running a relatively
+new version of Windows, you may decide
+
+1052
+00:20:38,789 --> 00:20:38,799
+new version of Windows, you may decide
+ 
+
+1053
+00:20:38,799 --> 00:20:41,430
+new version of Windows, you may decide
+not to use the copy command, but instead
+
+1054
+00:20:41,430 --> 00:20:41,440
+not to use the copy command, but instead
+ 
+
+1055
+00:20:41,440 --> 00:20:44,549
+not to use the copy command, but instead
+use the robo copy command. Roocopy
+
+1056
+00:20:44,549 --> 00:20:44,559
+use the robo copy command. Roocopy
+ 
+
+1057
+00:20:44,559 --> 00:20:47,190
+use the robo copy command. Roocopy
+stands for robust copy and there are
+
+1058
+00:20:47,190 --> 00:20:47,200
+stands for robust copy and there are
+ 
+
+1059
+00:20:47,200 --> 00:20:49,510
+stands for robust copy and there are
+many more options available in the
+
+1060
+00:20:49,510 --> 00:20:49,520
+many more options available in the
+ 
+
+1061
+00:20:49,520 --> 00:20:51,909
+many more options available in the
+robust copy command than are available
+
+1062
+00:20:51,909 --> 00:20:51,919
+robust copy command than are available
+ 
+
+1063
+00:20:51,919 --> 00:20:55,110
+robust copy command than are available
+with a simple copy. To give you an idea
+
+1064
+00:20:55,110 --> 00:20:55,120
+with a simple copy. To give you an idea
+ 
+
+1065
+00:20:55,120 --> 00:20:57,029
+with a simple copy. To give you an idea
+of just how many options might be
+
+1066
+00:20:57,029 --> 00:20:57,039
+of just how many options might be
+ 
+
+1067
+00:20:57,039 --> 00:20:59,110
+of just how many options might be
+available in roocopy, we're going to
+
+1068
+00:20:59,110 --> 00:20:59,120
+available in roocopy, we're going to
+ 
+
+1069
+00:20:59,120 --> 00:21:01,830
+available in roocopy, we're going to
+simply type in roocopy and hit enter.
+
+1070
+00:21:01,830 --> 00:21:01,840
+simply type in roocopy and hit enter.
+ 
+
+1071
+00:21:01,840 --> 00:21:03,830
+simply type in roocopy and hit enter.
+Notice that it says that for more usage
+
+1072
+00:21:03,830 --> 00:21:03,840
+Notice that it says that for more usage
+ 
+
+1073
+00:21:03,840 --> 00:21:05,710
+Notice that it says that for more usage
+information, run
+
+1074
+00:21:05,710 --> 00:21:05,720
+information, run
+ 
+
+1075
+00:21:05,720 --> 00:21:08,390
+information, run
+roocopy/quest mark. Let's perform a
+
+1076
+00:21:08,390 --> 00:21:08,400
+roocopy/quest mark. Let's perform a
+ 
+
+1077
+00:21:08,400 --> 00:21:11,430
+roocopy/quest mark. Let's perform a
+roocopy with a slashquest mark. And
+
+1078
+00:21:11,430 --> 00:21:11,440
+roocopy with a slashquest mark. And
+ 
+
+1079
+00:21:11,440 --> 00:21:13,669
+roocopy with a slashquest mark. And
+you'll see that pages of information
+
+1080
+00:21:13,669 --> 00:21:13,679
+you'll see that pages of information
+ 
+
+1081
+00:21:13,679 --> 00:21:15,669
+you'll see that pages of information
+will go by. I'm going to scroll all the
+
+1082
+00:21:15,669 --> 00:21:15,679
+will go by. I'm going to scroll all the
+ 
+
+1083
+00:21:15,679 --> 00:21:17,909
+will go by. I'm going to scroll all the
+way back up so that we can see all of
+
+1084
+00:21:17,909 --> 00:21:17,919
+way back up so that we can see all of
+ 
+
+1085
+00:21:17,919 --> 00:21:20,149
+way back up so that we can see all of
+these different options. Most of this is
+
+1086
+00:21:20,149 --> 00:21:20,159
+these different options. Most of this is
+ 
+
+1087
+00:21:20,159 --> 00:21:21,990
+these different options. Most of this is
+what we would expect. We are copying
+
+1088
+00:21:21,990 --> 00:21:22,000
+what we would expect. We are copying
+ 
+
+1089
+00:21:22,000 --> 00:21:23,990
+what we would expect. We are copying
+from a source to a destination and
+
+1090
+00:21:23,990 --> 00:21:24,000
+from a source to a destination and
+ 
+
+1091
+00:21:24,000 --> 00:21:26,310
+from a source to a destination and
+specifying a particular file. And we can
+
+1092
+00:21:26,310 --> 00:21:26,320
+specifying a particular file. And we can
+ 
+
+1093
+00:21:26,320 --> 00:21:28,510
+specifying a particular file. And we can
+copy subdirectories or not copy
+
+1094
+00:21:28,510 --> 00:21:28,520
+copy subdirectories or not copy
+ 
+
+1095
+00:21:28,520 --> 00:21:30,630
+copy subdirectories or not copy
+subdirectories. But if you scroll down a
+
+1096
+00:21:30,630 --> 00:21:30,640
+subdirectories. But if you scroll down a
+ 
+
+1097
+00:21:30,640 --> 00:21:32,470
+subdirectories. But if you scroll down a
+bit, you'll see some very interesting
+
+1098
+00:21:32,470 --> 00:21:32,480
+bit, you'll see some very interesting
+ 
+
+1099
+00:21:32,480 --> 00:21:35,190
+bit, you'll see some very interesting
+options. For example, you can throttle
+
+1100
+00:21:35,190 --> 00:21:35,200
+options. For example, you can throttle
+ 
+
+1101
+00:21:35,200 --> 00:21:37,590
+options. For example, you can throttle
+the information as it's being sent so
+
+1102
+00:21:37,590 --> 00:21:37,600
+the information as it's being sent so
+ 
+
+1103
+00:21:37,600 --> 00:21:39,669
+the information as it's being sent so
+that you're only using a portion of the
+
+1104
+00:21:39,669 --> 00:21:39,679
+that you're only using a portion of the
+ 
+
+1105
+00:21:39,679 --> 00:21:41,669
+that you're only using a portion of the
+bandwidth. This might be especially
+
+1106
+00:21:41,669 --> 00:21:41,679
+bandwidth. This might be especially
+ 
+
+1107
+00:21:41,679 --> 00:21:43,669
+bandwidth. This might be especially
+helpful if you're sending a large file
+
+1108
+00:21:43,669 --> 00:21:43,679
+helpful if you're sending a large file
+ 
+
+1109
+00:21:43,679 --> 00:21:46,549
+helpful if you're sending a large file
+to a remote site over a very constrained
+
+1110
+00:21:46,549 --> 00:21:46,559
+to a remote site over a very constrained
+ 
+
+1111
+00:21:46,559 --> 00:21:49,029
+to a remote site over a very constrained
+bandwidth. There's also options to send
+
+1112
+00:21:49,029 --> 00:21:49,039
+bandwidth. There's also options to send
+ 
+
+1113
+00:21:49,039 --> 00:21:50,630
+bandwidth. There's also options to send
+the file and if there is an
+
+1114
+00:21:50,630 --> 00:21:50,640
+the file and if there is an
+ 
+
+1115
+00:21:50,640 --> 00:21:54,149
+the file and if there is an
+interruption, it will begin to retry to
+
+1116
+00:21:54,149 --> 00:21:54,159
+interruption, it will begin to retry to
+ 
+
+1117
+00:21:54,159 --> 00:21:56,470
+interruption, it will begin to retry to
+send that. So if you have an outage of
+
+1118
+00:21:56,470 --> 00:21:56,480
+send that. So if you have an outage of
+ 
+
+1119
+00:21:56,480 --> 00:21:58,470
+send that. So if you have an outage of
+that network connection in the middle of
+
+1120
+00:21:58,470 --> 00:21:58,480
+that network connection in the middle of
+ 
+
+1121
+00:21:58,480 --> 00:22:01,830
+that network connection in the middle of
+a copy, it will simply retry and retry
+
+1122
+00:22:01,830 --> 00:22:01,840
+a copy, it will simply retry and retry
+ 
+
+1123
+00:22:01,840 --> 00:22:03,590
+a copy, it will simply retry and retry
+until it's able to restore that
+
+1124
+00:22:03,590 --> 00:22:03,600
+until it's able to restore that
+ 
+
+1125
+00:22:03,600 --> 00:22:07,190
+until it's able to restore that
+connection and continue the copy.
+
+1126
+00:22:07,190 --> 00:22:07,200
+connection and continue the copy.
+ 
+
+1127
+00:22:07,200 --> 00:22:08,630
+connection and continue the copy.
+When you start performing a lot of
+
+1128
+00:22:08,630 --> 00:22:08,640
+When you start performing a lot of
+ 
+
+1129
+00:22:08,640 --> 00:22:10,549
+When you start performing a lot of
+diagnostics and troubleshooting and
+
+1130
+00:22:10,549 --> 00:22:10,559
+diagnostics and troubleshooting and
+ 
+
+1131
+00:22:10,559 --> 00:22:12,270
+diagnostics and troubleshooting and
+dealing with multiple tickets
+
+1132
+00:22:12,270 --> 00:22:12,280
+dealing with multiple tickets
+ 
+
+1133
+00:22:12,280 --> 00:22:14,390
+dealing with multiple tickets
+simultaneously, you might have a number
+
+1134
+00:22:14,390 --> 00:22:14,400
+simultaneously, you might have a number
+ 
+
+1135
+00:22:14,400 --> 00:22:16,070
+simultaneously, you might have a number
+of different command prompts on your
+
+1136
+00:22:16,070 --> 00:22:16,080
+of different command prompts on your
+ 
+
+1137
+00:22:16,080 --> 00:22:18,549
+of different command prompts on your
+screen, each one that's connected to a
+
+1138
+00:22:18,549 --> 00:22:18,559
+screen, each one that's connected to a
+ 
+
+1139
+00:22:18,559 --> 00:22:20,470
+screen, each one that's connected to a
+completely different system. And if
+
+1140
+00:22:20,470 --> 00:22:20,480
+completely different system. And if
+ 
+
+1141
+00:22:20,480 --> 00:22:22,310
+completely different system. And if
+you're ready to make a change to one of
+
+1142
+00:22:22,310 --> 00:22:22,320
+you're ready to make a change to one of
+ 
+
+1143
+00:22:22,320 --> 00:22:24,630
+you're ready to make a change to one of
+those systems, how can you confirm that
+
+1144
+00:22:24,630 --> 00:22:24,640
+those systems, how can you confirm that
+ 
+
+1145
+00:22:24,640 --> 00:22:27,110
+those systems, how can you confirm that
+you're really in the right window? You
+
+1146
+00:22:27,110 --> 00:22:27,120
+you're really in the right window? You
+ 
+
+1147
+00:22:27,120 --> 00:22:28,549
+you're really in the right window? You
+don't want to shut down a computer
+
+1148
+00:22:28,549 --> 00:22:28,559
+don't want to shut down a computer
+ 
+
+1149
+00:22:28,559 --> 00:22:30,789
+don't want to shut down a computer
+thinking it's one machine and instead
+
+1150
+00:22:30,789 --> 00:22:30,799
+thinking it's one machine and instead
+ 
+
+1151
+00:22:30,799 --> 00:22:32,789
+thinking it's one machine and instead
+it's a completely different production
+
+1152
+00:22:32,789 --> 00:22:32,799
+it's a completely different production
+ 
+
+1153
+00:22:32,799 --> 00:22:35,669
+it's a completely different production
+server. One way to tell what the name of
+
+1154
+00:22:35,669 --> 00:22:35,679
+server. One way to tell what the name of
+ 
+
+1155
+00:22:35,679 --> 00:22:38,390
+server. One way to tell what the name of
+that device is is by using the hostn
+
+1156
+00:22:38,390 --> 00:22:38,400
+that device is is by using the hostn
+ 
+
+1157
+00:22:38,400 --> 00:22:40,789
+that device is is by using the hostn
+name command. This provides us with the
+
+1158
+00:22:40,789 --> 00:22:40,799
+name command. This provides us with the
+ 
+
+1159
+00:22:40,799 --> 00:22:43,590
+name command. This provides us with the
+Windows device name of that computer.
+
+1160
+00:22:43,590 --> 00:22:43,600
+Windows device name of that computer.
+ 
+
+1161
+00:22:43,600 --> 00:22:45,750
+Windows device name of that computer.
+That way when you type in anything else
+
+1162
+00:22:45,750 --> 00:22:45,760
+That way when you type in anything else
+ 
+
+1163
+00:22:45,760 --> 00:22:48,070
+That way when you type in anything else
+in that window, you know you're typing
+
+1164
+00:22:48,070 --> 00:22:48,080
+in that window, you know you're typing
+ 
+
+1165
+00:22:48,080 --> 00:22:49,950
+in that window, you know you're typing
+it in on the right
+
+1166
+00:22:49,950 --> 00:22:49,960
+it in on the right
+ 
+
+1167
+00:22:49,960 --> 00:22:52,310
+it in on the right
+device. So here's our computer. We have
+
+1168
+00:22:52,310 --> 00:22:52,320
+device. So here's our computer. We have
+ 
+
+1169
+00:22:52,320 --> 00:22:54,710
+device. So here's our computer. We have
+a number of windows on our screen, but
+
+1170
+00:22:54,710 --> 00:22:54,720
+a number of windows on our screen, but
+ 
+
+1171
+00:22:54,720 --> 00:22:56,390
+a number of windows on our screen, but
+there's a problem that we're trying to
+
+1172
+00:22:56,390 --> 00:22:56,400
+there's a problem that we're trying to
+ 
+
+1173
+00:22:56,400 --> 00:22:58,950
+there's a problem that we're trying to
+solve back on this computer, and I need
+
+1174
+00:22:58,950 --> 00:22:58,960
+solve back on this computer, and I need
+ 
+
+1175
+00:22:58,960 --> 00:23:01,270
+solve back on this computer, and I need
+to restart that system. But before I
+
+1176
+00:23:01,270 --> 00:23:01,280
+to restart that system. But before I
+ 
+
+1177
+00:23:01,280 --> 00:23:03,110
+to restart that system. But before I
+send the command to reboot that
+
+1178
+00:23:03,110 --> 00:23:03,120
+send the command to reboot that
+ 
+
+1179
+00:23:03,120 --> 00:23:05,029
+send the command to reboot that
+computer, I need to make sure that I'm
+
+1180
+00:23:05,029 --> 00:23:05,039
+computer, I need to make sure that I'm
+ 
+
+1181
+00:23:05,039 --> 00:23:07,270
+computer, I need to make sure that I'm
+using the correct host name. So we're
+
+1182
+00:23:07,270 --> 00:23:07,280
+using the correct host name. So we're
+ 
+
+1183
+00:23:07,280 --> 00:23:09,110
+using the correct host name. So we're
+going to type in host name and hit
+
+1184
+00:23:09,110 --> 00:23:09,120
+going to type in host name and hit
+ 
+
+1185
+00:23:09,120 --> 00:23:11,190
+going to type in host name and hit
+enter. And it comes back with the name
+
+1186
+00:23:11,190 --> 00:23:11,200
+enter. And it comes back with the name
+ 
+
+1187
+00:23:11,200 --> 00:23:13,190
+enter. And it comes back with the name
+deadless. And that is the name of the
+
+1188
+00:23:13,190 --> 00:23:13,200
+deadless. And that is the name of the
+ 
+
+1189
+00:23:13,200 --> 00:23:15,190
+deadless. And that is the name of the
+host that I would like to restart. So
+
+1190
+00:23:15,190 --> 00:23:15,200
+host that I would like to restart. So
+ 
+
+1191
+00:23:15,200 --> 00:23:17,270
+host that I would like to restart. So
+now when I perform any other functions
+
+1192
+00:23:17,270 --> 00:23:17,280
+now when I perform any other functions
+ 
+
+1193
+00:23:17,280 --> 00:23:19,830
+now when I perform any other functions
+inside of that window, I really do know
+
+1194
+00:23:19,830 --> 00:23:19,840
+inside of that window, I really do know
+ 
+
+1195
+00:23:19,840 --> 00:23:22,310
+inside of that window, I really do know
+that I am performing them on the Dalus
+
+1196
+00:23:22,310 --> 00:23:22,320
+that I am performing them on the Dalus
+ 
+
+1197
+00:23:22,320 --> 00:23:24,549
+that I am performing them on the Dalus
+machine.
+
+1198
+00:23:24,549 --> 00:23:24,559
+machine.
+ 
+
+1199
+00:23:24,559 --> 00:23:26,390
+machine.
+When you're troubleshooting a Windows
+
+1200
+00:23:26,390 --> 00:23:26,400
+When you're troubleshooting a Windows
+ 
+
+1201
+00:23:26,400 --> 00:23:28,710
+When you're troubleshooting a Windows
+computer, you might be using Windows 10,
+
+1202
+00:23:28,710 --> 00:23:28,720
+computer, you might be using Windows 10,
+ 
+
+1203
+00:23:28,720 --> 00:23:30,630
+computer, you might be using Windows 10,
+you might be using Windows 11, and there
+
+1204
+00:23:30,630 --> 00:23:30,640
+you might be using Windows 11, and there
+ 
+
+1205
+00:23:30,640 --> 00:23:32,789
+you might be using Windows 11, and there
+may be different versions of Windows
+
+1206
+00:23:32,789 --> 00:23:32,799
+may be different versions of Windows
+ 
+
+1207
+00:23:32,799 --> 00:23:35,510
+may be different versions of Windows
+within either Windows 10 or Windows 11.
+
+1208
+00:23:35,510 --> 00:23:35,520
+within either Windows 10 or Windows 11.
+ 
+
+1209
+00:23:35,520 --> 00:23:37,350
+within either Windows 10 or Windows 11.
+So, what version of Windows are we
+
+1210
+00:23:37,350 --> 00:23:37,360
+So, what version of Windows are we
+ 
+
+1211
+00:23:37,360 --> 00:23:39,590
+So, what version of Windows are we
+using? One way that we could tell is by
+
+1212
+00:23:39,590 --> 00:23:39,600
+using? One way that we could tell is by
+ 
+
+1213
+00:23:39,600 --> 00:23:41,909
+using? One way that we could tell is by
+typing in the winver command, and it
+
+1214
+00:23:41,909 --> 00:23:41,919
+typing in the winver command, and it
+ 
+
+1215
+00:23:41,919 --> 00:23:43,990
+typing in the winver command, and it
+will bring up a dialogue box that shows
+
+1216
+00:23:43,990 --> 00:23:44,000
+will bring up a dialogue box that shows
+ 
+
+1217
+00:23:44,000 --> 00:23:46,070
+will bring up a dialogue box that shows
+us all of the information about this
+
+1218
+00:23:46,070 --> 00:23:46,080
+us all of the information about this
+ 
+
+1219
+00:23:46,080 --> 00:23:48,710
+us all of the information about this
+version of Windows. So, here we are on
+
+1220
+00:23:48,710 --> 00:23:48,720
+version of Windows. So, here we are on
+ 
+
+1221
+00:23:48,720 --> 00:23:50,789
+version of Windows. So, here we are on
+our Dalus computer, or what I think is
+
+1222
+00:23:50,789 --> 00:23:50,799
+our Dalus computer, or what I think is
+ 
+
+1223
+00:23:50,799 --> 00:23:53,110
+our Dalus computer, or what I think is
+our Dalus computer. We'll use the hostn
+
+1224
+00:23:53,110 --> 00:23:53,120
+our Dalus computer. We'll use the hostn
+ 
+
+1225
+00:23:53,120 --> 00:23:55,270
+our Dalus computer. We'll use the hostn
+name command again just to confirm we're
+
+1226
+00:23:55,270 --> 00:23:55,280
+name command again just to confirm we're
+ 
+
+1227
+00:23:55,280 --> 00:23:57,190
+name command again just to confirm we're
+on the right computer and it is the
+
+1228
+00:23:57,190 --> 00:23:57,200
+on the right computer and it is the
+ 
+
+1229
+00:23:57,200 --> 00:23:59,590
+on the right computer and it is the
+deadless system. Now let's determine
+
+1230
+00:23:59,590 --> 00:23:59,600
+deadless system. Now let's determine
+ 
+
+1231
+00:23:59,600 --> 00:24:02,310
+deadless system. Now let's determine
+what version of Windows is running on
+
+1232
+00:24:02,310 --> 00:24:02,320
+what version of Windows is running on
+ 
+
+1233
+00:24:02,320 --> 00:24:05,669
+what version of Windows is running on
+dead by typing in the winver command and
+
+1234
+00:24:05,669 --> 00:24:05,679
+dead by typing in the winver command and
+ 
+
+1235
+00:24:05,679 --> 00:24:07,990
+dead by typing in the winver command and
+it brings up a box that tells us this is
+
+1236
+00:24:07,990 --> 00:24:08,000
+it brings up a box that tells us this is
+ 
+
+1237
+00:24:08,000 --> 00:24:10,230
+it brings up a box that tells us this is
+Windows 11. Gives us information about
+
+1238
+00:24:10,230 --> 00:24:10,240
+Windows 11. Gives us information about
+ 
+
+1239
+00:24:10,240 --> 00:24:12,549
+Windows 11. Gives us information about
+the version number and any other details
+
+1240
+00:24:12,549 --> 00:24:12,559
+the version number and any other details
+ 
+
+1241
+00:24:12,559 --> 00:24:14,870
+the version number and any other details
+that we need regarding the licensing of
+
+1242
+00:24:14,870 --> 00:24:14,880
+that we need regarding the licensing of
+ 
+
+1243
+00:24:14,880 --> 00:24:17,350
+that we need regarding the licensing of
+this version of Windows. Now we know if
+
+1244
+00:24:17,350 --> 00:24:17,360
+this version of Windows. Now we know if
+ 
+
+1245
+00:24:17,360 --> 00:24:19,190
+this version of Windows. Now we know if
+we're installing a new application and
+
+1246
+00:24:19,190 --> 00:24:19,200
+we're installing a new application and
+ 
+
+1247
+00:24:19,200 --> 00:24:21,430
+we're installing a new application and
+that application is expecting a certain
+
+1248
+00:24:21,430 --> 00:24:21,440
+that application is expecting a certain
+ 
+
+1249
+00:24:21,440 --> 00:24:23,669
+that application is expecting a certain
+version of Windows, we can confirm that
+
+1250
+00:24:23,669 --> 00:24:23,679
+version of Windows, we can confirm that
+ 
+
+1251
+00:24:23,679 --> 00:24:26,350
+version of Windows, we can confirm that
+before we even begin the
+
+1252
+00:24:26,350 --> 00:24:26,360
+before we even begin the
+ 
+
+1253
+00:24:26,360 --> 00:24:28,789
+before we even begin the
+process. Now that we know the name of
+
+1254
+00:24:28,789 --> 00:24:28,799
+process. Now that we know the name of
+ 
+
+1255
+00:24:28,799 --> 00:24:30,630
+process. Now that we know the name of
+the device that we're using and we know
+
+1256
+00:24:30,630 --> 00:24:30,640
+the device that we're using and we know
+ 
+
+1257
+00:24:30,640 --> 00:24:32,630
+the device that we're using and we know
+what version of Windows is associated
+
+1258
+00:24:32,630 --> 00:24:32,640
+what version of Windows is associated
+ 
+
+1259
+00:24:32,640 --> 00:24:35,029
+what version of Windows is associated
+with that device, it might be useful to
+
+1260
+00:24:35,029 --> 00:24:35,039
+with that device, it might be useful to
+ 
+
+1261
+00:24:35,039 --> 00:24:38,310
+with that device, it might be useful to
+also know who we're logged in as on that
+
+1262
+00:24:38,310 --> 00:24:38,320
+also know who we're logged in as on that
+ 
+
+1263
+00:24:38,320 --> 00:24:39,909
+also know who we're logged in as on that
+computer. One of the ways we can
+
+1264
+00:24:39,909 --> 00:24:39,919
+computer. One of the ways we can
+ 
+
+1265
+00:24:39,919 --> 00:24:42,149
+computer. One of the ways we can
+determine that is using the who am I
+
+1266
+00:24:42,149 --> 00:24:42,159
+determine that is using the who am I
+ 
+
+1267
+00:24:42,159 --> 00:24:44,470
+determine that is using the who am I
+command. The who am I command can tell
+
+1268
+00:24:44,470 --> 00:24:44,480
+command. The who am I command can tell
+ 
+
+1269
+00:24:44,480 --> 00:24:46,310
+command. The who am I command can tell
+you what computer you're on, who you're
+
+1270
+00:24:46,310 --> 00:24:46,320
+you what computer you're on, who you're
+ 
+
+1271
+00:24:46,320 --> 00:24:48,310
+you what computer you're on, who you're
+logged in as, what groups you may be a
+
+1272
+00:24:48,310 --> 00:24:48,320
+logged in as, what groups you may be a
+ 
+
+1273
+00:24:48,320 --> 00:24:50,630
+logged in as, what groups you may be a
+part of, and other security permissions
+
+1274
+00:24:50,630 --> 00:24:50,640
+part of, and other security permissions
+ 
+
+1275
+00:24:50,640 --> 00:24:52,950
+part of, and other security permissions
+associated with your login. This might
+
+1276
+00:24:52,950 --> 00:24:52,960
+associated with your login. This might
+ 
+
+1277
+00:24:52,960 --> 00:24:54,470
+associated with your login. This might
+help you if you have a lot of windows
+
+1278
+00:24:54,470 --> 00:24:54,480
+help you if you have a lot of windows
+ 
+
+1279
+00:24:54,480 --> 00:24:56,149
+help you if you have a lot of windows
+open and you're trying to run a command
+
+1280
+00:24:56,149 --> 00:24:56,159
+open and you're trying to run a command
+ 
+
+1281
+00:24:56,159 --> 00:24:58,149
+open and you're trying to run a command
+and it's not running as you expect it.
+
+1282
+00:24:58,149 --> 00:24:58,159
+and it's not running as you expect it.
+ 
+
+1283
+00:24:58,159 --> 00:25:00,070
+and it's not running as you expect it.
+It may just be that you're not logged in
+
+1284
+00:25:00,070 --> 00:25:00,080
+It may just be that you're not logged in
+ 
+
+1285
+00:25:00,080 --> 00:25:02,390
+It may just be that you're not logged in
+as the correct user. And one of the more
+
+1286
+00:25:02,390 --> 00:25:02,400
+as the correct user. And one of the more
+ 
+
+1287
+00:25:02,400 --> 00:25:04,710
+as the correct user. And one of the more
+useful options of the who am I command
+
+1288
+00:25:04,710 --> 00:25:04,720
+useful options of the who am I command
+ 
+
+1289
+00:25:04,720 --> 00:25:07,669
+useful options of the who am I command
+is who am I/all, where it's showing you
+
+1290
+00:25:07,669 --> 00:25:07,679
+is who am I/all, where it's showing you
+ 
+
+1291
+00:25:07,679 --> 00:25:09,590
+is who am I/all, where it's showing you
+more than just the name of the device
+
+1292
+00:25:09,590 --> 00:25:09,600
+more than just the name of the device
+ 
+
+1293
+00:25:09,600 --> 00:25:11,830
+more than just the name of the device
+and the user who's logged in. It shows
+
+1294
+00:25:11,830 --> 00:25:11,840
+and the user who's logged in. It shows
+ 
+
+1295
+00:25:11,840 --> 00:25:14,149
+and the user who's logged in. It shows
+you information about the user, their
+
+1296
+00:25:14,149 --> 00:25:14,159
+you information about the user, their
+ 
+
+1297
+00:25:14,159 --> 00:25:17,269
+you information about the user, their
+SID, group information, any attributes
+
+1298
+00:25:17,269 --> 00:25:17,279
+SID, group information, any attributes
+ 
+
+1299
+00:25:17,279 --> 00:25:19,190
+SID, group information, any attributes
+associated with those groups, and
+
+1300
+00:25:19,190 --> 00:25:19,200
+associated with those groups, and
+ 
+
+1301
+00:25:19,200 --> 00:25:22,590
+associated with those groups, and
+privilege information all in one single
+
+1302
+00:25:22,590 --> 00:25:22,600
+privilege information all in one single
+ 
+
+1303
+00:25:22,600 --> 00:25:24,789
+privilege information all in one single
+screen. This is a command you can run
+
+1304
+00:25:24,789 --> 00:25:24,799
+screen. This is a command you can run
+ 
+
+1305
+00:25:24,799 --> 00:25:27,029
+screen. This is a command you can run
+relatively quickly if we use the who am
+
+1306
+00:25:27,029 --> 00:25:27,039
+relatively quickly if we use the who am
+ 
+
+1307
+00:25:27,039 --> 00:25:29,669
+relatively quickly if we use the who am
+I by itself. It simply gives us the name
+
+1308
+00:25:29,669 --> 00:25:29,679
+I by itself. It simply gives us the name
+ 
+
+1309
+00:25:29,679 --> 00:25:31,510
+I by itself. It simply gives us the name
+of the device and the user we're logged
+
+1310
+00:25:31,510 --> 00:25:31,520
+of the device and the user we're logged
+ 
+
+1311
+00:25:31,520 --> 00:25:33,909
+of the device and the user we're logged
+in as. In this case, I'm on the dead
+
+1312
+00:25:33,909 --> 00:25:33,919
+in as. In this case, I'm on the dead
+ 
+
+1313
+00:25:33,919 --> 00:25:35,669
+in as. In this case, I'm on the dead
+list server and I'm running as
+
+1314
+00:25:35,669 --> 00:25:35,679
+list server and I'm running as
+ 
+
+1315
+00:25:35,679 --> 00:25:37,909
+list server and I'm running as
+professor. To get more information about
+
+1316
+00:25:37,909 --> 00:25:37,919
+professor. To get more information about
+ 
+
+1317
+00:25:37,919 --> 00:25:39,750
+professor. To get more information about
+this username, I'm going to use the up
+
+1318
+00:25:39,750 --> 00:25:39,760
+this username, I'm going to use the up
+ 
+
+1319
+00:25:39,760 --> 00:25:41,909
+this username, I'm going to use the up
+arrow to put who am I back into the
+
+1320
+00:25:41,909 --> 00:25:41,919
+arrow to put who am I back into the
+ 
+
+1321
+00:25:41,919 --> 00:25:44,149
+arrow to put who am I back into the
+list. And I'm going to choose the /all
+
+1322
+00:25:44,149 --> 00:25:44,159
+list. And I'm going to choose the /all
+ 
+
+1323
+00:25:44,159 --> 00:25:46,149
+list. And I'm going to choose the /all
+option. And you can see that it provides
+
+1324
+00:25:46,149 --> 00:25:46,159
+option. And you can see that it provides
+ 
+
+1325
+00:25:46,159 --> 00:25:48,470
+option. And you can see that it provides
+us with a lot more information about not
+
+1326
+00:25:48,470 --> 00:25:48,480
+us with a lot more information about not
+ 
+
+1327
+00:25:48,480 --> 00:25:50,470
+us with a lot more information about not
+only the username and the name of the
+
+1328
+00:25:50,470 --> 00:25:50,480
+only the username and the name of the
+ 
+
+1329
+00:25:50,480 --> 00:25:53,350
+only the username and the name of the
+device. We get SID information, group
+
+1330
+00:25:53,350 --> 00:25:53,360
+device. We get SID information, group
+ 
+
+1331
+00:25:53,360 --> 00:25:56,190
+device. We get SID information, group
+names, and all of the privilege
+
+1332
+00:25:56,190 --> 00:25:56,200
+names, and all of the privilege
+ 
+
+1333
+00:25:56,200 --> 00:25:58,230
+names, and all of the privilege
+details. If you're working in an
+
+1334
+00:25:58,230 --> 00:25:58,240
+details. If you're working in an
+ 
+
+1335
+00:25:58,240 --> 00:26:00,549
+details. If you're working in an
+organization of any size, then you're
+
+1336
+00:26:00,549 --> 00:26:00,559
+organization of any size, then you're
+ 
+
+1337
+00:26:00,559 --> 00:26:02,710
+organization of any size, then you're
+probably going to have all of your
+
+1338
+00:26:02,710 --> 00:26:02,720
+probably going to have all of your
+ 
+
+1339
+00:26:02,720 --> 00:26:04,870
+probably going to have all of your
+systems administered from one single
+
+1340
+00:26:04,870 --> 00:26:04,880
+systems administered from one single
+ 
+
+1341
+00:26:04,880 --> 00:26:06,710
+systems administered from one single
+point. You're able to do this through
+
+1342
+00:26:06,710 --> 00:26:06,720
+point. You're able to do this through
+ 
+
+1343
+00:26:06,720 --> 00:26:09,510
+point. You're able to do this through
+the use of Active Directory. This is a
+
+1344
+00:26:09,510 --> 00:26:09,520
+the use of Active Directory. This is a
+ 
+
+1345
+00:26:09,520 --> 00:26:11,909
+the use of Active Directory. This is a
+way to have one central consolidated
+
+1346
+00:26:11,909 --> 00:26:11,919
+way to have one central consolidated
+ 
+
+1347
+00:26:11,919 --> 00:26:14,310
+way to have one central consolidated
+database of all of your users, your
+
+1348
+00:26:14,310 --> 00:26:14,320
+database of all of your users, your
+ 
+
+1349
+00:26:14,320 --> 00:26:16,470
+database of all of your users, your
+devices, and anything else that's
+
+1350
+00:26:16,470 --> 00:26:16,480
+devices, and anything else that's
+ 
+
+1351
+00:26:16,480 --> 00:26:18,950
+devices, and anything else that's
+important on your network. One of the
+
+1352
+00:26:18,950 --> 00:26:18,960
+important on your network. One of the
+ 
+
+1353
+00:26:18,960 --> 00:26:20,710
+important on your network. One of the
+ways that you're able to administer
+
+1354
+00:26:20,710 --> 00:26:20,720
+ways that you're able to administer
+ 
+
+1355
+00:26:20,720 --> 00:26:22,789
+ways that you're able to administer
+hundreds or even thousands of systems
+
+1356
+00:26:22,789 --> 00:26:22,799
+hundreds or even thousands of systems
+ 
+
+1357
+00:26:22,799 --> 00:26:25,190
+hundreds or even thousands of systems
+from this Active Directory domain is by
+
+1358
+00:26:25,190 --> 00:26:25,200
+from this Active Directory domain is by
+ 
+
+1359
+00:26:25,200 --> 00:26:27,510
+from this Active Directory domain is by
+using a feature known as group policy.
+
+1360
+00:26:27,510 --> 00:26:27,520
+using a feature known as group policy.
+ 
+
+1361
+00:26:27,520 --> 00:26:28,950
+using a feature known as group policy.
+This allows you to set different
+
+1362
+00:26:28,950 --> 00:26:28,960
+This allows you to set different
+ 
+
+1363
+00:26:28,960 --> 00:26:31,190
+This allows you to set different
+features, functions, permissions, and
+
+1364
+00:26:31,190 --> 00:26:31,200
+features, functions, permissions, and
+ 
+
+1365
+00:26:31,200 --> 00:26:33,269
+features, functions, permissions, and
+other settings on individual users
+
+1366
+00:26:33,269 --> 00:26:33,279
+other settings on individual users
+ 
+
+1367
+00:26:33,279 --> 00:26:35,990
+other settings on individual users
+workstations. For example, you may have
+
+1368
+00:26:35,990 --> 00:26:36,000
+workstations. For example, you may have
+ 
+
+1369
+00:26:36,000 --> 00:26:38,149
+workstations. For example, you may have
+a new group policy that you want to set
+
+1370
+00:26:38,149 --> 00:26:38,159
+a new group policy that you want to set
+ 
+
+1371
+00:26:38,159 --> 00:26:40,470
+a new group policy that you want to set
+on somebody's machine that changes the
+
+1372
+00:26:40,470 --> 00:26:40,480
+on somebody's machine that changes the
+ 
+
+1373
+00:26:40,480 --> 00:26:42,870
+on somebody's machine that changes the
+background of their system. Normally,
+
+1374
+00:26:42,870 --> 00:26:42,880
+background of their system. Normally,
+ 
+
+1375
+00:26:42,880 --> 00:26:45,269
+background of their system. Normally,
+this is updated each time the user logs
+
+1376
+00:26:45,269 --> 00:26:45,279
+this is updated each time the user logs
+ 
+
+1377
+00:26:45,279 --> 00:26:47,510
+this is updated each time the user logs
+in, but you may want to push this out to
+
+1378
+00:26:47,510 --> 00:26:47,520
+in, but you may want to push this out to
+ 
+
+1379
+00:26:47,520 --> 00:26:49,830
+in, but you may want to push this out to
+the user in the middle of the day. To be
+
+1380
+00:26:49,830 --> 00:26:49,840
+the user in the middle of the day. To be
+ 
+
+1381
+00:26:49,840 --> 00:26:52,149
+the user in the middle of the day. To be
+able to do that, you can use the GP
+
+1382
+00:26:52,149 --> 00:26:52,159
+able to do that, you can use the GP
+ 
+
+1383
+00:26:52,159 --> 00:26:55,110
+able to do that, you can use the GP
+update command to force a group policy
+
+1384
+00:26:55,110 --> 00:26:55,120
+update command to force a group policy
+ 
+
+1385
+00:26:55,120 --> 00:26:57,510
+update command to force a group policy
+update on a specific computer or a
+
+1386
+00:26:57,510 --> 00:26:57,520
+update on a specific computer or a
+ 
+
+1387
+00:26:57,520 --> 00:27:00,149
+update on a specific computer or a
+specific user account. And if you want
+
+1388
+00:27:00,149 --> 00:27:00,159
+specific user account. And if you want
+ 
+
+1389
+00:27:00,159 --> 00:27:01,909
+specific user account. And if you want
+to get more information about what group
+
+1390
+00:27:01,909 --> 00:27:01,919
+to get more information about what group
+ 
+
+1391
+00:27:01,919 --> 00:27:05,110
+to get more information about what group
+policies are active on a device or user,
+
+1392
+00:27:05,110 --> 00:27:05,120
+policies are active on a device or user,
+ 
+
+1393
+00:27:05,120 --> 00:27:07,510
+policies are active on a device or user,
+you can use the GP result command to
+
+1394
+00:27:07,510 --> 00:27:07,520
+you can use the GP result command to
+ 
+
+1395
+00:27:07,520 --> 00:27:09,269
+you can use the GP result command to
+provide information about what's
+
+1396
+00:27:09,269 --> 00:27:09,279
+provide information about what's
+ 
+
+1397
+00:27:09,279 --> 00:27:10,510
+provide information about what's
+currently
+
+1398
+00:27:10,510 --> 00:27:10,520
+currently
+ 
+
+1399
+00:27:10,520 --> 00:27:13,110
+currently
+running. Here's a Windows computer that
+
+1400
+00:27:13,110 --> 00:27:13,120
+running. Here's a Windows computer that
+ 
+
+1401
+00:27:13,120 --> 00:27:15,510
+running. Here's a Windows computer that
+is part of an Active Directory domain
+
+1402
+00:27:15,510 --> 00:27:15,520
+is part of an Active Directory domain
+ 
+
+1403
+00:27:15,520 --> 00:27:17,510
+is part of an Active Directory domain
+and we're logged in as one of the domain
+
+1404
+00:27:17,510 --> 00:27:17,520
+and we're logged in as one of the domain
+ 
+
+1405
+00:27:17,520 --> 00:27:20,470
+and we're logged in as one of the domain
+users, R McKay. If we wanted to see what
+
+1406
+00:27:20,470 --> 00:27:20,480
+users, R McKay. If we wanted to see what
+ 
+
+1407
+00:27:20,480 --> 00:27:22,470
+users, R McKay. If we wanted to see what
+policies were currently active as part
+
+1408
+00:27:22,470 --> 00:27:22,480
+policies were currently active as part
+ 
+
+1409
+00:27:22,480 --> 00:27:24,870
+policies were currently active as part
+of the Active Directory group policies,
+
+1410
+00:27:24,870 --> 00:27:24,880
+of the Active Directory group policies,
+ 
+
+1411
+00:27:24,880 --> 00:27:28,230
+of the Active Directory group policies,
+we could run the GP result with a slash
+
+1412
+00:27:28,230 --> 00:27:28,240
+we could run the GP result with a slash
+ 
+
+1413
+00:27:28,240 --> 00:27:31,029
+we could run the GP result with a slash
+R. The slash r is a shortcut for
+
+1414
+00:27:31,029 --> 00:27:31,039
+R. The slash r is a shortcut for
+ 
+
+1415
+00:27:31,039 --> 00:27:34,549
+R. The slash r is a shortcut for
+resultant set of policies rsop and
+
+1416
+00:27:34,549 --> 00:27:34,559
+resultant set of policies rsop and
+ 
+
+1417
+00:27:34,559 --> 00:27:36,230
+resultant set of policies rsop and
+that's a windows term that is simply
+
+1418
+00:27:36,230 --> 00:27:36,240
+that's a windows term that is simply
+ 
+
+1419
+00:27:36,240 --> 00:27:38,390
+that's a windows term that is simply
+describing what policies are currently
+
+1420
+00:27:38,390 --> 00:27:38,400
+describing what policies are currently
+ 
+
+1421
+00:27:38,400 --> 00:27:40,870
+describing what policies are currently
+running on the system. When we hit enter
+
+1422
+00:27:40,870 --> 00:27:40,880
+running on the system. When we hit enter
+ 
+
+1423
+00:27:40,880 --> 00:27:42,789
+running on the system. When we hit enter
+it will query the system and if we
+
+1424
+00:27:42,789 --> 00:27:42,799
+it will query the system and if we
+ 
+
+1425
+00:27:42,799 --> 00:27:45,190
+it will query the system and if we
+scroll back up this shows us the rsop
+
+1426
+00:27:45,190 --> 00:27:45,200
+scroll back up this shows us the rsop
+ 
+
+1427
+00:27:45,200 --> 00:27:48,710
+scroll back up this shows us the rsop
+data that is for the sgc domain. It's
+
+1428
+00:27:48,710 --> 00:27:48,720
+data that is for the sgc domain. It's
+ 
+
+1429
+00:27:48,720 --> 00:27:51,110
+data that is for the sgc domain. It's
+user r mccay who's logged into that
+
+1430
+00:27:51,110 --> 00:27:51,120
+user r mccay who's logged into that
+ 
+
+1431
+00:27:51,120 --> 00:27:53,510
+user r mccay who's logged into that
+domain on the device with the name
+
+1432
+00:27:53,510 --> 00:27:53,520
+domain on the device with the name
+ 
+
+1433
+00:27:53,520 --> 00:27:55,510
+domain on the device with the name
+deadless. And you can see it's a member
+
+1434
+00:27:55,510 --> 00:27:55,520
+deadless. And you can see it's a member
+ 
+
+1435
+00:27:55,520 --> 00:27:57,350
+deadless. And you can see it's a member
+workstation. We can see the version of
+
+1436
+00:27:57,350 --> 00:27:57,360
+workstation. We can see the version of
+ 
+
+1437
+00:27:57,360 --> 00:27:59,110
+workstation. We can see the version of
+Windows that's running. We can look at
+
+1438
+00:27:59,110 --> 00:27:59,120
+Windows that's running. We can look at
+ 
+
+1439
+00:27:59,120 --> 00:28:01,190
+Windows that's running. We can look at
+information about the local profile and
+
+1440
+00:28:01,190 --> 00:28:01,200
+information about the local profile and
+ 
+
+1441
+00:28:01,200 --> 00:28:03,830
+information about the local profile and
+it's specific to users R McKay. And it
+
+1442
+00:28:03,830 --> 00:28:03,840
+it's specific to users R McKay. And it
+ 
+
+1443
+00:28:03,840 --> 00:28:05,590
+it's specific to users R McKay. And it
+gives us information about the user
+
+1444
+00:28:05,590 --> 00:28:05,600
+gives us information about the user
+ 
+
+1445
+00:28:05,600 --> 00:28:07,510
+gives us information about the user
+settings. So we can see everything about
+
+1446
+00:28:07,510 --> 00:28:07,520
+settings. So we can see everything about
+ 
+
+1447
+00:28:07,520 --> 00:28:09,510
+settings. So we can see everything about
+the way this user is configured in
+
+1448
+00:28:09,510 --> 00:28:09,520
+the way this user is configured in
+ 
+
+1449
+00:28:09,520 --> 00:28:11,669
+the way this user is configured in
+active directory. And we know exactly
+
+1450
+00:28:11,669 --> 00:28:11,679
+active directory. And we know exactly
+ 
+
+1451
+00:28:11,679 --> 00:28:13,830
+active directory. And we know exactly
+the last time group policy was applied
+
+1452
+00:28:13,830 --> 00:28:13,840
+the last time group policy was applied
+ 
+
+1453
+00:28:13,840 --> 00:28:16,549
+the last time group policy was applied
+to this device. If we scroll down a
+
+1454
+00:28:16,549 --> 00:28:16,559
+to this device. If we scroll down a
+ 
+
+1455
+00:28:16,559 --> 00:28:18,310
+to this device. If we scroll down a
+little bit, we can see that the applied
+
+1456
+00:28:18,310 --> 00:28:18,320
+little bit, we can see that the applied
+ 
+
+1457
+00:28:18,320 --> 00:28:20,470
+little bit, we can see that the applied
+group policy objects are the local group
+
+1458
+00:28:20,470 --> 00:28:20,480
+group policy objects are the local group
+ 
+
+1459
+00:28:20,480 --> 00:28:22,789
+group policy objects are the local group
+policy. So we haven't pushed down any
+
+1460
+00:28:22,789 --> 00:28:22,799
+policy. So we haven't pushed down any
+ 
+
+1461
+00:28:22,799 --> 00:28:24,789
+policy. So we haven't pushed down any
+group policies from the central domain
+
+1462
+00:28:24,789 --> 00:28:24,799
+group policies from the central domain
+ 
+
+1463
+00:28:24,799 --> 00:28:27,029
+group policies from the central domain
+controllers. and the user is part of the
+
+1464
+00:28:27,029 --> 00:28:27,039
+controllers. and the user is part of the
+ 
+
+1465
+00:28:27,039 --> 00:28:29,350
+controllers. and the user is part of the
+following security groups. That's a nice
+
+1466
+00:28:29,350 --> 00:28:29,360
+following security groups. That's a nice
+ 
+
+1467
+00:28:29,360 --> 00:28:31,110
+following security groups. That's a nice
+summary of information. If we're trying
+
+1468
+00:28:31,110 --> 00:28:31,120
+summary of information. If we're trying
+ 
+
+1469
+00:28:31,120 --> 00:28:33,269
+summary of information. If we're trying
+to determine if this user has had a
+
+1470
+00:28:33,269 --> 00:28:33,279
+to determine if this user has had a
+ 
+
+1471
+00:28:33,279 --> 00:28:35,269
+to determine if this user has had a
+certain policy applied to this machine
+
+1472
+00:28:35,269 --> 00:28:35,279
+certain policy applied to this machine
+ 
+
+1473
+00:28:35,279 --> 00:28:37,669
+certain policy applied to this machine
+or this user, you'd be able to see it in
+
+1474
+00:28:37,669 --> 00:28:37,679
+or this user, you'd be able to see it in
+ 
+
+1475
+00:28:37,679 --> 00:28:41,110
+or this user, you'd be able to see it in
+the GP result command. Administrators at
+
+1476
+00:28:41,110 --> 00:28:41,120
+the GP result command. Administrators at
+ 
+
+1477
+00:28:41,120 --> 00:28:43,269
+the GP result command. Administrators at
+this system may have configured a new
+
+1478
+00:28:43,269 --> 00:28:43,279
+this system may have configured a new
+ 
+
+1479
+00:28:43,279 --> 00:28:45,830
+this system may have configured a new
+group policy that changes aspects of the
+
+1480
+00:28:45,830 --> 00:28:45,840
+group policy that changes aspects of the
+ 
+
+1481
+00:28:45,840 --> 00:28:48,389
+group policy that changes aspects of the
+desktop. to be able to push that policy
+
+1482
+00:28:48,389 --> 00:28:48,399
+desktop. to be able to push that policy
+ 
+
+1483
+00:28:48,399 --> 00:28:50,310
+desktop. to be able to push that policy
+down. We could have this user log out
+
+1484
+00:28:50,310 --> 00:28:50,320
+down. We could have this user log out
+ 
+
+1485
+00:28:50,320 --> 00:28:53,430
+down. We could have this user log out
+and log back in or we can use the GP
+
+1486
+00:28:53,430 --> 00:28:53,440
+and log back in or we can use the GP
+ 
+
+1487
+00:28:53,440 --> 00:28:55,750
+and log back in or we can use the GP
+update command and we'll use the option
+
+1488
+00:28:55,750 --> 00:28:55,760
+update command and we'll use the option
+ 
+
+1489
+00:28:55,760 --> 00:28:57,990
+update command and we'll use the option
+to force that change on this local
+
+1490
+00:28:57,990 --> 00:28:58,000
+to force that change on this local
+ 
+
+1491
+00:28:58,000 --> 00:29:00,149
+to force that change on this local
+computer. We'll hit enter. It will
+
+1492
+00:29:00,149 --> 00:29:00,159
+computer. We'll hit enter. It will
+ 
+
+1493
+00:29:00,159 --> 00:29:02,310
+computer. We'll hit enter. It will
+update the policy and we'll see what
+
+1494
+00:29:02,310 --> 00:29:02,320
+update the policy and we'll see what
+ 
+
+1495
+00:29:02,320 --> 00:29:05,110
+update the policy and we'll see what
+changes occur by running another GP
+
+1496
+00:29:05,110 --> 00:29:05,120
+changes occur by running another GP
+ 
+
+1497
+00:29:05,120 --> 00:29:07,990
+changes occur by running another GP
+result after the update is complete. It
+
+1498
+00:29:07,990 --> 00:29:08,000
+result after the update is complete. It
+ 
+
+1499
+00:29:08,000 --> 00:29:09,909
+result after the update is complete. It
+says the computer policy update has
+
+1500
+00:29:09,909 --> 00:29:09,919
+says the computer policy update has
+ 
+
+1501
+00:29:09,919 --> 00:29:11,830
+says the computer policy update has
+completed successfully. We're going to
+
+1502
+00:29:11,830 --> 00:29:11,840
+completed successfully. We're going to
+ 
+
+1503
+00:29:11,840 --> 00:29:14,149
+completed successfully. We're going to
+get a prompt back. And now let's use our
+
+1504
+00:29:14,149 --> 00:29:14,159
+get a prompt back. And now let's use our
+ 
+
+1505
+00:29:14,159 --> 00:29:17,630
+get a prompt back. And now let's use our
+up arrow a couple of times and run a GP
+
+1506
+00:29:17,630 --> 00:29:17,640
+up arrow a couple of times and run a GP
+ 
+
+1507
+00:29:17,640 --> 00:29:20,149
+up arrow a couple of times and run a GP
+result. And you'll notice that a new
+
+1508
+00:29:20,149 --> 00:29:20,159
+result. And you'll notice that a new
+ 
+
+1509
+00:29:20,159 --> 00:29:22,149
+result. And you'll notice that a new
+applied group policy object has been
+
+1510
+00:29:22,149 --> 00:29:22,159
+applied group policy object has been
+ 
+
+1511
+00:29:22,159 --> 00:29:24,950
+applied group policy object has been
+applied to desktop background that might
+
+1512
+00:29:24,950 --> 00:29:24,960
+applied to desktop background that might
+ 
+
+1513
+00:29:24,960 --> 00:29:27,669
+applied to desktop background that might
+allow or restrict access to changing
+
+1514
+00:29:27,669 --> 00:29:27,679
+allow or restrict access to changing
+ 
+
+1515
+00:29:27,679 --> 00:29:30,990
+allow or restrict access to changing
+anything related to the desktop
+
+1516
+00:29:30,990 --> 00:29:31,000
+anything related to the desktop
+ 
+
+1517
+00:29:31,000 --> 00:29:33,269
+anything related to the desktop
+background. When using Windows, there
+
+1518
+00:29:33,269 --> 00:29:33,279
+background. When using Windows, there
+ 
+
+1519
+00:29:33,279 --> 00:29:35,830
+background. When using Windows, there
+may be times when certain core Windows
+
+1520
+00:29:35,830 --> 00:29:35,840
+may be times when certain core Windows
+ 
+
+1521
+00:29:35,840 --> 00:29:38,070
+may be times when certain core Windows
+files are overwritten. This might be
+
+1522
+00:29:38,070 --> 00:29:38,080
+files are overwritten. This might be
+ 
+
+1523
+00:29:38,080 --> 00:29:39,510
+files are overwritten. This might be
+overwritten by a third party
+
+1524
+00:29:39,510 --> 00:29:39,520
+overwritten by a third party
+ 
+
+1525
+00:29:39,520 --> 00:29:41,830
+overwritten by a third party
+application. It could be overwritten by
+
+1526
+00:29:41,830 --> 00:29:41,840
+application. It could be overwritten by
+ 
+
+1527
+00:29:41,840 --> 00:29:44,470
+application. It could be overwritten by
+an operating system update or malware
+
+1528
+00:29:44,470 --> 00:29:44,480
+an operating system update or malware
+ 
+
+1529
+00:29:44,480 --> 00:29:46,470
+an operating system update or malware
+could have infected this machine and
+
+1530
+00:29:46,470 --> 00:29:46,480
+could have infected this machine and
+ 
+
+1531
+00:29:46,480 --> 00:29:49,110
+could have infected this machine and
+made changes to the base configuration
+
+1532
+00:29:49,110 --> 00:29:49,120
+made changes to the base configuration
+ 
+
+1533
+00:29:49,120 --> 00:29:51,510
+made changes to the base configuration
+of this operating system. One way that
+
+1534
+00:29:51,510 --> 00:29:51,520
+of this operating system. One way that
+ 
+
+1535
+00:29:51,520 --> 00:29:53,510
+of this operating system. One way that
+you could tell if any of these important
+
+1536
+00:29:53,510 --> 00:29:53,520
+you could tell if any of these important
+ 
+
+1537
+00:29:53,520 --> 00:29:55,830
+you could tell if any of these important
+Windows files have been changed is by
+
+1538
+00:29:55,830 --> 00:29:55,840
+Windows files have been changed is by
+ 
+
+1539
+00:29:55,840 --> 00:30:00,149
+Windows files have been changed is by
+using sfc or system file checker. This
+
+1540
+00:30:00,149 --> 00:30:00,159
+using sfc or system file checker. This
+ 
+
+1541
+00:30:00,159 --> 00:30:01,830
+using sfc or system file checker. This
+utility will go through all of the
+
+1542
+00:30:01,830 --> 00:30:01,840
+utility will go through all of the
+ 
+
+1543
+00:30:01,840 --> 00:30:04,149
+utility will go through all of the
+important Windows files on your system
+
+1544
+00:30:04,149 --> 00:30:04,159
+important Windows files on your system
+ 
+
+1545
+00:30:04,159 --> 00:30:05,909
+important Windows files on your system
+and it will check to see if any of them
+
+1546
+00:30:05,909 --> 00:30:05,919
+and it will check to see if any of them
+ 
+
+1547
+00:30:05,919 --> 00:30:07,990
+and it will check to see if any of them
+have been changed. If there are
+
+1548
+00:30:07,990 --> 00:30:08,000
+have been changed. If there are
+ 
+
+1549
+00:30:08,000 --> 00:30:09,990
+have been changed. If there are
+modifications to the core operating
+
+1550
+00:30:09,990 --> 00:30:10,000
+modifications to the core operating
+ 
+
+1551
+00:30:10,000 --> 00:30:12,710
+modifications to the core operating
+system files, SFC will inform you that
+
+1552
+00:30:12,710 --> 00:30:12,720
+system files, SFC will inform you that
+ 
+
+1553
+00:30:12,720 --> 00:30:14,710
+system files, SFC will inform you that
+that change has occurred. And you have
+
+1554
+00:30:14,710 --> 00:30:14,720
+that change has occurred. And you have
+ 
+
+1555
+00:30:14,720 --> 00:30:17,510
+that change has occurred. And you have
+the option to tell SFC to correct those
+
+1556
+00:30:17,510 --> 00:30:17,520
+the option to tell SFC to correct those
+ 
+
+1557
+00:30:17,520 --> 00:30:20,549
+the option to tell SFC to correct those
+files to remove any of those changes or
+
+1558
+00:30:20,549 --> 00:30:20,559
+files to remove any of those changes or
+ 
+
+1559
+00:30:20,559 --> 00:30:22,870
+files to remove any of those changes or
+corruptions that might have occurred.
+
+1560
+00:30:22,870 --> 00:30:22,880
+corruptions that might have occurred.
+ 
+
+1561
+00:30:22,880 --> 00:30:25,269
+corruptions that might have occurred.
+This can take a bit of time to run, but
+
+1562
+00:30:25,269 --> 00:30:25,279
+This can take a bit of time to run, but
+ 
+
+1563
+00:30:25,279 --> 00:30:27,070
+This can take a bit of time to run, but
+if you run
+
+1564
+00:30:27,070 --> 00:30:27,080
+if you run
+ 
+
+1565
+00:30:27,080 --> 00:30:29,830
+if you run
+sfc/scan now, it will begin a system
+
+1566
+00:30:29,830 --> 00:30:29,840
+sfc/scan now, it will begin a system
+ 
+
+1567
+00:30:29,840 --> 00:30:31,750
+sfc/scan now, it will begin a system
+scan, look through all of those
+
+1568
+00:30:31,750 --> 00:30:31,760
+scan, look through all of those
+ 
+
+1569
+00:30:31,760 --> 00:30:33,909
+scan, look through all of those
+important Windows files. When it's done,
+
+1570
+00:30:33,909 --> 00:30:33,919
+important Windows files. When it's done,
+ 
+
+1571
+00:30:33,919 --> 00:30:35,830
+important Windows files. When it's done,
+it will give you an update on what might
+
+1572
+00:30:35,830 --> 00:30:35,840
+it will give you an update on what might
+ 
+
+1573
+00:30:35,840 --> 00:30:38,070
+it will give you an update on what might
+have changed. And in this case, it says
+
+1574
+00:30:38,070 --> 00:30:38,080
+have changed. And in this case, it says
+ 
+
+1575
+00:30:38,080 --> 00:30:40,149
+have changed. And in this case, it says
+that Windows resource protection found
+
+1576
+00:30:40,149 --> 00:30:40,159
+that Windows resource protection found
+ 
+
+1577
+00:30:40,159 --> 00:30:42,950
+that Windows resource protection found
+corrupt files and successfully repaired
+
+1578
+00:30:42,950 --> 00:30:42,960
+corrupt files and successfully repaired
+ 
+
+1579
+00:30:42,960 --> 00:30:45,389
+corrupt files and successfully repaired
+them. Details are included in the
+
+1580
+00:30:45,389 --> 00:30:45,399
+them. Details are included in the
+ 
+
+1581
+00:30:45,399 --> 00:30:47,750
+them. Details are included in the
+CBS.log file, and it gives you the
+
+1582
+00:30:47,750 --> 00:30:47,760
+CBS.log file, and it gives you the
+ 
+
+1583
+00:30:47,760 --> 00:30:49,669
+CBS.log file, and it gives you the
+location on where you can find the log
+
+1584
+00:30:49,669 --> 00:30:49,679
+location on where you can find the log
+ 
+
+1585
+00:30:49,679 --> 00:30:52,310
+location on where you can find the log
+file to give you the details on what may
+
+1586
+00:30:52,310 --> 00:30:52,320
+file to give you the details on what may
+ 
+
+1587
+00:30:52,320 --> 00:30:54,470
+file to give you the details on what may
+have been updated or changed in your
+
+1588
+00:30:54,470 --> 00:30:54,480
+have been updated or changed in your
+ 
+
+1589
+00:30:54,480 --> 00:30:58,360
+have been updated or changed in your
+Windows operating system.
+

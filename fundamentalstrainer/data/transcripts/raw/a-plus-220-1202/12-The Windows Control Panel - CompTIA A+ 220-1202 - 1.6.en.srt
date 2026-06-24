@@ -1,0 +1,6215 @@
+1
+00:00:01,920 --> 00:00:03,190
+
+If you're going to be working with
+
+2
+00:00:03,190 --> 00:00:03,200
+If you're going to be working with
+ 
+
+3
+00:00:03,200 --> 00:00:06,150
+If you're going to be working with
+Windows as a user or as an administrator
+
+4
+00:00:06,150 --> 00:00:06,160
+Windows as a user or as an administrator
+ 
+
+5
+00:00:06,160 --> 00:00:08,390
+Windows as a user or as an administrator
+of the system, you will find a number of
+
+6
+00:00:08,390 --> 00:00:08,400
+of the system, you will find a number of
+ 
+
+7
+00:00:08,400 --> 00:00:10,310
+of the system, you will find a number of
+useful utilities are located in the
+
+8
+00:00:10,310 --> 00:00:10,320
+useful utilities are located in the
+ 
+
+9
+00:00:10,320 --> 00:00:12,470
+useful utilities are located in the
+Windows Control Panel. Here's our
+
+10
+00:00:12,470 --> 00:00:12,480
+Windows Control Panel. Here's our
+ 
+
+11
+00:00:12,480 --> 00:00:14,870
+Windows Control Panel. Here's our
+Windows 11 desktop. And this is very
+
+12
+00:00:14,870 --> 00:00:14,880
+Windows 11 desktop. And this is very
+ 
+
+13
+00:00:14,880 --> 00:00:17,109
+Windows 11 desktop. And this is very
+similar to the way that Windows 10 would
+
+14
+00:00:17,109 --> 00:00:17,119
+similar to the way that Windows 10 would
+ 
+
+15
+00:00:17,119 --> 00:00:19,029
+similar to the way that Windows 10 would
+operate as well. To start the control
+
+16
+00:00:19,029 --> 00:00:19,039
+operate as well. To start the control
+ 
+
+17
+00:00:19,039 --> 00:00:20,630
+operate as well. To start the control
+panel, we'll go down to the search
+
+18
+00:00:20,630 --> 00:00:20,640
+panel, we'll go down to the search
+ 
+
+19
+00:00:20,640 --> 00:00:23,029
+panel, we'll go down to the search
+option. We'll start typing in control.
+
+20
+00:00:23,029 --> 00:00:23,039
+option. We'll start typing in control.
+ 
+
+21
+00:00:23,039 --> 00:00:24,790
+option. We'll start typing in control.
+And you can see it fills in and puts
+
+22
+00:00:24,790 --> 00:00:24,800
+And you can see it fills in and puts
+ 
+
+23
+00:00:24,800 --> 00:00:27,589
+And you can see it fills in and puts
+control panel right at the top. If we
+
+24
+00:00:27,589 --> 00:00:27,599
+control panel right at the top. If we
+ 
+
+25
+00:00:27,599 --> 00:00:29,830
+control panel right at the top. If we
+select that, we then see our control
+
+26
+00:00:29,830 --> 00:00:29,840
+select that, we then see our control
+ 
+
+27
+00:00:29,840 --> 00:00:32,790
+select that, we then see our control
+panel options. By default, the list of
+
+28
+00:00:32,790 --> 00:00:32,800
+panel options. By default, the list of
+ 
+
+29
+00:00:32,800 --> 00:00:34,790
+panel options. By default, the list of
+options available in the control panel
+
+30
+00:00:34,790 --> 00:00:34,800
+options available in the control panel
+ 
+
+31
+00:00:34,800 --> 00:00:37,510
+options available in the control panel
+are shown in a category mode. This does
+
+32
+00:00:37,510 --> 00:00:37,520
+are shown in a category mode. This does
+ 
+
+33
+00:00:37,520 --> 00:00:40,229
+are shown in a category mode. This does
+hide a number of the names associated
+
+34
+00:00:40,229 --> 00:00:40,239
+hide a number of the names associated
+ 
+
+35
+00:00:40,239 --> 00:00:41,750
+hide a number of the names associated
+with the different control panel
+
+36
+00:00:41,750 --> 00:00:41,760
+with the different control panel
+ 
+
+37
+00:00:41,760 --> 00:00:44,310
+with the different control panel
+applets. So, I'll tend to change the
+
+38
+00:00:44,310 --> 00:00:44,320
+applets. So, I'll tend to change the
+ 
+
+39
+00:00:44,320 --> 00:00:46,869
+applets. So, I'll tend to change the
+view from category to something like
+
+40
+00:00:46,869 --> 00:00:46,879
+view from category to something like
+ 
+
+41
+00:00:46,879 --> 00:00:49,590
+view from category to something like
+small icons or the one that I like the
+
+42
+00:00:49,590 --> 00:00:49,600
+small icons or the one that I like the
+ 
+
+43
+00:00:49,600 --> 00:00:52,069
+small icons or the one that I like the
+most, the large icons. This allows you
+
+44
+00:00:52,069 --> 00:00:52,079
+most, the large icons. This allows you
+ 
+
+45
+00:00:52,079 --> 00:00:54,630
+most, the large icons. This allows you
+to see every utility associated with the
+
+46
+00:00:54,630 --> 00:00:54,640
+to see every utility associated with the
+ 
+
+47
+00:00:54,640 --> 00:00:57,430
+to see every utility associated with the
+control panel and they are all listed in
+
+48
+00:00:57,430 --> 00:00:57,440
+control panel and they are all listed in
+ 
+
+49
+00:00:57,440 --> 00:01:00,310
+control panel and they are all listed in
+alphabetical order. One of the control
+
+50
+00:01:00,310 --> 00:01:00,320
+alphabetical order. One of the control
+ 
+
+51
+00:01:00,320 --> 00:01:02,150
+alphabetical order. One of the control
+panel applets you'll need to know about
+
+52
+00:01:02,150 --> 00:01:02,160
+panel applets you'll need to know about
+ 
+
+53
+00:01:02,160 --> 00:01:04,869
+panel applets you'll need to know about
+is the one for internet options. This
+
+54
+00:01:04,869 --> 00:01:04,879
+is the one for internet options. This
+ 
+
+55
+00:01:04,879 --> 00:01:06,789
+is the one for internet options. This
+provides you with a list of options that
+
+56
+00:01:06,789 --> 00:01:06,799
+provides you with a list of options that
+ 
+
+57
+00:01:06,799 --> 00:01:09,750
+provides you with a list of options that
+are available from your builtin internet
+
+58
+00:01:09,750 --> 00:01:09,760
+are available from your builtin internet
+ 
+
+59
+00:01:09,760 --> 00:01:11,510
+are available from your builtin internet
+browser. You'll notice that there is
+
+60
+00:01:11,510 --> 00:01:11,520
+browser. You'll notice that there is
+ 
+
+61
+00:01:11,520 --> 00:01:13,670
+browser. You'll notice that there is
+information about browsing history on
+
+62
+00:01:13,670 --> 00:01:13,680
+information about browsing history on
+ 
+
+63
+00:01:13,680 --> 00:01:15,590
+information about browsing history on
+this general tab. You have information
+
+64
+00:01:15,590 --> 00:01:15,600
+this general tab. You have information
+ 
+
+65
+00:01:15,600 --> 00:01:17,670
+this general tab. You have information
+about how you want the browser to appear
+
+66
+00:01:17,670 --> 00:01:17,680
+about how you want the browser to appear
+ 
+
+67
+00:01:17,680 --> 00:01:20,149
+about how you want the browser to appear
+as far as colors and language and fonts.
+
+68
+00:01:20,149 --> 00:01:20,159
+as far as colors and language and fonts.
+ 
+
+69
+00:01:20,159 --> 00:01:21,990
+as far as colors and language and fonts.
+And then you have information about what
+
+70
+00:01:21,990 --> 00:01:22,000
+And then you have information about what
+ 
+
+71
+00:01:22,000 --> 00:01:24,950
+And then you have information about what
+is displayed in the individual tabs.
+
+72
+00:01:24,950 --> 00:01:24,960
+is displayed in the individual tabs.
+ 
+
+73
+00:01:24,960 --> 00:01:26,870
+is displayed in the individual tabs.
+Under the security tab, we have the
+
+74
+00:01:26,870 --> 00:01:26,880
+Under the security tab, we have the
+ 
+
+75
+00:01:26,880 --> 00:01:29,590
+Under the security tab, we have the
+options to define what particular rights
+
+76
+00:01:29,590 --> 00:01:29,600
+options to define what particular rights
+ 
+
+77
+00:01:29,600 --> 00:01:31,590
+options to define what particular rights
+and permissions are allowed depending on
+
+78
+00:01:31,590 --> 00:01:31,600
+and permissions are allowed depending on
+ 
+
+79
+00:01:31,600 --> 00:01:33,749
+and permissions are allowed depending on
+where we're connected to the internet.
+
+80
+00:01:33,749 --> 00:01:33,759
+where we're connected to the internet.
+ 
+
+81
+00:01:33,759 --> 00:01:35,749
+where we're connected to the internet.
+For example, if we are on an internet
+
+82
+00:01:35,749 --> 00:01:35,759
+For example, if we are on an internet
+ 
+
+83
+00:01:35,759 --> 00:01:37,990
+For example, if we are on an internet
+zone, then you will have much more
+
+84
+00:01:37,990 --> 00:01:38,000
+zone, then you will have much more
+ 
+
+85
+00:01:38,000 --> 00:01:40,230
+zone, then you will have much more
+security than if you're somewhere on a
+
+86
+00:01:40,230 --> 00:01:40,240
+security than if you're somewhere on a
+ 
+
+87
+00:01:40,240 --> 00:01:42,710
+security than if you're somewhere on a
+local internet zone. You can also set
+
+88
+00:01:42,710 --> 00:01:42,720
+local internet zone. You can also set
+ 
+
+89
+00:01:42,720 --> 00:01:44,230
+local internet zone. You can also set
+rights and permissions if you are
+
+90
+00:01:44,230 --> 00:01:44,240
+rights and permissions if you are
+ 
+
+91
+00:01:44,240 --> 00:01:45,910
+rights and permissions if you are
+connecting to a site that you consider
+
+92
+00:01:45,910 --> 00:01:45,920
+connecting to a site that you consider
+ 
+
+93
+00:01:45,920 --> 00:01:48,149
+connecting to a site that you consider
+to be trusted and a different set of
+
+94
+00:01:48,149 --> 00:01:48,159
+to be trusted and a different set of
+ 
+
+95
+00:01:48,159 --> 00:01:51,510
+to be trusted and a different set of
+options if this is a restricted site.
+
+96
+00:01:51,510 --> 00:01:51,520
+options if this is a restricted site.
+ 
+
+97
+00:01:51,520 --> 00:01:53,830
+options if this is a restricted site.
+The privacy tab inside of our internet
+
+98
+00:01:53,830 --> 00:01:53,840
+The privacy tab inside of our internet
+ 
+
+99
+00:01:53,840 --> 00:01:56,310
+The privacy tab inside of our internet
+properties allows us to allow or
+
+100
+00:01:56,310 --> 00:01:56,320
+properties allows us to allow or
+ 
+
+101
+00:01:56,320 --> 00:01:58,789
+properties allows us to allow or
+disallow access to certain sites and how
+
+102
+00:01:58,789 --> 00:01:58,799
+disallow access to certain sites and how
+ 
+
+103
+00:01:58,799 --> 00:02:00,389
+disallow access to certain sites and how
+we might deal with the cookies
+
+104
+00:02:00,389 --> 00:02:00,399
+we might deal with the cookies
+ 
+
+105
+00:02:00,399 --> 00:02:02,310
+we might deal with the cookies
+associated with that site. And we also
+
+106
+00:02:02,310 --> 00:02:02,320
+associated with that site. And we also
+ 
+
+107
+00:02:02,320 --> 00:02:03,910
+associated with that site. And we also
+have the option here to change how the
+
+108
+00:02:03,910 --> 00:02:03,920
+have the option here to change how the
+ 
+
+109
+00:02:03,920 --> 00:02:06,149
+have the option here to change how the
+pop-up blocker will work inside of our
+
+110
+00:02:06,149 --> 00:02:06,159
+pop-up blocker will work inside of our
+ 
+
+111
+00:02:06,159 --> 00:02:08,389
+pop-up blocker will work inside of our
+browser. The content tab gives us
+
+112
+00:02:08,389 --> 00:02:08,399
+browser. The content tab gives us
+ 
+
+113
+00:02:08,399 --> 00:02:10,790
+browser. The content tab gives us
+information about how certificates are
+
+114
+00:02:10,790 --> 00:02:10,800
+information about how certificates are
+ 
+
+115
+00:02:10,800 --> 00:02:12,949
+information about how certificates are
+handled inside of the browser and it
+
+116
+00:02:12,949 --> 00:02:12,959
+handled inside of the browser and it
+ 
+
+117
+00:02:12,959 --> 00:02:15,630
+handled inside of the browser and it
+turns on or turns off the autocomplete
+
+118
+00:02:15,630 --> 00:02:15,640
+turns on or turns off the autocomplete
+ 
+
+119
+00:02:15,640 --> 00:02:17,750
+turns on or turns off the autocomplete
+process. If you're connecting to the
+
+120
+00:02:17,750 --> 00:02:17,760
+process. If you're connecting to the
+ 
+
+121
+00:02:17,760 --> 00:02:19,750
+process. If you're connecting to the
+internet over something other than a
+
+122
+00:02:19,750 --> 00:02:19,760
+internet over something other than a
+ 
+
+123
+00:02:19,760 --> 00:02:21,190
+internet over something other than a
+direct connection, you may want to
+
+124
+00:02:21,190 --> 00:02:21,200
+direct connection, you may want to
+ 
+
+125
+00:02:21,200 --> 00:02:22,949
+direct connection, you may want to
+modify some of the settings within the
+
+126
+00:02:22,949 --> 00:02:22,959
+modify some of the settings within the
+ 
+
+127
+00:02:22,959 --> 00:02:25,030
+modify some of the settings within the
+connections tab. This is how you can set
+
+128
+00:02:25,030 --> 00:02:25,040
+connections tab. This is how you can set
+ 
+
+129
+00:02:25,040 --> 00:02:26,710
+connections tab. This is how you can set
+up an internet connection that might be
+
+130
+00:02:26,710 --> 00:02:26,720
+up an internet connection that might be
+ 
+
+131
+00:02:26,720 --> 00:02:29,430
+up an internet connection that might be
+dialup or through a VPN. And you can put
+
+132
+00:02:29,430 --> 00:02:29,440
+dialup or through a VPN. And you can put
+ 
+
+133
+00:02:29,440 --> 00:02:31,589
+dialup or through a VPN. And you can put
+all of those parameters into these
+
+134
+00:02:31,589 --> 00:02:31,599
+all of those parameters into these
+ 
+
+135
+00:02:31,599 --> 00:02:33,990
+all of those parameters into these
+settings. This is also where you might
+
+136
+00:02:33,990 --> 00:02:34,000
+settings. This is also where you might
+ 
+
+137
+00:02:34,000 --> 00:02:36,470
+settings. This is also where you might
+want to define a proxy server, assuming
+
+138
+00:02:36,470 --> 00:02:36,480
+want to define a proxy server, assuming
+ 
+
+139
+00:02:36,480 --> 00:02:38,390
+want to define a proxy server, assuming
+it's a proxy server that does not work
+
+140
+00:02:38,390 --> 00:02:38,400
+it's a proxy server that does not work
+ 
+
+141
+00:02:38,400 --> 00:02:40,630
+it's a proxy server that does not work
+in a transparent mode. You'll find that
+
+142
+00:02:40,630 --> 00:02:40,640
+in a transparent mode. You'll find that
+ 
+
+143
+00:02:40,640 --> 00:02:42,470
+in a transparent mode. You'll find that
+information under LAN settings, and
+
+144
+00:02:42,470 --> 00:02:42,480
+information under LAN settings, and
+ 
+
+145
+00:02:42,480 --> 00:02:44,150
+information under LAN settings, and
+you'll see there is an option here for
+
+146
+00:02:44,150 --> 00:02:44,160
+you'll see there is an option here for
+ 
+
+147
+00:02:44,160 --> 00:02:46,630
+you'll see there is an option here for
+automatic configuration of those proxy
+
+148
+00:02:46,630 --> 00:02:46,640
+automatic configuration of those proxy
+ 
+
+149
+00:02:46,640 --> 00:02:49,270
+automatic configuration of those proxy
+settings, or you can manually specify a
+
+150
+00:02:49,270 --> 00:02:49,280
+settings, or you can manually specify a
+ 
+
+151
+00:02:49,280 --> 00:02:51,470
+settings, or you can manually specify a
+proxy server and add the address
+
+152
+00:02:51,470 --> 00:02:51,480
+proxy server and add the address
+ 
+
+153
+00:02:51,480 --> 00:02:53,830
+proxy server and add the address
+yourself. The next option in our
+
+154
+00:02:53,830 --> 00:02:53,840
+yourself. The next option in our
+ 
+
+155
+00:02:53,840 --> 00:02:56,470
+yourself. The next option in our
+internet settings is for programs. This
+
+156
+00:02:56,470 --> 00:02:56,480
+internet settings is for programs. This
+ 
+
+157
+00:02:56,480 --> 00:02:58,630
+internet settings is for programs. This
+defines how add-ons are configured
+
+158
+00:02:58,630 --> 00:02:58,640
+defines how add-ons are configured
+ 
+
+159
+00:02:58,640 --> 00:03:00,790
+defines how add-ons are configured
+inside of your browser to extend the
+
+160
+00:03:00,790 --> 00:03:00,800
+inside of your browser to extend the
+ 
+
+161
+00:03:00,800 --> 00:03:03,350
+inside of your browser to extend the
+capabilities of the browser itself. We
+
+162
+00:03:03,350 --> 00:03:03,360
+capabilities of the browser itself. We
+ 
+
+163
+00:03:03,360 --> 00:03:05,430
+capabilities of the browser itself. We
+can also define certain programs that
+
+164
+00:03:05,430 --> 00:03:05,440
+can also define certain programs that
+ 
+
+165
+00:03:05,440 --> 00:03:07,589
+can also define certain programs that
+will be used by default if you're
+
+166
+00:03:07,589 --> 00:03:07,599
+will be used by default if you're
+ 
+
+167
+00:03:07,599 --> 00:03:09,750
+will be used by default if you're
+clicking on particular links on a web
+
+168
+00:03:09,750 --> 00:03:09,760
+clicking on particular links on a web
+ 
+
+169
+00:03:09,760 --> 00:03:12,869
+clicking on particular links on a web
+page. And lastly, we have the option for
+
+170
+00:03:12,869 --> 00:03:12,879
+page. And lastly, we have the option for
+ 
+
+171
+00:03:12,879 --> 00:03:15,030
+page. And lastly, we have the option for
+advanced. This is a detailed list of
+
+172
+00:03:15,030 --> 00:03:15,040
+advanced. This is a detailed list of
+ 
+
+173
+00:03:15,040 --> 00:03:16,790
+advanced. This is a detailed list of
+configuration settings that allows you
+
+174
+00:03:16,790 --> 00:03:16,800
+configuration settings that allows you
+ 
+
+175
+00:03:16,800 --> 00:03:19,110
+configuration settings that allows you
+to modify the ways that accessibility is
+
+176
+00:03:19,110 --> 00:03:19,120
+to modify the ways that accessibility is
+ 
+
+177
+00:03:19,120 --> 00:03:20,949
+to modify the ways that accessibility is
+used in the browser. We have information
+
+178
+00:03:20,949 --> 00:03:20,959
+used in the browser. We have information
+ 
+
+179
+00:03:20,959 --> 00:03:22,790
+used in the browser. We have information
+about the type of protocols that might
+
+180
+00:03:22,790 --> 00:03:22,800
+about the type of protocols that might
+ 
+
+181
+00:03:22,800 --> 00:03:24,869
+about the type of protocols that might
+be used and you can define how the
+
+182
+00:03:24,869 --> 00:03:24,879
+be used and you can define how the
+ 
+
+183
+00:03:24,879 --> 00:03:26,790
+be used and you can define how the
+browser will react depending on what
+
+184
+00:03:26,790 --> 00:03:26,800
+browser will react depending on what
+ 
+
+185
+00:03:26,800 --> 00:03:28,670
+browser will react depending on what
+type of site you're
+
+186
+00:03:28,670 --> 00:03:28,680
+type of site you're
+ 
+
+187
+00:03:28,680 --> 00:03:30,949
+type of site you're
+visiting. There may be times when you
+
+188
+00:03:30,949 --> 00:03:30,959
+visiting. There may be times when you
+ 
+
+189
+00:03:30,959 --> 00:03:32,789
+visiting. There may be times when you
+need to configure settings on a printer
+
+190
+00:03:32,789 --> 00:03:32,799
+need to configure settings on a printer
+ 
+
+191
+00:03:32,799 --> 00:03:35,110
+need to configure settings on a printer
+or modify the way a particular device is
+
+192
+00:03:35,110 --> 00:03:35,120
+or modify the way a particular device is
+ 
+
+193
+00:03:35,120 --> 00:03:37,270
+or modify the way a particular device is
+configured. One of the ways to access
+
+194
+00:03:37,270 --> 00:03:37,280
+configured. One of the ways to access
+ 
+
+195
+00:03:37,280 --> 00:03:39,190
+configured. One of the ways to access
+these configuration parameters is
+
+196
+00:03:39,190 --> 00:03:39,200
+these configuration parameters is
+ 
+
+197
+00:03:39,200 --> 00:03:41,270
+these configuration parameters is
+through the option for devices and
+
+198
+00:03:41,270 --> 00:03:41,280
+through the option for devices and
+ 
+
+199
+00:03:41,280 --> 00:03:43,270
+through the option for devices and
+printers. Anything you're connecting to
+
+200
+00:03:43,270 --> 00:03:43,280
+printers. Anything you're connecting to
+ 
+
+201
+00:03:43,280 --> 00:03:45,430
+printers. Anything you're connecting to
+across the network or devices that are
+
+202
+00:03:45,430 --> 00:03:45,440
+across the network or devices that are
+ 
+
+203
+00:03:45,440 --> 00:03:47,430
+across the network or devices that are
+directly connected to your computer will
+
+204
+00:03:47,430 --> 00:03:47,440
+directly connected to your computer will
+ 
+
+205
+00:03:47,440 --> 00:03:49,670
+directly connected to your computer will
+be found in this devices and printers
+
+206
+00:03:49,670 --> 00:03:49,680
+be found in this devices and printers
+ 
+
+207
+00:03:49,680 --> 00:03:52,470
+be found in this devices and printers
+window. This is a very useful front end,
+
+208
+00:03:52,470 --> 00:03:52,480
+window. This is a very useful front end,
+ 
+
+209
+00:03:52,480 --> 00:03:54,869
+window. This is a very useful front end,
+especially for users that need access to
+
+210
+00:03:54,869 --> 00:03:54,879
+especially for users that need access to
+ 
+
+211
+00:03:54,879 --> 00:03:56,710
+especially for users that need access to
+the configuration parameters of a
+
+212
+00:03:56,710 --> 00:03:56,720
+the configuration parameters of a
+ 
+
+213
+00:03:56,720 --> 00:03:58,470
+the configuration parameters of a
+device, but they don't want to have to
+
+214
+00:03:58,470 --> 00:03:58,480
+device, but they don't want to have to
+ 
+
+215
+00:03:58,480 --> 00:04:00,550
+device, but they don't want to have to
+go through the detailed breakdown that's
+
+216
+00:04:00,550 --> 00:04:00,560
+go through the detailed breakdown that's
+ 
+
+217
+00:04:00,560 --> 00:04:03,270
+go through the detailed breakdown that's
+available inside of device manager. You
+
+218
+00:04:03,270 --> 00:04:03,280
+available inside of device manager. You
+ 
+
+219
+00:04:03,280 --> 00:04:05,110
+available inside of device manager. You
+can even see that the icons within
+
+220
+00:04:05,110 --> 00:04:05,120
+can even see that the icons within
+ 
+
+221
+00:04:05,120 --> 00:04:07,509
+can even see that the icons within
+devices and printers make it very easy
+
+222
+00:04:07,509 --> 00:04:07,519
+devices and printers make it very easy
+ 
+
+223
+00:04:07,519 --> 00:04:10,070
+devices and printers make it very easy
+to identify and select devices that are
+
+224
+00:04:10,070 --> 00:04:10,080
+to identify and select devices that are
+ 
+
+225
+00:04:10,080 --> 00:04:12,229
+to identify and select devices that are
+on your network.
+
+226
+00:04:12,229 --> 00:04:12,239
+on your network.
+ 
+
+227
+00:04:12,239 --> 00:04:14,390
+on your network.
+In my control panel, I simply select
+
+228
+00:04:14,390 --> 00:04:14,400
+In my control panel, I simply select
+ 
+
+229
+00:04:14,400 --> 00:04:16,629
+In my control panel, I simply select
+devices and printers. And you can see a
+
+230
+00:04:16,629 --> 00:04:16,639
+devices and printers. And you can see a
+ 
+
+231
+00:04:16,639 --> 00:04:18,949
+devices and printers. And you can see a
+number of different devices appear. Some
+
+232
+00:04:18,949 --> 00:04:18,959
+number of different devices appear. Some
+ 
+
+233
+00:04:18,959 --> 00:04:21,509
+number of different devices appear. Some
+of these devices get a generic icon.
+
+234
+00:04:21,509 --> 00:04:21,519
+of these devices get a generic icon.
+ 
+
+235
+00:04:21,519 --> 00:04:23,749
+of these devices get a generic icon.
+Other devices are identified as a
+
+236
+00:04:23,749 --> 00:04:23,759
+Other devices are identified as a
+ 
+
+237
+00:04:23,759 --> 00:04:25,909
+Other devices are identified as a
+microphone and it shows an icon of a
+
+238
+00:04:25,909 --> 00:04:25,919
+microphone and it shows an icon of a
+ 
+
+239
+00:04:25,919 --> 00:04:28,070
+microphone and it shows an icon of a
+microphone or a printer. And you can see
+
+240
+00:04:28,070 --> 00:04:28,080
+microphone or a printer. And you can see
+ 
+
+241
+00:04:28,080 --> 00:04:29,909
+microphone or a printer. And you can see
+the specific printer names are listed
+
+242
+00:04:29,909 --> 00:04:29,919
+the specific printer names are listed
+ 
+
+243
+00:04:29,919 --> 00:04:32,230
+the specific printer names are listed
+underneath. If you want to modify any of
+
+244
+00:04:32,230 --> 00:04:32,240
+underneath. If you want to modify any of
+ 
+
+245
+00:04:32,240 --> 00:04:34,230
+underneath. If you want to modify any of
+these, you can right mouse click on any
+
+246
+00:04:34,230 --> 00:04:34,240
+these, you can right mouse click on any
+ 
+
+247
+00:04:34,240 --> 00:04:36,629
+these, you can right mouse click on any
+of these devices, configure the options,
+
+248
+00:04:36,629 --> 00:04:36,639
+of these devices, configure the options,
+ 
+
+249
+00:04:36,639 --> 00:04:38,469
+of these devices, configure the options,
+or change some of the properties of the
+
+250
+00:04:38,469 --> 00:04:38,479
+or change some of the properties of the
+ 
+
+251
+00:04:38,479 --> 00:04:41,310
+or change some of the properties of the
+printer associated with that icon.
+
+252
+00:04:41,310 --> 00:04:41,320
+printer associated with that icon.
+ 
+
+253
+00:04:41,320 --> 00:04:43,270
+printer associated with that icon.
+Often when you're installing
+
+254
+00:04:43,270 --> 00:04:43,280
+Often when you're installing
+ 
+
+255
+00:04:43,280 --> 00:04:45,590
+Often when you're installing
+applications, it's a single application
+
+256
+00:04:45,590 --> 00:04:45,600
+applications, it's a single application
+ 
+
+257
+00:04:45,600 --> 00:04:47,350
+applications, it's a single application
+installation program that you're using
+
+258
+00:04:47,350 --> 00:04:47,360
+installation program that you're using
+ 
+
+259
+00:04:47,360 --> 00:04:49,030
+installation program that you're using
+that you may have downloaded directly
+
+260
+00:04:49,030 --> 00:04:49,040
+that you may have downloaded directly
+ 
+
+261
+00:04:49,040 --> 00:04:51,030
+that you may have downloaded directly
+from the internet. But if you'd like a
+
+262
+00:04:51,030 --> 00:04:51,040
+from the internet. But if you'd like a
+ 
+
+263
+00:04:51,040 --> 00:04:53,030
+from the internet. But if you'd like a
+summary of all of the applications that
+
+264
+00:04:53,030 --> 00:04:53,040
+summary of all of the applications that
+ 
+
+265
+00:04:53,040 --> 00:04:54,550
+summary of all of the applications that
+have been installed on your computer,
+
+266
+00:04:54,550 --> 00:04:54,560
+have been installed on your computer,
+ 
+
+267
+00:04:54,560 --> 00:04:56,390
+have been installed on your computer,
+you can choose the option for programs
+
+268
+00:04:56,390 --> 00:04:56,400
+you can choose the option for programs
+ 
+
+269
+00:04:56,400 --> 00:04:58,790
+you can choose the option for programs
+and features. This will show you all of
+
+270
+00:04:58,790 --> 00:04:58,800
+and features. This will show you all of
+ 
+
+271
+00:04:58,800 --> 00:05:00,870
+and features. This will show you all of
+the installations that you've made. And
+
+272
+00:05:00,870 --> 00:05:00,880
+the installations that you've made. And
+ 
+
+273
+00:05:00,880 --> 00:05:03,430
+the installations that you've made. And
+from here, you can choose to uninstall
+
+274
+00:05:03,430 --> 00:05:03,440
+from here, you can choose to uninstall
+ 
+
+275
+00:05:03,440 --> 00:05:06,110
+from here, you can choose to uninstall
+or reinstall different aspects of that
+
+276
+00:05:06,110 --> 00:05:06,120
+or reinstall different aspects of that
+ 
+
+277
+00:05:06,120 --> 00:05:08,070
+or reinstall different aspects of that
+application. This gives you a list of
+
+278
+00:05:08,070 --> 00:05:08,080
+application. This gives you a list of
+ 
+
+279
+00:05:08,080 --> 00:05:09,590
+application. This gives you a list of
+all of the applications that are
+
+280
+00:05:09,590 --> 00:05:09,600
+all of the applications that are
+ 
+
+281
+00:05:09,600 --> 00:05:11,270
+all of the applications that are
+installed. You can see the date that
+
+282
+00:05:11,270 --> 00:05:11,280
+installed. You can see the date that
+ 
+
+283
+00:05:11,280 --> 00:05:12,950
+installed. You can see the date that
+you've installed it on and how much size
+
+284
+00:05:12,950 --> 00:05:12,960
+you've installed it on and how much size
+ 
+
+285
+00:05:12,960 --> 00:05:15,350
+you've installed it on and how much size
+it's taking on your drive. You can also
+
+286
+00:05:15,350 --> 00:05:15,360
+it's taking on your drive. You can also
+ 
+
+287
+00:05:15,360 --> 00:05:17,430
+it's taking on your drive. You can also
+right mouse click on these applications
+
+288
+00:05:17,430 --> 00:05:17,440
+right mouse click on these applications
+ 
+
+289
+00:05:17,440 --> 00:05:19,510
+right mouse click on these applications
+and choose to uninstall the app to
+
+290
+00:05:19,510 --> 00:05:19,520
+and choose to uninstall the app to
+ 
+
+291
+00:05:19,520 --> 00:05:21,909
+and choose to uninstall the app to
+remove it from your computer. There's
+
+292
+00:05:21,909 --> 00:05:21,919
+remove it from your computer. There's
+ 
+
+293
+00:05:21,919 --> 00:05:23,830
+remove it from your computer. There's
+also an option on this programs and
+
+294
+00:05:23,830 --> 00:05:23,840
+also an option on this programs and
+ 
+
+295
+00:05:23,840 --> 00:05:26,550
+also an option on this programs and
+features page to turn Windows features
+
+296
+00:05:26,550 --> 00:05:26,560
+features page to turn Windows features
+ 
+
+297
+00:05:26,560 --> 00:05:28,790
+features page to turn Windows features
+on or off. And if we click on that
+
+298
+00:05:28,790 --> 00:05:28,800
+on or off. And if we click on that
+ 
+
+299
+00:05:28,800 --> 00:05:30,710
+on or off. And if we click on that
+option, it will list a number of
+
+300
+00:05:30,710 --> 00:05:30,720
+option, it will list a number of
+ 
+
+301
+00:05:30,720 --> 00:05:32,390
+option, it will list a number of
+different Windows features. You can see
+
+302
+00:05:32,390 --> 00:05:32,400
+different Windows features. You can see
+ 
+
+303
+00:05:32,400 --> 00:05:34,629
+different Windows features. You can see
+there is a large number of them listed.
+
+304
+00:05:34,629 --> 00:05:34,639
+there is a large number of them listed.
+ 
+
+305
+00:05:34,639 --> 00:05:36,469
+there is a large number of them listed.
+So if you wanted to install a new
+
+306
+00:05:36,469 --> 00:05:36,479
+So if you wanted to install a new
+ 
+
+307
+00:05:36,479 --> 00:05:38,150
+So if you wanted to install a new
+feature, for example, you wanted to
+
+308
+00:05:38,150 --> 00:05:38,160
+feature, for example, you wanted to
+ 
+
+309
+00:05:38,160 --> 00:05:40,390
+feature, for example, you wanted to
+install internet information services
+
+310
+00:05:40,390 --> 00:05:40,400
+install internet information services
+ 
+
+311
+00:05:40,400 --> 00:05:42,710
+install internet information services
+hostable web core or you wanted to
+
+312
+00:05:42,710 --> 00:05:42,720
+hostable web core or you wanted to
+ 
+
+313
+00:05:42,720 --> 00:05:44,950
+hostable web core or you wanted to
+uninstall features such as the media
+
+314
+00:05:44,950 --> 00:05:44,960
+uninstall features such as the media
+ 
+
+315
+00:05:44,960 --> 00:05:47,510
+uninstall features such as the media
+features, you can click on that category
+
+316
+00:05:47,510 --> 00:05:47,520
+features, you can click on that category
+ 
+
+317
+00:05:47,520 --> 00:05:49,430
+features, you can click on that category
+and click okay, and it will either
+
+318
+00:05:49,430 --> 00:05:49,440
+and click okay, and it will either
+ 
+
+319
+00:05:49,440 --> 00:05:51,870
+and click okay, and it will either
+install or uninstall those
+
+320
+00:05:51,870 --> 00:05:51,880
+install or uninstall those
+ 
+
+321
+00:05:51,880 --> 00:05:54,469
+install or uninstall those
+features. If you're doing any type of
+
+322
+00:05:54,469 --> 00:05:54,479
+features. If you're doing any type of
+ 
+
+323
+00:05:54,479 --> 00:05:56,150
+features. If you're doing any type of
+network troubleshooting, then you'll
+
+324
+00:05:56,150 --> 00:05:56,160
+network troubleshooting, then you'll
+ 
+
+325
+00:05:56,160 --> 00:05:58,230
+network troubleshooting, then you'll
+probably spend some time inside of the
+
+326
+00:05:58,230 --> 00:05:58,240
+probably spend some time inside of the
+ 
+
+327
+00:05:58,240 --> 00:06:00,550
+probably spend some time inside of the
+network and sharing center control panel
+
+328
+00:06:00,550 --> 00:06:00,560
+network and sharing center control panel
+ 
+
+329
+00:06:00,560 --> 00:06:02,950
+network and sharing center control panel
+outlet. This covers not just your wired
+
+330
+00:06:02,950 --> 00:06:02,960
+outlet. This covers not just your wired
+ 
+
+331
+00:06:02,960 --> 00:06:04,790
+outlet. This covers not just your wired
+network connections, but your wireless
+
+332
+00:06:04,790 --> 00:06:04,800
+network connections, but your wireless
+ 
+
+333
+00:06:04,800 --> 00:06:07,029
+network connections, but your wireless
+connections as well. And from inside of
+
+334
+00:06:07,029 --> 00:06:07,039
+connections as well. And from inside of
+ 
+
+335
+00:06:07,039 --> 00:06:08,710
+connections as well. And from inside of
+this list, you can choose to look at
+
+336
+00:06:08,710 --> 00:06:08,720
+this list, you can choose to look at
+ 
+
+337
+00:06:08,720 --> 00:06:12,029
+this list, you can choose to look at
+detailed configurations of every network
+
+338
+00:06:12,029 --> 00:06:12,039
+detailed configurations of every network
+ 
+
+339
+00:06:12,039 --> 00:06:14,309
+detailed configurations of every network
+adapter. In the control panel, you'll
+
+340
+00:06:14,309 --> 00:06:14,319
+adapter. In the control panel, you'll
+ 
+
+341
+00:06:14,319 --> 00:06:16,309
+adapter. In the control panel, you'll
+find network and sharing center is
+
+342
+00:06:16,309 --> 00:06:16,319
+find network and sharing center is
+ 
+
+343
+00:06:16,319 --> 00:06:17,990
+find network and sharing center is
+listed. In this particular case, I have
+
+344
+00:06:17,990 --> 00:06:18,000
+listed. In this particular case, I have
+ 
+
+345
+00:06:18,000 --> 00:06:20,230
+listed. In this particular case, I have
+a single active network connection. It's
+
+346
+00:06:20,230 --> 00:06:20,240
+a single active network connection. It's
+ 
+
+347
+00:06:20,240 --> 00:06:22,230
+a single active network connection. It's
+an Ethernet connection. And if I click
+
+348
+00:06:22,230 --> 00:06:22,240
+an Ethernet connection. And if I click
+ 
+
+349
+00:06:22,240 --> 00:06:23,830
+an Ethernet connection. And if I click
+that, it will bring up the Ethernet
+
+350
+00:06:23,830 --> 00:06:23,840
+that, it will bring up the Ethernet
+ 
+
+351
+00:06:23,840 --> 00:06:25,990
+that, it will bring up the Ethernet
+status. And from here, I can see exactly
+
+352
+00:06:25,990 --> 00:06:26,000
+status. And from here, I can see exactly
+ 
+
+353
+00:06:26,000 --> 00:06:28,469
+status. And from here, I can see exactly
+how this particular Ethernet adapter is
+
+354
+00:06:28,469 --> 00:06:28,479
+how this particular Ethernet adapter is
+ 
+
+355
+00:06:28,479 --> 00:06:30,790
+how this particular Ethernet adapter is
+configured. If you'd like more details
+
+356
+00:06:30,790 --> 00:06:30,800
+configured. If you'd like more details
+ 
+
+357
+00:06:30,800 --> 00:06:32,550
+configured. If you'd like more details
+about the properties of that adapter,
+
+358
+00:06:32,550 --> 00:06:32,560
+about the properties of that adapter,
+ 
+
+359
+00:06:32,560 --> 00:06:34,309
+about the properties of that adapter,
+you can click the properties option and
+
+360
+00:06:34,309 --> 00:06:34,319
+you can click the properties option and
+ 
+
+361
+00:06:34,319 --> 00:06:36,070
+you can click the properties option and
+it brings up a list of all of the
+
+362
+00:06:36,070 --> 00:06:36,080
+it brings up a list of all of the
+ 
+
+363
+00:06:36,080 --> 00:06:37,510
+it brings up a list of all of the
+different configurations for that
+
+364
+00:06:37,510 --> 00:06:37,520
+different configurations for that
+ 
+
+365
+00:06:37,520 --> 00:06:39,590
+different configurations for that
+adapter. For example, if you wanted to
+
+366
+00:06:39,590 --> 00:06:39,600
+adapter. For example, if you wanted to
+ 
+
+367
+00:06:39,600 --> 00:06:41,670
+adapter. For example, if you wanted to
+see the IP version 4 information for
+
+368
+00:06:41,670 --> 00:06:41,680
+see the IP version 4 information for
+ 
+
+369
+00:06:41,680 --> 00:06:43,749
+see the IP version 4 information for
+this adapter, we can simply click on
+
+370
+00:06:43,749 --> 00:06:43,759
+this adapter, we can simply click on
+ 
+
+371
+00:06:43,759 --> 00:06:46,070
+this adapter, we can simply click on
+that option and choose properties. From
+
+372
+00:06:46,070 --> 00:06:46,080
+that option and choose properties. From
+ 
+
+373
+00:06:46,080 --> 00:06:48,629
+that option and choose properties. From
+here, you can see the IP address, subnet
+
+374
+00:06:48,629 --> 00:06:48,639
+here, you can see the IP address, subnet
+ 
+
+375
+00:06:48,639 --> 00:06:51,510
+here, you can see the IP address, subnet
+mask, any DNS server configurations, or
+
+376
+00:06:51,510 --> 00:06:51,520
+mask, any DNS server configurations, or
+ 
+
+377
+00:06:51,520 --> 00:06:53,350
+mask, any DNS server configurations, or
+you can see if this adapter has already
+
+378
+00:06:53,350 --> 00:06:53,360
+you can see if this adapter has already
+ 
+
+379
+00:06:53,360 --> 00:06:56,950
+you can see if this adapter has already
+been configured for DHCP.
+
+380
+00:06:56,950 --> 00:06:56,960
+been configured for DHCP.
+ 
+
+381
+00:06:56,960 --> 00:06:58,629
+been configured for DHCP.
+When you first sit down at a Windows
+
+382
+00:06:58,629 --> 00:06:58,639
+When you first sit down at a Windows
+ 
+
+383
+00:06:58,639 --> 00:07:00,790
+When you first sit down at a Windows
+computer, it may not be obvious what
+
+384
+00:07:00,790 --> 00:07:00,800
+computer, it may not be obvious what
+ 
+
+385
+00:07:00,800 --> 00:07:02,390
+computer, it may not be obvious what
+specific version of Windows is
+
+386
+00:07:02,390 --> 00:07:02,400
+specific version of Windows is
+ 
+
+387
+00:07:02,400 --> 00:07:04,629
+specific version of Windows is
+configured in this system. Under the
+
+388
+00:07:04,629 --> 00:07:04,639
+configured in this system. Under the
+ 
+
+389
+00:07:04,639 --> 00:07:06,629
+configured in this system. Under the
+control panel, you can choose the system
+
+390
+00:07:06,629 --> 00:07:06,639
+control panel, you can choose the system
+ 
+
+391
+00:07:06,639 --> 00:07:09,230
+control panel, you can choose the system
+outlet and get an overview of the system
+
+392
+00:07:09,230 --> 00:07:09,240
+outlet and get an overview of the system
+ 
+
+393
+00:07:09,240 --> 00:07:11,510
+outlet and get an overview of the system
+configuration, including the addition of
+
+394
+00:07:11,510 --> 00:07:11,520
+configuration, including the addition of
+ 
+
+395
+00:07:11,520 --> 00:07:13,350
+configuration, including the addition of
+Windows that's running with the version
+
+396
+00:07:13,350 --> 00:07:13,360
+Windows that's running with the version
+ 
+
+397
+00:07:13,360 --> 00:07:15,110
+Windows that's running with the version
+information, and you can see information
+
+398
+00:07:15,110 --> 00:07:15,120
+information, and you can see information
+ 
+
+399
+00:07:15,120 --> 00:07:16,870
+information, and you can see information
+about the hardware configuration,
+
+400
+00:07:16,870 --> 00:07:16,880
+about the hardware configuration,
+ 
+
+401
+00:07:16,880 --> 00:07:19,189
+about the hardware configuration,
+including the processor, installed RAM,
+
+402
+00:07:19,189 --> 00:07:19,199
+including the processor, installed RAM,
+ 
+
+403
+00:07:19,199 --> 00:07:21,550
+including the processor, installed RAM,
+and other details of the operating
+
+404
+00:07:21,550 --> 00:07:21,560
+and other details of the operating
+ 
+
+405
+00:07:21,560 --> 00:07:24,390
+and other details of the operating
+system. In our Windows 11 control panel,
+
+406
+00:07:24,390 --> 00:07:24,400
+system. In our Windows 11 control panel,
+ 
+
+407
+00:07:24,400 --> 00:07:26,550
+system. In our Windows 11 control panel,
+we'll choose the option for system. This
+
+408
+00:07:26,550 --> 00:07:26,560
+we'll choose the option for system. This
+ 
+
+409
+00:07:26,560 --> 00:07:28,469
+we'll choose the option for system. This
+will bring up a separate window which
+
+410
+00:07:28,469 --> 00:07:28,479
+will bring up a separate window which
+ 
+
+411
+00:07:28,479 --> 00:07:30,550
+will bring up a separate window which
+shows us in the main window information
+
+412
+00:07:30,550 --> 00:07:30,560
+shows us in the main window information
+ 
+
+413
+00:07:30,560 --> 00:07:32,870
+shows us in the main window information
+about this system. We also have options
+
+414
+00:07:32,870 --> 00:07:32,880
+about this system. We also have options
+ 
+
+415
+00:07:32,880 --> 00:07:35,270
+about this system. We also have options
+along the left sidebar that gives us
+
+416
+00:07:35,270 --> 00:07:35,280
+along the left sidebar that gives us
+ 
+
+417
+00:07:35,280 --> 00:07:37,430
+along the left sidebar that gives us
+details into information such as
+
+418
+00:07:37,430 --> 00:07:37,440
+details into information such as
+ 
+
+419
+00:07:37,440 --> 00:07:40,309
+details into information such as
+Bluetooth and devices, apps, accounts,
+
+420
+00:07:40,309 --> 00:07:40,319
+Bluetooth and devices, apps, accounts,
+ 
+
+421
+00:07:40,319 --> 00:07:43,350
+Bluetooth and devices, apps, accounts,
+gaming accessibility, and other options.
+
+422
+00:07:43,350 --> 00:07:43,360
+gaming accessibility, and other options.
+ 
+
+423
+00:07:43,360 --> 00:07:45,029
+gaming accessibility, and other options.
+You'll also notice in the middle of the
+
+424
+00:07:45,029 --> 00:07:45,039
+You'll also notice in the middle of the
+ 
+
+425
+00:07:45,039 --> 00:07:47,350
+You'll also notice in the middle of the
+page are related links. You can view
+
+426
+00:07:47,350 --> 00:07:47,360
+page are related links. You can view
+ 
+
+427
+00:07:47,360 --> 00:07:49,589
+page are related links. You can view
+domain or workg groupoup information for
+
+428
+00:07:49,589 --> 00:07:49,599
+domain or workg groupoup information for
+ 
+
+429
+00:07:49,599 --> 00:07:51,670
+domain or workg groupoup information for
+this device, view the system protection
+
+430
+00:07:51,670 --> 00:07:51,680
+this device, view the system protection
+ 
+
+431
+00:07:51,680 --> 00:07:53,749
+this device, view the system protection
+settings. If you choose the advanced
+
+432
+00:07:53,749 --> 00:07:53,759
+settings. If you choose the advanced
+ 
+
+433
+00:07:53,759 --> 00:07:55,909
+settings. If you choose the advanced
+system settings option, it launches a
+
+434
+00:07:55,909 --> 00:07:55,919
+system settings option, it launches a
+ 
+
+435
+00:07:55,919 --> 00:07:57,990
+system settings option, it launches a
+different dialogue box for the system
+
+436
+00:07:57,990 --> 00:07:58,000
+different dialogue box for the system
+ 
+
+437
+00:07:58,000 --> 00:08:00,230
+different dialogue box for the system
+properties. And under the advanced tab,
+
+438
+00:08:00,230 --> 00:08:00,240
+properties. And under the advanced tab,
+ 
+
+439
+00:08:00,240 --> 00:08:01,749
+properties. And under the advanced tab,
+you have options to change the
+
+440
+00:08:01,749 --> 00:08:01,759
+you have options to change the
+ 
+
+441
+00:08:01,759 --> 00:08:03,990
+you have options to change the
+performance of this system, including
+
+442
+00:08:03,990 --> 00:08:04,000
+performance of this system, including
+ 
+
+443
+00:08:04,000 --> 00:08:06,070
+performance of this system, including
+things like visual effects and virtual
+
+444
+00:08:06,070 --> 00:08:06,080
+things like visual effects and virtual
+ 
+
+445
+00:08:06,080 --> 00:08:08,150
+things like visual effects and virtual
+memory. If you would like to change how
+
+446
+00:08:08,150 --> 00:08:08,160
+memory. If you would like to change how
+ 
+
+447
+00:08:08,160 --> 00:08:09,749
+memory. If you would like to change how
+much virtual memory is being used by
+
+448
+00:08:09,749 --> 00:08:09,759
+much virtual memory is being used by
+ 
+
+449
+00:08:09,759 --> 00:08:11,830
+much virtual memory is being used by
+your system, you can click that settings
+
+450
+00:08:11,830 --> 00:08:11,840
+your system, you can click that settings
+ 
+
+451
+00:08:11,840 --> 00:08:14,150
+your system, you can click that settings
+option and choose the advanced tab
+
+452
+00:08:14,150 --> 00:08:14,160
+option and choose the advanced tab
+ 
+
+453
+00:08:14,160 --> 00:08:16,309
+option and choose the advanced tab
+within those performance options. Inside
+
+454
+00:08:16,309 --> 00:08:16,319
+within those performance options. Inside
+ 
+
+455
+00:08:16,319 --> 00:08:17,909
+within those performance options. Inside
+of here, you can change the virtual
+
+456
+00:08:17,909 --> 00:08:17,919
+of here, you can change the virtual
+ 
+
+457
+00:08:17,919 --> 00:08:20,230
+of here, you can change the virtual
+memory paging file. You can decide how
+
+458
+00:08:20,230 --> 00:08:20,240
+memory paging file. You can decide how
+ 
+
+459
+00:08:20,240 --> 00:08:21,990
+memory paging file. You can decide how
+large that file is and if you want to
+
+460
+00:08:21,990 --> 00:08:22,000
+large that file is and if you want to
+ 
+
+461
+00:08:22,000 --> 00:08:24,390
+large that file is and if you want to
+make changes to that, you can modify it
+
+462
+00:08:24,390 --> 00:08:24,400
+make changes to that, you can modify it
+ 
+
+463
+00:08:24,400 --> 00:08:27,309
+make changes to that, you can modify it
+inside of the virtual memory dialogue
+
+464
+00:08:27,309 --> 00:08:27,319
+inside of the virtual memory dialogue
+ 
+
+465
+00:08:27,319 --> 00:08:29,749
+inside of the virtual memory dialogue
+box. Like many operating systems,
+
+466
+00:08:29,749 --> 00:08:29,759
+box. Like many operating systems,
+ 
+
+467
+00:08:29,759 --> 00:08:32,230
+box. Like many operating systems,
+Microsoft includes a firewall that is
+
+468
+00:08:32,230 --> 00:08:32,240
+Microsoft includes a firewall that is
+ 
+
+469
+00:08:32,240 --> 00:08:35,110
+Microsoft includes a firewall that is
+built into the Windows OS. This is
+
+470
+00:08:35,110 --> 00:08:35,120
+built into the Windows OS. This is
+ 
+
+471
+00:08:35,120 --> 00:08:37,509
+built into the Windows OS. This is
+called the Windows Defender Firewall,
+
+472
+00:08:37,509 --> 00:08:37,519
+called the Windows Defender Firewall,
+ 
+
+473
+00:08:37,519 --> 00:08:39,990
+called the Windows Defender Firewall,
+and this allows you to prevent access to
+
+474
+00:08:39,990 --> 00:08:40,000
+and this allows you to prevent access to
+ 
+
+475
+00:08:40,000 --> 00:08:42,070
+and this allows you to prevent access to
+your computer from outside of your
+
+476
+00:08:42,070 --> 00:08:42,080
+your computer from outside of your
+ 
+
+477
+00:08:42,080 --> 00:08:44,310
+your computer from outside of your
+system. This is separated into two
+
+478
+00:08:44,310 --> 00:08:44,320
+system. This is separated into two
+ 
+
+479
+00:08:44,320 --> 00:08:46,070
+system. This is separated into two
+different categories. one for the
+
+480
+00:08:46,070 --> 00:08:46,080
+different categories. one for the
+ 
+
+481
+00:08:46,080 --> 00:08:47,670
+different categories. one for the
+private networks that you may be
+
+482
+00:08:47,670 --> 00:08:47,680
+private networks that you may be
+ 
+
+483
+00:08:47,680 --> 00:08:49,509
+private networks that you may be
+connected to and another one if you're
+
+484
+00:08:49,509 --> 00:08:49,519
+connected to and another one if you're
+ 
+
+485
+00:08:49,519 --> 00:08:51,430
+connected to and another one if you're
+connected to a guest or a public
+
+486
+00:08:51,430 --> 00:08:51,440
+connected to a guest or a public
+ 
+
+487
+00:08:51,440 --> 00:08:53,590
+connected to a guest or a public
+network. For example, you might have a
+
+488
+00:08:53,590 --> 00:08:53,600
+network. For example, you might have a
+ 
+
+489
+00:08:53,600 --> 00:08:55,350
+network. For example, you might have a
+completely different set of security
+
+490
+00:08:55,350 --> 00:08:55,360
+completely different set of security
+ 
+
+491
+00:08:55,360 --> 00:08:57,110
+completely different set of security
+policies if you're inside of your
+
+492
+00:08:57,110 --> 00:08:57,120
+policies if you're inside of your
+ 
+
+493
+00:08:57,120 --> 00:08:59,190
+policies if you're inside of your
+private network, but the moment you go
+
+494
+00:08:59,190 --> 00:08:59,200
+private network, but the moment you go
+ 
+
+495
+00:08:59,200 --> 00:09:01,509
+private network, but the moment you go
+to a coffee shop or connect externally
+
+496
+00:09:01,509 --> 00:09:01,519
+to a coffee shop or connect externally
+ 
+
+497
+00:09:01,519 --> 00:09:03,430
+to a coffee shop or connect externally
+to an internet connection, you may want
+
+498
+00:09:03,430 --> 00:09:03,440
+to an internet connection, you may want
+ 
+
+499
+00:09:03,440 --> 00:09:05,790
+to an internet connection, you may want
+to use a different set of security
+
+500
+00:09:05,790 --> 00:09:05,800
+to use a different set of security
+ 
+
+501
+00:09:05,800 --> 00:09:07,990
+to use a different set of security
+features. This is something integrated
+
+502
+00:09:07,990 --> 00:09:08,000
+features. This is something integrated
+ 
+
+503
+00:09:08,000 --> 00:09:10,230
+features. This is something integrated
+into Windows and turned on by default.
+
+504
+00:09:10,230 --> 00:09:10,240
+into Windows and turned on by default.
+ 
+
+505
+00:09:10,240 --> 00:09:11,990
+into Windows and turned on by default.
+So you don't have to do anything extra
+
+506
+00:09:11,990 --> 00:09:12,000
+So you don't have to do anything extra
+ 
+
+507
+00:09:12,000 --> 00:09:14,070
+So you don't have to do anything extra
+to use the capabilities inside of
+
+508
+00:09:14,070 --> 00:09:14,080
+to use the capabilities inside of
+ 
+
+509
+00:09:14,080 --> 00:09:16,310
+to use the capabilities inside of
+Windows Defender Firewall. If you want
+
+510
+00:09:16,310 --> 00:09:16,320
+Windows Defender Firewall. If you want
+ 
+
+511
+00:09:16,320 --> 00:09:17,750
+Windows Defender Firewall. If you want
+to make changes to any of these
+
+512
+00:09:17,750 --> 00:09:17,760
+to make changes to any of these
+ 
+
+513
+00:09:17,760 --> 00:09:19,269
+to make changes to any of these
+settings, you can find it under the
+
+514
+00:09:19,269 --> 00:09:19,279
+settings, you can find it under the
+ 
+
+515
+00:09:19,279 --> 00:09:21,550
+settings, you can find it under the
+control panel in Windows
+
+516
+00:09:21,550 --> 00:09:21,560
+control panel in Windows
+ 
+
+517
+00:09:21,560 --> 00:09:23,670
+control panel in Windows
+Firewall. You'll find the firewall
+
+518
+00:09:23,670 --> 00:09:23,680
+Firewall. You'll find the firewall
+ 
+
+519
+00:09:23,680 --> 00:09:25,910
+Firewall. You'll find the firewall
+settings under the control panel items
+
+520
+00:09:25,910 --> 00:09:25,920
+settings under the control panel items
+ 
+
+521
+00:09:25,920 --> 00:09:28,790
+settings under the control panel items
+and Windows Defender Firewall is listed
+
+522
+00:09:28,790 --> 00:09:28,800
+and Windows Defender Firewall is listed
+ 
+
+523
+00:09:28,800 --> 00:09:30,949
+and Windows Defender Firewall is listed
+under one of those applets. You can see
+
+524
+00:09:30,949 --> 00:09:30,959
+under one of those applets. You can see
+ 
+
+525
+00:09:30,959 --> 00:09:32,389
+under one of those applets. You can see
+that it launches all of the
+
+526
+00:09:32,389 --> 00:09:32,399
+that it launches all of the
+ 
+
+527
+00:09:32,399 --> 00:09:34,389
+that it launches all of the
+configurations for the Windows Defender
+
+528
+00:09:34,389 --> 00:09:34,399
+configurations for the Windows Defender
+ 
+
+529
+00:09:34,399 --> 00:09:36,870
+configurations for the Windows Defender
+Firewall. And since this device is also
+
+530
+00:09:36,870 --> 00:09:36,880
+Firewall. And since this device is also
+ 
+
+531
+00:09:36,880 --> 00:09:39,190
+Firewall. And since this device is also
+connected to a Windows domain, we have a
+
+532
+00:09:39,190 --> 00:09:39,200
+connected to a Windows domain, we have a
+ 
+
+533
+00:09:39,200 --> 00:09:40,949
+connected to a Windows domain, we have a
+different set of security policies that
+
+534
+00:09:40,949 --> 00:09:40,959
+different set of security policies that
+ 
+
+535
+00:09:40,959 --> 00:09:42,790
+different set of security policies that
+we can set when we're connected to a
+
+536
+00:09:42,790 --> 00:09:42,800
+we can set when we're connected to a
+ 
+
+537
+00:09:42,800 --> 00:09:44,949
+we can set when we're connected to a
+domain network. Notice that we have a
+
+538
+00:09:44,949 --> 00:09:44,959
+domain network. Notice that we have a
+ 
+
+539
+00:09:44,959 --> 00:09:47,190
+domain network. Notice that we have a
+number of options along the left side to
+
+540
+00:09:47,190 --> 00:09:47,200
+number of options along the left side to
+ 
+
+541
+00:09:47,200 --> 00:09:49,430
+number of options along the left side to
+turn on and off the firewall, restore
+
+542
+00:09:49,430 --> 00:09:49,440
+turn on and off the firewall, restore
+ 
+
+543
+00:09:49,440 --> 00:09:51,190
+turn on and off the firewall, restore
+the defaults in case you happen to
+
+544
+00:09:51,190 --> 00:09:51,200
+the defaults in case you happen to
+ 
+
+545
+00:09:51,200 --> 00:09:53,350
+the defaults in case you happen to
+enable a feature that blocks important
+
+546
+00:09:53,350 --> 00:09:53,360
+enable a feature that blocks important
+ 
+
+547
+00:09:53,360 --> 00:09:55,110
+enable a feature that blocks important
+traffic, and then you have advanced
+
+548
+00:09:55,110 --> 00:09:55,120
+traffic, and then you have advanced
+ 
+
+549
+00:09:55,120 --> 00:09:56,949
+traffic, and then you have advanced
+settings that you can choose. And we
+
+550
+00:09:56,949 --> 00:09:56,959
+settings that you can choose. And we
+ 
+
+551
+00:09:56,959 --> 00:09:58,710
+settings that you can choose. And we
+will go into the advanced settings of
+
+552
+00:09:58,710 --> 00:09:58,720
+will go into the advanced settings of
+ 
+
+553
+00:09:58,720 --> 00:10:02,230
+will go into the advanced settings of
+Windows Firewall in a future video.
+
+554
+00:10:02,230 --> 00:10:02,240
+Windows Firewall in a future video.
+ 
+
+555
+00:10:02,240 --> 00:10:04,630
+Windows Firewall in a future video.
+An icon you might not see inside of your
+
+556
+00:10:04,630 --> 00:10:04,640
+An icon you might not see inside of your
+ 
+
+557
+00:10:04,640 --> 00:10:07,190
+An icon you might not see inside of your
+control panel is the mail outlet. This
+
+558
+00:10:07,190 --> 00:10:07,200
+control panel is the mail outlet. This
+ 
+
+559
+00:10:07,200 --> 00:10:09,030
+control panel is the mail outlet. This
+applet will not appear unless you have
+
+560
+00:10:09,030 --> 00:10:09,040
+applet will not appear unless you have
+ 
+
+561
+00:10:09,040 --> 00:10:11,829
+applet will not appear unless you have
+installed a supported email client. For
+
+562
+00:10:11,829 --> 00:10:11,839
+installed a supported email client. For
+ 
+
+563
+00:10:11,839 --> 00:10:13,750
+installed a supported email client. For
+example, if you've installed Microsoft
+
+564
+00:10:13,750 --> 00:10:13,760
+example, if you've installed Microsoft
+ 
+
+565
+00:10:13,760 --> 00:10:15,670
+example, if you've installed Microsoft
+Outlook onto your computer, then the
+
+566
+00:10:15,670 --> 00:10:15,680
+Outlook onto your computer, then the
+ 
+
+567
+00:10:15,680 --> 00:10:17,910
+Outlook onto your computer, then the
+mail icon will appear in your control
+
+568
+00:10:17,910 --> 00:10:17,920
+mail icon will appear in your control
+ 
+
+569
+00:10:17,920 --> 00:10:20,230
+mail icon will appear in your control
+panel. If it does appear, you can start
+
+570
+00:10:20,230 --> 00:10:20,240
+panel. If it does appear, you can start
+ 
+
+571
+00:10:20,240 --> 00:10:22,550
+panel. If it does appear, you can start
+it and get options of setting up email
+
+572
+00:10:22,550 --> 00:10:22,560
+it and get options of setting up email
+ 
+
+573
+00:10:22,560 --> 00:10:24,710
+it and get options of setting up email
+accounts and directories, modifying the
+
+574
+00:10:24,710 --> 00:10:24,720
+accounts and directories, modifying the
+ 
+
+575
+00:10:24,720 --> 00:10:26,949
+accounts and directories, modifying the
+data files that are used by that email
+
+576
+00:10:26,949 --> 00:10:26,959
+data files that are used by that email
+ 
+
+577
+00:10:26,959 --> 00:10:28,710
+data files that are used by that email
+client, or setting up particular
+
+578
+00:10:28,710 --> 00:10:28,720
+client, or setting up particular
+ 
+
+579
+00:10:28,720 --> 00:10:31,430
+client, or setting up particular
+profiles for your email settings. If you
+
+580
+00:10:31,430 --> 00:10:31,440
+profiles for your email settings. If you
+ 
+
+581
+00:10:31,440 --> 00:10:33,750
+profiles for your email settings. If you
+choose the email accounts option, you'll
+
+582
+00:10:33,750 --> 00:10:33,760
+choose the email accounts option, you'll
+ 
+
+583
+00:10:33,760 --> 00:10:35,590
+choose the email accounts option, you'll
+be presented with a number of email
+
+584
+00:10:35,590 --> 00:10:35,600
+be presented with a number of email
+ 
+
+585
+00:10:35,600 --> 00:10:37,190
+be presented with a number of email
+accounts that have been configured on
+
+586
+00:10:37,190 --> 00:10:37,200
+accounts that have been configured on
+ 
+
+587
+00:10:37,200 --> 00:10:39,590
+accounts that have been configured on
+the system and you can enable, disable,
+
+588
+00:10:39,590 --> 00:10:39,600
+the system and you can enable, disable,
+ 
+
+589
+00:10:39,600 --> 00:10:41,509
+the system and you can enable, disable,
+or change the properties of each of
+
+590
+00:10:41,509 --> 00:10:41,519
+or change the properties of each of
+ 
+
+591
+00:10:41,519 --> 00:10:43,509
+or change the properties of each of
+those accounts. You also have an option
+
+592
+00:10:43,509 --> 00:10:43,519
+those accounts. You also have an option
+ 
+
+593
+00:10:43,519 --> 00:10:45,990
+those accounts. You also have an option
+for data files inside of that link where
+
+594
+00:10:45,990 --> 00:10:46,000
+for data files inside of that link where
+ 
+
+595
+00:10:46,000 --> 00:10:48,150
+for data files inside of that link where
+you can define where the files are being
+
+596
+00:10:48,150 --> 00:10:48,160
+you can define where the files are being
+ 
+
+597
+00:10:48,160 --> 00:10:50,710
+you can define where the files are being
+stored for all of your email. If you
+
+598
+00:10:50,710 --> 00:10:50,720
+stored for all of your email. If you
+ 
+
+599
+00:10:50,720 --> 00:10:52,470
+stored for all of your email. If you
+find that this is taking up too much
+
+600
+00:10:52,470 --> 00:10:52,480
+find that this is taking up too much
+ 
+
+601
+00:10:52,480 --> 00:10:53,990
+find that this is taking up too much
+room at the location where it's
+
+602
+00:10:53,990 --> 00:10:54,000
+room at the location where it's
+ 
+
+603
+00:10:54,000 --> 00:10:55,910
+room at the location where it's
+currently located, you can change the
+
+604
+00:10:55,910 --> 00:10:55,920
+currently located, you can change the
+ 
+
+605
+00:10:55,920 --> 00:10:58,230
+currently located, you can change the
+location of that file and redirect
+
+606
+00:10:58,230 --> 00:10:58,240
+location of that file and redirect
+ 
+
+607
+00:10:58,240 --> 00:11:01,750
+location of that file and redirect
+everything to that new directory.
+
+608
+00:11:01,750 --> 00:11:01,760
+everything to that new directory.
+ 
+
+609
+00:11:01,760 --> 00:11:03,910
+everything to that new directory.
+These days, we rely on not only hearing
+
+610
+00:11:03,910 --> 00:11:03,920
+These days, we rely on not only hearing
+ 
+
+611
+00:11:03,920 --> 00:11:05,910
+These days, we rely on not only hearing
+information coming from our computer,
+
+612
+00:11:05,910 --> 00:11:05,920
+information coming from our computer,
+ 
+
+613
+00:11:05,920 --> 00:11:08,790
+information coming from our computer,
+but we often need to input sound into
+
+614
+00:11:08,790 --> 00:11:08,800
+but we often need to input sound into
+ 
+
+615
+00:11:08,800 --> 00:11:11,030
+but we often need to input sound into
+our computer, usually using a
+
+616
+00:11:11,030 --> 00:11:11,040
+our computer, usually using a
+ 
+
+617
+00:11:11,040 --> 00:11:13,030
+our computer, usually using a
+microphone. You can manage both the
+
+618
+00:11:13,030 --> 00:11:13,040
+microphone. You can manage both the
+ 
+
+619
+00:11:13,040 --> 00:11:15,509
+microphone. You can manage both the
+input and output of sound from the sound
+
+620
+00:11:15,509 --> 00:11:15,519
+input and output of sound from the sound
+ 
+
+621
+00:11:15,519 --> 00:11:17,750
+input and output of sound from the sound
+outlet within the control panel. This
+
+622
+00:11:17,750 --> 00:11:17,760
+outlet within the control panel. This
+ 
+
+623
+00:11:17,760 --> 00:11:19,990
+outlet within the control panel. This
+allows you to modify playback options,
+
+624
+00:11:19,990 --> 00:11:20,000
+allows you to modify playback options,
+ 
+
+625
+00:11:20,000 --> 00:11:22,150
+allows you to modify playback options,
+such as your speakers, or you can choose
+
+626
+00:11:22,150 --> 00:11:22,160
+such as your speakers, or you can choose
+ 
+
+627
+00:11:22,160 --> 00:11:24,630
+such as your speakers, or you can choose
+the recording tab and modify options for
+
+628
+00:11:24,630 --> 00:11:24,640
+the recording tab and modify options for
+ 
+
+629
+00:11:24,640 --> 00:11:26,790
+the recording tab and modify options for
+your microphone. If you have multiple
+
+630
+00:11:26,790 --> 00:11:26,800
+your microphone. If you have multiple
+ 
+
+631
+00:11:26,800 --> 00:11:29,430
+your microphone. If you have multiple
+playback devices or multiple recording
+
+632
+00:11:29,430 --> 00:11:29,440
+playback devices or multiple recording
+ 
+
+633
+00:11:29,440 --> 00:11:31,750
+playback devices or multiple recording
+devices, you can specify which one of
+
+634
+00:11:31,750 --> 00:11:31,760
+devices, you can specify which one of
+ 
+
+635
+00:11:31,760 --> 00:11:33,910
+devices, you can specify which one of
+those devices will be the primary or
+
+636
+00:11:33,910 --> 00:11:33,920
+those devices will be the primary or
+ 
+
+637
+00:11:33,920 --> 00:11:36,829
+those devices will be the primary or
+default settings under the sound
+
+638
+00:11:36,829 --> 00:11:36,839
+default settings under the sound
+ 
+
+639
+00:11:36,839 --> 00:11:39,430
+default settings under the sound
+outlet. Your control panel also has an
+
+640
+00:11:39,430 --> 00:11:39,440
+outlet. Your control panel also has an
+ 
+
+641
+00:11:39,440 --> 00:11:42,069
+outlet. Your control panel also has an
+option for your local user accounts.
+
+642
+00:11:42,069 --> 00:11:42,079
+option for your local user accounts.
+ 
+
+643
+00:11:42,079 --> 00:11:43,829
+option for your local user accounts.
+These would be accounts that are stored
+
+644
+00:11:43,829 --> 00:11:43,839
+These would be accounts that are stored
+ 
+
+645
+00:11:43,839 --> 00:11:46,069
+These would be accounts that are stored
+on your local computer and they're not
+
+646
+00:11:46,069 --> 00:11:46,079
+on your local computer and they're not
+ 
+
+647
+00:11:46,079 --> 00:11:48,630
+on your local computer and they're not
+part of your active directory domain.
+
+648
+00:11:48,630 --> 00:11:48,640
+part of your active directory domain.
+ 
+
+649
+00:11:48,640 --> 00:11:50,949
+part of your active directory domain.
+From here, you can modify or add account
+
+650
+00:11:50,949 --> 00:11:50,959
+From here, you can modify or add account
+ 
+
+651
+00:11:50,959 --> 00:11:53,509
+From here, you can modify or add account
+name information and specify the type of
+
+652
+00:11:53,509 --> 00:11:53,519
+name information and specify the type of
+ 
+
+653
+00:11:53,519 --> 00:11:55,910
+name information and specify the type of
+account that this might be. For example,
+
+654
+00:11:55,910 --> 00:11:55,920
+account that this might be. For example,
+ 
+
+655
+00:11:55,920 --> 00:11:57,990
+account that this might be. For example,
+you can configure an account to be a
+
+656
+00:11:57,990 --> 00:11:58,000
+you can configure an account to be a
+ 
+
+657
+00:11:58,000 --> 00:12:00,150
+you can configure an account to be a
+regular user or an administrator
+
+658
+00:12:00,150 --> 00:12:00,160
+regular user or an administrator
+ 
+
+659
+00:12:00,160 --> 00:12:02,230
+regular user or an administrator
+account. This is also where you would go
+
+660
+00:12:02,230 --> 00:12:02,240
+account. This is also where you would go
+ 
+
+661
+00:12:02,240 --> 00:12:03,990
+account. This is also where you would go
+to change things like the password
+
+662
+00:12:03,990 --> 00:12:04,000
+to change things like the password
+ 
+
+663
+00:12:04,000 --> 00:12:06,230
+to change things like the password
+associated with this account or modify
+
+664
+00:12:06,230 --> 00:12:06,240
+associated with this account or modify
+ 
+
+665
+00:12:06,240 --> 00:12:09,030
+associated with this account or modify
+the icon representing this account name.
+
+666
+00:12:09,030 --> 00:12:09,040
+the icon representing this account name.
+ 
+
+667
+00:12:09,040 --> 00:12:10,790
+the icon representing this account name.
+And if you're doing some type of file
+
+668
+00:12:10,790 --> 00:12:10,800
+And if you're doing some type of file
+ 
+
+669
+00:12:10,800 --> 00:12:13,030
+And if you're doing some type of file
+encryption on the system, you can manage
+
+670
+00:12:13,030 --> 00:12:13,040
+encryption on the system, you can manage
+ 
+
+671
+00:12:13,040 --> 00:12:14,949
+encryption on the system, you can manage
+those encryption certificates from the
+
+672
+00:12:14,949 --> 00:12:14,959
+those encryption certificates from the
+ 
+
+673
+00:12:14,959 --> 00:12:18,069
+those encryption certificates from the
+user accounts outlet. Let's bring up the
+
+674
+00:12:18,069 --> 00:12:18,079
+user accounts outlet. Let's bring up the
+ 
+
+675
+00:12:18,079 --> 00:12:20,230
+user accounts outlet. Let's bring up the
+user accounts on this computer. By
+
+676
+00:12:20,230 --> 00:12:20,240
+user accounts on this computer. By
+ 
+
+677
+00:12:20,240 --> 00:12:21,910
+user accounts on this computer. By
+default, it will show the user account
+
+678
+00:12:21,910 --> 00:12:21,920
+default, it will show the user account
+ 
+
+679
+00:12:21,920 --> 00:12:24,470
+default, it will show the user account
+that is currently logged in. And in this
+
+680
+00:12:24,470 --> 00:12:24,480
+that is currently logged in. And in this
+ 
+
+681
+00:12:24,480 --> 00:12:27,110
+that is currently logged in. And in this
+case, it is the professor account. From
+
+682
+00:12:27,110 --> 00:12:27,120
+case, it is the professor account. From
+ 
+
+683
+00:12:27,120 --> 00:12:28,949
+case, it is the professor account. From
+here, you can change things associated
+
+684
+00:12:28,949 --> 00:12:28,959
+here, you can change things associated
+ 
+
+685
+00:12:28,959 --> 00:12:31,350
+here, you can change things associated
+with your account control so that you
+
+686
+00:12:31,350 --> 00:12:31,360
+with your account control so that you
+ 
+
+687
+00:12:31,360 --> 00:12:33,430
+with your account control so that you
+can define when the account control
+
+688
+00:12:33,430 --> 00:12:33,440
+can define when the account control
+ 
+
+689
+00:12:33,440 --> 00:12:35,509
+can define when the account control
+settings would appear on your screen.
+
+690
+00:12:35,509 --> 00:12:35,519
+settings would appear on your screen.
+ 
+
+691
+00:12:35,519 --> 00:12:37,590
+settings would appear on your screen.
+You can also choose the option to manage
+
+692
+00:12:37,590 --> 00:12:37,600
+You can also choose the option to manage
+ 
+
+693
+00:12:37,600 --> 00:12:40,150
+You can also choose the option to manage
+all user accounts on this system. On
+
+694
+00:12:40,150 --> 00:12:40,160
+all user accounts on this system. On
+ 
+
+695
+00:12:40,160 --> 00:12:41,590
+all user accounts on this system. On
+this particular computer, you can see
+
+696
+00:12:41,590 --> 00:12:41,600
+this particular computer, you can see
+ 
+
+697
+00:12:41,600 --> 00:12:43,829
+this particular computer, you can see
+that I only have one user on this
+
+698
+00:12:43,829 --> 00:12:43,839
+that I only have one user on this
+ 
+
+699
+00:12:43,839 --> 00:12:46,069
+that I only have one user on this
+computer and that user is myself
+
+700
+00:12:46,069 --> 00:12:46,079
+computer and that user is myself
+ 
+
+701
+00:12:46,079 --> 00:12:48,629
+computer and that user is myself
+configured as both a user and an
+
+702
+00:12:48,629 --> 00:12:48,639
+configured as both a user and an
+ 
+
+703
+00:12:48,639 --> 00:12:50,790
+configured as both a user and an
+administrator. If I want to modify the
+
+704
+00:12:50,790 --> 00:12:50,800
+administrator. If I want to modify the
+ 
+
+705
+00:12:50,800 --> 00:12:52,710
+administrator. If I want to modify the
+file encryption certificates, we can
+
+706
+00:12:52,710 --> 00:12:52,720
+file encryption certificates, we can
+ 
+
+707
+00:12:52,720 --> 00:12:55,030
+file encryption certificates, we can
+choose that option on the left side and
+
+708
+00:12:55,030 --> 00:12:55,040
+choose that option on the left side and
+ 
+
+709
+00:12:55,040 --> 00:12:56,949
+choose that option on the left side and
+you can modify how those encryption
+
+710
+00:12:56,949 --> 00:12:56,959
+you can modify how those encryption
+ 
+
+711
+00:12:56,959 --> 00:12:59,710
+you can modify how those encryption
+certificates are stored on your
+
+712
+00:12:59,710 --> 00:12:59,720
+certificates are stored on your
+ 
+
+713
+00:12:59,720 --> 00:13:02,310
+certificates are stored on your
+system. The Windows operating system
+
+714
+00:13:02,310 --> 00:13:02,320
+system. The Windows operating system
+ 
+
+715
+00:13:02,320 --> 00:13:04,230
+system. The Windows operating system
+doesn't know how to interact with any of
+
+716
+00:13:04,230 --> 00:13:04,240
+doesn't know how to interact with any of
+ 
+
+717
+00:13:04,240 --> 00:13:06,710
+doesn't know how to interact with any of
+the hardware on your system unless there
+
+718
+00:13:06,710 --> 00:13:06,720
+the hardware on your system unless there
+ 
+
+719
+00:13:06,720 --> 00:13:08,710
+the hardware on your system unless there
+is a device driver that makes that
+
+720
+00:13:08,710 --> 00:13:08,720
+is a device driver that makes that
+ 
+
+721
+00:13:08,720 --> 00:13:10,790
+is a device driver that makes that
+connection between the operating system
+
+722
+00:13:10,790 --> 00:13:10,800
+connection between the operating system
+ 
+
+723
+00:13:10,800 --> 00:13:12,949
+connection between the operating system
+and the hardware. You would find this
+
+724
+00:13:12,949 --> 00:13:12,959
+and the hardware. You would find this
+ 
+
+725
+00:13:12,959 --> 00:13:15,750
+and the hardware. You would find this
+list of device drivers under the Windows
+
+726
+00:13:15,750 --> 00:13:15,760
+list of device drivers under the Windows
+ 
+
+727
+00:13:15,760 --> 00:13:18,310
+list of device drivers under the Windows
+device manager in your control panel.
+
+728
+00:13:18,310 --> 00:13:18,320
+device manager in your control panel.
+ 
+
+729
+00:13:18,320 --> 00:13:20,550
+device manager in your control panel.
+This will allow you to add devices,
+
+730
+00:13:20,550 --> 00:13:20,560
+This will allow you to add devices,
+ 
+
+731
+00:13:20,560 --> 00:13:23,269
+This will allow you to add devices,
+remove devices, or modify configuration
+
+732
+00:13:23,269 --> 00:13:23,279
+remove devices, or modify configuration
+ 
+
+733
+00:13:23,279 --> 00:13:25,350
+remove devices, or modify configuration
+settings specific to these device
+
+734
+00:13:25,350 --> 00:13:25,360
+settings specific to these device
+ 
+
+735
+00:13:25,360 --> 00:13:27,430
+settings specific to these device
+drivers. This will tell you if Windows
+
+736
+00:13:27,430 --> 00:13:27,440
+drivers. This will tell you if Windows
+ 
+
+737
+00:13:27,440 --> 00:13:29,910
+drivers. This will tell you if Windows
+is able to see and use that piece of
+
+738
+00:13:29,910 --> 00:13:29,920
+is able to see and use that piece of
+ 
+
+739
+00:13:29,920 --> 00:13:31,670
+is able to see and use that piece of
+hardware, and you'll be able to make
+
+740
+00:13:31,670 --> 00:13:31,680
+hardware, and you'll be able to make
+ 
+
+741
+00:13:31,680 --> 00:13:33,990
+hardware, and you'll be able to make
+detailed configuration changes if you
+
+742
+00:13:33,990 --> 00:13:34,000
+detailed configuration changes if you
+ 
+
+743
+00:13:34,000 --> 00:13:35,069
+detailed configuration changes if you
+need
+
+744
+00:13:35,069 --> 00:13:35,079
+need
+ 
+
+745
+00:13:35,079 --> 00:13:37,990
+need
+to. Inside of our control panel, we can
+
+746
+00:13:37,990 --> 00:13:38,000
+to. Inside of our control panel, we can
+ 
+
+747
+00:13:38,000 --> 00:13:40,230
+to. Inside of our control panel, we can
+choose the option for device manager.
+
+748
+00:13:40,230 --> 00:13:40,240
+choose the option for device manager.
+ 
+
+749
+00:13:40,240 --> 00:13:42,310
+choose the option for device manager.
+This will bring up a separate window
+
+750
+00:13:42,310 --> 00:13:42,320
+This will bring up a separate window
+ 
+
+751
+00:13:42,320 --> 00:13:44,150
+This will bring up a separate window
+with a list of all of the device
+
+752
+00:13:44,150 --> 00:13:44,160
+with a list of all of the device
+ 
+
+753
+00:13:44,160 --> 00:13:46,790
+with a list of all of the device
+categories for our system. You can see
+
+754
+00:13:46,790 --> 00:13:46,800
+categories for our system. You can see
+ 
+
+755
+00:13:46,800 --> 00:13:48,550
+categories for our system. You can see
+for example there are cameras, disc
+
+756
+00:13:48,550 --> 00:13:48,560
+for example there are cameras, disc
+ 
+
+757
+00:13:48,560 --> 00:13:51,110
+for example there are cameras, disc
+drives, keyboards, print cues, printers,
+
+758
+00:13:51,110 --> 00:13:51,120
+drives, keyboards, print cues, printers,
+ 
+
+759
+00:13:51,120 --> 00:13:53,750
+drives, keyboards, print cues, printers,
+system devices, and a lot more. Let's
+
+760
+00:13:53,750 --> 00:13:53,760
+system devices, and a lot more. Let's
+ 
+
+761
+00:13:53,760 --> 00:13:55,670
+system devices, and a lot more. Let's
+look at configuration settings for
+
+762
+00:13:55,670 --> 00:13:55,680
+look at configuration settings for
+ 
+
+763
+00:13:55,680 --> 00:13:58,470
+look at configuration settings for
+things like our display adapter. You can
+
+764
+00:13:58,470 --> 00:13:58,480
+things like our display adapter. You can
+ 
+
+765
+00:13:58,480 --> 00:14:01,030
+things like our display adapter. You can
+see this is a parallels display adapter.
+
+766
+00:14:01,030 --> 00:14:01,040
+see this is a parallels display adapter.
+ 
+
+767
+00:14:01,040 --> 00:14:02,790
+see this is a parallels display adapter.
+And if I right mouse click on it, I can
+
+768
+00:14:02,790 --> 00:14:02,800
+And if I right mouse click on it, I can
+ 
+
+769
+00:14:02,800 --> 00:14:05,269
+And if I right mouse click on it, I can
+choose to update the driver, disable the
+
+770
+00:14:05,269 --> 00:14:05,279
+choose to update the driver, disable the
+ 
+
+771
+00:14:05,279 --> 00:14:08,069
+choose to update the driver, disable the
+device, uninstall that device driver, or
+
+772
+00:14:08,069 --> 00:14:08,079
+device, uninstall that device driver, or
+ 
+
+773
+00:14:08,079 --> 00:14:09,910
+device, uninstall that device driver, or
+scan for any changes that we may have
+
+774
+00:14:09,910 --> 00:14:09,920
+scan for any changes that we may have
+ 
+
+775
+00:14:09,920 --> 00:14:12,150
+scan for any changes that we may have
+made to the hardware. If we look at the
+
+776
+00:14:12,150 --> 00:14:12,160
+made to the hardware. If we look at the
+ 
+
+777
+00:14:12,160 --> 00:14:14,389
+made to the hardware. If we look at the
+properties for this device driver, we
+
+778
+00:14:14,389 --> 00:14:14,399
+properties for this device driver, we
+ 
+
+779
+00:14:14,399 --> 00:14:16,710
+properties for this device driver, we
+will see a similar set of properties for
+
+780
+00:14:16,710 --> 00:14:16,720
+will see a similar set of properties for
+ 
+
+781
+00:14:16,720 --> 00:14:19,430
+will see a similar set of properties for
+this and other devices on our network.
+
+782
+00:14:19,430 --> 00:14:19,440
+this and other devices on our network.
+ 
+
+783
+00:14:19,440 --> 00:14:22,150
+this and other devices on our network.
+It has a general tab, a driver tab,
+
+784
+00:14:22,150 --> 00:14:22,160
+It has a general tab, a driver tab,
+ 
+
+785
+00:14:22,160 --> 00:14:25,269
+It has a general tab, a driver tab,
+details, events, and resources. The
+
+786
+00:14:25,269 --> 00:14:25,279
+details, events, and resources. The
+ 
+
+787
+00:14:25,279 --> 00:14:27,430
+details, events, and resources. The
+general tab gives us information on what
+
+788
+00:14:27,430 --> 00:14:27,440
+general tab gives us information on what
+ 
+
+789
+00:14:27,440 --> 00:14:29,430
+general tab gives us information on what
+this device happens to be. This will
+
+790
+00:14:29,430 --> 00:14:29,440
+this device happens to be. This will
+ 
+
+791
+00:14:29,440 --> 00:14:31,509
+this device happens to be. This will
+give us a summary of what this device
+
+792
+00:14:31,509 --> 00:14:31,519
+give us a summary of what this device
+ 
+
+793
+00:14:31,519 --> 00:14:33,509
+give us a summary of what this device
+is. And you can see under the device
+
+794
+00:14:33,509 --> 00:14:33,519
+is. And you can see under the device
+ 
+
+795
+00:14:33,519 --> 00:14:35,269
+is. And you can see under the device
+status, it will tell us if the Windows
+
+796
+00:14:35,269 --> 00:14:35,279
+status, it will tell us if the Windows
+ 
+
+797
+00:14:35,279 --> 00:14:37,350
+status, it will tell us if the Windows
+operating system is able to use that
+
+798
+00:14:37,350 --> 00:14:37,360
+operating system is able to use that
+ 
+
+799
+00:14:37,360 --> 00:14:39,910
+operating system is able to use that
+device properly. Under the driver tab,
+
+800
+00:14:39,910 --> 00:14:39,920
+device properly. Under the driver tab,
+ 
+
+801
+00:14:39,920 --> 00:14:42,230
+device properly. Under the driver tab,
+you can view details for this specific
+
+802
+00:14:42,230 --> 00:14:42,240
+you can view details for this specific
+ 
+
+803
+00:14:42,240 --> 00:14:44,310
+you can view details for this specific
+device driver. This is the driver date
+
+804
+00:14:44,310 --> 00:14:44,320
+device driver. This is the driver date
+ 
+
+805
+00:14:44,320 --> 00:14:46,230
+device driver. This is the driver date
+and the driver version. And if you
+
+806
+00:14:46,230 --> 00:14:46,240
+and the driver version. And if you
+ 
+
+807
+00:14:46,240 --> 00:14:48,710
+and the driver version. And if you
+wanted to know exactly what files are
+
+808
+00:14:48,710 --> 00:14:48,720
+wanted to know exactly what files are
+ 
+
+809
+00:14:48,720 --> 00:14:50,629
+wanted to know exactly what files are
+associated with this driver, you can
+
+810
+00:14:50,629 --> 00:14:50,639
+associated with this driver, you can
+ 
+
+811
+00:14:50,639 --> 00:14:52,949
+associated with this driver, you can
+click on driver details and it shows you
+
+812
+00:14:52,949 --> 00:14:52,959
+click on driver details and it shows you
+ 
+
+813
+00:14:52,959 --> 00:14:55,829
+click on driver details and it shows you
+the entire Windows path for that system
+
+814
+00:14:55,829 --> 00:14:55,839
+the entire Windows path for that system
+ 
+
+815
+00:14:55,839 --> 00:14:58,230
+the entire Windows path for that system
+file. The next tab over shows us
+
+816
+00:14:58,230 --> 00:14:58,240
+file. The next tab over shows us
+ 
+
+817
+00:14:58,240 --> 00:15:00,389
+file. The next tab over shows us
+information about the details for this
+
+818
+00:15:00,389 --> 00:15:00,399
+information about the details for this
+ 
+
+819
+00:15:00,399 --> 00:15:02,710
+information about the details for this
+driver. In this case, we only have one
+
+820
+00:15:02,710 --> 00:15:02,720
+driver. In this case, we only have one
+ 
+
+821
+00:15:02,720 --> 00:15:04,550
+driver. In this case, we only have one
+value associated with this device
+
+822
+00:15:04,550 --> 00:15:04,560
+value associated with this device
+ 
+
+823
+00:15:04,560 --> 00:15:06,550
+value associated with this device
+driver. If you're wondering if this
+
+824
+00:15:06,550 --> 00:15:06,560
+driver. If you're wondering if this
+ 
+
+825
+00:15:06,560 --> 00:15:08,870
+driver. If you're wondering if this
+device driver has ever been updated, you
+
+826
+00:15:08,870 --> 00:15:08,880
+device driver has ever been updated, you
+ 
+
+827
+00:15:08,880 --> 00:15:11,110
+device driver has ever been updated, you
+can click the events tab and it shows
+
+828
+00:15:11,110 --> 00:15:11,120
+can click the events tab and it shows
+ 
+
+829
+00:15:11,120 --> 00:15:13,750
+can click the events tab and it shows
+you every event associated with this
+
+830
+00:15:13,750 --> 00:15:13,760
+you every event associated with this
+ 
+
+831
+00:15:13,760 --> 00:15:16,069
+you every event associated with this
+device driver through the years. And
+
+832
+00:15:16,069 --> 00:15:16,079
+device driver through the years. And
+ 
+
+833
+00:15:16,079 --> 00:15:18,230
+device driver through the years. And
+lastly, we have the resources tab that
+
+834
+00:15:18,230 --> 00:15:18,240
+lastly, we have the resources tab that
+ 
+
+835
+00:15:18,240 --> 00:15:20,150
+lastly, we have the resources tab that
+tells us exactly memory ranges,
+
+836
+00:15:20,150 --> 00:15:20,160
+tells us exactly memory ranges,
+ 
+
+837
+00:15:20,160 --> 00:15:22,310
+tells us exactly memory ranges,
+interrupts, and other important hardware
+
+838
+00:15:22,310 --> 00:15:22,320
+interrupts, and other important hardware
+ 
+
+839
+00:15:22,320 --> 00:15:24,470
+interrupts, and other important hardware
+information about the configuration of
+
+840
+00:15:24,470 --> 00:15:24,480
+information about the configuration of
+ 
+
+841
+00:15:24,480 --> 00:15:26,350
+information about the configuration of
+this device
+
+842
+00:15:26,350 --> 00:15:26,360
+this device
+ 
+
+843
+00:15:26,360 --> 00:15:29,269
+this device
+driver. If you ever search for things at
+
+844
+00:15:29,269 --> 00:15:29,279
+driver. If you ever search for things at
+ 
+
+845
+00:15:29,279 --> 00:15:31,430
+driver. If you ever search for things at
+the search menu within your Windows, you
+
+846
+00:15:31,430 --> 00:15:31,440
+the search menu within your Windows, you
+ 
+
+847
+00:15:31,440 --> 00:15:33,509
+the search menu within your Windows, you
+may notice that you get responses back
+
+848
+00:15:33,509 --> 00:15:33,519
+may notice that you get responses back
+ 
+
+849
+00:15:33,519 --> 00:15:36,389
+may notice that you get responses back
+very quickly. It's able to find detailed
+
+850
+00:15:36,389 --> 00:15:36,399
+very quickly. It's able to find detailed
+ 
+
+851
+00:15:36,399 --> 00:15:38,310
+very quickly. It's able to find detailed
+information that may be hidden within a
+
+852
+00:15:38,310 --> 00:15:38,320
+information that may be hidden within a
+ 
+
+853
+00:15:38,320 --> 00:15:40,389
+information that may be hidden within a
+file that's well inside of your
+
+854
+00:15:40,389 --> 00:15:40,399
+file that's well inside of your
+ 
+
+855
+00:15:40,399 --> 00:15:42,870
+file that's well inside of your
+operating system. So, how is Windows
+
+856
+00:15:42,870 --> 00:15:42,880
+operating system. So, how is Windows
+ 
+
+857
+00:15:42,880 --> 00:15:44,870
+operating system. So, how is Windows
+able to find that information so
+
+858
+00:15:44,870 --> 00:15:44,880
+able to find that information so
+ 
+
+859
+00:15:44,880 --> 00:15:46,790
+able to find that information so
+quickly? That's because Windows has
+
+860
+00:15:46,790 --> 00:15:46,800
+quickly? That's because Windows has
+ 
+
+861
+00:15:46,800 --> 00:15:48,310
+quickly? That's because Windows has
+already gone through the process of
+
+862
+00:15:48,310 --> 00:15:48,320
+already gone through the process of
+ 
+
+863
+00:15:48,320 --> 00:15:50,470
+already gone through the process of
+indexing all of those files on your
+
+864
+00:15:50,470 --> 00:15:50,480
+indexing all of those files on your
+ 
+
+865
+00:15:50,480 --> 00:15:52,870
+indexing all of those files on your
+system and it's simply referencing that
+
+866
+00:15:52,870 --> 00:15:52,880
+system and it's simply referencing that
+ 
+
+867
+00:15:52,880 --> 00:15:54,949
+system and it's simply referencing that
+index to be able to quickly find that
+
+868
+00:15:54,949 --> 00:15:54,959
+index to be able to quickly find that
+ 
+
+869
+00:15:54,959 --> 00:15:57,509
+index to be able to quickly find that
+information. If you'd like to modify how
+
+870
+00:15:57,509 --> 00:15:57,519
+information. If you'd like to modify how
+ 
+
+871
+00:15:57,519 --> 00:15:59,990
+information. If you'd like to modify how
+Windows is providing that index, you can
+
+872
+00:15:59,990 --> 00:16:00,000
+Windows is providing that index, you can
+ 
+
+873
+00:16:00,000 --> 00:16:01,990
+Windows is providing that index, you can
+change that configuration under the
+
+874
+00:16:01,990 --> 00:16:02,000
+change that configuration under the
+ 
+
+875
+00:16:02,000 --> 00:16:04,310
+change that configuration under the
+indexing options.
+
+876
+00:16:04,310 --> 00:16:04,320
+indexing options.
+ 
+
+877
+00:16:04,320 --> 00:16:06,150
+indexing options.
+Under the control panel, we choose the
+
+878
+00:16:06,150 --> 00:16:06,160
+Under the control panel, we choose the
+ 
+
+879
+00:16:06,160 --> 00:16:08,949
+Under the control panel, we choose the
+option for indexing options. It opens up
+
+880
+00:16:08,949 --> 00:16:08,959
+option for indexing options. It opens up
+ 
+
+881
+00:16:08,959 --> 00:16:11,350
+option for indexing options. It opens up
+a new window and inside of this window,
+
+882
+00:16:11,350 --> 00:16:11,360
+a new window and inside of this window,
+ 
+
+883
+00:16:11,360 --> 00:16:13,189
+a new window and inside of this window,
+you can see the default settings. It's
+
+884
+00:16:13,189 --> 00:16:13,199
+you can see the default settings. It's
+ 
+
+885
+00:16:13,199 --> 00:16:14,790
+you can see the default settings. It's
+going to include locations for your
+
+886
+00:16:14,790 --> 00:16:14,800
+going to include locations for your
+ 
+
+887
+00:16:14,800 --> 00:16:17,910
+going to include locations for your
+start menu and under our users folder.
+
+888
+00:16:17,910 --> 00:16:17,920
+start menu and under our users folder.
+ 
+
+889
+00:16:17,920 --> 00:16:20,389
+start menu and under our users folder.
+It's going to index everything in those
+
+890
+00:16:20,389 --> 00:16:20,399
+It's going to index everything in those
+ 
+
+891
+00:16:20,399 --> 00:16:22,389
+It's going to index everything in those
+particular folders unless we have set
+
+892
+00:16:22,389 --> 00:16:22,399
+particular folders unless we have set
+ 
+
+893
+00:16:22,399 --> 00:16:24,870
+particular folders unless we have set
+specific exclusions for different types
+
+894
+00:16:24,870 --> 00:16:24,880
+specific exclusions for different types
+ 
+
+895
+00:16:24,880 --> 00:16:26,870
+specific exclusions for different types
+of folders. If you'd like to modify
+
+896
+00:16:26,870 --> 00:16:26,880
+of folders. If you'd like to modify
+ 
+
+897
+00:16:26,880 --> 00:16:28,629
+of folders. If you'd like to modify
+those, you can click the modify option
+
+898
+00:16:28,629 --> 00:16:28,639
+those, you can click the modify option
+ 
+
+899
+00:16:28,639 --> 00:16:31,030
+those, you can click the modify option
+at the bottom and change the specific
+
+900
+00:16:31,030 --> 00:16:31,040
+at the bottom and change the specific
+ 
+
+901
+00:16:31,040 --> 00:16:33,590
+at the bottom and change the specific
+folders that are being indexed or not
+
+902
+00:16:33,590 --> 00:16:33,600
+folders that are being indexed or not
+ 
+
+903
+00:16:33,600 --> 00:16:36,389
+folders that are being indexed or not
+indexed on your computer. Perhaps we'd
+
+904
+00:16:36,389 --> 00:16:36,399
+indexed on your computer. Perhaps we'd
+ 
+
+905
+00:16:36,399 --> 00:16:38,870
+indexed on your computer. Perhaps we'd
+like to index all of these folders, but
+
+906
+00:16:38,870 --> 00:16:38,880
+like to index all of these folders, but
+ 
+
+907
+00:16:38,880 --> 00:16:41,509
+like to index all of these folders, but
+instead specify certain types of files
+
+908
+00:16:41,509 --> 00:16:41,519
+instead specify certain types of files
+ 
+
+909
+00:16:41,519 --> 00:16:43,749
+instead specify certain types of files
+that we don't want to index. Under the
+
+910
+00:16:43,749 --> 00:16:43,759
+that we don't want to index. Under the
+ 
+
+911
+00:16:43,759 --> 00:16:46,150
+that we don't want to index. Under the
+advanced option, we can choose the file
+
+912
+00:16:46,150 --> 00:16:46,160
+advanced option, we can choose the file
+ 
+
+913
+00:16:46,160 --> 00:16:48,949
+advanced option, we can choose the file
+types tab and we can select exactly what
+
+914
+00:16:48,949 --> 00:16:48,959
+types tab and we can select exactly what
+ 
+
+915
+00:16:48,959 --> 00:16:51,509
+types tab and we can select exactly what
+type of files would be good to index and
+
+916
+00:16:51,509 --> 00:16:51,519
+type of files would be good to index and
+ 
+
+917
+00:16:51,519 --> 00:16:53,590
+type of files would be good to index and
+what type of files we do not want to
+
+918
+00:16:53,590 --> 00:16:53,600
+what type of files we do not want to
+ 
+
+919
+00:16:53,600 --> 00:16:55,790
+what type of files we do not want to
+include in that search
+
+920
+00:16:55,790 --> 00:16:55,800
+include in that search
+ 
+
+921
+00:16:55,800 --> 00:16:58,470
+include in that search
+index. If you're a system administrator,
+
+922
+00:16:58,470 --> 00:16:58,480
+index. If you're a system administrator,
+ 
+
+923
+00:16:58,480 --> 00:17:00,470
+index. If you're a system administrator,
+there are a number of utilities inside
+
+924
+00:17:00,470 --> 00:17:00,480
+there are a number of utilities inside
+ 
+
+925
+00:17:00,480 --> 00:17:02,470
+there are a number of utilities inside
+of the control panel that can help you
+
+926
+00:17:02,470 --> 00:17:02,480
+of the control panel that can help you
+ 
+
+927
+00:17:02,480 --> 00:17:04,870
+of the control panel that can help you
+monitor and maintain this computer.
+
+928
+00:17:04,870 --> 00:17:04,880
+monitor and maintain this computer.
+ 
+
+929
+00:17:04,880 --> 00:17:06,710
+monitor and maintain this computer.
+You'll find them under a setting called
+
+930
+00:17:06,710 --> 00:17:06,720
+You'll find them under a setting called
+ 
+
+931
+00:17:06,720 --> 00:17:08,949
+You'll find them under a setting called
+administrative tools, or in most recent
+
+932
+00:17:08,949 --> 00:17:08,959
+administrative tools, or in most recent
+ 
+
+933
+00:17:08,959 --> 00:17:11,110
+administrative tools, or in most recent
+Windows versions, it's called Windows
+
+934
+00:17:11,110 --> 00:17:11,120
+Windows versions, it's called Windows
+ 
+
+935
+00:17:11,120 --> 00:17:13,750
+Windows versions, it's called Windows
+tools. Inside of this Windows tools
+
+936
+00:17:13,750 --> 00:17:13,760
+tools. Inside of this Windows tools
+ 
+
+937
+00:17:13,760 --> 00:17:15,990
+tools. Inside of this Windows tools
+section might be options for computer
+
+938
+00:17:15,990 --> 00:17:16,000
+section might be options for computer
+ 
+
+939
+00:17:16,000 --> 00:17:18,549
+section might be options for computer
+management, registry editing, task
+
+940
+00:17:18,549 --> 00:17:18,559
+management, registry editing, task
+ 
+
+941
+00:17:18,559 --> 00:17:22,309
+management, registry editing, task
+manager, task scheduler, and much more.
+
+942
+00:17:22,309 --> 00:17:22,319
+manager, task scheduler, and much more.
+ 
+
+943
+00:17:22,319 --> 00:17:24,549
+manager, task scheduler, and much more.
+The administrative tools or windows
+
+944
+00:17:24,549 --> 00:17:24,559
+The administrative tools or windows
+ 
+
+945
+00:17:24,559 --> 00:17:26,870
+The administrative tools or windows
+tools can be found in the control panel.
+
+946
+00:17:26,870 --> 00:17:26,880
+tools can be found in the control panel.
+ 
+
+947
+00:17:26,880 --> 00:17:28,549
+tools can be found in the control panel.
+It will either be listed as
+
+948
+00:17:28,549 --> 00:17:28,559
+It will either be listed as
+ 
+
+949
+00:17:28,559 --> 00:17:30,630
+It will either be listed as
+administrative tools or on later
+
+950
+00:17:30,630 --> 00:17:30,640
+administrative tools or on later
+ 
+
+951
+00:17:30,640 --> 00:17:32,150
+administrative tools or on later
+versions of Windows, you'll find the
+
+952
+00:17:32,150 --> 00:17:32,160
+versions of Windows, you'll find the
+ 
+
+953
+00:17:32,160 --> 00:17:34,549
+versions of Windows, you'll find the
+option for Windows tools. This will
+
+954
+00:17:34,549 --> 00:17:34,559
+option for Windows tools. This will
+ 
+
+955
+00:17:34,559 --> 00:17:36,630
+option for Windows tools. This will
+bring up a separate window that gives us
+
+956
+00:17:36,630 --> 00:17:36,640
+bring up a separate window that gives us
+ 
+
+957
+00:17:36,640 --> 00:17:38,789
+bring up a separate window that gives us
+a list of administrative functions that
+
+958
+00:17:38,789 --> 00:17:38,799
+a list of administrative functions that
+ 
+
+959
+00:17:38,799 --> 00:17:40,950
+a list of administrative functions that
+we can use to keep this system up and
+
+960
+00:17:40,950 --> 00:17:40,960
+we can use to keep this system up and
+ 
+
+961
+00:17:40,960 --> 00:17:42,310
+we can use to keep this system up and
+running.
+
+962
+00:17:42,310 --> 00:17:42,320
+running.
+ 
+
+963
+00:17:42,320 --> 00:17:45,029
+running.
+The Windows file explorer allows us to
+
+964
+00:17:45,029 --> 00:17:45,039
+The Windows file explorer allows us to
+ 
+
+965
+00:17:45,039 --> 00:17:47,909
+The Windows file explorer allows us to
+access individual files and folders on
+
+966
+00:17:47,909 --> 00:17:47,919
+access individual files and folders on
+ 
+
+967
+00:17:47,919 --> 00:17:49,990
+access individual files and folders on
+our system. And there are a number of
+
+968
+00:17:49,990 --> 00:17:50,000
+our system. And there are a number of
+ 
+
+969
+00:17:50,000 --> 00:17:52,070
+our system. And there are a number of
+different options you can configure from
+
+970
+00:17:52,070 --> 00:17:52,080
+different options you can configure from
+ 
+
+971
+00:17:52,080 --> 00:17:54,870
+different options you can configure from
+the file explorer options inside of your
+
+972
+00:17:54,870 --> 00:17:54,880
+the file explorer options inside of your
+ 
+
+973
+00:17:54,880 --> 00:17:57,190
+the file explorer options inside of your
+control panel. One of these might be the
+
+974
+00:17:57,190 --> 00:17:57,200
+control panel. One of these might be the
+ 
+
+975
+00:17:57,200 --> 00:17:59,350
+control panel. One of these might be the
+general options where you can configure
+
+976
+00:17:59,350 --> 00:17:59,360
+general options where you can configure
+ 
+
+977
+00:17:59,360 --> 00:18:01,590
+general options where you can configure
+how the folders can be browsed when you
+
+978
+00:18:01,590 --> 00:18:01,600
+how the folders can be browsed when you
+ 
+
+979
+00:18:01,600 --> 00:18:03,830
+how the folders can be browsed when you
+click an item, what happens, and you can
+
+980
+00:18:03,830 --> 00:18:03,840
+click an item, what happens, and you can
+ 
+
+981
+00:18:03,840 --> 00:18:06,950
+click an item, what happens, and you can
+specify privacy options as well.
+
+982
+00:18:06,950 --> 00:18:06,960
+specify privacy options as well.
+ 
+
+983
+00:18:06,960 --> 00:18:09,270
+specify privacy options as well.
+You'll find the file explorer options
+
+984
+00:18:09,270 --> 00:18:09,280
+You'll find the file explorer options
+ 
+
+985
+00:18:09,280 --> 00:18:11,830
+You'll find the file explorer options
+under that named link inside of your
+
+986
+00:18:11,830 --> 00:18:11,840
+under that named link inside of your
+ 
+
+987
+00:18:11,840 --> 00:18:13,750
+under that named link inside of your
+control panel and it will bring up a
+
+988
+00:18:13,750 --> 00:18:13,760
+control panel and it will bring up a
+ 
+
+989
+00:18:13,760 --> 00:18:16,070
+control panel and it will bring up a
+separate window with three tabs across
+
+990
+00:18:16,070 --> 00:18:16,080
+separate window with three tabs across
+ 
+
+991
+00:18:16,080 --> 00:18:19,510
+separate window with three tabs across
+the top for general view and search. The
+
+992
+00:18:19,510 --> 00:18:19,520
+the top for general view and search. The
+ 
+
+993
+00:18:19,520 --> 00:18:21,909
+the top for general view and search. The
+general tab determines how file explorer
+
+994
+00:18:21,909 --> 00:18:21,919
+general tab determines how file explorer
+ 
+
+995
+00:18:21,919 --> 00:18:24,070
+general tab determines how file explorer
+can be used. Not only what's shown in
+
+996
+00:18:24,070 --> 00:18:24,080
+can be used. Not only what's shown in
+ 
+
+997
+00:18:24,080 --> 00:18:25,830
+can be used. Not only what's shown in
+the different windows, but what happens
+
+998
+00:18:25,830 --> 00:18:25,840
+the different windows, but what happens
+ 
+
+999
+00:18:25,840 --> 00:18:28,070
+the different windows, but what happens
+when you single click or doubleclick a
+
+1000
+00:18:28,070 --> 00:18:28,080
+when you single click or doubleclick a
+ 
+
+1001
+00:18:28,080 --> 00:18:30,470
+when you single click or doubleclick a
+particular file. Under the view tab, you
+
+1002
+00:18:30,470 --> 00:18:30,480
+particular file. Under the view tab, you
+ 
+
+1003
+00:18:30,480 --> 00:18:32,950
+particular file. Under the view tab, you
+have the option to customize what is
+
+1004
+00:18:32,950 --> 00:18:32,960
+have the option to customize what is
+ 
+
+1005
+00:18:32,960 --> 00:18:35,669
+have the option to customize what is
+displayed or what is hidden inside of
+
+1006
+00:18:35,669 --> 00:18:35,679
+displayed or what is hidden inside of
+ 
+
+1007
+00:18:35,679 --> 00:18:38,390
+displayed or what is hidden inside of
+the file explorer. And lastly, under the
+
+1008
+00:18:38,390 --> 00:18:38,400
+the file explorer. And lastly, under the
+ 
+
+1009
+00:18:38,400 --> 00:18:40,789
+the file explorer. And lastly, under the
+search tab, you can make changes to what
+
+1010
+00:18:40,789 --> 00:18:40,799
+search tab, you can make changes to what
+ 
+
+1011
+00:18:40,799 --> 00:18:42,870
+search tab, you can make changes to what
+information will be searched in file
+
+1012
+00:18:42,870 --> 00:18:42,880
+information will be searched in file
+ 
+
+1013
+00:18:42,880 --> 00:18:44,710
+information will be searched in file
+explorer. You can choose whether to
+
+1014
+00:18:44,710 --> 00:18:44,720
+explorer. You can choose whether to
+ 
+
+1015
+00:18:44,720 --> 00:18:46,710
+explorer. You can choose whether to
+include system directories, whether you
+
+1016
+00:18:46,710 --> 00:18:46,720
+include system directories, whether you
+ 
+
+1017
+00:18:46,720 --> 00:18:48,950
+include system directories, whether you
+would like to look into compressed files
+
+1018
+00:18:48,950 --> 00:18:48,960
+would like to look into compressed files
+ 
+
+1019
+00:18:48,960 --> 00:18:51,270
+would like to look into compressed files
+such as zip files to find information
+
+1020
+00:18:51,270 --> 00:18:51,280
+such as zip files to find information
+ 
+
+1021
+00:18:51,280 --> 00:18:53,750
+such as zip files to find information
+within those compressed files. And you
+
+1022
+00:18:53,750 --> 00:18:53,760
+within those compressed files. And you
+ 
+
+1023
+00:18:53,760 --> 00:18:55,350
+within those compressed files. And you
+can specify whether you're going to look
+
+1024
+00:18:55,350 --> 00:18:55,360
+can specify whether you're going to look
+ 
+
+1025
+00:18:55,360 --> 00:18:57,590
+can specify whether you're going to look
+at just the file names or whether you're
+
+1026
+00:18:57,590 --> 00:18:57,600
+at just the file names or whether you're
+ 
+
+1027
+00:18:57,600 --> 00:18:59,990
+at just the file names or whether you're
+going to look into the detailed content
+
+1028
+00:18:59,990 --> 00:19:00,000
+going to look into the detailed content
+ 
+
+1029
+00:19:00,000 --> 00:19:01,710
+going to look into the detailed content
+of every
+
+1030
+00:19:01,710 --> 00:19:01,720
+of every
+ 
+
+1031
+00:19:01,720 --> 00:19:04,549
+of every
+file. Windows also gives us access to
+
+1032
+00:19:04,549 --> 00:19:04,559
+file. Windows also gives us access to
+ 
+
+1033
+00:19:04,559 --> 00:19:06,950
+file. Windows also gives us access to
+many power options not only for our
+
+1034
+00:19:06,950 --> 00:19:06,960
+many power options not only for our
+ 
+
+1035
+00:19:06,960 --> 00:19:09,029
+many power options not only for our
+laptop computers, but we can also change
+
+1036
+00:19:09,029 --> 00:19:09,039
+laptop computers, but we can also change
+ 
+
+1037
+00:19:09,039 --> 00:19:11,190
+laptop computers, but we can also change
+power options on our desktop computers
+
+1038
+00:19:11,190 --> 00:19:11,200
+power options on our desktop computers
+ 
+
+1039
+00:19:11,200 --> 00:19:13,510
+power options on our desktop computers
+as well. You'll find these options under
+
+1040
+00:19:13,510 --> 00:19:13,520
+as well. You'll find these options under
+ 
+
+1041
+00:19:13,520 --> 00:19:15,430
+as well. You'll find these options under
+the control panel under the option
+
+1042
+00:19:15,430 --> 00:19:15,440
+the control panel under the option
+ 
+
+1043
+00:19:15,440 --> 00:19:18,310
+the control panel under the option
+marked power options. For example, you
+
+1044
+00:19:18,310 --> 00:19:18,320
+marked power options. For example, you
+ 
+
+1045
+00:19:18,320 --> 00:19:20,070
+marked power options. For example, you
+might be able to set a configuration
+
+1046
+00:19:20,070 --> 00:19:20,080
+might be able to set a configuration
+ 
+
+1047
+00:19:20,080 --> 00:19:22,230
+might be able to set a configuration
+where your system will hibernate. That
+
+1048
+00:19:22,230 --> 00:19:22,240
+where your system will hibernate. That
+ 
+
+1049
+00:19:22,240 --> 00:19:23,750
+where your system will hibernate. That
+means it will take all of the open
+
+1050
+00:19:23,750 --> 00:19:23,760
+means it will take all of the open
+ 
+
+1051
+00:19:23,760 --> 00:19:25,590
+means it will take all of the open
+documents that you're using and all of
+
+1052
+00:19:25,590 --> 00:19:25,600
+documents that you're using and all of
+ 
+
+1053
+00:19:25,600 --> 00:19:27,830
+documents that you're using and all of
+the applications in use and will save
+
+1054
+00:19:27,830 --> 00:19:27,840
+the applications in use and will save
+ 
+
+1055
+00:19:27,840 --> 00:19:30,390
+the applications in use and will save
+that information to the drive associated
+
+1056
+00:19:30,390 --> 00:19:30,400
+that information to the drive associated
+ 
+
+1057
+00:19:30,400 --> 00:19:32,950
+that information to the drive associated
+with your system. This is very common on
+
+1058
+00:19:32,950 --> 00:19:32,960
+with your system. This is very common on
+ 
+
+1059
+00:19:32,960 --> 00:19:34,950
+with your system. This is very common on
+laptop computers because it will save
+
+1060
+00:19:34,950 --> 00:19:34,960
+laptop computers because it will save
+ 
+
+1061
+00:19:34,960 --> 00:19:37,430
+laptop computers because it will save
+everything to disk and even if you lose
+
+1062
+00:19:37,430 --> 00:19:37,440
+everything to disk and even if you lose
+ 
+
+1063
+00:19:37,440 --> 00:19:39,510
+everything to disk and even if you lose
+the battery power, you will still be
+
+1064
+00:19:39,510 --> 00:19:39,520
+the battery power, you will still be
+ 
+
+1065
+00:19:39,520 --> 00:19:41,909
+the battery power, you will still be
+able to recover where you left off. This
+
+1066
+00:19:41,909 --> 00:19:41,919
+able to recover where you left off. This
+ 
+
+1067
+00:19:41,919 --> 00:19:43,669
+able to recover where you left off. This
+is something that's commonly used by the
+
+1068
+00:19:43,669 --> 00:19:43,679
+is something that's commonly used by the
+ 
+
+1069
+00:19:43,679 --> 00:19:46,390
+is something that's commonly used by the
+fast startup feature inside of Windows
+
+1070
+00:19:46,390 --> 00:19:46,400
+fast startup feature inside of Windows
+ 
+
+1071
+00:19:46,400 --> 00:19:48,870
+fast startup feature inside of Windows
+as well. Since it does take a number of
+
+1072
+00:19:48,870 --> 00:19:48,880
+as well. Since it does take a number of
+ 
+
+1073
+00:19:48,880 --> 00:19:50,470
+as well. Since it does take a number of
+seconds to be able to pull the
+
+1074
+00:19:50,470 --> 00:19:50,480
+seconds to be able to pull the
+ 
+
+1075
+00:19:50,480 --> 00:19:52,390
+seconds to be able to pull the
+information off of your storage drive
+
+1076
+00:19:52,390 --> 00:19:52,400
+information off of your storage drive
+ 
+
+1077
+00:19:52,400 --> 00:19:54,549
+information off of your storage drive
+and put it back into memory when you
+
+1078
+00:19:54,549 --> 00:19:54,559
+and put it back into memory when you
+ 
+
+1079
+00:19:54,559 --> 00:19:56,549
+and put it back into memory when you
+power on your system, you may instead
+
+1080
+00:19:56,549 --> 00:19:56,559
+power on your system, you may instead
+ 
+
+1081
+00:19:56,559 --> 00:19:59,029
+power on your system, you may instead
+want to choose the sleep or standby
+
+1082
+00:19:59,029 --> 00:19:59,039
+want to choose the sleep or standby
+ 
+
+1083
+00:19:59,039 --> 00:20:01,110
+want to choose the sleep or standby
+option. Instead of taking your
+
+1084
+00:20:01,110 --> 00:20:01,120
+option. Instead of taking your
+ 
+
+1085
+00:20:01,120 --> 00:20:03,350
+option. Instead of taking your
+applications and your data and moving it
+
+1086
+00:20:03,350 --> 00:20:03,360
+applications and your data and moving it
+ 
+
+1087
+00:20:03,360 --> 00:20:05,590
+applications and your data and moving it
+to a storage drive, it simply keeps
+
+1088
+00:20:05,590 --> 00:20:05,600
+to a storage drive, it simply keeps
+ 
+
+1089
+00:20:05,600 --> 00:20:08,390
+to a storage drive, it simply keeps
+everything in the memory of your system.
+
+1090
+00:20:08,390 --> 00:20:08,400
+everything in the memory of your system.
+ 
+
+1091
+00:20:08,400 --> 00:20:10,870
+everything in the memory of your system.
+This requires constant power to be able
+
+1092
+00:20:10,870 --> 00:20:10,880
+This requires constant power to be able
+ 
+
+1093
+00:20:10,880 --> 00:20:13,029
+This requires constant power to be able
+to maintain that particular state.
+
+1094
+00:20:13,029 --> 00:20:13,039
+to maintain that particular state.
+ 
+
+1095
+00:20:13,039 --> 00:20:15,430
+to maintain that particular state.
+Although it is not a lot of power, it
+
+1096
+00:20:15,430 --> 00:20:15,440
+Although it is not a lot of power, it
+ 
+
+1097
+00:20:15,440 --> 00:20:17,590
+Although it is not a lot of power, it
+can still take away from the battery on
+
+1098
+00:20:17,590 --> 00:20:17,600
+can still take away from the battery on
+ 
+
+1099
+00:20:17,600 --> 00:20:19,830
+can still take away from the battery on
+your system. If you're planning to swap
+
+1100
+00:20:19,830 --> 00:20:19,840
+your system. If you're planning to swap
+ 
+
+1101
+00:20:19,840 --> 00:20:21,590
+your system. If you're planning to swap
+out your battery or the battery that
+
+1102
+00:20:21,590 --> 00:20:21,600
+out your battery or the battery that
+ 
+
+1103
+00:20:21,600 --> 00:20:23,510
+out your battery or the battery that
+you're using is very low, you might want
+
+1104
+00:20:23,510 --> 00:20:23,520
+you're using is very low, you might want
+ 
+
+1105
+00:20:23,520 --> 00:20:26,390
+you're using is very low, you might want
+to use the hibernate function instead.
+
+1106
+00:20:26,390 --> 00:20:26,400
+to use the hibernate function instead.
+ 
+
+1107
+00:20:26,400 --> 00:20:28,310
+to use the hibernate function instead.
+And this also gives you a great deal of
+
+1108
+00:20:28,310 --> 00:20:28,320
+And this also gives you a great deal of
+ 
+
+1109
+00:20:28,320 --> 00:20:30,870
+And this also gives you a great deal of
+customization over how every component
+
+1110
+00:20:30,870 --> 00:20:30,880
+customization over how every component
+ 
+
+1111
+00:20:30,880 --> 00:20:33,310
+customization over how every component
+inside of Windows is using
+
+1112
+00:20:33,310 --> 00:20:33,320
+inside of Windows is using
+ 
+
+1113
+00:20:33,320 --> 00:20:35,750
+inside of Windows is using
+power. In our control panel, we would
+
+1114
+00:20:35,750 --> 00:20:35,760
+power. In our control panel, we would
+ 
+
+1115
+00:20:35,760 --> 00:20:38,310
+power. In our control panel, we would
+choose the option for power options. And
+
+1116
+00:20:38,310 --> 00:20:38,320
+choose the option for power options. And
+ 
+
+1117
+00:20:38,320 --> 00:20:40,390
+choose the option for power options. And
+this tells us that there are two current
+
+1118
+00:20:40,390 --> 00:20:40,400
+this tells us that there are two current
+ 
+
+1119
+00:20:40,400 --> 00:20:42,549
+this tells us that there are two current
+power plans that you can choose from.
+
+1120
+00:20:42,549 --> 00:20:42,559
+power plans that you can choose from.
+ 
+
+1121
+00:20:42,559 --> 00:20:44,390
+power plans that you can choose from.
+one that is labeled balanced and the
+
+1122
+00:20:44,390 --> 00:20:44,400
+one that is labeled balanced and the
+ 
+
+1123
+00:20:44,400 --> 00:20:46,549
+one that is labeled balanced and the
+other one that is labeled parallels. So
+
+1124
+00:20:46,549 --> 00:20:46,559
+other one that is labeled parallels. So
+ 
+
+1125
+00:20:46,559 --> 00:20:48,390
+other one that is labeled parallels. So
+if we would like to change how the
+
+1126
+00:20:48,390 --> 00:20:48,400
+if we would like to change how the
+ 
+
+1127
+00:20:48,400 --> 00:20:50,789
+if we would like to change how the
+display is powering off, we can wait
+
+1128
+00:20:50,789 --> 00:20:50,799
+display is powering off, we can wait
+ 
+
+1129
+00:20:50,799 --> 00:20:53,029
+display is powering off, we can wait
+five minutes, we can wait 45 minutes or
+
+1130
+00:20:53,029 --> 00:20:53,039
+five minutes, we can wait 45 minutes or
+ 
+
+1131
+00:20:53,039 --> 00:20:55,029
+five minutes, we can wait 45 minutes or
+customize the exact time that we would
+
+1132
+00:20:55,029 --> 00:20:55,039
+customize the exact time that we would
+ 
+
+1133
+00:20:55,039 --> 00:20:57,270
+customize the exact time that we would
+like to use. And if you never want the
+
+1134
+00:20:57,270 --> 00:20:57,280
+like to use. And if you never want the
+ 
+
+1135
+00:20:57,280 --> 00:20:58,950
+like to use. And if you never want the
+display to turn off, you can choose the
+
+1136
+00:20:58,950 --> 00:20:58,960
+display to turn off, you can choose the
+ 
+
+1137
+00:20:58,960 --> 00:21:01,110
+display to turn off, you can choose the
+option for never. You can also have the
+
+1138
+00:21:01,110 --> 00:21:01,120
+option for never. You can also have the
+ 
+
+1139
+00:21:01,120 --> 00:21:03,029
+option for never. You can also have the
+system automatically put itself to
+
+1140
+00:21:03,029 --> 00:21:03,039
+system automatically put itself to
+ 
+
+1141
+00:21:03,039 --> 00:21:04,789
+system automatically put itself to
+sleep. And again, if you'd like to make
+
+1142
+00:21:04,789 --> 00:21:04,799
+sleep. And again, if you'd like to make
+ 
+
+1143
+00:21:04,799 --> 00:21:07,270
+sleep. And again, if you'd like to make
+it so this system never goes to sleep
+
+1144
+00:21:07,270 --> 00:21:07,280
+it so this system never goes to sleep
+ 
+
+1145
+00:21:07,280 --> 00:21:09,110
+it so this system never goes to sleep
+automatically instead of setting a
+
+1146
+00:21:09,110 --> 00:21:09,120
+automatically instead of setting a
+ 
+
+1147
+00:21:09,120 --> 00:21:11,110
+automatically instead of setting a
+specific time frame, you can select the
+
+1148
+00:21:11,110 --> 00:21:11,120
+specific time frame, you can select the
+ 
+
+1149
+00:21:11,120 --> 00:21:13,190
+specific time frame, you can select the
+option for never. If you'd like to have
+
+1150
+00:21:13,190 --> 00:21:13,200
+option for never. If you'd like to have
+ 
+
+1151
+00:21:13,200 --> 00:21:15,270
+option for never. If you'd like to have
+even more granularity for the power
+
+1152
+00:21:15,270 --> 00:21:15,280
+even more granularity for the power
+ 
+
+1153
+00:21:15,280 --> 00:21:16,789
+even more granularity for the power
+settings, you can choose the advanced
+
+1154
+00:21:16,789 --> 00:21:16,799
+settings, you can choose the advanced
+ 
+
+1155
+00:21:16,799 --> 00:21:18,390
+settings, you can choose the advanced
+power settings, which opens up a
+
+1156
+00:21:18,390 --> 00:21:18,400
+power settings, which opens up a
+ 
+
+1157
+00:21:18,400 --> 00:21:20,390
+power settings, which opens up a
+separate window. And from here, you can
+
+1158
+00:21:20,390 --> 00:21:20,400
+separate window. And from here, you can
+ 
+
+1159
+00:21:20,400 --> 00:21:22,549
+separate window. And from here, you can
+modify settings for the hard disk, for
+
+1160
+00:21:22,549 --> 00:21:22,559
+modify settings for the hard disk, for
+ 
+
+1161
+00:21:22,559 --> 00:21:24,870
+modify settings for the hard disk, for
+background settings, the sleep options,
+
+1162
+00:21:24,870 --> 00:21:24,880
+background settings, the sleep options,
+ 
+
+1163
+00:21:24,880 --> 00:21:27,430
+background settings, the sleep options,
+PCI Express settings, and settings for
+
+1164
+00:21:27,430 --> 00:21:27,440
+PCI Express settings, and settings for
+ 
+
+1165
+00:21:27,440 --> 00:21:30,070
+PCI Express settings, and settings for
+your display. If you're on a laptop,
+
+1166
+00:21:30,070 --> 00:21:30,080
+your display. If you're on a laptop,
+ 
+
+1167
+00:21:30,080 --> 00:21:32,310
+your display. If you're on a laptop,
+this allows you to also customize what
+
+1168
+00:21:32,310 --> 00:21:32,320
+this allows you to also customize what
+ 
+
+1169
+00:21:32,320 --> 00:21:34,710
+this allows you to also customize what
+happens when you close the top lid of
+
+1170
+00:21:34,710 --> 00:21:34,720
+happens when you close the top lid of
+ 
+
+1171
+00:21:34,720 --> 00:21:37,669
+happens when you close the top lid of
+your laptop. Does the laptop stay on? Do
+
+1172
+00:21:37,669 --> 00:21:37,679
+your laptop. Does the laptop stay on? Do
+ 
+
+1173
+00:21:37,679 --> 00:21:39,750
+your laptop. Does the laptop stay on? Do
+you put it into a sleep mode or
+
+1174
+00:21:39,750 --> 00:21:39,760
+you put it into a sleep mode or
+ 
+
+1175
+00:21:39,760 --> 00:21:41,909
+you put it into a sleep mode or
+hibernate mode? You get to control that
+
+1176
+00:21:41,909 --> 00:21:41,919
+hibernate mode? You get to control that
+ 
+
+1177
+00:21:41,919 --> 00:21:44,070
+hibernate mode? You get to control that
+from the power options. You can also
+
+1178
+00:21:44,070 --> 00:21:44,080
+from the power options. You can also
+ 
+
+1179
+00:21:44,080 --> 00:21:47,029
+from the power options. You can also
+change settings for your USB interfaces.
+
+1180
+00:21:47,029 --> 00:21:47,039
+change settings for your USB interfaces.
+ 
+
+1181
+00:21:47,039 --> 00:21:48,870
+change settings for your USB interfaces.
+You may have devices connected to your
+
+1182
+00:21:48,870 --> 00:21:48,880
+You may have devices connected to your
+ 
+
+1183
+00:21:48,880 --> 00:21:51,029
+You may have devices connected to your
+computer that need to always maintain
+
+1184
+00:21:51,029 --> 00:21:51,039
+computer that need to always maintain
+ 
+
+1185
+00:21:51,039 --> 00:21:53,350
+computer that need to always maintain
+power from the USB port, and you can
+
+1186
+00:21:53,350 --> 00:21:53,360
+power from the USB port, and you can
+ 
+
+1187
+00:21:53,360 --> 00:21:55,590
+power from the USB port, and you can
+configure and manage that process inside
+
+1188
+00:21:55,590 --> 00:21:55,600
+configure and manage that process inside
+ 
+
+1189
+00:21:55,600 --> 00:21:57,669
+configure and manage that process inside
+of power options. You also have the
+
+1190
+00:21:57,669 --> 00:21:57,679
+of power options. You also have the
+ 
+
+1191
+00:21:57,679 --> 00:21:59,830
+of power options. You also have the
+option to change the way your system is
+
+1192
+00:21:59,830 --> 00:21:59,840
+option to change the way your system is
+ 
+
+1193
+00:21:59,840 --> 00:22:01,750
+option to change the way your system is
+starting up. There's a Windows feature
+
+1194
+00:22:01,750 --> 00:22:01,760
+starting up. There's a Windows feature
+ 
+
+1195
+00:22:01,760 --> 00:22:03,750
+starting up. There's a Windows feature
+called fast startup that's able to bring
+
+1196
+00:22:03,750 --> 00:22:03,760
+called fast startup that's able to bring
+ 
+
+1197
+00:22:03,760 --> 00:22:06,390
+called fast startup that's able to bring
+Windows up and running very quickly when
+
+1198
+00:22:06,390 --> 00:22:06,400
+Windows up and running very quickly when
+ 
+
+1199
+00:22:06,400 --> 00:22:08,630
+Windows up and running very quickly when
+you press the power button to turn on.
+
+1200
+00:22:08,630 --> 00:22:08,640
+you press the power button to turn on.
+ 
+
+1201
+00:22:08,640 --> 00:22:10,470
+you press the power button to turn on.
+In reality, it's able to provide this
+
+1202
+00:22:10,470 --> 00:22:10,480
+In reality, it's able to provide this
+ 
+
+1203
+00:22:10,480 --> 00:22:12,789
+In reality, it's able to provide this
+faster startup process because Windows
+
+1204
+00:22:12,789 --> 00:22:12,799
+faster startup process because Windows
+ 
+
+1205
+00:22:12,799 --> 00:22:15,590
+faster startup process because Windows
+never technically completely shuts down.
+
+1206
+00:22:15,590 --> 00:22:15,600
+never technically completely shuts down.
+ 
+
+1207
+00:22:15,600 --> 00:22:17,750
+never technically completely shuts down.
+If you need to completely shut down your
+
+1208
+00:22:17,750 --> 00:22:17,760
+If you need to completely shut down your
+ 
+
+1209
+00:22:17,760 --> 00:22:19,590
+If you need to completely shut down your
+operating system each time you turn it
+
+1210
+00:22:19,590 --> 00:22:19,600
+operating system each time you turn it
+ 
+
+1211
+00:22:19,600 --> 00:22:21,750
+operating system each time you turn it
+off, you may want to turn off those fast
+
+1212
+00:22:21,750 --> 00:22:21,760
+off, you may want to turn off those fast
+ 
+
+1213
+00:22:21,760 --> 00:22:23,669
+off, you may want to turn off those fast
+startup settings within the power
+
+1214
+00:22:23,669 --> 00:22:23,679
+startup settings within the power
+ 
+
+1215
+00:22:23,679 --> 00:22:26,710
+startup settings within the power
+options in the control panel.
+
+1216
+00:22:26,710 --> 00:22:26,720
+options in the control panel.
+ 
+
+1217
+00:22:26,720 --> 00:22:28,549
+options in the control panel.
+And Windows also includes a number of
+
+1218
+00:22:28,549 --> 00:22:28,559
+And Windows also includes a number of
+ 
+
+1219
+00:22:28,559 --> 00:22:30,470
+And Windows also includes a number of
+accessibility features that allows you
+
+1220
+00:22:30,470 --> 00:22:30,480
+accessibility features that allows you
+ 
+
+1221
+00:22:30,480 --> 00:22:33,270
+accessibility features that allows you
+to use the operating system even easier.
+
+1222
+00:22:33,270 --> 00:22:33,280
+to use the operating system even easier.
+ 
+
+1223
+00:22:33,280 --> 00:22:34,870
+to use the operating system even easier.
+In the control panel, you'll find these
+
+1224
+00:22:34,870 --> 00:22:34,880
+In the control panel, you'll find these
+ 
+
+1225
+00:22:34,880 --> 00:22:37,430
+In the control panel, you'll find these
+options inside the ease of access
+
+1226
+00:22:37,430 --> 00:22:37,440
+options inside the ease of access
+ 
+
+1227
+00:22:37,440 --> 00:22:39,510
+options inside the ease of access
+center. In here, you can do things like
+
+1228
+00:22:39,510 --> 00:22:39,520
+center. In here, you can do things like
+ 
+
+1229
+00:22:39,520 --> 00:22:41,909
+center. In here, you can do things like
+start a magnifier, change your onscreen
+
+1230
+00:22:41,909 --> 00:22:41,919
+start a magnifier, change your onscreen
+ 
+
+1231
+00:22:41,919 --> 00:22:44,549
+start a magnifier, change your onscreen
+keyboard options, have a narrator that
+
+1232
+00:22:44,549 --> 00:22:44,559
+keyboard options, have a narrator that
+ 
+
+1233
+00:22:44,559 --> 00:22:46,710
+keyboard options, have a narrator that
+tells you what's on the screen, or set
+
+1234
+00:22:46,710 --> 00:22:46,720
+tells you what's on the screen, or set
+ 
+
+1235
+00:22:46,720 --> 00:22:49,590
+tells you what's on the screen, or set
+up a high contrast display option. So,
+
+1236
+00:22:49,590 --> 00:22:49,600
+up a high contrast display option. So,
+ 
+
+1237
+00:22:49,600 --> 00:22:51,510
+up a high contrast display option. So,
+if you need a little bit of extra help
+
+1238
+00:22:51,510 --> 00:22:51,520
+if you need a little bit of extra help
+ 
+
+1239
+00:22:51,520 --> 00:22:53,430
+if you need a little bit of extra help
+in using your operating system, you
+
+1240
+00:22:53,430 --> 00:22:53,440
+in using your operating system, you
+ 
+
+1241
+00:22:53,440 --> 00:22:55,510
+in using your operating system, you
+might find some very useful features
+
+1242
+00:22:55,510 --> 00:22:55,520
+might find some very useful features
+ 
+
+1243
+00:22:55,520 --> 00:23:00,440
+might find some very useful features
+inside the ease of access center.
+

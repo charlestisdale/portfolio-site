@@ -1,0 +1,2825 @@
+1
+00:00:02,000 --> 00:00:03,830
+
+When you're using your laptop or your
+
+2
+00:00:03,830 --> 00:00:03,840
+When you're using your laptop or your
+ 
+
+3
+00:00:03,840 --> 00:00:05,990
+When you're using your laptop or your
+desktop computer, you may find at times
+
+4
+00:00:05,990 --> 00:00:06,000
+desktop computer, you may find at times
+ 
+
+5
+00:00:06,000 --> 00:00:08,070
+desktop computer, you may find at times
+that you are unable to access the
+
+6
+00:00:08,070 --> 00:00:08,080
+that you are unable to access the
+ 
+
+7
+00:00:08,080 --> 00:00:10,470
+that you are unable to access the
+network. If this is because malware is
+
+8
+00:00:10,470 --> 00:00:10,480
+network. If this is because malware is
+ 
+
+9
+00:00:10,480 --> 00:00:12,310
+network. If this is because malware is
+installed on your system, the malware
+
+10
+00:00:12,310 --> 00:00:12,320
+installed on your system, the malware
+ 
+
+11
+00:00:12,320 --> 00:00:14,310
+installed on your system, the malware
+itself may be causing this problem,
+
+12
+00:00:14,310 --> 00:00:14,320
+itself may be causing this problem,
+ 
+
+13
+00:00:14,320 --> 00:00:16,070
+itself may be causing this problem,
+either intentionally preventing your
+
+14
+00:00:16,070 --> 00:00:16,080
+either intentionally preventing your
+ 
+
+15
+00:00:16,080 --> 00:00:18,630
+either intentionally preventing your
+access to the network or unintentionally
+
+16
+00:00:18,630 --> 00:00:18,640
+access to the network or unintentionally
+ 
+
+17
+00:00:18,640 --> 00:00:19,990
+access to the network or unintentionally
+causing problems with network
+
+18
+00:00:19,990 --> 00:00:20,000
+causing problems with network
+ 
+
+19
+00:00:20,000 --> 00:00:22,470
+causing problems with network
+connectivity. Malware likes to control
+
+20
+00:00:22,470 --> 00:00:22,480
+connectivity. Malware likes to control
+ 
+
+21
+00:00:22,480 --> 00:00:24,630
+connectivity. Malware likes to control
+where you go on the network because it
+
+22
+00:00:24,630 --> 00:00:24,640
+where you go on the network because it
+ 
+
+23
+00:00:24,640 --> 00:00:26,790
+where you go on the network because it
+knows that if you download anti-malware
+
+24
+00:00:26,790 --> 00:00:26,800
+knows that if you download anti-malware
+ 
+
+25
+00:00:26,800 --> 00:00:29,109
+knows that if you download anti-malware
+software, you'll probably remove it from
+
+26
+00:00:29,109 --> 00:00:29,119
+software, you'll probably remove it from
+ 
+
+27
+00:00:29,119 --> 00:00:31,669
+software, you'll probably remove it from
+your system. And very often, malware is
+
+28
+00:00:31,669 --> 00:00:31,679
+your system. And very often, malware is
+ 
+
+29
+00:00:31,679 --> 00:00:33,910
+your system. And very often, malware is
+using a known vulnerability in your
+
+30
+00:00:33,910 --> 00:00:33,920
+using a known vulnerability in your
+ 
+
+31
+00:00:33,920 --> 00:00:36,069
+using a known vulnerability in your
+operating system to gain access to your
+
+32
+00:00:36,069 --> 00:00:36,079
+operating system to gain access to your
+ 
+
+33
+00:00:36,079 --> 00:00:37,910
+operating system to gain access to your
+data. And if you were to download the
+
+34
+00:00:37,910 --> 00:00:37,920
+data. And if you were to download the
+ 
+
+35
+00:00:37,920 --> 00:00:40,069
+data. And if you were to download the
+latest OS patch, you would be closing
+
+36
+00:00:40,069 --> 00:00:40,079
+latest OS patch, you would be closing
+ 
+
+37
+00:00:40,079 --> 00:00:42,150
+latest OS patch, you would be closing
+that vulnerability and effectively
+
+38
+00:00:42,150 --> 00:00:42,160
+that vulnerability and effectively
+ 
+
+39
+00:00:42,160 --> 00:00:43,990
+that vulnerability and effectively
+preventing malware from gaining access
+
+40
+00:00:43,990 --> 00:00:44,000
+preventing malware from gaining access
+ 
+
+41
+00:00:44,000 --> 00:00:46,389
+preventing malware from gaining access
+to that information. If this is related
+
+42
+00:00:46,389 --> 00:00:46,399
+to that information. If this is related
+ 
+
+43
+00:00:46,399 --> 00:00:48,310
+to that information. If this is related
+to malware, then your best course of
+
+44
+00:00:48,310 --> 00:00:48,320
+to malware, then your best course of
+ 
+
+45
+00:00:48,320 --> 00:00:50,549
+to malware, then your best course of
+action would be to use a malware cleaner
+
+46
+00:00:50,549 --> 00:00:50,559
+action would be to use a malware cleaner
+ 
+
+47
+00:00:50,559 --> 00:00:53,110
+action would be to use a malware cleaner
+or even better remove everything on the
+
+48
+00:00:53,110 --> 00:00:53,120
+or even better remove everything on the
+ 
+
+49
+00:00:53,120 --> 00:00:55,189
+or even better remove everything on the
+system and restore from a known good
+
+50
+00:00:55,189 --> 00:00:55,199
+system and restore from a known good
+ 
+
+51
+00:00:55,199 --> 00:00:57,189
+system and restore from a known good
+backup.
+
+52
+00:00:57,189 --> 00:00:57,199
+backup.
+ 
+
+53
+00:00:57,199 --> 00:00:59,110
+backup.
+Many browsers will show messages that
+
+54
+00:00:59,110 --> 00:00:59,120
+Many browsers will show messages that
+ 
+
+55
+00:00:59,120 --> 00:01:00,790
+Many browsers will show messages that
+have been pushed from a third party
+
+56
+00:01:00,790 --> 00:01:00,800
+have been pushed from a third party
+ 
+
+57
+00:01:00,800 --> 00:01:03,510
+have been pushed from a third party
+website onto your main browser screen.
+
+58
+00:01:03,510 --> 00:01:03,520
+website onto your main browser screen.
+ 
+
+59
+00:01:03,520 --> 00:01:05,830
+website onto your main browser screen.
+And often these might be websites that
+
+60
+00:01:05,830 --> 00:01:05,840
+And often these might be websites that
+ 
+
+61
+00:01:05,840 --> 00:01:07,830
+And often these might be websites that
+are not legitimate. For example, they
+
+62
+00:01:07,830 --> 00:01:07,840
+are not legitimate. For example, they
+ 
+
+63
+00:01:07,840 --> 00:01:09,429
+are not legitimate. For example, they
+might show that your anti virus
+
+64
+00:01:09,429 --> 00:01:09,439
+might show that your anti virus
+ 
+
+65
+00:01:09,439 --> 00:01:11,429
+might show that your anti virus
+subscription has expired and you have to
+
+66
+00:01:11,429 --> 00:01:11,439
+subscription has expired and you have to
+ 
+
+67
+00:01:11,439 --> 00:01:13,830
+subscription has expired and you have to
+renew it by clicking on the buttons in
+
+68
+00:01:13,830 --> 00:01:13,840
+renew it by clicking on the buttons in
+ 
+
+69
+00:01:13,840 --> 00:01:15,990
+renew it by clicking on the buttons in
+that message. In reality, of course,
+
+70
+00:01:15,990 --> 00:01:16,000
+that message. In reality, of course,
+ 
+
+71
+00:01:16,000 --> 00:01:18,230
+that message. In reality, of course,
+these messages are not legitimate. And
+
+72
+00:01:18,230 --> 00:01:18,240
+these messages are not legitimate. And
+ 
+
+73
+00:01:18,240 --> 00:01:20,550
+these messages are not legitimate. And
+by installing anything from these links,
+
+74
+00:01:20,550 --> 00:01:20,560
+by installing anything from these links,
+ 
+
+75
+00:01:20,560 --> 00:01:22,630
+by installing anything from these links,
+you're effectively infecting your system
+
+76
+00:01:22,630 --> 00:01:22,640
+you're effectively infecting your system
+ 
+
+77
+00:01:22,640 --> 00:01:25,749
+you're effectively infecting your system
+further. Most browsers provide options
+
+78
+00:01:25,749 --> 00:01:25,759
+further. Most browsers provide options
+ 
+
+79
+00:01:25,759 --> 00:01:27,749
+further. Most browsers provide options
+in the security settings so that you can
+
+80
+00:01:27,749 --> 00:01:27,759
+in the security settings so that you can
+ 
+
+81
+00:01:27,759 --> 00:01:29,830
+in the security settings so that you can
+define how notifications are brought to
+
+82
+00:01:29,830 --> 00:01:29,840
+define how notifications are brought to
+ 
+
+83
+00:01:29,840 --> 00:01:32,230
+define how notifications are brought to
+the screen and you can block or allow
+
+84
+00:01:32,230 --> 00:01:32,240
+the screen and you can block or allow
+ 
+
+85
+00:01:32,240 --> 00:01:33,670
+the screen and you can block or allow
+certain sites from showing those
+
+86
+00:01:33,670 --> 00:01:33,680
+certain sites from showing those
+ 
+
+87
+00:01:33,680 --> 00:01:36,069
+certain sites from showing those
+notifications on your browser. Very
+
+88
+00:01:36,069 --> 00:01:36,079
+notifications on your browser. Very
+ 
+
+89
+00:01:36,079 --> 00:01:38,069
+notifications on your browser. Very
+often, ignoring these notifications is
+
+90
+00:01:38,069 --> 00:01:38,079
+often, ignoring these notifications is
+ 
+
+91
+00:01:38,079 --> 00:01:39,910
+often, ignoring these notifications is
+the best way to proceed. But if you are
+
+92
+00:01:39,910 --> 00:01:39,920
+the best way to proceed. But if you are
+ 
+
+93
+00:01:39,920 --> 00:01:41,590
+the best way to proceed. But if you are
+concerned that malware might have been
+
+94
+00:01:41,590 --> 00:01:41,600
+concerned that malware might have been
+ 
+
+95
+00:01:41,600 --> 00:01:43,510
+concerned that malware might have been
+installed onto your computer, it's
+
+96
+00:01:43,510 --> 00:01:43,520
+installed onto your computer, it's
+ 
+
+97
+00:01:43,520 --> 00:01:45,990
+installed onto your computer, it's
+always a good idea to run a scan just to
+
+98
+00:01:45,990 --> 00:01:46,000
+always a good idea to run a scan just to
+ 
+
+99
+00:01:46,000 --> 00:01:49,270
+always a good idea to run a scan just to
+make sure nothing unusual is installed.
+
+100
+00:01:49,270 --> 00:01:49,280
+make sure nothing unusual is installed.
+ 
+
+101
+00:01:49,280 --> 00:01:51,429
+make sure nothing unusual is installed.
+Here's a fake anti virus message that
+
+102
+00:01:51,429 --> 00:01:51,439
+Here's a fake anti virus message that
+ 
+
+103
+00:01:51,439 --> 00:01:53,190
+Here's a fake anti virus message that
+was received on a family member's
+
+104
+00:01:53,190 --> 00:01:53,200
+was received on a family member's
+ 
+
+105
+00:01:53,200 --> 00:01:55,590
+was received on a family member's
+computer. It all looks very legitimate.
+
+106
+00:01:55,590 --> 00:01:55,600
+computer. It all looks very legitimate.
+ 
+
+107
+00:01:55,600 --> 00:01:57,030
+computer. It all looks very legitimate.
+It tells you at the top that you must
+
+108
+00:01:57,030 --> 00:01:57,040
+It tells you at the top that you must
+ 
+
+109
+00:01:57,040 --> 00:01:59,510
+It tells you at the top that you must
+contact us immediately so that our
+
+110
+00:01:59,510 --> 00:01:59,520
+contact us immediately so that our
+ 
+
+111
+00:01:59,520 --> 00:02:01,350
+contact us immediately so that our
+engineers can walk you through the
+
+112
+00:02:01,350 --> 00:02:01,360
+engineers can walk you through the
+ 
+
+113
+00:02:01,360 --> 00:02:04,069
+engineers can walk you through the
+removal process over the phone. Your
+
+114
+00:02:04,069 --> 00:02:04,079
+removal process over the phone. Your
+ 
+
+115
+00:02:04,079 --> 00:02:06,630
+removal process over the phone. Your
+computer is disabled. And then it gives
+
+116
+00:02:06,630 --> 00:02:06,640
+computer is disabled. And then it gives
+ 
+
+117
+00:02:06,640 --> 00:02:08,869
+computer is disabled. And then it gives
+information about the problem. It talks
+
+118
+00:02:08,869 --> 00:02:08,879
+information about the problem. It talks
+ 
+
+119
+00:02:08,879 --> 00:02:11,270
+information about the problem. It talks
+about what virus is identified and gives
+
+120
+00:02:11,270 --> 00:02:11,280
+about what virus is identified and gives
+ 
+
+121
+00:02:11,280 --> 00:02:13,589
+about what virus is identified and gives
+you a phone number to call to solve this
+
+122
+00:02:13,589 --> 00:02:13,599
+you a phone number to call to solve this
+ 
+
+123
+00:02:13,599 --> 00:02:16,070
+you a phone number to call to solve this
+problem. In reality, of course, this is
+
+124
+00:02:16,070 --> 00:02:16,080
+problem. In reality, of course, this is
+ 
+
+125
+00:02:16,080 --> 00:02:18,309
+problem. In reality, of course, this is
+not a legitimate virus. This is a
+
+126
+00:02:18,309 --> 00:02:18,319
+not a legitimate virus. This is a
+ 
+
+127
+00:02:18,319 --> 00:02:20,390
+not a legitimate virus. This is a
+complete hoax and no software has been
+
+128
+00:02:20,390 --> 00:02:20,400
+complete hoax and no software has been
+ 
+
+129
+00:02:20,400 --> 00:02:22,390
+complete hoax and no software has been
+installed onto your computer. In
+
+130
+00:02:22,390 --> 00:02:22,400
+installed onto your computer. In
+ 
+
+131
+00:02:22,400 --> 00:02:23,910
+installed onto your computer. In
+reality, of course, the only thing this
+
+132
+00:02:23,910 --> 00:02:23,920
+reality, of course, the only thing this
+ 
+
+133
+00:02:23,920 --> 00:02:25,910
+reality, of course, the only thing this
+malware is doing is displaying this
+
+134
+00:02:25,910 --> 00:02:25,920
+malware is doing is displaying this
+ 
+
+135
+00:02:25,920 --> 00:02:27,910
+malware is doing is displaying this
+message on your screen. If you were to
+
+136
+00:02:27,910 --> 00:02:27,920
+message on your screen. If you were to
+ 
+
+137
+00:02:27,920 --> 00:02:29,830
+message on your screen. If you were to
+delete this executable, you would
+
+138
+00:02:29,830 --> 00:02:29,840
+delete this executable, you would
+ 
+
+139
+00:02:29,840 --> 00:02:31,830
+delete this executable, you would
+effectively be removing this so-called
+
+140
+00:02:31,830 --> 00:02:31,840
+effectively be removing this so-called
+ 
+
+141
+00:02:31,840 --> 00:02:33,910
+effectively be removing this so-called
+malware from your system. But if you
+
+142
+00:02:33,910 --> 00:02:33,920
+malware from your system. But if you
+ 
+
+143
+00:02:33,920 --> 00:02:36,229
+malware from your system. But if you
+call the number, they will entice you to
+
+144
+00:02:36,229 --> 00:02:36,239
+call the number, they will entice you to
+ 
+
+145
+00:02:36,239 --> 00:02:38,790
+call the number, they will entice you to
+give them money to unlock your computer
+
+146
+00:02:38,790 --> 00:02:38,800
+give them money to unlock your computer
+ 
+
+147
+00:02:38,800 --> 00:02:41,670
+give them money to unlock your computer
+or to subscribe to whatever service they
+
+148
+00:02:41,670 --> 00:02:41,680
+or to subscribe to whatever service they
+ 
+
+149
+00:02:41,680 --> 00:02:44,390
+or to subscribe to whatever service they
+are supposedly offering. This often
+
+150
+00:02:44,390 --> 00:02:44,400
+are supposedly offering. This often
+ 
+
+151
+00:02:44,400 --> 00:02:46,550
+are supposedly offering. This often
+requires some specialized removal
+
+152
+00:02:46,550 --> 00:02:46,560
+requires some specialized removal
+ 
+
+153
+00:02:46,560 --> 00:02:48,390
+requires some specialized removal
+techniques to be able to get rid of this
+
+154
+00:02:48,390 --> 00:02:48,400
+techniques to be able to get rid of this
+ 
+
+155
+00:02:48,400 --> 00:02:50,630
+techniques to be able to get rid of this
+from your computer completely. In this
+
+156
+00:02:50,630 --> 00:02:50,640
+from your computer completely. In this
+ 
+
+157
+00:02:50,640 --> 00:02:52,710
+from your computer completely. In this
+example, the best solution might be to
+
+158
+00:02:52,710 --> 00:02:52,720
+example, the best solution might be to
+ 
+
+159
+00:02:52,720 --> 00:02:54,470
+example, the best solution might be to
+delete everything on your computer and
+
+160
+00:02:54,470 --> 00:02:54,480
+delete everything on your computer and
+ 
+
+161
+00:02:54,480 --> 00:02:57,030
+delete everything on your computer and
+restore it from a known good backup.
+
+162
+00:02:57,030 --> 00:02:57,040
+restore it from a known good backup.
+ 
+
+163
+00:02:57,040 --> 00:02:59,350
+restore it from a known good backup.
+Here's a better view of this fake anti
+
+164
+00:02:59,350 --> 00:02:59,360
+Here's a better view of this fake anti
+ 
+
+165
+00:02:59,360 --> 00:03:01,430
+Here's a better view of this fake anti
+virus alert. You can see that it looks
+
+166
+00:03:01,430 --> 00:03:01,440
+virus alert. You can see that it looks
+ 
+
+167
+00:03:01,440 --> 00:03:03,430
+virus alert. You can see that it looks
+legitimate and it tells you that it has
+
+168
+00:03:03,430 --> 00:03:03,440
+legitimate and it tells you that it has
+ 
+
+169
+00:03:03,440 --> 00:03:05,430
+legitimate and it tells you that it has
+found a number of different viruses.
+
+170
+00:03:05,430 --> 00:03:05,440
+found a number of different viruses.
+ 
+
+171
+00:03:05,440 --> 00:03:08,550
+found a number of different viruses.
+This one is detected Trojan spywear
+
+172
+00:03:08,550 --> 00:03:08,560
+This one is detected Trojan spywear
+ 
+
+173
+00:03:08,560 --> 00:03:13,910
+This one is detected Trojan spywear
+known as financer track2.dll.
+
+174
+00:03:13,910 --> 00:03:13,920
+
+ 
+
+175
+00:03:13,920 --> 00:03:15,750
+
+Normally the information that we are
+
+176
+00:03:15,750 --> 00:03:15,760
+Normally the information that we are
+ 
+
+177
+00:03:15,760 --> 00:03:17,830
+Normally the information that we are
+storing on our computer is safe from
+
+178
+00:03:17,830 --> 00:03:17,840
+storing on our computer is safe from
+ 
+
+179
+00:03:17,840 --> 00:03:19,990
+storing on our computer is safe from
+being changed or modified when we are
+
+180
+00:03:19,990 --> 00:03:20,000
+being changed or modified when we are
+ 
+
+181
+00:03:20,000 --> 00:03:22,790
+being changed or modified when we are
+not using our PC. But unfortunately, you
+
+182
+00:03:22,790 --> 00:03:22,800
+not using our PC. But unfortunately, you
+ 
+
+183
+00:03:22,800 --> 00:03:24,710
+not using our PC. But unfortunately, you
+might find cases where system files
+
+184
+00:03:24,710 --> 00:03:24,720
+might find cases where system files
+ 
+
+185
+00:03:24,720 --> 00:03:27,030
+might find cases where system files
+might be renamed or files that you've
+
+186
+00:03:27,030 --> 00:03:27,040
+might be renamed or files that you've
+ 
+
+187
+00:03:27,040 --> 00:03:29,030
+might be renamed or files that you've
+previously saved are suddenly not
+
+188
+00:03:29,030 --> 00:03:29,040
+previously saved are suddenly not
+ 
+
+189
+00:03:29,040 --> 00:03:30,949
+previously saved are suddenly not
+available where you left them. There
+
+190
+00:03:30,949 --> 00:03:30,959
+available where you left them. There
+ 
+
+191
+00:03:30,959 --> 00:03:32,789
+available where you left them. There
+might also be cases where files that
+
+192
+00:03:32,789 --> 00:03:32,799
+might also be cases where files that
+ 
+
+193
+00:03:32,799 --> 00:03:34,949
+might also be cases where files that
+were assigned to only you now have
+
+194
+00:03:34,949 --> 00:03:34,959
+were assigned to only you now have
+ 
+
+195
+00:03:34,959 --> 00:03:36,869
+were assigned to only you now have
+different permissions associated with
+
+196
+00:03:36,869 --> 00:03:36,879
+different permissions associated with
+ 
+
+197
+00:03:36,879 --> 00:03:39,110
+different permissions associated with
+them. Or you may try to access one of
+
+198
+00:03:39,110 --> 00:03:39,120
+them. Or you may try to access one of
+ 
+
+199
+00:03:39,120 --> 00:03:40,949
+them. Or you may try to access one of
+your previous documents and find that
+
+200
+00:03:40,949 --> 00:03:40,959
+your previous documents and find that
+ 
+
+201
+00:03:40,959 --> 00:03:43,830
+your previous documents and find that
+the access is now denied. All of these
+
+202
+00:03:43,830 --> 00:03:43,840
+the access is now denied. All of these
+ 
+
+203
+00:03:43,840 --> 00:03:45,830
+the access is now denied. All of these
+are highly unusual, should not be
+
+204
+00:03:45,830 --> 00:03:45,840
+are highly unusual, should not be
+ 
+
+205
+00:03:45,840 --> 00:03:47,589
+are highly unusual, should not be
+occurring on a normally running system,
+
+206
+00:03:47,589 --> 00:03:47,599
+occurring on a normally running system,
+ 
+
+207
+00:03:47,599 --> 00:03:49,750
+occurring on a normally running system,
+and are almost certainly the case of
+
+208
+00:03:49,750 --> 00:03:49,760
+and are almost certainly the case of
+ 
+
+209
+00:03:49,760 --> 00:03:51,509
+and are almost certainly the case of
+malware being installed on this
+
+210
+00:03:51,509 --> 00:03:51,519
+malware being installed on this
+ 
+
+211
+00:03:51,519 --> 00:03:53,670
+malware being installed on this
+computer. The best practice, of course,
+
+212
+00:03:53,670 --> 00:03:53,680
+computer. The best practice, of course,
+ 
+
+213
+00:03:53,680 --> 00:03:56,149
+computer. The best practice, of course,
+is to use a malware cleaner or delete
+
+214
+00:03:56,149 --> 00:03:56,159
+is to use a malware cleaner or delete
+ 
+
+215
+00:03:56,159 --> 00:03:58,070
+is to use a malware cleaner or delete
+everything and restore from a known good
+
+216
+00:03:58,070 --> 00:03:58,080
+everything and restore from a known good
+ 
+
+217
+00:03:58,080 --> 00:04:00,070
+everything and restore from a known good
+backup.
+
+218
+00:04:00,070 --> 00:04:00,080
+backup.
+ 
+
+219
+00:04:00,080 --> 00:04:01,910
+backup.
+It seems that our newest operating
+
+220
+00:04:01,910 --> 00:04:01,920
+It seems that our newest operating
+ 
+
+221
+00:04:01,920 --> 00:04:03,990
+It seems that our newest operating
+systems are showing us more and more
+
+222
+00:04:03,990 --> 00:04:04,000
+systems are showing us more and more
+ 
+
+223
+00:04:04,000 --> 00:04:06,470
+systems are showing us more and more
+notifications. Most operating systems
+
+224
+00:04:06,470 --> 00:04:06,480
+notifications. Most operating systems
+ 
+
+225
+00:04:06,480 --> 00:04:08,229
+notifications. Most operating systems
+give you a bit of control over what's
+
+226
+00:04:08,229 --> 00:04:08,239
+give you a bit of control over what's
+ 
+
+227
+00:04:08,239 --> 00:04:10,470
+give you a bit of control over what's
+shown and you may be able to modify the
+
+228
+00:04:10,470 --> 00:04:10,480
+shown and you may be able to modify the
+ 
+
+229
+00:04:10,480 --> 00:04:12,630
+shown and you may be able to modify the
+notification options on your operating
+
+230
+00:04:12,630 --> 00:04:12,640
+notification options on your operating
+ 
+
+231
+00:04:12,640 --> 00:04:14,710
+notification options on your operating
+system. On Windows, you'll find these in
+
+232
+00:04:14,710 --> 00:04:14,720
+system. On Windows, you'll find these in
+ 
+
+233
+00:04:14,720 --> 00:04:16,870
+system. On Windows, you'll find these in
+the system app under the notifications
+
+234
+00:04:16,870 --> 00:04:16,880
+the system app under the notifications
+ 
+
+235
+00:04:16,880 --> 00:04:18,629
+the system app under the notifications
+option and you have the choice to enable
+
+236
+00:04:18,629 --> 00:04:18,639
+option and you have the choice to enable
+ 
+
+237
+00:04:18,639 --> 00:04:21,509
+option and you have the choice to enable
+or disable all notifications or go into
+
+238
+00:04:21,509 --> 00:04:21,519
+or disable all notifications or go into
+ 
+
+239
+00:04:21,519 --> 00:04:24,070
+or disable all notifications or go into
+individual applications and choose which
+
+240
+00:04:24,070 --> 00:04:24,080
+individual applications and choose which
+ 
+
+241
+00:04:24,080 --> 00:04:25,270
+individual applications and choose which
+apps you would like to receive
+
+242
+00:04:25,270 --> 00:04:25,280
+apps you would like to receive
+ 
+
+243
+00:04:25,280 --> 00:04:27,909
+apps you would like to receive
+notifications from. If you turn off all
+
+244
+00:04:27,909 --> 00:04:27,919
+notifications from. If you turn off all
+ 
+
+245
+00:04:27,919 --> 00:04:29,830
+notifications from. If you turn off all
+notifications, you might be missing
+
+246
+00:04:29,830 --> 00:04:29,840
+notifications, you might be missing
+ 
+
+247
+00:04:29,840 --> 00:04:31,510
+notifications, you might be missing
+important information from your system
+
+248
+00:04:31,510 --> 00:04:31,520
+important information from your system
+ 
+
+249
+00:04:31,520 --> 00:04:33,510
+important information from your system
+services. So, it might make more sense
+
+250
+00:04:33,510 --> 00:04:33,520
+services. So, it might make more sense
+ 
+
+251
+00:04:33,520 --> 00:04:36,469
+services. So, it might make more sense
+to control this on an appbyapp basis to
+
+252
+00:04:36,469 --> 00:04:36,479
+to control this on an appbyapp basis to
+ 
+
+253
+00:04:36,479 --> 00:04:38,550
+to control this on an appbyapp basis to
+enable or disable exactly what
+
+254
+00:04:38,550 --> 00:04:38,560
+enable or disable exactly what
+ 
+
+255
+00:04:38,560 --> 00:04:41,670
+enable or disable exactly what
+notifications you'd like to see.
+
+256
+00:04:41,670 --> 00:04:41,680
+notifications you'd like to see.
+ 
+
+257
+00:04:41,680 --> 00:04:43,990
+notifications you'd like to see.
+By default, most operating systems will
+
+258
+00:04:43,990 --> 00:04:44,000
+By default, most operating systems will
+ 
+
+259
+00:04:44,000 --> 00:04:45,749
+By default, most operating systems will
+download updates and install them
+
+260
+00:04:45,749 --> 00:04:45,759
+download updates and install them
+ 
+
+261
+00:04:45,759 --> 00:04:47,830
+download updates and install them
+automatically when needed. But if you
+
+262
+00:04:47,830 --> 00:04:47,840
+automatically when needed. But if you
+ 
+
+263
+00:04:47,840 --> 00:04:49,430
+automatically when needed. But if you
+were to look at Windows Update on your
+
+264
+00:04:49,430 --> 00:04:49,440
+were to look at Windows Update on your
+ 
+
+265
+00:04:49,440 --> 00:04:51,189
+were to look at Windows Update on your
+computer and find that it was not
+
+266
+00:04:51,189 --> 00:04:51,199
+computer and find that it was not
+ 
+
+267
+00:04:51,199 --> 00:04:53,110
+computer and find that it was not
+updating things properly, then you'll
+
+268
+00:04:53,110 --> 00:04:53,120
+updating things properly, then you'll
+ 
+
+269
+00:04:53,120 --> 00:04:55,110
+updating things properly, then you'll
+have to do a bit more troubleshooting.
+
+270
+00:04:55,110 --> 00:04:55,120
+have to do a bit more troubleshooting.
+ 
+
+271
+00:04:55,120 --> 00:04:56,790
+have to do a bit more troubleshooting.
+Since all of these are being downloaded
+
+272
+00:04:56,790 --> 00:04:56,800
+Since all of these are being downloaded
+ 
+
+273
+00:04:56,800 --> 00:04:58,469
+Since all of these are being downloaded
+from the cloud, our first step will be
+
+274
+00:04:58,469 --> 00:04:58,479
+from the cloud, our first step will be
+ 
+
+275
+00:04:58,479 --> 00:05:00,790
+from the cloud, our first step will be
+to look at our network connectivity. Do
+
+276
+00:05:00,790 --> 00:05:00,800
+to look at our network connectivity. Do
+ 
+
+277
+00:05:00,800 --> 00:05:02,070
+to look at our network connectivity. Do
+we have a good connection to the
+
+278
+00:05:02,070 --> 00:05:02,080
+we have a good connection to the
+ 
+
+279
+00:05:02,080 --> 00:05:03,590
+we have a good connection to the
+internet and are we able to download
+
+280
+00:05:03,590 --> 00:05:03,600
+internet and are we able to download
+ 
+
+281
+00:05:03,600 --> 00:05:06,150
+internet and are we able to download
+files from other thirdparty websites? We
+
+282
+00:05:06,150 --> 00:05:06,160
+files from other thirdparty websites? We
+ 
+
+283
+00:05:06,160 --> 00:05:07,909
+files from other thirdparty websites? We
+might also want to look at any firewalls
+
+284
+00:05:07,909 --> 00:05:07,919
+might also want to look at any firewalls
+ 
+
+285
+00:05:07,919 --> 00:05:09,990
+might also want to look at any firewalls
+or filtering that might be in place just
+
+286
+00:05:09,990 --> 00:05:10,000
+or filtering that might be in place just
+ 
+
+287
+00:05:10,000 --> 00:05:12,230
+or filtering that might be in place just
+in case someone has added a new rule to
+
+288
+00:05:12,230 --> 00:05:12,240
+in case someone has added a new rule to
+ 
+
+289
+00:05:12,240 --> 00:05:13,990
+in case someone has added a new rule to
+the firewall that is preventing access
+
+290
+00:05:13,990 --> 00:05:14,000
+the firewall that is preventing access
+ 
+
+291
+00:05:14,000 --> 00:05:16,550
+the firewall that is preventing access
+to Windows update. And some environments
+
+292
+00:05:16,550 --> 00:05:16,560
+to Windows update. And some environments
+ 
+
+293
+00:05:16,560 --> 00:05:18,230
+to Windows update. And some environments
+are limiting the amount of bandwidth
+
+294
+00:05:18,230 --> 00:05:18,240
+are limiting the amount of bandwidth
+ 
+
+295
+00:05:18,240 --> 00:05:19,590
+are limiting the amount of bandwidth
+you're able to transfer through the
+
+296
+00:05:19,590 --> 00:05:19,600
+you're able to transfer through the
+ 
+
+297
+00:05:19,600 --> 00:05:21,270
+you're able to transfer through the
+network. So you may find that the
+
+298
+00:05:21,270 --> 00:05:21,280
+network. So you may find that the
+ 
+
+299
+00:05:21,280 --> 00:05:22,950
+network. So you may find that the
+updates for the operating system are
+
+300
+00:05:22,950 --> 00:05:22,960
+updates for the operating system are
+ 
+
+301
+00:05:22,960 --> 00:05:24,870
+updates for the operating system are
+simply too large for your existing
+
+302
+00:05:24,870 --> 00:05:24,880
+simply too large for your existing
+ 
+
+303
+00:05:24,880 --> 00:05:27,510
+simply too large for your existing
+network connection. Windows does include
+
+304
+00:05:27,510 --> 00:05:27,520
+network connection. Windows does include
+ 
+
+305
+00:05:27,520 --> 00:05:29,590
+network connection. Windows does include
+a troubleshooter to look for network
+
+306
+00:05:29,590 --> 00:05:29,600
+a troubleshooter to look for network
+ 
+
+307
+00:05:29,600 --> 00:05:31,749
+a troubleshooter to look for network
+connectivity for Windows update. You can
+
+308
+00:05:31,749 --> 00:05:31,759
+connectivity for Windows update. You can
+ 
+
+309
+00:05:31,759 --> 00:05:34,469
+connectivity for Windows update. You can
+find this under the settings system
+
+310
+00:05:34,469 --> 00:05:34,479
+find this under the settings system
+ 
+
+311
+00:05:34,479 --> 00:05:36,629
+find this under the settings system
+troubleshoot and choose the option for
+
+312
+00:05:36,629 --> 00:05:36,639
+troubleshoot and choose the option for
+ 
+
+313
+00:05:36,639 --> 00:05:39,029
+troubleshoot and choose the option for
+other troubleshooters to find out what
+
+314
+00:05:39,029 --> 00:05:39,039
+other troubleshooters to find out what
+ 
+
+315
+00:05:39,039 --> 00:05:41,350
+other troubleshooters to find out what
+is happening with your Windows update
+
+316
+00:05:41,350 --> 00:05:41,360
+is happening with your Windows update
+ 
+
+317
+00:05:41,360 --> 00:05:43,430
+is happening with your Windows update
+process. If it's able to find any
+
+318
+00:05:43,430 --> 00:05:43,440
+process. If it's able to find any
+ 
+
+319
+00:05:43,440 --> 00:05:45,670
+process. If it's able to find any
+problems, it will identify that it has
+
+320
+00:05:45,670 --> 00:05:45,680
+problems, it will identify that it has
+ 
+
+321
+00:05:45,680 --> 00:05:47,830
+problems, it will identify that it has
+detected an issue with Windows update
+
+322
+00:05:47,830 --> 00:05:47,840
+detected an issue with Windows update
+ 
+
+323
+00:05:47,840 --> 00:05:49,590
+detected an issue with Windows update
+and it will try to resolve that problem
+
+324
+00:05:49,590 --> 00:05:49,600
+and it will try to resolve that problem
+ 
+
+325
+00:05:49,600 --> 00:05:51,670
+and it will try to resolve that problem
+automatically in the Windows update
+
+326
+00:05:51,670 --> 00:05:51,680
+automatically in the Windows update
+ 
+
+327
+00:05:51,680 --> 00:05:53,670
+automatically in the Windows update
+troubleshooter.
+
+328
+00:05:53,670 --> 00:05:53,680
+troubleshooter.
+ 
+
+329
+00:05:53,680 --> 00:05:55,909
+troubleshooter.
+Pop-up messages in a browser can look as
+
+330
+00:05:55,909 --> 00:05:55,919
+Pop-up messages in a browser can look as
+ 
+
+331
+00:05:55,919 --> 00:05:58,310
+Pop-up messages in a browser can look as
+if a legitimate application is asking
+
+332
+00:05:58,310 --> 00:05:58,320
+if a legitimate application is asking
+ 
+
+333
+00:05:58,320 --> 00:06:00,390
+if a legitimate application is asking
+you to perform a function. This is a
+
+334
+00:06:00,390 --> 00:06:00,400
+you to perform a function. This is a
+ 
+
+335
+00:06:00,400 --> 00:06:03,110
+you to perform a function. This is a
+very easy way for malware authors to get
+
+336
+00:06:03,110 --> 00:06:03,120
+very easy way for malware authors to get
+ 
+
+337
+00:06:03,120 --> 00:06:05,189
+very easy way for malware authors to get
+their malicious software onto your
+
+338
+00:06:05,189 --> 00:06:05,199
+their malicious software onto your
+ 
+
+339
+00:06:05,199 --> 00:06:07,430
+their malicious software onto your
+computer. Most new browsers will prevent
+
+340
+00:06:07,430 --> 00:06:07,440
+computer. Most new browsers will prevent
+ 
+
+341
+00:06:07,440 --> 00:06:09,909
+computer. Most new browsers will prevent
+these random pop-ups by having a pop-up
+
+342
+00:06:09,909 --> 00:06:09,919
+these random pop-ups by having a pop-up
+ 
+
+343
+00:06:09,919 --> 00:06:12,070
+these random pop-ups by having a pop-up
+block feature built into the browser
+
+344
+00:06:12,070 --> 00:06:12,080
+block feature built into the browser
+ 
+
+345
+00:06:12,080 --> 00:06:14,629
+block feature built into the browser
+itself. You could of course disable that
+
+346
+00:06:14,629 --> 00:06:14,639
+itself. You could of course disable that
+ 
+
+347
+00:06:14,639 --> 00:06:16,390
+itself. You could of course disable that
+feature, but most browsers will have
+
+348
+00:06:16,390 --> 00:06:16,400
+feature, but most browsers will have
+ 
+
+349
+00:06:16,400 --> 00:06:19,110
+feature, but most browsers will have
+that capability turned on by default.
+
+350
+00:06:19,110 --> 00:06:19,120
+that capability turned on by default.
+ 
+
+351
+00:06:19,120 --> 00:06:20,790
+that capability turned on by default.
+But if you are using a modern browser
+
+352
+00:06:20,790 --> 00:06:20,800
+But if you are using a modern browser
+ 
+
+353
+00:06:20,800 --> 00:06:23,189
+But if you are using a modern browser
+and still seeing these messages, this
+
+354
+00:06:23,189 --> 00:06:23,199
+and still seeing these messages, this
+ 
+
+355
+00:06:23,199 --> 00:06:24,950
+and still seeing these messages, this
+might indicate malware. So you might
+
+356
+00:06:24,950 --> 00:06:24,960
+might indicate malware. So you might
+ 
+
+357
+00:06:24,960 --> 00:06:26,790
+might indicate malware. So you might
+want to perform a scan or delete
+
+358
+00:06:26,790 --> 00:06:26,800
+want to perform a scan or delete
+ 
+
+359
+00:06:26,800 --> 00:06:28,469
+want to perform a scan or delete
+everything and restore from a known good
+
+360
+00:06:28,469 --> 00:06:28,479
+everything and restore from a known good
+ 
+
+361
+00:06:28,479 --> 00:06:30,390
+everything and restore from a known good
+backup.
+
+362
+00:06:30,390 --> 00:06:30,400
+backup.
+ 
+
+363
+00:06:30,400 --> 00:06:32,150
+backup.
+You've probably found yourself surfing
+
+364
+00:06:32,150 --> 00:06:32,160
+You've probably found yourself surfing
+ 
+
+365
+00:06:32,160 --> 00:06:33,670
+You've probably found yourself surfing
+around the internet and received a
+
+366
+00:06:33,670 --> 00:06:33,680
+around the internet and received a
+ 
+
+367
+00:06:33,680 --> 00:06:35,670
+around the internet and received a
+message in your browser that says your
+
+368
+00:06:35,670 --> 00:06:35,680
+message in your browser that says your
+ 
+
+369
+00:06:35,680 --> 00:06:37,670
+message in your browser that says your
+connection is not private or something
+
+370
+00:06:37,670 --> 00:06:37,680
+connection is not private or something
+ 
+
+371
+00:06:37,680 --> 00:06:39,990
+connection is not private or something
+very similar to that. This indicates
+
+372
+00:06:39,990 --> 00:06:40,000
+very similar to that. This indicates
+ 
+
+373
+00:06:40,000 --> 00:06:42,550
+very similar to that. This indicates
+some type of certificate problem. So we
+
+374
+00:06:42,550 --> 00:06:42,560
+some type of certificate problem. So we
+ 
+
+375
+00:06:42,560 --> 00:06:44,469
+some type of certificate problem. So we
+might have to do a bit more research to
+
+376
+00:06:44,469 --> 00:06:44,479
+might have to do a bit more research to
+ 
+
+377
+00:06:44,479 --> 00:06:46,870
+might have to do a bit more research to
+determine why this is occurring. Most
+
+378
+00:06:46,870 --> 00:06:46,880
+determine why this is occurring. Most
+ 
+
+379
+00:06:46,880 --> 00:06:48,629
+determine why this is occurring. Most
+browsers allow you to click or right
+
+380
+00:06:48,629 --> 00:06:48,639
+browsers allow you to click or right
+ 
+
+381
+00:06:48,639 --> 00:06:51,110
+browsers allow you to click or right
+mouse click on the lock icon associated
+
+382
+00:06:51,110 --> 00:06:51,120
+mouse click on the lock icon associated
+ 
+
+383
+00:06:51,120 --> 00:06:53,830
+mouse click on the lock icon associated
+with that HTTPS connection and this will
+
+384
+00:06:53,830 --> 00:06:53,840
+with that HTTPS connection and this will
+ 
+
+385
+00:06:53,840 --> 00:06:56,070
+with that HTTPS connection and this will
+bring up a view of the certificate on
+
+386
+00:06:56,070 --> 00:06:56,080
+bring up a view of the certificate on
+ 
+
+387
+00:06:56,080 --> 00:06:58,070
+bring up a view of the certificate on
+that system. This provides us with
+
+388
+00:06:58,070 --> 00:06:58,080
+that system. This provides us with
+ 
+
+389
+00:06:58,080 --> 00:06:59,430
+that system. This provides us with
+additional details about the
+
+390
+00:06:59,430 --> 00:06:59,440
+additional details about the
+ 
+
+391
+00:06:59,440 --> 00:07:01,589
+additional details about the
+certificate. For example, who issued the
+
+392
+00:07:01,589 --> 00:07:01,599
+certificate. For example, who issued the
+ 
+
+393
+00:07:01,599 --> 00:07:03,909
+certificate. For example, who issued the
+certificate, when it expires, and more
+
+394
+00:07:03,909 --> 00:07:03,919
+certificate, when it expires, and more
+ 
+
+395
+00:07:03,919 --> 00:07:06,150
+certificate, when it expires, and more
+details about how this certificate was
+
+396
+00:07:06,150 --> 00:07:06,160
+details about how this certificate was
+ 
+
+397
+00:07:06,160 --> 00:07:08,469
+details about how this certificate was
+originally created. It may be that we
+
+398
+00:07:08,469 --> 00:07:08,479
+originally created. It may be that we
+ 
+
+399
+00:07:08,479 --> 00:07:10,390
+originally created. It may be that we
+are using a different fully qualified
+
+400
+00:07:10,390 --> 00:07:10,400
+are using a different fully qualified
+ 
+
+401
+00:07:10,400 --> 00:07:12,150
+are using a different fully qualified
+domain name than this certificate was
+
+402
+00:07:12,150 --> 00:07:12,160
+domain name than this certificate was
+ 
+
+403
+00:07:12,160 --> 00:07:14,550
+domain name than this certificate was
+created for and that creates a mismatch
+
+404
+00:07:14,550 --> 00:07:14,560
+created for and that creates a mismatch
+ 
+
+405
+00:07:14,560 --> 00:07:16,710
+created for and that creates a mismatch
+when you connect to that site. Or it may
+
+406
+00:07:16,710 --> 00:07:16,720
+when you connect to that site. Or it may
+ 
+
+407
+00:07:16,720 --> 00:07:18,710
+when you connect to that site. Or it may
+be that the digital signature on this
+
+408
+00:07:18,710 --> 00:07:18,720
+be that the digital signature on this
+ 
+
+409
+00:07:18,720 --> 00:07:20,790
+be that the digital signature on this
+certificate is not from a trusted
+
+410
+00:07:20,790 --> 00:07:20,800
+certificate is not from a trusted
+ 
+
+411
+00:07:20,800 --> 00:07:22,950
+certificate is not from a trusted
+certificate authority. And since the
+
+412
+00:07:22,950 --> 00:07:22,960
+certificate authority. And since the
+ 
+
+413
+00:07:22,960 --> 00:07:24,710
+certificate authority. And since the
+browser doesn't recognize the
+
+414
+00:07:24,710 --> 00:07:24,720
+browser doesn't recognize the
+ 
+
+415
+00:07:24,720 --> 00:07:26,550
+browser doesn't recognize the
+certificate authority, it presents you
+
+416
+00:07:26,550 --> 00:07:26,560
+certificate authority, it presents you
+ 
+
+417
+00:07:26,560 --> 00:07:28,230
+certificate authority, it presents you
+with a message saying that this is an
+
+418
+00:07:28,230 --> 00:07:28,240
+with a message saying that this is an
+ 
+
+419
+00:07:28,240 --> 00:07:30,550
+with a message saying that this is an
+untrusted connection. And because the
+
+420
+00:07:30,550 --> 00:07:30,560
+untrusted connection. And because the
+ 
+
+421
+00:07:30,560 --> 00:07:32,390
+untrusted connection. And because the
+date and time is important in these
+
+422
+00:07:32,390 --> 00:07:32,400
+date and time is important in these
+ 
+
+423
+00:07:32,400 --> 00:07:33,909
+date and time is important in these
+certificates, you have to make sure that
+
+424
+00:07:33,909 --> 00:07:33,919
+certificates, you have to make sure that
+ 
+
+425
+00:07:33,919 --> 00:07:36,070
+certificates, you have to make sure that
+your local computer is also set to the
+
+426
+00:07:36,070 --> 00:07:36,080
+your local computer is also set to the
+ 
+
+427
+00:07:36,080 --> 00:07:38,309
+your local computer is also set to the
+right date and time to prevent any type
+
+428
+00:07:38,309 --> 00:07:38,319
+right date and time to prevent any type
+ 
+
+429
+00:07:38,319 --> 00:07:40,629
+right date and time to prevent any type
+of mismatch between your computer and
+
+430
+00:07:40,629 --> 00:07:40,639
+of mismatch between your computer and
+ 
+
+431
+00:07:40,639 --> 00:07:42,870
+of mismatch between your computer and
+the certificate.
+
+432
+00:07:42,870 --> 00:07:42,880
+the certificate.
+ 
+
+433
+00:07:42,880 --> 00:07:44,950
+the certificate.
+A very common problem you might see is
+
+434
+00:07:44,950 --> 00:07:44,960
+A very common problem you might see is
+ 
+
+435
+00:07:44,960 --> 00:07:47,029
+A very common problem you might see is
+someone who is typing in a Google search
+
+436
+00:07:47,029 --> 00:07:47,039
+someone who is typing in a Google search
+ 
+
+437
+00:07:47,039 --> 00:07:49,350
+someone who is typing in a Google search
+into their browser, but the results that
+
+438
+00:07:49,350 --> 00:07:49,360
+into their browser, but the results that
+ 
+
+439
+00:07:49,360 --> 00:07:51,430
+into their browser, but the results that
+come up on the next page are not from
+
+440
+00:07:51,430 --> 00:07:51,440
+come up on the next page are not from
+ 
+
+441
+00:07:51,440 --> 00:07:53,830
+come up on the next page are not from
+Google. This is referred to as a browser
+
+442
+00:07:53,830 --> 00:07:53,840
+Google. This is referred to as a browser
+ 
+
+443
+00:07:53,840 --> 00:07:55,670
+Google. This is referred to as a browser
+redirection where you are expecting to
+
+444
+00:07:55,670 --> 00:07:55,680
+redirection where you are expecting to
+ 
+
+445
+00:07:55,680 --> 00:07:57,749
+redirection where you are expecting to
+go to one website and you end up being
+
+446
+00:07:57,749 --> 00:07:57,759
+go to one website and you end up being
+ 
+
+447
+00:07:57,759 --> 00:07:59,670
+go to one website and you end up being
+redirected to a completely different
+
+448
+00:07:59,670 --> 00:07:59,680
+redirected to a completely different
+ 
+
+449
+00:07:59,680 --> 00:08:02,230
+redirected to a completely different
+website. This could certainly be related
+
+450
+00:08:02,230 --> 00:08:02,240
+website. This could certainly be related
+ 
+
+451
+00:08:02,240 --> 00:08:04,950
+website. This could certainly be related
+to a website misconfiguration, but
+
+452
+00:08:04,950 --> 00:08:04,960
+to a website misconfiguration, but
+ 
+
+453
+00:08:04,960 --> 00:08:07,510
+to a website misconfiguration, but
+almost always this is related to some
+
+454
+00:08:07,510 --> 00:08:07,520
+almost always this is related to some
+ 
+
+455
+00:08:07,520 --> 00:08:10,550
+almost always this is related to some
+type of malware. The malware authors are
+
+456
+00:08:10,550 --> 00:08:10,560
+type of malware. The malware authors are
+ 
+
+457
+00:08:10,560 --> 00:08:12,710
+type of malware. The malware authors are
+redirecting you to a site where they're
+
+458
+00:08:12,710 --> 00:08:12,720
+redirecting you to a site where they're
+ 
+
+459
+00:08:12,720 --> 00:08:14,309
+redirecting you to a site where they're
+expecting you to either download
+
+460
+00:08:14,309 --> 00:08:14,319
+expecting you to either download
+ 
+
+461
+00:08:14,319 --> 00:08:16,230
+expecting you to either download
+additional malware or present
+
+462
+00:08:16,230 --> 00:08:16,240
+additional malware or present
+ 
+
+463
+00:08:16,240 --> 00:08:18,230
+additional malware or present
+advertising that they can use to make
+
+464
+00:08:18,230 --> 00:08:18,240
+advertising that they can use to make
+ 
+
+465
+00:08:18,240 --> 00:08:20,629
+advertising that they can use to make
+even more money. The process for
+
+466
+00:08:20,629 --> 00:08:20,639
+even more money. The process for
+ 
+
+467
+00:08:20,639 --> 00:08:22,469
+even more money. The process for
+cleaning this is the same as any other
+
+468
+00:08:22,469 --> 00:08:22,479
+cleaning this is the same as any other
+ 
+
+469
+00:08:22,479 --> 00:08:24,070
+cleaning this is the same as any other
+malware infection. We can use an
+
+470
+00:08:24,070 --> 00:08:24,080
+malware infection. We can use an
+ 
+
+471
+00:08:24,080 --> 00:08:26,790
+malware infection. We can use an
+anti-malware or anti virus cleaner. Or
+
+472
+00:08:26,790 --> 00:08:26,800
+anti-malware or anti virus cleaner. Or
+ 
+
+473
+00:08:26,800 --> 00:08:28,710
+anti-malware or anti virus cleaner. Or
+even better, we can delete everything
+
+474
+00:08:28,710 --> 00:08:28,720
+even better, we can delete everything
+ 
+
+475
+00:08:28,720 --> 00:08:32,310
+even better, we can delete everything
+and restore from a known good backup.
+
+476
+00:08:32,310 --> 00:08:32,320
+and restore from a known good backup.
+ 
+
+477
+00:08:32,320 --> 00:08:34,230
+and restore from a known good backup.
+One of the most challenging problems to
+
+478
+00:08:34,230 --> 00:08:34,240
+One of the most challenging problems to
+ 
+
+479
+00:08:34,240 --> 00:08:36,230
+One of the most challenging problems to
+troubleshoot is someone saying their
+
+480
+00:08:36,230 --> 00:08:36,240
+troubleshoot is someone saying their
+ 
+
+481
+00:08:36,240 --> 00:08:38,790
+troubleshoot is someone saying their
+system is slow. This could be a problem
+
+482
+00:08:38,790 --> 00:08:38,800
+system is slow. This could be a problem
+ 
+
+483
+00:08:38,800 --> 00:08:40,949
+system is slow. This could be a problem
+with many different resources on this
+
+484
+00:08:40,949 --> 00:08:40,959
+with many different resources on this
+ 
+
+485
+00:08:40,959 --> 00:08:42,870
+with many different resources on this
+computer, so it might take some time to
+
+486
+00:08:42,870 --> 00:08:42,880
+computer, so it might take some time to
+ 
+
+487
+00:08:42,880 --> 00:08:45,110
+computer, so it might take some time to
+perform troubleshooting. If the issue is
+
+488
+00:08:45,110 --> 00:08:45,120
+perform troubleshooting. If the issue is
+ 
+
+489
+00:08:45,120 --> 00:08:47,110
+perform troubleshooting. If the issue is
+related to browser performance, we might
+
+490
+00:08:47,110 --> 00:08:47,120
+related to browser performance, we might
+ 
+
+491
+00:08:47,120 --> 00:08:49,030
+related to browser performance, we might
+want to confirm that we are using the
+
+492
+00:08:49,030 --> 00:08:49,040
+want to confirm that we are using the
+ 
+
+493
+00:08:49,040 --> 00:08:50,949
+want to confirm that we are using the
+latest browser and that we're up to date
+
+494
+00:08:50,949 --> 00:08:50,959
+latest browser and that we're up to date
+ 
+
+495
+00:08:50,959 --> 00:08:53,269
+latest browser and that we're up to date
+with the latest versions. You might also
+
+496
+00:08:53,269 --> 00:08:53,279
+with the latest versions. You might also
+ 
+
+497
+00:08:53,279 --> 00:08:55,509
+with the latest versions. You might also
+want to see how many tabs are open in
+
+498
+00:08:55,509 --> 00:08:55,519
+want to see how many tabs are open in
+ 
+
+499
+00:08:55,519 --> 00:08:57,750
+want to see how many tabs are open in
+any particular browser. The browser on
+
+500
+00:08:57,750 --> 00:08:57,760
+any particular browser. The browser on
+ 
+
+501
+00:08:57,760 --> 00:08:59,829
+any particular browser. The browser on
+this screen has almost 30 different
+
+502
+00:08:59,829 --> 00:08:59,839
+this screen has almost 30 different
+ 
+
+503
+00:08:59,839 --> 00:09:02,070
+this screen has almost 30 different
+sites that are open. And there's so many
+
+504
+00:09:02,070 --> 00:09:02,080
+sites that are open. And there's so many
+ 
+
+505
+00:09:02,080 --> 00:09:04,389
+sites that are open. And there's so many
+that they're now just a single icon at
+
+506
+00:09:04,389 --> 00:09:04,399
+that they're now just a single icon at
+ 
+
+507
+00:09:04,399 --> 00:09:06,470
+that they're now just a single icon at
+the top of the screen in each one of the
+
+508
+00:09:06,470 --> 00:09:06,480
+the top of the screen in each one of the
+ 
+
+509
+00:09:06,480 --> 00:09:08,630
+the top of the screen in each one of the
+tabs. Sometimes cleaning out your
+
+510
+00:09:08,630 --> 00:09:08,640
+tabs. Sometimes cleaning out your
+ 
+
+511
+00:09:08,640 --> 00:09:10,310
+tabs. Sometimes cleaning out your
+browser can resolve a number of these
+
+512
+00:09:10,310 --> 00:09:10,320
+browser can resolve a number of these
+ 
+
+513
+00:09:10,320 --> 00:09:12,070
+browser can resolve a number of these
+performance problems. So, you might want
+
+514
+00:09:12,070 --> 00:09:12,080
+performance problems. So, you might want
+ 
+
+515
+00:09:12,080 --> 00:09:13,590
+performance problems. So, you might want
+to go into the cache and the cookies
+
+516
+00:09:13,590 --> 00:09:13,600
+to go into the cache and the cookies
+ 
+
+517
+00:09:13,600 --> 00:09:15,910
+to go into the cache and the cookies
+inside of your browser, clean those out,
+
+518
+00:09:15,910 --> 00:09:15,920
+inside of your browser, clean those out,
+ 
+
+519
+00:09:15,920 --> 00:09:17,670
+inside of your browser, clean those out,
+delete any of the temporary files that
+
+520
+00:09:17,670 --> 00:09:17,680
+delete any of the temporary files that
+ 
+
+521
+00:09:17,680 --> 00:09:19,590
+delete any of the temporary files that
+are in the browser, and then restart the
+
+522
+00:09:19,590 --> 00:09:19,600
+are in the browser, and then restart the
+ 
+
+523
+00:09:19,600 --> 00:09:21,990
+are in the browser, and then restart the
+browser session. You might also want to
+
+524
+00:09:21,990 --> 00:09:22,000
+browser session. You might also want to
+ 
+
+525
+00:09:22,000 --> 00:09:23,910
+browser session. You might also want to
+look at your task manager to see the
+
+526
+00:09:23,910 --> 00:09:23,920
+look at your task manager to see the
+ 
+
+527
+00:09:23,920 --> 00:09:25,670
+look at your task manager to see the
+performance of your browser, how much
+
+528
+00:09:25,670 --> 00:09:25,680
+performance of your browser, how much
+ 
+
+529
+00:09:25,680 --> 00:09:27,990
+performance of your browser, how much
+CPU it's using, how much memory, and if
+
+530
+00:09:27,990 --> 00:09:28,000
+CPU it's using, how much memory, and if
+ 
+
+531
+00:09:28,000 --> 00:09:30,230
+CPU it's using, how much memory, and if
+it's accessing any of your disk, which
+
+532
+00:09:30,230 --> 00:09:30,240
+it's accessing any of your disk, which
+ 
+
+533
+00:09:30,240 --> 00:09:31,750
+it's accessing any of your disk, which
+certainly could be slowing down the
+
+534
+00:09:31,750 --> 00:09:31,760
+certainly could be slowing down the
+ 
+
+535
+00:09:31,760 --> 00:09:34,470
+certainly could be slowing down the
+performance. I visited sites before that
+
+536
+00:09:34,470 --> 00:09:34,480
+performance. I visited sites before that
+ 
+
+537
+00:09:34,480 --> 00:09:36,550
+performance. I visited sites before that
+suddenly slowed down my browser to a
+
+538
+00:09:36,550 --> 00:09:36,560
+suddenly slowed down my browser to a
+ 
+
+539
+00:09:36,560 --> 00:09:38,230
+suddenly slowed down my browser to a
+crawl. And when I brought up my task
+
+540
+00:09:38,230 --> 00:09:38,240
+crawl. And when I brought up my task
+ 
+
+541
+00:09:38,240 --> 00:09:40,550
+crawl. And when I brought up my task
+manager, I saw that my CPU utilization
+
+542
+00:09:40,550 --> 00:09:40,560
+manager, I saw that my CPU utilization
+ 
+
+543
+00:09:40,560 --> 00:09:43,670
+manager, I saw that my CPU utilization
+for the browser was at 100%. This was
+
+544
+00:09:43,670 --> 00:09:43,680
+for the browser was at 100%. This was
+ 
+
+545
+00:09:43,680 --> 00:09:45,990
+for the browser was at 100%. This was
+because this website had a crypto miner
+
+546
+00:09:45,990 --> 00:09:46,000
+because this website had a crypto miner
+ 
+
+547
+00:09:46,000 --> 00:09:48,389
+because this website had a crypto miner
+running in JavaScript. When I left that
+
+548
+00:09:48,389 --> 00:09:48,399
+running in JavaScript. When I left that
+ 
+
+549
+00:09:48,399 --> 00:09:50,870
+running in JavaScript. When I left that
+website page, suddenly my CPU dropped
+
+550
+00:09:50,870 --> 00:09:50,880
+website page, suddenly my CPU dropped
+ 
+
+551
+00:09:50,880 --> 00:09:53,030
+website page, suddenly my CPU dropped
+back down to zero. And it could be that
+
+552
+00:09:53,030 --> 00:09:53,040
+back down to zero. And it could be that
+ 
+
+553
+00:09:53,040 --> 00:09:55,190
+back down to zero. And it could be that
+the issue is related to this specific
+
+554
+00:09:55,190 --> 00:09:55,200
+the issue is related to this specific
+ 
+
+555
+00:09:55,200 --> 00:09:57,110
+the issue is related to this specific
+type of browser. You might want to have
+
+556
+00:09:57,110 --> 00:09:57,120
+type of browser. You might want to have
+ 
+
+557
+00:09:57,120 --> 00:09:58,870
+type of browser. You might want to have
+different browsers installed on your
+
+558
+00:09:58,870 --> 00:09:58,880
+different browsers installed on your
+ 
+
+559
+00:09:58,880 --> 00:10:00,790
+different browsers installed on your
+system so that you could try different
+
+560
+00:10:00,790 --> 00:10:00,800
+system so that you could try different
+ 
+
+561
+00:10:00,800 --> 00:10:02,949
+system so that you could try different
+browsers against the same website and
+
+562
+00:10:02,949 --> 00:10:02,959
+browsers against the same website and
+ 
+
+563
+00:10:02,959 --> 00:10:04,389
+browsers against the same website and
+see if you get the same performance
+
+564
+00:10:04,389 --> 00:10:04,399
+see if you get the same performance
+ 
+
+565
+00:10:04,399 --> 00:10:07,399
+see if you get the same performance
+issues.
+

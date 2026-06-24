@@ -1,0 +1,1585 @@
+1
+00:00:02,000 --> 00:00:03,510
+
+One of the challenges we have with
+
+2
+00:00:03,510 --> 00:00:03,520
+One of the challenges we have with
+ 
+
+3
+00:00:03,520 --> 00:00:05,670
+One of the challenges we have with
+wireless networks is that they are in
+
+4
+00:00:05,670 --> 00:00:05,680
+wireless networks is that they are in
+ 
+
+5
+00:00:05,680 --> 00:00:08,549
+wireless networks is that they are in
+the air around us and anyone can tap in
+
+6
+00:00:08,549 --> 00:00:08,559
+the air around us and anyone can tap in
+ 
+
+7
+00:00:08,559 --> 00:00:11,270
+the air around us and anyone can tap in
+to that air to listen in on our network
+
+8
+00:00:11,270 --> 00:00:11,280
+to that air to listen in on our network
+ 
+
+9
+00:00:11,280 --> 00:00:13,589
+to that air to listen in on our network
+communication. For that reason, we need
+
+10
+00:00:13,589 --> 00:00:13,599
+communication. For that reason, we need
+ 
+
+11
+00:00:13,599 --> 00:00:15,749
+communication. For that reason, we need
+to engineer our wireless networks to
+
+12
+00:00:15,749 --> 00:00:15,759
+to engineer our wireless networks to
+ 
+
+13
+00:00:15,759 --> 00:00:18,150
+to engineer our wireless networks to
+allow the appropriate users access to
+
+14
+00:00:18,150 --> 00:00:18,160
+allow the appropriate users access to
+ 
+
+15
+00:00:18,160 --> 00:00:20,550
+allow the appropriate users access to
+the network and prevent access from
+
+16
+00:00:20,550 --> 00:00:20,560
+the network and prevent access from
+ 
+
+17
+00:00:20,560 --> 00:00:23,029
+the network and prevent access from
+anyone unauthorized. This generally
+
+18
+00:00:23,029 --> 00:00:23,039
+anyone unauthorized. This generally
+ 
+
+19
+00:00:23,039 --> 00:00:25,029
+anyone unauthorized. This generally
+means we need to provide some type of
+
+20
+00:00:25,029 --> 00:00:25,039
+means we need to provide some type of
+ 
+
+21
+00:00:25,039 --> 00:00:27,269
+means we need to provide some type of
+authentication before someone can use
+
+22
+00:00:27,269 --> 00:00:27,279
+authentication before someone can use
+ 
+
+23
+00:00:27,279 --> 00:00:29,509
+authentication before someone can use
+the wireless network. This might be a
+
+24
+00:00:29,509 --> 00:00:29,519
+the wireless network. This might be a
+ 
+
+25
+00:00:29,519 --> 00:00:31,589
+the wireless network. This might be a
+username, a password, or some other
+
+26
+00:00:31,589 --> 00:00:31,599
+username, a password, or some other
+ 
+
+27
+00:00:31,599 --> 00:00:33,990
+username, a password, or some other
+factor of authentication. But of course,
+
+28
+00:00:33,990 --> 00:00:34,000
+factor of authentication. But of course,
+ 
+
+29
+00:00:34,000 --> 00:00:35,750
+factor of authentication. But of course,
+if someone is listening into the
+
+30
+00:00:35,750 --> 00:00:35,760
+if someone is listening into the
+ 
+
+31
+00:00:35,760 --> 00:00:37,910
+if someone is listening into the
+network, they'll be able to see all of
+
+32
+00:00:37,910 --> 00:00:37,920
+network, they'll be able to see all of
+ 
+
+33
+00:00:37,920 --> 00:00:40,069
+network, they'll be able to see all of
+the traffic going back and forth, even
+
+34
+00:00:40,069 --> 00:00:40,079
+the traffic going back and forth, even
+ 
+
+35
+00:00:40,079 --> 00:00:41,910
+the traffic going back and forth, even
+if they are not authenticated to the
+
+36
+00:00:41,910 --> 00:00:41,920
+if they are not authenticated to the
+ 
+
+37
+00:00:41,920 --> 00:00:44,150
+if they are not authenticated to the
+network. For that reason, we also need
+
+38
+00:00:44,150 --> 00:00:44,160
+network. For that reason, we also need
+ 
+
+39
+00:00:44,160 --> 00:00:46,549
+network. For that reason, we also need
+to enable encryption on everything that
+
+40
+00:00:46,549 --> 00:00:46,559
+to enable encryption on everything that
+ 
+
+41
+00:00:46,559 --> 00:00:48,630
+to enable encryption on everything that
+goes over the air. And with most
+
+42
+00:00:48,630 --> 00:00:48,640
+goes over the air. And with most
+ 
+
+43
+00:00:48,640 --> 00:00:51,110
+goes over the air. And with most
+wireless technologies, we also need some
+
+44
+00:00:51,110 --> 00:00:51,120
+wireless technologies, we also need some
+ 
+
+45
+00:00:51,120 --> 00:00:53,110
+wireless technologies, we also need some
+way to confirm that the information that
+
+46
+00:00:53,110 --> 00:00:53,120
+way to confirm that the information that
+ 
+
+47
+00:00:53,120 --> 00:00:55,350
+way to confirm that the information that
+we've received has not been modified
+
+48
+00:00:55,350 --> 00:00:55,360
+we've received has not been modified
+ 
+
+49
+00:00:55,360 --> 00:00:57,830
+we've received has not been modified
+somehow along the way. Our wireless
+
+50
+00:00:57,830 --> 00:00:57,840
+somehow along the way. Our wireless
+ 
+
+51
+00:00:57,840 --> 00:01:00,069
+somehow along the way. Our wireless
+technologies include an additional piece
+
+52
+00:01:00,069 --> 00:01:00,079
+technologies include an additional piece
+ 
+
+53
+00:01:00,079 --> 00:01:02,069
+technologies include an additional piece
+of information known as a message
+
+54
+00:01:02,069 --> 00:01:02,079
+of information known as a message
+ 
+
+55
+00:01:02,079 --> 00:01:05,270
+of information known as a message
+integrity check or MIC. And this allows
+
+56
+00:01:05,270 --> 00:01:05,280
+integrity check or MIC. And this allows
+ 
+
+57
+00:01:05,280 --> 00:01:07,429
+integrity check or MIC. And this allows
+us to confirm that the information we've
+
+58
+00:01:07,429 --> 00:01:07,439
+us to confirm that the information we've
+ 
+
+59
+00:01:07,439 --> 00:01:09,830
+us to confirm that the information we've
+received really is the information that
+
+60
+00:01:09,830 --> 00:01:09,840
+received really is the information that
+ 
+
+61
+00:01:09,840 --> 00:01:10,590
+received really is the information that
+was
+
+62
+00:01:10,590 --> 00:01:10,600
+was
+ 
+
+63
+00:01:10,600 --> 00:01:12,950
+was
+sent. If you've ever worked with a
+
+64
+00:01:12,950 --> 00:01:12,960
+sent. If you've ever worked with a
+ 
+
+65
+00:01:12,960 --> 00:01:15,030
+sent. If you've ever worked with a
+wireless protocol analyzer, you know,
+
+66
+00:01:15,030 --> 00:01:15,040
+wireless protocol analyzer, you know,
+ 
+
+67
+00:01:15,040 --> 00:01:16,950
+wireless protocol analyzer, you know,
+you simply turn it on and you can
+
+68
+00:01:16,950 --> 00:01:16,960
+you simply turn it on and you can
+ 
+
+69
+00:01:16,960 --> 00:01:18,950
+you simply turn it on and you can
+immediately start gathering information
+
+70
+00:01:18,950 --> 00:01:18,960
+immediately start gathering information
+ 
+
+71
+00:01:18,960 --> 00:01:21,109
+immediately start gathering information
+going across the air. For that reason,
+
+72
+00:01:21,109 --> 00:01:21,119
+going across the air. For that reason,
+ 
+
+73
+00:01:21,119 --> 00:01:22,710
+going across the air. For that reason,
+we need to be sure that as much
+
+74
+00:01:22,710 --> 00:01:22,720
+we need to be sure that as much
+ 
+
+75
+00:01:22,720 --> 00:01:24,789
+we need to be sure that as much
+information as possible is encrypted
+
+76
+00:01:24,789 --> 00:01:24,799
+information as possible is encrypted
+ 
+
+77
+00:01:24,799 --> 00:01:27,749
+information as possible is encrypted
+over that very open airway. One way to
+
+78
+00:01:27,749 --> 00:01:27,759
+over that very open airway. One way to
+ 
+
+79
+00:01:27,759 --> 00:01:30,789
+over that very open airway. One way to
+do this on a traditional 802.11 wireless
+
+80
+00:01:30,789 --> 00:01:30,799
+do this on a traditional 802.11 wireless
+ 
+
+81
+00:01:30,799 --> 00:01:33,109
+do this on a traditional 802.11 wireless
+network is to use an encryption protocol
+
+82
+00:01:33,109 --> 00:01:33,119
+network is to use an encryption protocol
+ 
+
+83
+00:01:33,119 --> 00:01:36,109
+network is to use an encryption protocol
+such as WPA2 or
+
+84
+00:01:36,109 --> 00:01:36,119
+such as WPA2 or
+ 
+
+85
+00:01:36,119 --> 00:01:39,670
+such as WPA2 or
+WPA3. If we go back to 2002, a big shift
+
+86
+00:01:39,670 --> 00:01:39,680
+WPA3. If we go back to 2002, a big shift
+ 
+
+87
+00:01:39,680 --> 00:01:41,990
+WPA3. If we go back to 2002, a big shift
+took place in the encryption of data on
+
+88
+00:01:41,990 --> 00:01:42,000
+took place in the encryption of data on
+ 
+
+89
+00:01:42,000 --> 00:01:44,469
+took place in the encryption of data on
+wireless networks. We transitioned from
+
+90
+00:01:44,469 --> 00:01:44,479
+wireless networks. We transitioned from
+ 
+
+91
+00:01:44,479 --> 00:01:46,469
+wireless networks. We transitioned from
+one of the original encryption types
+
+92
+00:01:46,469 --> 00:01:46,479
+one of the original encryption types
+ 
+
+93
+00:01:46,479 --> 00:01:48,789
+one of the original encryption types
+which was web that stands for wired
+
+94
+00:01:48,789 --> 00:01:48,799
+which was web that stands for wired
+ 
+
+95
+00:01:48,799 --> 00:01:51,350
+which was web that stands for wired
+equivalent privacy and we transitioned
+
+96
+00:01:51,350 --> 00:01:51,360
+equivalent privacy and we transitioned
+ 
+
+97
+00:01:51,360 --> 00:01:53,789
+equivalent privacy and we transitioned
+to a new style of encryption known as
+
+98
+00:01:53,789 --> 00:01:53,799
+to a new style of encryption known as
+ 
+
+99
+00:01:53,799 --> 00:01:57,270
+to a new style of encryption known as
+WPA. WPA stands for Wi-Fi protected
+
+100
+00:01:57,270 --> 00:01:57,280
+WPA. WPA stands for Wi-Fi protected
+ 
+
+101
+00:01:57,280 --> 00:01:59,190
+WPA. WPA stands for Wi-Fi protected
+access. We found significant
+
+102
+00:01:59,190 --> 00:01:59,200
+access. We found significant
+ 
+
+103
+00:01:59,200 --> 00:02:01,270
+access. We found significant
+cryptographic vulnerabilities with WE
+
+104
+00:02:01,270 --> 00:02:01,280
+cryptographic vulnerabilities with WE
+ 
+
+105
+00:02:01,280 --> 00:02:03,030
+cryptographic vulnerabilities with WE
+and that drove us towards this
+
+106
+00:02:03,030 --> 00:02:03,040
+and that drove us towards this
+ 
+
+107
+00:02:03,040 --> 00:02:05,830
+and that drove us towards this
+transition to WPA. But this first
+
+108
+00:02:05,830 --> 00:02:05,840
+transition to WPA. But this first
+ 
+
+109
+00:02:05,840 --> 00:02:08,550
+transition to WPA. But this first
+implementation of WPA was designed to be
+
+110
+00:02:08,550 --> 00:02:08,560
+implementation of WPA was designed to be
+ 
+
+111
+00:02:08,560 --> 00:02:10,949
+implementation of WPA was designed to be
+a stop gap. It was designed to prevent
+
+112
+00:02:10,949 --> 00:02:10,959
+a stop gap. It was designed to prevent
+ 
+
+113
+00:02:10,959 --> 00:02:12,869
+a stop gap. It was designed to prevent
+any of the cryptographic problems we had
+
+114
+00:02:12,869 --> 00:02:12,879
+any of the cryptographic problems we had
+ 
+
+115
+00:02:12,879 --> 00:02:15,270
+any of the cryptographic problems we had
+with WE, but we knew we needed something
+
+116
+00:02:15,270 --> 00:02:15,280
+with WE, but we knew we needed something
+ 
+
+117
+00:02:15,280 --> 00:02:17,350
+with WE, but we knew we needed something
+longer term to be able to implement in
+
+118
+00:02:17,350 --> 00:02:17,360
+longer term to be able to implement in
+ 
+
+119
+00:02:17,360 --> 00:02:19,510
+longer term to be able to implement in
+the future. One of the technologies
+
+120
+00:02:19,510 --> 00:02:19,520
+the future. One of the technologies
+ 
+
+121
+00:02:19,520 --> 00:02:22,070
+the future. One of the technologies
+associated with this WPA stop gap was
+
+122
+00:02:22,070 --> 00:02:22,080
+associated with this WPA stop gap was
+ 
+
+123
+00:02:22,080 --> 00:02:23,990
+associated with this WPA stop gap was
+that it encrypted using a technology
+
+124
+00:02:23,990 --> 00:02:24,000
+that it encrypted using a technology
+ 
+
+125
+00:02:24,000 --> 00:02:27,110
+that it encrypted using a technology
+known as TKIP. This TKIP encryption ran
+
+126
+00:02:27,110 --> 00:02:27,120
+known as TKIP. This TKIP encryption ran
+ 
+
+127
+00:02:27,120 --> 00:02:29,430
+known as TKIP. This TKIP encryption ran
+on the existing access point hardware,
+
+128
+00:02:29,430 --> 00:02:29,440
+on the existing access point hardware,
+ 
+
+129
+00:02:29,440 --> 00:02:31,270
+on the existing access point hardware,
+which means that we could still provide
+
+130
+00:02:31,270 --> 00:02:31,280
+which means that we could still provide
+ 
+
+131
+00:02:31,280 --> 00:02:33,110
+which means that we could still provide
+security over these wireless networks
+
+132
+00:02:33,110 --> 00:02:33,120
+security over these wireless networks
+ 
+
+133
+00:02:33,120 --> 00:02:34,949
+security over these wireless networks
+without having to replace any of our
+
+134
+00:02:34,949 --> 00:02:34,959
+without having to replace any of our
+ 
+
+135
+00:02:34,959 --> 00:02:37,670
+without having to replace any of our
+physical access points. That transition
+
+136
+00:02:37,670 --> 00:02:37,680
+physical access points. That transition
+ 
+
+137
+00:02:37,680 --> 00:02:40,390
+physical access points. That transition
+period where we were using WPA for our
+
+138
+00:02:40,390 --> 00:02:40,400
+period where we were using WPA for our
+ 
+
+139
+00:02:40,400 --> 00:02:42,550
+period where we were using WPA for our
+encryption technology didn't last very
+
+140
+00:02:42,550 --> 00:02:42,560
+encryption technology didn't last very
+ 
+
+141
+00:02:42,560 --> 00:02:46,550
+encryption technology didn't last very
+long. In 2004, we introduced WPA2.
+
+142
+00:02:46,550 --> 00:02:46,560
+long. In 2004, we introduced WPA2.
+ 
+
+143
+00:02:46,560 --> 00:02:49,670
+long. In 2004, we introduced WPA2.
+That's Wi-Fi protected access version 2.
+
+144
+00:02:49,670 --> 00:02:49,680
+That's Wi-Fi protected access version 2.
+ 
+
+145
+00:02:49,680 --> 00:02:52,390
+That's Wi-Fi protected access version 2.
+This was the update to WPA. And the idea
+
+146
+00:02:52,390 --> 00:02:52,400
+This was the update to WPA. And the idea
+ 
+
+147
+00:02:52,400 --> 00:02:55,270
+This was the update to WPA. And the idea
+was that we'd be able to use WPA2 for an
+
+148
+00:02:55,270 --> 00:02:55,280
+was that we'd be able to use WPA2 for an
+ 
+
+149
+00:02:55,280 --> 00:02:58,470
+was that we'd be able to use WPA2 for an
+extended period of time. WPA2 used a
+
+150
+00:02:58,470 --> 00:02:58,480
+extended period of time. WPA2 used a
+ 
+
+151
+00:02:58,480 --> 00:03:00,710
+extended period of time. WPA2 used a
+stronger type of encryption known as
+
+152
+00:03:00,710 --> 00:03:00,720
+stronger type of encryption known as
+ 
+
+153
+00:03:00,720 --> 00:03:03,030
+stronger type of encryption known as
+AES. That's the advanced encryption
+
+154
+00:03:03,030 --> 00:03:03,040
+AES. That's the advanced encryption
+ 
+
+155
+00:03:03,040 --> 00:03:05,509
+AES. That's the advanced encryption
+standard. This was a stronger encryption
+
+156
+00:03:05,509 --> 00:03:05,519
+standard. This was a stronger encryption
+ 
+
+157
+00:03:05,519 --> 00:03:07,550
+standard. This was a stronger encryption
+method than the TKIP we were using with
+
+158
+00:03:07,550 --> 00:03:07,560
+method than the TKIP we were using with
+ 
+
+159
+00:03:07,560 --> 00:03:10,390
+method than the TKIP we were using with
+WPA. But in many cases, it required
+
+160
+00:03:10,390 --> 00:03:10,400
+WPA. But in many cases, it required
+ 
+
+161
+00:03:10,400 --> 00:03:12,630
+WPA. But in many cases, it required
+additional processing power, which means
+
+162
+00:03:12,630 --> 00:03:12,640
+additional processing power, which means
+ 
+
+163
+00:03:12,640 --> 00:03:15,110
+additional processing power, which means
+we needed to replace access points if we
+
+164
+00:03:15,110 --> 00:03:15,120
+we needed to replace access points if we
+ 
+
+165
+00:03:15,120 --> 00:03:18,229
+we needed to replace access points if we
+wanted to enable WPA2 encryption. This
+
+166
+00:03:18,229 --> 00:03:18,239
+wanted to enable WPA2 encryption. This
+ 
+
+167
+00:03:18,239 --> 00:03:20,070
+wanted to enable WPA2 encryption. This
+change happened relatively quickly, and
+
+168
+00:03:20,070 --> 00:03:20,080
+change happened relatively quickly, and
+ 
+
+169
+00:03:20,080 --> 00:03:22,229
+change happened relatively quickly, and
+most organizations were glad to swap out
+
+170
+00:03:22,229 --> 00:03:22,239
+most organizations were glad to swap out
+ 
+
+171
+00:03:22,239 --> 00:03:24,070
+most organizations were glad to swap out
+their access points if it meant that
+
+172
+00:03:24,070 --> 00:03:24,080
+their access points if it meant that
+ 
+
+173
+00:03:24,080 --> 00:03:25,670
+their access points if it meant that
+they would have better encryption over
+
+174
+00:03:25,670 --> 00:03:25,680
+they would have better encryption over
+ 
+
+175
+00:03:25,680 --> 00:03:28,470
+they would have better encryption over
+their wireless networks. WPA2 has
+
+176
+00:03:28,470 --> 00:03:28,480
+their wireless networks. WPA2 has
+ 
+
+177
+00:03:28,480 --> 00:03:30,229
+their wireless networks. WPA2 has
+continued to provide strong encryption
+
+178
+00:03:30,229 --> 00:03:30,239
+continued to provide strong encryption
+ 
+
+179
+00:03:30,239 --> 00:03:31,990
+continued to provide strong encryption
+for our wireless networks, and you'll
+
+180
+00:03:31,990 --> 00:03:32,000
+for our wireless networks, and you'll
+ 
+
+181
+00:03:32,000 --> 00:03:33,990
+for our wireless networks, and you'll
+still see many wireless networks running
+
+182
+00:03:33,990 --> 00:03:34,000
+still see many wireless networks running
+ 
+
+183
+00:03:34,000 --> 00:03:36,509
+still see many wireless networks running
+WPA2 as the encryption
+
+184
+00:03:36,509 --> 00:03:36,519
+WPA2 as the encryption
+ 
+
+185
+00:03:36,519 --> 00:03:39,190
+WPA2 as the encryption
+standard. As time went on, we continued
+
+186
+00:03:39,190 --> 00:03:39,200
+standard. As time went on, we continued
+ 
+
+187
+00:03:39,200 --> 00:03:40,789
+standard. As time went on, we continued
+to improve these standards for our
+
+188
+00:03:40,789 --> 00:03:40,799
+to improve these standards for our
+ 
+
+189
+00:03:40,799 --> 00:03:43,430
+to improve these standards for our
+wireless networks, and WPA3 was
+
+190
+00:03:43,430 --> 00:03:43,440
+wireless networks, and WPA3 was
+ 
+
+191
+00:03:43,440 --> 00:03:45,990
+wireless networks, and WPA3 was
+introduced in 2018. This is Wi-Fi
+
+192
+00:03:45,990 --> 00:03:46,000
+introduced in 2018. This is Wi-Fi
+ 
+
+193
+00:03:46,000 --> 00:03:48,789
+introduced in 2018. This is Wi-Fi
+protected access version 3. There were a
+
+194
+00:03:48,789 --> 00:03:48,799
+protected access version 3. There were a
+ 
+
+195
+00:03:48,799 --> 00:03:50,550
+protected access version 3. There were a
+number of new features and capabilities
+
+196
+00:03:50,550 --> 00:03:50,560
+number of new features and capabilities
+ 
+
+197
+00:03:50,560 --> 00:03:53,350
+number of new features and capabilities
+introduced with WPA3. One of them was
+
+198
+00:03:53,350 --> 00:03:53,360
+introduced with WPA3. One of them was
+ 
+
+199
+00:03:53,360 --> 00:03:55,750
+introduced with WPA3. One of them was
+that the strength of the AES encryption
+
+200
+00:03:55,750 --> 00:03:55,760
+that the strength of the AES encryption
+ 
+
+201
+00:03:55,760 --> 00:03:57,509
+that the strength of the AES encryption
+used on the wireless network was
+
+202
+00:03:57,509 --> 00:03:57,519
+used on the wireless network was
+ 
+
+203
+00:03:57,519 --> 00:04:00,949
+used on the wireless network was
+increased to be more secure in WPA3.
+
+204
+00:04:00,949 --> 00:04:00,959
+increased to be more secure in WPA3.
+ 
+
+205
+00:04:00,959 --> 00:04:03,509
+increased to be more secure in WPA3.
+WPA3 also increased security for an
+
+206
+00:04:03,509 --> 00:04:03,519
+WPA3 also increased security for an
+ 
+
+207
+00:04:03,519 --> 00:04:05,429
+WPA3 also increased security for an
+initial key exchange that occurs when
+
+208
+00:04:05,429 --> 00:04:05,439
+initial key exchange that occurs when
+ 
+
+209
+00:04:05,439 --> 00:04:07,190
+initial key exchange that occurs when
+somebody first connects to the wireless
+
+210
+00:04:07,190 --> 00:04:07,200
+somebody first connects to the wireless
+ 
+
+211
+00:04:07,200 --> 00:04:10,229
+somebody first connects to the wireless
+network. WPA3 also included a new
+
+212
+00:04:10,229 --> 00:04:10,239
+network. WPA3 also included a new
+ 
+
+213
+00:04:10,239 --> 00:04:12,710
+network. WPA3 also included a new
+feature to provide encryption on open
+
+214
+00:04:12,710 --> 00:04:12,720
+feature to provide encryption on open
+ 
+
+215
+00:04:12,720 --> 00:04:14,710
+feature to provide encryption on open
+networks. So if you go to a coffee shop
+
+216
+00:04:14,710 --> 00:04:14,720
+networks. So if you go to a coffee shop
+ 
+
+217
+00:04:14,720 --> 00:04:17,909
+networks. So if you go to a coffee shop
+that has an open wireless network, WPA3
+
+218
+00:04:17,909 --> 00:04:17,919
+that has an open wireless network, WPA3
+ 
+
+219
+00:04:17,919 --> 00:04:20,229
+that has an open wireless network, WPA3
+can automatically create encryption keys
+
+220
+00:04:20,229 --> 00:04:20,239
+can automatically create encryption keys
+ 
+
+221
+00:04:20,239 --> 00:04:22,710
+can automatically create encryption keys
+so that even though the network is open,
+
+222
+00:04:22,710 --> 00:04:22,720
+so that even though the network is open,
+ 
+
+223
+00:04:22,720 --> 00:04:24,950
+so that even though the network is open,
+everything going across the airways are
+
+224
+00:04:24,950 --> 00:04:24,960
+everything going across the airways are
+ 
+
+225
+00:04:24,960 --> 00:04:25,870
+everything going across the airways are
+still
+
+226
+00:04:25,870 --> 00:04:25,880
+still
+ 
+
+227
+00:04:25,880 --> 00:04:28,230
+still
+secure. If you look at the configuration
+
+228
+00:04:28,230 --> 00:04:28,240
+secure. If you look at the configuration
+ 
+
+229
+00:04:28,240 --> 00:04:30,469
+secure. If you look at the configuration
+of the wireless settings on your access
+
+230
+00:04:30,469 --> 00:04:30,479
+of the wireless settings on your access
+ 
+
+231
+00:04:30,479 --> 00:04:32,629
+of the wireless settings on your access
+point, you may see a number of different
+
+232
+00:04:32,629 --> 00:04:32,639
+point, you may see a number of different
+ 
+
+233
+00:04:32,639 --> 00:04:35,189
+point, you may see a number of different
+configuration options. One of them is an
+
+234
+00:04:35,189 --> 00:04:35,199
+configuration options. One of them is an
+ 
+
+235
+00:04:35,199 --> 00:04:37,350
+configuration options. One of them is an
+open system. This is one that has no
+
+236
+00:04:37,350 --> 00:04:37,360
+open system. This is one that has no
+ 
+
+237
+00:04:37,360 --> 00:04:39,909
+open system. This is one that has no
+password set and anyone can connect to
+
+238
+00:04:39,909 --> 00:04:39,919
+password set and anyone can connect to
+ 
+
+239
+00:04:39,919 --> 00:04:42,150
+password set and anyone can connect to
+that wireless network. This might be the
+
+240
+00:04:42,150 --> 00:04:42,160
+that wireless network. This might be the
+ 
+
+241
+00:04:42,160 --> 00:04:44,070
+that wireless network. This might be the
+configuration you would find in a coffee
+
+242
+00:04:44,070 --> 00:04:44,080
+configuration you would find in a coffee
+ 
+
+243
+00:04:44,080 --> 00:04:46,870
+configuration you would find in a coffee
+shop or a hotel wireless network. If
+
+244
+00:04:46,870 --> 00:04:46,880
+shop or a hotel wireless network. If
+ 
+
+245
+00:04:46,880 --> 00:04:48,469
+shop or a hotel wireless network. If
+you're setting up an access point for
+
+246
+00:04:48,469 --> 00:04:48,479
+you're setting up an access point for
+ 
+
+247
+00:04:48,479 --> 00:04:50,790
+you're setting up an access point for
+personal use, especially at home, you're
+
+248
+00:04:50,790 --> 00:04:50,800
+personal use, especially at home, you're
+ 
+
+249
+00:04:50,800 --> 00:04:53,510
+personal use, especially at home, you're
+probably configuring it with WPA2 or
+
+250
+00:04:53,510 --> 00:04:53,520
+probably configuring it with WPA2 or
+ 
+
+251
+00:04:53,520 --> 00:04:56,150
+probably configuring it with WPA2 or
+WPA3 encryption. And for either of
+
+252
+00:04:56,150 --> 00:04:56,160
+WPA3 encryption. And for either of
+ 
+
+253
+00:04:56,160 --> 00:04:58,070
+WPA3 encryption. And for either of
+those, you're probably assigning a
+
+254
+00:04:58,070 --> 00:04:58,080
+those, you're probably assigning a
+ 
+
+255
+00:04:58,080 --> 00:05:00,469
+those, you're probably assigning a
+password or passphrase to help protect
+
+256
+00:05:00,469 --> 00:05:00,479
+password or passphrase to help protect
+ 
+
+257
+00:05:00,479 --> 00:05:03,030
+password or passphrase to help protect
+that network. If anybody visits you, you
+
+258
+00:05:03,030 --> 00:05:03,040
+that network. If anybody visits you, you
+ 
+
+259
+00:05:03,040 --> 00:05:04,870
+that network. If anybody visits you, you
+simply provide them with that password
+
+260
+00:05:04,870 --> 00:05:04,880
+simply provide them with that password
+ 
+
+261
+00:05:04,880 --> 00:05:06,150
+simply provide them with that password
+and they're able to connect to your
+
+262
+00:05:06,150 --> 00:05:06,160
+and they're able to connect to your
+ 
+
+263
+00:05:06,160 --> 00:05:08,150
+and they're able to connect to your
+wireless network. We refer to this
+
+264
+00:05:08,150 --> 00:05:08,160
+wireless network. We refer to this
+ 
+
+265
+00:05:08,160 --> 00:05:10,790
+wireless network. We refer to this
+password as a pre-shared key. That's a
+
+266
+00:05:10,790 --> 00:05:10,800
+password as a pre-shared key. That's a
+ 
+
+267
+00:05:10,800 --> 00:05:12,710
+password as a pre-shared key. That's a
+key that you would provide to anyone who
+
+268
+00:05:12,710 --> 00:05:12,720
+key that you would provide to anyone who
+ 
+
+269
+00:05:12,720 --> 00:05:14,070
+key that you would provide to anyone who
+needs to connect to this wireless
+
+270
+00:05:14,070 --> 00:05:14,080
+needs to connect to this wireless
+ 
+
+271
+00:05:14,080 --> 00:05:16,230
+needs to connect to this wireless
+network and everybody on the wireless
+
+272
+00:05:16,230 --> 00:05:16,240
+network and everybody on the wireless
+ 
+
+273
+00:05:16,240 --> 00:05:19,110
+network and everybody on the wireless
+network is using the same key. In a
+
+274
+00:05:19,110 --> 00:05:19,120
+network is using the same key. In a
+ 
+
+275
+00:05:19,120 --> 00:05:20,870
+network is using the same key. In a
+business, however, you don't want to
+
+276
+00:05:20,870 --> 00:05:20,880
+business, however, you don't want to
+ 
+
+277
+00:05:20,880 --> 00:05:23,029
+business, however, you don't want to
+have everyone using the same key to
+
+278
+00:05:23,029 --> 00:05:23,039
+have everyone using the same key to
+ 
+
+279
+00:05:23,039 --> 00:05:25,189
+have everyone using the same key to
+connect to the wireless network. Every
+
+280
+00:05:25,189 --> 00:05:25,199
+connect to the wireless network. Every
+ 
+
+281
+00:05:25,199 --> 00:05:27,350
+connect to the wireless network. Every
+individual should have their own log on
+
+282
+00:05:27,350 --> 00:05:27,360
+individual should have their own log on
+ 
+
+283
+00:05:27,360 --> 00:05:29,510
+individual should have their own log on
+to the wireless connection. If you were
+
+284
+00:05:29,510 --> 00:05:29,520
+to the wireless connection. If you were
+ 
+
+285
+00:05:29,520 --> 00:05:31,430
+to the wireless connection. If you were
+to look at your access point, there's
+
+286
+00:05:31,430 --> 00:05:31,440
+to look at your access point, there's
+ 
+
+287
+00:05:31,440 --> 00:05:33,590
+to look at your access point, there's
+probably a configuration to configure
+
+288
+00:05:33,590 --> 00:05:33,600
+probably a configuration to configure
+ 
+
+289
+00:05:33,600 --> 00:05:37,909
+probably a configuration to configure
+WPA2 or WPA3 in an enterprise mode. You
+
+290
+00:05:37,909 --> 00:05:37,919
+WPA2 or WPA3 in an enterprise mode. You
+ 
+
+291
+00:05:37,919 --> 00:05:40,270
+WPA2 or WPA3 in an enterprise mode. You
+might see this also listed as an
+
+292
+00:05:40,270 --> 00:05:40,280
+might see this also listed as an
+ 
+
+293
+00:05:40,280 --> 00:05:43,110
+might see this also listed as an
+802.1x mode. This is an authentication
+
+294
+00:05:43,110 --> 00:05:43,120
+802.1x mode. This is an authentication
+ 
+
+295
+00:05:43,120 --> 00:05:45,029
+802.1x mode. This is an authentication
+mode that requires someone to log in
+
+296
+00:05:45,029 --> 00:05:45,039
+mode that requires someone to log in
+ 
+
+297
+00:05:45,039 --> 00:05:47,270
+mode that requires someone to log in
+with their username and password and
+
+298
+00:05:47,270 --> 00:05:47,280
+with their username and password and
+ 
+
+299
+00:05:47,280 --> 00:05:49,670
+with their username and password and
+your access point uses a centralized
+
+300
+00:05:49,670 --> 00:05:49,680
+your access point uses a centralized
+ 
+
+301
+00:05:49,680 --> 00:05:51,749
+your access point uses a centralized
+authentication database to be able to
+
+302
+00:05:51,749 --> 00:05:51,759
+authentication database to be able to
+ 
+
+303
+00:05:51,759 --> 00:05:54,390
+authentication database to be able to
+confirm that this user is authenticating
+
+304
+00:05:54,390 --> 00:05:54,400
+confirm that this user is authenticating
+ 
+
+305
+00:05:54,400 --> 00:05:56,710
+confirm that this user is authenticating
+correctly to this wireless network. This
+
+306
+00:05:56,710 --> 00:05:56,720
+correctly to this wireless network. This
+ 
+
+307
+00:05:56,720 --> 00:05:58,390
+correctly to this wireless network. This
+means that every person in your
+
+308
+00:05:58,390 --> 00:05:58,400
+means that every person in your
+ 
+
+309
+00:05:58,400 --> 00:06:00,310
+means that every person in your
+organization has a different login to
+
+310
+00:06:00,310 --> 00:06:00,320
+organization has a different login to
+ 
+
+311
+00:06:00,320 --> 00:06:02,310
+organization has a different login to
+the wireless network. And if they leave
+
+312
+00:06:02,310 --> 00:06:02,320
+the wireless network. And if they leave
+ 
+
+313
+00:06:02,320 --> 00:06:04,469
+the wireless network. And if they leave
+the organization, we can simply disable
+
+314
+00:06:04,469 --> 00:06:04,479
+the organization, we can simply disable
+ 
+
+315
+00:06:04,479 --> 00:06:06,309
+the organization, we can simply disable
+their account and they no longer have
+
+316
+00:06:06,309 --> 00:06:06,319
+their account and they no longer have
+ 
+
+317
+00:06:06,319 --> 00:06:10,440
+their account and they no longer have
+access to the wireless network.
+

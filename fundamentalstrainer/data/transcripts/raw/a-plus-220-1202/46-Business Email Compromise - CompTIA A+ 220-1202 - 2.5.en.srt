@@ -1,0 +1,1555 @@
+1
+00:00:02,000 --> 00:00:03,350
+
+There are many different ways to
+
+2
+00:00:03,350 --> 00:00:03,360
+There are many different ways to
+ 
+
+3
+00:00:03,360 --> 00:00:04,870
+There are many different ways to
+communicate in today's business
+
+4
+00:00:04,870 --> 00:00:04,880
+communicate in today's business
+ 
+
+5
+00:00:04,880 --> 00:00:07,430
+communicate in today's business
+environment, but one of the most common
+
+6
+00:00:07,430 --> 00:00:07,440
+environment, but one of the most common
+ 
+
+7
+00:00:07,440 --> 00:00:10,070
+environment, but one of the most common
+that we've seen year after year is
+
+8
+00:00:10,070 --> 00:00:10,080
+that we've seen year after year is
+ 
+
+9
+00:00:10,080 --> 00:00:12,950
+that we've seen year after year is
+email. This makes a very attractive
+
+10
+00:00:12,950 --> 00:00:12,960
+email. This makes a very attractive
+ 
+
+11
+00:00:12,960 --> 00:00:15,030
+email. This makes a very attractive
+attack vector for anyone who wants to
+
+12
+00:00:15,030 --> 00:00:15,040
+attack vector for anyone who wants to
+ 
+
+13
+00:00:15,040 --> 00:00:17,269
+attack vector for anyone who wants to
+gain access to data that might be on the
+
+14
+00:00:17,269 --> 00:00:17,279
+gain access to data that might be on the
+ 
+
+15
+00:00:17,279 --> 00:00:19,590
+gain access to data that might be on the
+inside of a corporate network. After
+
+16
+00:00:19,590 --> 00:00:19,600
+inside of a corporate network. After
+ 
+
+17
+00:00:19,600 --> 00:00:21,670
+inside of a corporate network. After
+all, who doesn't trust the information
+
+18
+00:00:21,670 --> 00:00:21,680
+all, who doesn't trust the information
+ 
+
+19
+00:00:21,680 --> 00:00:24,150
+all, who doesn't trust the information
+that's in their email inbox? This is
+
+20
+00:00:24,150 --> 00:00:24,160
+that's in their email inbox? This is
+ 
+
+21
+00:00:24,160 --> 00:00:26,310
+that's in their email inbox? This is
+something we use every day, multiple
+
+22
+00:00:26,310 --> 00:00:26,320
+something we use every day, multiple
+ 
+
+23
+00:00:26,320 --> 00:00:28,150
+something we use every day, multiple
+times a day to communicate with people
+
+24
+00:00:28,150 --> 00:00:28,160
+times a day to communicate with people
+ 
+
+25
+00:00:28,160 --> 00:00:30,390
+times a day to communicate with people
+all over the world. And every person in
+
+26
+00:00:30,390 --> 00:00:30,400
+all over the world. And every person in
+ 
+
+27
+00:00:30,400 --> 00:00:32,870
+all over the world. And every person in
+our company has an email address.
+
+28
+00:00:32,870 --> 00:00:32,880
+our company has an email address.
+ 
+
+29
+00:00:32,880 --> 00:00:35,110
+our company has an email address.
+Unfortunately, not everyone understands
+
+30
+00:00:35,110 --> 00:00:35,120
+Unfortunately, not everyone understands
+ 
+
+31
+00:00:35,120 --> 00:00:37,750
+Unfortunately, not everyone understands
+the security associated with that email
+
+32
+00:00:37,750 --> 00:00:37,760
+the security associated with that email
+ 
+
+33
+00:00:37,760 --> 00:00:39,350
+the security associated with that email
+address. And that's where we have
+
+34
+00:00:39,350 --> 00:00:39,360
+address. And that's where we have
+ 
+
+35
+00:00:39,360 --> 00:00:41,270
+address. And that's where we have
+problems with a business email
+
+36
+00:00:41,270 --> 00:00:41,280
+problems with a business email
+ 
+
+37
+00:00:41,280 --> 00:00:44,150
+problems with a business email
+compromise. Often there is a significant
+
+38
+00:00:44,150 --> 00:00:44,160
+compromise. Often there is a significant
+ 
+
+39
+00:00:44,160 --> 00:00:46,389
+compromise. Often there is a significant
+social engineering aspect to these email
+
+40
+00:00:46,389 --> 00:00:46,399
+social engineering aspect to these email
+ 
+
+41
+00:00:46,399 --> 00:00:49,029
+social engineering aspect to these email
+messages that entices the user to click
+
+42
+00:00:49,029 --> 00:00:49,039
+messages that entices the user to click
+ 
+
+43
+00:00:49,039 --> 00:00:51,670
+messages that entices the user to click
+on a malicious link. This makes it very
+
+44
+00:00:51,670 --> 00:00:51,680
+on a malicious link. This makes it very
+ 
+
+45
+00:00:51,680 --> 00:00:53,670
+on a malicious link. This makes it very
+difficult to stop something like a
+
+46
+00:00:53,670 --> 00:00:53,680
+difficult to stop something like a
+ 
+
+47
+00:00:53,680 --> 00:00:56,069
+difficult to stop something like a
+business email compromise because our
+
+48
+00:00:56,069 --> 00:00:56,079
+business email compromise because our
+ 
+
+49
+00:00:56,079 --> 00:00:58,150
+business email compromise because our
+automated systems aren't designed to
+
+50
+00:00:58,150 --> 00:00:58,160
+automated systems aren't designed to
+ 
+
+51
+00:00:58,160 --> 00:01:01,110
+automated systems aren't designed to
+stop every possible instance of a social
+
+52
+00:01:01,110 --> 00:01:01,120
+stop every possible instance of a social
+ 
+
+53
+00:01:01,120 --> 00:01:03,189
+stop every possible instance of a social
+engineering attack.
+
+54
+00:01:03,189 --> 00:01:03,199
+engineering attack.
+ 
+
+55
+00:01:03,199 --> 00:01:05,350
+engineering attack.
+When creating this presentation, I went
+
+56
+00:01:05,350 --> 00:01:05,360
+When creating this presentation, I went
+ 
+
+57
+00:01:05,360 --> 00:01:07,590
+When creating this presentation, I went
+back to the last month or so of attacks
+
+58
+00:01:07,590 --> 00:01:07,600
+back to the last month or so of attacks
+ 
+
+59
+00:01:07,600 --> 00:01:09,830
+back to the last month or so of attacks
+that had anything to do with an email
+
+60
+00:01:09,830 --> 00:01:09,840
+that had anything to do with an email
+ 
+
+61
+00:01:09,840 --> 00:01:11,990
+that had anything to do with an email
+compromise, and we were able to find
+
+62
+00:01:11,990 --> 00:01:12,000
+compromise, and we were able to find
+ 
+
+63
+00:01:12,000 --> 00:01:14,789
+compromise, and we were able to find
+many instances of email being the method
+
+64
+00:01:14,789 --> 00:01:14,799
+many instances of email being the method
+ 
+
+65
+00:01:14,799 --> 00:01:17,030
+many instances of email being the method
+that attackers use to gain access to
+
+66
+00:01:17,030 --> 00:01:17,040
+that attackers use to gain access to
+ 
+
+67
+00:01:17,040 --> 00:01:19,670
+that attackers use to gain access to
+this data. One of these examples had a
+
+68
+00:01:19,670 --> 00:01:19,680
+this data. One of these examples had a
+ 
+
+69
+00:01:19,680 --> 00:01:21,749
+this data. One of these examples had a
+user receiving an email from their title
+
+70
+00:01:21,749 --> 00:01:21,759
+user receiving an email from their title
+ 
+
+71
+00:01:21,759 --> 00:01:23,429
+user receiving an email from their title
+company while they were in the middle of
+
+72
+00:01:23,429 --> 00:01:23,439
+company while they were in the middle of
+ 
+
+73
+00:01:23,439 --> 00:01:25,590
+company while they were in the middle of
+closing on some real estate. Although
+
+74
+00:01:25,590 --> 00:01:25,600
+closing on some real estate. Although
+ 
+
+75
+00:01:25,600 --> 00:01:27,590
+closing on some real estate. Although
+this email seemed to be from their title
+
+76
+00:01:27,590 --> 00:01:27,600
+this email seemed to be from their title
+ 
+
+77
+00:01:27,600 --> 00:01:29,830
+this email seemed to be from their title
+company, in reality it was being sent
+
+78
+00:01:29,830 --> 00:01:29,840
+company, in reality it was being sent
+ 
+
+79
+00:01:29,840 --> 00:01:32,710
+company, in reality it was being sent
+from an attacker making the email appear
+
+80
+00:01:32,710 --> 00:01:32,720
+from an attacker making the email appear
+ 
+
+81
+00:01:32,720 --> 00:01:34,870
+from an attacker making the email appear
+as if it was from this title company.
+
+82
+00:01:34,870 --> 00:01:34,880
+as if it was from this title company.
+ 
+
+83
+00:01:34,880 --> 00:01:36,950
+as if it was from this title company.
+And this email message contained wire
+
+84
+00:01:36,950 --> 00:01:36,960
+And this email message contained wire
+ 
+
+85
+00:01:36,960 --> 00:01:38,870
+And this email message contained wire
+information on where they should send
+
+86
+00:01:38,870 --> 00:01:38,880
+information on where they should send
+ 
+
+87
+00:01:38,880 --> 00:01:40,950
+information on where they should send
+their funds for the closing of this real
+
+88
+00:01:40,950 --> 00:01:40,960
+their funds for the closing of this real
+ 
+
+89
+00:01:40,960 --> 00:01:43,190
+their funds for the closing of this real
+estate. Of course, everything in this
+
+90
+00:01:43,190 --> 00:01:43,200
+estate. Of course, everything in this
+ 
+
+91
+00:01:43,200 --> 00:01:45,429
+estate. Of course, everything in this
+email message was false. and the wire
+
+92
+00:01:45,429 --> 00:01:45,439
+email message was false. and the wire
+ 
+
+93
+00:01:45,439 --> 00:01:47,910
+email message was false. and the wire
+transfer sent money to the attackers
+
+94
+00:01:47,910 --> 00:01:47,920
+transfer sent money to the attackers
+ 
+
+95
+00:01:47,920 --> 00:01:49,749
+transfer sent money to the attackers
+rather than sending it to the title
+
+96
+00:01:49,749 --> 00:01:49,759
+rather than sending it to the title
+ 
+
+97
+00:01:49,759 --> 00:01:52,149
+rather than sending it to the title
+company. Another common email attack is
+
+98
+00:01:52,149 --> 00:01:52,159
+company. Another common email attack is
+ 
+
+99
+00:01:52,159 --> 00:01:54,069
+company. Another common email attack is
+one where you receive a message from the
+
+100
+00:01:54,069 --> 00:01:54,079
+one where you receive a message from the
+ 
+
+101
+00:01:54,079 --> 00:01:56,069
+one where you receive a message from the
+CEO of your company asking you to
+
+102
+00:01:56,069 --> 00:01:56,079
+CEO of your company asking you to
+ 
+
+103
+00:01:56,079 --> 00:01:58,069
+CEO of your company asking you to
+perform a task where you would purchase
+
+104
+00:01:58,069 --> 00:01:58,079
+perform a task where you would purchase
+ 
+
+105
+00:01:58,079 --> 00:02:00,310
+perform a task where you would purchase
+gift cards that they plan on using for
+
+106
+00:02:00,310 --> 00:02:00,320
+gift cards that they plan on using for
+ 
+
+107
+00:02:00,320 --> 00:02:03,590
+gift cards that they plan on using for
+employee awards. For this attack, all of
+
+108
+00:02:03,590 --> 00:02:03,600
+employee awards. For this attack, all of
+ 
+
+109
+00:02:03,600 --> 00:02:05,429
+employee awards. For this attack, all of
+the codes associated with those gift
+
+110
+00:02:05,429 --> 00:02:05,439
+the codes associated with those gift
+ 
+
+111
+00:02:05,439 --> 00:02:08,710
+the codes associated with those gift
+cards are being emailed to this CEO of
+
+112
+00:02:08,710 --> 00:02:08,720
+cards are being emailed to this CEO of
+ 
+
+113
+00:02:08,720 --> 00:02:11,190
+cards are being emailed to this CEO of
+your company who in reality is an
+
+114
+00:02:11,190 --> 00:02:11,200
+your company who in reality is an
+ 
+
+115
+00:02:11,200 --> 00:02:12,869
+your company who in reality is an
+attacker that has nothing to do with
+
+116
+00:02:12,869 --> 00:02:12,879
+attacker that has nothing to do with
+ 
+
+117
+00:02:12,879 --> 00:02:15,270
+attacker that has nothing to do with
+your organization. And another attack
+
+118
+00:02:15,270 --> 00:02:15,280
+your organization. And another attack
+ 
+
+119
+00:02:15,280 --> 00:02:17,270
+your organization. And another attack
+might have the attacker gaining access
+
+120
+00:02:17,270 --> 00:02:17,280
+might have the attacker gaining access
+ 
+
+121
+00:02:17,280 --> 00:02:20,390
+might have the attacker gaining access
+to an internal email address and using
+
+122
+00:02:20,390 --> 00:02:20,400
+to an internal email address and using
+ 
+
+123
+00:02:20,400 --> 00:02:22,390
+to an internal email address and using
+that email address to change information
+
+124
+00:02:22,390 --> 00:02:22,400
+that email address to change information
+ 
+
+125
+00:02:22,400 --> 00:02:24,869
+that email address to change information
+about the employees banking information.
+
+126
+00:02:24,869 --> 00:02:24,879
+about the employees banking information.
+ 
+
+127
+00:02:24,879 --> 00:02:26,550
+about the employees banking information.
+For example, the attacker could be
+
+128
+00:02:26,550 --> 00:02:26,560
+For example, the attacker could be
+ 
+
+129
+00:02:26,560 --> 00:02:28,390
+For example, the attacker could be
+sending an email message that has your
+
+130
+00:02:28,390 --> 00:02:28,400
+sending an email message that has your
+ 
+
+131
+00:02:28,400 --> 00:02:30,470
+sending an email message that has your
+name on it, but it's asking your payroll
+
+132
+00:02:30,470 --> 00:02:30,480
+name on it, but it's asking your payroll
+ 
+
+133
+00:02:30,480 --> 00:02:32,949
+name on it, but it's asking your payroll
+department to change your direct deposit
+
+134
+00:02:32,949 --> 00:02:32,959
+department to change your direct deposit
+ 
+
+135
+00:02:32,959 --> 00:02:35,030
+department to change your direct deposit
+information. This means during the next
+
+136
+00:02:35,030 --> 00:02:35,040
+information. This means during the next
+ 
+
+137
+00:02:35,040 --> 00:02:37,589
+information. This means during the next
+pay cycle, your attacker is going to be
+
+138
+00:02:37,589 --> 00:02:37,599
+pay cycle, your attacker is going to be
+ 
+
+139
+00:02:37,599 --> 00:02:39,589
+pay cycle, your attacker is going to be
+paid with your wages instead of it
+
+140
+00:02:39,589 --> 00:02:39,599
+paid with your wages instead of it
+ 
+
+141
+00:02:39,599 --> 00:02:42,710
+paid with your wages instead of it
+arriving in your normal bank account.
+
+142
+00:02:42,710 --> 00:02:42,720
+arriving in your normal bank account.
+ 
+
+143
+00:02:42,720 --> 00:02:44,869
+arriving in your normal bank account.
+Very often this type of attack is
+
+144
+00:02:44,869 --> 00:02:44,879
+Very often this type of attack is
+ 
+
+145
+00:02:44,879 --> 00:02:46,949
+Very often this type of attack is
+successful because the attacker spends a
+
+146
+00:02:46,949 --> 00:02:46,959
+successful because the attacker spends a
+ 
+
+147
+00:02:46,959 --> 00:02:49,110
+successful because the attacker spends a
+lot of time planning out this attack and
+
+148
+00:02:49,110 --> 00:02:49,120
+lot of time planning out this attack and
+ 
+
+149
+00:02:49,120 --> 00:02:51,350
+lot of time planning out this attack and
+orchestrating exactly what they plan on
+
+150
+00:02:51,350 --> 00:02:51,360
+orchestrating exactly what they plan on
+ 
+
+151
+00:02:51,360 --> 00:02:53,350
+orchestrating exactly what they plan on
+doing. In the first step, the attacker
+
+152
+00:02:53,350 --> 00:02:53,360
+doing. In the first step, the attacker
+ 
+
+153
+00:02:53,360 --> 00:02:55,509
+doing. In the first step, the attacker
+is going to identify the target they're
+
+154
+00:02:55,509 --> 00:02:55,519
+is going to identify the target they're
+ 
+
+155
+00:02:55,519 --> 00:02:57,509
+is going to identify the target they're
+going to use. They might use company
+
+156
+00:02:57,509 --> 00:02:57,519
+going to use. They might use company
+ 
+
+157
+00:02:57,519 --> 00:03:00,390
+going to use. They might use company
+information or social media details to
+
+158
+00:03:00,390 --> 00:03:00,400
+information or social media details to
+ 
+
+159
+00:03:00,400 --> 00:03:02,070
+information or social media details to
+identify an individual within the
+
+160
+00:03:02,070 --> 00:03:02,080
+identify an individual within the
+ 
+
+161
+00:03:02,080 --> 00:03:04,309
+identify an individual within the
+organization that they can use for this
+
+162
+00:03:04,309 --> 00:03:04,319
+organization that they can use for this
+ 
+
+163
+00:03:04,319 --> 00:03:06,790
+organization that they can use for this
+business email compromise. In many of
+
+164
+00:03:06,790 --> 00:03:06,800
+business email compromise. In many of
+ 
+
+165
+00:03:06,800 --> 00:03:08,630
+business email compromise. In many of
+these instances, the attacker is
+
+166
+00:03:08,630 --> 00:03:08,640
+these instances, the attacker is
+ 
+
+167
+00:03:08,640 --> 00:03:10,710
+these instances, the attacker is
+becoming more familiar with the end user
+
+168
+00:03:10,710 --> 00:03:10,720
+becoming more familiar with the end user
+ 
+
+169
+00:03:10,720 --> 00:03:13,110
+becoming more familiar with the end user
+by sending messages pretending to be
+
+170
+00:03:13,110 --> 00:03:13,120
+by sending messages pretending to be
+ 
+
+171
+00:03:13,120 --> 00:03:14,949
+by sending messages pretending to be
+someone who could be trusted. These
+
+172
+00:03:14,949 --> 00:03:14,959
+someone who could be trusted. These
+ 
+
+173
+00:03:14,959 --> 00:03:16,550
+someone who could be trusted. These
+emails might contain detailed
+
+174
+00:03:16,550 --> 00:03:16,560
+emails might contain detailed
+ 
+
+175
+00:03:16,560 --> 00:03:18,149
+emails might contain detailed
+information about projects that are
+
+176
+00:03:18,149 --> 00:03:18,159
+information about projects that are
+ 
+
+177
+00:03:18,159 --> 00:03:20,869
+information about projects that are
+going on, or it may be simply small talk
+
+178
+00:03:20,869 --> 00:03:20,879
+going on, or it may be simply small talk
+ 
+
+179
+00:03:20,879 --> 00:03:23,030
+going on, or it may be simply small talk
+occurring between two people in two
+
+180
+00:03:23,030 --> 00:03:23,040
+occurring between two people in two
+ 
+
+181
+00:03:23,040 --> 00:03:25,270
+occurring between two people in two
+different organizations. Once the victim
+
+182
+00:03:25,270 --> 00:03:25,280
+different organizations. Once the victim
+ 
+
+183
+00:03:25,280 --> 00:03:27,030
+different organizations. Once the victim
+is comfortable, the attacker then
+
+184
+00:03:27,030 --> 00:03:27,040
+is comfortable, the attacker then
+ 
+
+185
+00:03:27,040 --> 00:03:29,270
+is comfortable, the attacker then
+executes the process that will gather
+
+186
+00:03:29,270 --> 00:03:29,280
+executes the process that will gather
+ 
+
+187
+00:03:29,280 --> 00:03:31,990
+executes the process that will gather
+data, money, or whatever the attacker is
+
+188
+00:03:31,990 --> 00:03:32,000
+data, money, or whatever the attacker is
+ 
+
+189
+00:03:32,000 --> 00:03:33,670
+data, money, or whatever the attacker is
+looking for. In this particular
+
+190
+00:03:33,670 --> 00:03:33,680
+looking for. In this particular
+ 
+
+191
+00:03:33,680 --> 00:03:35,830
+looking for. In this particular
+instance, for example, the attacker
+
+192
+00:03:35,830 --> 00:03:35,840
+instance, for example, the attacker
+ 
+
+193
+00:03:35,840 --> 00:03:38,229
+instance, for example, the attacker
+could provide that fake bank information
+
+194
+00:03:38,229 --> 00:03:38,239
+could provide that fake bank information
+ 
+
+195
+00:03:38,239 --> 00:03:40,550
+could provide that fake bank information
+and then simply sit back and wait for
+
+196
+00:03:40,550 --> 00:03:40,560
+and then simply sit back and wait for
+ 
+
+197
+00:03:40,560 --> 00:03:42,869
+and then simply sit back and wait for
+those funds to arrive in the attacker's
+
+198
+00:03:42,869 --> 00:03:42,879
+those funds to arrive in the attacker's
+ 
+
+199
+00:03:42,879 --> 00:03:45,430
+those funds to arrive in the attacker's
+account. And if it worked one time, then
+
+200
+00:03:45,430 --> 00:03:45,440
+account. And if it worked one time, then
+ 
+
+201
+00:03:45,440 --> 00:03:47,589
+account. And if it worked one time, then
+it could possibly work again. So, the
+
+202
+00:03:47,589 --> 00:03:47,599
+it could possibly work again. So, the
+ 
+
+203
+00:03:47,599 --> 00:03:49,509
+it could possibly work again. So, the
+attackers could visit that victim again
+
+204
+00:03:49,509 --> 00:03:49,519
+attackers could visit that victim again
+ 
+
+205
+00:03:49,519 --> 00:03:52,149
+attackers could visit that victim again
+and have them perform a similar process
+
+206
+00:03:52,149 --> 00:03:52,159
+and have them perform a similar process
+ 
+
+207
+00:03:52,159 --> 00:03:53,990
+and have them perform a similar process
+in the hopes that they have not yet
+
+208
+00:03:53,990 --> 00:03:54,000
+in the hopes that they have not yet
+ 
+
+209
+00:03:54,000 --> 00:03:56,070
+in the hopes that they have not yet
+discovered that this is actually a
+
+210
+00:03:56,070 --> 00:03:56,080
+discovered that this is actually a
+ 
+
+211
+00:03:56,080 --> 00:03:58,789
+discovered that this is actually a
+business email compromise.
+
+212
+00:03:58,789 --> 00:03:58,799
+business email compromise.
+ 
+
+213
+00:03:58,799 --> 00:04:00,470
+business email compromise.
+Sometimes attackers are communicating
+
+214
+00:04:00,470 --> 00:04:00,480
+Sometimes attackers are communicating
+ 
+
+215
+00:04:00,480 --> 00:04:02,710
+Sometimes attackers are communicating
+with you over a legitimate email that
+
+216
+00:04:02,710 --> 00:04:02,720
+with you over a legitimate email that
+ 
+
+217
+00:04:02,720 --> 00:04:05,190
+with you over a legitimate email that
+they've compromised at a third party or
+
+218
+00:04:05,190 --> 00:04:05,200
+they've compromised at a third party or
+ 
+
+219
+00:04:05,200 --> 00:04:07,990
+they've compromised at a third party or
+they might be using a domain in an email
+
+220
+00:04:07,990 --> 00:04:08,000
+they might be using a domain in an email
+ 
+
+221
+00:04:08,000 --> 00:04:10,550
+they might be using a domain in an email
+that appears to be from a trusted source
+
+222
+00:04:10,550 --> 00:04:10,560
+that appears to be from a trusted source
+ 
+
+223
+00:04:10,560 --> 00:04:12,229
+that appears to be from a trusted source
+but in reality there might be a
+
+224
+00:04:12,229 --> 00:04:12,239
+but in reality there might be a
+ 
+
+225
+00:04:12,239 --> 00:04:14,470
+but in reality there might be a
+misspelling. For example, my email
+
+226
+00:04:14,470 --> 00:04:14,480
+misspelling. For example, my email
+ 
+
+227
+00:04:14,480 --> 00:04:18,629
+misspelling. For example, my email
+address is not jamesprofessor messor.com
+
+228
+00:04:18,629 --> 00:04:18,639
+address is not jamesprofessor messor.com
+ 
+
+229
+00:04:18,639 --> 00:04:20,789
+address is not jamesprofessor messor.com
+where professor messer is misspelled and
+
+230
+00:04:20,789 --> 00:04:20,799
+where professor messer is misspelled and
+ 
+
+231
+00:04:20,799 --> 00:04:23,510
+where professor messer is misspelled and
+only has one s. If you saw that in an
+
+232
+00:04:23,510 --> 00:04:23,520
+only has one s. If you saw that in an
+ 
+
+233
+00:04:23,520 --> 00:04:25,350
+only has one s. If you saw that in an
+email message coming through though, you
+
+234
+00:04:25,350 --> 00:04:25,360
+email message coming through though, you
+ 
+
+235
+00:04:25,360 --> 00:04:27,030
+email message coming through though, you
+might not even recognize that it's
+
+236
+00:04:27,030 --> 00:04:27,040
+might not even recognize that it's
+ 
+
+237
+00:04:27,040 --> 00:04:29,030
+might not even recognize that it's
+misspelled and you may just assume that
+
+238
+00:04:29,030 --> 00:04:29,040
+misspelled and you may just assume that
+ 
+
+239
+00:04:29,040 --> 00:04:30,710
+misspelled and you may just assume that
+you're communicating with the legitimate
+
+240
+00:04:30,710 --> 00:04:30,720
+you're communicating with the legitimate
+ 
+
+241
+00:04:30,720 --> 00:04:33,510
+you're communicating with the legitimate
+person. Spear fishing is a common aspect
+
+242
+00:04:33,510 --> 00:04:33,520
+person. Spear fishing is a common aspect
+ 
+
+243
+00:04:33,520 --> 00:04:35,430
+person. Spear fishing is a common aspect
+of this business email compromise
+
+244
+00:04:35,430 --> 00:04:35,440
+of this business email compromise
+ 
+
+245
+00:04:35,440 --> 00:04:37,030
+of this business email compromise
+because the attacker needs to find
+
+246
+00:04:37,030 --> 00:04:37,040
+because the attacker needs to find
+ 
+
+247
+00:04:37,040 --> 00:04:39,749
+because the attacker needs to find
+someone who has access to data or access
+
+248
+00:04:39,749 --> 00:04:39,759
+someone who has access to data or access
+ 
+
+249
+00:04:39,759 --> 00:04:41,990
+someone who has access to data or access
+to money. This is often someone in the
+
+250
+00:04:41,990 --> 00:04:42,000
+to money. This is often someone in the
+ 
+
+251
+00:04:42,000 --> 00:04:43,909
+to money. This is often someone in the
+accounting department, for example. So
+
+252
+00:04:43,909 --> 00:04:43,919
+accounting department, for example. So
+ 
+
+253
+00:04:43,919 --> 00:04:45,909
+accounting department, for example. So
+it might be a good idea to provide some
+
+254
+00:04:45,909 --> 00:04:45,919
+it might be a good idea to provide some
+ 
+
+255
+00:04:45,919 --> 00:04:47,749
+it might be a good idea to provide some
+additional training to the accounting
+
+256
+00:04:47,749 --> 00:04:47,759
+additional training to the accounting
+ 
+
+257
+00:04:47,759 --> 00:04:49,909
+additional training to the accounting
+team so that they can look for and
+
+258
+00:04:49,909 --> 00:04:49,919
+team so that they can look for and
+ 
+
+259
+00:04:49,919 --> 00:04:51,830
+team so that they can look for and
+perhaps prevent these problems from
+
+260
+00:04:51,830 --> 00:04:51,840
+perhaps prevent these problems from
+ 
+
+261
+00:04:51,840 --> 00:04:53,990
+perhaps prevent these problems from
+occurring. This is also very often part
+
+262
+00:04:53,990 --> 00:04:54,000
+occurring. This is also very often part
+ 
+
+263
+00:04:54,000 --> 00:04:56,070
+occurring. This is also very often part
+of a larger breach that may not have
+
+264
+00:04:56,070 --> 00:04:56,080
+of a larger breach that may not have
+ 
+
+265
+00:04:56,080 --> 00:04:58,070
+of a larger breach that may not have
+anything to do with your company. For
+
+266
+00:04:58,070 --> 00:04:58,080
+anything to do with your company. For
+ 
+
+267
+00:04:58,080 --> 00:04:59,670
+anything to do with your company. For
+example, the attacker may have
+
+268
+00:04:59,670 --> 00:04:59,680
+example, the attacker may have
+ 
+
+269
+00:04:59,680 --> 00:05:01,510
+example, the attacker may have
+compromised the email at one of your
+
+270
+00:05:01,510 --> 00:05:01,520
+compromised the email at one of your
+ 
+
+271
+00:05:01,520 --> 00:05:03,510
+compromised the email at one of your
+vendors and now you're receiving
+
+272
+00:05:03,510 --> 00:05:03,520
+vendors and now you're receiving
+ 
+
+273
+00:05:03,520 --> 00:05:05,749
+vendors and now you're receiving
+messages from that legitimate vendor
+
+274
+00:05:05,749 --> 00:05:05,759
+messages from that legitimate vendor
+ 
+
+275
+00:05:05,759 --> 00:05:07,749
+messages from that legitimate vendor
+email address, but they're really being
+
+276
+00:05:07,749 --> 00:05:07,759
+email address, but they're really being
+ 
+
+277
+00:05:07,759 --> 00:05:10,070
+email address, but they're really being
+authored by the attacker. And if you
+
+278
+00:05:10,070 --> 00:05:10,080
+authored by the attacker. And if you
+ 
+
+279
+00:05:10,080 --> 00:05:12,150
+authored by the attacker. And if you
+ever feel that sense of urgency and that
+
+280
+00:05:12,150 --> 00:05:12,160
+ever feel that sense of urgency and that
+ 
+
+281
+00:05:12,160 --> 00:05:13,909
+ever feel that sense of urgency and that
+somebody is pushing you to do something
+
+282
+00:05:13,909 --> 00:05:13,919
+somebody is pushing you to do something
+ 
+
+283
+00:05:13,919 --> 00:05:16,469
+somebody is pushing you to do something
+very quickly, this may be part of a
+
+284
+00:05:16,469 --> 00:05:16,479
+very quickly, this may be part of a
+ 
+
+285
+00:05:16,479 --> 00:05:18,469
+very quickly, this may be part of a
+business email compromise. So, it's
+
+286
+00:05:18,469 --> 00:05:18,479
+business email compromise. So, it's
+ 
+
+287
+00:05:18,479 --> 00:05:21,029
+business email compromise. So, it's
+always a good idea to verify what you're
+
+288
+00:05:21,029 --> 00:05:21,039
+always a good idea to verify what you're
+ 
+
+289
+00:05:21,039 --> 00:05:23,029
+always a good idea to verify what you're
+doing. If you receive a message from the
+
+290
+00:05:23,029 --> 00:05:23,039
+doing. If you receive a message from the
+ 
+
+291
+00:05:23,039 --> 00:05:25,590
+doing. If you receive a message from the
+CEO, it might be a good idea to check in
+
+292
+00:05:25,590 --> 00:05:25,600
+CEO, it might be a good idea to check in
+ 
+
+293
+00:05:25,600 --> 00:05:27,990
+CEO, it might be a good idea to check in
+with the CEO's assistant to see if they
+
+294
+00:05:27,990 --> 00:05:28,000
+with the CEO's assistant to see if they
+ 
+
+295
+00:05:28,000 --> 00:05:30,469
+with the CEO's assistant to see if they
+really were looking for gift cards. One
+
+296
+00:05:30,469 --> 00:05:30,479
+really were looking for gift cards. One
+ 
+
+297
+00:05:30,479 --> 00:05:32,469
+really were looking for gift cards. One
+simple phone call can often stop these
+
+298
+00:05:32,469 --> 00:05:32,479
+simple phone call can often stop these
+ 
+
+299
+00:05:32,479 --> 00:05:34,310
+simple phone call can often stop these
+from occurring. And if you train your
+
+300
+00:05:34,310 --> 00:05:34,320
+from occurring. And if you train your
+ 
+
+301
+00:05:34,320 --> 00:05:36,230
+from occurring. And if you train your
+user community to look for these very
+
+302
+00:05:36,230 --> 00:05:36,240
+user community to look for these very
+ 
+
+303
+00:05:36,240 --> 00:05:38,950
+user community to look for these very
+unusual situations and to always know
+
+304
+00:05:38,950 --> 00:05:38,960
+unusual situations and to always know
+ 
+
+305
+00:05:38,960 --> 00:05:41,270
+unusual situations and to always know
+exactly who they can contact in the IT
+
+306
+00:05:41,270 --> 00:05:41,280
+exactly who they can contact in the IT
+ 
+
+307
+00:05:41,280 --> 00:05:43,350
+exactly who they can contact in the IT
+department, then you may have a way to
+
+308
+00:05:43,350 --> 00:05:43,360
+department, then you may have a way to
+ 
+
+309
+00:05:43,360 --> 00:05:45,270
+department, then you may have a way to
+stop these issues before they ever
+
+310
+00:05:45,270 --> 00:05:45,280
+stop these issues before they ever
+ 
+
+311
+00:05:45,280 --> 00:05:49,800
+stop these issues before they ever
+become a business email compromise.
+

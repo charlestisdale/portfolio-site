@@ -1,0 +1,2125 @@
+1
+00:00:01,920 --> 00:00:03,669
+
+In this video, we're going to talk about
+
+2
+00:00:03,669 --> 00:00:03,679
+In this video, we're going to talk about
+ 
+
+3
+00:00:03,679 --> 00:00:05,590
+In this video, we're going to talk about
+cross-sight scripting. You'll sometimes
+
+4
+00:00:05,590 --> 00:00:05,600
+cross-sight scripting. You'll sometimes
+ 
+
+5
+00:00:05,600 --> 00:00:08,950
+cross-sight scripting. You'll sometimes
+see this abbreviated as XSS. The reason
+
+6
+00:00:08,950 --> 00:00:08,960
+see this abbreviated as XSS. The reason
+ 
+
+7
+00:00:08,960 --> 00:00:11,749
+see this abbreviated as XSS. The reason
+we don't refer to this as CSS, which
+
+8
+00:00:11,749 --> 00:00:11,759
+we don't refer to this as CSS, which
+ 
+
+9
+00:00:11,759 --> 00:00:13,910
+we don't refer to this as CSS, which
+would be cross-ite scripting, is because
+
+10
+00:00:13,910 --> 00:00:13,920
+would be cross-ite scripting, is because
+ 
+
+11
+00:00:13,920 --> 00:00:16,230
+would be cross-ite scripting, is because
+we're already using that term for
+
+12
+00:00:16,230 --> 00:00:16,240
+we're already using that term for
+ 
+
+13
+00:00:16,240 --> 00:00:18,950
+we're already using that term for
+cascading stylesheets. So, instead of
+
+14
+00:00:18,950 --> 00:00:18,960
+cascading stylesheets. So, instead of
+ 
+
+15
+00:00:18,960 --> 00:00:21,750
+cascading stylesheets. So, instead of
+being confused between what CSS we're
+
+16
+00:00:21,750 --> 00:00:21,760
+being confused between what CSS we're
+ 
+
+17
+00:00:21,760 --> 00:00:23,670
+being confused between what CSS we're
+referring to, cross- sight scripting
+
+18
+00:00:23,670 --> 00:00:23,680
+referring to, cross- sight scripting
+ 
+
+19
+00:00:23,680 --> 00:00:26,790
+referring to, cross- sight scripting
+uses XSS. We originally called this
+
+20
+00:00:26,790 --> 00:00:26,800
+uses XSS. We originally called this
+ 
+
+21
+00:00:26,800 --> 00:00:28,550
+uses XSS. We originally called this
+cross-sight scripting because there were
+
+22
+00:00:28,550 --> 00:00:28,560
+cross-sight scripting because there were
+ 
+
+23
+00:00:28,560 --> 00:00:30,790
+cross-sight scripting because there were
+multiple sites involved due to browser
+
+24
+00:00:30,790 --> 00:00:30,800
+multiple sites involved due to browser
+ 
+
+25
+00:00:30,800 --> 00:00:33,030
+multiple sites involved due to browser
+security issues. Cross-ite scripting
+
+26
+00:00:33,030 --> 00:00:33,040
+security issues. Cross-ite scripting
+ 
+
+27
+00:00:33,040 --> 00:00:35,030
+security issues. Cross-ite scripting
+allowed one site to share information
+
+28
+00:00:35,030 --> 00:00:35,040
+allowed one site to share information
+ 
+
+29
+00:00:35,040 --> 00:00:37,590
+allowed one site to share information
+with another site. Browsers today
+
+30
+00:00:37,590 --> 00:00:37,600
+with another site. Browsers today
+ 
+
+31
+00:00:37,600 --> 00:00:39,350
+with another site. Browsers today
+restrict any type of information
+
+32
+00:00:39,350 --> 00:00:39,360
+restrict any type of information
+ 
+
+33
+00:00:39,360 --> 00:00:41,590
+restrict any type of information
+exchange between different websites, but
+
+34
+00:00:41,590 --> 00:00:41,600
+exchange between different websites, but
+ 
+
+35
+00:00:41,600 --> 00:00:43,830
+exchange between different websites, but
+we are still able to inject these
+
+36
+00:00:43,830 --> 00:00:43,840
+we are still able to inject these
+ 
+
+37
+00:00:43,840 --> 00:00:46,150
+we are still able to inject these
+scripts using different mechanisms that
+
+38
+00:00:46,150 --> 00:00:46,160
+scripts using different mechanisms that
+ 
+
+39
+00:00:46,160 --> 00:00:48,790
+scripts using different mechanisms that
+we'll discuss in this video. You'll also
+
+40
+00:00:48,790 --> 00:00:48,800
+we'll discuss in this video. You'll also
+ 
+
+41
+00:00:48,800 --> 00:00:50,630
+we'll discuss in this video. You'll also
+find that there are a large number of
+
+42
+00:00:50,630 --> 00:00:50,640
+find that there are a large number of
+ 
+
+43
+00:00:50,640 --> 00:00:52,389
+find that there are a large number of
+cross-sight scripting vulnerabilities
+
+44
+00:00:52,389 --> 00:00:52,399
+cross-sight scripting vulnerabilities
+ 
+
+45
+00:00:52,399 --> 00:00:54,470
+cross-sight scripting vulnerabilities
+and we're constantly discovering new
+
+46
+00:00:54,470 --> 00:00:54,480
+and we're constantly discovering new
+ 
+
+47
+00:00:54,480 --> 00:00:55,910
+and we're constantly discovering new
+vulnerabilities with different
+
+48
+00:00:55,910 --> 00:00:55,920
+vulnerabilities with different
+ 
+
+49
+00:00:55,920 --> 00:00:58,630
+vulnerabilities with different
+applications. This type of attack takes
+
+50
+00:00:58,630 --> 00:00:58,640
+applications. This type of attack takes
+ 
+
+51
+00:00:58,640 --> 00:01:01,110
+applications. This type of attack takes
+advantage of the trust that a user has
+
+52
+00:01:01,110 --> 00:01:01,120
+advantage of the trust that a user has
+ 
+
+53
+00:01:01,120 --> 00:01:03,510
+advantage of the trust that a user has
+for a site. And as many of us have seen,
+
+54
+00:01:03,510 --> 00:01:03,520
+for a site. And as many of us have seen,
+ 
+
+55
+00:01:03,520 --> 00:01:05,830
+for a site. And as many of us have seen,
+once you log into a website, you are
+
+56
+00:01:05,830 --> 00:01:05,840
+once you log into a website, you are
+ 
+
+57
+00:01:05,840 --> 00:01:08,230
+once you log into a website, you are
+often trusted on that website for a
+
+58
+00:01:08,230 --> 00:01:08,240
+often trusted on that website for a
+ 
+
+59
+00:01:08,240 --> 00:01:10,469
+often trusted on that website for a
+certain amount of time. This cross-ite
+
+60
+00:01:10,469 --> 00:01:10,479
+certain amount of time. This cross-ite
+ 
+
+61
+00:01:10,479 --> 00:01:12,950
+certain amount of time. This cross-ite
+scripting attack takes advantage of that
+
+62
+00:01:12,950 --> 00:01:12,960
+scripting attack takes advantage of that
+ 
+
+63
+00:01:12,960 --> 00:01:15,429
+scripting attack takes advantage of that
+trust to gain access to information that
+
+64
+00:01:15,429 --> 00:01:15,439
+trust to gain access to information that
+ 
+
+65
+00:01:15,439 --> 00:01:18,230
+trust to gain access to information that
+might be on that third party website.
+
+66
+00:01:18,230 --> 00:01:18,240
+might be on that third party website.
+ 
+
+67
+00:01:18,240 --> 00:01:20,469
+might be on that third party website.
+The script in cross-ite scripting is
+
+68
+00:01:20,469 --> 00:01:20,479
+The script in cross-ite scripting is
+ 
+
+69
+00:01:20,479 --> 00:01:22,710
+The script in cross-ite scripting is
+commonly associated with JavaScript.
+
+70
+00:01:22,710 --> 00:01:22,720
+commonly associated with JavaScript.
+ 
+
+71
+00:01:22,720 --> 00:01:24,630
+commonly associated with JavaScript.
+Although this is not the only type of
+
+72
+00:01:24,630 --> 00:01:24,640
+Although this is not the only type of
+ 
+
+73
+00:01:24,640 --> 00:01:27,270
+Although this is not the only type of
+script that can take advantage of XSS,
+
+74
+00:01:27,270 --> 00:01:27,280
+script that can take advantage of XSS,
+ 
+
+75
+00:01:27,280 --> 00:01:29,749
+script that can take advantage of XSS,
+but almost all browsers use JavaScript
+
+76
+00:01:29,749 --> 00:01:29,759
+but almost all browsers use JavaScript
+ 
+
+77
+00:01:29,759 --> 00:01:31,830
+but almost all browsers use JavaScript
+and very few people have disabled
+
+78
+00:01:31,830 --> 00:01:31,840
+and very few people have disabled
+ 
+
+79
+00:01:31,840 --> 00:01:33,910
+and very few people have disabled
+JavaScript from running inside of their
+
+80
+00:01:33,910 --> 00:01:33,920
+JavaScript from running inside of their
+ 
+
+81
+00:01:33,920 --> 00:01:36,390
+JavaScript from running inside of their
+browser. So many websites are using
+
+82
+00:01:36,390 --> 00:01:36,400
+browser. So many websites are using
+ 
+
+83
+00:01:36,400 --> 00:01:38,310
+browser. So many websites are using
+JavaScript to display information on the
+
+84
+00:01:38,310 --> 00:01:38,320
+JavaScript to display information on the
+ 
+
+85
+00:01:38,320 --> 00:01:40,469
+JavaScript to display information on the
+screen that completely disabling
+
+86
+00:01:40,469 --> 00:01:40,479
+screen that completely disabling
+ 
+
+87
+00:01:40,479 --> 00:01:42,710
+screen that completely disabling
+JavaScript is probably not a viable
+
+88
+00:01:42,710 --> 00:01:42,720
+JavaScript is probably not a viable
+ 
+
+89
+00:01:42,720 --> 00:01:44,630
+JavaScript is probably not a viable
+option.
+
+90
+00:01:44,630 --> 00:01:44,640
+option.
+ 
+
+91
+00:01:44,640 --> 00:01:46,310
+option.
+Here's a common implementation of
+
+92
+00:01:46,310 --> 00:01:46,320
+Here's a common implementation of
+ 
+
+93
+00:01:46,320 --> 00:01:48,469
+Here's a common implementation of
+cross-ite scripting. We have you the
+
+94
+00:01:48,469 --> 00:01:48,479
+cross-ite scripting. We have you the
+ 
+
+95
+00:01:48,479 --> 00:01:50,310
+cross-ite scripting. We have you the
+victim that has your browser on your
+
+96
+00:01:50,310 --> 00:01:50,320
+victim that has your browser on your
+ 
+
+97
+00:01:50,320 --> 00:01:52,469
+victim that has your browser on your
+laptop. There's a trusted website that
+
+98
+00:01:52,469 --> 00:01:52,479
+laptop. There's a trusted website that
+ 
+
+99
+00:01:52,479 --> 00:01:54,710
+laptop. There's a trusted website that
+you've probably already logged into. And
+
+100
+00:01:54,710 --> 00:01:54,720
+you've probably already logged into. And
+ 
+
+101
+00:01:54,720 --> 00:01:56,630
+you've probably already logged into. And
+then there is the attacker that is going
+
+102
+00:01:56,630 --> 00:01:56,640
+then there is the attacker that is going
+ 
+
+103
+00:01:56,640 --> 00:01:58,789
+then there is the attacker that is going
+to try to use cross-ite scripting to
+
+104
+00:01:58,789 --> 00:01:58,799
+to try to use cross-ite scripting to
+ 
+
+105
+00:01:58,799 --> 00:02:00,630
+to try to use cross-ite scripting to
+gain access to this website that
+
+106
+00:02:00,630 --> 00:02:00,640
+gain access to this website that
+ 
+
+107
+00:02:00,640 --> 00:02:03,109
+gain access to this website that
+normally they would not have access to.
+
+108
+00:02:03,109 --> 00:02:03,119
+normally they would not have access to.
+ 
+
+109
+00:02:03,119 --> 00:02:04,870
+normally they would not have access to.
+First, the attacker needs to get this
+
+110
+00:02:04,870 --> 00:02:04,880
+First, the attacker needs to get this
+ 
+
+111
+00:02:04,880 --> 00:02:07,429
+First, the attacker needs to get this
+malicious script to the victim. One very
+
+112
+00:02:07,429 --> 00:02:07,439
+malicious script to the victim. One very
+ 
+
+113
+00:02:07,439 --> 00:02:09,510
+malicious script to the victim. One very
+easy way to get scripts sent to someone
+
+114
+00:02:09,510 --> 00:02:09,520
+easy way to get scripts sent to someone
+ 
+
+115
+00:02:09,520 --> 00:02:11,670
+easy way to get scripts sent to someone
+is in their email inbox. So, our
+
+116
+00:02:11,670 --> 00:02:11,680
+is in their email inbox. So, our
+ 
+
+117
+00:02:11,680 --> 00:02:13,589
+is in their email inbox. So, our
+attacker is going to send an email to
+
+118
+00:02:13,589 --> 00:02:13,599
+attacker is going to send an email to
+ 
+
+119
+00:02:13,599 --> 00:02:15,990
+attacker is going to send an email to
+the victim and inside that email is a
+
+120
+00:02:15,990 --> 00:02:16,000
+the victim and inside that email is a
+ 
+
+121
+00:02:16,000 --> 00:02:18,309
+the victim and inside that email is a
+link that is going to run that malicious
+
+122
+00:02:18,309 --> 00:02:18,319
+link that is going to run that malicious
+ 
+
+123
+00:02:18,319 --> 00:02:21,110
+link that is going to run that malicious
+script. Once the user clicks that link,
+
+124
+00:02:21,110 --> 00:02:21,120
+script. Once the user clicks that link,
+ 
+
+125
+00:02:21,120 --> 00:02:23,190
+script. Once the user clicks that link,
+the link is going to redirect the user
+
+126
+00:02:23,190 --> 00:02:23,200
+the link is going to redirect the user
+ 
+
+127
+00:02:23,200 --> 00:02:25,110
+the link is going to redirect the user
+to this trusted website and it's going
+
+128
+00:02:25,110 --> 00:02:25,120
+to this trusted website and it's going
+ 
+
+129
+00:02:25,120 --> 00:02:27,830
+to this trusted website and it's going
+to run a script on that trusted website.
+
+130
+00:02:27,830 --> 00:02:27,840
+to run a script on that trusted website.
+ 
+
+131
+00:02:27,840 --> 00:02:29,510
+to run a script on that trusted website.
+The attacker is going to receive
+
+132
+00:02:29,510 --> 00:02:29,520
+The attacker is going to receive
+ 
+
+133
+00:02:29,520 --> 00:02:31,750
+The attacker is going to receive
+information from that trusted website.
+
+134
+00:02:31,750 --> 00:02:31,760
+information from that trusted website.
+ 
+
+135
+00:02:31,760 --> 00:02:33,270
+information from that trusted website.
+This might be information about the
+
+136
+00:02:33,270 --> 00:02:33,280
+This might be information about the
+ 
+
+137
+00:02:33,280 --> 00:02:35,670
+This might be information about the
+user's account or this script might take
+
+138
+00:02:35,670 --> 00:02:35,680
+user's account or this script might take
+ 
+
+139
+00:02:35,680 --> 00:02:37,990
+user's account or this script might take
+the user's session cookie, send that
+
+140
+00:02:37,990 --> 00:02:38,000
+the user's session cookie, send that
+ 
+
+141
+00:02:38,000 --> 00:02:40,070
+the user's session cookie, send that
+session cookie to the attacker. And now
+
+142
+00:02:40,070 --> 00:02:40,080
+session cookie to the attacker. And now
+ 
+
+143
+00:02:40,080 --> 00:02:42,390
+session cookie to the attacker. And now
+the attacker has the same access to that
+
+144
+00:02:42,390 --> 00:02:42,400
+the attacker has the same access to that
+ 
+
+145
+00:02:42,400 --> 00:02:45,350
+the attacker has the same access to that
+website as the victim does.
+
+146
+00:02:45,350 --> 00:02:45,360
+website as the victim does.
+ 
+
+147
+00:02:45,360 --> 00:02:47,190
+website as the victim does.
+Let's watch a cross-sight scripting
+
+148
+00:02:47,190 --> 00:02:47,200
+Let's watch a cross-sight scripting
+ 
+
+149
+00:02:47,200 --> 00:02:50,150
+Let's watch a cross-sight scripting
+attack take place in real time. I am on
+
+150
+00:02:50,150 --> 00:02:50,160
+attack take place in real time. I am on
+ 
+
+151
+00:02:50,160 --> 00:02:52,550
+attack take place in real time. I am on
+a website that is an intentionally
+
+152
+00:02:52,550 --> 00:02:52,560
+a website that is an intentionally
+ 
+
+153
+00:02:52,560 --> 00:02:55,110
+a website that is an intentionally
+vulnerable application through Webgoat.
+
+154
+00:02:55,110 --> 00:02:55,120
+vulnerable application through Webgoat.
+ 
+
+155
+00:02:55,120 --> 00:02:57,270
+vulnerable application through Webgoat.
+This is a shopping cart application. You
+
+156
+00:02:57,270 --> 00:02:57,280
+This is a shopping cart application. You
+ 
+
+157
+00:02:57,280 --> 00:02:58,550
+This is a shopping cart application. You
+can see there's a few things in the
+
+158
+00:02:58,550 --> 00:02:58,560
+can see there's a few things in the
+ 
+
+159
+00:02:58,560 --> 00:03:00,229
+can see there's a few things in the
+shopping cart and just like most
+
+160
+00:03:00,229 --> 00:03:00,239
+shopping cart and just like most
+ 
+
+161
+00:03:00,239 --> 00:03:01,990
+shopping cart and just like most
+shopping carts, you provide a credit
+
+162
+00:03:01,990 --> 00:03:02,000
+shopping carts, you provide a credit
+ 
+
+163
+00:03:02,000 --> 00:03:03,750
+shopping carts, you provide a credit
+card number and a three-digit access
+
+164
+00:03:03,750 --> 00:03:03,760
+card number and a three-digit access
+ 
+
+165
+00:03:03,760 --> 00:03:05,990
+card number and a three-digit access
+code and you click purchase and it goes
+
+166
+00:03:05,990 --> 00:03:06,000
+code and you click purchase and it goes
+ 
+
+167
+00:03:06,000 --> 00:03:07,589
+code and you click purchase and it goes
+through the process of purchasing
+
+168
+00:03:07,589 --> 00:03:07,599
+through the process of purchasing
+ 
+
+169
+00:03:07,599 --> 00:03:09,990
+through the process of purchasing
+whatever you have in your cart. To get
+
+170
+00:03:09,990 --> 00:03:10,000
+whatever you have in your cart. To get
+ 
+
+171
+00:03:10,000 --> 00:03:11,910
+whatever you have in your cart. To get
+to this point, we've had to log into
+
+172
+00:03:11,910 --> 00:03:11,920
+to this point, we've had to log into
+ 
+
+173
+00:03:11,920 --> 00:03:13,830
+to this point, we've had to log into
+this website. We probably have an
+
+174
+00:03:13,830 --> 00:03:13,840
+this website. We probably have an
+ 
+
+175
+00:03:13,840 --> 00:03:15,589
+this website. We probably have an
+account already in place and we might
+
+176
+00:03:15,589 --> 00:03:15,599
+account already in place and we might
+ 
+
+177
+00:03:15,599 --> 00:03:17,270
+account already in place and we might
+even have our credit card information
+
+178
+00:03:17,270 --> 00:03:17,280
+even have our credit card information
+ 
+
+179
+00:03:17,280 --> 00:03:19,670
+even have our credit card information
+already stored on this website. So now
+
+180
+00:03:19,670 --> 00:03:19,680
+already stored on this website. So now
+ 
+
+181
+00:03:19,680 --> 00:03:21,670
+already stored on this website. So now
+that we've logged in, there is a level
+
+182
+00:03:21,670 --> 00:03:21,680
+that we've logged in, there is a level
+ 
+
+183
+00:03:21,680 --> 00:03:23,990
+that we've logged in, there is a level
+of trust that we, the victim, have with
+
+184
+00:03:23,990 --> 00:03:24,000
+of trust that we, the victim, have with
+ 
+
+185
+00:03:24,000 --> 00:03:25,750
+of trust that we, the victim, have with
+this website that we'd like to buy
+
+186
+00:03:25,750 --> 00:03:25,760
+this website that we'd like to buy
+ 
+
+187
+00:03:25,760 --> 00:03:28,149
+this website that we'd like to buy
+things from. If the attacker knows this,
+
+188
+00:03:28,149 --> 00:03:28,159
+things from. If the attacker knows this,
+ 
+
+189
+00:03:28,159 --> 00:03:30,470
+things from. If the attacker knows this,
+they can send us a malicious script
+
+190
+00:03:30,470 --> 00:03:30,480
+they can send us a malicious script
+ 
+
+191
+00:03:30,480 --> 00:03:32,390
+they can send us a malicious script
+either through email or some other
+
+192
+00:03:32,390 --> 00:03:32,400
+either through email or some other
+ 
+
+193
+00:03:32,400 --> 00:03:34,949
+either through email or some other
+method that will cause us to send this
+
+194
+00:03:34,949 --> 00:03:34,959
+method that will cause us to send this
+ 
+
+195
+00:03:34,959 --> 00:03:37,589
+method that will cause us to send this
+information into this trusted website.
+
+196
+00:03:37,589 --> 00:03:37,599
+information into this trusted website.
+ 
+
+197
+00:03:37,599 --> 00:03:39,030
+information into this trusted website.
+So the script that we're going to run is
+
+198
+00:03:39,030 --> 00:03:39,040
+So the script that we're going to run is
+ 
+
+199
+00:03:39,040 --> 00:03:40,949
+So the script that we're going to run is
+the one that you see on the screen here.
+
+200
+00:03:40,949 --> 00:03:40,959
+the one that you see on the screen here.
+ 
+
+201
+00:03:40,959 --> 00:03:43,589
+the one that you see on the screen here.
+You can see it has simply an alert. Now,
+
+202
+00:03:43,589 --> 00:03:43,599
+You can see it has simply an alert. Now,
+ 
+
+203
+00:03:43,599 --> 00:03:45,589
+You can see it has simply an alert. Now,
+normally we would not be seeing an alert
+
+204
+00:03:45,589 --> 00:03:45,599
+normally we would not be seeing an alert
+ 
+
+205
+00:03:45,599 --> 00:03:47,509
+normally we would not be seeing an alert
+on our screen, but for the purposes of
+
+206
+00:03:47,509 --> 00:03:47,519
+on our screen, but for the purposes of
+ 
+
+207
+00:03:47,519 --> 00:03:48,869
+on our screen, but for the purposes of
+understanding what's happening behind
+
+208
+00:03:48,869 --> 00:03:48,879
+understanding what's happening behind
+ 
+
+209
+00:03:48,879 --> 00:03:50,710
+understanding what's happening behind
+the scenes, I'm going to have this alert
+
+210
+00:03:50,710 --> 00:03:50,720
+the scenes, I'm going to have this alert
+ 
+
+211
+00:03:50,720 --> 00:03:52,949
+the scenes, I'm going to have this alert
+message pop up on the screen. What would
+
+212
+00:03:52,949 --> 00:03:52,959
+message pop up on the screen. What would
+ 
+
+213
+00:03:52,959 --> 00:03:55,030
+message pop up on the screen. What would
+normally happen is the information would
+
+214
+00:03:55,030 --> 00:03:55,040
+normally happen is the information would
+ 
+
+215
+00:03:55,040 --> 00:03:57,110
+normally happen is the information would
+be sent directly to the attacker rather
+
+216
+00:03:57,110 --> 00:03:57,120
+be sent directly to the attacker rather
+ 
+
+217
+00:03:57,120 --> 00:03:59,429
+be sent directly to the attacker rather
+than appearing on our screen. This is
+
+218
+00:03:59,429 --> 00:03:59,439
+than appearing on our screen. This is
+ 
+
+219
+00:03:59,439 --> 00:04:01,190
+than appearing on our screen. This is
+going to show my session information and
+
+220
+00:04:01,190 --> 00:04:01,200
+going to show my session information and
+ 
+
+221
+00:04:01,200 --> 00:04:03,030
+going to show my session information and
+it's going to provide my session cookie
+
+222
+00:04:03,030 --> 00:04:03,040
+it's going to provide my session cookie
+ 
+
+223
+00:04:03,040 --> 00:04:05,030
+it's going to provide my session cookie
+on the screen. This is the cookie that
+
+224
+00:04:05,030 --> 00:04:05,040
+on the screen. This is the cookie that
+ 
+
+225
+00:04:05,040 --> 00:04:06,789
+on the screen. This is the cookie that
+would normally be sent to the attacker
+
+226
+00:04:06,789 --> 00:04:06,799
+would normally be sent to the attacker
+ 
+
+227
+00:04:06,799 --> 00:04:09,110
+would normally be sent to the attacker
+that they can then use to log in as if
+
+228
+00:04:09,110 --> 00:04:09,120
+that they can then use to log in as if
+ 
+
+229
+00:04:09,120 --> 00:04:11,110
+that they can then use to log in as if
+they were us. So, let's copy this
+
+230
+00:04:11,110 --> 00:04:11,120
+they were us. So, let's copy this
+ 
+
+231
+00:04:11,120 --> 00:04:12,630
+they were us. So, let's copy this
+information and we're going to put it
+
+232
+00:04:12,630 --> 00:04:12,640
+information and we're going to put it
+ 
+
+233
+00:04:12,640 --> 00:04:15,110
+information and we're going to put it
+into any of these fields that we have on
+
+234
+00:04:15,110 --> 00:04:15,120
+into any of these fields that we have on
+ 
+
+235
+00:04:15,120 --> 00:04:16,949
+into any of these fields that we have on
+this particular website. I'm going to
+
+236
+00:04:16,949 --> 00:04:16,959
+this particular website. I'm going to
+ 
+
+237
+00:04:16,959 --> 00:04:18,710
+this particular website. I'm going to
+delete what's already in one of these
+
+238
+00:04:18,710 --> 00:04:18,720
+delete what's already in one of these
+ 
+
+239
+00:04:18,720 --> 00:04:20,789
+delete what's already in one of these
+fields and I'm going to simply paste in
+
+240
+00:04:20,789 --> 00:04:20,799
+fields and I'm going to simply paste in
+ 
+
+241
+00:04:20,799 --> 00:04:22,950
+fields and I'm going to simply paste in
+that entire script. And when I hit
+
+242
+00:04:22,950 --> 00:04:22,960
+that entire script. And when I hit
+ 
+
+243
+00:04:22,960 --> 00:04:25,270
+that entire script. And when I hit
+enter, the script runs. And as you can
+
+244
+00:04:25,270 --> 00:04:25,280
+enter, the script runs. And as you can
+ 
+
+245
+00:04:25,280 --> 00:04:27,749
+enter, the script runs. And as you can
+see, it says my session information
+
+246
+00:04:27,749 --> 00:04:27,759
+see, it says my session information
+ 
+
+247
+00:04:27,759 --> 00:04:30,390
+see, it says my session information
+shows my session cookie. And now that
+
+248
+00:04:30,390 --> 00:04:30,400
+shows my session cookie. And now that
+ 
+
+249
+00:04:30,400 --> 00:04:32,469
+shows my session cookie. And now that
+information could be in the hands of the
+
+250
+00:04:32,469 --> 00:04:32,479
+information could be in the hands of the
+ 
+
+251
+00:04:32,479 --> 00:04:34,790
+information could be in the hands of the
+attacker. This would normally be sent to
+
+252
+00:04:34,790 --> 00:04:34,800
+attacker. This would normally be sent to
+ 
+
+253
+00:04:34,800 --> 00:04:36,790
+attacker. This would normally be sent to
+the attacker. and they now would have
+
+254
+00:04:36,790 --> 00:04:36,800
+the attacker. and they now would have
+ 
+
+255
+00:04:36,800 --> 00:04:38,950
+the attacker. and they now would have
+full access to this website as if they
+
+256
+00:04:38,950 --> 00:04:38,960
+full access to this website as if they
+ 
+
+257
+00:04:38,960 --> 00:04:41,590
+full access to this website as if they
+were logged in with my account. So they
+
+258
+00:04:41,590 --> 00:04:41,600
+were logged in with my account. So they
+ 
+
+259
+00:04:41,600 --> 00:04:43,270
+were logged in with my account. So they
+can purchase things, they can change
+
+260
+00:04:43,270 --> 00:04:43,280
+can purchase things, they can change
+ 
+
+261
+00:04:43,280 --> 00:04:45,270
+can purchase things, they can change
+account information, and they might even
+
+262
+00:04:45,270 --> 00:04:45,280
+account information, and they might even
+ 
+
+263
+00:04:45,280 --> 00:04:47,189
+account information, and they might even
+have access to my stored credit card
+
+264
+00:04:47,189 --> 00:04:47,199
+have access to my stored credit card
+ 
+
+265
+00:04:47,199 --> 00:04:49,510
+have access to my stored credit card
+information.
+
+266
+00:04:49,510 --> 00:04:49,520
+information.
+ 
+
+267
+00:04:49,520 --> 00:04:51,110
+information.
+Another type of cross-ite scripting
+
+268
+00:04:51,110 --> 00:04:51,120
+Another type of cross-ite scripting
+ 
+
+269
+00:04:51,120 --> 00:04:53,590
+Another type of cross-ite scripting
+attack is one where the script is always
+
+270
+00:04:53,590 --> 00:04:53,600
+attack is one where the script is always
+ 
+
+271
+00:04:53,600 --> 00:04:55,990
+attack is one where the script is always
+stored somewhere for people to access.
+
+272
+00:04:55,990 --> 00:04:56,000
+stored somewhere for people to access.
+ 
+
+273
+00:04:56,000 --> 00:04:58,070
+stored somewhere for people to access.
+We refer to this as a persistent
+
+274
+00:04:58,070 --> 00:04:58,080
+We refer to this as a persistent
+ 
+
+275
+00:04:58,080 --> 00:05:00,469
+We refer to this as a persistent
+cross-ite scripting attack or a stored
+
+276
+00:05:00,469 --> 00:05:00,479
+cross-ite scripting attack or a stored
+ 
+
+277
+00:05:00,479 --> 00:05:03,350
+cross-ite scripting attack or a stored
+XSS attack. In a persistent attack, the
+
+278
+00:05:03,350 --> 00:05:03,360
+XSS attack. In a persistent attack, the
+ 
+
+279
+00:05:03,360 --> 00:05:05,590
+XSS attack. In a persistent attack, the
+malicious script is stored on a public
+
+280
+00:05:05,590 --> 00:05:05,600
+malicious script is stored on a public
+ 
+
+281
+00:05:05,600 --> 00:05:08,150
+malicious script is stored on a public
+web page and anyone visiting that web
+
+282
+00:05:08,150 --> 00:05:08,160
+web page and anyone visiting that web
+ 
+
+283
+00:05:08,160 --> 00:05:10,550
+web page and anyone visiting that web
+page is going to run the script. It's
+
+284
+00:05:10,550 --> 00:05:10,560
+page is going to run the script. It's
+ 
+
+285
+00:05:10,560 --> 00:05:12,469
+page is going to run the script. It's
+hard to direct this kind of attack
+
+286
+00:05:12,469 --> 00:05:12,479
+hard to direct this kind of attack
+ 
+
+287
+00:05:12,479 --> 00:05:14,150
+hard to direct this kind of attack
+because you don't know who's going to
+
+288
+00:05:14,150 --> 00:05:14,160
+because you don't know who's going to
+ 
+
+289
+00:05:14,160 --> 00:05:16,469
+because you don't know who's going to
+visit that particular web page. You
+
+290
+00:05:16,469 --> 00:05:16,479
+visit that particular web page. You
+ 
+
+291
+00:05:16,479 --> 00:05:18,550
+visit that particular web page. You
+might be able to focus in on a certain
+
+292
+00:05:18,550 --> 00:05:18,560
+might be able to focus in on a certain
+ 
+
+293
+00:05:18,560 --> 00:05:20,629
+might be able to focus in on a certain
+number of victims or it may just be
+
+294
+00:05:20,629 --> 00:05:20,639
+number of victims or it may just be
+ 
+
+295
+00:05:20,639 --> 00:05:22,870
+number of victims or it may just be
+anyone who happens to visit that page.
+
+296
+00:05:22,870 --> 00:05:22,880
+anyone who happens to visit that page.
+ 
+
+297
+00:05:22,880 --> 00:05:24,870
+anyone who happens to visit that page.
+Imagine on a social media site an
+
+298
+00:05:24,870 --> 00:05:24,880
+Imagine on a social media site an
+ 
+
+299
+00:05:24,880 --> 00:05:27,029
+Imagine on a social media site an
+attacker putting this malicious script
+
+300
+00:05:27,029 --> 00:05:27,039
+attacker putting this malicious script
+ 
+
+301
+00:05:27,039 --> 00:05:29,029
+attacker putting this malicious script
+and now anyone who visits that
+
+302
+00:05:29,029 --> 00:05:29,039
+and now anyone who visits that
+ 
+
+303
+00:05:29,039 --> 00:05:31,590
+and now anyone who visits that
+particular page on social media now is
+
+304
+00:05:31,590 --> 00:05:31,600
+particular page on social media now is
+ 
+
+305
+00:05:31,600 --> 00:05:33,350
+particular page on social media now is
+running that script inside of their
+
+306
+00:05:33,350 --> 00:05:33,360
+running that script inside of their
+ 
+
+307
+00:05:33,360 --> 00:05:35,990
+running that script inside of their
+browser. One of my favorite cross-ite
+
+308
+00:05:35,990 --> 00:05:36,000
+browser. One of my favorite cross-ite
+ 
+
+309
+00:05:36,000 --> 00:05:38,629
+browser. One of my favorite cross-ite
+scripting attacks was in 2017 where
+
+310
+00:05:38,629 --> 00:05:38,639
+scripting attacks was in 2017 where
+ 
+
+311
+00:05:38,639 --> 00:05:41,510
+scripting attacks was in 2017 where
+Aaron Guzman found a vulnerability with
+
+312
+00:05:41,510 --> 00:05:41,520
+Aaron Guzman found a vulnerability with
+ 
+
+313
+00:05:41,520 --> 00:05:44,230
+Aaron Guzman found a vulnerability with
+an automobile. Specifically, it was a
+
+314
+00:05:44,230 --> 00:05:44,240
+an automobile. Specifically, it was a
+ 
+
+315
+00:05:44,240 --> 00:05:46,390
+an automobile. Specifically, it was a
+Subaru. When you log into the Subaru
+
+316
+00:05:46,390 --> 00:05:46,400
+Subaru. When you log into the Subaru
+ 
+
+317
+00:05:46,400 --> 00:05:49,110
+Subaru. When you log into the Subaru
+website, each user gets a login token.
+
+318
+00:05:49,110 --> 00:05:49,120
+website, each user gets a login token.
+ 
+
+319
+00:05:49,120 --> 00:05:50,950
+website, each user gets a login token.
+We saw an example of that in the cross-
+
+320
+00:05:50,950 --> 00:05:50,960
+We saw an example of that in the cross-
+ 
+
+321
+00:05:50,960 --> 00:05:53,110
+We saw an example of that in the cross-
+sight scripting attack that we did. This
+
+322
+00:05:53,110 --> 00:05:53,120
+sight scripting attack that we did. This
+ 
+
+323
+00:05:53,120 --> 00:05:56,070
+sight scripting attack that we did. This
+token, however, never expires. Once you
+
+324
+00:05:56,070 --> 00:05:56,080
+token, however, never expires. Once you
+ 
+
+325
+00:05:56,080 --> 00:05:58,390
+token, however, never expires. Once you
+log in initially to the Subaru website,
+
+326
+00:05:58,390 --> 00:05:58,400
+log in initially to the Subaru website,
+ 
+
+327
+00:05:58,400 --> 00:06:00,390
+log in initially to the Subaru website,
+you are always logged in on that
+
+328
+00:06:00,390 --> 00:06:00,400
+you are always logged in on that
+ 
+
+329
+00:06:00,400 --> 00:06:02,390
+you are always logged in on that
+browser. This means if you could get the
+
+330
+00:06:02,390 --> 00:06:02,400
+browser. This means if you could get the
+ 
+
+331
+00:06:02,400 --> 00:06:04,710
+browser. This means if you could get the
+session token for any user that is
+
+332
+00:06:04,710 --> 00:06:04,720
+session token for any user that is
+ 
+
+333
+00:06:04,720 --> 00:06:06,870
+session token for any user that is
+logging in, you would have access to
+
+334
+00:06:06,870 --> 00:06:06,880
+logging in, you would have access to
+ 
+
+335
+00:06:06,880 --> 00:06:09,110
+logging in, you would have access to
+their account indefinitely. This means
+
+336
+00:06:09,110 --> 00:06:09,120
+their account indefinitely. This means
+ 
+
+337
+00:06:09,120 --> 00:06:10,469
+their account indefinitely. This means
+you might have access to change
+
+338
+00:06:10,469 --> 00:06:10,479
+you might have access to change
+ 
+
+339
+00:06:10,479 --> 00:06:12,230
+you might have access to change
+someone's profile information. So, you
+
+340
+00:06:12,230 --> 00:06:12,240
+someone's profile information. So, you
+ 
+
+341
+00:06:12,240 --> 00:06:14,070
+someone's profile information. So, you
+could change it from their email address
+
+342
+00:06:14,070 --> 00:06:14,080
+could change it from their email address
+ 
+
+343
+00:06:14,080 --> 00:06:16,550
+could change it from their email address
+to your email address. And in the case
+
+344
+00:06:16,550 --> 00:06:16,560
+to your email address. And in the case
+ 
+
+345
+00:06:16,560 --> 00:06:18,870
+to your email address. And in the case
+of our more modern automobiles, you
+
+346
+00:06:18,870 --> 00:06:18,880
+of our more modern automobiles, you
+ 
+
+347
+00:06:18,880 --> 00:06:21,110
+of our more modern automobiles, you
+might be able to change things in the
+
+348
+00:06:21,110 --> 00:06:21,120
+might be able to change things in the
+ 
+
+349
+00:06:21,120 --> 00:06:23,430
+might be able to change things in the
+car itself. For example, from this web
+
+350
+00:06:23,430 --> 00:06:23,440
+car itself. For example, from this web
+ 
+
+351
+00:06:23,440 --> 00:06:25,189
+car itself. For example, from this web
+front end, you might be able to unlock
+
+352
+00:06:25,189 --> 00:06:25,199
+front end, you might be able to unlock
+ 
+
+353
+00:06:25,199 --> 00:06:27,590
+front end, you might be able to unlock
+all of the doors to the car. And of
+
+354
+00:06:27,590 --> 00:06:27,600
+all of the doors to the car. And of
+ 
+
+355
+00:06:27,600 --> 00:06:29,670
+all of the doors to the car. And of
+course, Aaron found that on the Subaru
+
+356
+00:06:29,670 --> 00:06:29,680
+course, Aaron found that on the Subaru
+ 
+
+357
+00:06:29,680 --> 00:06:31,670
+course, Aaron found that on the Subaru
+website, there was this cross-ite
+
+358
+00:06:31,670 --> 00:06:31,680
+website, there was this cross-ite
+ 
+
+359
+00:06:31,680 --> 00:06:33,749
+website, there was this cross-ite
+scripting vulnerability in the web front
+
+360
+00:06:33,749 --> 00:06:33,759
+scripting vulnerability in the web front
+ 
+
+361
+00:06:33,759 --> 00:06:35,830
+scripting vulnerability in the web front
+end itself. Thankfully, this
+
+362
+00:06:35,830 --> 00:06:35,840
+end itself. Thankfully, this
+ 
+
+363
+00:06:35,840 --> 00:06:38,070
+end itself. Thankfully, this
+vulnerability was not exploited by any
+
+364
+00:06:38,070 --> 00:06:38,080
+vulnerability was not exploited by any
+ 
+
+365
+00:06:38,080 --> 00:06:40,309
+vulnerability was not exploited by any
+attackers and was resolved thanks to the
+
+366
+00:06:40,309 --> 00:06:40,319
+attackers and was resolved thanks to the
+ 
+
+367
+00:06:40,319 --> 00:06:43,350
+attackers and was resolved thanks to the
+hard work from the research team.
+
+368
+00:06:43,350 --> 00:06:43,360
+hard work from the research team.
+ 
+
+369
+00:06:43,360 --> 00:06:45,270
+hard work from the research team.
+One way to prevent a cross-ite scripting
+
+370
+00:06:45,270 --> 00:06:45,280
+One way to prevent a cross-ite scripting
+ 
+
+371
+00:06:45,280 --> 00:06:47,029
+One way to prevent a cross-ite scripting
+attack is to prevent the script from
+
+372
+00:06:47,029 --> 00:06:47,039
+attack is to prevent the script from
+ 
+
+373
+00:06:47,039 --> 00:06:48,710
+attack is to prevent the script from
+running at all. So, you should never
+
+374
+00:06:48,710 --> 00:06:48,720
+running at all. So, you should never
+ 
+
+375
+00:06:48,720 --> 00:06:50,629
+running at all. So, you should never
+click links inside of an email message
+
+376
+00:06:50,629 --> 00:06:50,639
+click links inside of an email message
+ 
+
+377
+00:06:50,639 --> 00:06:53,270
+click links inside of an email message
+or click any links on a web page that's
+
+378
+00:06:53,270 --> 00:06:53,280
+or click any links on a web page that's
+ 
+
+379
+00:06:53,280 --> 00:06:56,070
+or click any links on a web page that's
+not trusted. You could also consider
+
+380
+00:06:56,070 --> 00:06:56,080
+not trusted. You could also consider
+ 
+
+381
+00:06:56,080 --> 00:06:58,150
+not trusted. You could also consider
+disabling JavaScript, but we use
+
+382
+00:06:58,150 --> 00:06:58,160
+disabling JavaScript, but we use
+ 
+
+383
+00:06:58,160 --> 00:07:00,309
+disabling JavaScript, but we use
+JavaScript so much on our modern
+
+384
+00:07:00,309 --> 00:07:00,319
+JavaScript so much on our modern
+ 
+
+385
+00:07:00,319 --> 00:07:02,790
+JavaScript so much on our modern
+browsers that it might not be a very
+
+386
+00:07:02,790 --> 00:07:02,800
+browsers that it might not be a very
+ 
+
+387
+00:07:02,800 --> 00:07:04,950
+browsers that it might not be a very
+useful way to browse the internet.
+
+388
+00:07:04,950 --> 00:07:04,960
+useful way to browse the internet.
+ 
+
+389
+00:07:04,960 --> 00:07:06,309
+useful way to browse the internet.
+Instead, you might want to use
+
+390
+00:07:06,309 --> 00:07:06,319
+Instead, you might want to use
+ 
+
+391
+00:07:06,319 --> 00:07:08,309
+Instead, you might want to use
+thirdparty utilities that are looking
+
+392
+00:07:08,309 --> 00:07:08,319
+thirdparty utilities that are looking
+ 
+
+393
+00:07:08,319 --> 00:07:10,550
+thirdparty utilities that are looking
+for these type of exploits and will stop
+
+394
+00:07:10,550 --> 00:07:10,560
+for these type of exploits and will stop
+ 
+
+395
+00:07:10,560 --> 00:07:13,029
+for these type of exploits and will stop
+them in real time instead of passing
+
+396
+00:07:13,029 --> 00:07:13,039
+them in real time instead of passing
+ 
+
+397
+00:07:13,039 --> 00:07:15,189
+them in real time instead of passing
+that script to another website.
+
+398
+00:07:15,189 --> 00:07:15,199
+that script to another website.
+ 
+
+399
+00:07:15,199 --> 00:07:17,029
+that script to another website.
+Sometimes these type of attacks are due
+
+400
+00:07:17,029 --> 00:07:17,039
+Sometimes these type of attacks are due
+ 
+
+401
+00:07:17,039 --> 00:07:19,430
+Sometimes these type of attacks are due
+to a vulnerability in a browser or in an
+
+402
+00:07:19,430 --> 00:07:19,440
+to a vulnerability in a browser or in an
+ 
+
+403
+00:07:19,440 --> 00:07:21,510
+to a vulnerability in a browser or in an
+application. So, keeping everything up
+
+404
+00:07:21,510 --> 00:07:21,520
+application. So, keeping everything up
+ 
+
+405
+00:07:21,520 --> 00:07:23,430
+application. So, keeping everything up
+to date may allow you to stop this
+
+406
+00:07:23,430 --> 00:07:23,440
+to date may allow you to stop this
+ 
+
+407
+00:07:23,440 --> 00:07:25,830
+to date may allow you to stop this
+problem before it even becomes an issue.
+
+408
+00:07:25,830 --> 00:07:25,840
+problem before it even becomes an issue.
+ 
+
+409
+00:07:25,840 --> 00:07:28,070
+problem before it even becomes an issue.
+And ultimately, application developers
+
+410
+00:07:28,070 --> 00:07:28,080
+And ultimately, application developers
+ 
+
+411
+00:07:28,080 --> 00:07:29,749
+And ultimately, application developers
+need to make sure that they validate all
+
+412
+00:07:29,749 --> 00:07:29,759
+need to make sure that they validate all
+ 
+
+413
+00:07:29,759 --> 00:07:31,510
+need to make sure that they validate all
+of the inputs that are being put into
+
+414
+00:07:31,510 --> 00:07:31,520
+of the inputs that are being put into
+ 
+
+415
+00:07:31,520 --> 00:07:33,749
+of the inputs that are being put into
+their application so that someone can't
+
+416
+00:07:33,749 --> 00:07:33,759
+their application so that someone can't
+ 
+
+417
+00:07:33,759 --> 00:07:36,309
+their application so that someone can't
+run any type of script, malicious or
+
+418
+00:07:36,309 --> 00:07:36,319
+run any type of script, malicious or
+ 
+
+419
+00:07:36,319 --> 00:07:38,230
+run any type of script, malicious or
+otherwise. By making sure the
+
+420
+00:07:38,230 --> 00:07:38,240
+otherwise. By making sure the
+ 
+
+421
+00:07:38,240 --> 00:07:40,309
+otherwise. By making sure the
+application is secure, we can prevent
+
+422
+00:07:40,309 --> 00:07:40,319
+application is secure, we can prevent
+ 
+
+423
+00:07:40,319 --> 00:07:42,309
+application is secure, we can prevent
+any type of cross-ite scripting attack
+
+424
+00:07:42,309 --> 00:07:42,319
+any type of cross-ite scripting attack
+ 
+
+425
+00:07:42,319 --> 00:07:45,560
+any type of cross-ite scripting attack
+from occurring.
+

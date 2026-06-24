@@ -1,0 +1,4195 @@
+1
+00:00:01,920 --> 00:00:04,390
+
+A good way to protect data is to encrypt
+
+2
+00:00:04,390 --> 00:00:04,400
+A good way to protect data is to encrypt
+ 
+
+3
+00:00:04,400 --> 00:00:06,789
+A good way to protect data is to encrypt
+this information. This way only you or
+
+4
+00:00:06,789 --> 00:00:06,799
+this information. This way only you or
+ 
+
+5
+00:00:06,799 --> 00:00:09,030
+this information. This way only you or
+people you trust are able to view this
+
+6
+00:00:09,030 --> 00:00:09,040
+people you trust are able to view this
+ 
+
+7
+00:00:09,040 --> 00:00:11,589
+people you trust are able to view this
+encrypted data. If you're encrypting an
+
+8
+00:00:11,589 --> 00:00:11,599
+encrypted data. If you're encrypting an
+ 
+
+9
+00:00:11,599 --> 00:00:14,150
+encrypted data. If you're encrypting an
+entire drive, then you're performing a
+
+10
+00:00:14,150 --> 00:00:14,160
+entire drive, then you're performing a
+ 
+
+11
+00:00:14,160 --> 00:00:16,470
+entire drive, then you're performing a
+full disk encryption. Sometimes you'll
+
+12
+00:00:16,470 --> 00:00:16,480
+full disk encryption. Sometimes you'll
+ 
+
+13
+00:00:16,480 --> 00:00:18,950
+full disk encryption. Sometimes you'll
+see this referred to as FDE. And if
+
+14
+00:00:18,950 --> 00:00:18,960
+see this referred to as FDE. And if
+ 
+
+15
+00:00:18,960 --> 00:00:20,390
+see this referred to as FDE. And if
+you're running Windows, then you would
+
+16
+00:00:20,390 --> 00:00:20,400
+you're running Windows, then you would
+ 
+
+17
+00:00:20,400 --> 00:00:22,710
+you're running Windows, then you would
+be using Bit Locker to provide full disk
+
+18
+00:00:22,710 --> 00:00:22,720
+be using Bit Locker to provide full disk
+ 
+
+19
+00:00:22,720 --> 00:00:25,509
+be using Bit Locker to provide full disk
+encryption. This is often referred to as
+
+20
+00:00:25,509 --> 00:00:25,519
+encryption. This is often referred to as
+ 
+
+21
+00:00:25,519 --> 00:00:27,990
+encryption. This is often referred to as
+data at rest because this is encrypting
+
+22
+00:00:27,990 --> 00:00:28,000
+data at rest because this is encrypting
+ 
+
+23
+00:00:28,000 --> 00:00:30,070
+data at rest because this is encrypting
+all of the data that's being stored on
+
+24
+00:00:30,070 --> 00:00:30,080
+all of the data that's being stored on
+ 
+
+25
+00:00:30,080 --> 00:00:32,069
+all of the data that's being stored on
+your storage drive. Instead of
+
+26
+00:00:32,069 --> 00:00:32,079
+your storage drive. Instead of
+ 
+
+27
+00:00:32,079 --> 00:00:34,310
+your storage drive. Instead of
+encrypting everything in a volume, some
+
+28
+00:00:34,310 --> 00:00:34,320
+encrypting everything in a volume, some
+ 
+
+29
+00:00:34,320 --> 00:00:36,069
+encrypting everything in a volume, some
+operating systems allow you to encrypt
+
+30
+00:00:36,069 --> 00:00:36,079
+operating systems allow you to encrypt
+ 
+
+31
+00:00:36,079 --> 00:00:38,470
+operating systems allow you to encrypt
+single files or single folders. This is
+
+32
+00:00:38,470 --> 00:00:38,480
+single files or single folders. This is
+ 
+
+33
+00:00:38,480 --> 00:00:40,630
+single files or single folders. This is
+often built into the file system that
+
+34
+00:00:40,630 --> 00:00:40,640
+often built into the file system that
+ 
+
+35
+00:00:40,640 --> 00:00:42,310
+often built into the file system that
+you're using. So, you may want to look
+
+36
+00:00:42,310 --> 00:00:42,320
+you're using. So, you may want to look
+ 
+
+37
+00:00:42,320 --> 00:00:44,549
+you're using. So, you may want to look
+at the properties of a file to see what
+
+38
+00:00:44,549 --> 00:00:44,559
+at the properties of a file to see what
+ 
+
+39
+00:00:44,559 --> 00:00:47,510
+at the properties of a file to see what
+options might be available in your OS.
+
+40
+00:00:47,510 --> 00:00:47,520
+options might be available in your OS.
+ 
+
+41
+00:00:47,520 --> 00:00:49,350
+options might be available in your OS.
+Another good place to have encryption is
+
+42
+00:00:49,350 --> 00:00:49,360
+Another good place to have encryption is
+ 
+
+43
+00:00:49,360 --> 00:00:51,590
+Another good place to have encryption is
+on the USB drives that we carry around
+
+44
+00:00:51,590 --> 00:00:51,600
+on the USB drives that we carry around
+ 
+
+45
+00:00:51,600 --> 00:00:53,990
+on the USB drives that we carry around
+and that we often will lose. If you lose
+
+46
+00:00:53,990 --> 00:00:54,000
+and that we often will lose. If you lose
+ 
+
+47
+00:00:54,000 --> 00:00:56,310
+and that we often will lose. If you lose
+a USB that has encrypted data, you don't
+
+48
+00:00:56,310 --> 00:00:56,320
+a USB that has encrypted data, you don't
+ 
+
+49
+00:00:56,320 --> 00:00:57,590
+a USB that has encrypted data, you don't
+have to worry about someone getting
+
+50
+00:00:57,590 --> 00:00:57,600
+have to worry about someone getting
+ 
+
+51
+00:00:57,600 --> 00:00:59,510
+have to worry about someone getting
+their hands on your information. You
+
+52
+00:00:59,510 --> 00:00:59,520
+their hands on your information. You
+ 
+
+53
+00:00:59,520 --> 00:01:01,430
+their hands on your information. You
+only have to worry about replacing that
+
+54
+00:01:01,430 --> 00:01:01,440
+only have to worry about replacing that
+ 
+
+55
+00:01:01,440 --> 00:01:04,549
+only have to worry about replacing that
+USB drive. In all of these scenarios,
+
+56
+00:01:04,549 --> 00:01:04,559
+USB drive. In all of these scenarios,
+ 
+
+57
+00:01:04,559 --> 00:01:06,710
+USB drive. In all of these scenarios,
+there was some type of key that was used
+
+58
+00:01:06,710 --> 00:01:06,720
+there was some type of key that was used
+ 
+
+59
+00:01:06,720 --> 00:01:09,030
+there was some type of key that was used
+to encrypt this information. This key is
+
+60
+00:01:09,030 --> 00:01:09,040
+to encrypt this information. This key is
+ 
+
+61
+00:01:09,040 --> 00:01:11,109
+to encrypt this information. This key is
+often built into the operating system
+
+62
+00:01:11,109 --> 00:01:11,119
+often built into the operating system
+ 
+
+63
+00:01:11,119 --> 00:01:13,190
+often built into the operating system
+and it's integrated into your login
+
+64
+00:01:13,190 --> 00:01:13,200
+and it's integrated into your login
+ 
+
+65
+00:01:13,200 --> 00:01:15,429
+and it's integrated into your login
+process. So, it's usually stored on your
+
+66
+00:01:15,429 --> 00:01:15,439
+process. So, it's usually stored on your
+ 
+
+67
+00:01:15,439 --> 00:01:17,510
+process. So, it's usually stored on your
+local machine or in a central database
+
+68
+00:01:17,510 --> 00:01:17,520
+local machine or in a central database
+ 
+
+69
+00:01:17,520 --> 00:01:19,990
+local machine or in a central database
+like an active directory database. So,
+
+70
+00:01:19,990 --> 00:01:20,000
+like an active directory database. So,
+ 
+
+71
+00:01:20,000 --> 00:01:21,910
+like an active directory database. So,
+you might not only want to back up your
+
+72
+00:01:21,910 --> 00:01:21,920
+you might not only want to back up your
+ 
+
+73
+00:01:21,920 --> 00:01:23,749
+you might not only want to back up your
+data, you might also want to be sure
+
+74
+00:01:23,749 --> 00:01:23,759
+data, you might also want to be sure
+ 
+
+75
+00:01:23,759 --> 00:01:25,270
+data, you might also want to be sure
+that you have a backup of your
+
+76
+00:01:25,270 --> 00:01:25,280
+that you have a backup of your
+ 
+
+77
+00:01:25,280 --> 00:01:28,870
+that you have a backup of your
+encryption and decryption keys.
+
+78
+00:01:28,870 --> 00:01:28,880
+encryption and decryption keys.
+ 
+
+79
+00:01:28,880 --> 00:01:30,870
+encryption and decryption keys.
+In a previous video, we described the
+
+80
+00:01:30,870 --> 00:01:30,880
+In a previous video, we described the
+ 
+
+81
+00:01:30,880 --> 00:01:33,590
+In a previous video, we described the
+process of password brute forcing where
+
+82
+00:01:33,590 --> 00:01:33,600
+process of password brute forcing where
+ 
+
+83
+00:01:33,600 --> 00:01:36,149
+process of password brute forcing where
+someone tries every possible combination
+
+84
+00:01:36,149 --> 00:01:36,159
+someone tries every possible combination
+ 
+
+85
+00:01:36,159 --> 00:01:38,310
+someone tries every possible combination
+to try to discover what your password
+
+86
+00:01:38,310 --> 00:01:38,320
+to try to discover what your password
+ 
+
+87
+00:01:38,320 --> 00:01:40,710
+to try to discover what your password
+might be. One way that you can make this
+
+88
+00:01:40,710 --> 00:01:40,720
+might be. One way that you can make this
+ 
+
+89
+00:01:40,720 --> 00:01:43,109
+might be. One way that you can make this
+process very difficult for an attacker
+
+90
+00:01:43,109 --> 00:01:43,119
+process very difficult for an attacker
+ 
+
+91
+00:01:43,119 --> 00:01:45,590
+process very difficult for an attacker
+is to increase the amount of entropy in
+
+92
+00:01:45,590 --> 00:01:45,600
+is to increase the amount of entropy in
+ 
+
+93
+00:01:45,600 --> 00:01:47,990
+is to increase the amount of entropy in
+a password. This is a measurement of how
+
+94
+00:01:47,990 --> 00:01:48,000
+a password. This is a measurement of how
+ 
+
+95
+00:01:48,000 --> 00:01:50,630
+a password. This is a measurement of how
+unpredictable a password might be. So
+
+96
+00:01:50,630 --> 00:01:50,640
+unpredictable a password might be. So
+ 
+
+97
+00:01:50,640 --> 00:01:51,830
+unpredictable a password might be. So
+you might want to use different
+
+98
+00:01:51,830 --> 00:01:51,840
+you might want to use different
+ 
+
+99
+00:01:51,840 --> 00:01:54,630
+you might want to use different
+character types. Try using uppercase and
+
+100
+00:01:54,630 --> 00:01:54,640
+character types. Try using uppercase and
+ 
+
+101
+00:01:54,640 --> 00:01:57,270
+character types. Try using uppercase and
+lowercase and try using them in a form
+
+102
+00:01:57,270 --> 00:01:57,280
+lowercase and try using them in a form
+ 
+
+103
+00:01:57,280 --> 00:01:59,350
+lowercase and try using them in a form
+that does not make up any obvious
+
+104
+00:01:59,350 --> 00:01:59,360
+that does not make up any obvious
+ 
+
+105
+00:01:59,360 --> 00:02:01,590
+that does not make up any obvious
+password or word that you might find in
+
+106
+00:02:01,590 --> 00:02:01,600
+password or word that you might find in
+ 
+
+107
+00:02:01,600 --> 00:02:03,429
+password or word that you might find in
+the dictionary. And you might want to
+
+108
+00:02:03,429 --> 00:02:03,439
+the dictionary. And you might want to
+ 
+
+109
+00:02:03,439 --> 00:02:05,830
+the dictionary. And you might want to
+include numbers or special characters to
+
+110
+00:02:05,830 --> 00:02:05,840
+include numbers or special characters to
+ 
+
+111
+00:02:05,840 --> 00:02:07,670
+include numbers or special characters to
+increase the entropy of these stored
+
+112
+00:02:07,670 --> 00:02:07,680
+increase the entropy of these stored
+ 
+
+113
+00:02:07,680 --> 00:02:10,150
+increase the entropy of these stored
+passwords. These days, strong passwords
+
+114
+00:02:10,150 --> 00:02:10,160
+passwords. These days, strong passwords
+ 
+
+115
+00:02:10,160 --> 00:02:12,710
+passwords. These days, strong passwords
+tend to be eight characters or more. So,
+
+116
+00:02:12,710 --> 00:02:12,720
+tend to be eight characters or more. So,
+ 
+
+117
+00:02:12,720 --> 00:02:14,390
+tend to be eight characters or more. So,
+you might want to think about using a
+
+118
+00:02:14,390 --> 00:02:14,400
+you might want to think about using a
+ 
+
+119
+00:02:14,400 --> 00:02:16,949
+you might want to think about using a
+phrase or series of letters that makes
+
+120
+00:02:16,949 --> 00:02:16,959
+phrase or series of letters that makes
+ 
+
+121
+00:02:16,959 --> 00:02:19,430
+phrase or series of letters that makes
+up a much longer phrase to make that
+
+122
+00:02:19,430 --> 00:02:19,440
+up a much longer phrase to make that
+ 
+
+123
+00:02:19,440 --> 00:02:22,390
+up a much longer phrase to make that
+password much more secure.
+
+124
+00:02:22,390 --> 00:02:22,400
+password much more secure.
+ 
+
+125
+00:02:22,400 --> 00:02:24,070
+password much more secure.
+Another good best practice is to make
+
+126
+00:02:24,070 --> 00:02:24,080
+Another good best practice is to make
+ 
+
+127
+00:02:24,080 --> 00:02:25,830
+Another good best practice is to make
+sure that your passwords change on a
+
+128
+00:02:25,830 --> 00:02:25,840
+sure that your passwords change on a
+ 
+
+129
+00:02:25,840 --> 00:02:28,630
+sure that your passwords change on a
+regular basis. A password age is the
+
+130
+00:02:28,630 --> 00:02:28,640
+regular basis. A password age is the
+ 
+
+131
+00:02:28,640 --> 00:02:30,949
+regular basis. A password age is the
+metric that defines how long it has been
+
+132
+00:02:30,949 --> 00:02:30,959
+metric that defines how long it has been
+ 
+
+133
+00:02:30,959 --> 00:02:33,589
+metric that defines how long it has been
+since a password was last updated. Many
+
+134
+00:02:33,589 --> 00:02:33,599
+since a password was last updated. Many
+ 
+
+135
+00:02:33,599 --> 00:02:35,430
+since a password was last updated. Many
+organizations will set a password
+
+136
+00:02:35,430 --> 00:02:35,440
+organizations will set a password
+ 
+
+137
+00:02:35,440 --> 00:02:38,229
+organizations will set a password
+expiration to occur every 30 days, every
+
+138
+00:02:38,229 --> 00:02:38,239
+expiration to occur every 30 days, every
+ 
+
+139
+00:02:38,239 --> 00:02:41,110
+expiration to occur every 30 days, every
+60 days, every 90 days, or some other
+
+140
+00:02:41,110 --> 00:02:41,120
+60 days, every 90 days, or some other
+ 
+
+141
+00:02:41,120 --> 00:02:43,589
+60 days, every 90 days, or some other
+interval. After that time frame, you are
+
+142
+00:02:43,589 --> 00:02:43,599
+interval. After that time frame, you are
+ 
+
+143
+00:02:43,599 --> 00:02:45,430
+interval. After that time frame, you are
+required to change your password so that
+
+144
+00:02:45,430 --> 00:02:45,440
+required to change your password so that
+ 
+
+145
+00:02:45,440 --> 00:02:46,790
+required to change your password so that
+it's something different than what
+
+146
+00:02:46,790 --> 00:02:46,800
+it's something different than what
+ 
+
+147
+00:02:46,800 --> 00:02:49,030
+it's something different than what
+you've used in the past. And that's an
+
+148
+00:02:49,030 --> 00:02:49,040
+you've used in the past. And that's an
+ 
+
+149
+00:02:49,040 --> 00:02:50,869
+you've used in the past. And that's an
+important consideration. You don't want
+
+150
+00:02:50,869 --> 00:02:50,879
+important consideration. You don't want
+ 
+
+151
+00:02:50,879 --> 00:02:53,350
+important consideration. You don't want
+someone using one password for 30 days,
+
+152
+00:02:53,350 --> 00:02:53,360
+someone using one password for 30 days,
+ 
+
+153
+00:02:53,360 --> 00:02:55,270
+someone using one password for 30 days,
+using a different password for the next
+
+154
+00:02:55,270 --> 00:02:55,280
+using a different password for the next
+ 
+
+155
+00:02:55,280 --> 00:02:57,270
+using a different password for the next
+30 days, and then going back to the
+
+156
+00:02:57,270 --> 00:02:57,280
+30 days, and then going back to the
+ 
+
+157
+00:02:57,280 --> 00:02:59,670
+30 days, and then going back to the
+original password on the 30 days after
+
+158
+00:02:59,670 --> 00:02:59,680
+original password on the 30 days after
+ 
+
+159
+00:02:59,680 --> 00:03:02,229
+original password on the 30 days after
+that. Most systems will remember your
+
+160
+00:03:02,229 --> 00:03:02,239
+that. Most systems will remember your
+ 
+
+161
+00:03:02,239 --> 00:03:04,470
+that. Most systems will remember your
+password history and require to use a
+
+162
+00:03:04,470 --> 00:03:04,480
+password history and require to use a
+ 
+
+163
+00:03:04,480 --> 00:03:06,470
+password history and require to use a
+different password every time you
+
+164
+00:03:06,470 --> 00:03:06,480
+different password every time you
+ 
+
+165
+00:03:06,480 --> 00:03:08,390
+different password every time you
+update. And if you're running critical
+
+166
+00:03:08,390 --> 00:03:08,400
+update. And if you're running critical
+ 
+
+167
+00:03:08,400 --> 00:03:10,470
+update. And if you're running critical
+systems, these passwords might update
+
+168
+00:03:10,470 --> 00:03:10,480
+systems, these passwords might update
+ 
+
+169
+00:03:10,480 --> 00:03:12,550
+systems, these passwords might update
+even more frequently. You might find
+
+170
+00:03:12,550 --> 00:03:12,560
+even more frequently. You might find
+ 
+
+171
+00:03:12,560 --> 00:03:14,309
+even more frequently. You might find
+that your password is required to be
+
+172
+00:03:14,309 --> 00:03:14,319
+that your password is required to be
+ 
+
+173
+00:03:14,319 --> 00:03:17,030
+that your password is required to be
+different every week, every 15 days, or
+
+174
+00:03:17,030 --> 00:03:17,040
+different every week, every 15 days, or
+ 
+
+175
+00:03:17,040 --> 00:03:20,630
+different every week, every 15 days, or
+some other very short interval.
+
+176
+00:03:20,630 --> 00:03:20,640
+some other very short interval.
+ 
+
+177
+00:03:20,640 --> 00:03:23,030
+some other very short interval.
+Sometimes you may find that a device, an
+
+178
+00:03:23,030 --> 00:03:23,040
+Sometimes you may find that a device, an
+ 
+
+179
+00:03:23,040 --> 00:03:25,350
+Sometimes you may find that a device, an
+operating system, or an application has
+
+180
+00:03:25,350 --> 00:03:25,360
+operating system, or an application has
+ 
+
+181
+00:03:25,360 --> 00:03:27,509
+operating system, or an application has
+a default username or password
+
+182
+00:03:27,509 --> 00:03:27,519
+a default username or password
+ 
+
+183
+00:03:27,519 --> 00:03:29,350
+a default username or password
+associated with it. And when you first
+
+184
+00:03:29,350 --> 00:03:29,360
+associated with it. And when you first
+ 
+
+185
+00:03:29,360 --> 00:03:31,350
+associated with it. And when you first
+install that software, you use that
+
+186
+00:03:31,350 --> 00:03:31,360
+install that software, you use that
+ 
+
+187
+00:03:31,360 --> 00:03:33,509
+install that software, you use that
+default login to gain access to the
+
+188
+00:03:33,509 --> 00:03:33,519
+default login to gain access to the
+ 
+
+189
+00:03:33,519 --> 00:03:35,830
+default login to gain access to the
+system. From a security perspective, we
+
+190
+00:03:35,830 --> 00:03:35,840
+system. From a security perspective, we
+ 
+
+191
+00:03:35,840 --> 00:03:37,509
+system. From a security perspective, we
+want to be sure that we change those
+
+192
+00:03:37,509 --> 00:03:37,519
+want to be sure that we change those
+ 
+
+193
+00:03:37,519 --> 00:03:39,750
+want to be sure that we change those
+default passwords so that no one can
+
+194
+00:03:39,750 --> 00:03:39,760
+default passwords so that no one can
+ 
+
+195
+00:03:39,760 --> 00:03:41,910
+default passwords so that no one can
+come by later and use the default
+
+196
+00:03:41,910 --> 00:03:41,920
+come by later and use the default
+ 
+
+197
+00:03:41,920 --> 00:03:44,229
+come by later and use the default
+credentials to log in. You might also
+
+198
+00:03:44,229 --> 00:03:44,239
+credentials to log in. You might also
+ 
+
+199
+00:03:44,239 --> 00:03:46,309
+credentials to log in. You might also
+find passwords being used during the
+
+200
+00:03:46,309 --> 00:03:46,319
+find passwords being used during the
+ 
+
+201
+00:03:46,319 --> 00:03:48,630
+find passwords being used during the
+bootup process for your computer. These
+
+202
+00:03:48,630 --> 00:03:48,640
+bootup process for your computer. These
+ 
+
+203
+00:03:48,640 --> 00:03:51,830
+bootup process for your computer. These
+are BIOS passwords or UEFI passwords.
+
+204
+00:03:51,830 --> 00:03:51,840
+are BIOS passwords or UEFI passwords.
+ 
+
+205
+00:03:51,840 --> 00:03:53,589
+are BIOS passwords or UEFI passwords.
+And there are two different types that
+
+206
+00:03:53,589 --> 00:03:53,599
+And there are two different types that
+ 
+
+207
+00:03:53,599 --> 00:03:56,309
+And there are two different types that
+you commonly see. One is a supervisor or
+
+208
+00:03:56,309 --> 00:03:56,319
+you commonly see. One is a supervisor or
+ 
+
+209
+00:03:56,319 --> 00:03:58,149
+you commonly see. One is a supervisor or
+administrator password. This is a
+
+210
+00:03:58,149 --> 00:03:58,159
+administrator password. This is a
+ 
+
+211
+00:03:58,159 --> 00:03:59,990
+administrator password. This is a
+password you assign to the BIOS that
+
+212
+00:03:59,990 --> 00:04:00,000
+password you assign to the BIOS that
+ 
+
+213
+00:04:00,000 --> 00:04:01,670
+password you assign to the BIOS that
+prevents someone else from going into
+
+214
+00:04:01,670 --> 00:04:01,680
+prevents someone else from going into
+ 
+
+215
+00:04:01,680 --> 00:04:03,589
+prevents someone else from going into
+the BIOS and making configuration
+
+216
+00:04:03,589 --> 00:04:03,599
+the BIOS and making configuration
+ 
+
+217
+00:04:03,599 --> 00:04:06,149
+the BIOS and making configuration
+changes. Most users would not see this
+
+218
+00:04:06,149 --> 00:04:06,159
+changes. Most users would not see this
+ 
+
+219
+00:04:06,159 --> 00:04:08,149
+changes. Most users would not see this
+password because most users aren't
+
+220
+00:04:08,149 --> 00:04:08,159
+password because most users aren't
+ 
+
+221
+00:04:08,159 --> 00:04:10,470
+password because most users aren't
+trying to make changes to the BIOS. The
+
+222
+00:04:10,470 --> 00:04:10,480
+trying to make changes to the BIOS. The
+ 
+
+223
+00:04:10,480 --> 00:04:11,910
+trying to make changes to the BIOS. The
+password that most people will see
+
+224
+00:04:11,910 --> 00:04:11,920
+password that most people will see
+ 
+
+225
+00:04:11,920 --> 00:04:14,630
+password that most people will see
+during startup is a user password. This
+
+226
+00:04:14,630 --> 00:04:14,640
+during startup is a user password. This
+ 
+
+227
+00:04:14,640 --> 00:04:16,550
+during startup is a user password. This
+is a password you must put into the
+
+228
+00:04:16,550 --> 00:04:16,560
+is a password you must put into the
+ 
+
+229
+00:04:16,560 --> 00:04:18,229
+is a password you must put into the
+system for it to continue the booting
+
+230
+00:04:18,229 --> 00:04:18,239
+system for it to continue the booting
+ 
+
+231
+00:04:18,239 --> 00:04:20,069
+system for it to continue the booting
+process. And if you don't put in the
+
+232
+00:04:20,069 --> 00:04:20,079
+process. And if you don't put in the
+ 
+
+233
+00:04:20,079 --> 00:04:21,749
+process. And if you don't put in the
+right password, then you're not able to
+
+234
+00:04:21,749 --> 00:04:21,759
+right password, then you're not able to
+ 
+
+235
+00:04:21,759 --> 00:04:23,909
+right password, then you're not able to
+boot the operating system. And from a
+
+236
+00:04:23,909 --> 00:04:23,919
+boot the operating system. And from a
+ 
+
+237
+00:04:23,919 --> 00:04:26,230
+boot the operating system. And from a
+best practices perspective, we always
+
+238
+00:04:26,230 --> 00:04:26,240
+best practices perspective, we always
+ 
+
+239
+00:04:26,240 --> 00:04:28,150
+best practices perspective, we always
+want to require a password. You should
+
+240
+00:04:28,150 --> 00:04:28,160
+want to require a password. You should
+ 
+
+241
+00:04:28,160 --> 00:04:29,670
+want to require a password. You should
+never have a system that allows you
+
+242
+00:04:29,670 --> 00:04:29,680
+never have a system that allows you
+ 
+
+243
+00:04:29,680 --> 00:04:31,830
+never have a system that allows you
+access without putting in some type of
+
+244
+00:04:31,830 --> 00:04:31,840
+access without putting in some type of
+ 
+
+245
+00:04:31,840 --> 00:04:33,670
+access without putting in some type of
+authentication. And you want to be sure
+
+246
+00:04:33,670 --> 00:04:33,680
+authentication. And you want to be sure
+ 
+
+247
+00:04:33,680 --> 00:04:36,070
+authentication. And you want to be sure
+that it's not a blank password. This
+
+248
+00:04:36,070 --> 00:04:36,080
+that it's not a blank password. This
+ 
+
+249
+00:04:36,080 --> 00:04:38,310
+that it's not a blank password. This
+would allow a system to automatically
+
+250
+00:04:38,310 --> 00:04:38,320
+would allow a system to automatically
+ 
+
+251
+00:04:38,320 --> 00:04:40,390
+would allow a system to automatically
+start, but it also makes that system
+
+252
+00:04:40,390 --> 00:04:40,400
+start, but it also makes that system
+ 
+
+253
+00:04:40,400 --> 00:04:42,550
+start, but it also makes that system
+completely accessible for anyone with
+
+254
+00:04:42,550 --> 00:04:42,560
+completely accessible for anyone with
+ 
+
+255
+00:04:42,560 --> 00:04:44,950
+completely accessible for anyone with
+physical access.
+
+256
+00:04:44,950 --> 00:04:44,960
+physical access.
+ 
+
+257
+00:04:44,960 --> 00:04:47,510
+physical access.
+On most computers, after a predefined
+
+258
+00:04:47,510 --> 00:04:47,520
+On most computers, after a predefined
+ 
+
+259
+00:04:47,520 --> 00:04:49,350
+On most computers, after a predefined
+time of inactivity, it will
+
+260
+00:04:49,350 --> 00:04:49,360
+time of inactivity, it will
+ 
+
+261
+00:04:49,360 --> 00:04:51,670
+time of inactivity, it will
+automatically start a screen saver. That
+
+262
+00:04:51,670 --> 00:04:51,680
+automatically start a screen saver. That
+ 
+
+263
+00:04:51,680 --> 00:04:53,670
+automatically start a screen saver. That
+screen saver can be set with a lock to
+
+264
+00:04:53,670 --> 00:04:53,680
+screen saver can be set with a lock to
+ 
+
+265
+00:04:53,680 --> 00:04:55,590
+screen saver can be set with a lock to
+prevent anyone from gaining access to
+
+266
+00:04:55,590 --> 00:04:55,600
+prevent anyone from gaining access to
+ 
+
+267
+00:04:55,600 --> 00:04:57,909
+prevent anyone from gaining access to
+that system after the computer has gone
+
+268
+00:04:57,909 --> 00:04:57,919
+that system after the computer has gone
+ 
+
+269
+00:04:57,919 --> 00:05:00,150
+that system after the computer has gone
+idle. This screen saver password can
+
+270
+00:05:00,150 --> 00:05:00,160
+idle. This screen saver password can
+ 
+
+271
+00:05:00,160 --> 00:05:02,469
+idle. This screen saver password can
+commonly be integrated with your login
+
+272
+00:05:02,469 --> 00:05:02,479
+commonly be integrated with your login
+ 
+
+273
+00:05:02,479 --> 00:05:04,629
+commonly be integrated with your login
+credentials. So the same username and
+
+274
+00:05:04,629 --> 00:05:04,639
+credentials. So the same username and
+ 
+
+275
+00:05:04,639 --> 00:05:06,790
+credentials. So the same username and
+password you use to log in is the same
+
+276
+00:05:06,790 --> 00:05:06,800
+password you use to log in is the same
+ 
+
+277
+00:05:06,800 --> 00:05:09,430
+password you use to log in is the same
+password you use for your screen saver.
+
+278
+00:05:09,430 --> 00:05:09,440
+password you use for your screen saver.
+ 
+
+279
+00:05:09,440 --> 00:05:10,870
+password you use for your screen saver.
+This is something that's usually turned
+
+280
+00:05:10,870 --> 00:05:10,880
+This is something that's usually turned
+ 
+
+281
+00:05:10,880 --> 00:05:12,550
+This is something that's usually turned
+on for all of the computers in your
+
+282
+00:05:12,550 --> 00:05:12,560
+on for all of the computers in your
+ 
+
+283
+00:05:12,560 --> 00:05:14,070
+on for all of the computers in your
+company. But if you'd also like to
+
+284
+00:05:14,070 --> 00:05:14,080
+company. But if you'd also like to
+ 
+
+285
+00:05:14,080 --> 00:05:15,990
+company. But if you'd also like to
+enable this at home, you can go into the
+
+286
+00:05:15,990 --> 00:05:16,000
+enable this at home, you can go into the
+ 
+
+287
+00:05:16,000 --> 00:05:17,990
+enable this at home, you can go into the
+personalization features in Windows,
+
+288
+00:05:17,990 --> 00:05:18,000
+personalization features in Windows,
+ 
+
+289
+00:05:18,000 --> 00:05:20,150
+personalization features in Windows,
+choose the option for lock screen, and
+
+290
+00:05:20,150 --> 00:05:20,160
+choose the option for lock screen, and
+ 
+
+291
+00:05:20,160 --> 00:05:21,830
+choose the option for lock screen, and
+you can configure all of the settings
+
+292
+00:05:21,830 --> 00:05:21,840
+you can configure all of the settings
+ 
+
+293
+00:05:21,840 --> 00:05:23,909
+you can configure all of the settings
+that will lock your computer when you're
+
+294
+00:05:23,909 --> 00:05:23,919
+that will lock your computer when you're
+ 
+
+295
+00:05:23,919 --> 00:05:26,469
+that will lock your computer when you're
+away from your system. In some
+
+296
+00:05:26,469 --> 00:05:26,479
+away from your system. In some
+ 
+
+297
+00:05:26,479 --> 00:05:28,710
+away from your system. In some
+companies, users are required to
+
+298
+00:05:28,710 --> 00:05:28,720
+companies, users are required to
+ 
+
+299
+00:05:28,720 --> 00:05:31,029
+companies, users are required to
+manually lock their system anytime they
+
+300
+00:05:31,029 --> 00:05:31,039
+manually lock their system anytime they
+ 
+
+301
+00:05:31,039 --> 00:05:32,790
+manually lock their system anytime they
+get up from their computer and start
+
+302
+00:05:32,790 --> 00:05:32,800
+get up from their computer and start
+ 
+
+303
+00:05:32,800 --> 00:05:35,110
+get up from their computer and start
+walking away. But you can also configure
+
+304
+00:05:35,110 --> 00:05:35,120
+walking away. But you can also configure
+ 
+
+305
+00:05:35,120 --> 00:05:37,350
+walking away. But you can also configure
+your system to automatically start this
+
+306
+00:05:37,350 --> 00:05:37,360
+your system to automatically start this
+ 
+
+307
+00:05:37,360 --> 00:05:39,270
+your system to automatically start this
+after a certain amount of inactivity.
+
+308
+00:05:39,270 --> 00:05:39,280
+after a certain amount of inactivity.
+ 
+
+309
+00:05:39,280 --> 00:05:41,510
+after a certain amount of inactivity.
+This is a value that you can also set in
+
+310
+00:05:41,510 --> 00:05:41,520
+This is a value that you can also set in
+ 
+
+311
+00:05:41,520 --> 00:05:43,510
+This is a value that you can also set in
+these lock screen configuration options
+
+312
+00:05:43,510 --> 00:05:43,520
+these lock screen configuration options
+ 
+
+313
+00:05:43,520 --> 00:05:46,790
+these lock screen configuration options
+under the screen timeout value.
+
+314
+00:05:46,790 --> 00:05:46,800
+under the screen timeout value.
+ 
+
+315
+00:05:46,800 --> 00:05:48,710
+under the screen timeout value.
+Not only do we need to enable these
+
+316
+00:05:48,710 --> 00:05:48,720
+Not only do we need to enable these
+ 
+
+317
+00:05:48,720 --> 00:05:51,029
+Not only do we need to enable these
+digital locks in our screen savers, but
+
+318
+00:05:51,029 --> 00:05:51,039
+digital locks in our screen savers, but
+ 
+
+319
+00:05:51,039 --> 00:05:52,550
+digital locks in our screen savers, but
+we also might want to think about
+
+320
+00:05:52,550 --> 00:05:52,560
+we also might want to think about
+ 
+
+321
+00:05:52,560 --> 00:05:55,029
+we also might want to think about
+putting on physical locks, especially
+
+322
+00:05:55,029 --> 00:05:55,039
+putting on physical locks, especially
+ 
+
+323
+00:05:55,039 --> 00:05:57,189
+putting on physical locks, especially
+with laptops, tablets, and anything else
+
+324
+00:05:57,189 --> 00:05:57,199
+with laptops, tablets, and anything else
+ 
+
+325
+00:05:57,199 --> 00:05:59,749
+with laptops, tablets, and anything else
+that can be easily picked up and moved.
+
+326
+00:05:59,749 --> 00:05:59,759
+that can be easily picked up and moved.
+ 
+
+327
+00:05:59,759 --> 00:06:01,510
+that can be easily picked up and moved.
+Most of these devices have a connection
+
+328
+00:06:01,510 --> 00:06:01,520
+Most of these devices have a connection
+ 
+
+329
+00:06:01,520 --> 00:06:03,430
+Most of these devices have a connection
+for a lock. You can wrap that with a
+
+330
+00:06:03,430 --> 00:06:03,440
+for a lock. You can wrap that with a
+ 
+
+331
+00:06:03,440 --> 00:06:05,350
+for a lock. You can wrap that with a
+cable around the table and prevent
+
+332
+00:06:05,350 --> 00:06:05,360
+cable around the table and prevent
+ 
+
+333
+00:06:05,360 --> 00:06:07,749
+cable around the table and prevent
+somebody from walking by and easily
+
+334
+00:06:07,749 --> 00:06:07,759
+somebody from walking by and easily
+ 
+
+335
+00:06:07,759 --> 00:06:10,230
+somebody from walking by and easily
+taking your laptop.
+
+336
+00:06:10,230 --> 00:06:10,240
+taking your laptop.
+ 
+
+337
+00:06:10,240 --> 00:06:12,070
+taking your laptop.
+During a normal day, we might access
+
+338
+00:06:12,070 --> 00:06:12,080
+During a normal day, we might access
+ 
+
+339
+00:06:12,080 --> 00:06:13,909
+During a normal day, we might access
+sensitive information that is displayed
+
+340
+00:06:13,909 --> 00:06:13,919
+sensitive information that is displayed
+ 
+
+341
+00:06:13,919 --> 00:06:16,230
+sensitive information that is displayed
+on the screen of our laptop or desktop
+
+342
+00:06:16,230 --> 00:06:16,240
+on the screen of our laptop or desktop
+ 
+
+343
+00:06:16,240 --> 00:06:18,150
+on the screen of our laptop or desktop
+computer. This might include someone's
+
+344
+00:06:18,150 --> 00:06:18,160
+computer. This might include someone's
+ 
+
+345
+00:06:18,160 --> 00:06:20,390
+computer. This might include someone's
+name, address, social security
+
+346
+00:06:20,390 --> 00:06:20,400
+name, address, social security
+ 
+
+347
+00:06:20,400 --> 00:06:22,710
+name, address, social security
+information, healthcare details, and
+
+348
+00:06:22,710 --> 00:06:22,720
+information, healthcare details, and
+ 
+
+349
+00:06:22,720 --> 00:06:24,790
+information, healthcare details, and
+anything else that might be considered
+
+350
+00:06:24,790 --> 00:06:24,800
+anything else that might be considered
+ 
+
+351
+00:06:24,800 --> 00:06:27,510
+anything else that might be considered
+personally identifiable information or
+
+352
+00:06:27,510 --> 00:06:27,520
+personally identifiable information or
+ 
+
+353
+00:06:27,520 --> 00:06:30,070
+personally identifiable information or
+PII. I've worked with many IT
+
+354
+00:06:30,070 --> 00:06:30,080
+PII. I've worked with many IT
+ 
+
+355
+00:06:30,080 --> 00:06:31,990
+PII. I've worked with many IT
+professionals and it's remarkable how
+
+356
+00:06:31,990 --> 00:06:32,000
+professionals and it's remarkable how
+ 
+
+357
+00:06:32,000 --> 00:06:34,230
+professionals and it's remarkable how
+many of them will simply type in their
+
+358
+00:06:34,230 --> 00:06:34,240
+many of them will simply type in their
+ 
+
+359
+00:06:34,240 --> 00:06:36,469
+many of them will simply type in their
+password as you're standing next to them
+
+360
+00:06:36,469 --> 00:06:36,479
+password as you're standing next to them
+ 
+
+361
+00:06:36,479 --> 00:06:38,950
+password as you're standing next to them
+at their keyboard. Obviously, we want to
+
+362
+00:06:38,950 --> 00:06:38,960
+at their keyboard. Obviously, we want to
+ 
+
+363
+00:06:38,960 --> 00:06:41,110
+at their keyboard. Obviously, we want to
+be aware when sensitive information is
+
+364
+00:06:41,110 --> 00:06:41,120
+be aware when sensitive information is
+ 
+
+365
+00:06:41,120 --> 00:06:43,350
+be aware when sensitive information is
+either being input or output from our
+
+366
+00:06:43,350 --> 00:06:43,360
+either being input or output from our
+ 
+
+367
+00:06:43,360 --> 00:06:45,189
+either being input or output from our
+system. And we'll want to be sure that
+
+368
+00:06:45,189 --> 00:06:45,199
+system. And we'll want to be sure that
+ 
+
+369
+00:06:45,199 --> 00:06:47,830
+system. And we'll want to be sure that
+we shield our hands or shield the screen
+
+370
+00:06:47,830 --> 00:06:47,840
+we shield our hands or shield the screen
+ 
+
+371
+00:06:47,840 --> 00:06:49,749
+we shield our hands or shield the screen
+so that that sensitive information is
+
+372
+00:06:49,749 --> 00:06:49,759
+so that that sensitive information is
+ 
+
+373
+00:06:49,759 --> 00:06:52,469
+so that that sensitive information is
+not seen by others. If you're in public,
+
+374
+00:06:52,469 --> 00:06:52,479
+not seen by others. If you're in public,
+ 
+
+375
+00:06:52,479 --> 00:06:54,309
+not seen by others. If you're in public,
+you might want to consider using privacy
+
+376
+00:06:54,309 --> 00:06:54,319
+you might want to consider using privacy
+ 
+
+377
+00:06:54,319 --> 00:06:56,230
+you might want to consider using privacy
+filters. This is where your screen will
+
+378
+00:06:56,230 --> 00:06:56,240
+filters. This is where your screen will
+ 
+
+379
+00:06:56,240 --> 00:06:58,390
+filters. This is where your screen will
+look completely black to anyone who's
+
+380
+00:06:58,390 --> 00:06:58,400
+look completely black to anyone who's
+ 
+
+381
+00:06:58,400 --> 00:07:00,390
+look completely black to anyone who's
+looking from the side. But if you're
+
+382
+00:07:00,390 --> 00:07:00,400
+looking from the side. But if you're
+ 
+
+383
+00:07:00,400 --> 00:07:02,629
+looking from the side. But if you're
+looking at your screen directly, you'll
+
+384
+00:07:02,629 --> 00:07:02,639
+looking at your screen directly, you'll
+ 
+
+385
+00:07:02,639 --> 00:07:04,309
+looking at your screen directly, you'll
+be able to see everything on that
+
+386
+00:07:04,309 --> 00:07:04,319
+be able to see everything on that
+ 
+
+387
+00:07:04,319 --> 00:07:06,550
+be able to see everything on that
+screen. This even works on a plane where
+
+388
+00:07:06,550 --> 00:07:06,560
+screen. This even works on a plane where
+ 
+
+389
+00:07:06,560 --> 00:07:08,550
+screen. This even works on a plane where
+somebody sitting right next to you is
+
+390
+00:07:08,550 --> 00:07:08,560
+somebody sitting right next to you is
+ 
+
+391
+00:07:08,560 --> 00:07:10,390
+somebody sitting right next to you is
+not able to see the information that's
+
+392
+00:07:10,390 --> 00:07:10,400
+not able to see the information that's
+ 
+
+393
+00:07:10,400 --> 00:07:13,110
+not able to see the information that's
+on your laptop display. If you're in an
+
+394
+00:07:13,110 --> 00:07:13,120
+on your laptop display. If you're in an
+ 
+
+395
+00:07:13,120 --> 00:07:14,550
+on your laptop display. If you're in an
+office environment, it might be a good
+
+396
+00:07:14,550 --> 00:07:14,560
+office environment, it might be a good
+ 
+
+397
+00:07:14,560 --> 00:07:17,029
+office environment, it might be a good
+idea to rearrange your desk so that the
+
+398
+00:07:17,029 --> 00:07:17,039
+idea to rearrange your desk so that the
+ 
+
+399
+00:07:17,039 --> 00:07:19,430
+idea to rearrange your desk so that the
+monitor is facing you and not facing
+
+400
+00:07:19,430 --> 00:07:19,440
+monitor is facing you and not facing
+ 
+
+401
+00:07:19,440 --> 00:07:21,430
+monitor is facing you and not facing
+outward where other people might be able
+
+402
+00:07:21,430 --> 00:07:21,440
+outward where other people might be able
+ 
+
+403
+00:07:21,440 --> 00:07:23,830
+outward where other people might be able
+to see it. And if you are in public,
+
+404
+00:07:23,830 --> 00:07:23,840
+to see it. And if you are in public,
+ 
+
+405
+00:07:23,840 --> 00:07:25,510
+to see it. And if you are in public,
+keep in mind that the information
+
+406
+00:07:25,510 --> 00:07:25,520
+keep in mind that the information
+ 
+
+407
+00:07:25,520 --> 00:07:27,749
+keep in mind that the information
+displayed on your screen might be seen
+
+408
+00:07:27,749 --> 00:07:27,759
+displayed on your screen might be seen
+ 
+
+409
+00:07:27,759 --> 00:07:29,749
+displayed on your screen might be seen
+by others. So, it might be a good idea
+
+410
+00:07:29,749 --> 00:07:29,759
+by others. So, it might be a good idea
+ 
+
+411
+00:07:29,759 --> 00:07:32,390
+by others. So, it might be a good idea
+to only show nonsensitive information on
+
+412
+00:07:32,390 --> 00:07:32,400
+to only show nonsensitive information on
+ 
+
+413
+00:07:32,400 --> 00:07:34,230
+to only show nonsensitive information on
+your screen when you're in those types
+
+414
+00:07:34,230 --> 00:07:34,240
+your screen when you're in those types
+ 
+
+415
+00:07:34,240 --> 00:07:36,390
+your screen when you're in those types
+of environments.
+
+416
+00:07:36,390 --> 00:07:36,400
+of environments.
+ 
+
+417
+00:07:36,400 --> 00:07:38,390
+of environments.
+One of the reasons that attackers like
+
+418
+00:07:38,390 --> 00:07:38,400
+One of the reasons that attackers like
+ 
+
+419
+00:07:38,400 --> 00:07:40,550
+One of the reasons that attackers like
+to get their hands on lists of passwords
+
+420
+00:07:40,550 --> 00:07:40,560
+to get their hands on lists of passwords
+ 
+
+421
+00:07:40,560 --> 00:07:43,029
+to get their hands on lists of passwords
+and email addresses is because many
+
+422
+00:07:43,029 --> 00:07:43,039
+and email addresses is because many
+ 
+
+423
+00:07:43,039 --> 00:07:45,589
+and email addresses is because many
+people will reuse those passwords on all
+
+424
+00:07:45,589 --> 00:07:45,599
+people will reuse those passwords on all
+ 
+
+425
+00:07:45,599 --> 00:07:47,670
+people will reuse those passwords on all
+of the websites that they visit. This
+
+426
+00:07:47,670 --> 00:07:47,680
+of the websites that they visit. This
+ 
+
+427
+00:07:47,680 --> 00:07:49,510
+of the websites that they visit. This
+makes it very easy for an attacker to
+
+428
+00:07:49,510 --> 00:07:49,520
+makes it very easy for an attacker to
+ 
+
+429
+00:07:49,520 --> 00:07:51,909
+makes it very easy for an attacker to
+breach a password on one site and then
+
+430
+00:07:51,909 --> 00:07:51,919
+breach a password on one site and then
+ 
+
+431
+00:07:51,919 --> 00:07:54,390
+breach a password on one site and then
+use that password on many other sites to
+
+432
+00:07:54,390 --> 00:07:54,400
+use that password on many other sites to
+ 
+
+433
+00:07:54,400 --> 00:07:56,710
+use that password on many other sites to
+gain access to your accounts. The best
+
+434
+00:07:56,710 --> 00:07:56,720
+gain access to your accounts. The best
+ 
+
+435
+00:07:56,720 --> 00:07:58,629
+gain access to your accounts. The best
+practice would be to use a different
+
+436
+00:07:58,629 --> 00:07:58,639
+practice would be to use a different
+ 
+
+437
+00:07:58,639 --> 00:08:00,869
+practice would be to use a different
+password for different sites. This way,
+
+438
+00:08:00,869 --> 00:08:00,879
+password for different sites. This way,
+ 
+
+439
+00:08:00,879 --> 00:08:02,790
+password for different sites. This way,
+if an attacker does gain access to a
+
+440
+00:08:02,790 --> 00:08:02,800
+if an attacker does gain access to a
+ 
+
+441
+00:08:02,800 --> 00:08:04,950
+if an attacker does gain access to a
+password on one site, they would not be
+
+442
+00:08:04,950 --> 00:08:04,960
+password on one site, they would not be
+ 
+
+443
+00:08:04,960 --> 00:08:07,110
+password on one site, they would not be
+able to use that password on any other
+
+444
+00:08:07,110 --> 00:08:07,120
+able to use that password on any other
+ 
+
+445
+00:08:07,120 --> 00:08:09,029
+able to use that password on any other
+site. The problem with this, of course,
+
+446
+00:08:09,029 --> 00:08:09,039
+site. The problem with this, of course,
+ 
+
+447
+00:08:09,039 --> 00:08:11,029
+site. The problem with this, of course,
+is now you have to remember many more
+
+448
+00:08:11,029 --> 00:08:11,039
+is now you have to remember many more
+ 
+
+449
+00:08:11,039 --> 00:08:13,430
+is now you have to remember many more
+passwords on many other sites. And
+
+450
+00:08:13,430 --> 00:08:13,440
+passwords on many other sites. And
+ 
+
+451
+00:08:13,440 --> 00:08:15,589
+passwords on many other sites. And
+instead of writing these down, we might
+
+452
+00:08:15,589 --> 00:08:15,599
+instead of writing these down, we might
+ 
+
+453
+00:08:15,599 --> 00:08:17,270
+instead of writing these down, we might
+instead want to put all of these
+
+454
+00:08:17,270 --> 00:08:17,280
+instead want to put all of these
+ 
+
+455
+00:08:17,280 --> 00:08:19,189
+instead want to put all of these
+different passwords into a password
+
+456
+00:08:19,189 --> 00:08:19,199
+different passwords into a password
+ 
+
+457
+00:08:19,199 --> 00:08:21,990
+different passwords into a password
+vault. This password manager contains
+
+458
+00:08:21,990 --> 00:08:22,000
+vault. This password manager contains
+ 
+
+459
+00:08:22,000 --> 00:08:23,830
+vault. This password manager contains
+all of your emails, all of your
+
+460
+00:08:23,830 --> 00:08:23,840
+all of your emails, all of your
+ 
+
+461
+00:08:23,840 --> 00:08:25,830
+all of your emails, all of your
+passwords, and any other important
+
+462
+00:08:25,830 --> 00:08:25,840
+passwords, and any other important
+ 
+
+463
+00:08:25,840 --> 00:08:27,909
+passwords, and any other important
+information that you use to log in to
+
+464
+00:08:27,909 --> 00:08:27,919
+information that you use to log in to
+ 
+
+465
+00:08:27,919 --> 00:08:30,550
+information that you use to log in to
+multiple websites. This is obviously an
+
+466
+00:08:30,550 --> 00:08:30,560
+multiple websites. This is obviously an
+ 
+
+467
+00:08:30,560 --> 00:08:32,550
+multiple websites. This is obviously an
+important database, so it's usually
+
+468
+00:08:32,550 --> 00:08:32,560
+important database, so it's usually
+ 
+
+469
+00:08:32,560 --> 00:08:34,790
+important database, so it's usually
+encrypted and protected with a very
+
+470
+00:08:34,790 --> 00:08:34,800
+encrypted and protected with a very
+ 
+
+471
+00:08:34,800 --> 00:08:37,029
+encrypted and protected with a very
+strong password. You might find that
+
+472
+00:08:37,029 --> 00:08:37,039
+strong password. You might find that
+ 
+
+473
+00:08:37,039 --> 00:08:38,709
+strong password. You might find that
+this password management feature is
+
+474
+00:08:38,709 --> 00:08:38,719
+this password management feature is
+ 
+
+475
+00:08:38,719 --> 00:08:40,709
+this password management feature is
+built into the browser that you're using
+
+476
+00:08:40,709 --> 00:08:40,719
+built into the browser that you're using
+ 
+
+477
+00:08:40,719 --> 00:08:42,550
+built into the browser that you're using
+or it may be part of the operating
+
+478
+00:08:42,550 --> 00:08:42,560
+or it may be part of the operating
+ 
+
+479
+00:08:42,560 --> 00:08:44,550
+or it may be part of the operating
+system that you're currently using. And
+
+480
+00:08:44,550 --> 00:08:44,560
+system that you're currently using. And
+ 
+
+481
+00:08:44,560 --> 00:08:46,630
+system that you're currently using. And
+many organizations will have password
+
+482
+00:08:46,630 --> 00:08:46,640
+many organizations will have password
+ 
+
+483
+00:08:46,640 --> 00:08:48,870
+many organizations will have password
+managers used for everyone in the
+
+484
+00:08:48,870 --> 00:08:48,880
+managers used for everyone in the
+ 
+
+485
+00:08:48,880 --> 00:08:51,030
+managers used for everyone in the
+company so that they know that all of
+
+486
+00:08:51,030 --> 00:08:51,040
+company so that they know that all of
+ 
+
+487
+00:08:51,040 --> 00:08:53,269
+company so that they know that all of
+those passwords are secure, encrypted,
+
+488
+00:08:53,269 --> 00:08:53,279
+those passwords are secure, encrypted,
+ 
+
+489
+00:08:53,279 --> 00:08:55,190
+those passwords are secure, encrypted,
+and safe from anyone else gaining
+
+490
+00:08:55,190 --> 00:08:55,200
+and safe from anyone else gaining
+ 
+
+491
+00:08:55,200 --> 00:08:57,030
+and safe from anyone else gaining
+access.
+
+492
+00:08:57,030 --> 00:08:57,040
+access.
+ 
+
+493
+00:08:57,040 --> 00:08:59,430
+access.
+Here's a sample screen of a password
+
+494
+00:08:59,430 --> 00:08:59,440
+Here's a sample screen of a password
+ 
+
+495
+00:08:59,440 --> 00:09:01,350
+Here's a sample screen of a password
+manager that shows the different
+
+496
+00:09:01,350 --> 00:09:01,360
+manager that shows the different
+ 
+
+497
+00:09:01,360 --> 00:09:03,110
+manager that shows the different
+passwords that have been saved. This
+
+498
+00:09:03,110 --> 00:09:03,120
+passwords that have been saved. This
+ 
+
+499
+00:09:03,120 --> 00:09:06,389
+passwords that have been saved. This
+user has 292 saved passwords and you can
+
+500
+00:09:06,389 --> 00:09:06,399
+user has 292 saved passwords and you can
+ 
+
+501
+00:09:06,399 --> 00:09:09,190
+user has 292 saved passwords and you can
+see website one, website 2, website 3
+
+502
+00:09:09,190 --> 00:09:09,200
+see website one, website 2, website 3
+ 
+
+503
+00:09:09,200 --> 00:09:11,590
+see website one, website 2, website 3
+and so on. You can see the username that
+
+504
+00:09:11,590 --> 00:09:11,600
+and so on. You can see the username that
+ 
+
+505
+00:09:11,600 --> 00:09:13,590
+and so on. You can see the username that
+was used to log in. On most of these,
+
+506
+00:09:13,590 --> 00:09:13,600
+was used to log in. On most of these,
+ 
+
+507
+00:09:13,600 --> 00:09:15,829
+was used to log in. On most of these,
+it's the user's email address and then
+
+508
+00:09:15,829 --> 00:09:15,839
+it's the user's email address and then
+ 
+
+509
+00:09:15,839 --> 00:09:17,590
+it's the user's email address and then
+there is a separate password that is
+
+510
+00:09:17,590 --> 00:09:17,600
+there is a separate password that is
+ 
+
+511
+00:09:17,600 --> 00:09:19,750
+there is a separate password that is
+stored for each one of these sites.
+
+512
+00:09:19,750 --> 00:09:19,760
+stored for each one of these sites.
+ 
+
+513
+00:09:19,760 --> 00:09:21,910
+stored for each one of these sites.
+These password managers can often create
+
+514
+00:09:21,910 --> 00:09:21,920
+These password managers can often create
+ 
+
+515
+00:09:21,920 --> 00:09:24,070
+These password managers can often create
+new passwords that are automatically
+
+516
+00:09:24,070 --> 00:09:24,080
+new passwords that are automatically
+ 
+
+517
+00:09:24,080 --> 00:09:26,550
+new passwords that are automatically
+defined as a certain strength. You can
+
+518
+00:09:26,550 --> 00:09:26,560
+defined as a certain strength. You can
+ 
+
+519
+00:09:26,560 --> 00:09:28,310
+defined as a certain strength. You can
+configure using numbers, letters,
+
+520
+00:09:28,310 --> 00:09:28,320
+configure using numbers, letters,
+ 
+
+521
+00:09:28,320 --> 00:09:30,470
+configure using numbers, letters,
+symbols, and you can have that password
+
+522
+00:09:30,470 --> 00:09:30,480
+symbols, and you can have that password
+ 
+
+523
+00:09:30,480 --> 00:09:32,310
+symbols, and you can have that password
+automatically associated with a
+
+524
+00:09:32,310 --> 00:09:32,320
+automatically associated with a
+ 
+
+525
+00:09:32,320 --> 00:09:34,790
+automatically associated with a
+particular site.
+
+526
+00:09:34,790 --> 00:09:34,800
+particular site.
+ 
+
+527
+00:09:34,800 --> 00:09:37,430
+particular site.
+Most organizations recognize that a good
+
+528
+00:09:37,430 --> 00:09:37,440
+Most organizations recognize that a good
+ 
+
+529
+00:09:37,440 --> 00:09:39,910
+Most organizations recognize that a good
+security best practice is to only assign
+
+530
+00:09:39,910 --> 00:09:39,920
+security best practice is to only assign
+ 
+
+531
+00:09:39,920 --> 00:09:41,430
+security best practice is to only assign
+rights and permissions that are
+
+532
+00:09:41,430 --> 00:09:41,440
+rights and permissions that are
+ 
+
+533
+00:09:41,440 --> 00:09:43,829
+rights and permissions that are
+necessary for someone to do their job.
+
+534
+00:09:43,829 --> 00:09:43,839
+necessary for someone to do their job.
+ 
+
+535
+00:09:43,839 --> 00:09:45,110
+necessary for someone to do their job.
+You would not want to assign
+
+536
+00:09:45,110 --> 00:09:45,120
+You would not want to assign
+ 
+
+537
+00:09:45,120 --> 00:09:47,430
+You would not want to assign
+administrator rights to everyone in the
+
+538
+00:09:47,430 --> 00:09:47,440
+administrator rights to everyone in the
+ 
+
+539
+00:09:47,440 --> 00:09:49,509
+administrator rights to everyone in the
+organization. This would effectively
+
+540
+00:09:49,509 --> 00:09:49,519
+organization. This would effectively
+ 
+
+541
+00:09:49,519 --> 00:09:52,230
+organization. This would effectively
+grant everyone access to all data in the
+
+542
+00:09:52,230 --> 00:09:52,240
+grant everyone access to all data in the
+ 
+
+543
+00:09:52,240 --> 00:09:54,230
+grant everyone access to all data in the
+company and it would also make it much
+
+544
+00:09:54,230 --> 00:09:54,240
+company and it would also make it much
+ 
+
+545
+00:09:54,240 --> 00:09:56,470
+company and it would also make it much
+easier for an attacker to take advantage
+
+546
+00:09:56,470 --> 00:09:56,480
+easier for an attacker to take advantage
+ 
+
+547
+00:09:56,480 --> 00:09:58,949
+easier for an attacker to take advantage
+of the access that you've created.
+
+548
+00:09:58,949 --> 00:09:58,959
+of the access that you've created.
+ 
+
+549
+00:09:58,959 --> 00:10:01,110
+of the access that you've created.
+Instead, most organizations will create
+
+550
+00:10:01,110 --> 00:10:01,120
+Instead, most organizations will create
+ 
+
+551
+00:10:01,120 --> 00:10:02,870
+Instead, most organizations will create
+different groups and they'll assign
+
+552
+00:10:02,870 --> 00:10:02,880
+different groups and they'll assign
+ 
+
+553
+00:10:02,880 --> 00:10:04,790
+different groups and they'll assign
+security rights and permissions to those
+
+554
+00:10:04,790 --> 00:10:04,800
+security rights and permissions to those
+ 
+
+555
+00:10:04,800 --> 00:10:06,710
+security rights and permissions to those
+groups. To use those groups, you would
+
+556
+00:10:06,710 --> 00:10:06,720
+groups. To use those groups, you would
+ 
+
+557
+00:10:06,720 --> 00:10:09,350
+groups. To use those groups, you would
+assign a user into the group and every
+
+558
+00:10:09,350 --> 00:10:09,360
+assign a user into the group and every
+ 
+
+559
+00:10:09,360 --> 00:10:11,350
+assign a user into the group and every
+user you assigned into the group would
+
+560
+00:10:11,350 --> 00:10:11,360
+user you assigned into the group would
+ 
+
+561
+00:10:11,360 --> 00:10:12,870
+user you assigned into the group would
+take the rights and permissions
+
+562
+00:10:12,870 --> 00:10:12,880
+take the rights and permissions
+ 
+
+563
+00:10:12,880 --> 00:10:15,190
+take the rights and permissions
+associated with that group. This makes
+
+564
+00:10:15,190 --> 00:10:15,200
+associated with that group. This makes
+ 
+
+565
+00:10:15,200 --> 00:10:17,030
+associated with that group. This makes
+it very easy to have the right set of
+
+566
+00:10:17,030 --> 00:10:17,040
+it very easy to have the right set of
+ 
+
+567
+00:10:17,040 --> 00:10:19,190
+it very easy to have the right set of
+permissions for the right set of tasks
+
+568
+00:10:19,190 --> 00:10:19,200
+permissions for the right set of tasks
+ 
+
+569
+00:10:19,200 --> 00:10:21,509
+permissions for the right set of tasks
+and it also makes it very easy to scale
+
+570
+00:10:21,509 --> 00:10:21,519
+and it also makes it very easy to scale
+ 
+
+571
+00:10:21,519 --> 00:10:23,350
+and it also makes it very easy to scale
+as more and more people join the
+
+572
+00:10:23,350 --> 00:10:23,360
+as more and more people join the
+ 
+
+573
+00:10:23,360 --> 00:10:25,829
+as more and more people join the
+organization. Some companies will set
+
+574
+00:10:25,829 --> 00:10:25,839
+organization. Some companies will set
+ 
+
+575
+00:10:25,839 --> 00:10:27,910
+organization. Some companies will set
+login restrictions based on the time of
+
+576
+00:10:27,910 --> 00:10:27,920
+login restrictions based on the time of
+ 
+
+577
+00:10:27,920 --> 00:10:29,990
+login restrictions based on the time of
+day. So if someone's trying to log in
+
+578
+00:10:29,990 --> 00:10:30,000
+day. So if someone's trying to log in
+ 
+
+579
+00:10:30,000 --> 00:10:32,550
+day. So if someone's trying to log in
+during the hours of 8 and 6, the system
+
+580
+00:10:32,550 --> 00:10:32,560
+during the hours of 8 and 6, the system
+ 
+
+581
+00:10:32,560 --> 00:10:34,630
+during the hours of 8 and 6, the system
+will allow that. But if someone tries to
+
+582
+00:10:34,630 --> 00:10:34,640
+will allow that. But if someone tries to
+ 
+
+583
+00:10:34,640 --> 00:10:36,790
+will allow that. But if someone tries to
+log in at 3:00 in the morning, your
+
+584
+00:10:36,790 --> 00:10:36,800
+log in at 3:00 in the morning, your
+ 
+
+585
+00:10:36,800 --> 00:10:38,870
+log in at 3:00 in the morning, your
+system may not allow that because a
+
+586
+00:10:38,870 --> 00:10:38,880
+system may not allow that because a
+ 
+
+587
+00:10:38,880 --> 00:10:40,790
+system may not allow that because a
+login restriction has been previously
+
+588
+00:10:40,790 --> 00:10:40,800
+login restriction has been previously
+ 
+
+589
+00:10:40,800 --> 00:10:42,550
+login restriction has been previously
+configured.
+
+590
+00:10:42,550 --> 00:10:42,560
+configured.
+ 
+
+591
+00:10:42,560 --> 00:10:44,949
+configured.
+Many operating systems will include a
+
+592
+00:10:44,949 --> 00:10:44,959
+Many operating systems will include a
+ 
+
+593
+00:10:44,959 --> 00:10:47,110
+Many operating systems will include a
+set of default accounts. Some of these
+
+594
+00:10:47,110 --> 00:10:47,120
+set of default accounts. Some of these
+ 
+
+595
+00:10:47,120 --> 00:10:49,350
+set of default accounts. Some of these
+accounts are used for system purposes
+
+596
+00:10:49,350 --> 00:10:49,360
+accounts are used for system purposes
+ 
+
+597
+00:10:49,360 --> 00:10:51,030
+accounts are used for system purposes
+and other accounts are used for
+
+598
+00:10:51,030 --> 00:10:51,040
+and other accounts are used for
+ 
+
+599
+00:10:51,040 --> 00:10:53,430
+and other accounts are used for
+individuals to be able to log in. But
+
+600
+00:10:53,430 --> 00:10:53,440
+individuals to be able to log in. But
+ 
+
+601
+00:10:53,440 --> 00:10:55,509
+individuals to be able to log in. But
+not all of these accounts are necessary
+
+602
+00:10:55,509 --> 00:10:55,519
+not all of these accounts are necessary
+ 
+
+603
+00:10:55,519 --> 00:10:57,350
+not all of these accounts are necessary
+to run. And in fact, many of these
+
+604
+00:10:57,350 --> 00:10:57,360
+to run. And in fact, many of these
+ 
+
+605
+00:10:57,360 --> 00:10:58,870
+to run. And in fact, many of these
+accounts should be turned off by
+
+606
+00:10:58,870 --> 00:10:58,880
+accounts should be turned off by
+ 
+
+607
+00:10:58,880 --> 00:11:01,030
+accounts should be turned off by
+default. For example, you might want to
+
+608
+00:11:01,030 --> 00:11:01,040
+default. For example, you might want to
+ 
+
+609
+00:11:01,040 --> 00:11:03,110
+default. For example, you might want to
+disable the guest account on your system
+
+610
+00:11:03,110 --> 00:11:03,120
+disable the guest account on your system
+ 
+
+611
+00:11:03,120 --> 00:11:05,590
+disable the guest account on your system
+because it might be very unusual for a
+
+612
+00:11:05,590 --> 00:11:05,600
+because it might be very unusual for a
+ 
+
+613
+00:11:05,600 --> 00:11:08,230
+because it might be very unusual for a
+guest to log into your computer. And if
+
+614
+00:11:08,230 --> 00:11:08,240
+guest to log into your computer. And if
+ 
+
+615
+00:11:08,240 --> 00:11:09,670
+guest to log into your computer. And if
+some of these accounts are system
+
+616
+00:11:09,670 --> 00:11:09,680
+some of these accounts are system
+ 
+
+617
+00:11:09,680 --> 00:11:11,910
+some of these accounts are system
+accounts, you might want to disable the
+
+618
+00:11:11,910 --> 00:11:11,920
+accounts, you might want to disable the
+ 
+
+619
+00:11:11,920 --> 00:11:13,910
+accounts, you might want to disable the
+capability for that account to log in
+
+620
+00:11:13,910 --> 00:11:13,920
+capability for that account to log in
+ 
+
+621
+00:11:13,920 --> 00:11:16,230
+capability for that account to log in
+interactively. This means no one would
+
+622
+00:11:16,230 --> 00:11:16,240
+interactively. This means no one would
+ 
+
+623
+00:11:16,240 --> 00:11:18,310
+interactively. This means no one would
+be able to sit at your desk, type in the
+
+624
+00:11:18,310 --> 00:11:18,320
+be able to sit at your desk, type in the
+ 
+
+625
+00:11:18,320 --> 00:11:20,069
+be able to sit at your desk, type in the
+username and password of a system
+
+626
+00:11:20,069 --> 00:11:20,079
+username and password of a system
+ 
+
+627
+00:11:20,079 --> 00:11:22,230
+username and password of a system
+account, and be able to then gain access
+
+628
+00:11:22,230 --> 00:11:22,240
+account, and be able to then gain access
+ 
+
+629
+00:11:22,240 --> 00:11:24,470
+account, and be able to then gain access
+to your desktop and your file system.
+
+630
+00:11:24,470 --> 00:11:24,480
+to your desktop and your file system.
+ 
+
+631
+00:11:24,480 --> 00:11:25,990
+to your desktop and your file system.
+And if you've ever installed a new
+
+632
+00:11:25,990 --> 00:11:26,000
+And if you've ever installed a new
+ 
+
+633
+00:11:26,000 --> 00:11:28,230
+And if you've ever installed a new
+firewall, a new switch, or new router,
+
+634
+00:11:28,230 --> 00:11:28,240
+firewall, a new switch, or new router,
+ 
+
+635
+00:11:28,240 --> 00:11:29,829
+firewall, a new switch, or new router,
+you may have noticed that the default
+
+636
+00:11:29,829 --> 00:11:29,839
+you may have noticed that the default
+ 
+
+637
+00:11:29,839 --> 00:11:32,710
+you may have noticed that the default
+user login is probably admin with a
+
+638
+00:11:32,710 --> 00:11:32,720
+user login is probably admin with a
+ 
+
+639
+00:11:32,720 --> 00:11:35,750
+user login is probably admin with a
+password of admin. This is obviously a
+
+640
+00:11:35,750 --> 00:11:35,760
+password of admin. This is obviously a
+ 
+
+641
+00:11:35,760 --> 00:11:37,670
+password of admin. This is obviously a
+set of default credentials that need to
+
+642
+00:11:37,670 --> 00:11:37,680
+set of default credentials that need to
+ 
+
+643
+00:11:37,680 --> 00:11:39,590
+set of default credentials that need to
+be changed as soon as possible to
+
+644
+00:11:39,590 --> 00:11:39,600
+be changed as soon as possible to
+ 
+
+645
+00:11:39,600 --> 00:11:41,670
+be changed as soon as possible to
+prevent someone else from gaining access
+
+646
+00:11:41,670 --> 00:11:41,680
+prevent someone else from gaining access
+ 
+
+647
+00:11:41,680 --> 00:11:43,910
+prevent someone else from gaining access
+to that system.
+
+648
+00:11:43,910 --> 00:11:43,920
+to that system.
+ 
+
+649
+00:11:43,920 --> 00:11:45,750
+to that system.
+If someone wanted to find your password
+
+650
+00:11:45,750 --> 00:11:45,760
+If someone wanted to find your password
+ 
+
+651
+00:11:45,760 --> 00:11:47,670
+If someone wanted to find your password
+using a brute force attack, they could
+
+652
+00:11:47,670 --> 00:11:47,680
+using a brute force attack, they could
+ 
+
+653
+00:11:47,680 --> 00:11:49,350
+using a brute force attack, they could
+try an online attack where they're
+
+654
+00:11:49,350 --> 00:11:49,360
+try an online attack where they're
+ 
+
+655
+00:11:49,360 --> 00:11:51,190
+try an online attack where they're
+presented with a login screen. They
+
+656
+00:11:51,190 --> 00:11:51,200
+presented with a login screen. They
+ 
+
+657
+00:11:51,200 --> 00:11:53,190
+presented with a login screen. They
+would type in your username and then try
+
+658
+00:11:53,190 --> 00:11:53,200
+would type in your username and then try
+ 
+
+659
+00:11:53,200 --> 00:11:54,949
+would type in your username and then try
+a password. And when that one didn't
+
+660
+00:11:54,949 --> 00:11:54,959
+a password. And when that one didn't
+ 
+
+661
+00:11:54,959 --> 00:11:56,630
+a password. And when that one didn't
+work, they would try logging in again
+
+662
+00:11:56,630 --> 00:11:56,640
+work, they would try logging in again
+ 
+
+663
+00:11:56,640 --> 00:11:58,310
+work, they would try logging in again
+with your username and a different
+
+664
+00:11:58,310 --> 00:11:58,320
+with your username and a different
+ 
+
+665
+00:11:58,320 --> 00:12:00,550
+with your username and a different
+password. If that one doesn't work, they
+
+666
+00:12:00,550 --> 00:12:00,560
+password. If that one doesn't work, they
+ 
+
+667
+00:12:00,560 --> 00:12:02,389
+password. If that one doesn't work, they
+try again with your username and a third
+
+668
+00:12:02,389 --> 00:12:02,399
+try again with your username and a third
+ 
+
+669
+00:12:02,399 --> 00:12:04,230
+try again with your username and a third
+password. and they keep trying this
+
+670
+00:12:04,230 --> 00:12:04,240
+password. and they keep trying this
+ 
+
+671
+00:12:04,240 --> 00:12:05,990
+password. and they keep trying this
+process until hopefully they're able to
+
+672
+00:12:05,990 --> 00:12:06,000
+process until hopefully they're able to
+ 
+
+673
+00:12:06,000 --> 00:12:07,990
+process until hopefully they're able to
+brute force your account. In most
+
+674
+00:12:07,990 --> 00:12:08,000
+brute force your account. In most
+ 
+
+675
+00:12:08,000 --> 00:12:10,150
+brute force your account. In most
+operating systems, we're able to stop
+
+676
+00:12:10,150 --> 00:12:10,160
+operating systems, we're able to stop
+ 
+
+677
+00:12:10,160 --> 00:12:13,030
+operating systems, we're able to stop
+this type of online brute force attack
+
+678
+00:12:13,030 --> 00:12:13,040
+this type of online brute force attack
+ 
+
+679
+00:12:13,040 --> 00:12:15,190
+this type of online brute force attack
+by setting thresholds for failed
+
+680
+00:12:15,190 --> 00:12:15,200
+by setting thresholds for failed
+ 
+
+681
+00:12:15,200 --> 00:12:17,590
+by setting thresholds for failed
+passwords. If someone tries to log in
+
+682
+00:12:17,590 --> 00:12:17,600
+passwords. If someone tries to log in
+ 
+
+683
+00:12:17,600 --> 00:12:19,509
+passwords. If someone tries to log in
+more than five times with the wrong
+
+684
+00:12:19,509 --> 00:12:19,519
+more than five times with the wrong
+ 
+
+685
+00:12:19,519 --> 00:12:21,750
+more than five times with the wrong
+password, we can institute a series of
+
+686
+00:12:21,750 --> 00:12:21,760
+password, we can institute a series of
+ 
+
+687
+00:12:21,760 --> 00:12:23,750
+password, we can institute a series of
+lockdowns that would prevent any other
+
+688
+00:12:23,750 --> 00:12:23,760
+lockdowns that would prevent any other
+ 
+
+689
+00:12:23,760 --> 00:12:26,230
+lockdowns that would prevent any other
+attempts. For example, Windows has a
+
+690
+00:12:26,230 --> 00:12:26,240
+attempts. For example, Windows has a
+ 
+
+691
+00:12:26,240 --> 00:12:28,550
+attempts. For example, Windows has a
+security policy that has a machine
+
+692
+00:12:28,550 --> 00:12:28,560
+security policy that has a machine
+ 
+
+693
+00:12:28,560 --> 00:12:30,710
+security policy that has a machine
+account lockout threshold. And if you
+
+694
+00:12:30,710 --> 00:12:30,720
+account lockout threshold. And if you
+ 
+
+695
+00:12:30,720 --> 00:12:32,550
+account lockout threshold. And if you
+were to look at the details of this,
+
+696
+00:12:32,550 --> 00:12:32,560
+were to look at the details of this,
+ 
+
+697
+00:12:32,560 --> 00:12:34,310
+were to look at the details of this,
+after a certain number of failed login
+
+698
+00:12:34,310 --> 00:12:34,320
+after a certain number of failed login
+ 
+
+699
+00:12:34,320 --> 00:12:37,110
+after a certain number of failed login
+attempts, the system reboots and when it
+
+700
+00:12:37,110 --> 00:12:37,120
+attempts, the system reboots and when it
+ 
+
+701
+00:12:37,120 --> 00:12:39,190
+attempts, the system reboots and when it
+reboots, you have to provide the Bit
+
+702
+00:12:39,190 --> 00:12:39,200
+reboots, you have to provide the Bit
+ 
+
+703
+00:12:39,200 --> 00:12:41,190
+reboots, you have to provide the Bit
+Locker credentials to gain access to
+
+704
+00:12:41,190 --> 00:12:41,200
+Locker credentials to gain access to
+ 
+
+705
+00:12:41,200 --> 00:12:43,670
+Locker credentials to gain access to
+that computer again. We might also want
+
+706
+00:12:43,670 --> 00:12:43,680
+that computer again. We might also want
+ 
+
+707
+00:12:43,680 --> 00:12:45,269
+that computer again. We might also want
+to be sure that we're using some of
+
+708
+00:12:45,269 --> 00:12:45,279
+to be sure that we're using some of
+ 
+
+709
+00:12:45,279 --> 00:12:47,350
+to be sure that we're using some of
+these policies to automatically lock the
+
+710
+00:12:47,350 --> 00:12:47,360
+these policies to automatically lock the
+ 
+
+711
+00:12:47,360 --> 00:12:49,750
+these policies to automatically lock the
+system after inactivity or if it's able
+
+712
+00:12:49,750 --> 00:12:49,760
+system after inactivity or if it's able
+ 
+
+713
+00:12:49,760 --> 00:12:51,509
+system after inactivity or if it's able
+to tell that you've walked away, it
+
+714
+00:12:51,509 --> 00:12:51,519
+to tell that you've walked away, it
+ 
+
+715
+00:12:51,519 --> 00:12:52,949
+to tell that you've walked away, it
+might be able to lock the system
+
+716
+00:12:52,949 --> 00:12:52,959
+might be able to lock the system
+ 
+
+717
+00:12:52,959 --> 00:12:55,190
+might be able to lock the system
+automatically. And when you're initially
+
+718
+00:12:55,190 --> 00:12:55,200
+automatically. And when you're initially
+ 
+
+719
+00:12:55,200 --> 00:12:57,350
+automatically. And when you're initially
+creating an account in your system, you
+
+720
+00:12:57,350 --> 00:12:57,360
+creating an account in your system, you
+ 
+
+721
+00:12:57,360 --> 00:12:59,190
+creating an account in your system, you
+might want to set an expiration date,
+
+722
+00:12:59,190 --> 00:12:59,200
+might want to set an expiration date,
+ 
+
+723
+00:12:59,200 --> 00:13:00,870
+might want to set an expiration date,
+especially if this account will be used
+
+724
+00:13:00,870 --> 00:13:00,880
+especially if this account will be used
+ 
+
+725
+00:13:00,880 --> 00:13:03,350
+especially if this account will be used
+by a temporary worker or contractor
+
+726
+00:13:03,350 --> 00:13:03,360
+by a temporary worker or contractor
+ 
+
+727
+00:13:03,360 --> 00:13:05,670
+by a temporary worker or contractor
+who's only going to be using it for 30
+
+728
+00:13:05,670 --> 00:13:05,680
+who's only going to be using it for 30
+ 
+
+729
+00:13:05,680 --> 00:13:07,509
+who's only going to be using it for 30
+days.
+
+730
+00:13:07,509 --> 00:13:07,519
+days.
+ 
+
+731
+00:13:07,519 --> 00:13:09,910
+days.
+On very old versions of Windows, this
+
+732
+00:13:09,910 --> 00:13:09,920
+On very old versions of Windows, this
+ 
+
+733
+00:13:09,920 --> 00:13:12,230
+On very old versions of Windows, this
+would be versions in Windows Vista and
+
+734
+00:13:12,230 --> 00:13:12,240
+would be versions in Windows Vista and
+ 
+
+735
+00:13:12,240 --> 00:13:14,389
+would be versions in Windows Vista and
+earlier, there was a feature known as
+
+736
+00:13:14,389 --> 00:13:14,399
+earlier, there was a feature known as
+ 
+
+737
+00:13:14,399 --> 00:13:17,590
+earlier, there was a feature known as
+AutoRun. Auto run worked by looking for
+
+738
+00:13:17,590 --> 00:13:17,600
+AutoRun. Auto run worked by looking for
+ 
+
+739
+00:13:17,600 --> 00:13:19,350
+AutoRun. Auto run worked by looking for
+special files that may have been added
+
+740
+00:13:19,350 --> 00:13:19,360
+special files that may have been added
+ 
+
+741
+00:13:19,360 --> 00:13:22,389
+special files that may have been added
+to media on a removable drive. So if you
+
+742
+00:13:22,389 --> 00:13:22,399
+to media on a removable drive. So if you
+ 
+
+743
+00:13:22,399 --> 00:13:25,269
+to media on a removable drive. So if you
+plugged in a USB drive, it looked for an
+
+744
+00:13:25,269 --> 00:13:25,279
+plugged in a USB drive, it looked for an
+ 
+
+745
+00:13:25,279 --> 00:13:27,269
+plugged in a USB drive, it looked for an
+autorun file and began running
+
+746
+00:13:27,269 --> 00:13:27,279
+autorun file and began running
+ 
+
+747
+00:13:27,279 --> 00:13:30,470
+autorun file and began running
+executable files from that USB drive.
+
+748
+00:13:30,470 --> 00:13:30,480
+executable files from that USB drive.
+ 
+
+749
+00:13:30,480 --> 00:13:32,069
+executable files from that USB drive.
+This is obviously something that we
+
+750
+00:13:32,069 --> 00:13:32,079
+This is obviously something that we
+ 
+
+751
+00:13:32,079 --> 00:13:33,750
+This is obviously something that we
+would not want to happen in today's
+
+752
+00:13:33,750 --> 00:13:33,760
+would not want to happen in today's
+ 
+
+753
+00:13:33,760 --> 00:13:36,150
+would not want to happen in today's
+security environments. And so auto run
+
+754
+00:13:36,150 --> 00:13:36,160
+security environments. And so auto run
+ 
+
+755
+00:13:36,160 --> 00:13:38,230
+security environments. And so auto run
+has not been part of Windows since
+
+756
+00:13:38,230 --> 00:13:38,240
+has not been part of Windows since
+ 
+
+757
+00:13:38,240 --> 00:13:41,190
+has not been part of Windows since
+Windows Vista. One feature that still is
+
+758
+00:13:41,190 --> 00:13:41,200
+Windows Vista. One feature that still is
+ 
+
+759
+00:13:41,200 --> 00:13:43,910
+Windows Vista. One feature that still is
+in Windows is autoplay. This is in the
+
+760
+00:13:43,910 --> 00:13:43,920
+in Windows is autoplay. This is in the
+ 
+
+761
+00:13:43,920 --> 00:13:45,590
+in Windows is autoplay. This is in the
+settings app under Bluetooth and
+
+762
+00:13:45,590 --> 00:13:45,600
+settings app under Bluetooth and
+ 
+
+763
+00:13:45,600 --> 00:13:47,509
+settings app under Bluetooth and
+devices. You'll see an option for
+
+764
+00:13:47,509 --> 00:13:47,519
+devices. You'll see an option for
+ 
+
+765
+00:13:47,519 --> 00:13:50,230
+devices. You'll see an option for
+autoplay. Unlike auto run that focused
+
+766
+00:13:50,230 --> 00:13:50,240
+autoplay. Unlike auto run that focused
+ 
+
+767
+00:13:50,240 --> 00:13:52,870
+autoplay. Unlike auto run that focused
+on running executables, autoplay focuses
+
+768
+00:13:52,870 --> 00:13:52,880
+on running executables, autoplay focuses
+ 
+
+769
+00:13:52,880 --> 00:13:55,030
+on running executables, autoplay focuses
+on running media. So this might be
+
+770
+00:13:55,030 --> 00:13:55,040
+on running media. So this might be
+ 
+
+771
+00:13:55,040 --> 00:13:57,509
+on running media. So this might be
+movies, music or images. That's
+
+772
+00:13:57,509 --> 00:13:57,519
+movies, music or images. That's
+ 
+
+773
+00:13:57,519 --> 00:13:59,430
+movies, music or images. That's
+certainly a much lower security risk,
+
+774
+00:13:59,430 --> 00:13:59,440
+certainly a much lower security risk,
+ 
+
+775
+00:13:59,440 --> 00:14:01,590
+certainly a much lower security risk,
+but you might still want to enable or
+
+776
+00:14:01,590 --> 00:14:01,600
+but you might still want to enable or
+ 
+
+777
+00:14:01,600 --> 00:14:03,430
+but you might still want to enable or
+disable that feature. You can find it
+
+778
+00:14:03,430 --> 00:14:03,440
+disable that feature. You can find it
+ 
+
+779
+00:14:03,440 --> 00:14:05,750
+disable that feature. You can find it
+under settings, Bluetooth and devices,
+
+780
+00:14:05,750 --> 00:14:05,760
+under settings, Bluetooth and devices,
+ 
+
+781
+00:14:05,760 --> 00:14:08,389
+under settings, Bluetooth and devices,
+and autoplay. Under the autoplay
+
+782
+00:14:08,389 --> 00:14:08,399
+and autoplay. Under the autoplay
+ 
+
+783
+00:14:08,399 --> 00:14:09,990
+and autoplay. Under the autoplay
+options, you can choose to take no
+
+784
+00:14:09,990 --> 00:14:10,000
+options, you can choose to take no
+ 
+
+785
+00:14:10,000 --> 00:14:12,230
+options, you can choose to take no
+action when that media is connected. You
+
+786
+00:14:12,230 --> 00:14:12,240
+action when that media is connected. You
+ 
+
+787
+00:14:12,240 --> 00:14:13,910
+action when that media is connected. You
+can open the folder to view the files
+
+788
+00:14:13,910 --> 00:14:13,920
+can open the folder to view the files
+ 
+
+789
+00:14:13,920 --> 00:14:16,069
+can open the folder to view the files
+using File Explorer, or you can have the
+
+790
+00:14:16,069 --> 00:14:16,079
+using File Explorer, or you can have the
+ 
+
+791
+00:14:16,079 --> 00:14:17,990
+using File Explorer, or you can have the
+system ask you every time you plug in
+
+792
+00:14:17,990 --> 00:14:18,000
+system ask you every time you plug in
+ 
+
+793
+00:14:18,000 --> 00:14:20,150
+system ask you every time you plug in
+that media.
+
+794
+00:14:20,150 --> 00:14:20,160
+that media.
+ 
+
+795
+00:14:20,160 --> 00:14:21,910
+that media.
+You're probably very familiar with the
+
+796
+00:14:21,910 --> 00:14:21,920
+You're probably very familiar with the
+ 
+
+797
+00:14:21,920 --> 00:14:23,829
+You're probably very familiar with the
+applications you use on your Windows
+
+798
+00:14:23,829 --> 00:14:23,839
+applications you use on your Windows
+ 
+
+799
+00:14:23,839 --> 00:14:26,150
+applications you use on your Windows
+desktop, but there's also a number of
+
+800
+00:14:26,150 --> 00:14:26,160
+desktop, but there's also a number of
+ 
+
+801
+00:14:26,160 --> 00:14:27,910
+desktop, but there's also a number of
+applications that are running behind the
+
+802
+00:14:27,910 --> 00:14:27,920
+applications that are running behind the
+ 
+
+803
+00:14:27,920 --> 00:14:30,230
+applications that are running behind the
+scenes that you never see. These are
+
+804
+00:14:30,230 --> 00:14:30,240
+scenes that you never see. These are
+ 
+
+805
+00:14:30,240 --> 00:14:32,310
+scenes that you never see. These are
+Windows services and they are important
+
+806
+00:14:32,310 --> 00:14:32,320
+Windows services and they are important
+ 
+
+807
+00:14:32,320 --> 00:14:33,990
+Windows services and they are important
+tasks that keep our operating system
+
+808
+00:14:33,990 --> 00:14:34,000
+tasks that keep our operating system
+ 
+
+809
+00:14:34,000 --> 00:14:36,069
+tasks that keep our operating system
+running. Sometimes these services are
+
+810
+00:14:36,069 --> 00:14:36,079
+running. Sometimes these services are
+ 
+
+811
+00:14:36,079 --> 00:14:37,750
+running. Sometimes these services are
+installed with other applications to
+
+812
+00:14:37,750 --> 00:14:37,760
+installed with other applications to
+ 
+
+813
+00:14:37,760 --> 00:14:39,670
+installed with other applications to
+provide support services for that
+
+814
+00:14:39,670 --> 00:14:39,680
+provide support services for that
+ 
+
+815
+00:14:39,680 --> 00:14:41,590
+provide support services for that
+particular app. The challenge, of
+
+816
+00:14:41,590 --> 00:14:41,600
+particular app. The challenge, of
+ 
+
+817
+00:14:41,600 --> 00:14:43,670
+particular app. The challenge, of
+course, is that any executable running
+
+818
+00:14:43,670 --> 00:14:43,680
+course, is that any executable running
+ 
+
+819
+00:14:43,680 --> 00:14:45,990
+course, is that any executable running
+on your system is a potential security
+
+820
+00:14:45,990 --> 00:14:46,000
+on your system is a potential security
+ 
+
+821
+00:14:46,000 --> 00:14:48,230
+on your system is a potential security
+threat. And these executables that are
+
+822
+00:14:48,230 --> 00:14:48,240
+threat. And these executables that are
+ 
+
+823
+00:14:48,240 --> 00:14:50,629
+threat. And these executables that are
+running as services are just as much a
+
+824
+00:14:50,629 --> 00:14:50,639
+running as services are just as much a
+ 
+
+825
+00:14:50,639 --> 00:14:52,389
+running as services are just as much a
+threat as applications that are running
+
+826
+00:14:52,389 --> 00:14:52,399
+threat as applications that are running
+ 
+
+827
+00:14:52,399 --> 00:14:54,790
+threat as applications that are running
+on your desktop. If you remove the
+
+828
+00:14:54,790 --> 00:14:54,800
+on your desktop. If you remove the
+ 
+
+829
+00:14:54,800 --> 00:14:56,629
+on your desktop. If you remove the
+service, you've removed the threat. So,
+
+830
+00:14:56,629 --> 00:14:56,639
+service, you've removed the threat. So,
+ 
+
+831
+00:14:56,639 --> 00:14:58,069
+service, you've removed the threat. So,
+as a best practice, you might want to
+
+832
+00:14:58,069 --> 00:14:58,079
+as a best practice, you might want to
+ 
+
+833
+00:14:58,079 --> 00:14:59,670
+as a best practice, you might want to
+look at the services running on your
+
+834
+00:14:59,670 --> 00:14:59,680
+look at the services running on your
+ 
+
+835
+00:14:59,680 --> 00:15:01,430
+look at the services running on your
+system, and if you see any that you're
+
+836
+00:15:01,430 --> 00:15:01,440
+system, and if you see any that you're
+ 
+
+837
+00:15:01,440 --> 00:15:03,269
+system, and if you see any that you're
+not using, you might want to disable
+
+838
+00:15:03,269 --> 00:15:03,279
+not using, you might want to disable
+ 
+
+839
+00:15:03,279 --> 00:15:06,279
+not using, you might want to disable
+those.
+

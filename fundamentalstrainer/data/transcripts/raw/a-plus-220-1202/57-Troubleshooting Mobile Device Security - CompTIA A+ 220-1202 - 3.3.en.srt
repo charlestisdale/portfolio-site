@@ -1,0 +1,3415 @@
+1
+00:00:02,000 --> 00:00:04,070
+
+One of the reasons we use centralized
+
+2
+00:00:04,070 --> 00:00:04,080
+One of the reasons we use centralized
+ 
+
+3
+00:00:04,080 --> 00:00:06,550
+One of the reasons we use centralized
+application stores for downloading our
+
+4
+00:00:06,550 --> 00:00:06,560
+application stores for downloading our
+ 
+
+5
+00:00:06,560 --> 00:00:08,549
+application stores for downloading our
+applications is that we can trust the
+
+6
+00:00:08,549 --> 00:00:08,559
+applications is that we can trust the
+ 
+
+7
+00:00:08,559 --> 00:00:11,030
+applications is that we can trust the
+software that's installed on that store.
+
+8
+00:00:11,030 --> 00:00:11,040
+software that's installed on that store.
+ 
+
+9
+00:00:11,040 --> 00:00:12,709
+software that's installed on that store.
+If we install an application from a
+
+10
+00:00:12,709 --> 00:00:12,719
+If we install an application from a
+ 
+
+11
+00:00:12,719 --> 00:00:14,709
+If we install an application from a
+third party website, it's possible that
+
+12
+00:00:14,709 --> 00:00:14,719
+third party website, it's possible that
+ 
+
+13
+00:00:14,719 --> 00:00:17,189
+third party website, it's possible that
+that app could contain malware. And once
+
+14
+00:00:17,189 --> 00:00:17,199
+that app could contain malware. And once
+ 
+
+15
+00:00:17,199 --> 00:00:19,269
+that app could contain malware. And once
+malware gets on your mobile device, it
+
+16
+00:00:19,269 --> 00:00:19,279
+malware gets on your mobile device, it
+ 
+
+17
+00:00:19,279 --> 00:00:21,349
+malware gets on your mobile device, it
+does have access to quite a bit of data.
+
+18
+00:00:21,349 --> 00:00:21,359
+does have access to quite a bit of data.
+ 
+
+19
+00:00:21,359 --> 00:00:23,189
+does have access to quite a bit of data.
+That's why a good best practice is to
+
+20
+00:00:23,189 --> 00:00:23,199
+That's why a good best practice is to
+ 
+
+21
+00:00:23,199 --> 00:00:26,870
+That's why a good best practice is to
+not install APK files onto your Android
+
+22
+00:00:26,870 --> 00:00:26,880
+not install APK files onto your Android
+ 
+
+23
+00:00:26,880 --> 00:00:29,589
+not install APK files onto your Android
+device. These are Android package kits
+
+24
+00:00:29,589 --> 00:00:29,599
+device. These are Android package kits
+ 
+
+25
+00:00:29,599 --> 00:00:32,069
+device. These are Android package kits
+that contain the app itself. And if
+
+26
+00:00:32,069 --> 00:00:32,079
+that contain the app itself. And if
+ 
+
+27
+00:00:32,079 --> 00:00:34,150
+that contain the app itself. And if
+you're installing from any source, it's
+
+28
+00:00:34,150 --> 00:00:34,160
+you're installing from any source, it's
+ 
+
+29
+00:00:34,160 --> 00:00:35,910
+you're installing from any source, it's
+very possible that that source might
+
+30
+00:00:35,910 --> 00:00:35,920
+very possible that that source might
+ 
+
+31
+00:00:35,920 --> 00:00:38,709
+very possible that that source might
+have malicious software. In Apple's
+
+32
+00:00:38,709 --> 00:00:38,719
+have malicious software. In Apple's
+ 
+
+33
+00:00:38,719 --> 00:00:40,950
+have malicious software. In Apple's
+ecosystem, this process is a bit more
+
+34
+00:00:40,950 --> 00:00:40,960
+ecosystem, this process is a bit more
+ 
+
+35
+00:00:40,960 --> 00:00:42,950
+ecosystem, this process is a bit more
+straightforward because the only way to
+
+36
+00:00:42,950 --> 00:00:42,960
+straightforward because the only way to
+ 
+
+37
+00:00:42,960 --> 00:00:44,869
+straightforward because the only way to
+install applications is through the
+
+38
+00:00:44,869 --> 00:00:44,879
+install applications is through the
+ 
+
+39
+00:00:44,879 --> 00:00:47,350
+install applications is through the
+curated Apple App Store. If you're an
+
+40
+00:00:47,350 --> 00:00:47,360
+curated Apple App Store. If you're an
+ 
+
+41
+00:00:47,360 --> 00:00:49,750
+curated Apple App Store. If you're an
+Android, a good safe location would be
+
+42
+00:00:49,750 --> 00:00:49,760
+Android, a good safe location would be
+ 
+
+43
+00:00:49,760 --> 00:00:52,389
+Android, a good safe location would be
+the Google Play or a trusted app store
+
+44
+00:00:52,389 --> 00:00:52,399
+the Google Play or a trusted app store
+ 
+
+45
+00:00:52,399 --> 00:00:54,630
+the Google Play or a trusted app store
+instead of simply downloading any file
+
+46
+00:00:54,630 --> 00:00:54,640
+instead of simply downloading any file
+ 
+
+47
+00:00:54,640 --> 00:00:57,270
+instead of simply downloading any file
+from any website. Installing these apps
+
+48
+00:00:57,270 --> 00:00:57,280
+from any website. Installing these apps
+ 
+
+49
+00:00:57,280 --> 00:00:59,670
+from any website. Installing these apps
+from anywhere but the larger app store
+
+50
+00:00:59,670 --> 00:00:59,680
+from anywhere but the larger app store
+ 
+
+51
+00:00:59,680 --> 00:01:02,229
+from anywhere but the larger app store
+is referred to as sideloading. And it's
+
+52
+00:01:02,229 --> 00:01:02,239
+is referred to as sideloading. And it's
+ 
+
+53
+00:01:02,239 --> 00:01:04,310
+is referred to as sideloading. And it's
+this sideloading process that can create
+
+54
+00:01:04,310 --> 00:01:04,320
+this sideloading process that can create
+ 
+
+55
+00:01:04,320 --> 00:01:05,990
+this sideloading process that can create
+problems for us from a security
+
+56
+00:01:05,990 --> 00:01:06,000
+problems for us from a security
+ 
+
+57
+00:01:06,000 --> 00:01:07,910
+problems for us from a security
+perspective because we don't have as
+
+58
+00:01:07,910 --> 00:01:07,920
+perspective because we don't have as
+ 
+
+59
+00:01:07,920 --> 00:01:09,670
+perspective because we don't have as
+much control over where those
+
+60
+00:01:09,670 --> 00:01:09,680
+much control over where those
+ 
+
+61
+00:01:09,680 --> 00:01:12,390
+much control over where those
+applications are coming from.
+
+62
+00:01:12,390 --> 00:01:12,400
+applications are coming from.
+ 
+
+63
+00:01:12,400 --> 00:01:13,990
+applications are coming from.
+One of the challenges with these mobile
+
+64
+00:01:13,990 --> 00:01:14,000
+One of the challenges with these mobile
+ 
+
+65
+00:01:14,000 --> 00:01:15,830
+One of the challenges with these mobile
+phones is that a lot of the operating
+
+66
+00:01:15,830 --> 00:01:15,840
+phones is that a lot of the operating
+ 
+
+67
+00:01:15,840 --> 00:01:18,230
+phones is that a lot of the operating
+system is hidden from view. There is a
+
+68
+00:01:18,230 --> 00:01:18,240
+system is hidden from view. There is a
+ 
+
+69
+00:01:18,240 --> 00:01:19,670
+system is hidden from view. There is a
+little bit of information you can turn
+
+70
+00:01:19,670 --> 00:01:19,680
+little bit of information you can turn
+ 
+
+71
+00:01:19,680 --> 00:01:22,230
+little bit of information you can turn
+on though using developer mode. This
+
+72
+00:01:22,230 --> 00:01:22,240
+on though using developer mode. This
+ 
+
+73
+00:01:22,240 --> 00:01:24,310
+on though using developer mode. This
+turns on capabilities that allow for you
+
+74
+00:01:24,310 --> 00:01:24,320
+turns on capabilities that allow for you
+ 
+
+75
+00:01:24,320 --> 00:01:26,950
+turns on capabilities that allow for you
+to debug using the USB connection. You
+
+76
+00:01:26,950 --> 00:01:26,960
+to debug using the USB connection. You
+ 
+
+77
+00:01:26,960 --> 00:01:28,950
+to debug using the USB connection. You
+can view additional memory statistics,
+
+78
+00:01:28,950 --> 00:01:28,960
+can view additional memory statistics,
+ 
+
+79
+00:01:28,960 --> 00:01:31,190
+can view additional memory statistics,
+and there's a lot more details and logs
+
+80
+00:01:31,190 --> 00:01:31,200
+and there's a lot more details and logs
+ 
+
+81
+00:01:31,200 --> 00:01:32,870
+and there's a lot more details and logs
+that you can gather when you're running
+
+82
+00:01:32,870 --> 00:01:32,880
+that you can gather when you're running
+ 
+
+83
+00:01:32,880 --> 00:01:35,350
+that you can gather when you're running
+in developer mode. If you have an Apple
+
+84
+00:01:35,350 --> 00:01:35,360
+in developer mode. If you have an Apple
+ 
+
+85
+00:01:35,360 --> 00:01:37,749
+in developer mode. If you have an Apple
+iPhone or an iPad, then you'll need to
+
+86
+00:01:37,749 --> 00:01:37,759
+iPhone or an iPad, then you'll need to
+ 
+
+87
+00:01:37,759 --> 00:01:40,950
+iPhone or an iPad, then you'll need to
+use the developer mode built into Xcode.
+
+88
+00:01:40,950 --> 00:01:40,960
+use the developer mode built into Xcode.
+ 
+
+89
+00:01:40,960 --> 00:01:42,870
+use the developer mode built into Xcode.
+Xcode is the developer environment
+
+90
+00:01:42,870 --> 00:01:42,880
+Xcode is the developer environment
+ 
+
+91
+00:01:42,880 --> 00:01:45,350
+Xcode is the developer environment
+that's available on Mac OS. So, if you
+
+92
+00:01:45,350 --> 00:01:45,360
+that's available on Mac OS. So, if you
+ 
+
+93
+00:01:45,360 --> 00:01:47,030
+that's available on Mac OS. So, if you
+want to get additional log information
+
+94
+00:01:47,030 --> 00:01:47,040
+want to get additional log information
+ 
+
+95
+00:01:47,040 --> 00:01:49,429
+want to get additional log information
+or more details about how that device is
+
+96
+00:01:49,429 --> 00:01:49,439
+or more details about how that device is
+ 
+
+97
+00:01:49,439 --> 00:01:51,510
+or more details about how that device is
+performing, you will need a Mac OS
+
+98
+00:01:51,510 --> 00:01:51,520
+performing, you will need a Mac OS
+ 
+
+99
+00:01:51,520 --> 00:01:53,670
+performing, you will need a Mac OS
+device that is connected to your iPhone
+
+100
+00:01:53,670 --> 00:01:53,680
+device that is connected to your iPhone
+ 
+
+101
+00:01:53,680 --> 00:01:56,069
+device that is connected to your iPhone
+or your iPad. If you're on an Android
+
+102
+00:01:56,069 --> 00:01:56,079
+or your iPad. If you're on an Android
+ 
+
+103
+00:01:56,079 --> 00:01:58,149
+or your iPad. If you're on an Android
+device, you can configure developer mode
+
+104
+00:01:58,149 --> 00:01:58,159
+device, you can configure developer mode
+ 
+
+105
+00:01:58,159 --> 00:02:00,789
+device, you can configure developer mode
+on the Android device itself. You go to
+
+106
+00:02:00,789 --> 00:02:00,799
+on the Android device itself. You go to
+ 
+
+107
+00:02:00,799 --> 00:02:03,429
+on the Android device itself. You go to
+the settings and about phone option and
+
+108
+00:02:03,429 --> 00:02:03,439
+the settings and about phone option and
+ 
+
+109
+00:02:03,439 --> 00:02:05,670
+the settings and about phone option and
+from there you tap the build number
+
+110
+00:02:05,670 --> 00:02:05,680
+from there you tap the build number
+ 
+
+111
+00:02:05,680 --> 00:02:08,710
+from there you tap the build number
+seven times. That is your secret access
+
+112
+00:02:08,710 --> 00:02:08,720
+seven times. That is your secret access
+ 
+
+113
+00:02:08,720 --> 00:02:10,949
+seven times. That is your secret access
+into this developer mode. And you can
+
+114
+00:02:10,949 --> 00:02:10,959
+into this developer mode. And you can
+ 
+
+115
+00:02:10,959 --> 00:02:12,949
+into this developer mode. And you can
+configure and manage the developer mode
+
+116
+00:02:12,949 --> 00:02:12,959
+configure and manage the developer mode
+ 
+
+117
+00:02:12,959 --> 00:02:16,470
+configure and manage the developer mode
+from that same about phone screen.
+
+118
+00:02:16,470 --> 00:02:16,480
+from that same about phone screen.
+ 
+
+119
+00:02:16,480 --> 00:02:18,630
+from that same about phone screen.
+As we've seen, these mobile devices are
+
+120
+00:02:18,630 --> 00:02:18,640
+As we've seen, these mobile devices are
+ 
+
+121
+00:02:18,640 --> 00:02:20,790
+As we've seen, these mobile devices are
+very good at restricting our access to
+
+122
+00:02:20,790 --> 00:02:20,800
+very good at restricting our access to
+ 
+
+123
+00:02:20,800 --> 00:02:22,949
+very good at restricting our access to
+the underlying operating system. But
+
+124
+00:02:22,949 --> 00:02:22,959
+the underlying operating system. But
+ 
+
+125
+00:02:22,959 --> 00:02:25,030
+the underlying operating system. But
+some enterprising researchers have found
+
+126
+00:02:25,030 --> 00:02:25,040
+some enterprising researchers have found
+ 
+
+127
+00:02:25,040 --> 00:02:27,830
+some enterprising researchers have found
+ways to gain more access to the OS of
+
+128
+00:02:27,830 --> 00:02:27,840
+ways to gain more access to the OS of
+ 
+
+129
+00:02:27,840 --> 00:02:29,830
+ways to gain more access to the OS of
+these mobile devices. If you're running
+
+130
+00:02:29,830 --> 00:02:29,840
+these mobile devices. If you're running
+ 
+
+131
+00:02:29,840 --> 00:02:32,070
+these mobile devices. If you're running
+on an Android, we often refer to this as
+
+132
+00:02:32,070 --> 00:02:32,080
+on an Android, we often refer to this as
+ 
+
+133
+00:02:32,080 --> 00:02:35,110
+on an Android, we often refer to this as
+rooting. And on an Apple iOS or iPad OS
+
+134
+00:02:35,110 --> 00:02:35,120
+rooting. And on an Apple iOS or iPad OS
+ 
+
+135
+00:02:35,120 --> 00:02:36,790
+rooting. And on an Apple iOS or iPad OS
+device, we refer to this as
+
+136
+00:02:36,790 --> 00:02:36,800
+device, we refer to this as
+ 
+
+137
+00:02:36,800 --> 00:02:38,949
+device, we refer to this as
+jailbreaking, although these terms tend
+
+138
+00:02:38,949 --> 00:02:38,959
+jailbreaking, although these terms tend
+ 
+
+139
+00:02:38,959 --> 00:02:41,350
+jailbreaking, although these terms tend
+to be used interchangeably. Whether you
+
+140
+00:02:41,350 --> 00:02:41,360
+to be used interchangeably. Whether you
+ 
+
+141
+00:02:41,360 --> 00:02:43,270
+to be used interchangeably. Whether you
+are rooting or jailbreaking, you are
+
+142
+00:02:43,270 --> 00:02:43,280
+are rooting or jailbreaking, you are
+ 
+
+143
+00:02:43,280 --> 00:02:45,670
+are rooting or jailbreaking, you are
+effectively modifying the firmware of
+
+144
+00:02:45,670 --> 00:02:45,680
+effectively modifying the firmware of
+ 
+
+145
+00:02:45,680 --> 00:02:47,910
+effectively modifying the firmware of
+that device. You're overwriting the core
+
+146
+00:02:47,910 --> 00:02:47,920
+that device. You're overwriting the core
+ 
+
+147
+00:02:47,920 --> 00:02:49,830
+that device. You're overwriting the core
+operating system with a completely
+
+148
+00:02:49,830 --> 00:02:49,840
+operating system with a completely
+ 
+
+149
+00:02:49,840 --> 00:02:51,830
+operating system with a completely
+different operating system, and that's
+
+150
+00:02:51,830 --> 00:02:51,840
+different operating system, and that's
+ 
+
+151
+00:02:51,840 --> 00:02:53,350
+different operating system, and that's
+what's giving you access to the
+
+152
+00:02:53,350 --> 00:02:53,360
+what's giving you access to the
+ 
+
+153
+00:02:53,360 --> 00:02:56,070
+what's giving you access to the
+underlying OS. A device that has this
+
+154
+00:02:56,070 --> 00:02:56,080
+underlying OS. A device that has this
+ 
+
+155
+00:02:56,080 --> 00:02:58,790
+underlying OS. A device that has this
+level of root access effectively gives
+
+156
+00:02:58,790 --> 00:02:58,800
+level of root access effectively gives
+ 
+
+157
+00:02:58,800 --> 00:03:00,869
+level of root access effectively gives
+you complete control of that mobile
+
+158
+00:03:00,869 --> 00:03:00,879
+you complete control of that mobile
+ 
+
+159
+00:03:00,879 --> 00:03:03,030
+you complete control of that mobile
+device. So, if you wanted to sideloadad
+
+160
+00:03:03,030 --> 00:03:03,040
+device. So, if you wanted to sideloadad
+ 
+
+161
+00:03:03,040 --> 00:03:04,869
+device. So, if you wanted to sideloadad
+your own apps, you can do that on a
+
+162
+00:03:04,869 --> 00:03:04,879
+your own apps, you can do that on a
+ 
+
+163
+00:03:04,879 --> 00:03:06,309
+your own apps, you can do that on a
+device that has been rooted or
+
+164
+00:03:06,309 --> 00:03:06,319
+device that has been rooted or
+ 
+
+165
+00:03:06,319 --> 00:03:08,470
+device that has been rooted or
+jailbroken. And if you have this device
+
+166
+00:03:08,470 --> 00:03:08,480
+jailbroken. And if you have this device
+ 
+
+167
+00:03:08,480 --> 00:03:11,110
+jailbroken. And if you have this device
+connected to an MDM, it no longer has
+
+168
+00:03:11,110 --> 00:03:11,120
+connected to an MDM, it no longer has
+ 
+
+169
+00:03:11,120 --> 00:03:13,430
+connected to an MDM, it no longer has
+that MDM capability. It is now an
+
+170
+00:03:13,430 --> 00:03:13,440
+that MDM capability. It is now an
+ 
+
+171
+00:03:13,440 --> 00:03:15,990
+that MDM capability. It is now an
+independent device.
+
+172
+00:03:15,990 --> 00:03:16,000
+independent device.
+ 
+
+173
+00:03:16,000 --> 00:03:17,910
+independent device.
+Sometimes downloading an application
+
+174
+00:03:17,910 --> 00:03:17,920
+Sometimes downloading an application
+ 
+
+175
+00:03:17,920 --> 00:03:20,309
+Sometimes downloading an application
+from a trusted app store isn't enough to
+
+176
+00:03:20,309 --> 00:03:20,319
+from a trusted app store isn't enough to
+ 
+
+177
+00:03:20,319 --> 00:03:22,470
+from a trusted app store isn't enough to
+keep your system safe. There could be
+
+178
+00:03:22,470 --> 00:03:22,480
+keep your system safe. There could be
+ 
+
+179
+00:03:22,480 --> 00:03:24,390
+keep your system safe. There could be
+situations where you might download an
+
+180
+00:03:24,390 --> 00:03:24,400
+situations where you might download an
+ 
+
+181
+00:03:24,400 --> 00:03:26,229
+situations where you might download an
+app that looks normal, but when you
+
+182
+00:03:26,229 --> 00:03:26,239
+app that looks normal, but when you
+ 
+
+183
+00:03:26,239 --> 00:03:28,229
+app that looks normal, but when you
+download it, it turns out to be an
+
+184
+00:03:28,229 --> 00:03:28,239
+download it, it turns out to be an
+ 
+
+185
+00:03:28,239 --> 00:03:30,470
+download it, it turns out to be an
+illegitimate application. A good example
+
+186
+00:03:30,470 --> 00:03:30,480
+illegitimate application. A good example
+ 
+
+187
+00:03:30,480 --> 00:03:32,390
+illegitimate application. A good example
+of this is the process that Google went
+
+188
+00:03:32,390 --> 00:03:32,400
+of this is the process that Google went
+ 
+
+189
+00:03:32,400 --> 00:03:36,070
+of this is the process that Google went
+through in 2021 where they removed 150
+
+190
+00:03:36,070 --> 00:03:36,080
+through in 2021 where they removed 150
+ 
+
+191
+00:03:36,080 --> 00:03:38,390
+through in 2021 where they removed 150
+apps from their app store. And these
+
+192
+00:03:38,390 --> 00:03:38,400
+apps from their app store. And these
+ 
+
+193
+00:03:38,400 --> 00:03:39,990
+apps from their app store. And these
+were apps that did a lot of different
+
+194
+00:03:39,990 --> 00:03:40,000
+were apps that did a lot of different
+ 
+
+195
+00:03:40,000 --> 00:03:41,830
+were apps that did a lot of different
+things. Some of them were photo editing
+
+196
+00:03:41,830 --> 00:03:41,840
+things. Some of them were photo editing
+ 
+
+197
+00:03:41,840 --> 00:03:44,149
+things. Some of them were photo editing
+apps, some were games, some were QR code
+
+198
+00:03:44,149 --> 00:03:44,159
+apps, some were games, some were QR code
+ 
+
+199
+00:03:44,159 --> 00:03:47,190
+apps, some were games, some were QR code
+scanners. One app called Ultima SMS
+
+200
+00:03:47,190 --> 00:03:47,200
+scanners. One app called Ultima SMS
+ 
+
+201
+00:03:47,200 --> 00:03:49,910
+scanners. One app called Ultima SMS
+tried to subscribe users to a $40 a
+
+202
+00:03:49,910 --> 00:03:49,920
+tried to subscribe users to a $40 a
+ 
+
+203
+00:03:49,920 --> 00:03:52,550
+tried to subscribe users to a $40 a
+month SMS service without the user
+
+204
+00:03:52,550 --> 00:03:52,560
+month SMS service without the user
+ 
+
+205
+00:03:52,560 --> 00:03:54,550
+month SMS service without the user
+knowing that that was occurring. Some
+
+206
+00:03:54,550 --> 00:03:54,560
+knowing that that was occurring. Some
+ 
+
+207
+00:03:54,560 --> 00:03:56,710
+knowing that that was occurring. Some
+attackers have even tried infecting the
+
+208
+00:03:56,710 --> 00:03:56,720
+attackers have even tried infecting the
+ 
+
+209
+00:03:56,720 --> 00:03:58,550
+attackers have even tried infecting the
+development environment used to create
+
+210
+00:03:58,550 --> 00:03:58,560
+development environment used to create
+ 
+
+211
+00:03:58,560 --> 00:04:00,789
+development environment used to create
+the applications. For example, there was
+
+212
+00:04:00,789 --> 00:04:00,799
+the applications. For example, there was
+ 
+
+213
+00:04:00,799 --> 00:04:03,190
+the applications. For example, there was
+a malicious version of Xcode being used
+
+214
+00:04:03,190 --> 00:04:03,200
+a malicious version of Xcode being used
+ 
+
+215
+00:04:03,200 --> 00:04:06,149
+a malicious version of Xcode being used
+called Xcode Ghost, which effectively
+
+216
+00:04:06,149 --> 00:04:06,159
+called Xcode Ghost, which effectively
+ 
+
+217
+00:04:06,159 --> 00:04:08,149
+called Xcode Ghost, which effectively
+was malware that would infect its own
+
+218
+00:04:08,149 --> 00:04:08,159
+was malware that would infect its own
+ 
+
+219
+00:04:08,159 --> 00:04:10,229
+was malware that would infect its own
+code into the applications built on
+
+220
+00:04:10,229 --> 00:04:10,239
+code into the applications built on
+ 
+
+221
+00:04:10,239 --> 00:04:12,630
+code into the applications built on
+Xcode. A good best practice is to always
+
+222
+00:04:12,630 --> 00:04:12,640
+Xcode. A good best practice is to always
+ 
+
+223
+00:04:12,640 --> 00:04:14,390
+Xcode. A good best practice is to always
+check the source of where that download
+
+224
+00:04:14,390 --> 00:04:14,400
+check the source of where that download
+ 
+
+225
+00:04:14,400 --> 00:04:16,390
+check the source of where that download
+is coming from and to be very familiar
+
+226
+00:04:16,390 --> 00:04:16,400
+is coming from and to be very familiar
+ 
+
+227
+00:04:16,400 --> 00:04:17,830
+is coming from and to be very familiar
+with the application that you're
+
+228
+00:04:17,830 --> 00:04:17,840
+with the application that you're
+ 
+
+229
+00:04:17,840 --> 00:04:20,949
+with the application that you're
+installing on your mobile device.
+
+230
+00:04:20,949 --> 00:04:20,959
+installing on your mobile device.
+ 
+
+231
+00:04:20,959 --> 00:04:22,790
+installing on your mobile device.
+Many of our mobile devices provide us
+
+232
+00:04:22,790 --> 00:04:22,800
+Many of our mobile devices provide us
+ 
+
+233
+00:04:22,800 --> 00:04:24,790
+Many of our mobile devices provide us
+with a way to see how much data we're
+
+234
+00:04:24,790 --> 00:04:24,800
+with a way to see how much data we're
+ 
+
+235
+00:04:24,800 --> 00:04:27,270
+with a way to see how much data we're
+transferring over our wireless networks.
+
+236
+00:04:27,270 --> 00:04:27,280
+transferring over our wireless networks.
+ 
+
+237
+00:04:27,280 --> 00:04:29,110
+transferring over our wireless networks.
+And you can determine what applications
+
+238
+00:04:29,110 --> 00:04:29,120
+And you can determine what applications
+ 
+
+239
+00:04:29,120 --> 00:04:31,510
+And you can determine what applications
+may be performing more traffic transfers
+
+240
+00:04:31,510 --> 00:04:31,520
+may be performing more traffic transfers
+ 
+
+241
+00:04:31,520 --> 00:04:33,909
+may be performing more traffic transfers
+versus lower traffic transfers. If you
+
+242
+00:04:33,909 --> 00:04:33,919
+versus lower traffic transfers. If you
+ 
+
+243
+00:04:33,919 --> 00:04:35,909
+versus lower traffic transfers. If you
+happen to see one app that's suddenly
+
+244
+00:04:35,909 --> 00:04:35,919
+happen to see one app that's suddenly
+ 
+
+245
+00:04:35,919 --> 00:04:38,710
+happen to see one app that's suddenly
+using a lot of network usage, it may be
+
+246
+00:04:38,710 --> 00:04:38,720
+using a lot of network usage, it may be
+ 
+
+247
+00:04:38,720 --> 00:04:41,030
+using a lot of network usage, it may be
+related to a malware infection. There
+
+248
+00:04:41,030 --> 00:04:41,040
+related to a malware infection. There
+ 
+
+249
+00:04:41,040 --> 00:04:42,950
+related to a malware infection. There
+may be command and control information,
+
+250
+00:04:42,950 --> 00:04:42,960
+may be command and control information,
+ 
+
+251
+00:04:42,960 --> 00:04:45,270
+may be command and control information,
+or perhaps the malware is proxying your
+
+252
+00:04:45,270 --> 00:04:45,280
+or perhaps the malware is proxying your
+ 
+
+253
+00:04:45,280 --> 00:04:47,270
+or perhaps the malware is proxying your
+communication so that it can see into
+
+254
+00:04:47,270 --> 00:04:47,280
+communication so that it can see into
+ 
+
+255
+00:04:47,280 --> 00:04:49,749
+communication so that it can see into
+your encrypted packets. Some of these
+
+256
+00:04:49,749 --> 00:04:49,759
+your encrypted packets. Some of these
+ 
+
+257
+00:04:49,759 --> 00:04:51,510
+your encrypted packets. Some of these
+reports that you'll see in your mobile
+
+258
+00:04:51,510 --> 00:04:51,520
+reports that you'll see in your mobile
+ 
+
+259
+00:04:51,520 --> 00:04:53,510
+reports that you'll see in your mobile
+device are very detailed and you can
+
+260
+00:04:53,510 --> 00:04:53,520
+device are very detailed and you can
+ 
+
+261
+00:04:53,520 --> 00:04:55,270
+device are very detailed and you can
+break down how much traffic is being
+
+262
+00:04:55,270 --> 00:04:55,280
+break down how much traffic is being
+ 
+
+263
+00:04:55,280 --> 00:04:56,710
+break down how much traffic is being
+transferred from different network
+
+264
+00:04:56,710 --> 00:04:56,720
+transferred from different network
+ 
+
+265
+00:04:56,720 --> 00:04:58,469
+transferred from different network
+connections and be able to break this
+
+266
+00:04:58,469 --> 00:04:58,479
+connections and be able to break this
+ 
+
+267
+00:04:58,479 --> 00:05:01,030
+connections and be able to break this
+down on an appbyapp basis. There are
+
+268
+00:05:01,030 --> 00:05:01,040
+down on an appbyapp basis. There are
+ 
+
+269
+00:05:01,040 --> 00:05:02,629
+down on an appbyapp basis. There are
+also a number of thirdparty reporting
+
+270
+00:05:02,629 --> 00:05:02,639
+also a number of thirdparty reporting
+ 
+
+271
+00:05:02,639 --> 00:05:04,469
+also a number of thirdparty reporting
+apps that can break down this for you in
+
+272
+00:05:04,469 --> 00:05:04,479
+apps that can break down this for you in
+ 
+
+273
+00:05:04,479 --> 00:05:06,310
+apps that can break down this for you in
+a different form to show additional
+
+274
+00:05:06,310 --> 00:05:06,320
+a different form to show additional
+ 
+
+275
+00:05:06,320 --> 00:05:08,310
+a different form to show additional
+graphs and metrics. And if you're not
+
+276
+00:05:08,310 --> 00:05:08,320
+graphs and metrics. And if you're not
+ 
+
+277
+00:05:08,320 --> 00:05:10,230
+graphs and metrics. And if you're not
+sure if malware is your issue, it's
+
+278
+00:05:10,230 --> 00:05:10,240
+sure if malware is your issue, it's
+ 
+
+279
+00:05:10,240 --> 00:05:11,990
+sure if malware is your issue, it's
+always a good idea to run a thirdparty
+
+280
+00:05:11,990 --> 00:05:12,000
+always a good idea to run a thirdparty
+ 
+
+281
+00:05:12,000 --> 00:05:14,230
+always a good idea to run a thirdparty
+malware scan to see if it identifies
+
+282
+00:05:14,230 --> 00:05:14,240
+malware scan to see if it identifies
+ 
+
+283
+00:05:14,240 --> 00:05:16,310
+malware scan to see if it identifies
+anything that might not be normal on
+
+284
+00:05:16,310 --> 00:05:16,320
+anything that might not be normal on
+ 
+
+285
+00:05:16,320 --> 00:05:18,790
+anything that might not be normal on
+your mobile device.
+
+286
+00:05:18,790 --> 00:05:18,800
+your mobile device.
+ 
+
+287
+00:05:18,800 --> 00:05:20,469
+your mobile device.
+When your mobile phone starts running
+
+288
+00:05:20,469 --> 00:05:20,479
+When your mobile phone starts running
+ 
+
+289
+00:05:20,479 --> 00:05:22,629
+When your mobile phone starts running
+poorly, you can really tell it's not
+
+290
+00:05:22,629 --> 00:05:22,639
+poorly, you can really tell it's not
+ 
+
+291
+00:05:22,639 --> 00:05:25,029
+poorly, you can really tell it's not
+responsive to pushing on the screen.
+
+292
+00:05:25,029 --> 00:05:25,039
+responsive to pushing on the screen.
+ 
+
+293
+00:05:25,039 --> 00:05:27,270
+responsive to pushing on the screen.
+Some of the applications perform slowly,
+
+294
+00:05:27,270 --> 00:05:27,280
+Some of the applications perform slowly,
+ 
+
+295
+00:05:27,280 --> 00:05:29,350
+Some of the applications perform slowly,
+and you can see the animations begin to
+
+296
+00:05:29,350 --> 00:05:29,360
+and you can see the animations begin to
+ 
+
+297
+00:05:29,360 --> 00:05:31,510
+and you can see the animations begin to
+chop and slow down. Very often,
+
+298
+00:05:31,510 --> 00:05:31,520
+chop and slow down. Very often,
+ 
+
+299
+00:05:31,520 --> 00:05:33,189
+chop and slow down. Very often,
+restarting the device will get the
+
+300
+00:05:33,189 --> 00:05:33,199
+restarting the device will get the
+ 
+
+301
+00:05:33,199 --> 00:05:35,189
+restarting the device will get the
+device back up and running with very
+
+302
+00:05:35,189 --> 00:05:35,199
+device back up and running with very
+ 
+
+303
+00:05:35,199 --> 00:05:37,270
+device back up and running with very
+good response time. And often, you'll
+
+304
+00:05:37,270 --> 00:05:37,280
+good response time. And often, you'll
+ 
+
+305
+00:05:37,280 --> 00:05:39,110
+good response time. And often, you'll
+see there is an operating system update
+
+306
+00:05:39,110 --> 00:05:39,120
+see there is an operating system update
+ 
+
+307
+00:05:39,120 --> 00:05:40,950
+see there is an operating system update
+or an update for the application that
+
+308
+00:05:40,950 --> 00:05:40,960
+or an update for the application that
+ 
+
+309
+00:05:40,960 --> 00:05:42,790
+or an update for the application that
+might fix the code that's causing the
+
+310
+00:05:42,790 --> 00:05:42,800
+might fix the code that's causing the
+ 
+
+311
+00:05:42,800 --> 00:05:45,189
+might fix the code that's causing the
+rest of this to slow down. You also have
+
+312
+00:05:45,189 --> 00:05:45,199
+rest of this to slow down. You also have
+ 
+
+313
+00:05:45,199 --> 00:05:46,870
+rest of this to slow down. You also have
+the ability to close different apps that
+
+314
+00:05:46,870 --> 00:05:46,880
+the ability to close different apps that
+ 
+
+315
+00:05:46,880 --> 00:05:48,710
+the ability to close different apps that
+are running on your mobile device. So,
+
+316
+00:05:48,710 --> 00:05:48,720
+are running on your mobile device. So,
+ 
+
+317
+00:05:48,720 --> 00:05:50,150
+are running on your mobile device. So,
+you might be able to close things you're
+
+318
+00:05:50,150 --> 00:05:50,160
+you might be able to close things you're
+ 
+
+319
+00:05:50,160 --> 00:05:51,990
+you might be able to close things you're
+not currently using and free up those
+
+320
+00:05:51,990 --> 00:05:52,000
+not currently using and free up those
+ 
+
+321
+00:05:52,000 --> 00:05:54,550
+not currently using and free up those
+resources for other apps. And if this is
+
+322
+00:05:54,550 --> 00:05:54,560
+resources for other apps. And if this is
+ 
+
+323
+00:05:54,560 --> 00:05:56,150
+resources for other apps. And if this is
+constantly occurring and you don't think
+
+324
+00:05:56,150 --> 00:05:56,160
+constantly occurring and you don't think
+ 
+
+325
+00:05:56,160 --> 00:05:57,990
+constantly occurring and you don't think
+it's a hardware problem, you might want
+
+326
+00:05:57,990 --> 00:05:58,000
+it's a hardware problem, you might want
+ 
+
+327
+00:05:58,000 --> 00:06:00,550
+it's a hardware problem, you might want
+to perform a factory reset. This will
+
+328
+00:06:00,550 --> 00:06:00,560
+to perform a factory reset. This will
+ 
+
+329
+00:06:00,560 --> 00:06:02,390
+to perform a factory reset. This will
+delete all of the software on your
+
+330
+00:06:02,390 --> 00:06:02,400
+delete all of the software on your
+ 
+
+331
+00:06:02,400 --> 00:06:04,230
+delete all of the software on your
+device, you're back at an original
+
+332
+00:06:04,230 --> 00:06:04,240
+device, you're back at an original
+ 
+
+333
+00:06:04,240 --> 00:06:06,070
+device, you're back at an original
+starting point and then you can restore
+
+334
+00:06:06,070 --> 00:06:06,080
+starting point and then you can restore
+ 
+
+335
+00:06:06,080 --> 00:06:09,590
+starting point and then you can restore
+the applications and data from there.
+
+336
+00:06:09,590 --> 00:06:09,600
+the applications and data from there.
+ 
+
+337
+00:06:09,600 --> 00:06:11,110
+the applications and data from there.
+If you're on a different network or you
+
+338
+00:06:11,110 --> 00:06:11,120
+If you're on a different network or you
+ 
+
+339
+00:06:11,120 --> 00:06:12,950
+If you're on a different network or you
+want to control how much information is
+
+340
+00:06:12,950 --> 00:06:12,960
+want to control how much information is
+ 
+
+341
+00:06:12,960 --> 00:06:14,390
+want to control how much information is
+being transferred from your mobile
+
+342
+00:06:14,390 --> 00:06:14,400
+being transferred from your mobile
+ 
+
+343
+00:06:14,400 --> 00:06:16,469
+being transferred from your mobile
+device, you might want to set an alarm
+
+344
+00:06:16,469 --> 00:06:16,479
+device, you might want to set an alarm
+ 
+
+345
+00:06:16,479 --> 00:06:18,150
+device, you might want to set an alarm
+or alert that tells you when you're
+
+346
+00:06:18,150 --> 00:06:18,160
+or alert that tells you when you're
+ 
+
+347
+00:06:18,160 --> 00:06:20,070
+or alert that tells you when you're
+reaching a certain threshold. If you're
+
+348
+00:06:20,070 --> 00:06:20,080
+reaching a certain threshold. If you're
+ 
+
+349
+00:06:20,080 --> 00:06:21,909
+reaching a certain threshold. If you're
+on Android, this is a feature that is
+
+350
+00:06:21,909 --> 00:06:21,919
+on Android, this is a feature that is
+ 
+
+351
+00:06:21,919 --> 00:06:24,390
+on Android, this is a feature that is
+built in. It's a data warning and limit.
+
+352
+00:06:24,390 --> 00:06:24,400
+built in. It's a data warning and limit.
+ 
+
+353
+00:06:24,400 --> 00:06:26,230
+built in. It's a data warning and limit.
+And you can turn on this data warning to
+
+354
+00:06:26,230 --> 00:06:26,240
+And you can turn on this data warning to
+ 
+
+355
+00:06:26,240 --> 00:06:28,230
+And you can turn on this data warning to
+inform you when you hit a certain data
+
+356
+00:06:28,230 --> 00:06:28,240
+inform you when you hit a certain data
+ 
+
+357
+00:06:28,240 --> 00:06:30,550
+inform you when you hit a certain data
+limit over time. This is not a feature
+
+358
+00:06:30,550 --> 00:06:30,560
+limit over time. This is not a feature
+ 
+
+359
+00:06:30,560 --> 00:06:33,350
+limit over time. This is not a feature
+that is available natively in iOS, but
+
+360
+00:06:33,350 --> 00:06:33,360
+that is available natively in iOS, but
+ 
+
+361
+00:06:33,360 --> 00:06:35,590
+that is available natively in iOS, but
+there are capabilities in iOS to prevent
+
+362
+00:06:35,590 --> 00:06:35,600
+there are capabilities in iOS to prevent
+ 
+
+363
+00:06:35,600 --> 00:06:37,749
+there are capabilities in iOS to prevent
+you from transferring large information
+
+364
+00:06:37,749 --> 00:06:37,759
+you from transferring large information
+ 
+
+365
+00:06:37,759 --> 00:06:39,749
+you from transferring large information
+over a much slower cellular data
+
+366
+00:06:39,749 --> 00:06:39,759
+over a much slower cellular data
+ 
+
+367
+00:06:39,759 --> 00:06:42,070
+over a much slower cellular data
+connection. This data limit feature in
+
+368
+00:06:42,070 --> 00:06:42,080
+connection. This data limit feature in
+ 
+
+369
+00:06:42,080 --> 00:06:44,230
+connection. This data limit feature in
+Android allows you to receive a message
+
+370
+00:06:44,230 --> 00:06:44,240
+Android allows you to receive a message
+ 
+
+371
+00:06:44,240 --> 00:06:45,749
+Android allows you to receive a message
+telling you when you're reaching that
+
+372
+00:06:45,749 --> 00:06:45,759
+telling you when you're reaching that
+ 
+
+373
+00:06:45,759 --> 00:06:48,309
+telling you when you're reaching that
+upper threshold. So, if you are on a
+
+374
+00:06:48,309 --> 00:06:48,319
+upper threshold. So, if you are on a
+ 
+
+375
+00:06:48,319 --> 00:06:50,629
+upper threshold. So, if you are on a
+limited data plan, you'll be able to
+
+376
+00:06:50,629 --> 00:06:50,639
+limited data plan, you'll be able to
+ 
+
+377
+00:06:50,639 --> 00:06:52,790
+limited data plan, you'll be able to
+react accordingly when you start to hit
+
+378
+00:06:52,790 --> 00:06:52,800
+react accordingly when you start to hit
+ 
+
+379
+00:06:52,800 --> 00:06:55,189
+react accordingly when you start to hit
+that threshold. This could also inform
+
+380
+00:06:55,189 --> 00:06:55,199
+that threshold. This could also inform
+ 
+
+381
+00:06:55,199 --> 00:06:57,350
+that threshold. This could also inform
+you of unusual traffic patterns,
+
+382
+00:06:57,350 --> 00:06:57,360
+you of unusual traffic patterns,
+ 
+
+383
+00:06:57,360 --> 00:06:59,110
+you of unusual traffic patterns,
+especially if a lot of information is
+
+384
+00:06:59,110 --> 00:06:59,120
+especially if a lot of information is
+ 
+
+385
+00:06:59,120 --> 00:07:00,950
+especially if a lot of information is
+being transferred. So, if you have been
+
+386
+00:07:00,950 --> 00:07:00,960
+being transferred. So, if you have been
+ 
+
+387
+00:07:00,960 --> 00:07:03,029
+being transferred. So, if you have been
+infected with malware, this data usage
+
+388
+00:07:03,029 --> 00:07:03,039
+infected with malware, this data usage
+ 
+
+389
+00:07:03,039 --> 00:07:05,350
+infected with malware, this data usage
+limit may be the first notification you
+
+390
+00:07:05,350 --> 00:07:05,360
+limit may be the first notification you
+ 
+
+391
+00:07:05,360 --> 00:07:07,909
+limit may be the first notification you
+have that something unusual is going on.
+
+392
+00:07:07,909 --> 00:07:07,919
+have that something unusual is going on.
+ 
+
+393
+00:07:07,919 --> 00:07:09,430
+have that something unusual is going on.
+At that point, you might want to run a
+
+394
+00:07:09,430 --> 00:07:09,440
+At that point, you might want to run a
+ 
+
+395
+00:07:09,440 --> 00:07:11,189
+At that point, you might want to run a
+malware scan or check into the
+
+396
+00:07:11,189 --> 00:07:11,199
+malware scan or check into the
+ 
+
+397
+00:07:11,199 --> 00:07:13,270
+malware scan or check into the
+applications that you're using to see if
+
+398
+00:07:13,270 --> 00:07:13,280
+applications that you're using to see if
+ 
+
+399
+00:07:13,280 --> 00:07:15,029
+applications that you're using to see if
+you can limit how much data they happen
+
+400
+00:07:15,029 --> 00:07:15,039
+you can limit how much data they happen
+ 
+
+401
+00:07:15,039 --> 00:07:17,430
+you can limit how much data they happen
+to be transferring.
+
+402
+00:07:17,430 --> 00:07:17,440
+to be transferring.
+ 
+
+403
+00:07:17,440 --> 00:07:19,350
+to be transferring.
+If the device you're using is not able
+
+404
+00:07:19,350 --> 00:07:19,360
+If the device you're using is not able
+ 
+
+405
+00:07:19,360 --> 00:07:21,589
+If the device you're using is not able
+to connect to the network at all and not
+
+406
+00:07:21,589 --> 00:07:21,599
+to connect to the network at all and not
+ 
+
+407
+00:07:21,599 --> 00:07:23,270
+to connect to the network at all and not
+able to download anything from the
+
+408
+00:07:23,270 --> 00:07:23,280
+able to download anything from the
+ 
+
+409
+00:07:23,280 --> 00:07:25,270
+able to download anything from the
+internet, this might be something that
+
+410
+00:07:25,270 --> 00:07:25,280
+internet, this might be something that
+ 
+
+411
+00:07:25,280 --> 00:07:27,029
+internet, this might be something that
+is malicious or it may just be a
+
+412
+00:07:27,029 --> 00:07:27,039
+is malicious or it may just be a
+ 
+
+413
+00:07:27,039 --> 00:07:28,950
+is malicious or it may just be a
+misconfiguration inside the mobile
+
+414
+00:07:28,950 --> 00:07:28,960
+misconfiguration inside the mobile
+ 
+
+415
+00:07:28,960 --> 00:07:31,350
+misconfiguration inside the mobile
+device. If it's malware, it may be
+
+416
+00:07:31,350 --> 00:07:31,360
+device. If it's malware, it may be
+ 
+
+417
+00:07:31,360 --> 00:07:33,189
+device. If it's malware, it may be
+restricting your access to those network
+
+418
+00:07:33,189 --> 00:07:33,199
+restricting your access to those network
+ 
+
+419
+00:07:33,199 --> 00:07:35,510
+restricting your access to those network
+resources so that you don't download any
+
+420
+00:07:35,510 --> 00:07:35,520
+resources so that you don't download any
+ 
+
+421
+00:07:35,520 --> 00:07:37,990
+resources so that you don't download any
+anti-malware software. If you think the
+
+422
+00:07:37,990 --> 00:07:38,000
+anti-malware software. If you think the
+ 
+
+423
+00:07:38,000 --> 00:07:39,670
+anti-malware software. If you think the
+issue is related to your Wi-Fi
+
+424
+00:07:39,670 --> 00:07:39,680
+issue is related to your Wi-Fi
+ 
+
+425
+00:07:39,680 --> 00:07:41,589
+issue is related to your Wi-Fi
+connection, you could disable and then
+
+426
+00:07:41,589 --> 00:07:41,599
+connection, you could disable and then
+ 
+
+427
+00:07:41,599 --> 00:07:43,670
+connection, you could disable and then
+reenable, or you could try turning off
+
+428
+00:07:43,670 --> 00:07:43,680
+reenable, or you could try turning off
+ 
+
+429
+00:07:43,680 --> 00:07:46,309
+reenable, or you could try turning off
+all of the radios using airplane mode.
+
+430
+00:07:46,309 --> 00:07:46,319
+all of the radios using airplane mode.
+ 
+
+431
+00:07:46,319 --> 00:07:48,070
+all of the radios using airplane mode.
+It could be that restarting the device
+
+432
+00:07:48,070 --> 00:07:48,080
+It could be that restarting the device
+ 
+
+433
+00:07:48,080 --> 00:07:50,070
+It could be that restarting the device
+will resolve the problem. That clears
+
+434
+00:07:50,070 --> 00:07:50,080
+will resolve the problem. That clears
+ 
+
+435
+00:07:50,080 --> 00:07:51,990
+will resolve the problem. That clears
+out everything that might be in memory
+
+436
+00:07:51,990 --> 00:07:52,000
+out everything that might be in memory
+ 
+
+437
+00:07:52,000 --> 00:07:53,749
+out everything that might be in memory
+and starts your network connection over
+
+438
+00:07:53,749 --> 00:07:53,759
+and starts your network connection over
+ 
+
+439
+00:07:53,759 --> 00:07:56,070
+and starts your network connection over
+from a clean slate. And of course, if
+
+440
+00:07:56,070 --> 00:07:56,080
+from a clean slate. And of course, if
+ 
+
+441
+00:07:56,080 --> 00:07:57,830
+from a clean slate. And of course, if
+we're concerned about security, we might
+
+442
+00:07:57,830 --> 00:07:57,840
+we're concerned about security, we might
+ 
+
+443
+00:07:57,840 --> 00:07:59,510
+we're concerned about security, we might
+want to run that malware scan to see if
+
+444
+00:07:59,510 --> 00:07:59,520
+want to run that malware scan to see if
+ 
+
+445
+00:07:59,520 --> 00:08:00,869
+want to run that malware scan to see if
+something might have gotten onto your
+
+446
+00:08:00,869 --> 00:08:00,879
+something might have gotten onto your
+ 
+
+447
+00:08:00,879 --> 00:08:03,189
+something might have gotten onto your
+system. If you're on an iOS device, you
+
+448
+00:08:03,189 --> 00:08:03,199
+system. If you're on an iOS device, you
+ 
+
+449
+00:08:03,199 --> 00:08:05,749
+system. If you're on an iOS device, you
+can go to the transfer or reset iPhone
+
+450
+00:08:05,749 --> 00:08:05,759
+can go to the transfer or reset iPhone
+ 
+
+451
+00:08:05,759 --> 00:08:07,909
+can go to the transfer or reset iPhone
+section and you can try resetting the
+
+452
+00:08:07,909 --> 00:08:07,919
+section and you can try resetting the
+ 
+
+453
+00:08:07,919 --> 00:08:10,150
+section and you can try resetting the
+network settings and then reconfiguring
+
+454
+00:08:10,150 --> 00:08:10,160
+network settings and then reconfiguring
+ 
+
+455
+00:08:10,160 --> 00:08:11,909
+network settings and then reconfiguring
+them to see if that solves your network
+
+456
+00:08:11,909 --> 00:08:11,919
+them to see if that solves your network
+ 
+
+457
+00:08:11,919 --> 00:08:14,550
+them to see if that solves your network
+connectivity issue.
+
+458
+00:08:14,550 --> 00:08:14,560
+connectivity issue.
+ 
+
+459
+00:08:14,560 --> 00:08:16,469
+connectivity issue.
+We get a lot of ads when we're surfing
+
+460
+00:08:16,469 --> 00:08:16,479
+We get a lot of ads when we're surfing
+ 
+
+461
+00:08:16,479 --> 00:08:18,070
+We get a lot of ads when we're surfing
+around the internet, but you may find
+
+462
+00:08:18,070 --> 00:08:18,080
+around the internet, but you may find
+ 
+
+463
+00:08:18,080 --> 00:08:19,990
+around the internet, but you may find
+that your phone is showing you a few
+
+464
+00:08:19,990 --> 00:08:20,000
+that your phone is showing you a few
+ 
+
+465
+00:08:20,000 --> 00:08:22,230
+that your phone is showing you a few
+more ads than you might normally get.
+
+466
+00:08:22,230 --> 00:08:22,240
+more ads than you might normally get.
+ 
+
+467
+00:08:22,240 --> 00:08:24,469
+more ads than you might normally get.
+This could be due to a malware infection
+
+468
+00:08:24,469 --> 00:08:24,479
+This could be due to a malware infection
+ 
+
+469
+00:08:24,479 --> 00:08:26,469
+This could be due to a malware infection
+that is simply showing you ads that are
+
+470
+00:08:26,469 --> 00:08:26,479
+that is simply showing you ads that are
+ 
+
+471
+00:08:26,479 --> 00:08:28,629
+that is simply showing you ads that are
+making money for the malware author.
+
+472
+00:08:28,629 --> 00:08:28,639
+making money for the malware author.
+ 
+
+473
+00:08:28,639 --> 00:08:30,869
+making money for the malware author.
+Trying to remove ads from these mobile
+
+474
+00:08:30,869 --> 00:08:30,879
+Trying to remove ads from these mobile
+ 
+
+475
+00:08:30,879 --> 00:08:33,589
+Trying to remove ads from these mobile
+devices has been an ongoing challenge.
+
+476
+00:08:33,589 --> 00:08:33,599
+devices has been an ongoing challenge.
+ 
+
+477
+00:08:33,599 --> 00:08:36,230
+devices has been an ongoing challenge.
+For example, in 2019, an app called Ads
+
+478
+00:08:36,230 --> 00:08:36,240
+For example, in 2019, an app called Ads
+ 
+
+479
+00:08:36,240 --> 00:08:38,389
+For example, in 2019, an app called Ads
+Blocker for Android promised to remove
+
+480
+00:08:38,389 --> 00:08:38,399
+Blocker for Android promised to remove
+ 
+
+481
+00:08:38,399 --> 00:08:40,709
+Blocker for Android promised to remove
+all of those ads from your system. In
+
+482
+00:08:40,709 --> 00:08:40,719
+all of those ads from your system. In
+ 
+
+483
+00:08:40,719 --> 00:08:43,110
+all of those ads from your system. In
+reality, this showed more ads on your
+
+484
+00:08:43,110 --> 00:08:43,120
+reality, this showed more ads on your
+ 
+
+485
+00:08:43,120 --> 00:08:45,030
+reality, this showed more ads on your
+mobile device, but if you went into the
+
+486
+00:08:45,030 --> 00:08:45,040
+mobile device, but if you went into the
+ 
+
+487
+00:08:45,040 --> 00:08:47,030
+mobile device, but if you went into the
+list of available apps to uninstall it,
+
+488
+00:08:47,030 --> 00:08:47,040
+list of available apps to uninstall it,
+ 
+
+489
+00:08:47,040 --> 00:08:49,110
+list of available apps to uninstall it,
+you'll find that it wasn't even listed
+
+490
+00:08:49,110 --> 00:08:49,120
+you'll find that it wasn't even listed
+ 
+
+491
+00:08:49,120 --> 00:08:51,430
+you'll find that it wasn't even listed
+on your system. This was part of a
+
+492
+00:08:51,430 --> 00:08:51,440
+on your system. This was part of a
+ 
+
+493
+00:08:51,440 --> 00:08:53,750
+on your system. This was part of a
+strain of malware known as fake ads
+
+494
+00:08:53,750 --> 00:08:53,760
+strain of malware known as fake ads
+ 
+
+495
+00:08:53,760 --> 00:08:56,150
+strain of malware known as fake ads
+block. And its goal was to show more ads
+
+496
+00:08:56,150 --> 00:08:56,160
+block. And its goal was to show more ads
+ 
+
+497
+00:08:56,160 --> 00:08:58,230
+block. And its goal was to show more ads
+on the screen and make more money for
+
+498
+00:08:58,230 --> 00:08:58,240
+on the screen and make more money for
+ 
+
+499
+00:08:58,240 --> 00:09:00,310
+on the screen and make more money for
+the malware developer. Ultimately,
+
+500
+00:09:00,310 --> 00:09:00,320
+the malware developer. Ultimately,
+ 
+
+501
+00:09:00,320 --> 00:09:02,310
+the malware developer. Ultimately,
+running an anti-malware scan can give
+
+502
+00:09:02,310 --> 00:09:02,320
+running an anti-malware scan can give
+ 
+
+503
+00:09:02,320 --> 00:09:04,070
+running an anti-malware scan can give
+you more feedback on whether this
+
+504
+00:09:04,070 --> 00:09:04,080
+you more feedback on whether this
+ 
+
+505
+00:09:04,080 --> 00:09:06,150
+you more feedback on whether this
+application is one that is legitimate or
+
+506
+00:09:06,150 --> 00:09:06,160
+application is one that is legitimate or
+ 
+
+507
+00:09:06,160 --> 00:09:09,350
+application is one that is legitimate or
+if it happened to be malicious.
+
+508
+00:09:09,350 --> 00:09:09,360
+if it happened to be malicious.
+ 
+
+509
+00:09:09,360 --> 00:09:11,670
+if it happened to be malicious.
+Malware authors know that the easiest
+
+510
+00:09:11,670 --> 00:09:11,680
+Malware authors know that the easiest
+ 
+
+511
+00:09:11,680 --> 00:09:13,670
+Malware authors know that the easiest
+way to get their malware on your phone
+
+512
+00:09:13,670 --> 00:09:13,680
+way to get their malware on your phone
+ 
+
+513
+00:09:13,680 --> 00:09:15,509
+way to get their malware on your phone
+is to have you install the malware
+
+514
+00:09:15,509 --> 00:09:15,519
+is to have you install the malware
+ 
+
+515
+00:09:15,519 --> 00:09:17,750
+is to have you install the malware
+yourself. Sometimes they do this when
+
+516
+00:09:17,750 --> 00:09:17,760
+yourself. Sometimes they do this when
+ 
+
+517
+00:09:17,760 --> 00:09:19,430
+yourself. Sometimes they do this when
+we're surfing the internet and they find
+
+518
+00:09:19,430 --> 00:09:19,440
+we're surfing the internet and they find
+ 
+
+519
+00:09:19,440 --> 00:09:21,190
+we're surfing the internet and they find
+a way to present you with a screen
+
+520
+00:09:21,190 --> 00:09:21,200
+a way to present you with a screen
+ 
+
+521
+00:09:21,200 --> 00:09:22,630
+a way to present you with a screen
+telling you that you're infected with
+
+522
+00:09:22,630 --> 00:09:22,640
+telling you that you're infected with
+ 
+
+523
+00:09:22,640 --> 00:09:24,870
+telling you that you're infected with
+malware, but all you have to do is click
+
+524
+00:09:24,870 --> 00:09:24,880
+malware, but all you have to do is click
+ 
+
+525
+00:09:24,880 --> 00:09:26,949
+malware, but all you have to do is click
+this button to install a security
+
+526
+00:09:26,949 --> 00:09:26,959
+this button to install a security
+ 
+
+527
+00:09:26,959 --> 00:09:29,269
+this button to install a security
+update. In reality, of course, you're
+
+528
+00:09:29,269 --> 00:09:29,279
+update. In reality, of course, you're
+ 
+
+529
+00:09:29,279 --> 00:09:30,630
+update. In reality, of course, you're
+clicking this button and you're
+
+530
+00:09:30,630 --> 00:09:30,640
+clicking this button and you're
+ 
+
+531
+00:09:30,640 --> 00:09:32,949
+clicking this button and you're
+installing malware. The challenge, of
+
+532
+00:09:32,949 --> 00:09:32,959
+installing malware. The challenge, of
+ 
+
+533
+00:09:32,959 --> 00:09:34,710
+installing malware. The challenge, of
+course, is that many of these alerts and
+
+534
+00:09:34,710 --> 00:09:34,720
+course, is that many of these alerts and
+ 
+
+535
+00:09:34,720 --> 00:09:36,630
+course, is that many of these alerts and
+warnings look very legitimate. and
+
+536
+00:09:36,630 --> 00:09:36,640
+warnings look very legitimate. and
+ 
+
+537
+00:09:36,640 --> 00:09:38,389
+warnings look very legitimate. and
+someone who's not familiar with this
+
+538
+00:09:38,389 --> 00:09:38,399
+someone who's not familiar with this
+ 
+
+539
+00:09:38,399 --> 00:09:40,550
+someone who's not familiar with this
+process might easily click that button
+
+540
+00:09:40,550 --> 00:09:40,560
+process might easily click that button
+ 
+
+541
+00:09:40,560 --> 00:09:42,630
+process might easily click that button
+to install the security update and
+
+542
+00:09:42,630 --> 00:09:42,640
+to install the security update and
+ 
+
+543
+00:09:42,640 --> 00:09:45,110
+to install the security update and
+immediately they're now infected. Once
+
+544
+00:09:45,110 --> 00:09:45,120
+immediately they're now infected. Once
+ 
+
+545
+00:09:45,120 --> 00:09:47,030
+immediately they're now infected. Once
+this malware gets on your system, it can
+
+546
+00:09:47,030 --> 00:09:47,040
+this malware gets on your system, it can
+ 
+
+547
+00:09:47,040 --> 00:09:48,710
+this malware gets on your system, it can
+start asking you for additional access
+
+548
+00:09:48,710 --> 00:09:48,720
+start asking you for additional access
+ 
+
+549
+00:09:48,720 --> 00:09:51,190
+start asking you for additional access
+to your email, to any files that you may
+
+550
+00:09:51,190 --> 00:09:51,200
+to your email, to any files that you may
+ 
+
+551
+00:09:51,200 --> 00:09:53,030
+to your email, to any files that you may
+have stored, or anything else that's on
+
+552
+00:09:53,030 --> 00:09:53,040
+have stored, or anything else that's on
+ 
+
+553
+00:09:53,040 --> 00:09:55,190
+have stored, or anything else that's on
+your mobile device. These warning
+
+554
+00:09:55,190 --> 00:09:55,200
+your mobile device. These warning
+ 
+
+555
+00:09:55,200 --> 00:09:56,949
+your mobile device. These warning
+messages themselves are relatively
+
+556
+00:09:56,949 --> 00:09:56,959
+messages themselves are relatively
+ 
+
+557
+00:09:56,959 --> 00:09:59,030
+messages themselves are relatively
+benign. You can simply close the window
+
+558
+00:09:59,030 --> 00:09:59,040
+benign. You can simply close the window
+ 
+
+559
+00:09:59,040 --> 00:10:00,870
+benign. You can simply close the window
+and there's no harm done to your mobile
+
+560
+00:10:00,870 --> 00:10:00,880
+and there's no harm done to your mobile
+ 
+
+561
+00:10:00,880 --> 00:10:02,949
+and there's no harm done to your mobile
+device. But if you did happen to click
+
+562
+00:10:02,949 --> 00:10:02,959
+device. But if you did happen to click
+ 
+
+563
+00:10:02,959 --> 00:10:05,269
+device. But if you did happen to click
+the install security update button,
+
+564
+00:10:05,269 --> 00:10:05,279
+the install security update button,
+ 
+
+565
+00:10:05,279 --> 00:10:06,949
+the install security update button,
+you're going to have to either delete
+
+566
+00:10:06,949 --> 00:10:06,959
+you're going to have to either delete
+ 
+
+567
+00:10:06,959 --> 00:10:08,790
+you're going to have to either delete
+everything on that device and start from
+
+568
+00:10:08,790 --> 00:10:08,800
+everything on that device and start from
+ 
+
+569
+00:10:08,800 --> 00:10:10,870
+everything on that device and start from
+scratch or find a way to remove that
+
+570
+00:10:10,870 --> 00:10:10,880
+scratch or find a way to remove that
+ 
+
+571
+00:10:10,880 --> 00:10:13,829
+scratch or find a way to remove that
+malware from your system.
+
+572
+00:10:13,829 --> 00:10:13,839
+malware from your system.
+ 
+
+573
+00:10:13,839 --> 00:10:15,509
+malware from your system.
+In many cases, the folks that are
+
+574
+00:10:15,509 --> 00:10:15,519
+In many cases, the folks that are
+ 
+
+575
+00:10:15,519 --> 00:10:17,110
+In many cases, the folks that are
+developing the applications for your
+
+576
+00:10:17,110 --> 00:10:17,120
+developing the applications for your
+ 
+
+577
+00:10:17,120 --> 00:10:18,870
+developing the applications for your
+mobile device are different from the
+
+578
+00:10:18,870 --> 00:10:18,880
+mobile device are different from the
+ 
+
+579
+00:10:18,880 --> 00:10:20,310
+mobile device are different from the
+people that are manufacturing your
+
+580
+00:10:20,310 --> 00:10:20,320
+people that are manufacturing your
+ 
+
+581
+00:10:20,320 --> 00:10:22,389
+people that are manufacturing your
+mobile device. And for that reason,
+
+582
+00:10:22,389 --> 00:10:22,399
+mobile device. And for that reason,
+ 
+
+583
+00:10:22,399 --> 00:10:24,470
+mobile device. And for that reason,
+there could be inconsistencies on how
+
+584
+00:10:24,470 --> 00:10:24,480
+there could be inconsistencies on how
+ 
+
+585
+00:10:24,480 --> 00:10:26,710
+there could be inconsistencies on how
+these applications perform between one
+
+586
+00:10:26,710 --> 00:10:26,720
+these applications perform between one
+ 
+
+587
+00:10:26,720 --> 00:10:28,870
+these applications perform between one
+device and another. Many of us have
+
+588
+00:10:28,870 --> 00:10:28,880
+device and another. Many of us have
+ 
+
+589
+00:10:28,880 --> 00:10:30,630
+device and another. Many of us have
+experienced an app that is working
+
+590
+00:10:30,630 --> 00:10:30,640
+experienced an app that is working
+ 
+
+591
+00:10:30,640 --> 00:10:32,870
+experienced an app that is working
+normally and then suddenly closes with
+
+592
+00:10:32,870 --> 00:10:32,880
+normally and then suddenly closes with
+ 
+
+593
+00:10:32,880 --> 00:10:35,190
+normally and then suddenly closes with
+no warning. Or it starts having very
+
+594
+00:10:35,190 --> 00:10:35,200
+no warning. Or it starts having very
+ 
+
+595
+00:10:35,200 --> 00:10:37,030
+no warning. Or it starts having very
+long delays when you're trying to use
+
+596
+00:10:37,030 --> 00:10:37,040
+long delays when you're trying to use
+ 
+
+597
+00:10:37,040 --> 00:10:39,190
+long delays when you're trying to use
+the app on your mobile phone. Or it
+
+598
+00:10:39,190 --> 00:10:39,200
+the app on your mobile phone. Or it
+ 
+
+599
+00:10:39,200 --> 00:10:40,630
+the app on your mobile phone. Or it
+could be that there are features in the
+
+600
+00:10:40,630 --> 00:10:40,640
+could be that there are features in the
+ 
+
+601
+00:10:40,640 --> 00:10:42,389
+could be that there are features in the
+app that you're trying to use and those
+
+602
+00:10:42,389 --> 00:10:42,399
+app that you're trying to use and those
+ 
+
+603
+00:10:42,399 --> 00:10:44,310
+app that you're trying to use and those
+features aren't working for one reason
+
+604
+00:10:44,310 --> 00:10:44,320
+features aren't working for one reason
+ 
+
+605
+00:10:44,320 --> 00:10:46,389
+features aren't working for one reason
+or another. And it could be that when
+
+606
+00:10:46,389 --> 00:10:46,399
+or another. And it could be that when
+ 
+
+607
+00:10:46,399 --> 00:10:48,389
+or another. And it could be that when
+the app is running that it's drawing a
+
+608
+00:10:48,389 --> 00:10:48,399
+the app is running that it's drawing a
+ 
+
+609
+00:10:48,399 --> 00:10:50,470
+the app is running that it's drawing a
+lot of power and using up all of your
+
+610
+00:10:50,470 --> 00:10:50,480
+lot of power and using up all of your
+ 
+
+611
+00:10:50,480 --> 00:10:53,030
+lot of power and using up all of your
+battery. In all of these cases, the
+
+612
+00:10:53,030 --> 00:10:53,040
+battery. In all of these cases, the
+ 
+
+613
+00:10:53,040 --> 00:10:55,110
+battery. In all of these cases, the
+problem is probably related to the app
+
+614
+00:10:55,110 --> 00:10:55,120
+problem is probably related to the app
+ 
+
+615
+00:10:55,120 --> 00:10:57,190
+problem is probably related to the app
+itself. So, you'll want to contact the
+
+616
+00:10:57,190 --> 00:10:57,200
+itself. So, you'll want to contact the
+ 
+
+617
+00:10:57,200 --> 00:10:58,790
+itself. So, you'll want to contact the
+developer of the application and
+
+618
+00:10:58,790 --> 00:10:58,800
+developer of the application and
+ 
+
+619
+00:10:58,800 --> 00:11:00,630
+developer of the application and
+download the latest version of the app
+
+620
+00:11:00,630 --> 00:11:00,640
+download the latest version of the app
+ 
+
+621
+00:11:00,640 --> 00:11:02,550
+download the latest version of the app
+to see if these bugs have been fixed in
+
+622
+00:11:02,550 --> 00:11:02,560
+to see if these bugs have been fixed in
+ 
+
+623
+00:11:02,560 --> 00:11:05,430
+to see if these bugs have been fixed in
+the latest version. Many of us have seen
+
+624
+00:11:05,430 --> 00:11:05,440
+the latest version. Many of us have seen
+ 
+
+625
+00:11:05,440 --> 00:11:07,670
+the latest version. Many of us have seen
+instances where private information has
+
+626
+00:11:07,670 --> 00:11:07,680
+instances where private information has
+ 
+
+627
+00:11:07,680 --> 00:11:09,509
+instances where private information has
+been leaked onto the internet for
+
+628
+00:11:09,509 --> 00:11:09,519
+been leaked onto the internet for
+ 
+
+629
+00:11:09,519 --> 00:11:11,910
+been leaked onto the internet for
+everyone to see. Sometimes this is due
+
+630
+00:11:11,910 --> 00:11:11,920
+everyone to see. Sometimes this is due
+ 
+
+631
+00:11:11,920 --> 00:11:13,910
+everyone to see. Sometimes this is due
+to a data breach on your mobile device.
+
+632
+00:11:13,910 --> 00:11:13,920
+to a data breach on your mobile device.
+ 
+
+633
+00:11:13,920 --> 00:11:15,590
+to a data breach on your mobile device.
+You may want to run an app scan or an
+
+634
+00:11:15,590 --> 00:11:15,600
+You may want to run an app scan or an
+ 
+
+635
+00:11:15,600 --> 00:11:17,590
+You may want to run an app scan or an
+anti-malware scan to see if something
+
+636
+00:11:17,590 --> 00:11:17,600
+anti-malware scan to see if something
+ 
+
+637
+00:11:17,600 --> 00:11:19,670
+anti-malware scan to see if something
+unexpected is running on your mobile
+
+638
+00:11:19,670 --> 00:11:19,680
+unexpected is running on your mobile
+ 
+
+639
+00:11:19,680 --> 00:11:22,230
+unexpected is running on your mobile
+phone. And if you think your device has
+
+640
+00:11:22,230 --> 00:11:22,240
+phone. And if you think your device has
+ 
+
+641
+00:11:22,240 --> 00:11:24,310
+phone. And if you think your device has
+been infected or has been breached in
+
+642
+00:11:24,310 --> 00:11:24,320
+been infected or has been breached in
+ 
+
+643
+00:11:24,320 --> 00:11:26,470
+been infected or has been breached in
+any way, you might want to perform a
+
+644
+00:11:26,470 --> 00:11:26,480
+any way, you might want to perform a
+ 
+
+645
+00:11:26,480 --> 00:11:28,470
+any way, you might want to perform a
+factory reset and perform a clean
+
+646
+00:11:28,470 --> 00:11:28,480
+factory reset and perform a clean
+ 
+
+647
+00:11:28,480 --> 00:11:30,710
+factory reset and perform a clean
+install of your operating system. This
+
+648
+00:11:30,710 --> 00:11:30,720
+install of your operating system. This
+ 
+
+649
+00:11:30,720 --> 00:11:32,790
+install of your operating system. This
+will certainly remove any malware that
+
+650
+00:11:32,790 --> 00:11:32,800
+will certainly remove any malware that
+ 
+
+651
+00:11:32,800 --> 00:11:34,630
+will certainly remove any malware that
+was there previously and leave you with
+
+652
+00:11:34,630 --> 00:11:34,640
+was there previously and leave you with
+ 
+
+653
+00:11:34,640 --> 00:11:37,750
+was there previously and leave you with
+a system that is a fresh install. And it
+
+654
+00:11:37,750 --> 00:11:37,760
+a system that is a fresh install. And it
+ 
+
+655
+00:11:37,760 --> 00:11:39,190
+a system that is a fresh install. And it
+may be that all of this data that
+
+656
+00:11:39,190 --> 00:11:39,200
+may be that all of this data that
+ 
+
+657
+00:11:39,200 --> 00:11:40,870
+may be that all of this data that
+somebody has gathered is not directly
+
+658
+00:11:40,870 --> 00:11:40,880
+somebody has gathered is not directly
+ 
+
+659
+00:11:40,880 --> 00:11:42,389
+somebody has gathered is not directly
+from your phone, but is from the
+
+660
+00:11:42,389 --> 00:11:42,399
+from your phone, but is from the
+ 
+
+661
+00:11:42,399 --> 00:11:44,470
+from your phone, but is from the
+cloud-based resources that you use to
+
+662
+00:11:44,470 --> 00:11:44,480
+cloud-based resources that you use to
+ 
+
+663
+00:11:44,480 --> 00:11:46,870
+cloud-based resources that you use to
+store this data. So, if your data has
+
+664
+00:11:46,870 --> 00:11:46,880
+store this data. So, if your data has
+ 
+
+665
+00:11:46,880 --> 00:11:48,710
+store this data. So, if your data has
+been breached on the internet, make sure
+
+666
+00:11:48,710 --> 00:11:48,720
+been breached on the internet, make sure
+ 
+
+667
+00:11:48,720 --> 00:11:50,630
+been breached on the internet, make sure
+you check your iCloud or Apple
+
+668
+00:11:50,630 --> 00:11:50,640
+you check your iCloud or Apple
+ 
+
+669
+00:11:50,640 --> 00:11:52,550
+you check your iCloud or Apple
+Configurator login, your Google
+
+670
+00:11:52,550 --> 00:11:52,560
+Configurator login, your Google
+ 
+
+671
+00:11:52,560 --> 00:11:54,710
+Configurator login, your Google
+Workspace login, and change any
+
+672
+00:11:54,710 --> 00:11:54,720
+Workspace login, and change any
+ 
+
+673
+00:11:54,720 --> 00:11:56,470
+Workspace login, and change any
+passwords you may have associated with
+
+674
+00:11:56,470 --> 00:11:56,480
+passwords you may have associated with
+ 
+
+675
+00:11:56,480 --> 00:11:58,949
+passwords you may have associated with
+your Microsoft One Drive. You might also
+
+676
+00:11:58,949 --> 00:11:58,959
+your Microsoft One Drive. You might also
+ 
+
+677
+00:11:58,959 --> 00:12:00,069
+your Microsoft One Drive. You might also
+want to consider adding some
+
+678
+00:12:00,069 --> 00:12:00,079
+want to consider adding some
+ 
+
+679
+00:12:00,079 --> 00:12:02,550
+want to consider adding some
+multiffactor authentication to any place
+
+680
+00:12:02,550 --> 00:12:02,560
+multiffactor authentication to any place
+ 
+
+681
+00:12:02,560 --> 00:12:04,470
+multiffactor authentication to any place
+where you're storing information in the
+
+682
+00:12:04,470 --> 00:12:04,480
+where you're storing information in the
+ 
+
+683
+00:12:04,480 --> 00:12:07,480
+where you're storing information in the
+cloud.
+

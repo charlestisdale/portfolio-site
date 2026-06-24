@@ -1,0 +1,1335 @@
+1
+00:00:01,920 --> 00:00:04,070
+
+The Windows operating system contains
+
+2
+00:00:04,070 --> 00:00:04,080
+The Windows operating system contains
+ 
+
+3
+00:00:04,080 --> 00:00:06,150
+The Windows operating system contains
+comprehensive anti virus and
+
+4
+00:00:06,150 --> 00:00:06,160
+comprehensive anti virus and
+ 
+
+5
+00:00:06,160 --> 00:00:08,790
+comprehensive anti virus and
+anti-malware functionality in Microsoft
+
+6
+00:00:08,790 --> 00:00:08,800
+anti-malware functionality in Microsoft
+ 
+
+7
+00:00:08,800 --> 00:00:11,509
+anti-malware functionality in Microsoft
+Defender Antiirus. This is integrated
+
+8
+00:00:11,509 --> 00:00:11,519
+Defender Antiirus. This is integrated
+ 
+
+9
+00:00:11,519 --> 00:00:13,749
+Defender Antiirus. This is integrated
+into the operating system and installed
+
+10
+00:00:13,749 --> 00:00:13,759
+into the operating system and installed
+ 
+
+11
+00:00:13,759 --> 00:00:16,470
+into the operating system and installed
+and turned on by default. You'll find
+
+12
+00:00:16,470 --> 00:00:16,480
+and turned on by default. You'll find
+ 
+
+13
+00:00:16,480 --> 00:00:18,390
+and turned on by default. You'll find
+all of the information about Windows
+
+14
+00:00:18,390 --> 00:00:18,400
+all of the information about Windows
+ 
+
+15
+00:00:18,400 --> 00:00:21,029
+all of the information about Windows
+Defender Antiirus under the Windows
+
+16
+00:00:21,029 --> 00:00:21,039
+Defender Antiirus under the Windows
+ 
+
+17
+00:00:21,039 --> 00:00:23,509
+Defender Antiirus under the Windows
+Security app, specifically the section
+
+18
+00:00:23,509 --> 00:00:23,519
+Security app, specifically the section
+ 
+
+19
+00:00:23,519 --> 00:00:25,910
+Security app, specifically the section
+for virus and threat protection.
+
+20
+00:00:25,910 --> 00:00:25,920
+for virus and threat protection.
+ 
+
+21
+00:00:25,920 --> 00:00:27,269
+for virus and threat protection.
+Depending on the version of Windows
+
+22
+00:00:27,269 --> 00:00:27,279
+Depending on the version of Windows
+ 
+
+23
+00:00:27,279 --> 00:00:29,429
+Depending on the version of Windows
+you're using, you could see different
+
+24
+00:00:29,429 --> 00:00:29,439
+you're using, you could see different
+ 
+
+25
+00:00:29,439 --> 00:00:31,910
+you're using, you could see different
+names for this application. It might be
+
+26
+00:00:31,910 --> 00:00:31,920
+names for this application. It might be
+ 
+
+27
+00:00:31,920 --> 00:00:34,229
+names for this application. It might be
+called Defender Antiirus, Windows
+
+28
+00:00:34,229 --> 00:00:34,239
+called Defender Antiirus, Windows
+ 
+
+29
+00:00:34,239 --> 00:00:36,150
+called Defender Antiirus, Windows
+Defender, or the name that's used
+
+30
+00:00:36,150 --> 00:00:36,160
+Defender, or the name that's used
+ 
+
+31
+00:00:36,160 --> 00:00:38,830
+Defender, or the name that's used
+currently, Microsoft Defender Anti
+
+32
+00:00:38,830 --> 00:00:38,840
+currently, Microsoft Defender Anti
+ 
+
+33
+00:00:38,840 --> 00:00:41,110
+currently, Microsoft Defender Anti
+Virus. If you're looking for the Windows
+
+34
+00:00:41,110 --> 00:00:41,120
+Virus. If you're looking for the Windows
+ 
+
+35
+00:00:41,120 --> 00:00:42,869
+Virus. If you're looking for the Windows
+Security app, you can go to the search
+
+36
+00:00:42,869 --> 00:00:42,879
+Security app, you can go to the search
+ 
+
+37
+00:00:42,879 --> 00:00:45,670
+Security app, you can go to the search
+option within Windows 11. Type security
+
+38
+00:00:45,670 --> 00:00:45,680
+option within Windows 11. Type security
+ 
+
+39
+00:00:45,680 --> 00:00:47,350
+option within Windows 11. Type security
+and it should be the option right at the
+
+40
+00:00:47,350 --> 00:00:47,360
+and it should be the option right at the
+ 
+
+41
+00:00:47,360 --> 00:00:50,069
+and it should be the option right at the
+top called Windows Security app. When
+
+42
+00:00:50,069 --> 00:00:50,079
+top called Windows Security app. When
+ 
+
+43
+00:00:50,079 --> 00:00:51,270
+top called Windows Security app. When
+this starts, you'll see a number of
+
+44
+00:00:51,270 --> 00:00:51,280
+this starts, you'll see a number of
+ 
+
+45
+00:00:51,280 --> 00:00:52,709
+this starts, you'll see a number of
+different features, including account
+
+46
+00:00:52,709 --> 00:00:52,719
+different features, including account
+ 
+
+47
+00:00:52,719 --> 00:00:54,630
+different features, including account
+protection, firewall and network
+
+48
+00:00:54,630 --> 00:00:54,640
+protection, firewall and network
+ 
+
+49
+00:00:54,640 --> 00:00:56,630
+protection, firewall and network
+protection, app and browser control, and
+
+50
+00:00:56,630 --> 00:00:56,640
+protection, app and browser control, and
+ 
+
+51
+00:00:56,640 --> 00:00:59,189
+protection, app and browser control, and
+others. But for our purposes in this
+
+52
+00:00:59,189 --> 00:00:59,199
+others. But for our purposes in this
+ 
+
+53
+00:00:59,199 --> 00:01:01,029
+others. But for our purposes in this
+video, we're going to talk about the
+
+54
+00:01:01,029 --> 00:01:01,039
+video, we're going to talk about the
+ 
+
+55
+00:01:01,039 --> 00:01:03,270
+video, we're going to talk about the
+virus and threat protection option at
+
+56
+00:01:03,270 --> 00:01:03,280
+virus and threat protection option at
+ 
+
+57
+00:01:03,280 --> 00:01:05,509
+virus and threat protection option at
+the upper left. If we click that, we'll
+
+58
+00:01:05,509 --> 00:01:05,519
+the upper left. If we click that, we'll
+ 
+
+59
+00:01:05,519 --> 00:01:08,670
+the upper left. If we click that, we'll
+get more details on Windows Defender
+
+60
+00:01:08,670 --> 00:01:08,680
+get more details on Windows Defender
+ 
+
+61
+00:01:08,680 --> 00:01:11,429
+get more details on Windows Defender
+Antiirus. For the vast majority of your
+
+62
+00:01:11,429 --> 00:01:11,439
+Antiirus. For the vast majority of your
+ 
+
+63
+00:01:11,439 --> 00:01:13,429
+Antiirus. For the vast majority of your
+work inside of Windows, you will want to
+
+64
+00:01:13,429 --> 00:01:13,439
+work inside of Windows, you will want to
+ 
+
+65
+00:01:13,439 --> 00:01:15,750
+work inside of Windows, you will want to
+leave this function enabled. You never
+
+66
+00:01:15,750 --> 00:01:15,760
+leave this function enabled. You never
+ 
+
+67
+00:01:15,760 --> 00:01:17,910
+leave this function enabled. You never
+want to turn off your anti virus or
+
+68
+00:01:17,910 --> 00:01:17,920
+want to turn off your anti virus or
+ 
+
+69
+00:01:17,920 --> 00:01:20,390
+want to turn off your anti virus or
+anti-malware capability because it is
+
+70
+00:01:20,390 --> 00:01:20,400
+anti-malware capability because it is
+ 
+
+71
+00:01:20,400 --> 00:01:23,109
+anti-malware capability because it is
+very easy for one of those malware apps
+
+72
+00:01:23,109 --> 00:01:23,119
+very easy for one of those malware apps
+ 
+
+73
+00:01:23,119 --> 00:01:25,190
+very easy for one of those malware apps
+to sneak into your system without you
+
+74
+00:01:25,190 --> 00:01:25,200
+to sneak into your system without you
+ 
+
+75
+00:01:25,200 --> 00:01:27,190
+to sneak into your system without you
+knowing it. This is something you might
+
+76
+00:01:27,190 --> 00:01:27,200
+knowing it. This is something you might
+ 
+
+77
+00:01:27,200 --> 00:01:29,030
+knowing it. This is something you might
+need to turn off if you're simply doing
+
+78
+00:01:29,030 --> 00:01:29,040
+need to turn off if you're simply doing
+ 
+
+79
+00:01:29,040 --> 00:01:31,030
+need to turn off if you're simply doing
+some temporary troubleshooting and you
+
+80
+00:01:31,030 --> 00:01:31,040
+some temporary troubleshooting and you
+ 
+
+81
+00:01:31,040 --> 00:01:32,390
+some temporary troubleshooting and you
+want to be sure that the problem you're
+
+82
+00:01:32,390 --> 00:01:32,400
+want to be sure that the problem you're
+ 
+
+83
+00:01:32,400 --> 00:01:35,069
+want to be sure that the problem you're
+having is not associated with Defender
+
+84
+00:01:35,069 --> 00:01:35,079
+having is not associated with Defender
+ 
+
+85
+00:01:35,079 --> 00:01:37,670
+having is not associated with Defender
+Antiirus. The default configuration for
+
+86
+00:01:37,670 --> 00:01:37,680
+Antiirus. The default configuration for
+ 
+
+87
+00:01:37,680 --> 00:01:39,749
+Antiirus. The default configuration for
+Defender Antivirus is to run with
+
+88
+00:01:39,749 --> 00:01:39,759
+Defender Antivirus is to run with
+ 
+
+89
+00:01:39,759 --> 00:01:41,990
+Defender Antivirus is to run with
+realtime protection. This means that it
+
+90
+00:01:41,990 --> 00:01:42,000
+realtime protection. This means that it
+ 
+
+91
+00:01:42,000 --> 00:01:44,230
+realtime protection. This means that it
+will monitor and scan for all file
+
+92
+00:01:44,230 --> 00:01:44,240
+will monitor and scan for all file
+ 
+
+93
+00:01:44,240 --> 00:01:46,310
+will monitor and scan for all file
+transfers that are occurring in and out
+
+94
+00:01:46,310 --> 00:01:46,320
+transfers that are occurring in and out
+ 
+
+95
+00:01:46,320 --> 00:01:48,389
+transfers that are occurring in and out
+of your operating system and it will
+
+96
+00:01:48,389 --> 00:01:48,399
+of your operating system and it will
+ 
+
+97
+00:01:48,399 --> 00:01:50,550
+of your operating system and it will
+automatically identify any malicious
+
+98
+00:01:50,550 --> 00:01:50,560
+automatically identify any malicious
+ 
+
+99
+00:01:50,560 --> 00:01:52,550
+automatically identify any malicious
+software that may be contained within
+
+100
+00:01:52,550 --> 00:01:52,560
+software that may be contained within
+ 
+
+101
+00:01:52,560 --> 00:01:54,870
+software that may be contained within
+those documents. If for some reason you
+
+102
+00:01:54,870 --> 00:01:54,880
+those documents. If for some reason you
+ 
+
+103
+00:01:54,880 --> 00:01:56,550
+those documents. If for some reason you
+need to turn off this real-time
+
+104
+00:01:56,550 --> 00:01:56,560
+need to turn off this real-time
+ 
+
+105
+00:01:56,560 --> 00:01:58,469
+need to turn off this real-time
+protection, you'll find this under the
+
+106
+00:01:58,469 --> 00:01:58,479
+protection, you'll find this under the
+ 
+
+107
+00:01:58,479 --> 00:02:00,550
+protection, you'll find this under the
+Windows security app under the virus and
+
+108
+00:02:00,550 --> 00:02:00,560
+Windows security app under the virus and
+ 
+
+109
+00:02:00,560 --> 00:02:02,550
+Windows security app under the virus and
+threat protection settings. If you go to
+
+110
+00:02:02,550 --> 00:02:02,560
+threat protection settings. If you go to
+ 
+
+111
+00:02:02,560 --> 00:02:04,389
+threat protection settings. If you go to
+the manage settings section, you can
+
+112
+00:02:04,389 --> 00:02:04,399
+the manage settings section, you can
+ 
+
+113
+00:02:04,399 --> 00:02:08,309
+the manage settings section, you can
+enable and disable real time protection.
+
+114
+00:02:08,309 --> 00:02:08,319
+enable and disable real time protection.
+ 
+
+115
+00:02:08,319 --> 00:02:10,309
+enable and disable real time protection.
+We're back on my Windows machine and
+
+116
+00:02:10,309 --> 00:02:10,319
+We're back on my Windows machine and
+ 
+
+117
+00:02:10,319 --> 00:02:12,390
+We're back on my Windows machine and
+under virus and threat protection, I'm
+
+118
+00:02:12,390 --> 00:02:12,400
+under virus and threat protection, I'm
+ 
+
+119
+00:02:12,400 --> 00:02:13,910
+under virus and threat protection, I'm
+going to scroll down past the current
+
+120
+00:02:13,910 --> 00:02:13,920
+going to scroll down past the current
+ 
+
+121
+00:02:13,920 --> 00:02:16,390
+going to scroll down past the current
+threats and move down under virus and
+
+122
+00:02:16,390 --> 00:02:16,400
+threats and move down under virus and
+ 
+
+123
+00:02:16,400 --> 00:02:18,070
+threats and move down under virus and
+threat protection settings. There's an
+
+124
+00:02:18,070 --> 00:02:18,080
+threat protection settings. There's an
+ 
+
+125
+00:02:18,080 --> 00:02:19,990
+threat protection settings. There's an
+option here for manage settings and
+
+126
+00:02:19,990 --> 00:02:20,000
+option here for manage settings and
+ 
+
+127
+00:02:20,000 --> 00:02:22,150
+option here for manage settings and
+we'll click on that. We can enable and
+
+128
+00:02:22,150 --> 00:02:22,160
+we'll click on that. We can enable and
+ 
+
+129
+00:02:22,160 --> 00:02:24,470
+we'll click on that. We can enable and
+disable real-time protection, cloud
+
+130
+00:02:24,470 --> 00:02:24,480
+disable real-time protection, cloud
+ 
+
+131
+00:02:24,480 --> 00:02:26,710
+disable real-time protection, cloud
+delivered protection, automatic sample
+
+132
+00:02:26,710 --> 00:02:26,720
+delivered protection, automatic sample
+ 
+
+133
+00:02:26,720 --> 00:02:29,270
+delivered protection, automatic sample
+submission, tamper protection, control
+
+134
+00:02:29,270 --> 00:02:29,280
+submission, tamper protection, control
+ 
+
+135
+00:02:29,280 --> 00:02:31,350
+submission, tamper protection, control
+folder access, and define any
+
+136
+00:02:31,350 --> 00:02:31,360
+folder access, and define any
+ 
+
+137
+00:02:31,360 --> 00:02:33,830
+folder access, and define any
+exclusions. If you'd like to disable
+
+138
+00:02:33,830 --> 00:02:33,840
+exclusions. If you'd like to disable
+ 
+
+139
+00:02:33,840 --> 00:02:35,509
+exclusions. If you'd like to disable
+this function, let's scroll all the way
+
+140
+00:02:35,509 --> 00:02:35,519
+this function, let's scroll all the way
+ 
+
+141
+00:02:35,519 --> 00:02:37,589
+this function, let's scroll all the way
+back to the top where it says real time
+
+142
+00:02:37,589 --> 00:02:37,599
+back to the top where it says real time
+ 
+
+143
+00:02:37,599 --> 00:02:39,830
+back to the top where it says real time
+protection. You can see it is set on by
+
+144
+00:02:39,830 --> 00:02:39,840
+protection. You can see it is set on by
+ 
+
+145
+00:02:39,840 --> 00:02:41,830
+protection. You can see it is set on by
+default. We will click that option and
+
+146
+00:02:41,830 --> 00:02:41,840
+default. We will click that option and
+ 
+
+147
+00:02:41,840 --> 00:02:43,589
+default. We will click that option and
+Windows will give us a user account
+
+148
+00:02:43,589 --> 00:02:43,599
+Windows will give us a user account
+ 
+
+149
+00:02:43,599 --> 00:02:45,509
+Windows will give us a user account
+control window telling us that it's
+
+150
+00:02:45,509 --> 00:02:45,519
+control window telling us that it's
+ 
+
+151
+00:02:45,519 --> 00:02:47,270
+control window telling us that it's
+about to make a major change to the
+
+152
+00:02:47,270 --> 00:02:47,280
+about to make a major change to the
+ 
+
+153
+00:02:47,280 --> 00:02:49,509
+about to make a major change to the
+operating system. And it asks, do you
+
+154
+00:02:49,509 --> 00:02:49,519
+operating system. And it asks, do you
+ 
+
+155
+00:02:49,519 --> 00:02:51,350
+operating system. And it asks, do you
+want to allow this app to make changes
+
+156
+00:02:51,350 --> 00:02:51,360
+want to allow this app to make changes
+ 
+
+157
+00:02:51,360 --> 00:02:53,030
+want to allow this app to make changes
+to your device? This would be the
+
+158
+00:02:53,030 --> 00:02:53,040
+to your device? This would be the
+ 
+
+159
+00:02:53,040 --> 00:02:55,190
+to your device? This would be the
+Windows security app from Microsoft
+
+160
+00:02:55,190 --> 00:02:55,200
+Windows security app from Microsoft
+ 
+
+161
+00:02:55,200 --> 00:02:57,830
+Windows security app from Microsoft
+Windows. And we would like to yes, make
+
+162
+00:02:57,830 --> 00:02:57,840
+Windows. And we would like to yes, make
+ 
+
+163
+00:02:57,840 --> 00:02:59,670
+Windows. And we would like to yes, make
+changes. And you can see that has now
+
+164
+00:02:59,670 --> 00:02:59,680
+changes. And you can see that has now
+ 
+
+165
+00:02:59,680 --> 00:03:02,390
+changes. And you can see that has now
+turned off real time protection. This
+
+166
+00:03:02,390 --> 00:03:02,400
+turned off real time protection. This
+ 
+
+167
+00:03:02,400 --> 00:03:04,309
+turned off real time protection. This
+also puts a notice on this page that
+
+168
+00:03:04,309 --> 00:03:04,319
+also puts a notice on this page that
+ 
+
+169
+00:03:04,319 --> 00:03:06,309
+also puts a notice on this page that
+says real time protection is off,
+
+170
+00:03:06,309 --> 00:03:06,319
+says real time protection is off,
+ 
+
+171
+00:03:06,319 --> 00:03:08,790
+says real time protection is off,
+leaving your device vulnerable just so
+
+172
+00:03:08,790 --> 00:03:08,800
+leaving your device vulnerable just so
+ 
+
+173
+00:03:08,800 --> 00:03:11,190
+leaving your device vulnerable just so
+you're aware of the concerns associated
+
+174
+00:03:11,190 --> 00:03:11,200
+you're aware of the concerns associated
+ 
+
+175
+00:03:11,200 --> 00:03:13,990
+you're aware of the concerns associated
+with disabling that functionality. The
+
+176
+00:03:13,990 --> 00:03:14,000
+with disabling that functionality. The
+ 
+
+177
+00:03:14,000 --> 00:03:15,830
+with disabling that functionality. The
+process for reenabling real-time
+
+178
+00:03:15,830 --> 00:03:15,840
+process for reenabling real-time
+ 
+
+179
+00:03:15,840 --> 00:03:18,149
+process for reenabling real-time
+protection is the same process. We go to
+
+180
+00:03:18,149 --> 00:03:18,159
+protection is the same process. We go to
+ 
+
+181
+00:03:18,159 --> 00:03:20,070
+protection is the same process. We go to
+the toggle that says off. We click it.
+
+182
+00:03:20,070 --> 00:03:20,080
+the toggle that says off. We click it.
+ 
+
+183
+00:03:20,080 --> 00:03:21,830
+the toggle that says off. We click it.
+It asks if we would like to make changes
+
+184
+00:03:21,830 --> 00:03:21,840
+It asks if we would like to make changes
+ 
+
+185
+00:03:21,840 --> 00:03:24,149
+It asks if we would like to make changes
+to our device. We would. And now real
+
+186
+00:03:24,149 --> 00:03:24,159
+to our device. We would. And now real
+ 
+
+187
+00:03:24,159 --> 00:03:27,270
+to our device. We would. And now real
+time protection is back on.
+
+188
+00:03:27,270 --> 00:03:27,280
+time protection is back on.
+ 
+
+189
+00:03:27,280 --> 00:03:29,750
+time protection is back on.
+Many anti virus applications rely on a
+
+190
+00:03:29,750 --> 00:03:29,760
+Many anti virus applications rely on a
+ 
+
+191
+00:03:29,760 --> 00:03:32,070
+Many anti virus applications rely on a
+set of signatures to be able to identify
+
+192
+00:03:32,070 --> 00:03:32,080
+set of signatures to be able to identify
+ 
+
+193
+00:03:32,080 --> 00:03:34,390
+set of signatures to be able to identify
+this malicious software. So in order to
+
+194
+00:03:34,390 --> 00:03:34,400
+this malicious software. So in order to
+ 
+
+195
+00:03:34,400 --> 00:03:36,710
+this malicious software. So in order to
+catch the latest version of viruses and
+
+196
+00:03:36,710 --> 00:03:36,720
+catch the latest version of viruses and
+ 
+
+197
+00:03:36,720 --> 00:03:39,070
+catch the latest version of viruses and
+malware, we need the latest version of
+
+198
+00:03:39,070 --> 00:03:39,080
+malware, we need the latest version of
+ 
+
+199
+00:03:39,080 --> 00:03:41,509
+malware, we need the latest version of
+definitions. Normally these definitions
+
+200
+00:03:41,509 --> 00:03:41,519
+definitions. Normally these definitions
+ 
+
+201
+00:03:41,519 --> 00:03:43,430
+definitions. Normally these definitions
+are downloaded automatically. But there
+
+202
+00:03:43,430 --> 00:03:43,440
+are downloaded automatically. But there
+ 
+
+203
+00:03:43,440 --> 00:03:45,110
+are downloaded automatically. But there
+may be times when you would like to
+
+204
+00:03:45,110 --> 00:03:45,120
+may be times when you would like to
+ 
+
+205
+00:03:45,120 --> 00:03:47,430
+may be times when you would like to
+force a check of those definitions to
+
+206
+00:03:47,430 --> 00:03:47,440
+force a check of those definitions to
+ 
+
+207
+00:03:47,440 --> 00:03:49,190
+force a check of those definitions to
+confirm that you really are running the
+
+208
+00:03:49,190 --> 00:03:49,200
+confirm that you really are running the
+ 
+
+209
+00:03:49,200 --> 00:03:51,030
+confirm that you really are running the
+latest version. You would find this
+
+210
+00:03:51,030 --> 00:03:51,040
+latest version. You would find this
+ 
+
+211
+00:03:51,040 --> 00:03:53,509
+latest version. You would find this
+option in Defender Antivirus under the
+
+212
+00:03:53,509 --> 00:03:53,519
+option in Defender Antivirus under the
+ 
+
+213
+00:03:53,519 --> 00:03:55,750
+option in Defender Antivirus under the
+threat and protection updates section
+
+214
+00:03:55,750 --> 00:03:55,760
+threat and protection updates section
+ 
+
+215
+00:03:55,760 --> 00:03:57,589
+threat and protection updates section
+and there is an option to check for
+
+216
+00:03:57,589 --> 00:03:57,599
+and there is an option to check for
+ 
+
+217
+00:03:57,599 --> 00:03:59,589
+and there is an option to check for
+updates. On that next page, you'll find
+
+218
+00:03:59,589 --> 00:03:59,599
+updates. On that next page, you'll find
+ 
+
+219
+00:03:59,599 --> 00:04:01,270
+updates. On that next page, you'll find
+a button that will allow you to check
+
+220
+00:04:01,270 --> 00:04:01,280
+a button that will allow you to check
+ 
+
+221
+00:04:01,280 --> 00:04:03,429
+a button that will allow you to check
+for updates. You can also manage the
+
+222
+00:04:03,429 --> 00:04:03,439
+for updates. You can also manage the
+ 
+
+223
+00:04:03,439 --> 00:04:05,429
+for updates. You can also manage the
+automatic update process from that
+
+224
+00:04:05,429 --> 00:04:05,439
+automatic update process from that
+ 
+
+225
+00:04:05,439 --> 00:04:08,470
+automatic update process from that
+screen as well. Back on our Windows
+
+226
+00:04:08,470 --> 00:04:08,480
+screen as well. Back on our Windows
+ 
+
+227
+00:04:08,480 --> 00:04:10,309
+screen as well. Back on our Windows
+configuration, we are in our Windows
+
+228
+00:04:10,309 --> 00:04:10,319
+configuration, we are in our Windows
+ 
+
+229
+00:04:10,319 --> 00:04:12,470
+configuration, we are in our Windows
+security app under virus and threat
+
+230
+00:04:12,470 --> 00:04:12,480
+security app under virus and threat
+ 
+
+231
+00:04:12,480 --> 00:04:14,070
+security app under virus and threat
+protection. I'm going to scroll down
+
+232
+00:04:14,070 --> 00:04:14,080
+protection. I'm going to scroll down
+ 
+
+233
+00:04:14,080 --> 00:04:15,910
+protection. I'm going to scroll down
+just a bit to where it says virus and
+
+234
+00:04:15,910 --> 00:04:15,920
+just a bit to where it says virus and
+ 
+
+235
+00:04:15,920 --> 00:04:17,430
+just a bit to where it says virus and
+threat protection updates. And I'm going
+
+236
+00:04:17,430 --> 00:04:17,440
+threat protection updates. And I'm going
+ 
+
+237
+00:04:17,440 --> 00:04:19,110
+threat protection updates. And I'm going
+to click the option for protection
+
+238
+00:04:19,110 --> 00:04:19,120
+to click the option for protection
+ 
+
+239
+00:04:19,120 --> 00:04:21,430
+to click the option for protection
+updates. From this window, it tells us
+
+240
+00:04:21,430 --> 00:04:21,440
+updates. From this window, it tells us
+ 
+
+241
+00:04:21,440 --> 00:04:23,270
+updates. From this window, it tells us
+about the latest updates that have been
+
+242
+00:04:23,270 --> 00:04:23,280
+about the latest updates that have been
+ 
+
+243
+00:04:23,280 --> 00:04:25,030
+about the latest updates that have been
+installed, the security intelligence
+
+244
+00:04:25,030 --> 00:04:25,040
+installed, the security intelligence
+ 
+
+245
+00:04:25,040 --> 00:04:27,189
+installed, the security intelligence
+version number, when that version was
+
+246
+00:04:27,189 --> 00:04:27,199
+version number, when that version was
+ 
+
+247
+00:04:27,199 --> 00:04:29,110
+version number, when that version was
+created, and when the last update was
+
+248
+00:04:29,110 --> 00:04:29,120
+created, and when the last update was
+ 
+
+249
+00:04:29,120 --> 00:04:31,510
+created, and when the last update was
+made. If we click check for updates, it
+
+250
+00:04:31,510 --> 00:04:31,520
+made. If we click check for updates, it
+ 
+
+251
+00:04:31,520 --> 00:04:33,670
+made. If we click check for updates, it
+will go out and check for the latest
+
+252
+00:04:33,670 --> 00:04:33,680
+will go out and check for the latest
+ 
+
+253
+00:04:33,680 --> 00:04:36,070
+will go out and check for the latest
+version of those updates. If there have
+
+254
+00:04:36,070 --> 00:04:36,080
+version of those updates. If there have
+ 
+
+255
+00:04:36,080 --> 00:04:38,150
+version of those updates. If there have
+been new definitions, it will download
+
+256
+00:04:38,150 --> 00:04:38,160
+been new definitions, it will download
+ 
+
+257
+00:04:38,160 --> 00:04:40,070
+been new definitions, it will download
+those definitions and install them into
+
+258
+00:04:40,070 --> 00:04:40,080
+those definitions and install them into
+ 
+
+259
+00:04:40,080 --> 00:04:42,469
+those definitions and install them into
+your currently running version. Now that
+
+260
+00:04:42,469 --> 00:04:42,479
+your currently running version. Now that
+ 
+
+261
+00:04:42,479 --> 00:04:44,390
+your currently running version. Now that
+our updates are successful, you can see
+
+262
+00:04:44,390 --> 00:04:44,400
+our updates are successful, you can see
+ 
+
+263
+00:04:44,400 --> 00:04:46,550
+our updates are successful, you can see
+there is a new version of the signatures
+
+264
+00:04:46,550 --> 00:04:46,560
+there is a new version of the signatures
+ 
+
+265
+00:04:46,560 --> 00:04:48,710
+there is a new version of the signatures
+that was installed and updated on this
+
+266
+00:04:48,710 --> 00:04:48,720
+that was installed and updated on this
+ 
+
+267
+00:04:48,720 --> 00:04:52,520
+that was installed and updated on this
+Windows 11 device.
+

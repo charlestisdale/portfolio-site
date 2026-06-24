@@ -1,0 +1,5625 @@
+1
+00:00:01,960 --> 00:00:03,870
+
+If you need to make changes to IP
+
+2
+00:00:03,870 --> 00:00:03,880
+If you need to make changes to IP
+ 
+
+3
+00:00:03,880 --> 00:00:05,950
+If you need to make changes to IP
+addresses or configurations of your
+
+4
+00:00:05,950 --> 00:00:05,960
+addresses or configurations of your
+ 
+
+5
+00:00:05,960 --> 00:00:07,790
+addresses or configurations of your
+network adapter inside of Linux, then
+
+6
+00:00:07,790 --> 00:00:07,800
+network adapter inside of Linux, then
+ 
+
+7
+00:00:07,800 --> 00:00:10,350
+network adapter inside of Linux, then
+you'll need to use the IP command. From
+
+8
+00:00:10,350 --> 00:00:10,360
+you'll need to use the IP command. From
+ 
+
+9
+00:00:10,360 --> 00:00:12,430
+you'll need to use the IP command. From
+here, you can enable an interface,
+
+10
+00:00:12,430 --> 00:00:12,440
+here, you can enable an interface,
+ 
+
+11
+00:00:12,440 --> 00:00:14,590
+here, you can enable an interface,
+disable an interface, or make changes to
+
+12
+00:00:14,590 --> 00:00:14,600
+disable an interface, or make changes to
+ 
+
+13
+00:00:14,600 --> 00:00:16,310
+disable an interface, or make changes to
+the configuration of your network
+
+14
+00:00:16,310 --> 00:00:16,320
+the configuration of your network
+ 
+
+15
+00:00:16,320 --> 00:00:18,630
+the configuration of your network
+settings. To view your current IP
+
+16
+00:00:18,630 --> 00:00:18,640
+settings. To view your current IP
+ 
+
+17
+00:00:18,640 --> 00:00:20,830
+settings. To view your current IP
+configuration, you can use the IP
+
+18
+00:00:20,830 --> 00:00:20,840
+configuration, you can use the IP
+ 
+
+19
+00:00:20,840 --> 00:00:22,790
+configuration, you can use the IP
+address command. This shows you a
+
+20
+00:00:22,790 --> 00:00:22,800
+address command. This shows you a
+ 
+
+21
+00:00:22,800 --> 00:00:25,550
+address command. This shows you a
+breakdown of IP addresses separated by
+
+22
+00:00:25,550 --> 00:00:25,560
+breakdown of IP addresses separated by
+ 
+
+23
+00:00:25,560 --> 00:00:27,710
+breakdown of IP addresses separated by
+the interfaces inside of your Linux
+
+24
+00:00:27,710 --> 00:00:27,720
+the interfaces inside of your Linux
+ 
+
+25
+00:00:27,720 --> 00:00:29,550
+the interfaces inside of your Linux
+device. If you want to view routing
+
+26
+00:00:29,550 --> 00:00:29,560
+device. If you want to view routing
+ 
+
+27
+00:00:29,560 --> 00:00:32,350
+device. If you want to view routing
+tables, you can use IP route. And if you
+
+28
+00:00:32,350 --> 00:00:32,360
+tables, you can use IP route. And if you
+ 
+
+29
+00:00:32,360 --> 00:00:34,270
+tables, you can use IP route. And if you
+need to configure an IP address on an
+
+30
+00:00:34,270 --> 00:00:34,280
+need to configure an IP address on an
+ 
+
+31
+00:00:34,280 --> 00:00:36,230
+need to configure an IP address on an
+interface, there's a single command line
+
+32
+00:00:36,230 --> 00:00:36,240
+interface, there's a single command line
+ 
+
+33
+00:00:36,240 --> 00:00:38,950
+interface, there's a single command line
+for IP address and then the parameters
+
+34
+00:00:38,950 --> 00:00:38,960
+for IP address and then the parameters
+ 
+
+35
+00:00:38,960 --> 00:00:41,030
+for IP address and then the parameters
+that you'd like to update.
+
+36
+00:00:41,030 --> 00:00:41,040
+that you'd like to update.
+ 
+
+37
+00:00:41,040 --> 00:00:42,510
+that you'd like to update.
+It's always a challenge when you sit
+
+38
+00:00:42,510 --> 00:00:42,520
+It's always a challenge when you sit
+ 
+
+39
+00:00:42,520 --> 00:00:44,510
+It's always a challenge when you sit
+down at a new computer and you're not
+
+40
+00:00:44,510 --> 00:00:44,520
+down at a new computer and you're not
+ 
+
+41
+00:00:44,520 --> 00:00:46,310
+down at a new computer and you're not
+quite sure what the IP address
+
+42
+00:00:46,310 --> 00:00:46,320
+quite sure what the IP address
+ 
+
+43
+00:00:46,320 --> 00:00:49,030
+quite sure what the IP address
+configuration is of this device. So, on
+
+44
+00:00:49,030 --> 00:00:49,040
+configuration is of this device. So, on
+ 
+
+45
+00:00:49,040 --> 00:00:51,310
+configuration is of this device. So, on
+this Linux machine, we will use the IP
+
+46
+00:00:51,310 --> 00:00:51,320
+this Linux machine, we will use the IP
+ 
+
+47
+00:00:51,320 --> 00:00:53,510
+this Linux machine, we will use the IP
+address command and it shows us that
+
+48
+00:00:53,510 --> 00:00:53,520
+address command and it shows us that
+ 
+
+49
+00:00:53,520 --> 00:00:55,750
+address command and it shows us that
+there are two separate interfaces on
+
+50
+00:00:55,750 --> 00:00:55,760
+there are two separate interfaces on
+ 
+
+51
+00:00:55,760 --> 00:00:56,990
+there are two separate interfaces on
+this device.
+
+52
+00:00:56,990 --> 00:00:57,000
+this device.
+ 
+
+53
+00:00:57,000 --> 00:00:59,270
+this device.
+Interface one is a loopback address and
+
+54
+00:00:59,270 --> 00:00:59,280
+Interface one is a loopback address and
+ 
+
+55
+00:00:59,280 --> 00:01:00,590
+Interface one is a loopback address and
+it shows all the loopback address
+
+56
+00:01:00,590 --> 00:01:00,600
+it shows all the loopback address
+ 
+
+57
+00:01:00,600 --> 00:01:02,830
+it shows all the loopback address
+information. Since this is a loopback
+
+58
+00:01:02,830 --> 00:01:02,840
+information. Since this is a loopback
+ 
+
+59
+00:01:02,840 --> 00:01:04,869
+information. Since this is a loopback
+address, it will always have an address
+
+60
+00:01:04,869 --> 00:01:04,879
+address, it will always have an address
+ 
+
+61
+00:01:04,879 --> 00:01:07,550
+address, it will always have an address
+on the 127 network and the default IP
+
+62
+00:01:07,550 --> 00:01:07,560
+on the 127 network and the default IP
+ 
+
+63
+00:01:07,560 --> 00:01:12,470
+on the 127 network and the default IP
+address for most devices is 127.0.0.1.
+
+64
+00:01:12,470 --> 00:01:12,480
+
+ 
+
+65
+00:01:12,480 --> 00:01:14,270
+
+There's also a second address. This is
+
+66
+00:01:14,270 --> 00:01:14,280
+There's also a second address. This is
+ 
+
+67
+00:01:14,280 --> 00:01:16,710
+There's also a second address. This is
+the primary Ethernet adapter on this
+
+68
+00:01:16,710 --> 00:01:16,720
+the primary Ethernet adapter on this
+ 
+
+69
+00:01:16,720 --> 00:01:20,790
+the primary Ethernet adapter on this
+device. This is adapter ENP0S5
+
+70
+00:01:20,790 --> 00:01:20,800
+device. This is adapter ENP0S5
+ 
+
+71
+00:01:20,800 --> 00:01:25,350
+device. This is adapter ENP0S5
+and it has an IP address of 10.211.55.20
+
+72
+00:01:25,350 --> 00:01:25,360
+
+ 
+
+73
+00:01:25,360 --> 00:01:28,150
+
+with a subnet mask of /24.
+
+74
+00:01:28,150 --> 00:01:28,160
+with a subnet mask of /24.
+ 
+
+75
+00:01:28,160 --> 00:01:32,870
+with a subnet mask of /24.
+The broadcast address is 10.211.55.255
+
+76
+00:01:32,870 --> 00:01:32,880
+
+ 
+
+77
+00:01:32,880 --> 00:01:34,950
+
+and you can view MAC information here.
+
+78
+00:01:34,950 --> 00:01:34,960
+and you can view MAC information here.
+ 
+
+79
+00:01:34,960 --> 00:01:37,750
+and you can view MAC information here.
+There's also IPv6 information displayed
+
+80
+00:01:37,750 --> 00:01:37,760
+There's also IPv6 information displayed
+ 
+
+81
+00:01:37,760 --> 00:01:40,510
+There's also IPv6 information displayed
+as well. If there are multiple adapters
+
+82
+00:01:40,510 --> 00:01:40,520
+as well. If there are multiple adapters
+ 
+
+83
+00:01:40,520 --> 00:01:42,390
+as well. If there are multiple adapters
+inside of this computer, we will see the
+
+84
+00:01:42,390 --> 00:01:42,400
+inside of this computer, we will see the
+ 
+
+85
+00:01:42,400 --> 00:01:44,510
+inside of this computer, we will see the
+IP address configuration for each of
+
+86
+00:01:44,510 --> 00:01:44,520
+IP address configuration for each of
+ 
+
+87
+00:01:44,520 --> 00:01:48,310
+IP address configuration for each of
+those by running the IP address command.
+
+88
+00:01:48,310 --> 00:01:48,320
+those by running the IP address command.
+ 
+
+89
+00:01:48,320 --> 00:01:49,990
+those by running the IP address command.
+If you're a system administrator of
+
+90
+00:01:49,990 --> 00:01:50,000
+If you're a system administrator of
+ 
+
+91
+00:01:50,000 --> 00:01:51,550
+If you're a system administrator of
+other operating systems, then you're
+
+92
+00:01:51,550 --> 00:01:51,560
+other operating systems, then you're
+ 
+
+93
+00:01:51,560 --> 00:01:53,870
+other operating systems, then you're
+probably already familiar with the ping
+
+94
+00:01:53,870 --> 00:01:53,880
+probably already familiar with the ping
+ 
+
+95
+00:01:53,880 --> 00:01:56,190
+probably already familiar with the ping
+command. Ping command is an almost
+
+96
+00:01:56,190 --> 00:01:56,200
+command. Ping command is an almost
+ 
+
+97
+00:01:56,200 --> 00:01:58,070
+command. Ping command is an almost
+universal command that's used across
+
+98
+00:01:58,070 --> 00:01:58,080
+universal command that's used across
+ 
+
+99
+00:01:58,080 --> 00:02:00,190
+universal command that's used across
+many different operating systems to be
+
+100
+00:02:00,190 --> 00:02:00,200
+many different operating systems to be
+ 
+
+101
+00:02:00,200 --> 00:02:02,110
+many different operating systems to be
+able to query a device across the
+
+102
+00:02:02,110 --> 00:02:02,120
+able to query a device across the
+ 
+
+103
+00:02:02,120 --> 00:02:03,550
+able to query a device across the
+network and see if you can get a
+
+104
+00:02:03,550 --> 00:02:03,560
+network and see if you can get a
+ 
+
+105
+00:02:03,560 --> 00:02:05,469
+network and see if you can get a
+response. This is usually one of the
+
+106
+00:02:05,469 --> 00:02:05,479
+response. This is usually one of the
+ 
+
+107
+00:02:05,479 --> 00:02:06,670
+response. This is usually one of the
+first things you do when you're
+
+108
+00:02:06,670 --> 00:02:06,680
+first things you do when you're
+ 
+
+109
+00:02:06,680 --> 00:02:08,510
+first things you do when you're
+troubleshooting the network. You use the
+
+110
+00:02:08,510 --> 00:02:08,520
+troubleshooting the network. You use the
+ 
+
+111
+00:02:08,520 --> 00:02:09,990
+troubleshooting the network. You use the
+ping command to see if you can get a
+
+112
+00:02:09,990 --> 00:02:10,000
+ping command to see if you can get a
+ 
+
+113
+00:02:10,000 --> 00:02:13,070
+ping command to see if you can get a
+response from that remote device.
+
+114
+00:02:13,070 --> 00:02:13,080
+response from that remote device.
+ 
+
+115
+00:02:13,080 --> 00:02:14,870
+response from that remote device.
+The syntax of the ping command is very
+
+116
+00:02:14,870 --> 00:02:14,880
+The syntax of the ping command is very
+ 
+
+117
+00:02:14,880 --> 00:02:16,630
+The syntax of the ping command is very
+similar to almost any other operating
+
+118
+00:02:16,630 --> 00:02:16,640
+similar to almost any other operating
+ 
+
+119
+00:02:16,640 --> 00:02:19,270
+similar to almost any other operating
+system. We type ping and then we specify
+
+120
+00:02:19,270 --> 00:02:19,280
+system. We type ping and then we specify
+ 
+
+121
+00:02:19,280 --> 00:02:20,990
+system. We type ping and then we specify
+an IP address that we would like to
+
+122
+00:02:20,990 --> 00:02:21,000
+an IP address that we would like to
+ 
+
+123
+00:02:21,000 --> 00:02:23,110
+an IP address that we would like to
+access. Let's say in this case that we
+
+124
+00:02:23,110 --> 00:02:23,120
+access. Let's say in this case that we
+ 
+
+125
+00:02:23,120 --> 00:02:26,550
+access. Let's say in this case that we
+would like to see if device 9.9.9.9
+
+126
+00:02:26,550 --> 00:02:26,560
+would like to see if device 9.9.9.9
+ 
+
+127
+00:02:26,560 --> 00:02:28,430
+would like to see if device 9.9.9.9
+is going to respond to us across the
+
+128
+00:02:28,430 --> 00:02:28,440
+is going to respond to us across the
+ 
+
+129
+00:02:28,440 --> 00:02:31,230
+is going to respond to us across the
+internet. That is for the quad 9 DNS
+
+130
+00:02:31,230 --> 00:02:31,240
+internet. That is for the quad 9 DNS
+ 
+
+131
+00:02:31,240 --> 00:02:33,390
+internet. That is for the quad 9 DNS
+service. And if we hit enter, it begins
+
+132
+00:02:33,390 --> 00:02:33,400
+service. And if we hit enter, it begins
+ 
+
+133
+00:02:33,400 --> 00:02:36,270
+service. And if we hit enter, it begins
+the process of pinging quad 9. It sends
+
+134
+00:02:36,270 --> 00:02:36,280
+the process of pinging quad 9. It sends
+ 
+
+135
+00:02:36,280 --> 00:02:38,710
+the process of pinging quad 9. It sends
+56 bytes of data by default. We get
+
+136
+00:02:38,710 --> 00:02:38,720
+56 bytes of data by default. We get
+ 
+
+137
+00:02:38,720 --> 00:02:40,750
+56 bytes of data by default. We get
+information saying that we are receiving
+
+138
+00:02:40,750 --> 00:02:40,760
+information saying that we are receiving
+ 
+
+139
+00:02:40,760 --> 00:02:42,710
+information saying that we are receiving
+responses from that device. We can see
+
+140
+00:02:42,710 --> 00:02:42,720
+responses from that device. We can see
+ 
+
+141
+00:02:42,720 --> 00:02:44,510
+responses from that device. We can see
+sequence numbers, time to live
+
+142
+00:02:44,510 --> 00:02:44,520
+sequence numbers, time to live
+ 
+
+143
+00:02:44,520 --> 00:02:46,790
+sequence numbers, time to live
+information, and round trip time for
+
+144
+00:02:46,790 --> 00:02:46,800
+information, and round trip time for
+ 
+
+145
+00:02:46,800 --> 00:02:47,949
+information, and round trip time for
+this ping.
+
+146
+00:02:47,949 --> 00:02:47,959
+this ping.
+ 
+
+147
+00:02:47,959 --> 00:02:50,190
+this ping.
+Unlike other operating systems, you'll
+
+148
+00:02:50,190 --> 00:02:50,200
+Unlike other operating systems, you'll
+ 
+
+149
+00:02:50,200 --> 00:02:52,310
+Unlike other operating systems, you'll
+notice that the ping command in Linux
+
+150
+00:02:52,310 --> 00:02:52,320
+notice that the ping command in Linux
+ 
+
+151
+00:02:52,320 --> 00:02:55,110
+notice that the ping command in Linux
+will continue to ping every second until
+
+152
+00:02:55,110 --> 00:02:55,120
+will continue to ping every second until
+ 
+
+153
+00:02:55,120 --> 00:02:57,150
+will continue to ping every second until
+you use the control C command and
+
+154
+00:02:57,150 --> 00:02:57,160
+you use the control C command and
+ 
+
+155
+00:02:57,160 --> 00:02:59,310
+you use the control C command and
+interrupt the process. At that point, it
+
+156
+00:02:59,310 --> 00:02:59,320
+interrupt the process. At that point, it
+ 
+
+157
+00:02:59,320 --> 00:03:00,750
+interrupt the process. At that point, it
+gives us a summary saying that we've
+
+158
+00:03:00,750 --> 00:03:00,760
+gives us a summary saying that we've
+ 
+
+159
+00:03:00,760 --> 00:03:03,270
+gives us a summary saying that we've
+sent 26 packets, that we've also
+
+160
+00:03:03,270 --> 00:03:03,280
+sent 26 packets, that we've also
+ 
+
+161
+00:03:03,280 --> 00:03:05,790
+sent 26 packets, that we've also
+received 26 packets. There's been zero
+
+162
+00:03:05,790 --> 00:03:05,800
+received 26 packets. There's been zero
+ 
+
+163
+00:03:05,800 --> 00:03:07,790
+received 26 packets. There's been zero
+packet loss because of that, and this
+
+164
+00:03:07,790 --> 00:03:07,800
+packet loss because of that, and this
+ 
+
+165
+00:03:07,800 --> 00:03:10,590
+packet loss because of that, and this
+occurred over time frame of 25,000
+
+166
+00:03:10,590 --> 00:03:10,600
+occurred over time frame of 25,000
+ 
+
+167
+00:03:10,600 --> 00:03:13,270
+occurred over time frame of 25,000
+milliseconds, which is 25 seconds. The
+
+168
+00:03:13,270 --> 00:03:13,280
+milliseconds, which is 25 seconds. The
+ 
+
+169
+00:03:13,280 --> 00:03:15,590
+milliseconds, which is 25 seconds. The
+round trip time minimums, averages,
+
+170
+00:03:15,590 --> 00:03:15,600
+round trip time minimums, averages,
+ 
+
+171
+00:03:15,600 --> 00:03:17,630
+round trip time minimums, averages,
+maximums, and deviations
+
+172
+00:03:17,630 --> 00:03:17,640
+maximums, and deviations
+ 
+
+173
+00:03:17,640 --> 00:03:20,030
+maximums, and deviations
+are also listed at the bottom. You can
+
+174
+00:03:20,030 --> 00:03:20,040
+are also listed at the bottom. You can
+ 
+
+175
+00:03:20,040 --> 00:03:22,390
+are also listed at the bottom. You can
+see that our minimum time was 35
+
+176
+00:03:22,390 --> 00:03:22,400
+see that our minimum time was 35
+ 
+
+177
+00:03:22,400 --> 00:03:24,949
+see that our minimum time was 35
+milliseconds, the average was 35, the
+
+178
+00:03:24,949 --> 00:03:24,959
+milliseconds, the average was 35, the
+ 
+
+179
+00:03:24,959 --> 00:03:27,190
+milliseconds, the average was 35, the
+maximum was 36.8,
+
+180
+00:03:27,190 --> 00:03:27,200
+maximum was 36.8,
+ 
+
+181
+00:03:27,200 --> 00:03:29,670
+maximum was 36.8,
+and we have a standard deviation of
+
+182
+00:03:29,670 --> 00:03:29,680
+and we have a standard deviation of
+ 
+
+183
+00:03:29,680 --> 00:03:31,190
+and we have a standard deviation of
+0.450
+
+184
+00:03:31,190 --> 00:03:31,200
+0.450
+ 
+
+185
+00:03:31,200 --> 00:03:33,470
+0.450
+milliseconds.
+
+186
+00:03:33,470 --> 00:03:33,480
+milliseconds.
+ 
+
+187
+00:03:33,480 --> 00:03:34,790
+milliseconds.
+When you're working at the command line,
+
+188
+00:03:34,790 --> 00:03:34,800
+When you're working at the command line,
+ 
+
+189
+00:03:34,800 --> 00:03:36,949
+When you're working at the command line,
+there's obviously no graphical browser
+
+190
+00:03:36,949 --> 00:03:36,959
+there's obviously no graphical browser
+ 
+
+191
+00:03:36,959 --> 00:03:39,270
+there's obviously no graphical browser
+that you can use to access a website,
+
+192
+00:03:39,270 --> 00:03:39,280
+that you can use to access a website,
+ 
+
+193
+00:03:39,280 --> 00:03:41,870
+that you can use to access a website,
+but there are ways to request and
+
+194
+00:03:41,870 --> 00:03:41,880
+but there are ways to request and
+ 
+
+195
+00:03:41,880 --> 00:03:44,390
+but there are ways to request and
+receive information from a web server
+
+196
+00:03:44,390 --> 00:03:44,400
+receive information from a web server
+ 
+
+197
+00:03:44,400 --> 00:03:47,470
+receive information from a web server
+using HTML at the command prompt and the
+
+198
+00:03:47,470 --> 00:03:47,480
+using HTML at the command prompt and the
+ 
+
+199
+00:03:47,480 --> 00:03:50,430
+using HTML at the command prompt and the
+utility curl. Curl stands for client
+
+200
+00:03:50,430 --> 00:03:50,440
+utility curl. Curl stands for client
+ 
+
+201
+00:03:50,440 --> 00:03:53,110
+utility curl. Curl stands for client
+URL, and we're able to data from that
+
+202
+00:03:53,110 --> 00:03:53,120
+URL, and we're able to data from that
+ 
+
+203
+00:03:53,120 --> 00:03:56,390
+URL, and we're able to data from that
+device using a specific uniform resource
+
+204
+00:03:56,390 --> 00:03:56,400
+device using a specific uniform resource
+ 
+
+205
+00:03:56,400 --> 00:03:58,630
+device using a specific uniform resource
+locator. This allows us to access a
+
+206
+00:03:58,630 --> 00:03:58,640
+locator. This allows us to access a
+ 
+
+207
+00:03:58,640 --> 00:04:01,430
+locator. This allows us to access a
+webpage or even other devices using this
+
+208
+00:04:01,430 --> 00:04:01,440
+webpage or even other devices using this
+ 
+
+209
+00:04:01,440 --> 00:04:04,270
+webpage or even other devices using this
+curl utility. Once we receive all of the
+
+210
+00:04:04,270 --> 00:04:04,280
+curl utility. Once we receive all of the
+ 
+
+211
+00:04:04,280 --> 00:04:06,750
+curl utility. Once we receive all of the
+raw data or the raw HTML from that
+
+212
+00:04:06,750 --> 00:04:06,760
+raw data or the raw HTML from that
+ 
+
+213
+00:04:06,760 --> 00:04:08,390
+raw data or the raw HTML from that
+website, you can then search through
+
+214
+00:04:08,390 --> 00:04:08,400
+website, you can then search through
+ 
+
+215
+00:04:08,400 --> 00:04:10,949
+website, you can then search through
+that information, parse out any details,
+
+216
+00:04:10,949 --> 00:04:10,959
+that information, parse out any details,
+ 
+
+217
+00:04:10,959 --> 00:04:13,310
+that information, parse out any details,
+or even use this as part of an automated
+
+218
+00:04:13,310 --> 00:04:13,320
+or even use this as part of an automated
+ 
+
+219
+00:04:13,320 --> 00:04:15,430
+or even use this as part of an automated
+script.
+
+220
+00:04:15,430 --> 00:04:15,440
+script.
+ 
+
+221
+00:04:15,440 --> 00:04:17,509
+script.
+If you're using a graphical browser, you
+
+222
+00:04:17,509 --> 00:04:17,519
+If you're using a graphical browser, you
+ 
+
+223
+00:04:17,519 --> 00:04:20,030
+If you're using a graphical browser, you
+can specify a website like www.
+
+224
+00:04:20,030 --> 00:04:20,040
+can specify a website like www.
+ 
+
+225
+00:04:20,040 --> 00:04:21,830
+can specify a website like www.
+www.professormesser.com
+
+226
+00:04:21,830 --> 00:04:21,840
+www.professormesser.com
+ 
+
+227
+00:04:21,840 --> 00:04:23,270
+www.professormesser.com
+and you can view the information
+
+228
+00:04:23,270 --> 00:04:23,280
+and you can view the information
+ 
+
+229
+00:04:23,280 --> 00:04:25,590
+and you can view the information
+associated with that website. But at the
+
+230
+00:04:25,590 --> 00:04:25,600
+associated with that website. But at the
+ 
+
+231
+00:04:25,600 --> 00:04:27,350
+associated with that website. But at the
+command prompt, there is no graphical
+
+232
+00:04:27,350 --> 00:04:27,360
+command prompt, there is no graphical
+ 
+
+233
+00:04:27,360 --> 00:04:29,670
+command prompt, there is no graphical
+browser, so we will use the curl command
+
+234
+00:04:29,670 --> 00:04:29,680
+browser, so we will use the curl command
+ 
+
+235
+00:04:29,680 --> 00:04:31,070
+browser, so we will use the curl command
+and I will specify
+
+236
+00:04:31,070 --> 00:04:31,080
+and I will specify
+ 
+
+237
+00:04:31,080 --> 00:04:34,870
+and I will specify
+www.professormesser.com
+
+238
+00:04:34,870 --> 00:04:34,880
+
+ 
+
+239
+00:04:34,880 --> 00:04:36,750
+
+and the information that we receive in
+
+240
+00:04:36,750 --> 00:04:36,760
+and the information that we receive in
+ 
+
+241
+00:04:36,760 --> 00:04:40,030
+and the information that we receive in
+the terminal screen is the raw HTML that
+
+242
+00:04:40,030 --> 00:04:40,040
+the terminal screen is the raw HTML that
+ 
+
+243
+00:04:40,040 --> 00:04:41,909
+the terminal screen is the raw HTML that
+would normally be rendered by your
+
+244
+00:04:41,909 --> 00:04:41,919
+would normally be rendered by your
+ 
+
+245
+00:04:41,919 --> 00:04:43,990
+would normally be rendered by your
+graphical browser. But since we have
+
+246
+00:04:43,990 --> 00:04:44,000
+graphical browser. But since we have
+ 
+
+247
+00:04:44,000 --> 00:04:46,590
+graphical browser. But since we have
+access now to the raw HTML, we can
+
+248
+00:04:46,590 --> 00:04:46,600
+access now to the raw HTML, we can
+ 
+
+249
+00:04:46,600 --> 00:04:48,390
+access now to the raw HTML, we can
+search through this data, we can parse
+
+250
+00:04:48,390 --> 00:04:48,400
+search through this data, we can parse
+ 
+
+251
+00:04:48,400 --> 00:04:50,830
+search through this data, we can parse
+information, we can look and see what
+
+252
+00:04:50,830 --> 00:04:50,840
+information, we can look and see what
+ 
+
+253
+00:04:50,840 --> 00:04:52,950
+information, we can look and see what
+may be really being transferred across
+
+254
+00:04:52,950 --> 00:04:52,960
+may be really being transferred across
+ 
+
+255
+00:04:52,960 --> 00:04:55,270
+may be really being transferred across
+the network, and this shows us a raw
+
+256
+00:04:55,270 --> 00:04:55,280
+the network, and this shows us a raw
+ 
+
+257
+00:04:55,280 --> 00:04:59,430
+the network, and this shows us a raw
+data view of the entire webpage.
+
+258
+00:04:59,430 --> 00:04:59,440
+data view of the entire webpage.
+ 
+
+259
+00:04:59,440 --> 00:05:00,550
+data view of the entire webpage.
+When you're troubleshooting network
+
+260
+00:05:00,550 --> 00:05:00,560
+When you're troubleshooting network
+ 
+
+261
+00:05:00,560 --> 00:05:01,909
+When you're troubleshooting network
+problems, you might also be
+
+262
+00:05:01,909 --> 00:05:01,919
+problems, you might also be
+ 
+
+263
+00:05:01,919 --> 00:05:04,030
+problems, you might also be
+troubleshooting issues communicating to
+
+264
+00:05:04,030 --> 00:05:04,040
+troubleshooting issues communicating to
+ 
+
+265
+00:05:04,040 --> 00:05:06,750
+troubleshooting issues communicating to
+a DNS server. One way that you can run
+
+266
+00:05:06,750 --> 00:05:06,760
+a DNS server. One way that you can run
+ 
+
+267
+00:05:06,760 --> 00:05:08,790
+a DNS server. One way that you can run
+commands to see what type of response
+
+268
+00:05:08,790 --> 00:05:08,800
+commands to see what type of response
+ 
+
+269
+00:05:08,800 --> 00:05:11,150
+commands to see what type of response
+you would get from that DNS server is to
+
+270
+00:05:11,150 --> 00:05:11,160
+you would get from that DNS server is to
+ 
+
+271
+00:05:11,160 --> 00:05:13,750
+you would get from that DNS server is to
+use the dig utility. If you're a Windows
+
+272
+00:05:13,750 --> 00:05:13,760
+use the dig utility. If you're a Windows
+ 
+
+273
+00:05:13,760 --> 00:05:15,710
+use the dig utility. If you're a Windows
+user, then you're probably familiar with
+
+274
+00:05:15,710 --> 00:05:15,720
+user, then you're probably familiar with
+ 
+
+275
+00:05:15,720 --> 00:05:17,950
+user, then you're probably familiar with
+nslookup. The dig command is very
+
+276
+00:05:17,950 --> 00:05:17,960
+nslookup. The dig command is very
+ 
+
+277
+00:05:17,960 --> 00:05:19,950
+nslookup. The dig command is very
+similar to the functionality of
+
+278
+00:05:19,950 --> 00:05:19,960
+similar to the functionality of
+ 
+
+279
+00:05:19,960 --> 00:05:22,350
+similar to the functionality of
+nslookup, although the resulting output
+
+280
+00:05:22,350 --> 00:05:22,360
+nslookup, although the resulting output
+ 
+
+281
+00:05:22,360 --> 00:05:25,110
+nslookup, although the resulting output
+is slightly different.
+
+282
+00:05:25,110 --> 00:05:25,120
+is slightly different.
+ 
+
+283
+00:05:25,120 --> 00:05:27,470
+is slightly different.
+Let's use dig to find the IP addresses
+
+284
+00:05:27,470 --> 00:05:27,480
+Let's use dig to find the IP addresses
+ 
+
+285
+00:05:27,480 --> 00:05:30,150
+Let's use dig to find the IP addresses
+associated with my website. We'll use
+
+286
+00:05:30,150 --> 00:05:30,160
+associated with my website. We'll use
+ 
+
+287
+00:05:30,160 --> 00:05:32,470
+associated with my website. We'll use
+the dig command and then we'll specify
+
+288
+00:05:32,470 --> 00:05:32,480
+the dig command and then we'll specify
+ 
+
+289
+00:05:32,480 --> 00:05:36,110
+the dig command and then we'll specify
+www.professormesser.com
+
+290
+00:05:36,110 --> 00:05:36,120
+
+ 
+
+291
+00:05:36,120 --> 00:05:37,830
+
+and we'll hit enter. And when we do
+
+292
+00:05:37,830 --> 00:05:37,840
+and we'll hit enter. And when we do
+ 
+
+293
+00:05:37,840 --> 00:05:40,110
+and we'll hit enter. And when we do
+that, it gives us a series of output
+
+294
+00:05:40,110 --> 00:05:40,120
+that, it gives us a series of output
+ 
+
+295
+00:05:40,120 --> 00:05:42,750
+that, it gives us a series of output
+messages associated with our request.
+
+296
+00:05:42,750 --> 00:05:42,760
+messages associated with our request.
+ 
+
+297
+00:05:42,760 --> 00:05:44,710
+messages associated with our request.
+The first is the dig version that we're
+
+298
+00:05:44,710 --> 00:05:44,720
+The first is the dig version that we're
+ 
+
+299
+00:05:44,720 --> 00:05:46,630
+The first is the dig version that we're
+using and you can see that we're using
+
+300
+00:05:46,630 --> 00:05:46,640
+using and you can see that we're using
+ 
+
+301
+00:05:46,640 --> 00:05:51,270
+using and you can see that we're using
+this to find www.professormesser.com.
+
+302
+00:05:51,270 --> 00:05:51,280
+
+ 
+
+303
+00:05:51,280 --> 00:05:53,150
+
+It tells us that the request that we
+
+304
+00:05:53,150 --> 00:05:53,160
+It tells us that the request that we
+ 
+
+305
+00:05:53,160 --> 00:05:55,590
+It tells us that the request that we
+made or the question that was posed was
+
+306
+00:05:55,590 --> 00:05:55,600
+made or the question that was posed was
+ 
+
+307
+00:05:55,600 --> 00:05:57,870
+made or the question that was posed was
+for that fully qualified domain name,
+
+308
+00:05:57,870 --> 00:05:57,880
+for that fully qualified domain name,
+ 
+
+309
+00:05:57,880 --> 00:06:00,070
+for that fully qualified domain name,
+and by default, I was asking for the
+
+310
+00:06:00,070 --> 00:06:00,080
+and by default, I was asking for the
+ 
+
+311
+00:06:00,080 --> 00:06:03,270
+and by default, I was asking for the
+internet address. That's the IN and the
+
+312
+00:06:03,270 --> 00:06:03,280
+internet address. That's the IN and the
+ 
+
+313
+00:06:03,280 --> 00:06:05,630
+internet address. That's the IN and the
+A associated with that question. The
+
+314
+00:06:05,630 --> 00:06:05,640
+A associated with that question. The
+ 
+
+315
+00:06:05,640 --> 00:06:07,910
+A associated with that question. The
+next section is the answer section, and
+
+316
+00:06:07,910 --> 00:06:07,920
+next section is the answer section, and
+ 
+
+317
+00:06:07,920 --> 00:06:09,390
+next section is the answer section, and
+you can see that there are three
+
+318
+00:06:09,390 --> 00:06:09,400
+you can see that there are three
+ 
+
+319
+00:06:09,400 --> 00:06:11,710
+you can see that there are three
+separate IP addresses that were returned
+
+320
+00:06:11,710 --> 00:06:11,720
+separate IP addresses that were returned
+ 
+
+321
+00:06:11,720 --> 00:06:14,590
+separate IP addresses that were returned
+from the DNS server. professormesser.com
+
+322
+00:06:14,590 --> 00:06:14,600
+from the DNS server. professormesser.com
+ 
+
+323
+00:06:14,600 --> 00:06:18,470
+from the DNS server. professormesser.com
+can be found at 104.22.72.108,
+
+324
+00:06:18,470 --> 00:06:18,480
+can be found at 104.22.72.108,
+ 
+
+325
+00:06:18,480 --> 00:06:21,909
+can be found at 104.22.72.108,
+172.67.41.114,
+
+326
+00:06:21,909 --> 00:06:21,919
+
+ 
+
+327
+00:06:21,919 --> 00:06:25,830
+
+and 104.22.73.108.
+
+328
+00:06:25,830 --> 00:06:25,840
+
+ 
+
+329
+00:06:25,840 --> 00:06:28,070
+
+By design, there are multiple points of
+
+330
+00:06:28,070 --> 00:06:28,080
+By design, there are multiple points of
+ 
+
+331
+00:06:28,080 --> 00:06:29,909
+By design, there are multiple points of
+presence on the internet that will allow
+
+332
+00:06:29,909 --> 00:06:29,919
+presence on the internet that will allow
+ 
+
+333
+00:06:29,919 --> 00:06:31,630
+presence on the internet that will allow
+you to connect to our web server. So,
+
+334
+00:06:31,630 --> 00:06:31,640
+you to connect to our web server. So,
+ 
+
+335
+00:06:31,640 --> 00:06:33,390
+you to connect to our web server. So,
+depending on where you are in the world,
+
+336
+00:06:33,390 --> 00:06:33,400
+depending on where you are in the world,
+ 
+
+337
+00:06:33,400 --> 00:06:35,710
+depending on where you are in the world,
+you may have a different IP address. And
+
+338
+00:06:35,710 --> 00:06:35,720
+you may have a different IP address. And
+ 
+
+339
+00:06:35,720 --> 00:06:37,510
+you may have a different IP address. And
+occasionally, you will see more than one
+
+340
+00:06:37,510 --> 00:06:37,520
+occasionally, you will see more than one
+ 
+
+341
+00:06:37,520 --> 00:06:39,909
+occasionally, you will see more than one
+IP address resolve to a single fully
+
+342
+00:06:39,909 --> 00:06:39,919
+IP address resolve to a single fully
+ 
+
+343
+00:06:39,919 --> 00:06:41,790
+IP address resolve to a single fully
+qualified domain name, and that's
+
+344
+00:06:41,790 --> 00:06:41,800
+qualified domain name, and that's
+ 
+
+345
+00:06:41,800 --> 00:06:43,909
+qualified domain name, and that's
+provided for redundancy. If you're not
+
+346
+00:06:43,909 --> 00:06:43,919
+provided for redundancy. If you're not
+ 
+
+347
+00:06:43,919 --> 00:06:46,030
+provided for redundancy. If you're not
+able to connect to the first IP address,
+
+348
+00:06:46,030 --> 00:06:46,040
+able to connect to the first IP address,
+ 
+
+349
+00:06:46,040 --> 00:06:47,990
+able to connect to the first IP address,
+there are two other IP addresses that
+
+350
+00:06:47,990 --> 00:06:48,000
+there are two other IP addresses that
+ 
+
+351
+00:06:48,000 --> 00:06:53,030
+there are two other IP addresses that
+will get you to www.professormesser.com.
+
+352
+00:06:53,030 --> 00:06:53,040
+
+ 
+
+353
+00:06:53,040 --> 00:06:55,990
+
+Earlier, we were able to ping the Quad9
+
+354
+00:06:55,990 --> 00:06:56,000
+Earlier, we were able to ping the Quad9
+ 
+
+355
+00:06:56,000 --> 00:06:58,390
+Earlier, we were able to ping the Quad9
+DNS server across the internet. To be
+
+356
+00:06:58,390 --> 00:06:58,400
+DNS server across the internet. To be
+ 
+
+357
+00:06:58,400 --> 00:07:00,430
+DNS server across the internet. To be
+able to communicate to that server, we
+
+358
+00:07:00,430 --> 00:07:00,440
+able to communicate to that server, we
+ 
+
+359
+00:07:00,440 --> 00:07:02,110
+able to communicate to that server, we
+had to hop through a number of different
+
+360
+00:07:02,110 --> 00:07:02,120
+had to hop through a number of different
+ 
+
+361
+00:07:02,120 --> 00:07:04,710
+had to hop through a number of different
+routers between my device and the Quad9
+
+362
+00:07:04,710 --> 00:07:04,720
+routers between my device and the Quad9
+ 
+
+363
+00:07:04,720 --> 00:07:07,310
+routers between my device and the Quad9
+servers. If you would like to see every
+
+364
+00:07:07,310 --> 00:07:07,320
+servers. If you would like to see every
+ 
+
+365
+00:07:07,320 --> 00:07:09,909
+servers. If you would like to see every
+router that exists between here and that
+
+366
+00:07:09,909 --> 00:07:09,919
+router that exists between here and that
+ 
+
+367
+00:07:09,919 --> 00:07:12,830
+router that exists between here and that
+Quad9 server, you can use the traceroute
+
+368
+00:07:12,830 --> 00:07:12,840
+Quad9 server, you can use the traceroute
+ 
+
+369
+00:07:12,840 --> 00:07:15,470
+Quad9 server, you can use the traceroute
+command. This will map the entire path
+
+370
+00:07:15,470 --> 00:07:15,480
+command. This will map the entire path
+ 
+
+371
+00:07:15,480 --> 00:07:17,870
+command. This will map the entire path
+that a packet takes between our device
+
+372
+00:07:17,870 --> 00:07:17,880
+that a packet takes between our device
+ 
+
+373
+00:07:17,880 --> 00:07:19,909
+that a packet takes between our device
+and that remote location, and tell us
+
+374
+00:07:19,909 --> 00:07:19,919
+and that remote location, and tell us
+ 
+
+375
+00:07:19,919 --> 00:07:22,470
+and that remote location, and tell us
+the IP address of every router along the
+
+376
+00:07:22,470 --> 00:07:22,480
+the IP address of every router along the
+ 
+
+377
+00:07:22,480 --> 00:07:24,590
+the IP address of every router along the
+way. If you're a Windows user, you've
+
+378
+00:07:24,590 --> 00:07:24,600
+way. If you're a Windows user, you've
+ 
+
+379
+00:07:24,600 --> 00:07:27,710
+way. If you're a Windows user, you've
+probably run a traceroute using tracert,
+
+380
+00:07:27,710 --> 00:07:27,720
+probably run a traceroute using tracert,
+ 
+
+381
+00:07:27,720 --> 00:07:30,430
+probably run a traceroute using tracert,
+but if you're in Linux, Unix, or macOS,
+
+382
+00:07:30,430 --> 00:07:30,440
+but if you're in Linux, Unix, or macOS,
+ 
+
+383
+00:07:30,440 --> 00:07:33,070
+but if you're in Linux, Unix, or macOS,
+you use the full name of traceroute.
+
+384
+00:07:33,070 --> 00:07:33,080
+you use the full name of traceroute.
+ 
+
+385
+00:07:33,080 --> 00:07:35,430
+you use the full name of traceroute.
+Traceroute uses something called a time
+
+386
+00:07:35,430 --> 00:07:35,440
+Traceroute uses something called a time
+ 
+
+387
+00:07:35,440 --> 00:07:37,750
+Traceroute uses something called a time
+to live exceeded message to be able to
+
+388
+00:07:37,750 --> 00:07:37,760
+to live exceeded message to be able to
+ 
+
+389
+00:07:37,760 --> 00:07:40,190
+to live exceeded message to be able to
+build this table of different routers
+
+390
+00:07:40,190 --> 00:07:40,200
+build this table of different routers
+ 
+
+391
+00:07:40,200 --> 00:07:42,630
+build this table of different routers
+between two points. When we want to know
+
+392
+00:07:42,630 --> 00:07:42,640
+between two points. When we want to know
+ 
+
+393
+00:07:42,640 --> 00:07:44,590
+between two points. When we want to know
+what the first router is, traceroute
+
+394
+00:07:44,590 --> 00:07:44,600
+what the first router is, traceroute
+ 
+
+395
+00:07:44,600 --> 00:07:46,990
+what the first router is, traceroute
+uses a time to live of one. When we want
+
+396
+00:07:46,990 --> 00:07:47,000
+uses a time to live of one. When we want
+ 
+
+397
+00:07:47,000 --> 00:07:49,310
+uses a time to live of one. When we want
+to know what the second hop might be, it
+
+398
+00:07:49,310 --> 00:07:49,320
+to know what the second hop might be, it
+ 
+
+399
+00:07:49,320 --> 00:07:52,150
+to know what the second hop might be, it
+uses a time to live of two. Notice that
+
+400
+00:07:52,150 --> 00:07:52,160
+uses a time to live of two. Notice that
+ 
+
+401
+00:07:52,160 --> 00:07:54,270
+uses a time to live of two. Notice that
+the time to live is referring to the
+
+402
+00:07:54,270 --> 00:07:54,280
+the time to live is referring to the
+ 
+
+403
+00:07:54,280 --> 00:07:56,550
+the time to live is referring to the
+number of hops. It's not referring to a
+
+404
+00:07:56,550 --> 00:07:56,560
+number of hops. It's not referring to a
+ 
+
+405
+00:07:56,560 --> 00:07:58,750
+number of hops. It's not referring to a
+time of day or the number of minutes or
+
+406
+00:07:58,750 --> 00:07:58,760
+time of day or the number of minutes or
+ 
+
+407
+00:07:58,760 --> 00:08:00,830
+time of day or the number of minutes or
+seconds that it takes to communicate
+
+408
+00:08:00,830 --> 00:08:00,840
+seconds that it takes to communicate
+ 
+
+409
+00:08:00,840 --> 00:08:03,110
+seconds that it takes to communicate
+across the network. Another challenge
+
+410
+00:08:03,110 --> 00:08:03,120
+across the network. Another challenge
+ 
+
+411
+00:08:03,120 --> 00:08:05,350
+across the network. Another challenge
+you'll run into is that many devices
+
+412
+00:08:05,350 --> 00:08:05,360
+you'll run into is that many devices
+ 
+
+413
+00:08:05,360 --> 00:08:07,590
+you'll run into is that many devices
+will filter the time to live exceeded
+
+414
+00:08:07,590 --> 00:08:07,600
+will filter the time to live exceeded
+ 
+
+415
+00:08:07,600 --> 00:08:09,790
+will filter the time to live exceeded
+messages that are received back. So, if
+
+416
+00:08:09,790 --> 00:08:09,800
+messages that are received back. So, if
+ 
+
+417
+00:08:09,800 --> 00:08:11,630
+messages that are received back. So, if
+you're working with a firewall that
+
+418
+00:08:11,630 --> 00:08:11,640
+you're working with a firewall that
+ 
+
+419
+00:08:11,640 --> 00:08:14,190
+you're working with a firewall that
+filters out those ICMP messages or the
+
+420
+00:08:14,190 --> 00:08:14,200
+filters out those ICMP messages or the
+ 
+
+421
+00:08:14,200 --> 00:08:16,110
+filters out those ICMP messages or the
+router itself that you're communicating
+
+422
+00:08:16,110 --> 00:08:16,120
+router itself that you're communicating
+ 
+
+423
+00:08:16,120 --> 00:08:18,470
+router itself that you're communicating
+with will not send back a time exceeded
+
+424
+00:08:18,470 --> 00:08:18,480
+with will not send back a time exceeded
+ 
+
+425
+00:08:18,480 --> 00:08:20,070
+with will not send back a time exceeded
+message, then that is a piece of
+
+426
+00:08:20,070 --> 00:08:20,080
+message, then that is a piece of
+ 
+
+427
+00:08:20,080 --> 00:08:21,870
+message, then that is a piece of
+information that will be dropped from
+
+428
+00:08:21,870 --> 00:08:21,880
+information that will be dropped from
+ 
+
+429
+00:08:21,880 --> 00:08:24,670
+information that will be dropped from
+the traceroute results.
+
+430
+00:08:24,670 --> 00:08:24,680
+the traceroute results.
+ 
+
+431
+00:08:24,680 --> 00:08:27,030
+the traceroute results.
+Let's run a traceroute to my web server.
+
+432
+00:08:27,030 --> 00:08:27,040
+Let's run a traceroute to my web server.
+ 
+
+433
+00:08:27,040 --> 00:08:28,870
+Let's run a traceroute to my web server.
+So, we'll run traceroute
+
+434
+00:08:28,870 --> 00:08:28,880
+So, we'll run traceroute
+ 
+
+435
+00:08:28,880 --> 00:08:32,750
+So, we'll run traceroute
+www.professormesser.com
+
+436
+00:08:32,750 --> 00:08:32,760
+
+ 
+
+437
+00:08:32,760 --> 00:08:33,750
+
+and we'll have it go through the
+
+438
+00:08:33,750 --> 00:08:33,760
+and we'll have it go through the
+ 
+
+439
+00:08:33,760 --> 00:08:36,029
+and we'll have it go through the
+traceroute process. This will run
+
+440
+00:08:36,029 --> 00:08:36,039
+traceroute process. This will run
+ 
+
+441
+00:08:36,039 --> 00:08:37,390
+traceroute process. This will run
+relatively quickly, although you'll
+
+442
+00:08:37,390 --> 00:08:37,400
+relatively quickly, although you'll
+ 
+
+443
+00:08:37,400 --> 00:08:39,510
+relatively quickly, although you'll
+notice that there are certain hops along
+
+444
+00:08:39,510 --> 00:08:39,520
+notice that there are certain hops along
+ 
+
+445
+00:08:39,520 --> 00:08:41,350
+notice that there are certain hops along
+the way where we do not receive a
+
+446
+00:08:41,350 --> 00:08:41,360
+the way where we do not receive a
+ 
+
+447
+00:08:41,360 --> 00:08:43,070
+the way where we do not receive a
+message back from that router.
+
+448
+00:08:43,070 --> 00:08:43,080
+message back from that router.
+ 
+
+449
+00:08:43,080 --> 00:08:45,350
+message back from that router.
+Specifically, we did lose two of those
+
+450
+00:08:45,350 --> 00:08:45,360
+Specifically, we did lose two of those
+ 
+
+451
+00:08:45,360 --> 00:08:47,990
+Specifically, we did lose two of those
+messages on hop three and we didn't get
+
+452
+00:08:47,990 --> 00:08:48,000
+messages on hop three and we didn't get
+ 
+
+453
+00:08:48,000 --> 00:08:50,550
+messages on hop three and we didn't get
+any information from hop five. If we
+
+454
+00:08:50,550 --> 00:08:50,560
+any information from hop five. If we
+ 
+
+455
+00:08:50,560 --> 00:08:52,470
+any information from hop five. If we
+look at the results of this traceroute,
+
+456
+00:08:52,470 --> 00:08:52,480
+look at the results of this traceroute,
+ 
+
+457
+00:08:52,480 --> 00:08:54,829
+look at the results of this traceroute,
+we can see there are 10 hops between our
+
+458
+00:08:54,829 --> 00:08:54,839
+we can see there are 10 hops between our
+ 
+
+459
+00:08:54,839 --> 00:08:57,710
+we can see there are 10 hops between our
+device and the IP address associated
+
+460
+00:08:57,710 --> 00:08:57,720
+device and the IP address associated
+ 
+
+461
+00:08:57,720 --> 00:09:00,990
+device and the IP address associated
+with www.professormesser.com.
+
+462
+00:09:00,990 --> 00:09:01,000
+
+ 
+
+463
+00:09:01,000 --> 00:09:02,510
+
+In this case, it has found that IP
+
+464
+00:09:02,510 --> 00:09:02,520
+In this case, it has found that IP
+ 
+
+465
+00:09:02,520 --> 00:09:06,829
+In this case, it has found that IP
+address to be 104.22.73.108.
+
+466
+00:09:06,829 --> 00:09:06,839
+
+ 
+
+467
+00:09:06,839 --> 00:09:08,590
+
+And since we have a number of different
+
+468
+00:09:08,590 --> 00:09:08,600
+And since we have a number of different
+ 
+
+469
+00:09:08,600 --> 00:09:10,430
+And since we have a number of different
+points of presence around the world,
+
+470
+00:09:10,430 --> 00:09:10,440
+points of presence around the world,
+ 
+
+471
+00:09:10,440 --> 00:09:12,510
+points of presence around the world,
+that IP address might change depending
+
+472
+00:09:12,510 --> 00:09:12,520
+that IP address might change depending
+ 
+
+473
+00:09:12,520 --> 00:09:14,950
+that IP address might change depending
+on where you happen to be. In each one
+
+474
+00:09:14,950 --> 00:09:14,960
+on where you happen to be. In each one
+ 
+
+475
+00:09:14,960 --> 00:09:16,790
+on where you happen to be. In each one
+of these hops, you'll notice there is an
+
+476
+00:09:16,790 --> 00:09:16,800
+of these hops, you'll notice there is an
+ 
+
+477
+00:09:16,800 --> 00:09:19,070
+of these hops, you'll notice there is an
+IP address. That's the IP address of the
+
+478
+00:09:19,070 --> 00:09:19,080
+IP address. That's the IP address of the
+ 
+
+479
+00:09:19,080 --> 00:09:21,270
+IP address. That's the IP address of the
+router at that hop. And then there are
+
+480
+00:09:21,270 --> 00:09:21,280
+router at that hop. And then there are
+ 
+
+481
+00:09:21,280 --> 00:09:23,150
+router at that hop. And then there are
+three separate measurements. These are
+
+482
+00:09:23,150 --> 00:09:23,160
+three separate measurements. These are
+ 
+
+483
+00:09:23,160 --> 00:09:25,190
+three separate measurements. These are
+round-trip time measurements to that
+
+484
+00:09:25,190 --> 00:09:25,200
+round-trip time measurements to that
+ 
+
+485
+00:09:25,200 --> 00:09:27,070
+round-trip time measurements to that
+particular router. By default,
+
+486
+00:09:27,070 --> 00:09:27,080
+particular router. By default,
+ 
+
+487
+00:09:27,080 --> 00:09:29,190
+particular router. By default,
+traceroute performs each check three
+
+488
+00:09:29,190 --> 00:09:29,200
+traceroute performs each check three
+ 
+
+489
+00:09:29,200 --> 00:09:31,590
+traceroute performs each check three
+times to every hop. You can, of course,
+
+490
+00:09:31,590 --> 00:09:31,600
+times to every hop. You can, of course,
+ 
+
+491
+00:09:31,600 --> 00:09:33,750
+times to every hop. You can, of course,
+modify these configuration options
+
+492
+00:09:33,750 --> 00:09:33,760
+modify these configuration options
+ 
+
+493
+00:09:33,760 --> 00:09:35,990
+modify these configuration options
+within the traceroute command line, but
+
+494
+00:09:35,990 --> 00:09:36,000
+within the traceroute command line, but
+ 
+
+495
+00:09:36,000 --> 00:09:38,270
+within the traceroute command line, but
+by default, this gives you the overview
+
+496
+00:09:38,270 --> 00:09:38,280
+by default, this gives you the overview
+ 
+
+497
+00:09:38,280 --> 00:09:39,990
+by default, this gives you the overview
+of what you might need to be able to
+
+498
+00:09:39,990 --> 00:09:40,000
+of what you might need to be able to
+ 
+
+499
+00:09:40,000 --> 00:09:42,270
+of what you might need to be able to
+determine how many routers that might be
+
+500
+00:09:42,270 --> 00:09:42,280
+determine how many routers that might be
+ 
+
+501
+00:09:42,280 --> 00:09:45,750
+determine how many routers that might be
+between one device and another.
+
+502
+00:09:45,750 --> 00:09:45,760
+between one device and another.
+ 
+
+503
+00:09:45,760 --> 00:09:47,430
+between one device and another.
+If you've downloaded Linux to use on
+
+504
+00:09:47,430 --> 00:09:47,440
+If you've downloaded Linux to use on
+ 
+
+505
+00:09:47,440 --> 00:09:49,310
+If you've downloaded Linux to use on
+your own system, then you already know
+
+506
+00:09:49,310 --> 00:09:49,320
+your own system, then you already know
+ 
+
+507
+00:09:49,320 --> 00:09:51,870
+your own system, then you already know
+the download did not include any type of
+
+508
+00:09:51,870 --> 00:09:51,880
+the download did not include any type of
+ 
+
+509
+00:09:51,880 --> 00:09:54,390
+the download did not include any type of
+separate documentation. Instead, the
+
+510
+00:09:54,390 --> 00:09:54,400
+separate documentation. Instead, the
+ 
+
+511
+00:09:54,400 --> 00:09:56,430
+separate documentation. Instead, the
+documentation that you need for Linux is
+
+512
+00:09:56,430 --> 00:09:56,440
+documentation that you need for Linux is
+ 
+
+513
+00:09:56,440 --> 00:09:58,910
+documentation that you need for Linux is
+built into the operating system itself.
+
+514
+00:09:58,910 --> 00:09:58,920
+built into the operating system itself.
+ 
+
+515
+00:09:58,920 --> 00:10:00,910
+built into the operating system itself.
+And to access those manuals, you would
+
+516
+00:10:00,910 --> 00:10:00,920
+And to access those manuals, you would
+ 
+
+517
+00:10:00,920 --> 00:10:04,190
+And to access those manuals, you would
+use the man command. Simply use man and
+
+518
+00:10:04,190 --> 00:10:04,200
+use the man command. Simply use man and
+ 
+
+519
+00:10:04,200 --> 00:10:05,550
+use the man command. Simply use man and
+the name of the command that you would
+
+520
+00:10:05,550 --> 00:10:05,560
+the name of the command that you would
+ 
+
+521
+00:10:05,560 --> 00:10:07,510
+the name of the command that you would
+like to reference and it will provide
+
+522
+00:10:07,510 --> 00:10:07,520
+like to reference and it will provide
+ 
+
+523
+00:10:07,520 --> 00:10:09,270
+like to reference and it will provide
+all of the documentation for that
+
+524
+00:10:09,270 --> 00:10:09,280
+all of the documentation for that
+ 
+
+525
+00:10:09,280 --> 00:10:11,470
+all of the documentation for that
+particular command.
+
+526
+00:10:11,470 --> 00:10:11,480
+particular command.
+ 
+
+527
+00:10:11,480 --> 00:10:13,590
+particular command.
+For example, we just ran the traceroute
+
+528
+00:10:13,590 --> 00:10:13,600
+For example, we just ran the traceroute
+ 
+
+529
+00:10:13,600 --> 00:10:15,910
+For example, we just ran the traceroute
+command, but there must have been other
+
+530
+00:10:15,910 --> 00:10:15,920
+command, but there must have been other
+ 
+
+531
+00:10:15,920 --> 00:10:18,030
+command, but there must have been other
+parameters that we could have chosen and
+
+532
+00:10:18,030 --> 00:10:18,040
+parameters that we could have chosen and
+ 
+
+533
+00:10:18,040 --> 00:10:20,110
+parameters that we could have chosen and
+we can find those by typing the man
+
+534
+00:10:20,110 --> 00:10:20,120
+we can find those by typing the man
+ 
+
+535
+00:10:20,120 --> 00:10:22,350
+we can find those by typing the man
+option and the name of the utility. In
+
+536
+00:10:22,350 --> 00:10:22,360
+option and the name of the utility. In
+ 
+
+537
+00:10:22,360 --> 00:10:24,790
+option and the name of the utility. In
+this case, it's traceroute and when we
+
+538
+00:10:24,790 --> 00:10:24,800
+this case, it's traceroute and when we
+ 
+
+539
+00:10:24,800 --> 00:10:26,590
+this case, it's traceroute and when we
+hit enter, it shows us the reference
+
+540
+00:10:26,590 --> 00:10:26,600
+hit enter, it shows us the reference
+ 
+
+541
+00:10:26,600 --> 00:10:29,070
+hit enter, it shows us the reference
+manual for traceroute, tracing the route
+
+542
+00:10:29,070 --> 00:10:29,080
+manual for traceroute, tracing the route
+ 
+
+543
+00:10:29,080 --> 00:10:31,150
+manual for traceroute, tracing the route
+to a host. It shows all of the different
+
+544
+00:10:31,150 --> 00:10:31,160
+to a host. It shows all of the different
+ 
+
+545
+00:10:31,160 --> 00:10:33,430
+to a host. It shows all of the different
+command line options and if I use an
+
+546
+00:10:33,430 --> 00:10:33,440
+command line options and if I use an
+ 
+
+547
+00:10:33,440 --> 00:10:36,230
+command line options and if I use an
+arrow down, I can go a line at a time or
+
+548
+00:10:36,230 --> 00:10:36,240
+arrow down, I can go a line at a time or
+ 
+
+549
+00:10:36,240 --> 00:10:38,630
+arrow down, I can go a line at a time or
+if I use the space bar, I can go a page
+
+550
+00:10:38,630 --> 00:10:38,640
+if I use the space bar, I can go a page
+ 
+
+551
+00:10:38,640 --> 00:10:40,510
+if I use the space bar, I can go a page
+at a time. You can also use the arrow
+
+552
+00:10:40,510 --> 00:10:40,520
+at a time. You can also use the arrow
+ 
+
+553
+00:10:40,520 --> 00:10:42,670
+at a time. You can also use the arrow
+keys or the page up and page down to
+
+554
+00:10:42,670 --> 00:10:42,680
+keys or the page up and page down to
+ 
+
+555
+00:10:42,680 --> 00:10:44,630
+keys or the page up and page down to
+move back and forth through the manual
+
+556
+00:10:44,630 --> 00:10:44,640
+move back and forth through the manual
+ 
+
+557
+00:10:44,640 --> 00:10:45,990
+move back and forth through the manual
+information.
+
+558
+00:10:45,990 --> 00:10:46,000
+information.
+ 
+
+559
+00:10:46,000 --> 00:10:47,270
+information.
+For instance, you could have used the
+
+560
+00:10:47,270 --> 00:10:47,280
+For instance, you could have used the
+ 
+
+561
+00:10:47,280 --> 00:10:50,230
+For instance, you could have used the
+\{{}dash}f command to specify the first hop
+
+562
+00:10:50,230 --> 00:10:50,240
+\{{}dash}f command to specify the first hop
+ 
+
+563
+00:10:50,240 --> 00:10:52,190
+\{{}dash}f command to specify the first hop
+of traceroute. You can choose the
+
+564
+00:10:52,190 --> 00:10:52,200
+of traceroute. You can choose the
+ 
+
+565
+00:10:52,200 --> 00:10:53,950
+of traceroute. You can choose the
+method, the port number that's being
+
+566
+00:10:53,950 --> 00:10:53,960
+method, the port number that's being
+ 
+
+567
+00:10:53,960 --> 00:10:56,230
+method, the port number that's being
+used. Remember earlier when I mentioned
+
+568
+00:10:56,230 --> 00:10:56,240
+used. Remember earlier when I mentioned
+ 
+
+569
+00:10:56,240 --> 00:10:57,950
+used. Remember earlier when I mentioned
+that traceroute goes through each
+
+570
+00:10:57,950 --> 00:10:57,960
+that traceroute goes through each
+ 
+
+571
+00:10:57,960 --> 00:10:59,990
+that traceroute goes through each
+individual hop three times. You can
+
+572
+00:10:59,990 --> 00:11:00,000
+individual hop three times. You can
+ 
+
+573
+00:11:00,000 --> 00:11:02,350
+individual hop three times. You can
+modify that number with the \{{}dash}q
+
+574
+00:11:02,350 --> 00:11:02,360
+modify that number with the \{{}dash}q
+ 
+
+575
+00:11:02,360 --> 00:11:04,550
+modify that number with the \{{}dash}q
+option and you have information here
+
+576
+00:11:04,550 --> 00:11:04,560
+option and you have information here
+ 
+
+577
+00:11:04,560 --> 00:11:06,310
+option and you have information here
+that can change the way the output is
+
+578
+00:11:06,310 --> 00:11:06,320
+that can change the way the output is
+ 
+
+579
+00:11:06,320 --> 00:11:08,590
+that can change the way the output is
+shown on the traceroute command. When
+
+580
+00:11:08,590 --> 00:11:08,600
+shown on the traceroute command. When
+ 
+
+581
+00:11:08,600 --> 00:11:10,030
+shown on the traceroute command. When
+you're finished reading through the man
+
+582
+00:11:10,030 --> 00:11:10,040
+you're finished reading through the man
+ 
+
+583
+00:11:10,040 --> 00:11:12,550
+you're finished reading through the man
+page, it tells you that you can press h
+
+584
+00:11:12,550 --> 00:11:12,560
+page, it tells you that you can press h
+ 
+
+585
+00:11:12,560 --> 00:11:14,550
+page, it tells you that you can press h
+for help or q to quit and since we're
+
+586
+00:11:14,550 --> 00:11:14,560
+for help or q to quit and since we're
+ 
+
+587
+00:11:14,560 --> 00:11:16,710
+for help or q to quit and since we're
+done, we press q and we're back to where
+
+588
+00:11:16,710 --> 00:11:16,720
+done, we press q and we're back to where
+ 
+
+589
+00:11:16,720 --> 00:11:18,829
+done, we press q and we're back to where
+we started.
+
+590
+00:11:18,829 --> 00:11:18,839
+we started.
+ 
+
+591
+00:11:18,839 --> 00:11:20,950
+we started.
+The term concatenate means to link
+
+592
+00:11:20,950 --> 00:11:20,960
+The term concatenate means to link
+ 
+
+593
+00:11:20,960 --> 00:11:23,190
+The term concatenate means to link
+together in a series and there is a
+
+594
+00:11:23,190 --> 00:11:23,200
+together in a series and there is a
+ 
+
+595
+00:11:23,200 --> 00:11:26,190
+together in a series and there is a
+concatenate command inside of Linux and
+
+596
+00:11:26,190 --> 00:11:26,200
+concatenate command inside of Linux and
+ 
+
+597
+00:11:26,200 --> 00:11:28,829
+concatenate command inside of Linux and
+it is abbreviated to cat. The cat
+
+598
+00:11:28,829 --> 00:11:28,839
+it is abbreviated to cat. The cat
+ 
+
+599
+00:11:28,839 --> 00:11:30,910
+it is abbreviated to cat. The cat
+command allows you to view information
+
+600
+00:11:30,910 --> 00:11:30,920
+command allows you to view information
+ 
+
+601
+00:11:30,920 --> 00:11:32,710
+command allows you to view information
+in a file and put that information on
+
+602
+00:11:32,710 --> 00:11:32,720
+in a file and put that information on
+ 
+
+603
+00:11:32,720 --> 00:11:34,870
+in a file and put that information on
+the screen, or you could also take
+
+604
+00:11:34,870 --> 00:11:34,880
+the screen, or you could also take
+ 
+
+605
+00:11:34,880 --> 00:11:37,830
+the screen, or you could also take
+multiple files and then move them into a
+
+606
+00:11:37,830 --> 00:11:37,840
+multiple files and then move them into a
+ 
+
+607
+00:11:37,840 --> 00:11:40,950
+multiple files and then move them into a
+third file using a redirect such as the
+
+608
+00:11:40,950 --> 00:11:40,960
+third file using a redirect such as the
+ 
+
+609
+00:11:40,960 --> 00:11:43,630
+third file using a redirect such as the
+greater than sign. Let's try that at our
+
+610
+00:11:43,630 --> 00:11:43,640
+greater than sign. Let's try that at our
+ 
+
+611
+00:11:43,640 --> 00:11:46,390
+greater than sign. Let's try that at our
+prompt on our Linux machine.
+
+612
+00:11:46,390 --> 00:11:46,400
+prompt on our Linux machine.
+ 
+
+613
+00:11:46,400 --> 00:11:48,190
+prompt on our Linux machine.
+On our Linux device, we have three
+
+614
+00:11:48,190 --> 00:11:48,200
+On our Linux device, we have three
+ 
+
+615
+00:11:48,200 --> 00:11:52,430
+On our Linux device, we have three
+files, 1.text, 2.text, and 3.text. And
+
+616
+00:11:52,430 --> 00:11:52,440
+files, 1.text, 2.text, and 3.text. And
+ 
+
+617
+00:11:52,440 --> 00:11:55,510
+files, 1.text, 2.text, and 3.text. And
+if we cat 1.text, you'll see that it
+
+618
+00:11:55,510 --> 00:11:55,520
+if we cat 1.text, you'll see that it
+ 
+
+619
+00:11:55,520 --> 00:11:58,110
+if we cat 1.text, you'll see that it
+simply contains the number one and the
+
+620
+00:11:58,110 --> 00:11:58,120
+simply contains the number one and the
+ 
+
+621
+00:11:58,120 --> 00:12:01,470
+simply contains the number one and the
+letters spelled out one, o w n. If we
+
+622
+00:12:01,470 --> 00:12:01,480
+letters spelled out one, o w n. If we
+ 
+
+623
+00:12:01,480 --> 00:12:03,830
+letters spelled out one, o w n. If we
+cat 2.text,
+
+624
+00:12:03,830 --> 00:12:03,840
+cat 2.text,
+ 
+
+625
+00:12:03,840 --> 00:12:05,790
+cat 2.text,
+it has a similar output, has the number
+
+626
+00:12:05,790 --> 00:12:05,800
+it has a similar output, has the number
+ 
+
+627
+00:12:05,800 --> 00:12:08,790
+it has a similar output, has the number
+two and then spelled out the word two.
+
+628
+00:12:08,790 --> 00:12:08,800
+two and then spelled out the word two.
+ 
+
+629
+00:12:08,800 --> 00:12:11,790
+two and then spelled out the word two.
+And then if we cat 3.text, it has the
+
+630
+00:12:11,790 --> 00:12:11,800
+And then if we cat 3.text, it has the
+ 
+
+631
+00:12:11,800 --> 00:12:14,150
+And then if we cat 3.text, it has the
+number three and it spells out the word
+
+632
+00:12:14,150 --> 00:12:14,160
+number three and it spells out the word
+ 
+
+633
+00:12:14,160 --> 00:12:17,230
+number three and it spells out the word
+three. We might want to have all of this
+
+634
+00:12:17,230 --> 00:12:17,240
+three. We might want to have all of this
+ 
+
+635
+00:12:17,240 --> 00:12:19,950
+three. We might want to have all of this
+information in one single file. So, we
+
+636
+00:12:19,950 --> 00:12:19,960
+information in one single file. So, we
+ 
+
+637
+00:12:19,960 --> 00:12:22,830
+information in one single file. So, we
+can use the cat command and then specify
+
+638
+00:12:22,830 --> 00:12:22,840
+can use the cat command and then specify
+ 
+
+639
+00:12:22,840 --> 00:12:24,390
+can use the cat command and then specify
+1.text,
+
+640
+00:12:24,390 --> 00:12:24,400
+1.text,
+ 
+
+641
+00:12:24,400 --> 00:12:25,910
+1.text,
+2.text,
+
+642
+00:12:25,910 --> 00:12:25,920
+2.text,
+ 
+
+643
+00:12:25,920 --> 00:12:28,510
+2.text,
+and 3.text, and then use the greater
+
+644
+00:12:28,510 --> 00:12:28,520
+and 3.text, and then use the greater
+ 
+
+645
+00:12:28,520 --> 00:12:30,990
+and 3.text, and then use the greater
+than sign to concatenate all of these
+
+646
+00:12:30,990 --> 00:12:31,000
+than sign to concatenate all of these
+ 
+
+647
+00:12:31,000 --> 00:12:33,030
+than sign to concatenate all of these
+into all.text,
+
+648
+00:12:33,030 --> 00:12:33,040
+into all.text,
+ 
+
+649
+00:12:33,040 --> 00:12:34,990
+into all.text,
+and we'll hit enter. Notice we simply
+
+650
+00:12:34,990 --> 00:12:35,000
+and we'll hit enter. Notice we simply
+ 
+
+651
+00:12:35,000 --> 00:12:37,310
+and we'll hit enter. Notice we simply
+get a prompt back, meaning that this
+
+652
+00:12:37,310 --> 00:12:37,320
+get a prompt back, meaning that this
+ 
+
+653
+00:12:37,320 --> 00:12:39,870
+get a prompt back, meaning that this
+particular concatenation is complete.
+
+654
+00:12:39,870 --> 00:12:39,880
+particular concatenation is complete.
+ 
+
+655
+00:12:39,880 --> 00:12:43,110
+particular concatenation is complete.
+Now, if we cat all.txt,
+
+656
+00:12:43,110 --> 00:12:43,120
+Now, if we cat all.txt,
+ 
+
+657
+00:12:43,120 --> 00:12:45,230
+Now, if we cat all.txt,
+you'll notice it is a single file that
+
+658
+00:12:45,230 --> 00:12:45,240
+you'll notice it is a single file that
+ 
+
+659
+00:12:45,240 --> 00:12:48,190
+you'll notice it is a single file that
+contains the number one, one,
+
+660
+00:12:48,190 --> 00:12:48,200
+contains the number one, one,
+ 
+
+661
+00:12:48,200 --> 00:12:50,910
+contains the number one, one,
+number two with two, and number three
+
+662
+00:12:50,910 --> 00:12:50,920
+number two with two, and number three
+ 
+
+663
+00:12:50,920 --> 00:12:53,030
+number two with two, and number three
+with three. We have successfully
+
+664
+00:12:53,030 --> 00:12:53,040
+with three. We have successfully
+ 
+
+665
+00:12:53,040 --> 00:12:55,670
+with three. We have successfully
+concatenated all three of those files
+
+666
+00:12:55,670 --> 00:12:55,680
+concatenated all three of those files
+ 
+
+667
+00:12:55,680 --> 00:12:58,910
+concatenated all three of those files
+into one single file.
+
+668
+00:12:58,910 --> 00:12:58,920
+into one single file.
+ 
+
+669
+00:12:58,920 --> 00:13:01,350
+into one single file.
+We're often called on as technicians to
+
+670
+00:13:01,350 --> 00:13:01,360
+We're often called on as technicians to
+ 
+
+671
+00:13:01,360 --> 00:13:03,430
+We're often called on as technicians to
+troubleshoot performance problems on a
+
+672
+00:13:03,430 --> 00:13:03,440
+troubleshoot performance problems on a
+ 
+
+673
+00:13:03,440 --> 00:13:05,310
+troubleshoot performance problems on a
+device. If you're on Windows, you
+
+674
+00:13:05,310 --> 00:13:05,320
+device. If you're on Windows, you
+ 
+
+675
+00:13:05,320 --> 00:13:07,750
+device. If you're on Windows, you
+probably use task manager to view the
+
+676
+00:13:07,750 --> 00:13:07,760
+probably use task manager to view the
+ 
+
+677
+00:13:07,760 --> 00:13:10,510
+probably use task manager to view the
+CPU utilization or disk access to a
+
+678
+00:13:10,510 --> 00:13:10,520
+CPU utilization or disk access to a
+ 
+
+679
+00:13:10,520 --> 00:13:12,430
+CPU utilization or disk access to a
+particular system, or maybe you want to
+
+680
+00:13:12,430 --> 00:13:12,440
+particular system, or maybe you want to
+ 
+
+681
+00:13:12,440 --> 00:13:14,590
+particular system, or maybe you want to
+see just how much network traffic is
+
+682
+00:13:14,590 --> 00:13:14,600
+see just how much network traffic is
+ 
+
+683
+00:13:14,600 --> 00:13:16,630
+see just how much network traffic is
+being transferred. If you're a Windows
+
+684
+00:13:16,630 --> 00:13:16,640
+being transferred. If you're a Windows
+ 
+
+685
+00:13:16,640 --> 00:13:18,350
+being transferred. If you're a Windows
+administrator, then you've probably used
+
+686
+00:13:18,350 --> 00:13:18,360
+administrator, then you've probably used
+ 
+
+687
+00:13:18,360 --> 00:13:20,470
+administrator, then you've probably used
+Windows task manager to be able to view
+
+688
+00:13:20,470 --> 00:13:20,480
+Windows task manager to be able to view
+ 
+
+689
+00:13:20,480 --> 00:13:23,070
+Windows task manager to be able to view
+CPU information or information on how
+
+690
+00:13:23,070 --> 00:13:23,080
+CPU information or information on how
+ 
+
+691
+00:13:23,080 --> 00:13:25,870
+CPU information or information on how
+each individual process is performing.
+
+692
+00:13:25,870 --> 00:13:25,880
+each individual process is performing.
+ 
+
+693
+00:13:25,880 --> 00:13:27,750
+each individual process is performing.
+There's a similar function within Linux
+
+694
+00:13:27,750 --> 00:13:27,760
+There's a similar function within Linux
+ 
+
+695
+00:13:27,760 --> 00:13:30,030
+There's a similar function within Linux
+known as top. This will show you
+
+696
+00:13:30,030 --> 00:13:30,040
+known as top. This will show you
+ 
+
+697
+00:13:30,040 --> 00:13:31,950
+known as top. This will show you
+information on all of the processes
+
+698
+00:13:31,950 --> 00:13:31,960
+information on all of the processes
+ 
+
+699
+00:13:31,960 --> 00:13:34,590
+information on all of the processes
+running on your system and how much CPU,
+
+700
+00:13:34,590 --> 00:13:34,600
+running on your system and how much CPU,
+ 
+
+701
+00:13:34,600 --> 00:13:37,230
+running on your system and how much CPU,
+memory, and other resources each process
+
+702
+00:13:37,230 --> 00:13:37,240
+memory, and other resources each process
+ 
+
+703
+00:13:37,240 --> 00:13:38,590
+memory, and other resources each process
+may be using.
+
+704
+00:13:38,590 --> 00:13:38,600
+may be using.
+ 
+
+705
+00:13:38,600 --> 00:13:40,670
+may be using.
+You also get a summary of the load on
+
+706
+00:13:40,670 --> 00:13:40,680
+You also get a summary of the load on
+ 
+
+707
+00:13:40,680 --> 00:13:42,870
+You also get a summary of the load on
+your system presented as three separate
+
+708
+00:13:42,870 --> 00:13:42,880
+your system presented as three separate
+ 
+
+709
+00:13:42,880 --> 00:13:45,070
+your system presented as three separate
+numbers. The first number is the load
+
+710
+00:13:45,070 --> 00:13:45,080
+numbers. The first number is the load
+ 
+
+711
+00:13:45,080 --> 00:13:47,030
+numbers. The first number is the load
+over 1 minute, the second is the load
+
+712
+00:13:47,030 --> 00:13:47,040
+over 1 minute, the second is the load
+ 
+
+713
+00:13:47,040 --> 00:13:49,150
+over 1 minute, the second is the load
+over the last 5 minutes, and the third
+
+714
+00:13:49,150 --> 00:13:49,160
+over the last 5 minutes, and the third
+ 
+
+715
+00:13:49,160 --> 00:13:51,910
+over the last 5 minutes, and the third
+is the load over the last 15 minutes.
+
+716
+00:13:51,910 --> 00:13:51,920
+is the load over the last 15 minutes.
+ 
+
+717
+00:13:51,920 --> 00:13:53,550
+is the load over the last 15 minutes.
+This is another one of those utilities
+
+718
+00:13:53,550 --> 00:13:53,560
+This is another one of those utilities
+ 
+
+719
+00:13:53,560 --> 00:13:55,070
+This is another one of those utilities
+that has many different options
+
+720
+00:13:55,070 --> 00:13:55,080
+that has many different options
+ 
+
+721
+00:13:55,080 --> 00:13:56,350
+that has many different options
+available to it. So, if you want to
+
+722
+00:13:56,350 --> 00:13:56,360
+available to it. So, if you want to
+ 
+
+723
+00:13:56,360 --> 00:13:58,510
+available to it. So, if you want to
+customize top to provide information
+
+724
+00:13:58,510 --> 00:13:58,520
+customize top to provide information
+ 
+
+725
+00:13:58,520 --> 00:14:00,270
+customize top to provide information
+that you'd like to see, make sure you
+
+726
+00:14:00,270 --> 00:14:00,280
+that you'd like to see, make sure you
+ 
+
+727
+00:14:00,280 --> 00:14:02,190
+that you'd like to see, make sure you
+check out the man pages for the top
+
+728
+00:14:02,190 --> 00:14:02,200
+check out the man pages for the top
+ 
+
+729
+00:14:02,200 --> 00:14:04,390
+check out the man pages for the top
+utility.
+
+730
+00:14:04,390 --> 00:14:04,400
+utility.
+ 
+
+731
+00:14:04,400 --> 00:14:06,870
+utility.
+Running top is as simple as typing t o p
+
+732
+00:14:06,870 --> 00:14:06,880
+Running top is as simple as typing t o p
+ 
+
+733
+00:14:06,880 --> 00:14:09,150
+Running top is as simple as typing t o p
+and hitting enter. And now we can see a
+
+734
+00:14:09,150 --> 00:14:09,160
+and hitting enter. And now we can see a
+ 
+
+735
+00:14:09,160 --> 00:14:11,350
+and hitting enter. And now we can see a
+1-second update of what's running on our
+
+736
+00:14:11,350 --> 00:14:11,360
+1-second update of what's running on our
+ 
+
+737
+00:14:11,360 --> 00:14:13,950
+1-second update of what's running on our
+system. We can view information by user,
+
+738
+00:14:13,950 --> 00:14:13,960
+system. We can view information by user,
+ 
+
+739
+00:14:13,960 --> 00:14:16,110
+system. We can view information by user,
+the process ID, looking at memory
+
+740
+00:14:16,110 --> 00:14:16,120
+the process ID, looking at memory
+ 
+
+741
+00:14:16,120 --> 00:14:18,590
+the process ID, looking at memory
+information, CPU details, and how much
+
+742
+00:14:18,590 --> 00:14:18,600
+information, CPU details, and how much
+ 
+
+743
+00:14:18,600 --> 00:14:21,150
+information, CPU details, and how much
+time each individual process has spent
+
+744
+00:14:21,150 --> 00:14:21,160
+time each individual process has spent
+ 
+
+745
+00:14:21,160 --> 00:14:23,790
+time each individual process has spent
+in the CPU. This gives us immediate
+
+746
+00:14:23,790 --> 00:14:23,800
+in the CPU. This gives us immediate
+ 
+
+747
+00:14:23,800 --> 00:14:25,630
+in the CPU. This gives us immediate
+feedback on what's happening inside of
+
+748
+00:14:25,630 --> 00:14:25,640
+feedback on what's happening inside of
+ 
+
+749
+00:14:25,640 --> 00:14:27,590
+feedback on what's happening inside of
+our system, and we're able to narrow
+
+750
+00:14:27,590 --> 00:14:27,600
+our system, and we're able to narrow
+ 
+
+751
+00:14:27,600 --> 00:14:29,790
+our system, and we're able to narrow
+down what processes may be using more
+
+752
+00:14:29,790 --> 00:14:29,800
+down what processes may be using more
+ 
+
+753
+00:14:29,800 --> 00:14:32,990
+down what processes may be using more
+resources than another.
+
+754
+00:14:32,990 --> 00:14:33,000
+resources than another.
+ 
+
+755
+00:14:33,000 --> 00:14:34,870
+resources than another.
+If you would prefer a single text-based
+
+756
+00:14:34,870 --> 00:14:34,880
+If you would prefer a single text-based
+ 
+
+757
+00:14:34,880 --> 00:14:36,790
+If you would prefer a single text-based
+output of all of these processes, you
+
+758
+00:14:36,790 --> 00:14:36,800
+output of all of these processes, you
+ 
+
+759
+00:14:36,800 --> 00:14:39,470
+output of all of these processes, you
+can view that using the PS command. This
+
+760
+00:14:39,470 --> 00:14:39,480
+can view that using the PS command. This
+ 
+
+761
+00:14:39,480 --> 00:14:40,990
+can view that using the PS command. This
+is also very similar to what you would
+
+762
+00:14:40,990 --> 00:14:41,000
+is also very similar to what you would
+ 
+
+763
+00:14:41,000 --> 00:14:42,910
+is also very similar to what you would
+find in the Windows Task Manager because
+
+764
+00:14:42,910 --> 00:14:42,920
+find in the Windows Task Manager because
+ 
+
+765
+00:14:42,920 --> 00:14:45,270
+find in the Windows Task Manager because
+it will list out all of the process IDs
+
+766
+00:14:45,270 --> 00:14:45,280
+it will list out all of the process IDs
+ 
+
+767
+00:14:45,280 --> 00:14:46,790
+it will list out all of the process IDs
+and then all of the process names
+
+768
+00:14:46,790 --> 00:14:46,800
+and then all of the process names
+ 
+
+769
+00:14:46,800 --> 00:14:48,750
+and then all of the process names
+themselves. If you just want to see the
+
+770
+00:14:48,750 --> 00:14:48,760
+themselves. If you just want to see the
+ 
+
+771
+00:14:48,760 --> 00:14:51,030
+themselves. If you just want to see the
+processes associated with your login,
+
+772
+00:14:51,030 --> 00:14:51,040
+processes associated with your login,
+ 
+
+773
+00:14:51,040 --> 00:14:53,470
+processes associated with your login,
+you simply use the PS command. But as
+
+774
+00:14:53,470 --> 00:14:53,480
+you simply use the PS command. But as
+ 
+
+775
+00:14:53,480 --> 00:14:54,910
+you simply use the PS command. But as
+the administrator, you might want to
+
+776
+00:14:54,910 --> 00:14:54,920
+the administrator, you might want to
+ 
+
+777
+00:14:54,920 --> 00:14:56,910
+the administrator, you might want to
+view all of the processes running on
+
+778
+00:14:56,910 --> 00:14:56,920
+view all of the processes running on
+ 
+
+779
+00:14:56,920 --> 00:14:58,829
+view all of the processes running on
+this machine, and you can use the PS
+
+780
+00:14:58,829 --> 00:14:58,839
+this machine, and you can use the PS
+ 
+
+781
+00:14:58,839 --> 00:15:01,190
+this machine, and you can use the PS
+with the \{{}dash} e option to view all
+
+782
+00:15:01,190 --> 00:15:01,200
+with the \{{}dash} e option to view all
+ 
+
+783
+00:15:01,200 --> 00:15:03,470
+with the \{{}dash} e option to view all
+processes.
+
+784
+00:15:03,470 --> 00:15:03,480
+processes.
+ 
+
+785
+00:15:03,480 --> 00:15:05,270
+processes.
+If you run the PS command by itself,
+
+786
+00:15:05,270 --> 00:15:05,280
+If you run the PS command by itself,
+ 
+
+787
+00:15:05,280 --> 00:15:07,430
+If you run the PS command by itself,
+you're only looking at the processes for
+
+788
+00:15:07,430 --> 00:15:07,440
+you're only looking at the processes for
+ 
+
+789
+00:15:07,440 --> 00:15:09,990
+you're only looking at the processes for
+the current logged-in user. And I have a
+
+790
+00:15:09,990 --> 00:15:10,000
+the current logged-in user. And I have a
+ 
+
+791
+00:15:10,000 --> 00:15:11,910
+the current logged-in user. And I have a
+bash shell, that is the terminal screen
+
+792
+00:15:11,910 --> 00:15:11,920
+bash shell, that is the terminal screen
+ 
+
+793
+00:15:11,920 --> 00:15:14,510
+bash shell, that is the terminal screen
+that I have up, and I ran the PS command
+
+794
+00:15:14,510 --> 00:15:14,520
+that I have up, and I ran the PS command
+ 
+
+795
+00:15:14,520 --> 00:15:17,230
+that I have up, and I ran the PS command
+inside of that bash shell. If we use the
+
+796
+00:15:17,230 --> 00:15:17,240
+inside of that bash shell. If we use the
+ 
+
+797
+00:15:17,240 --> 00:15:19,990
+inside of that bash shell. If we use the
+PS command with the \{{}dash} e, we're now
+
+798
+00:15:19,990 --> 00:15:20,000
+PS command with the \{{}dash} e, we're now
+ 
+
+799
+00:15:20,000 --> 00:15:22,710
+PS command with the \{{}dash} e, we're now
+viewing the processes for everything on
+
+800
+00:15:22,710 --> 00:15:22,720
+viewing the processes for everything on
+ 
+
+801
+00:15:22,720 --> 00:15:24,230
+viewing the processes for everything on
+the system and you can see there are
+
+802
+00:15:24,230 --> 00:15:24,240
+the system and you can see there are
+ 
+
+803
+00:15:24,240 --> 00:15:27,230
+the system and you can see there are
+pages and pages of processes. You can
+
+804
+00:15:27,230 --> 00:15:27,240
+pages and pages of processes. You can
+ 
+
+805
+00:15:27,240 --> 00:15:29,190
+pages and pages of processes. You can
+also pipe this output to the more
+
+806
+00:15:29,190 --> 00:15:29,200
+also pipe this output to the more
+ 
+
+807
+00:15:29,200 --> 00:15:31,070
+also pipe this output to the more
+command which will paginate this so you
+
+808
+00:15:31,070 --> 00:15:31,080
+command which will paginate this so you
+ 
+
+809
+00:15:31,080 --> 00:15:33,430
+command which will paginate this so you
+can go a page at a time to see all of
+
+810
+00:15:33,430 --> 00:15:33,440
+can go a page at a time to see all of
+ 
+
+811
+00:15:33,440 --> 00:15:35,590
+can go a page at a time to see all of
+the processes without them going by all
+
+812
+00:15:35,590 --> 00:15:35,600
+the processes without them going by all
+ 
+
+813
+00:15:35,600 --> 00:15:37,350
+the processes without them going by all
+at once. But if you're looking for a
+
+814
+00:15:37,350 --> 00:15:37,360
+at once. But if you're looking for a
+ 
+
+815
+00:15:37,360 --> 00:15:39,230
+at once. But if you're looking for a
+very specific process, you might want to
+
+816
+00:15:39,230 --> 00:15:39,240
+very specific process, you might want to
+ 
+
+817
+00:15:39,240 --> 00:15:41,670
+very specific process, you might want to
+use the PS command with the dash e and
+
+818
+00:15:41,670 --> 00:15:41,680
+use the PS command with the dash e and
+ 
+
+819
+00:15:41,680 --> 00:15:44,110
+use the PS command with the dash e and
+then pipe it to the grep command and
+
+820
+00:15:44,110 --> 00:15:44,120
+then pipe it to the grep command and
+ 
+
+821
+00:15:44,120 --> 00:15:46,230
+then pipe it to the grep command and
+then specify a search term. In this
+
+822
+00:15:46,230 --> 00:15:46,240
+then specify a search term. In this
+ 
+
+823
+00:15:46,240 --> 00:15:47,550
+then specify a search term. In this
+case, let's look for all of the
+
+824
+00:15:47,550 --> 00:15:47,560
+case, let's look for all of the
+ 
+
+825
+00:15:47,560 --> 00:15:50,790
+case, let's look for all of the
+processes that have the search term CPU
+
+826
+00:15:50,790 --> 00:15:50,800
+processes that have the search term CPU
+ 
+
+827
+00:15:50,800 --> 00:15:52,750
+processes that have the search term CPU
+as part of the process. And you can see
+
+828
+00:15:52,750 --> 00:15:52,760
+as part of the process. And you can see
+ 
+
+829
+00:15:52,760 --> 00:15:54,430
+as part of the process. And you can see
+that we have four that showed up. There
+
+830
+00:15:54,430 --> 00:15:54,440
+that we have four that showed up. There
+ 
+
+831
+00:15:54,440 --> 00:15:58,030
+that we have four that showed up. There
+was process 20 which is CPUHP/0,
+
+832
+00:15:58,030 --> 00:15:58,040
+was process 20 which is CPUHP/0,
+ 
+
+833
+00:15:58,040 --> 00:16:00,990
+was process 20 which is CPUHP/0,
+process 21 which is CPUHP/1,
+
+834
+00:16:00,990 --> 00:16:01,000
+process 21 which is CPUHP/1,
+ 
+
+835
+00:16:01,000 --> 00:16:03,110
+process 21 which is CPUHP/1,
+and you can see two other processes that
+
+836
+00:16:03,110 --> 00:16:03,120
+and you can see two other processes that
+ 
+
+837
+00:16:03,120 --> 00:16:05,590
+and you can see two other processes that
+have the word CPU as part of the process
+
+838
+00:16:05,590 --> 00:16:05,600
+have the word CPU as part of the process
+ 
+
+839
+00:16:05,600 --> 00:16:07,670
+have the word CPU as part of the process
+name.
+
+840
+00:16:07,670 --> 00:16:07,680
+name.
+ 
+
+841
+00:16:07,680 --> 00:16:09,190
+name.
+If you're like me, you probably don't
+
+842
+00:16:09,190 --> 00:16:09,200
+If you're like me, you probably don't
+ 
+
+843
+00:16:09,200 --> 00:16:11,470
+If you're like me, you probably don't
+have a lot of free drive space on your
+
+844
+00:16:11,470 --> 00:16:11,480
+have a lot of free drive space on your
+ 
+
+845
+00:16:11,480 --> 00:16:13,190
+have a lot of free drive space on your
+computer. And if you're planning to
+
+846
+00:16:13,190 --> 00:16:13,200
+computer. And if you're planning to
+ 
+
+847
+00:16:13,200 --> 00:16:15,230
+computer. And if you're planning to
+perform an update or you want to install
+
+848
+00:16:15,230 --> 00:16:15,240
+perform an update or you want to install
+ 
+
+849
+00:16:15,240 --> 00:16:17,150
+perform an update or you want to install
+a new application, it might be good to
+
+850
+00:16:17,150 --> 00:16:17,160
+a new application, it might be good to
+ 
+
+851
+00:16:17,160 --> 00:16:18,870
+a new application, it might be good to
+see if you have enough space to be able
+
+852
+00:16:18,870 --> 00:16:18,880
+see if you have enough space to be able
+ 
+
+853
+00:16:18,880 --> 00:16:21,110
+see if you have enough space to be able
+to perform that function. In Linux, the
+
+854
+00:16:21,110 --> 00:16:21,120
+to perform that function. In Linux, the
+ 
+
+855
+00:16:21,120 --> 00:16:23,310
+to perform that function. In Linux, the
+way that we view this is with the DF
+
+856
+00:16:23,310 --> 00:16:23,320
+way that we view this is with the DF
+ 
+
+857
+00:16:23,320 --> 00:16:25,990
+way that we view this is with the DF
+command. That stands for disk free. It
+
+858
+00:16:25,990 --> 00:16:26,000
+command. That stands for disk free. It
+ 
+
+859
+00:16:26,000 --> 00:16:28,110
+command. That stands for disk free. It
+will show us all the file systems and
+
+860
+00:16:28,110 --> 00:16:28,120
+will show us all the file systems and
+ 
+
+861
+00:16:28,120 --> 00:16:30,150
+will show us all the file systems and
+how much space might be available on
+
+862
+00:16:30,150 --> 00:16:30,160
+how much space might be available on
+ 
+
+863
+00:16:30,160 --> 00:16:31,710
+how much space might be available on
+each file system.
+
+864
+00:16:31,710 --> 00:16:31,720
+each file system.
+ 
+
+865
+00:16:31,720 --> 00:16:33,510
+each file system.
+The default is to use DF with no
+
+866
+00:16:33,510 --> 00:16:33,520
+The default is to use DF with no
+ 
+
+867
+00:16:33,520 --> 00:16:35,630
+The default is to use DF with no
+parameters and this shows us the usage
+
+868
+00:16:35,630 --> 00:16:35,640
+parameters and this shows us the usage
+ 
+
+869
+00:16:35,640 --> 00:16:38,110
+parameters and this shows us the usage
+based on number of blocks. In this case,
+
+870
+00:16:38,110 --> 00:16:38,120
+based on number of blocks. In this case,
+ 
+
+871
+00:16:38,120 --> 00:16:40,670
+based on number of blocks. In this case,
+1K blocks. If you'd like a view that
+
+872
+00:16:40,670 --> 00:16:40,680
+1K blocks. If you'd like a view that
+ 
+
+873
+00:16:40,680 --> 00:16:42,590
+1K blocks. If you'd like a view that
+showed it as number of bytes, you could
+
+874
+00:16:42,590 --> 00:16:42,600
+showed it as number of bytes, you could
+ 
+
+875
+00:16:42,600 --> 00:16:45,390
+showed it as number of bytes, you could
+use the same DF command with a dash h to
+
+876
+00:16:45,390 --> 00:16:45,400
+use the same DF command with a dash h to
+ 
+
+877
+00:16:45,400 --> 00:16:47,430
+use the same DF command with a dash h to
+get a human readable view. This will
+
+878
+00:16:47,430 --> 00:16:47,440
+get a human readable view. This will
+ 
+
+879
+00:16:47,440 --> 00:16:49,550
+get a human readable view. This will
+show the output with gigabytes,
+
+880
+00:16:49,550 --> 00:16:49,560
+show the output with gigabytes,
+ 
+
+881
+00:16:49,560 --> 00:16:51,750
+show the output with gigabytes,
+megabytes, and other human readable
+
+882
+00:16:51,750 --> 00:16:51,760
+megabytes, and other human readable
+ 
+
+883
+00:16:51,760 --> 00:16:53,630
+megabytes, and other human readable
+values.
+
+884
+00:16:53,630 --> 00:16:53,640
+values.
+ 
+
+885
+00:16:53,640 --> 00:16:56,030
+values.
+Let's run the DF command on my machine.
+
+886
+00:16:56,030 --> 00:16:56,040
+Let's run the DF command on my machine.
+ 
+
+887
+00:16:56,040 --> 00:16:58,310
+Let's run the DF command on my machine.
+I'm going to specify dash h because I
+
+888
+00:16:58,310 --> 00:16:58,320
+I'm going to specify dash h because I
+ 
+
+889
+00:16:58,320 --> 00:17:00,750
+I'm going to specify dash h because I
+like to see this listed as megabytes,
+
+890
+00:17:00,750 --> 00:17:00,760
+like to see this listed as megabytes,
+ 
+
+891
+00:17:00,760 --> 00:17:03,270
+like to see this listed as megabytes,
+gigabytes, and other familiar values.
+
+892
+00:17:03,270 --> 00:17:03,280
+gigabytes, and other familiar values.
+ 
+
+893
+00:17:03,280 --> 00:17:05,069
+gigabytes, and other familiar values.
+You can see that I have a number of file
+
+894
+00:17:05,069 --> 00:17:05,079
+You can see that I have a number of file
+ 
+
+895
+00:17:05,079 --> 00:17:06,630
+You can see that I have a number of file
+systems that are mounted on this
+
+896
+00:17:06,630 --> 00:17:06,640
+systems that are mounted on this
+ 
+
+897
+00:17:06,640 --> 00:17:09,030
+systems that are mounted on this
+computer. I have one that is a temporary
+
+898
+00:17:09,030 --> 00:17:09,040
+computer. I have one that is a temporary
+ 
+
+899
+00:17:09,040 --> 00:17:11,990
+computer. I have one that is a temporary
+file system. It has a size of 196
+
+900
+00:17:11,990 --> 00:17:12,000
+file system. It has a size of 196
+ 
+
+901
+00:17:12,000 --> 00:17:15,189
+file system. It has a size of 196
+megabytes. I'm only using 1.7 megabytes
+
+902
+00:17:15,189 --> 00:17:15,199
+megabytes. I'm only using 1.7 megabytes
+ 
+
+903
+00:17:15,199 --> 00:17:18,350
+megabytes. I'm only using 1.7 megabytes
+so that 194 megabytes are available,
+
+904
+00:17:18,350 --> 00:17:18,360
+so that 194 megabytes are available,
+ 
+
+905
+00:17:18,360 --> 00:17:21,510
+so that 194 megabytes are available,
+which means I'm only using 1% of my temp
+
+906
+00:17:21,510 --> 00:17:21,520
+which means I'm only using 1% of my temp
+ 
+
+907
+00:17:21,520 --> 00:17:24,189
+which means I'm only using 1% of my temp
+FS file space. I have other things that
+
+908
+00:17:24,189 --> 00:17:24,199
+FS file space. I have other things that
+ 
+
+909
+00:17:24,199 --> 00:17:25,750
+FS file space. I have other things that
+are connected to this computer. For
+
+910
+00:17:25,750 --> 00:17:25,760
+are connected to this computer. For
+ 
+
+911
+00:17:25,760 --> 00:17:28,470
+are connected to this computer. For
+example, I have T4 volume 3. This has a
+
+912
+00:17:28,470 --> 00:17:28,480
+example, I have T4 volume 3. This has a
+ 
+
+913
+00:17:28,480 --> 00:17:31,590
+example, I have T4 volume 3. This has a
+volume size of 3.7 terabytes. I'm using
+
+914
+00:17:31,590 --> 00:17:31,600
+volume size of 3.7 terabytes. I'm using
+ 
+
+915
+00:17:31,600 --> 00:17:34,950
+volume size of 3.7 terabytes. I'm using
+1.9 terabytes, which means that 1.8
+
+916
+00:17:34,950 --> 00:17:34,960
+1.9 terabytes, which means that 1.8
+ 
+
+917
+00:17:34,960 --> 00:17:36,950
+1.9 terabytes, which means that 1.8
+terabytes is available, so I'm using
+
+918
+00:17:36,950 --> 00:17:36,960
+terabytes is available, so I'm using
+ 
+
+919
+00:17:36,960 --> 00:17:39,830
+terabytes is available, so I'm using
+approximately 52% of that particular
+
+920
+00:17:39,830 --> 00:17:39,840
+approximately 52% of that particular
+ 
+
+921
+00:17:39,840 --> 00:17:42,350
+approximately 52% of that particular
+file system. So, if we need to install
+
+922
+00:17:42,350 --> 00:17:42,360
+file system. So, if we need to install
+ 
+
+923
+00:17:42,360 --> 00:17:44,430
+file system. So, if we need to install
+some additional software, we might want
+
+924
+00:17:44,430 --> 00:17:44,440
+some additional software, we might want
+ 
+
+925
+00:17:44,440 --> 00:17:46,990
+some additional software, we might want
+to avoid file systems with over 90%
+
+926
+00:17:46,990 --> 00:17:47,000
+to avoid file systems with over 90%
+ 
+
+927
+00:17:47,000 --> 00:17:49,150
+to avoid file systems with over 90%
+utilization and instead use one of these
+
+928
+00:17:49,150 --> 00:17:49,160
+utilization and instead use one of these
+ 
+
+929
+00:17:49,160 --> 00:17:51,350
+utilization and instead use one of these
+file systems that has much more space
+
+930
+00:17:51,350 --> 00:17:51,360
+file systems that has much more space
+ 
+
+931
+00:17:51,360 --> 00:17:53,310
+file systems that has much more space
+available.
+
+932
+00:17:53,310 --> 00:17:53,320
+available.
+ 
+
+933
+00:17:53,320 --> 00:17:55,070
+available.
+The natural next question when you find
+
+934
+00:17:55,070 --> 00:17:55,080
+The natural next question when you find
+ 
+
+935
+00:17:55,080 --> 00:17:57,150
+The natural next question when you find
+a file system that has very little space
+
+936
+00:17:57,150 --> 00:17:57,160
+a file system that has very little space
+ 
+
+937
+00:17:57,160 --> 00:18:00,030
+a file system that has very little space
+available is what is taking up all of
+
+938
+00:18:00,030 --> 00:18:00,040
+available is what is taking up all of
+ 
+
+939
+00:18:00,040 --> 00:18:02,230
+available is what is taking up all of
+that room on the file system? It may be
+
+940
+00:18:02,230 --> 00:18:02,240
+that room on the file system? It may be
+ 
+
+941
+00:18:02,240 --> 00:18:04,950
+that room on the file system? It may be
+a single file, it may be multiple files,
+
+942
+00:18:04,950 --> 00:18:04,960
+a single file, it may be multiple files,
+ 
+
+943
+00:18:04,960 --> 00:18:07,230
+a single file, it may be multiple files,
+but we need to determine how we might be
+
+944
+00:18:07,230 --> 00:18:07,240
+but we need to determine how we might be
+ 
+
+945
+00:18:07,240 --> 00:18:09,110
+but we need to determine how we might be
+able to free up some space on that
+
+946
+00:18:09,110 --> 00:18:09,120
+able to free up some space on that
+ 
+
+947
+00:18:09,120 --> 00:18:11,390
+able to free up some space on that
+particular partition. One way that you
+
+948
+00:18:11,390 --> 00:18:11,400
+particular partition. One way that you
+ 
+
+949
+00:18:11,400 --> 00:18:13,470
+particular partition. One way that you
+could find out what's using that space
+
+950
+00:18:13,470 --> 00:18:13,480
+could find out what's using that space
+ 
+
+951
+00:18:13,480 --> 00:18:16,190
+could find out what's using that space
+is by using the du command for disk
+
+952
+00:18:16,190 --> 00:18:16,200
+is by using the du command for disk
+ 
+
+953
+00:18:16,200 --> 00:18:18,350
+is by using the du command for disk
+usage. This will scan your current
+
+954
+00:18:18,350 --> 00:18:18,360
+usage. This will scan your current
+ 
+
+955
+00:18:18,360 --> 00:18:20,230
+usage. This will scan your current
+folder and all of the subdirectories
+
+956
+00:18:20,230 --> 00:18:20,240
+folder and all of the subdirectories
+ 
+
+957
+00:18:20,240 --> 00:18:21,990
+folder and all of the subdirectories
+underneath, and it will show you exactly
+
+958
+00:18:21,990 --> 00:18:22,000
+underneath, and it will show you exactly
+ 
+
+959
+00:18:22,000 --> 00:18:24,150
+underneath, and it will show you exactly
+how much space is being used in each
+
+960
+00:18:24,150 --> 00:18:24,160
+how much space is being used in each
+ 
+
+961
+00:18:24,160 --> 00:18:26,550
+how much space is being used in each
+individual folder. If you're looking to
+
+962
+00:18:26,550 --> 00:18:26,560
+individual folder. If you're looking to
+ 
+
+963
+00:18:26,560 --> 00:18:28,510
+individual folder. If you're looking to
+find how you can easily free up some
+
+964
+00:18:28,510 --> 00:18:28,520
+find how you can easily free up some
+ 
+
+965
+00:18:28,520 --> 00:18:30,590
+find how you can easily free up some
+space, this utility should be the one
+
+966
+00:18:30,590 --> 00:18:30,600
+space, this utility should be the one
+ 
+
+967
+00:18:30,600 --> 00:18:32,510
+space, this utility should be the one
+you run. And I would recommend running
+
+968
+00:18:32,510 --> 00:18:32,520
+you run. And I would recommend running
+ 
+
+969
+00:18:32,520 --> 00:18:34,870
+you run. And I would recommend running
+it with the dash H option so that you
+
+970
+00:18:34,870 --> 00:18:34,880
+it with the dash H option so that you
+ 
+
+971
+00:18:34,880 --> 00:18:37,910
+it with the dash H option so that you
+get human readable output.
+
+972
+00:18:37,910 --> 00:18:37,920
+get human readable output.
+ 
+
+973
+00:18:37,920 --> 00:18:39,550
+get human readable output.
+I'm going to run the du command with
+
+974
+00:18:39,550 --> 00:18:39,560
+I'm going to run the du command with
+ 
+
+975
+00:18:39,560 --> 00:18:41,670
+I'm going to run the du command with
+that dash H option, and I'm going to
+
+976
+00:18:41,670 --> 00:18:41,680
+that dash H option, and I'm going to
+ 
+
+977
+00:18:41,680 --> 00:18:43,950
+that dash H option, and I'm going to
+pipe the whole thing to more so that you
+
+978
+00:18:43,950 --> 00:18:43,960
+pipe the whole thing to more so that you
+ 
+
+979
+00:18:43,960 --> 00:18:45,870
+pipe the whole thing to more so that you
+can get an idea of just how much
+
+980
+00:18:45,870 --> 00:18:45,880
+can get an idea of just how much
+ 
+
+981
+00:18:45,880 --> 00:18:47,990
+can get an idea of just how much
+information is shown to the screen. And
+
+982
+00:18:47,990 --> 00:18:48,000
+information is shown to the screen. And
+ 
+
+983
+00:18:48,000 --> 00:18:49,430
+information is shown to the screen. And
+it starts going through the local
+
+984
+00:18:49,430 --> 00:18:49,440
+it starts going through the local
+ 
+
+985
+00:18:49,440 --> 00:18:51,510
+it starts going through the local
+directory and finding all of the files
+
+986
+00:18:51,510 --> 00:18:51,520
+directory and finding all of the files
+ 
+
+987
+00:18:51,520 --> 00:18:53,510
+directory and finding all of the files
+that are stored in that local directory.
+
+988
+00:18:53,510 --> 00:18:53,520
+that are stored in that local directory.
+ 
+
+989
+00:18:53,520 --> 00:18:54,950
+that are stored in that local directory.
+This starts going through all of the
+
+990
+00:18:54,950 --> 00:18:54,960
+This starts going through all of the
+ 
+
+991
+00:18:54,960 --> 00:18:56,830
+This starts going through all of the
+individual directories on a particular
+
+992
+00:18:56,830 --> 00:18:56,840
+individual directories on a particular
+ 
+
+993
+00:18:56,840 --> 00:18:59,390
+individual directories on a particular
+system one by one and provides you with
+
+994
+00:18:59,390 --> 00:18:59,400
+system one by one and provides you with
+ 
+
+995
+00:18:59,400 --> 00:19:01,150
+system one by one and provides you with
+a summary of how much space is being
+
+996
+00:19:01,150 --> 00:19:01,160
+a summary of how much space is being
+ 
+
+997
+00:19:01,160 --> 00:19:02,990
+a summary of how much space is being
+used. Let's hit the spacebar to go to
+
+998
+00:19:02,990 --> 00:19:03,000
+used. Let's hit the spacebar to go to
+ 
+
+999
+00:19:03,000 --> 00:19:05,150
+used. Let's hit the spacebar to go to
+the next page. Almost everything here is
+
+1000
+00:19:05,150 --> 00:19:05,160
+the next page. Almost everything here is
+ 
+
+1001
+00:19:05,160 --> 00:19:07,150
+the next page. Almost everything here is
+a relatively small number. Here's one
+
+1002
+00:19:07,150 --> 00:19:07,160
+a relatively small number. Here's one
+ 
+
+1003
+00:19:07,160 --> 00:19:09,150
+a relatively small number. Here's one
+that's relatively large, it's 1.4
+
+1004
+00:19:09,150 --> 00:19:09,160
+that's relatively large, it's 1.4
+ 
+
+1005
+00:19:09,160 --> 00:19:11,190
+that's relatively large, it's 1.4
+megabytes. We have others that are 12
+
+1006
+00:19:11,190 --> 00:19:11,200
+megabytes. We have others that are 12
+ 
+
+1007
+00:19:11,200 --> 00:19:13,790
+megabytes. We have others that are 12
+megabytes, these are 28 megabytes. So
+
+1008
+00:19:13,790 --> 00:19:13,800
+megabytes, these are 28 megabytes. So
+ 
+
+1009
+00:19:13,800 --> 00:19:15,470
+megabytes, these are 28 megabytes. So
+now we can start getting an idea of
+
+1010
+00:19:15,470 --> 00:19:15,480
+now we can start getting an idea of
+ 
+
+1011
+00:19:15,480 --> 00:19:17,470
+now we can start getting an idea of
+where the space is really being used and
+
+1012
+00:19:17,470 --> 00:19:17,480
+where the space is really being used and
+ 
+
+1013
+00:19:17,480 --> 00:19:19,710
+where the space is really being used and
+we might want to go to the old Firefox
+
+1014
+00:19:19,710 --> 00:19:19,720
+we might want to go to the old Firefox
+ 
+
+1015
+00:19:19,720 --> 00:19:21,550
+we might want to go to the old Firefox
+data that is in our directory that's
+
+1016
+00:19:21,550 --> 00:19:21,560
+data that is in our directory that's
+ 
+
+1017
+00:19:21,560 --> 00:19:23,870
+data that is in our directory that's
+taking up 70 megabytes and start
+
+1018
+00:19:23,870 --> 00:19:23,880
+taking up 70 megabytes and start
+ 
+
+1019
+00:19:23,880 --> 00:19:25,630
+taking up 70 megabytes and start
+deleting those directories to free up
+
+1020
+00:19:25,630 --> 00:19:25,640
+deleting those directories to free up
+ 
+
+1021
+00:19:25,640 --> 00:19:27,470
+deleting those directories to free up
+some room.
+
+1022
+00:19:27,470 --> 00:19:27,480
+some room.
+ 
+
+1023
+00:19:27,480 --> 00:19:29,750
+some room.
+A lot of the configurations in Linux are
+
+1024
+00:19:29,750 --> 00:19:29,760
+A lot of the configurations in Linux are
+ 
+
+1025
+00:19:29,760 --> 00:19:32,110
+A lot of the configurations in Linux are
+stored in text files. And if you need to
+
+1026
+00:19:32,110 --> 00:19:32,120
+stored in text files. And if you need to
+ 
+
+1027
+00:19:32,120 --> 00:19:34,350
+stored in text files. And if you need to
+modify or change an application or
+
+1028
+00:19:34,350 --> 00:19:34,360
+modify or change an application or
+ 
+
+1029
+00:19:34,360 --> 00:19:36,190
+modify or change an application or
+something in the operating system, you
+
+1030
+00:19:36,190 --> 00:19:36,200
+something in the operating system, you
+ 
+
+1031
+00:19:36,200 --> 00:19:38,510
+something in the operating system, you
+need to modify that text file.
+
+1032
+00:19:38,510 --> 00:19:38,520
+need to modify that text file.
+ 
+
+1033
+00:19:38,520 --> 00:19:40,550
+need to modify that text file.
+Fortunately, Linux comes with a number
+
+1034
+00:19:40,550 --> 00:19:40,560
+Fortunately, Linux comes with a number
+ 
+
+1035
+00:19:40,560 --> 00:19:42,030
+Fortunately, Linux comes with a number
+of different text editors. One of the
+
+1036
+00:19:42,030 --> 00:19:42,040
+of different text editors. One of the
+ 
+
+1037
+00:19:42,040 --> 00:19:44,550
+of different text editors. One of the
+more popular is Nano. This is a
+
+1038
+00:19:44,550 --> 00:19:44,560
+more popular is Nano. This is a
+ 
+
+1039
+00:19:44,560 --> 00:19:46,630
+more popular is Nano. This is a
+full-screen text editor and you can run
+
+1040
+00:19:46,630 --> 00:19:46,640
+full-screen text editor and you can run
+ 
+
+1041
+00:19:46,640 --> 00:19:49,110
+full-screen text editor and you can run
+it in your terminal screen. You may find
+
+1042
+00:19:49,110 --> 00:19:49,120
+it in your terminal screen. You may find
+ 
+
+1043
+00:19:49,120 --> 00:19:51,030
+it in your terminal screen. You may find
+that Nano is already installed in your
+
+1044
+00:19:51,030 --> 00:19:51,040
+that Nano is already installed in your
+ 
+
+1045
+00:19:51,040 --> 00:19:53,150
+that Nano is already installed in your
+current Linux distribution or you can
+
+1046
+00:19:53,150 --> 00:19:53,160
+current Linux distribution or you can
+ 
+
+1047
+00:19:53,160 --> 00:19:55,310
+current Linux distribution or you can
+install it using the package manager on
+
+1048
+00:19:55,310 --> 00:19:55,320
+install it using the package manager on
+ 
+
+1049
+00:19:55,320 --> 00:19:57,590
+install it using the package manager on
+your system. This full-screen text
+
+1050
+00:19:57,590 --> 00:19:57,600
+your system. This full-screen text
+ 
+
+1051
+00:19:57,600 --> 00:19:59,910
+your system. This full-screen text
+editor allows us to use functions that
+
+1052
+00:19:59,910 --> 00:19:59,920
+editor allows us to use functions that
+ 
+
+1053
+00:19:59,920 --> 00:20:01,550
+editor allows us to use functions that
+normally would not be available at the
+
+1054
+00:20:01,550 --> 00:20:01,560
+normally would not be available at the
+ 
+
+1055
+00:20:01,560 --> 00:20:03,310
+normally would not be available at the
+command line such as marking and
+
+1056
+00:20:03,310 --> 00:20:03,320
+command line such as marking and
+ 
+
+1057
+00:20:03,320 --> 00:20:05,670
+command line such as marking and
+selecting, copying information, pasting
+
+1058
+00:20:05,670 --> 00:20:05,680
+selecting, copying information, pasting
+ 
+
+1059
+00:20:05,680 --> 00:20:07,350
+selecting, copying information, pasting
+it somewhere else, and giving us
+
+1060
+00:20:07,350 --> 00:20:07,360
+it somewhere else, and giving us
+ 
+
+1061
+00:20:07,360 --> 00:20:09,430
+it somewhere else, and giving us
+features that you would normally find in
+
+1062
+00:20:09,430 --> 00:20:09,440
+features that you would normally find in
+ 
+
+1063
+00:20:09,440 --> 00:20:11,870
+features that you would normally find in
+a graphical text editor.
+
+1064
+00:20:11,870 --> 00:20:11,880
+a graphical text editor.
+ 
+
+1065
+00:20:11,880 --> 00:20:14,030
+a graphical text editor.
+On my Linux distribution, I have a file
+
+1066
+00:20:14,030 --> 00:20:14,040
+On my Linux distribution, I have a file
+ 
+
+1067
+00:20:14,040 --> 00:20:15,910
+On my Linux distribution, I have a file
+that I would like to edit. This is the
+
+1068
+00:20:15,910 --> 00:20:15,920
+that I would like to edit. This is the
+ 
+
+1069
+00:20:15,920 --> 00:20:19,270
+that I would like to edit. This is the
+auth.log file. You can see it's 27K in
+
+1070
+00:20:19,270 --> 00:20:19,280
+auth.log file. You can see it's 27K in
+ 
+
+1071
+00:20:19,280 --> 00:20:21,110
+auth.log file. You can see it's 27K in
+length. This would not be something that
+
+1072
+00:20:21,110 --> 00:20:21,120
+length. This would not be something that
+ 
+
+1073
+00:20:21,120 --> 00:20:23,790
+length. This would not be something that
+would be very easy to update or modify
+
+1074
+00:20:23,790 --> 00:20:23,800
+would be very easy to update or modify
+ 
+
+1075
+00:20:23,800 --> 00:20:25,750
+would be very easy to update or modify
+without some type of editor. So we'll
+
+1076
+00:20:25,750 --> 00:20:25,760
+without some type of editor. So we'll
+ 
+
+1077
+00:20:25,760 --> 00:20:29,990
+without some type of editor. So we'll
+use Nano and we'll specify auth.log.
+
+1078
+00:20:29,990 --> 00:20:30,000
+use Nano and we'll specify auth.log.
+ 
+
+1079
+00:20:30,000 --> 00:20:32,030
+use Nano and we'll specify auth.log.
+This brings up a full-screen editor and
+
+1080
+00:20:32,030 --> 00:20:32,040
+This brings up a full-screen editor and
+ 
+
+1081
+00:20:32,040 --> 00:20:34,510
+This brings up a full-screen editor and
+if you've done any type of editing from
+
+1082
+00:20:34,510 --> 00:20:34,520
+if you've done any type of editing from
+ 
+
+1083
+00:20:34,520 --> 00:20:36,790
+if you've done any type of editing from
+a graphical editor or full-screen in
+
+1084
+00:20:36,790 --> 00:20:36,800
+a graphical editor or full-screen in
+ 
+
+1085
+00:20:36,800 --> 00:20:39,030
+a graphical editor or full-screen in
+Linux, this should be very familiar to
+
+1086
+00:20:39,030 --> 00:20:39,040
+Linux, this should be very familiar to
+ 
+
+1087
+00:20:39,040 --> 00:20:40,670
+Linux, this should be very familiar to
+you. You can move around with your
+
+1088
+00:20:40,670 --> 00:20:40,680
+you. You can move around with your
+ 
+
+1089
+00:20:40,680 --> 00:20:42,870
+you. You can move around with your
+cursor keys, you can type in at any of
+
+1090
+00:20:42,870 --> 00:20:42,880
+cursor keys, you can type in at any of
+ 
+
+1091
+00:20:42,880 --> 00:20:44,590
+cursor keys, you can type in at any of
+these prompts, and you have commands
+
+1092
+00:20:44,590 --> 00:20:44,600
+these prompts, and you have commands
+ 
+
+1093
+00:20:44,600 --> 00:20:46,430
+these prompts, and you have commands
+across the bottom where you can save the
+
+1094
+00:20:46,430 --> 00:20:46,440
+across the bottom where you can save the
+ 
+
+1095
+00:20:46,440 --> 00:20:49,150
+across the bottom where you can save the
+file, get additional help, copy, cut,
+
+1096
+00:20:49,150 --> 00:20:49,160
+file, get additional help, copy, cut,
+ 
+
+1097
+00:20:49,160 --> 00:20:51,470
+file, get additional help, copy, cut,
+replace, and perform other functions
+
+1098
+00:20:51,470 --> 00:20:51,480
+replace, and perform other functions
+ 
+
+1099
+00:20:51,480 --> 00:20:53,470
+replace, and perform other functions
+inside of this text editor. When you're
+
+1100
+00:20:53,470 --> 00:20:53,480
+inside of this text editor. When you're
+ 
+
+1101
+00:20:53,480 --> 00:20:55,750
+inside of this text editor. When you're
+done, you can choose the control X
+
+1102
+00:20:55,750 --> 00:20:55,760
+done, you can choose the control X
+ 
+
+1103
+00:20:55,760 --> 00:20:57,630
+done, you can choose the control X
+option to exit out. Since I've made
+
+1104
+00:20:57,630 --> 00:20:57,640
+option to exit out. Since I've made
+ 
+
+1105
+00:20:57,640 --> 00:20:59,710
+option to exit out. Since I've made
+changes to this file, it asked if I'd
+
+1106
+00:20:59,710 --> 00:20:59,720
+changes to this file, it asked if I'd
+ 
+
+1107
+00:20:59,720 --> 00:21:01,710
+changes to this file, it asked if I'd
+like to save this information. In this
+
+1108
+00:21:01,710 --> 00:21:01,720
+like to save this information. In this
+ 
+
+1109
+00:21:01,720 --> 00:21:03,950
+like to save this information. In this
+case, since I did not put anything in
+
+1110
+00:21:03,950 --> 00:21:03,960
+case, since I did not put anything in
+ 
+
+1111
+00:21:03,960 --> 00:21:05,550
+case, since I did not put anything in
+here that I'd like to save, I'll simply
+
+1112
+00:21:05,550 --> 00:21:05,560
+here that I'd like to save, I'll simply
+ 
+
+1113
+00:21:05,560 --> 00:21:07,630
+here that I'd like to save, I'll simply
+choose no and we're back at our command
+
+1114
+00:21:07,630 --> 00:21:07,640
+choose no and we're back at our command
+ 
+
+1115
+00:21:07,640 --> 00:21:10,230
+choose no and we're back at our command
+prompt. Nano is just one of many text
+
+1116
+00:21:10,230 --> 00:21:10,240
+prompt. Nano is just one of many text
+ 
+
+1117
+00:21:10,240 --> 00:21:11,870
+prompt. Nano is just one of many text
+editors that you could run inside of
+
+1118
+00:21:11,870 --> 00:21:11,880
+editors that you could run inside of
+ 
+
+1119
+00:21:11,880 --> 00:21:13,790
+editors that you could run inside of
+your Linux operating system, but since
+
+1120
+00:21:13,790 --> 00:21:13,800
+your Linux operating system, but since
+ 
+
+1121
+00:21:13,800 --> 00:21:15,750
+your Linux operating system, but since
+Nano is commonly installed with most
+
+1122
+00:21:15,750 --> 00:21:15,760
+Nano is commonly installed with most
+ 
+
+1123
+00:21:15,760 --> 00:21:17,790
+Nano is commonly installed with most
+distributions, it's probably already
+
+1124
+00:21:17,790 --> 00:21:17,800
+distributions, it's probably already
+ 
+
+1125
+00:21:17,800 --> 00:21:21,200
+distributions, it's probably already
+going to be available to you.
+

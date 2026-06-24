@@ -1,0 +1,1325 @@
+1
+00:00:00,000 --> 00:00:02,389
+
+Our
+
+2
+00:00:02,389 --> 00:00:02,399
+Our
+ 
+
+3
+00:00:02,399 --> 00:00:04,789
+Our
+computers rely on a power source to be
+
+4
+00:00:04,789 --> 00:00:04,799
+computers rely on a power source to be
+ 
+
+5
+00:00:04,799 --> 00:00:06,869
+computers rely on a power source to be
+able to operate. But we also have to
+
+6
+00:00:06,869 --> 00:00:06,879
+able to operate. But we also have to
+ 
+
+7
+00:00:06,879 --> 00:00:08,870
+able to operate. But we also have to
+consider our safety when it comes to
+
+8
+00:00:08,870 --> 00:00:08,880
+consider our safety when it comes to
+ 
+
+9
+00:00:08,880 --> 00:00:11,430
+consider our safety when it comes to
+working inside of these computers. If
+
+10
+00:00:11,430 --> 00:00:11,440
+working inside of these computers. If
+ 
+
+11
+00:00:11,440 --> 00:00:13,270
+working inside of these computers. If
+you're working on a computer, a printer,
+
+12
+00:00:13,270 --> 00:00:13,280
+you're working on a computer, a printer,
+ 
+
+13
+00:00:13,280 --> 00:00:15,430
+you're working on a computer, a printer,
+or anything with a power cord, you
+
+14
+00:00:15,430 --> 00:00:15,440
+or anything with a power cord, you
+ 
+
+15
+00:00:15,440 --> 00:00:17,269
+or anything with a power cord, you
+should always disconnect that power
+
+16
+00:00:17,269 --> 00:00:17,279
+should always disconnect that power
+ 
+
+17
+00:00:17,279 --> 00:00:19,670
+should always disconnect that power
+source before working inside of those
+
+18
+00:00:19,670 --> 00:00:19,680
+source before working inside of those
+ 
+
+19
+00:00:19,680 --> 00:00:21,910
+source before working inside of those
+devices. And if you are working inside
+
+20
+00:00:21,910 --> 00:00:21,920
+devices. And if you are working inside
+ 
+
+21
+00:00:21,920 --> 00:00:23,910
+devices. And if you are working inside
+of those devices and you see a component
+
+22
+00:00:23,910 --> 00:00:23,920
+of those devices and you see a component
+ 
+
+23
+00:00:23,920 --> 00:00:26,310
+of those devices and you see a component
+that you don't immediately recognize,
+
+24
+00:00:26,310 --> 00:00:26,320
+that you don't immediately recognize,
+ 
+
+25
+00:00:26,320 --> 00:00:28,790
+that you don't immediately recognize,
+you should definitely not touch that
+
+26
+00:00:28,790 --> 00:00:28,800
+you should definitely not touch that
+ 
+
+27
+00:00:28,800 --> 00:00:30,870
+you should definitely not touch that
+particular component. It's possible that
+
+28
+00:00:30,870 --> 00:00:30,880
+particular component. It's possible that
+ 
+
+29
+00:00:30,880 --> 00:00:32,870
+particular component. It's possible that
+that device might have capacitors and
+
+30
+00:00:32,870 --> 00:00:32,880
+that device might have capacitors and
+ 
+
+31
+00:00:32,880 --> 00:00:35,670
+that device might have capacitors and
+those capacitors may be storing power.
+
+32
+00:00:35,670 --> 00:00:35,680
+those capacitors may be storing power.
+ 
+
+33
+00:00:35,680 --> 00:00:37,350
+those capacitors may be storing power.
+The power supplies that are inside of
+
+34
+00:00:37,350 --> 00:00:37,360
+The power supplies that are inside of
+ 
+
+35
+00:00:37,360 --> 00:00:39,270
+The power supplies that are inside of
+these devices are designed to be
+
+36
+00:00:39,270 --> 00:00:39,280
+these devices are designed to be
+ 
+
+37
+00:00:39,280 --> 00:00:41,110
+these devices are designed to be
+removable. So, you would remove the
+
+38
+00:00:41,110 --> 00:00:41,120
+removable. So, you would remove the
+ 
+
+39
+00:00:41,120 --> 00:00:43,670
+removable. So, you would remove the
+entire power supply and replace it with
+
+40
+00:00:43,670 --> 00:00:43,680
+entire power supply and replace it with
+ 
+
+41
+00:00:43,680 --> 00:00:45,990
+entire power supply and replace it with
+a brand new one. Generally, we don't
+
+42
+00:00:45,990 --> 00:00:46,000
+a brand new one. Generally, we don't
+ 
+
+43
+00:00:46,000 --> 00:00:48,150
+a brand new one. Generally, we don't
+work on the inside of these power
+
+44
+00:00:48,150 --> 00:00:48,160
+work on the inside of these power
+ 
+
+45
+00:00:48,160 --> 00:00:50,069
+work on the inside of these power
+supplies. And certainly there are
+
+46
+00:00:50,069 --> 00:00:50,079
+supplies. And certainly there are
+ 
+
+47
+00:00:50,079 --> 00:00:51,750
+supplies. And certainly there are
+components inside of those power
+
+48
+00:00:51,750 --> 00:00:51,760
+components inside of those power
+ 
+
+49
+00:00:51,760 --> 00:00:53,830
+components inside of those power
+supplies that could be harmful if you
+
+50
+00:00:53,830 --> 00:00:53,840
+supplies that could be harmful if you
+ 
+
+51
+00:00:53,840 --> 00:00:55,910
+supplies that could be harmful if you
+were to touch them. Anytime you're
+
+52
+00:00:55,910 --> 00:00:55,920
+were to touch them. Anytime you're
+ 
+
+53
+00:00:55,920 --> 00:00:57,830
+were to touch them. Anytime you're
+working with devices such as power
+
+54
+00:00:57,830 --> 00:00:57,840
+working with devices such as power
+ 
+
+55
+00:00:57,840 --> 00:01:00,310
+working with devices such as power
+supplies, displays, or laser printers,
+
+56
+00:01:00,310 --> 00:01:00,320
+supplies, displays, or laser printers,
+ 
+
+57
+00:01:00,320 --> 00:01:01,990
+supplies, displays, or laser printers,
+you should always keep in mind that
+
+58
+00:01:01,990 --> 00:01:02,000
+you should always keep in mind that
+ 
+
+59
+00:01:02,000 --> 00:01:04,310
+you should always keep in mind that
+there may still be some residual power
+
+60
+00:01:04,310 --> 00:01:04,320
+there may still be some residual power
+ 
+
+61
+00:01:04,320 --> 00:01:06,550
+there may still be some residual power
+inside of those devices. So, you should
+
+62
+00:01:06,550 --> 00:01:06,560
+inside of those devices. So, you should
+ 
+
+63
+00:01:06,560 --> 00:01:09,590
+inside of those devices. So, you should
+always take proper precautions.
+
+64
+00:01:09,590 --> 00:01:09,600
+always take proper precautions.
+ 
+
+65
+00:01:09,600 --> 00:01:11,510
+always take proper precautions.
+The goal of an electrical ground is to
+
+66
+00:01:11,510 --> 00:01:11,520
+The goal of an electrical ground is to
+ 
+
+67
+00:01:11,520 --> 00:01:13,190
+The goal of an electrical ground is to
+take the power associated with an
+
+68
+00:01:13,190 --> 00:01:13,200
+take the power associated with an
+ 
+
+69
+00:01:13,200 --> 00:01:15,590
+take the power associated with an
+electrical fault and put it onto that
+
+70
+00:01:15,590 --> 00:01:15,600
+electrical fault and put it onto that
+ 
+
+71
+00:01:15,600 --> 00:01:17,749
+electrical fault and put it onto that
+ground connection instead of that power
+
+72
+00:01:17,749 --> 00:01:17,759
+ground connection instead of that power
+ 
+
+73
+00:01:17,759 --> 00:01:20,149
+ground connection instead of that power
+going into you. This is an important
+
+74
+00:01:20,149 --> 00:01:20,159
+going into you. This is an important
+ 
+
+75
+00:01:20,159 --> 00:01:21,910
+going into you. This is an important
+part of any electrical system. And
+
+76
+00:01:21,910 --> 00:01:21,920
+part of any electrical system. And
+ 
+
+77
+00:01:21,920 --> 00:01:23,190
+part of any electrical system. And
+you'll notice that most of your
+
+78
+00:01:23,190 --> 00:01:23,200
+you'll notice that most of your
+ 
+
+79
+00:01:23,200 --> 00:01:25,270
+you'll notice that most of your
+computing devices will have ground
+
+80
+00:01:25,270 --> 00:01:25,280
+computing devices will have ground
+ 
+
+81
+00:01:25,280 --> 00:01:27,510
+computing devices will have ground
+connections on the power cord. If you're
+
+82
+00:01:27,510 --> 00:01:27,520
+connections on the power cord. If you're
+ 
+
+83
+00:01:27,520 --> 00:01:29,510
+connections on the power cord. If you're
+in a data center, this also applies to
+
+84
+00:01:29,510 --> 00:01:29,520
+in a data center, this also applies to
+ 
+
+85
+00:01:29,520 --> 00:01:31,270
+in a data center, this also applies to
+the racks that you have set up on the
+
+86
+00:01:31,270 --> 00:01:31,280
+the racks that you have set up on the
+ 
+
+87
+00:01:31,280 --> 00:01:33,510
+the racks that you have set up on the
+data center floor. You not only want to
+
+88
+00:01:33,510 --> 00:01:33,520
+data center floor. You not only want to
+ 
+
+89
+00:01:33,520 --> 00:01:35,670
+data center floor. You not only want to
+ground all of the components inside of
+
+90
+00:01:35,670 --> 00:01:35,680
+ground all of the components inside of
+ 
+
+91
+00:01:35,680 --> 00:01:38,069
+ground all of the components inside of
+the rack, you also want to electrically
+
+92
+00:01:38,069 --> 00:01:38,079
+the rack, you also want to electrically
+ 
+
+93
+00:01:38,079 --> 00:01:40,310
+the rack, you also want to electrically
+ground the rack itself. That way, if
+
+94
+00:01:40,310 --> 00:01:40,320
+ground the rack itself. That way, if
+ 
+
+95
+00:01:40,320 --> 00:01:42,630
+ground the rack itself. That way, if
+there is power that finds its way onto
+
+96
+00:01:42,630 --> 00:01:42,640
+there is power that finds its way onto
+ 
+
+97
+00:01:42,640 --> 00:01:44,710
+there is power that finds its way onto
+the metal rack, you can take all of that
+
+98
+00:01:44,710 --> 00:01:44,720
+the metal rack, you can take all of that
+ 
+
+99
+00:01:44,720 --> 00:01:47,429
+the metal rack, you can take all of that
+power and send it to the ground. This is
+
+100
+00:01:47,429 --> 00:01:47,439
+power and send it to the ground. This is
+ 
+
+101
+00:01:47,439 --> 00:01:49,109
+power and send it to the ground. This is
+why you should never remove any of those
+
+102
+00:01:49,109 --> 00:01:49,119
+why you should never remove any of those
+ 
+
+103
+00:01:49,119 --> 00:01:50,550
+why you should never remove any of those
+ground connections from your power
+
+104
+00:01:50,550 --> 00:01:50,560
+ground connections from your power
+ 
+
+105
+00:01:50,560 --> 00:01:51,990
+ground connections from your power
+plugs. And you should always make sure
+
+106
+00:01:51,990 --> 00:01:52,000
+plugs. And you should always make sure
+ 
+
+107
+00:01:52,000 --> 00:01:53,990
+plugs. And you should always make sure
+that all of those racks are always
+
+108
+00:01:53,990 --> 00:01:54,000
+that all of those racks are always
+ 
+
+109
+00:01:54,000 --> 00:01:55,990
+that all of those racks are always
+connected to an electrical ground. And
+
+110
+00:01:55,990 --> 00:01:56,000
+connected to an electrical ground. And
+ 
+
+111
+00:01:56,000 --> 00:01:57,830
+connected to an electrical ground. And
+most importantly, you should never
+
+112
+00:01:57,830 --> 00:01:57,840
+most importantly, you should never
+ 
+
+113
+00:01:57,840 --> 00:02:00,069
+most importantly, you should never
+connect any part of yourself to an
+
+114
+00:02:00,069 --> 00:02:00,079
+connect any part of yourself to an
+ 
+
+115
+00:02:00,079 --> 00:02:01,910
+connect any part of yourself to an
+electrical ground. that electrical
+
+116
+00:02:01,910 --> 00:02:01,920
+electrical ground. that electrical
+ 
+
+117
+00:02:01,920 --> 00:02:04,069
+electrical ground. that electrical
+ground could become energized and we
+
+118
+00:02:04,069 --> 00:02:04,079
+ground could become energized and we
+ 
+
+119
+00:02:04,079 --> 00:02:05,749
+ground could become energized and we
+don't want any part of you to be
+
+120
+00:02:05,749 --> 00:02:05,759
+don't want any part of you to be
+ 
+
+121
+00:02:05,759 --> 00:02:07,510
+don't want any part of you to be
+touching any other part of that
+
+122
+00:02:07,510 --> 00:02:07,520
+touching any other part of that
+ 
+
+123
+00:02:07,520 --> 00:02:09,910
+touching any other part of that
+electrical ground.
+
+124
+00:02:09,910 --> 00:02:09,920
+electrical ground.
+ 
+
+125
+00:02:09,920 --> 00:02:11,750
+electrical ground.
+We should not only be concerned about
+
+126
+00:02:11,750 --> 00:02:11,760
+We should not only be concerned about
+ 
+
+127
+00:02:11,760 --> 00:02:13,430
+We should not only be concerned about
+power, but we should also be concerned
+
+128
+00:02:13,430 --> 00:02:13,440
+power, but we should also be concerned
+ 
+
+129
+00:02:13,440 --> 00:02:15,589
+power, but we should also be concerned
+about the safety of our workspace. We
+
+130
+00:02:15,589 --> 00:02:15,599
+about the safety of our workspace. We
+ 
+
+131
+00:02:15,599 --> 00:02:17,270
+about the safety of our workspace. We
+work with a lot of different cables and
+
+132
+00:02:17,270 --> 00:02:17,280
+work with a lot of different cables and
+ 
+
+133
+00:02:17,280 --> 00:02:19,030
+work with a lot of different cables and
+we have to be very careful when we're
+
+134
+00:02:19,030 --> 00:02:19,040
+we have to be very careful when we're
+ 
+
+135
+00:02:19,040 --> 00:02:20,790
+we have to be very careful when we're
+putting that cable somewhere near the
+
+136
+00:02:20,790 --> 00:02:20,800
+putting that cable somewhere near the
+ 
+
+137
+00:02:20,800 --> 00:02:22,949
+putting that cable somewhere near the
+floor. This would create a trip hazard
+
+138
+00:02:22,949 --> 00:02:22,959
+floor. This would create a trip hazard
+ 
+
+139
+00:02:22,959 --> 00:02:25,030
+floor. This would create a trip hazard
+for anyone walking by. So, you want to
+
+140
+00:02:25,030 --> 00:02:25,040
+for anyone walking by. So, you want to
+ 
+
+141
+00:02:25,040 --> 00:02:27,190
+for anyone walking by. So, you want to
+be sure that you tape down or cover any
+
+142
+00:02:27,190 --> 00:02:27,200
+be sure that you tape down or cover any
+ 
+
+143
+00:02:27,200 --> 00:02:29,430
+be sure that you tape down or cover any
+of these cables that may be in a walking
+
+144
+00:02:29,430 --> 00:02:29,440
+of these cables that may be in a walking
+ 
+
+145
+00:02:29,440 --> 00:02:31,830
+of these cables that may be in a walking
+area. It might also be a good idea to
+
+146
+00:02:31,830 --> 00:02:31,840
+area. It might also be a good idea to
+ 
+
+147
+00:02:31,840 --> 00:02:33,430
+area. It might also be a good idea to
+have all of these cables bundled
+
+148
+00:02:33,430 --> 00:02:33,440
+have all of these cables bundled
+ 
+
+149
+00:02:33,440 --> 00:02:35,350
+have all of these cables bundled
+together to help prevent any type of
+
+150
+00:02:35,350 --> 00:02:35,360
+together to help prevent any type of
+ 
+
+151
+00:02:35,360 --> 00:02:37,670
+together to help prevent any type of
+trip hazard. So, you should use Velcro,
+
+152
+00:02:37,670 --> 00:02:37,680
+trip hazard. So, you should use Velcro,
+ 
+
+153
+00:02:37,680 --> 00:02:39,830
+trip hazard. So, you should use Velcro,
+cable ties, or anything else that can
+
+154
+00:02:39,830 --> 00:02:39,840
+cable ties, or anything else that can
+ 
+
+155
+00:02:39,840 --> 00:02:42,630
+cable ties, or anything else that can
+group all of those cables together.
+
+156
+00:02:42,630 --> 00:02:42,640
+group all of those cables together.
+ 
+
+157
+00:02:42,640 --> 00:02:44,390
+group all of those cables together.
+We also have to think about our own
+
+158
+00:02:44,390 --> 00:02:44,400
+We also have to think about our own
+ 
+
+159
+00:02:44,400 --> 00:02:45,910
+We also have to think about our own
+personal safety. And there are things
+
+160
+00:02:45,910 --> 00:02:45,920
+personal safety. And there are things
+ 
+
+161
+00:02:45,920 --> 00:02:47,990
+personal safety. And there are things
+you can do in the workplace to limit any
+
+162
+00:02:47,990 --> 00:02:48,000
+you can do in the workplace to limit any
+ 
+
+163
+00:02:48,000 --> 00:02:50,790
+you can do in the workplace to limit any
+type of accident or injury. For example,
+
+164
+00:02:50,790 --> 00:02:50,800
+type of accident or injury. For example,
+ 
+
+165
+00:02:50,800 --> 00:02:52,630
+type of accident or injury. For example,
+you should follow best practices for
+
+166
+00:02:52,630 --> 00:02:52,640
+you should follow best practices for
+ 
+
+167
+00:02:52,640 --> 00:02:54,869
+you should follow best practices for
+lifting heavy equipment. We often deal
+
+168
+00:02:54,869 --> 00:02:54,879
+lifting heavy equipment. We often deal
+ 
+
+169
+00:02:54,879 --> 00:02:56,630
+lifting heavy equipment. We often deal
+with printers and computers that are
+
+170
+00:02:56,630 --> 00:02:56,640
+with printers and computers that are
+ 
+
+171
+00:02:56,640 --> 00:02:58,470
+with printers and computers that are
+relatively heavy. So, you want to be
+
+172
+00:02:58,470 --> 00:02:58,480
+relatively heavy. So, you want to be
+ 
+
+173
+00:02:58,480 --> 00:03:00,150
+relatively heavy. So, you want to be
+sure that if you're lifting any of these
+
+174
+00:03:00,150 --> 00:03:00,160
+sure that if you're lifting any of these
+ 
+
+175
+00:03:00,160 --> 00:03:01,990
+sure that if you're lifting any of these
+that you lift with your legs and you're
+
+176
+00:03:01,990 --> 00:03:02,000
+that you lift with your legs and you're
+ 
+
+177
+00:03:02,000 --> 00:03:03,990
+that you lift with your legs and you're
+not lifting with your back. There's
+
+178
+00:03:03,990 --> 00:03:04,000
+not lifting with your back. There's
+ 
+
+179
+00:03:04,000 --> 00:03:05,509
+not lifting with your back. There's
+specially designed equipment that you
+
+180
+00:03:05,509 --> 00:03:05,519
+specially designed equipment that you
+ 
+
+181
+00:03:05,519 --> 00:03:07,270
+specially designed equipment that you
+can get for a data center that allows
+
+182
+00:03:07,270 --> 00:03:07,280
+can get for a data center that allows
+ 
+
+183
+00:03:07,280 --> 00:03:08,869
+can get for a data center that allows
+you to slide this equipment into the
+
+184
+00:03:08,869 --> 00:03:08,879
+you to slide this equipment into the
+ 
+
+185
+00:03:08,879 --> 00:03:11,110
+you to slide this equipment into the
+rack without having to lift and hold it
+
+186
+00:03:11,110 --> 00:03:11,120
+rack without having to lift and hold it
+ 
+
+187
+00:03:11,120 --> 00:03:14,149
+rack without having to lift and hold it
+into the rack. Our electrical devices
+
+188
+00:03:14,149 --> 00:03:14,159
+into the rack. Our electrical devices
+ 
+
+189
+00:03:14,159 --> 00:03:16,229
+into the rack. Our electrical devices
+also don't work very well with water.
+
+190
+00:03:16,229 --> 00:03:16,239
+also don't work very well with water.
+ 
+
+191
+00:03:16,239 --> 00:03:17,910
+also don't work very well with water.
+You'll notice in a data center that we
+
+192
+00:03:17,910 --> 00:03:17,920
+You'll notice in a data center that we
+ 
+
+193
+00:03:17,920 --> 00:03:19,990
+You'll notice in a data center that we
+don't use water and we don't use foam.
+
+194
+00:03:19,990 --> 00:03:20,000
+don't use water and we don't use foam.
+ 
+
+195
+00:03:20,000 --> 00:03:22,149
+don't use water and we don't use foam.
+We instead use some other chemical such
+
+196
+00:03:22,149 --> 00:03:22,159
+We instead use some other chemical such
+ 
+
+197
+00:03:22,159 --> 00:03:25,270
+We instead use some other chemical such
+as FM200, carbon dioxide, or some other
+
+198
+00:03:25,270 --> 00:03:25,280
+as FM200, carbon dioxide, or some other
+ 
+
+199
+00:03:25,280 --> 00:03:27,589
+as FM200, carbon dioxide, or some other
+type of dry chemical. And of course, if
+
+200
+00:03:27,589 --> 00:03:27,599
+type of dry chemical. And of course, if
+ 
+
+201
+00:03:27,599 --> 00:03:29,190
+type of dry chemical. And of course, if
+one of the devices you're working on
+
+202
+00:03:29,190 --> 00:03:29,200
+one of the devices you're working on
+ 
+
+203
+00:03:29,200 --> 00:03:31,030
+one of the devices you're working on
+does catch fire, one of the things that
+
+204
+00:03:31,030 --> 00:03:31,040
+does catch fire, one of the things that
+ 
+
+205
+00:03:31,040 --> 00:03:32,869
+does catch fire, one of the things that
+you want to do very quickly is remove it
+
+206
+00:03:32,869 --> 00:03:32,879
+you want to do very quickly is remove it
+ 
+
+207
+00:03:32,879 --> 00:03:35,750
+you want to do very quickly is remove it
+from any power source.
+
+208
+00:03:35,750 --> 00:03:35,760
+from any power source.
+ 
+
+209
+00:03:35,760 --> 00:03:37,509
+from any power source.
+Another good best practice is to always
+
+210
+00:03:37,509 --> 00:03:37,519
+Another good best practice is to always
+ 
+
+211
+00:03:37,519 --> 00:03:39,270
+Another good best practice is to always
+wear safety goggles if you're working
+
+212
+00:03:39,270 --> 00:03:39,280
+wear safety goggles if you're working
+ 
+
+213
+00:03:39,280 --> 00:03:41,350
+wear safety goggles if you're working
+with chemicals or anything else that
+
+214
+00:03:41,350 --> 00:03:41,360
+with chemicals or anything else that
+ 
+
+215
+00:03:41,360 --> 00:03:43,110
+with chemicals or anything else that
+could splash on you. If you're working
+
+216
+00:03:43,110 --> 00:03:43,120
+could splash on you. If you're working
+ 
+
+217
+00:03:43,120 --> 00:03:45,190
+could splash on you. If you're working
+inside of a printer with toner or you're
+
+218
+00:03:45,190 --> 00:03:45,200
+inside of a printer with toner or you're
+ 
+
+219
+00:03:45,200 --> 00:03:46,949
+inside of a printer with toner or you're
+working with the chemicals that might be
+
+220
+00:03:46,949 --> 00:03:46,959
+working with the chemicals that might be
+ 
+
+221
+00:03:46,959 --> 00:03:49,030
+working with the chemicals that might be
+associated with batteries, it's always a
+
+222
+00:03:49,030 --> 00:03:49,040
+associated with batteries, it's always a
+ 
+
+223
+00:03:49,040 --> 00:03:50,949
+associated with batteries, it's always a
+good idea to have on a pair of safety
+
+224
+00:03:50,949 --> 00:03:50,959
+good idea to have on a pair of safety
+ 
+
+225
+00:03:50,959 --> 00:03:53,910
+good idea to have on a pair of safety
+goggles. It's also very easy for dust or
+
+226
+00:03:53,910 --> 00:03:53,920
+goggles. It's also very easy for dust or
+ 
+
+227
+00:03:53,920 --> 00:03:56,070
+goggles. It's also very easy for dust or
+toner to get into the air. So, if you're
+
+228
+00:03:56,070 --> 00:03:56,080
+toner to get into the air. So, if you're
+ 
+
+229
+00:03:56,080 --> 00:03:57,750
+toner to get into the air. So, if you're
+working on a printer, you might want to
+
+230
+00:03:57,750 --> 00:03:57,760
+working on a printer, you might want to
+ 
+
+231
+00:03:57,760 --> 00:03:59,670
+working on a printer, you might want to
+wear an air filter mask to prevent you
+
+232
+00:03:59,670 --> 00:03:59,680
+wear an air filter mask to prevent you
+ 
+
+233
+00:03:59,680 --> 00:04:02,229
+wear an air filter mask to prevent you
+from breathing in any of that toner.
+
+234
+00:04:02,229 --> 00:04:02,239
+from breathing in any of that toner.
+ 
+
+235
+00:04:02,239 --> 00:04:03,910
+from breathing in any of that toner.
+It's very possible that there are
+
+236
+00:04:03,910 --> 00:04:03,920
+It's very possible that there are
+ 
+
+237
+00:04:03,920 --> 00:04:06,070
+It's very possible that there are
+existing health and safety laws that are
+
+238
+00:04:06,070 --> 00:04:06,080
+existing health and safety laws that are
+ 
+
+239
+00:04:06,080 --> 00:04:08,309
+existing health and safety laws that are
+associated with working in some type of
+
+240
+00:04:08,309 --> 00:04:08,319
+associated with working in some type of
+ 
+
+241
+00:04:08,319 --> 00:04:10,070
+associated with working in some type of
+technical environment. So, you might
+
+242
+00:04:10,070 --> 00:04:10,080
+technical environment. So, you might
+ 
+
+243
+00:04:10,080 --> 00:04:11,509
+technical environment. So, you might
+want to check your local rules and
+
+244
+00:04:11,509 --> 00:04:11,519
+want to check your local rules and
+ 
+
+245
+00:04:11,519 --> 00:04:13,589
+want to check your local rules and
+regulations to see what guidelines may
+
+246
+00:04:13,589 --> 00:04:13,599
+regulations to see what guidelines may
+ 
+
+247
+00:04:13,599 --> 00:04:15,429
+regulations to see what guidelines may
+be in place for the job that you need to
+
+248
+00:04:15,429 --> 00:04:15,439
+be in place for the job that you need to
+ 
+
+249
+00:04:15,439 --> 00:04:17,430
+be in place for the job that you need to
+do. When it comes to electrical safety
+
+250
+00:04:17,430 --> 00:04:17,440
+do. When it comes to electrical safety
+ 
+
+251
+00:04:17,440 --> 00:04:19,349
+do. When it comes to electrical safety
+or fire prevention, there are usually
+
+252
+00:04:19,349 --> 00:04:19,359
+or fire prevention, there are usually
+ 
+
+253
+00:04:19,359 --> 00:04:21,830
+or fire prevention, there are usually
+building codes that set minimum safety
+
+254
+00:04:21,830 --> 00:04:21,840
+building codes that set minimum safety
+ 
+
+255
+00:04:21,840 --> 00:04:23,990
+building codes that set minimum safety
+standards for all of these environments.
+
+256
+00:04:23,990 --> 00:04:24,000
+standards for all of these environments.
+ 
+
+257
+00:04:24,000 --> 00:04:25,909
+standards for all of these environments.
+And if you have a lot of old computers
+
+258
+00:04:25,909 --> 00:04:25,919
+And if you have a lot of old computers
+ 
+
+259
+00:04:25,919 --> 00:04:28,310
+And if you have a lot of old computers
+and old batteries, there are usually
+
+260
+00:04:28,310 --> 00:04:28,320
+and old batteries, there are usually
+ 
+
+261
+00:04:28,320 --> 00:04:30,629
+and old batteries, there are usually
+environmental regulations that cover how
+
+262
+00:04:30,629 --> 00:04:30,639
+environmental regulations that cover how
+ 
+
+263
+00:04:30,639 --> 00:04:33,110
+environmental regulations that cover how
+and where you should dispose of all of
+
+264
+00:04:33,110 --> 00:04:33,120
+and where you should dispose of all of
+ 
+
+265
+00:04:33,120 --> 00:04:36,360
+and where you should dispose of all of
+this equipment.
+

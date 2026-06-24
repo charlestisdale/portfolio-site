@@ -1,0 +1,605 @@
+1
+00:00:02,000 --> 00:00:04,390
+
+We spend a lot of time and a lot of
+
+2
+00:00:04,390 --> 00:00:04,400
+We spend a lot of time and a lot of
+ 
+
+3
+00:00:04,400 --> 00:00:06,550
+We spend a lot of time and a lot of
+money protecting the edges of our
+
+4
+00:00:06,550 --> 00:00:06,560
+money protecting the edges of our
+ 
+
+5
+00:00:06,560 --> 00:00:09,110
+money protecting the edges of our
+network with firewalls, intrusion
+
+6
+00:00:09,110 --> 00:00:09,120
+network with firewalls, intrusion
+ 
+
+7
+00:00:09,120 --> 00:00:11,589
+network with firewalls, intrusion
+prevention, and other types of security
+
+8
+00:00:11,589 --> 00:00:11,599
+prevention, and other types of security
+ 
+
+9
+00:00:11,599 --> 00:00:14,070
+prevention, and other types of security
+systems. But these security systems on
+
+10
+00:00:14,070 --> 00:00:14,080
+systems. But these security systems on
+ 
+
+11
+00:00:14,080 --> 00:00:16,230
+systems. But these security systems on
+the perimeter of our network are not
+
+12
+00:00:16,230 --> 00:00:16,240
+the perimeter of our network are not
+ 
+
+13
+00:00:16,240 --> 00:00:18,550
+the perimeter of our network are not
+protecting the systems that are inside
+
+14
+00:00:18,550 --> 00:00:18,560
+protecting the systems that are inside
+ 
+
+15
+00:00:18,560 --> 00:00:20,710
+protecting the systems that are inside
+of our network. And of course, we have
+
+16
+00:00:20,710 --> 00:00:20,720
+of our network. And of course, we have
+ 
+
+17
+00:00:20,720 --> 00:00:23,029
+of our network. And of course, we have
+many employees in our organization that
+
+18
+00:00:23,029 --> 00:00:23,039
+many employees in our organization that
+ 
+
+19
+00:00:23,039 --> 00:00:25,109
+many employees in our organization that
+have access to all of the systems that
+
+20
+00:00:25,109 --> 00:00:25,119
+have access to all of the systems that
+ 
+
+21
+00:00:25,119 --> 00:00:27,830
+have access to all of the systems that
+we might have on the protected internal
+
+22
+00:00:27,830 --> 00:00:27,840
+we might have on the protected internal
+ 
+
+23
+00:00:27,840 --> 00:00:29,910
+we might have on the protected internal
+network. Because of this, we have to
+
+24
+00:00:29,910 --> 00:00:29,920
+network. Because of this, we have to
+ 
+
+25
+00:00:29,920 --> 00:00:31,750
+network. Because of this, we have to
+consider that some of these employees
+
+26
+00:00:31,750 --> 00:00:31,760
+consider that some of these employees
+ 
+
+27
+00:00:31,760 --> 00:00:33,910
+consider that some of these employees
+could potentially be a threat that's on
+
+28
+00:00:33,910 --> 00:00:33,920
+could potentially be a threat that's on
+ 
+
+29
+00:00:33,920 --> 00:00:37,030
+could potentially be a threat that's on
+the inside of our network. This is not
+
+30
+00:00:37,030 --> 00:00:37,040
+the inside of our network. This is not
+ 
+
+31
+00:00:37,040 --> 00:00:39,110
+the inside of our network. This is not
+just a threat where users are writing
+
+32
+00:00:39,110 --> 00:00:39,120
+just a threat where users are writing
+ 
+
+33
+00:00:39,120 --> 00:00:41,110
+just a threat where users are writing
+down their password on a yellow sticky
+
+34
+00:00:41,110 --> 00:00:41,120
+down their password on a yellow sticky
+ 
+
+35
+00:00:41,120 --> 00:00:42,549
+down their password on a yellow sticky
+and putting it underneath their
+
+36
+00:00:42,549 --> 00:00:42,559
+and putting it underneath their
+ 
+
+37
+00:00:42,559 --> 00:00:44,630
+and putting it underneath their
+keyboard. This might be a case where
+
+38
+00:00:44,630 --> 00:00:44,640
+keyboard. This might be a case where
+ 
+
+39
+00:00:44,640 --> 00:00:46,869
+keyboard. This might be a case where
+someone inside of your organization who
+
+40
+00:00:46,869 --> 00:00:46,879
+someone inside of your organization who
+ 
+
+41
+00:00:46,879 --> 00:00:49,029
+someone inside of your organization who
+has access to large amounts of data
+
+42
+00:00:49,029 --> 00:00:49,039
+has access to large amounts of data
+ 
+
+43
+00:00:49,039 --> 00:00:51,590
+has access to large amounts of data
+across many sensitive systems may
+
+44
+00:00:51,590 --> 00:00:51,600
+across many sensitive systems may
+ 
+
+45
+00:00:51,600 --> 00:00:53,910
+across many sensitive systems may
+somehow become the attacker from the
+
+46
+00:00:53,910 --> 00:00:53,920
+somehow become the attacker from the
+ 
+
+47
+00:00:53,920 --> 00:00:56,229
+somehow become the attacker from the
+inside of your network. These employees
+
+48
+00:00:56,229 --> 00:00:56,239
+inside of your network. These employees
+ 
+
+49
+00:00:56,239 --> 00:00:57,910
+inside of your network. These employees
+know where all of the sensitive data is
+
+50
+00:00:57,910 --> 00:00:57,920
+know where all of the sensitive data is
+ 
+
+51
+00:00:57,920 --> 00:00:59,910
+know where all of the sensitive data is
+stored. They know the security methods
+
+52
+00:00:59,910 --> 00:00:59,920
+stored. They know the security methods
+ 
+
+53
+00:00:59,920 --> 00:01:02,150
+stored. They know the security methods
+that are used to protect that data. And
+
+54
+00:01:02,150 --> 00:01:02,160
+that are used to protect that data. And
+ 
+
+55
+00:01:02,160 --> 00:01:04,469
+that are used to protect that data. And
+they know how to remove or copy that
+
+56
+00:01:04,469 --> 00:01:04,479
+they know how to remove or copy that
+ 
+
+57
+00:01:04,479 --> 00:01:06,469
+they know how to remove or copy that
+data without causing any type of
+
+58
+00:01:06,469 --> 00:01:06,479
+data without causing any type of
+ 
+
+59
+00:01:06,479 --> 00:01:09,109
+data without causing any type of
+security alarms on your network. And
+
+60
+00:01:09,109 --> 00:01:09,119
+security alarms on your network. And
+ 
+
+61
+00:01:09,119 --> 00:01:10,950
+security alarms on your network. And
+these are people that are coming to work
+
+62
+00:01:10,950 --> 00:01:10,960
+these are people that are coming to work
+ 
+
+63
+00:01:10,960 --> 00:01:13,350
+these are people that are coming to work
+every day who have constant access to
+
+64
+00:01:13,350 --> 00:01:13,360
+every day who have constant access to
+ 
+
+65
+00:01:13,360 --> 00:01:16,550
+every day who have constant access to
+this very sensitive data.
+
+66
+00:01:16,550 --> 00:01:16,560
+this very sensitive data.
+ 
+
+67
+00:01:16,560 --> 00:01:18,390
+this very sensitive data.
+This may not be just disgruntled
+
+68
+00:01:18,390 --> 00:01:18,400
+This may not be just disgruntled
+ 
+
+69
+00:01:18,400 --> 00:01:20,469
+This may not be just disgruntled
+employees who are part of an insider
+
+70
+00:01:20,469 --> 00:01:20,479
+employees who are part of an insider
+ 
+
+71
+00:01:20,479 --> 00:01:23,190
+employees who are part of an insider
+threat. This may be a directed threat
+
+72
+00:01:23,190 --> 00:01:23,200
+threat. This may be a directed threat
+ 
+
+73
+00:01:23,200 --> 00:01:25,190
+threat. This may be a directed threat
+towards your employees. We have
+
+74
+00:01:25,190 --> 00:01:25,200
+towards your employees. We have
+ 
+
+75
+00:01:25,200 --> 00:01:27,510
+towards your employees. We have
+documented cases where the attackers are
+
+76
+00:01:27,510 --> 00:01:27,520
+documented cases where the attackers are
+ 
+
+77
+00:01:27,520 --> 00:01:29,510
+documented cases where the attackers are
+recruiting people inside of these
+
+78
+00:01:29,510 --> 00:01:29,520
+recruiting people inside of these
+ 
+
+79
+00:01:29,520 --> 00:01:31,830
+recruiting people inside of these
+companies to be able to give them access
+
+80
+00:01:31,830 --> 00:01:31,840
+companies to be able to give them access
+ 
+
+81
+00:01:31,840 --> 00:01:34,310
+companies to be able to give them access
+to systems or to give them data. For
+
+82
+00:01:34,310 --> 00:01:34,320
+to systems or to give them data. For
+ 
+
+83
+00:01:34,320 --> 00:01:36,789
+to systems or to give them data. For
+example, we have cases where ransomware
+
+84
+00:01:36,789 --> 00:01:36,799
+example, we have cases where ransomware
+ 
+
+85
+00:01:36,799 --> 00:01:38,950
+example, we have cases where ransomware
+has been found inside of organizations,
+
+86
+00:01:38,950 --> 00:01:38,960
+has been found inside of organizations,
+ 
+
+87
+00:01:38,960 --> 00:01:41,429
+has been found inside of organizations,
+but the ransomware was put there by the
+
+88
+00:01:41,429 --> 00:01:41,439
+but the ransomware was put there by the
+ 
+
+89
+00:01:41,439 --> 00:01:43,749
+but the ransomware was put there by the
+employees themselves. The attackers are
+
+90
+00:01:43,749 --> 00:01:43,759
+employees themselves. The attackers are
+ 
+
+91
+00:01:43,759 --> 00:01:46,069
+employees themselves. The attackers are
+able to use Bitcoin or some type of
+
+92
+00:01:46,069 --> 00:01:46,079
+able to use Bitcoin or some type of
+ 
+
+93
+00:01:46,079 --> 00:01:48,789
+able to use Bitcoin or some type of
+cryptocurrency to be able to entice
+
+94
+00:01:48,789 --> 00:01:48,799
+cryptocurrency to be able to entice
+ 
+
+95
+00:01:48,799 --> 00:01:51,990
+cryptocurrency to be able to entice
+employees to plug in a USB drive and
+
+96
+00:01:51,990 --> 00:01:52,000
+employees to plug in a USB drive and
+ 
+
+97
+00:01:52,000 --> 00:01:54,389
+employees to plug in a USB drive and
+walk away. The ransomware software
+
+98
+00:01:54,389 --> 00:01:54,399
+walk away. The ransomware software
+ 
+
+99
+00:01:54,399 --> 00:01:56,310
+walk away. The ransomware software
+starts automatically. It then starts
+
+100
+00:01:56,310 --> 00:01:56,320
+starts automatically. It then starts
+ 
+
+101
+00:01:56,320 --> 00:01:58,310
+starts automatically. It then starts
+encrypting all of these systems and the
+
+102
+00:01:58,310 --> 00:01:58,320
+encrypting all of these systems and the
+ 
+
+103
+00:01:58,320 --> 00:02:00,469
+encrypting all of these systems and the
+attacker ultimately earns millions of
+
+104
+00:02:00,469 --> 00:02:00,479
+attacker ultimately earns millions of
+ 
+
+105
+00:02:00,479 --> 00:02:03,429
+attacker ultimately earns millions of
+dollars from this single attack. This is
+
+106
+00:02:03,429 --> 00:02:03,439
+dollars from this single attack. This is
+ 
+
+107
+00:02:03,439 --> 00:02:05,270
+dollars from this single attack. This is
+why many organizations are updating
+
+108
+00:02:05,270 --> 00:02:05,280
+why many organizations are updating
+ 
+
+109
+00:02:05,280 --> 00:02:07,590
+why many organizations are updating
+their security best practices to better
+
+110
+00:02:07,590 --> 00:02:07,600
+their security best practices to better
+ 
+
+111
+00:02:07,600 --> 00:02:09,510
+their security best practices to better
+protect all of the data that's on the
+
+112
+00:02:09,510 --> 00:02:09,520
+protect all of the data that's on the
+ 
+
+113
+00:02:09,520 --> 00:02:11,270
+protect all of the data that's on the
+inside of the network. These
+
+114
+00:02:11,270 --> 00:02:11,280
+inside of the network. These
+ 
+
+115
+00:02:11,280 --> 00:02:13,830
+inside of the network. These
+organizations are also updating some of
+
+116
+00:02:13,830 --> 00:02:13,840
+organizations are also updating some of
+ 
+
+117
+00:02:13,840 --> 00:02:16,229
+organizations are also updating some of
+their other practices such as backups to
+
+118
+00:02:16,229 --> 00:02:16,239
+their other practices such as backups to
+ 
+
+119
+00:02:16,239 --> 00:02:18,630
+their other practices such as backups to
+ensure that they always have a good copy
+
+120
+00:02:18,630 --> 00:02:18,640
+ensure that they always have a good copy
+ 
+
+121
+00:02:18,640 --> 00:02:22,200
+ensure that they always have a good copy
+of this data.
+

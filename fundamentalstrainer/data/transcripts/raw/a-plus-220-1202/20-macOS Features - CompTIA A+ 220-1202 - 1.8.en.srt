@@ -1,0 +1,3115 @@
+1
+00:00:02,000 --> 00:00:03,909
+
+If you're like me, you use a lot of
+
+2
+00:00:03,909 --> 00:00:03,919
+If you're like me, you use a lot of
+ 
+
+3
+00:00:03,919 --> 00:00:05,829
+If you're like me, you use a lot of
+different applications all at the same
+
+4
+00:00:05,829 --> 00:00:05,839
+different applications all at the same
+ 
+
+5
+00:00:05,839 --> 00:00:07,990
+different applications all at the same
+time, and they're usually scattered as
+
+6
+00:00:07,990 --> 00:00:08,000
+time, and they're usually scattered as
+ 
+
+7
+00:00:08,000 --> 00:00:10,390
+time, and they're usually scattered as
+little icons at the bottom of the screen
+
+8
+00:00:10,390 --> 00:00:10,400
+little icons at the bottom of the screen
+ 
+
+9
+00:00:10,400 --> 00:00:13,350
+little icons at the bottom of the screen
+or on your dock. But in Mac OS, we can
+
+10
+00:00:13,350 --> 00:00:13,360
+or on your dock. But in Mac OS, we can
+ 
+
+11
+00:00:13,360 --> 00:00:14,950
+or on your dock. But in Mac OS, we can
+show all of the current running
+
+12
+00:00:14,950 --> 00:00:14,960
+show all of the current running
+ 
+
+13
+00:00:14,960 --> 00:00:17,830
+show all of the current running
+applications on our desktop and be able
+
+14
+00:00:17,830 --> 00:00:17,840
+applications on our desktop and be able
+ 
+
+15
+00:00:17,840 --> 00:00:19,990
+applications on our desktop and be able
+to quickly move from one to the other.
+
+16
+00:00:19,990 --> 00:00:20,000
+to quickly move from one to the other.
+ 
+
+17
+00:00:20,000 --> 00:00:22,310
+to quickly move from one to the other.
+We refer to this as mission control.
+
+18
+00:00:22,310 --> 00:00:22,320
+We refer to this as mission control.
+ 
+
+19
+00:00:22,320 --> 00:00:24,150
+We refer to this as mission control.
+This spreads everything out on your
+
+20
+00:00:24,150 --> 00:00:24,160
+This spreads everything out on your
+ 
+
+21
+00:00:24,160 --> 00:00:26,070
+This spreads everything out on your
+desktop so that you can see everything
+
+22
+00:00:26,070 --> 00:00:26,080
+desktop so that you can see everything
+ 
+
+23
+00:00:26,080 --> 00:00:28,150
+desktop so that you can see everything
+that you're currently using and quickly
+
+24
+00:00:28,150 --> 00:00:28,160
+that you're currently using and quickly
+ 
+
+25
+00:00:28,160 --> 00:00:30,230
+that you're currently using and quickly
+move from one to the other. To be able
+
+26
+00:00:30,230 --> 00:00:30,240
+move from one to the other. To be able
+ 
+
+27
+00:00:30,240 --> 00:00:32,150
+move from one to the other. To be able
+to use mission control, you can swipe
+
+28
+00:00:32,150 --> 00:00:32,160
+to use mission control, you can swipe
+ 
+
+29
+00:00:32,160 --> 00:00:33,990
+to use mission control, you can swipe
+upwards with three fingers on your
+
+30
+00:00:33,990 --> 00:00:34,000
+upwards with three fingers on your
+ 
+
+31
+00:00:34,000 --> 00:00:37,069
+upwards with three fingers on your
+trackpad or use the control up arrow
+
+32
+00:00:37,069 --> 00:00:37,079
+trackpad or use the control up arrow
+ 
+
+33
+00:00:37,079 --> 00:00:39,510
+trackpad or use the control up arrow
+option. From here, you can create
+
+34
+00:00:39,510 --> 00:00:39,520
+option. From here, you can create
+ 
+
+35
+00:00:39,520 --> 00:00:41,910
+option. From here, you can create
+multiple desktops, each one that might
+
+36
+00:00:41,910 --> 00:00:41,920
+multiple desktops, each one that might
+ 
+
+37
+00:00:41,920 --> 00:00:43,670
+multiple desktops, each one that might
+have a different set of applications
+
+38
+00:00:43,670 --> 00:00:43,680
+have a different set of applications
+ 
+
+39
+00:00:43,680 --> 00:00:45,830
+have a different set of applications
+running inside of it. We refer to this
+
+40
+00:00:45,830 --> 00:00:45,840
+running inside of it. We refer to this
+ 
+
+41
+00:00:45,840 --> 00:00:48,869
+running inside of it. We refer to this
+multiple desktop capability as spaces.
+
+42
+00:00:48,869 --> 00:00:48,879
+multiple desktop capability as spaces.
+ 
+
+43
+00:00:48,879 --> 00:00:51,029
+multiple desktop capability as spaces.
+And the spaces are available from within
+
+44
+00:00:51,029 --> 00:00:51,039
+And the spaces are available from within
+ 
+
+45
+00:00:51,039 --> 00:00:53,830
+And the spaces are available from within
+the mission control screen. To use
+
+46
+00:00:53,830 --> 00:00:53,840
+the mission control screen. To use
+ 
+
+47
+00:00:53,840 --> 00:00:55,189
+the mission control screen. To use
+mission control, we hold down the
+
+48
+00:00:55,189 --> 00:00:55,199
+mission control, we hold down the
+ 
+
+49
+00:00:55,199 --> 00:00:57,350
+mission control, we hold down the
+control key and hit the up arrow. And
+
+50
+00:00:57,350 --> 00:00:57,360
+control key and hit the up arrow. And
+ 
+
+51
+00:00:57,360 --> 00:00:58,630
+control key and hit the up arrow. And
+you can see all of the different
+
+52
+00:00:58,630 --> 00:00:58,640
+you can see all of the different
+ 
+
+53
+00:00:58,640 --> 00:01:00,229
+you can see all of the different
+applications that are currently running
+
+54
+00:01:00,229 --> 00:01:00,239
+applications that are currently running
+ 
+
+55
+00:01:00,239 --> 00:01:02,389
+applications that are currently running
+on my system. If you want to move to a
+
+56
+00:01:02,389 --> 00:01:02,399
+on my system. If you want to move to a
+ 
+
+57
+00:01:02,399 --> 00:01:04,149
+on my system. If you want to move to a
+different application, you simply click
+
+58
+00:01:04,149 --> 00:01:04,159
+different application, you simply click
+ 
+
+59
+00:01:04,159 --> 00:01:06,310
+different application, you simply click
+on that particular app and it will move
+
+60
+00:01:06,310 --> 00:01:06,320
+on that particular app and it will move
+ 
+
+61
+00:01:06,320 --> 00:01:08,469
+on that particular app and it will move
+you directly to that application. You
+
+62
+00:01:08,469 --> 00:01:08,479
+you directly to that application. You
+ 
+
+63
+00:01:08,479 --> 00:01:10,070
+you directly to that application. You
+can, of course, perform the same thing
+
+64
+00:01:10,070 --> 00:01:10,080
+can, of course, perform the same thing
+ 
+
+65
+00:01:10,080 --> 00:01:12,310
+can, of course, perform the same thing
+again to move back to where you started.
+
+66
+00:01:12,310 --> 00:01:12,320
+again to move back to where you started.
+ 
+
+67
+00:01:12,320 --> 00:01:13,910
+again to move back to where you started.
+When you do launch mission control,
+
+68
+00:01:13,910 --> 00:01:13,920
+When you do launch mission control,
+ 
+
+69
+00:01:13,920 --> 00:01:15,590
+When you do launch mission control,
+you'll notice across the top is a
+
+70
+00:01:15,590 --> 00:01:15,600
+you'll notice across the top is a
+ 
+
+71
+00:01:15,600 --> 00:01:18,230
+you'll notice across the top is a
+desktop one and a desktop 2. And you can
+
+72
+00:01:18,230 --> 00:01:18,240
+desktop one and a desktop 2. And you can
+ 
+
+73
+00:01:18,240 --> 00:01:20,350
+desktop one and a desktop 2. And you can
+add additional desktops to this
+
+74
+00:01:20,350 --> 00:01:20,360
+add additional desktops to this
+ 
+
+75
+00:01:20,360 --> 00:01:22,230
+add additional desktops to this
+configuration. This means that you could
+
+76
+00:01:22,230 --> 00:01:22,240
+configuration. This means that you could
+ 
+
+77
+00:01:22,240 --> 00:01:24,230
+configuration. This means that you could
+build out separate desktops, each with
+
+78
+00:01:24,230 --> 00:01:24,240
+build out separate desktops, each with
+ 
+
+79
+00:01:24,240 --> 00:01:26,149
+build out separate desktops, each with
+different applications, and be able to
+
+80
+00:01:26,149 --> 00:01:26,159
+different applications, and be able to
+ 
+
+81
+00:01:26,159 --> 00:01:28,070
+different applications, and be able to
+quickly move from one desktop to the
+
+82
+00:01:28,070 --> 00:01:28,080
+quickly move from one desktop to the
+ 
+
+83
+00:01:28,080 --> 00:01:30,070
+quickly move from one desktop to the
+other by simply choosing the desktop
+
+84
+00:01:30,070 --> 00:01:30,080
+other by simply choosing the desktop
+ 
+
+85
+00:01:30,080 --> 00:01:32,190
+other by simply choosing the desktop
+options at the top of the
+
+86
+00:01:32,190 --> 00:01:32,200
+options at the top of the
+ 
+
+87
+00:01:32,200 --> 00:01:34,870
+options at the top of the
+screen. When you're using a browser or
+
+88
+00:01:34,870 --> 00:01:34,880
+screen. When you're using a browser or
+ 
+
+89
+00:01:34,880 --> 00:01:37,270
+screen. When you're using a browser or
+other applications within Mac OS, it
+
+90
+00:01:37,270 --> 00:01:37,280
+other applications within Mac OS, it
+ 
+
+91
+00:01:37,280 --> 00:01:39,030
+other applications within Mac OS, it
+gives you the option to save that
+
+92
+00:01:39,030 --> 00:01:39,040
+gives you the option to save that
+ 
+
+93
+00:01:39,040 --> 00:01:40,870
+gives you the option to save that
+password to be able to retrieve it
+
+94
+00:01:40,870 --> 00:01:40,880
+password to be able to retrieve it
+ 
+
+95
+00:01:40,880 --> 00:01:43,190
+password to be able to retrieve it
+later. Mac OS stores all of these
+
+96
+00:01:43,190 --> 00:01:43,200
+later. Mac OS stores all of these
+ 
+
+97
+00:01:43,200 --> 00:01:45,590
+later. Mac OS stores all of these
+passwords securely using an application
+
+98
+00:01:45,590 --> 00:01:45,600
+passwords securely using an application
+ 
+
+99
+00:01:45,600 --> 00:01:47,830
+passwords securely using an application
+called Keychain. Keychain not only
+
+100
+00:01:47,830 --> 00:01:47,840
+called Keychain. Keychain not only
+ 
+
+101
+00:01:47,840 --> 00:01:49,670
+called Keychain. Keychain not only
+stores your application, it can also
+
+102
+00:01:49,670 --> 00:01:49,680
+stores your application, it can also
+ 
+
+103
+00:01:49,680 --> 00:01:51,910
+stores your application, it can also
+store your notes, certificates, and
+
+104
+00:01:51,910 --> 00:01:51,920
+store your notes, certificates, and
+ 
+
+105
+00:01:51,920 --> 00:01:53,789
+store your notes, certificates, and
+anything else that may be sensitive
+
+106
+00:01:53,789 --> 00:01:53,799
+anything else that may be sensitive
+ 
+
+107
+00:01:53,799 --> 00:01:55,910
+anything else that may be sensitive
+information. Keychain is not something
+
+108
+00:01:55,910 --> 00:01:55,920
+information. Keychain is not something
+ 
+
+109
+00:01:55,920 --> 00:01:58,149
+information. Keychain is not something
+you add on to Mac OS, it's a feature
+
+110
+00:01:58,149 --> 00:01:58,159
+you add on to Mac OS, it's a feature
+ 
+
+111
+00:01:58,159 --> 00:02:00,550
+you add on to Mac OS, it's a feature
+that is integrated into the Mac OS
+
+112
+00:02:00,550 --> 00:02:00,560
+that is integrated into the Mac OS
+ 
+
+113
+00:02:00,560 --> 00:02:03,190
+that is integrated into the Mac OS
+operating system. Mac OS encrypts all of
+
+114
+00:02:03,190 --> 00:02:03,200
+operating system. Mac OS encrypts all of
+ 
+
+115
+00:02:03,200 --> 00:02:04,630
+operating system. Mac OS encrypts all of
+this information that is stored in the
+
+116
+00:02:04,630 --> 00:02:04,640
+this information that is stored in the
+ 
+
+117
+00:02:04,640 --> 00:02:07,030
+this information that is stored in the
+keychain. And the only way to decrypt
+
+118
+00:02:07,030 --> 00:02:07,040
+keychain. And the only way to decrypt
+ 
+
+119
+00:02:07,040 --> 00:02:09,270
+keychain. And the only way to decrypt
+and access that information is by using
+
+120
+00:02:09,270 --> 00:02:09,280
+and access that information is by using
+ 
+
+121
+00:02:09,280 --> 00:02:11,750
+and access that information is by using
+your login password.
+
+122
+00:02:11,750 --> 00:02:11,760
+your login password.
+ 
+
+123
+00:02:11,760 --> 00:02:13,430
+your login password.
+An important feature of most operating
+
+124
+00:02:13,430 --> 00:02:13,440
+An important feature of most operating
+ 
+
+125
+00:02:13,440 --> 00:02:15,670
+An important feature of most operating
+systems is a way to search the operating
+
+126
+00:02:15,670 --> 00:02:15,680
+systems is a way to search the operating
+ 
+
+127
+00:02:15,680 --> 00:02:17,589
+systems is a way to search the operating
+system to find exactly the information
+
+128
+00:02:17,589 --> 00:02:17,599
+system to find exactly the information
+ 
+
+129
+00:02:17,599 --> 00:02:19,990
+system to find exactly the information
+you need. In Mac OS, we refer to this
+
+130
+00:02:19,990 --> 00:02:20,000
+you need. In Mac OS, we refer to this
+ 
+
+131
+00:02:20,000 --> 00:02:22,710
+you need. In Mac OS, we refer to this
+search as spotlight. This allows us to
+
+132
+00:02:22,710 --> 00:02:22,720
+search as spotlight. This allows us to
+ 
+
+133
+00:02:22,720 --> 00:02:25,110
+search as spotlight. This allows us to
+find apps, documents, images, and
+
+134
+00:02:25,110 --> 00:02:25,120
+find apps, documents, images, and
+ 
+
+135
+00:02:25,120 --> 00:02:27,190
+find apps, documents, images, and
+anything else that might be important in
+
+136
+00:02:27,190 --> 00:02:27,200
+anything else that might be important in
+ 
+
+137
+00:02:27,200 --> 00:02:29,510
+anything else that might be important in
+our operating system. To use Spotlight,
+
+138
+00:02:29,510 --> 00:02:29,520
+our operating system. To use Spotlight,
+ 
+
+139
+00:02:29,520 --> 00:02:30,949
+our operating system. To use Spotlight,
+you can click the magnifying glass
+
+140
+00:02:30,949 --> 00:02:30,959
+you can click the magnifying glass
+ 
+
+141
+00:02:30,959 --> 00:02:32,630
+you can click the magnifying glass
+that's in the upper right of your
+
+142
+00:02:32,630 --> 00:02:32,640
+that's in the upper right of your
+ 
+
+143
+00:02:32,640 --> 00:02:34,790
+that's in the upper right of your
+desktop, or you can press command space
+
+144
+00:02:34,790 --> 00:02:34,800
+desktop, or you can press command space
+ 
+
+145
+00:02:34,800 --> 00:02:37,030
+desktop, or you can press command space
+and type in what you're looking for. It
+
+146
+00:02:37,030 --> 00:02:37,040
+and type in what you're looking for. It
+ 
+
+147
+00:02:37,040 --> 00:02:38,390
+and type in what you're looking for. It
+will then go through your entire
+
+148
+00:02:38,390 --> 00:02:38,400
+will then go through your entire
+ 
+
+149
+00:02:38,400 --> 00:02:40,390
+will then go through your entire
+operating system to find anything that
+
+150
+00:02:40,390 --> 00:02:40,400
+operating system to find anything that
+ 
+
+151
+00:02:40,400 --> 00:02:42,390
+operating system to find anything that
+matches the information you added to the
+
+152
+00:02:42,390 --> 00:02:42,400
+matches the information you added to the
+ 
+
+153
+00:02:42,400 --> 00:02:44,309
+matches the information you added to the
+search. If there's certain information
+
+154
+00:02:44,309 --> 00:02:44,319
+search. If there's certain information
+ 
+
+155
+00:02:44,319 --> 00:02:46,390
+search. If there's certain information
+that you would rather Mac OS not look
+
+156
+00:02:46,390 --> 00:02:46,400
+that you would rather Mac OS not look
+ 
+
+157
+00:02:46,400 --> 00:02:48,470
+that you would rather Mac OS not look
+through, you can always enable or
+
+158
+00:02:48,470 --> 00:02:48,480
+through, you can always enable or
+ 
+
+159
+00:02:48,480 --> 00:02:50,229
+through, you can always enable or
+disable different categories of
+
+160
+00:02:50,229 --> 00:02:50,239
+disable different categories of
+ 
+
+161
+00:02:50,239 --> 00:02:52,150
+disable different categories of
+information from within your system
+
+162
+00:02:52,150 --> 00:02:52,160
+information from within your system
+ 
+
+163
+00:02:52,160 --> 00:02:53,990
+information from within your system
+preferences under the spotlight
+
+164
+00:02:53,990 --> 00:02:54,000
+preferences under the spotlight
+ 
+
+165
+00:02:54,000 --> 00:02:56,390
+preferences under the spotlight
+category. So, if you use command space
+
+166
+00:02:56,390 --> 00:02:56,400
+category. So, if you use command space
+ 
+
+167
+00:02:56,400 --> 00:02:58,390
+category. So, if you use command space
+and you type in Professor Messer, it
+
+168
+00:02:58,390 --> 00:02:58,400
+and you type in Professor Messer, it
+ 
+
+169
+00:02:58,400 --> 00:02:59,910
+and you type in Professor Messer, it
+will search through folders, find
+
+170
+00:02:59,910 --> 00:02:59,920
+will search through folders, find
+ 
+
+171
+00:02:59,920 --> 00:03:02,149
+will search through folders, find
+information that's in apps, identify
+
+172
+00:03:02,149 --> 00:03:02,159
+information that's in apps, identify
+ 
+
+173
+00:03:02,159 --> 00:03:04,229
+information that's in apps, identify
+suggested websites, look through the
+
+174
+00:03:04,229 --> 00:03:04,239
+suggested websites, look through the
+ 
+
+175
+00:03:04,239 --> 00:03:06,910
+suggested websites, look through the
+iTunes store, and much
+
+176
+00:03:06,910 --> 00:03:06,920
+iTunes store, and much
+ 
+
+177
+00:03:06,920 --> 00:03:09,350
+iTunes store, and much
+more. The cloud-based service that
+
+178
+00:03:09,350 --> 00:03:09,360
+more. The cloud-based service that
+ 
+
+179
+00:03:09,360 --> 00:03:11,670
+more. The cloud-based service that
+integrates and stores information across
+
+180
+00:03:11,670 --> 00:03:11,680
+integrates and stores information across
+ 
+
+181
+00:03:11,680 --> 00:03:13,910
+integrates and stores information across
+multiple Apple operating systems is
+
+182
+00:03:13,910 --> 00:03:13,920
+multiple Apple operating systems is
+ 
+
+183
+00:03:13,920 --> 00:03:16,390
+multiple Apple operating systems is
+iCloud. iCloud allows you to share
+
+184
+00:03:16,390 --> 00:03:16,400
+iCloud. iCloud allows you to share
+ 
+
+185
+00:03:16,400 --> 00:03:18,550
+iCloud. iCloud allows you to share
+information across multiple devices,
+
+186
+00:03:18,550 --> 00:03:18,560
+information across multiple devices,
+ 
+
+187
+00:03:18,560 --> 00:03:20,949
+information across multiple devices,
+including calendar settings, emails,
+
+188
+00:03:20,949 --> 00:03:20,959
+including calendar settings, emails,
+ 
+
+189
+00:03:20,959 --> 00:03:24,149
+including calendar settings, emails,
+images, and much more. iCloud also has a
+
+190
+00:03:24,149 --> 00:03:24,159
+images, and much more. iCloud also has a
+ 
+
+191
+00:03:24,159 --> 00:03:26,710
+images, and much more. iCloud also has a
+builtin backup process so you can have
+
+192
+00:03:26,710 --> 00:03:26,720
+builtin backup process so you can have
+ 
+
+193
+00:03:26,720 --> 00:03:28,869
+builtin backup process so you can have
+information that is saved to iCloud the
+
+194
+00:03:28,869 --> 00:03:28,879
+information that is saved to iCloud the
+ 
+
+195
+00:03:28,879 --> 00:03:31,110
+information that is saved to iCloud the
+moment you store it on your system. You
+
+196
+00:03:31,110 --> 00:03:31,120
+moment you store it on your system. You
+ 
+
+197
+00:03:31,120 --> 00:03:33,190
+moment you store it on your system. You
+can manage your iCloud storage under
+
+198
+00:03:33,190 --> 00:03:33,200
+can manage your iCloud storage under
+ 
+
+199
+00:03:33,200 --> 00:03:35,630
+can manage your iCloud storage under
+your system preferences in the iCloud
+
+200
+00:03:35,630 --> 00:03:35,640
+your system preferences in the iCloud
+ 
+
+201
+00:03:35,640 --> 00:03:38,070
+your system preferences in the iCloud
+category. And with iCloud Drive, you can
+
+202
+00:03:38,070 --> 00:03:38,080
+category. And with iCloud Drive, you can
+ 
+
+203
+00:03:38,080 --> 00:03:40,070
+category. And with iCloud Drive, you can
+store files in the cloud very similar to
+
+204
+00:03:40,070 --> 00:03:40,080
+store files in the cloud very similar to
+ 
+
+205
+00:03:40,080 --> 00:03:43,110
+store files in the cloud very similar to
+Google Drive or Dropbox. This also takes
+
+206
+00:03:43,110 --> 00:03:43,120
+Google Drive or Dropbox. This also takes
+ 
+
+207
+00:03:43,120 --> 00:03:45,030
+Google Drive or Dropbox. This also takes
+information from your applications and
+
+208
+00:03:45,030 --> 00:03:45,040
+information from your applications and
+ 
+
+209
+00:03:45,040 --> 00:03:47,190
+information from your applications and
+stores it into your iCloud Drive as
+
+210
+00:03:47,190 --> 00:03:47,200
+stores it into your iCloud Drive as
+ 
+
+211
+00:03:47,200 --> 00:03:49,670
+stores it into your iCloud Drive as
+well. This makes it very easy to store
+
+212
+00:03:49,670 --> 00:03:49,680
+well. This makes it very easy to store
+ 
+
+213
+00:03:49,680 --> 00:03:51,750
+well. This makes it very easy to store
+information that you've created on a Mac
+
+214
+00:03:51,750 --> 00:03:51,760
+information that you've created on a Mac
+ 
+
+215
+00:03:51,760 --> 00:03:54,229
+information that you've created on a Mac
+OS desktop and be able to access that
+
+216
+00:03:54,229 --> 00:03:54,239
+OS desktop and be able to access that
+ 
+
+217
+00:03:54,239 --> 00:03:57,509
+OS desktop and be able to access that
+same data on an iPhone or an iPad.
+
+218
+00:03:57,509 --> 00:03:57,519
+same data on an iPhone or an iPad.
+ 
+
+219
+00:03:57,519 --> 00:03:58,949
+same data on an iPhone or an iPad.
+iCloud is also a great way to
+
+220
+00:03:58,949 --> 00:03:58,959
+iCloud is also a great way to
+ 
+
+221
+00:03:58,959 --> 00:04:00,710
+iCloud is also a great way to
+synchronize your data across all of
+
+222
+00:04:00,710 --> 00:04:00,720
+synchronize your data across all of
+ 
+
+223
+00:04:00,720 --> 00:04:02,470
+synchronize your data across all of
+these different systems. For example,
+
+224
+00:04:02,470 --> 00:04:02,480
+these different systems. For example,
+ 
+
+225
+00:04:02,480 --> 00:04:04,390
+these different systems. For example,
+the messages that you have on your
+
+226
+00:04:04,390 --> 00:04:04,400
+the messages that you have on your
+ 
+
+227
+00:04:04,400 --> 00:04:07,190
+the messages that you have on your
+mobile phone, your iPad, and Mac OS can
+
+228
+00:04:07,190 --> 00:04:07,200
+mobile phone, your iPad, and Mac OS can
+ 
+
+229
+00:04:07,200 --> 00:04:09,110
+mobile phone, your iPad, and Mac OS can
+all be integrated together through one
+
+230
+00:04:09,110 --> 00:04:09,120
+all be integrated together through one
+ 
+
+231
+00:04:09,120 --> 00:04:11,750
+all be integrated together through one
+single iCloud account. You can also
+
+232
+00:04:11,750 --> 00:04:11,760
+single iCloud account. You can also
+ 
+
+233
+00:04:11,760 --> 00:04:13,589
+single iCloud account. You can also
+customize exactly what type of
+
+234
+00:04:13,589 --> 00:04:13,599
+customize exactly what type of
+ 
+
+235
+00:04:13,599 --> 00:04:15,830
+customize exactly what type of
+information is stored in iCloud by
+
+236
+00:04:15,830 --> 00:04:15,840
+information is stored in iCloud by
+ 
+
+237
+00:04:15,840 --> 00:04:18,069
+information is stored in iCloud by
+enabling and disabling it under the
+
+238
+00:04:18,069 --> 00:04:18,079
+enabling and disabling it under the
+ 
+
+239
+00:04:18,079 --> 00:04:19,949
+enabling and disabling it under the
+iCloud category of your system
+
+240
+00:04:19,949 --> 00:04:19,959
+iCloud category of your system
+ 
+
+241
+00:04:19,959 --> 00:04:21,990
+iCloud category of your system
+preferences. For example, you can choose
+
+242
+00:04:21,990 --> 00:04:22,000
+preferences. For example, you can choose
+ 
+
+243
+00:04:22,000 --> 00:04:23,909
+preferences. For example, you can choose
+to synchronize message information
+
+244
+00:04:23,909 --> 00:04:23,919
+to synchronize message information
+ 
+
+245
+00:04:23,919 --> 00:04:26,070
+to synchronize message information
+between devices. You can make sure that
+
+246
+00:04:26,070 --> 00:04:26,080
+between devices. You can make sure that
+ 
+
+247
+00:04:26,080 --> 00:04:27,990
+between devices. You can make sure that
+all of your FaceTime information is kept
+
+248
+00:04:27,990 --> 00:04:28,000
+all of your FaceTime information is kept
+ 
+
+249
+00:04:28,000 --> 00:04:29,909
+all of your FaceTime information is kept
+up to date regardless of what Apple
+
+250
+00:04:29,909 --> 00:04:29,919
+up to date regardless of what Apple
+ 
+
+251
+00:04:29,919 --> 00:04:31,749
+up to date regardless of what Apple
+device you're using. You might want to
+
+252
+00:04:31,749 --> 00:04:31,759
+device you're using. You might want to
+ 
+
+253
+00:04:31,759 --> 00:04:34,150
+device you're using. You might want to
+store files in your iCloud drive and be
+
+254
+00:04:34,150 --> 00:04:34,160
+store files in your iCloud drive and be
+ 
+
+255
+00:04:34,160 --> 00:04:35,749
+store files in your iCloud drive and be
+able to integrate those with the apps
+
+256
+00:04:35,749 --> 00:04:35,759
+able to integrate those with the apps
+ 
+
+257
+00:04:35,759 --> 00:04:38,070
+able to integrate those with the apps
+that you use on all of these systems. Or
+
+258
+00:04:38,070 --> 00:04:38,080
+that you use on all of these systems. Or
+ 
+
+259
+00:04:38,080 --> 00:04:39,350
+that you use on all of these systems. Or
+you might want to customize the
+
+260
+00:04:39,350 --> 00:04:39,360
+you might want to customize the
+ 
+
+261
+00:04:39,360 --> 00:04:41,110
+you might want to customize the
+information that's stored in your iCloud
+
+262
+00:04:41,110 --> 00:04:41,120
+information that's stored in your iCloud
+ 
+
+263
+00:04:41,120 --> 00:04:43,030
+information that's stored in your iCloud
+drive so that you can share all of this
+
+264
+00:04:43,030 --> 00:04:43,040
+drive so that you can share all of this
+ 
+
+265
+00:04:43,040 --> 00:04:45,350
+drive so that you can share all of this
+data across multiple apps regardless of
+
+266
+00:04:45,350 --> 00:04:45,360
+data across multiple apps regardless of
+ 
+
+267
+00:04:45,360 --> 00:04:47,430
+data across multiple apps regardless of
+what platform you're using. You can
+
+268
+00:04:47,430 --> 00:04:47,440
+what platform you're using. You can
+ 
+
+269
+00:04:47,440 --> 00:04:49,430
+what platform you're using. You can
+scroll through this extensive list of
+
+270
+00:04:49,430 --> 00:04:49,440
+scroll through this extensive list of
+ 
+
+271
+00:04:49,440 --> 00:04:51,670
+scroll through this extensive list of
+applications and data options within
+
+272
+00:04:51,670 --> 00:04:51,680
+applications and data options within
+ 
+
+273
+00:04:51,680 --> 00:04:55,070
+applications and data options within
+your system preferences under the iCloud
+
+274
+00:04:55,070 --> 00:04:55,080
+your system preferences under the iCloud
+ 
+
+275
+00:04:55,080 --> 00:04:57,590
+your system preferences under the iCloud
+category. You might be using a trackpad
+
+276
+00:04:57,590 --> 00:04:57,600
+category. You might be using a trackpad
+ 
+
+277
+00:04:57,600 --> 00:05:00,390
+category. You might be using a trackpad
+in your Apple laptop or your iPad or you
+
+278
+00:05:00,390 --> 00:05:00,400
+in your Apple laptop or your iPad or you
+ 
+
+279
+00:05:00,400 --> 00:05:02,230
+in your Apple laptop or your iPad or you
+might have an external trackpad that you
+
+280
+00:05:02,230 --> 00:05:02,240
+might have an external trackpad that you
+ 
+
+281
+00:05:02,240 --> 00:05:04,550
+might have an external trackpad that you
+use on your Apple desktop. You can
+
+282
+00:05:04,550 --> 00:05:04,560
+use on your Apple desktop. You can
+ 
+
+283
+00:05:04,560 --> 00:05:06,870
+use on your Apple desktop. You can
+customize how this trackpad operates
+
+284
+00:05:06,870 --> 00:05:06,880
+customize how this trackpad operates
+ 
+
+285
+00:05:06,880 --> 00:05:08,870
+customize how this trackpad operates
+using the gestures feature within the
+
+286
+00:05:08,870 --> 00:05:08,880
+using the gestures feature within the
+ 
+
+287
+00:05:08,880 --> 00:05:11,350
+using the gestures feature within the
+trackpad settings. You can customize
+
+288
+00:05:11,350 --> 00:05:11,360
+trackpad settings. You can customize
+ 
+
+289
+00:05:11,360 --> 00:05:13,430
+trackpad settings. You can customize
+exactly what your trackpad will do if
+
+290
+00:05:13,430 --> 00:05:13,440
+exactly what your trackpad will do if
+ 
+
+291
+00:05:13,440 --> 00:05:15,590
+exactly what your trackpad will do if
+you swipe, pinch, or click on the
+
+292
+00:05:15,590 --> 00:05:15,600
+you swipe, pinch, or click on the
+ 
+
+293
+00:05:15,600 --> 00:05:18,150
+you swipe, pinch, or click on the
+trackpad itself. You can modify how to
+
+294
+00:05:18,150 --> 00:05:18,160
+trackpad itself. You can modify how to
+ 
+
+295
+00:05:18,160 --> 00:05:20,070
+trackpad itself. You can modify how to
+access any of these features or you can
+
+296
+00:05:20,070 --> 00:05:20,080
+access any of these features or you can
+ 
+
+297
+00:05:20,080 --> 00:05:22,230
+access any of these features or you can
+simply enable and disable those features
+
+298
+00:05:22,230 --> 00:05:22,240
+simply enable and disable those features
+ 
+
+299
+00:05:22,240 --> 00:05:23,950
+simply enable and disable those features
+from the trackpad
+
+300
+00:05:23,950 --> 00:05:23,960
+from the trackpad
+ 
+
+301
+00:05:23,960 --> 00:05:26,390
+from the trackpad
+options. In Windows, we have file
+
+302
+00:05:26,390 --> 00:05:26,400
+options. In Windows, we have file
+ 
+
+303
+00:05:26,400 --> 00:05:28,790
+options. In Windows, we have file
+explorer and in Mac OS we have the
+
+304
+00:05:28,790 --> 00:05:28,800
+explorer and in Mac OS we have the
+ 
+
+305
+00:05:28,800 --> 00:05:31,430
+explorer and in Mac OS we have the
+finder. Finder is a centralized file
+
+306
+00:05:31,430 --> 00:05:31,440
+finder. Finder is a centralized file
+ 
+
+307
+00:05:31,440 --> 00:05:33,350
+finder. Finder is a centralized file
+management frontend that allows us to
+
+308
+00:05:33,350 --> 00:05:33,360
+management frontend that allows us to
+ 
+
+309
+00:05:33,360 --> 00:05:35,590
+management frontend that allows us to
+launch applications, modify the file
+
+310
+00:05:35,590 --> 00:05:35,600
+launch applications, modify the file
+ 
+
+311
+00:05:35,600 --> 00:05:37,430
+launch applications, modify the file
+names that we're using or delete the
+
+312
+00:05:37,430 --> 00:05:37,440
+names that we're using or delete the
+ 
+
+313
+00:05:37,440 --> 00:05:39,350
+names that we're using or delete the
+files from our system. This also
+
+314
+00:05:39,350 --> 00:05:39,360
+files from our system. This also
+ 
+
+315
+00:05:39,360 --> 00:05:41,189
+files from our system. This also
+integrates into a number of different
+
+316
+00:05:41,189 --> 00:05:41,199
+integrates into a number of different
+ 
+
+317
+00:05:41,199 --> 00:05:42,550
+integrates into a number of different
+features that are built into the
+
+318
+00:05:42,550 --> 00:05:42,560
+features that are built into the
+ 
+
+319
+00:05:42,560 --> 00:05:44,469
+features that are built into the
+operating system. For example, you can
+
+320
+00:05:44,469 --> 00:05:44,479
+operating system. For example, you can
+ 
+
+321
+00:05:44,479 --> 00:05:46,070
+operating system. For example, you can
+see all of the file sharing options that
+
+322
+00:05:46,070 --> 00:05:46,080
+see all of the file sharing options that
+ 
+
+323
+00:05:46,080 --> 00:05:47,830
+see all of the file sharing options that
+are along the left side and you can not
+
+324
+00:05:47,830 --> 00:05:47,840
+are along the left side and you can not
+ 
+
+325
+00:05:47,840 --> 00:05:49,830
+are along the left side and you can not
+only connect to local drives, but also
+
+326
+00:05:49,830 --> 00:05:49,840
+only connect to local drives, but also
+ 
+
+327
+00:05:49,840 --> 00:05:51,510
+only connect to local drives, but also
+drives that are located across the
+
+328
+00:05:51,510 --> 00:05:51,520
+drives that are located across the
+ 
+
+329
+00:05:51,520 --> 00:05:53,749
+drives that are located across the
+network. This also shows you all of the
+
+330
+00:05:53,749 --> 00:05:53,759
+network. This also shows you all of the
+ 
+
+331
+00:05:53,759 --> 00:05:56,070
+network. This also shows you all of the
+remote storage options on your network.
+
+332
+00:05:56,070 --> 00:05:56,080
+remote storage options on your network.
+ 
+
+333
+00:05:56,080 --> 00:05:57,909
+remote storage options on your network.
+And if there are any devices that we're
+
+334
+00:05:57,909 --> 00:05:57,919
+And if there are any devices that we're
+ 
+
+335
+00:05:57,919 --> 00:05:59,909
+And if there are any devices that we're
+able to remote control using screen
+
+336
+00:05:59,909 --> 00:05:59,919
+able to remote control using screen
+ 
+
+337
+00:05:59,919 --> 00:06:01,830
+able to remote control using screen
+sharing, you'll see those appear in the
+
+338
+00:06:01,830 --> 00:06:01,840
+sharing, you'll see those appear in the
+ 
+
+339
+00:06:01,840 --> 00:06:03,150
+sharing, you'll see those appear in the
+finder as
+
+340
+00:06:03,150 --> 00:06:03,160
+finder as
+ 
+
+341
+00:06:03,160 --> 00:06:05,749
+finder as
+well. If you want to access information
+
+342
+00:06:05,749 --> 00:06:05,759
+well. If you want to access information
+ 
+
+343
+00:06:05,759 --> 00:06:08,230
+well. If you want to access information
+quickly in Mac OS, you can simply scroll
+
+344
+00:06:08,230 --> 00:06:08,240
+quickly in Mac OS, you can simply scroll
+ 
+
+345
+00:06:08,240 --> 00:06:10,150
+quickly in Mac OS, you can simply scroll
+down to the bottom of the screen and use
+
+346
+00:06:10,150 --> 00:06:10,160
+down to the bottom of the screen and use
+ 
+
+347
+00:06:10,160 --> 00:06:12,870
+down to the bottom of the screen and use
+the built-in dock. This is a fast way to
+
+348
+00:06:12,870 --> 00:06:12,880
+the built-in dock. This is a fast way to
+ 
+
+349
+00:06:12,880 --> 00:06:15,189
+the built-in dock. This is a fast way to
+access applications and data files that
+
+350
+00:06:15,189 --> 00:06:15,199
+access applications and data files that
+ 
+
+351
+00:06:15,199 --> 00:06:17,350
+access applications and data files that
+you've stored in different areas of your
+
+352
+00:06:17,350 --> 00:06:17,360
+you've stored in different areas of your
+ 
+
+353
+00:06:17,360 --> 00:06:19,510
+you've stored in different areas of your
+operating system. This is a way to have
+
+354
+00:06:19,510 --> 00:06:19,520
+operating system. This is a way to have
+ 
+
+355
+00:06:19,520 --> 00:06:21,189
+operating system. This is a way to have
+quick access to your mostused
+
+356
+00:06:21,189 --> 00:06:21,199
+quick access to your mostused
+ 
+
+357
+00:06:21,199 --> 00:06:23,350
+quick access to your mostused
+applications and you can easily see what
+
+358
+00:06:23,350 --> 00:06:23,360
+applications and you can easily see what
+ 
+
+359
+00:06:23,360 --> 00:06:25,670
+applications and you can easily see what
+applications are currently in use. For
+
+360
+00:06:25,670 --> 00:06:25,680
+applications are currently in use. For
+ 
+
+361
+00:06:25,680 --> 00:06:27,510
+applications are currently in use. For
+example, if you look at my doc, you may
+
+362
+00:06:27,510 --> 00:06:27,520
+example, if you look at my doc, you may
+ 
+
+363
+00:06:27,520 --> 00:06:29,350
+example, if you look at my doc, you may
+notice that there are some icons that
+
+364
+00:06:29,350 --> 00:06:29,360
+notice that there are some icons that
+ 
+
+365
+00:06:29,360 --> 00:06:31,670
+notice that there are some icons that
+have dots underneath the icon and those
+
+366
+00:06:31,670 --> 00:06:31,680
+have dots underneath the icon and those
+ 
+
+367
+00:06:31,680 --> 00:06:33,590
+have dots underneath the icon and those
+dots indicate that that application is
+
+368
+00:06:33,590 --> 00:06:33,600
+dots indicate that that application is
+ 
+
+369
+00:06:33,600 --> 00:06:35,909
+dots indicate that that application is
+currently being used. You might also
+
+370
+00:06:35,909 --> 00:06:35,919
+currently being used. You might also
+ 
+
+371
+00:06:35,919 --> 00:06:37,909
+currently being used. You might also
+keep entire folders in the doc. That
+
+372
+00:06:37,909 --> 00:06:37,919
+keep entire folders in the doc. That
+ 
+
+373
+00:06:37,919 --> 00:06:39,830
+keep entire folders in the doc. That
+way, you can access files very quickly
+
+374
+00:06:39,830 --> 00:06:39,840
+way, you can access files very quickly
+ 
+
+375
+00:06:39,840 --> 00:06:41,830
+way, you can access files very quickly
+by simply going down to the doc and
+
+376
+00:06:41,830 --> 00:06:41,840
+by simply going down to the doc and
+ 
+
+377
+00:06:41,840 --> 00:06:43,830
+by simply going down to the doc and
+clicking on that particular folder
+
+378
+00:06:43,830 --> 00:06:43,840
+clicking on that particular folder
+ 
+
+379
+00:06:43,840 --> 00:06:46,230
+clicking on that particular folder
+instead of going into the finder. This
+
+380
+00:06:46,230 --> 00:06:46,240
+instead of going into the finder. This
+ 
+
+381
+00:06:46,240 --> 00:06:48,390
+instead of going into the finder. This
+doc can also be customized by having it
+
+382
+00:06:48,390 --> 00:06:48,400
+doc can also be customized by having it
+ 
+
+383
+00:06:48,400 --> 00:06:50,390
+doc can also be customized by having it
+hide itself automatically or you can
+
+384
+00:06:50,390 --> 00:06:50,400
+hide itself automatically or you can
+ 
+
+385
+00:06:50,400 --> 00:06:52,070
+hide itself automatically or you can
+change where it's located on the screen
+
+386
+00:06:52,070 --> 00:06:52,080
+change where it's located on the screen
+ 
+
+387
+00:06:52,080 --> 00:06:54,510
+change where it's located on the screen
+or move it to a different
+
+388
+00:06:54,510 --> 00:06:54,520
+or move it to a different
+ 
+
+389
+00:06:54,520 --> 00:06:56,950
+or move it to a different
+display. These days, it's common to walk
+
+390
+00:06:56,950 --> 00:06:56,960
+display. These days, it's common to walk
+ 
+
+391
+00:06:56,960 --> 00:06:59,029
+display. These days, it's common to walk
+around with multiple devices that you
+
+392
+00:06:59,029 --> 00:06:59,039
+around with multiple devices that you
+ 
+
+393
+00:06:59,039 --> 00:07:00,950
+around with multiple devices that you
+would use, including your laptop, a
+
+394
+00:07:00,950 --> 00:07:00,960
+would use, including your laptop, a
+ 
+
+395
+00:07:00,960 --> 00:07:03,270
+would use, including your laptop, a
+tablet, and perhaps a smartphone. With
+
+396
+00:07:03,270 --> 00:07:03,280
+tablet, and perhaps a smartphone. With
+ 
+
+397
+00:07:03,280 --> 00:07:06,550
+tablet, and perhaps a smartphone. With
+Mac OS, iPad OS, and iOS, you can
+
+398
+00:07:06,550 --> 00:07:06,560
+Mac OS, iPad OS, and iOS, you can
+ 
+
+399
+00:07:06,560 --> 00:07:08,629
+Mac OS, iPad OS, and iOS, you can
+integrate all of these devices together
+
+400
+00:07:08,629 --> 00:07:08,639
+integrate all of these devices together
+ 
+
+401
+00:07:08,639 --> 00:07:11,350
+integrate all of these devices together
+using continuity. Continuity allows you
+
+402
+00:07:11,350 --> 00:07:11,360
+using continuity. Continuity allows you
+ 
+
+403
+00:07:11,360 --> 00:07:13,350
+using continuity. Continuity allows you
+to begin working on one device and then
+
+404
+00:07:13,350 --> 00:07:13,360
+to begin working on one device and then
+ 
+
+405
+00:07:13,360 --> 00:07:15,510
+to begin working on one device and then
+easily move to another device and pick
+
+406
+00:07:15,510 --> 00:07:15,520
+easily move to another device and pick
+ 
+
+407
+00:07:15,520 --> 00:07:17,670
+easily move to another device and pick
+up where you left off. For example, you
+
+408
+00:07:17,670 --> 00:07:17,680
+up where you left off. For example, you
+ 
+
+409
+00:07:17,680 --> 00:07:19,350
+up where you left off. For example, you
+could be browsing the internet on your
+
+410
+00:07:19,350 --> 00:07:19,360
+could be browsing the internet on your
+ 
+
+411
+00:07:19,360 --> 00:07:21,990
+could be browsing the internet on your
+iPhone, then sit down at your desktop,
+
+412
+00:07:21,990 --> 00:07:22,000
+iPhone, then sit down at your desktop,
+ 
+
+413
+00:07:22,000 --> 00:07:23,990
+iPhone, then sit down at your desktop,
+open up a browser, and it will show you
+
+414
+00:07:23,990 --> 00:07:24,000
+open up a browser, and it will show you
+ 
+
+415
+00:07:24,000 --> 00:07:26,230
+open up a browser, and it will show you
+the page that you were last on when you
+
+416
+00:07:26,230 --> 00:07:26,240
+the page that you were last on when you
+ 
+
+417
+00:07:26,240 --> 00:07:28,390
+the page that you were last on when you
+were using your smartphone. This goes
+
+418
+00:07:28,390 --> 00:07:28,400
+were using your smartphone. This goes
+ 
+
+419
+00:07:28,400 --> 00:07:30,629
+were using your smartphone. This goes
+even a step further where you can use
+
+420
+00:07:30,629 --> 00:07:30,639
+even a step further where you can use
+ 
+
+421
+00:07:30,639 --> 00:07:33,270
+even a step further where you can use
+hardware resources on a separate device
+
+422
+00:07:33,270 --> 00:07:33,280
+hardware resources on a separate device
+ 
+
+423
+00:07:33,280 --> 00:07:35,110
+hardware resources on a separate device
+and apply those towards the computer
+
+424
+00:07:35,110 --> 00:07:35,120
+and apply those towards the computer
+ 
+
+425
+00:07:35,120 --> 00:07:36,870
+and apply those towards the computer
+that you're currently using. For
+
+426
+00:07:36,870 --> 00:07:36,880
+that you're currently using. For
+ 
+
+427
+00:07:36,880 --> 00:07:39,270
+that you're currently using. For
+example, you can use your iPhone as a
+
+428
+00:07:39,270 --> 00:07:39,280
+example, you can use your iPhone as a
+ 
+
+429
+00:07:39,280 --> 00:07:41,510
+example, you can use your iPhone as a
+webcam when you're working on your Mac
+
+430
+00:07:41,510 --> 00:07:41,520
+webcam when you're working on your Mac
+ 
+
+431
+00:07:41,520 --> 00:07:43,430
+webcam when you're working on your Mac
+desktop. Or you could be working on your
+
+432
+00:07:43,430 --> 00:07:43,440
+desktop. Or you could be working on your
+ 
+
+433
+00:07:43,440 --> 00:07:45,670
+desktop. Or you could be working on your
+Mac OS desktop and then open a new
+
+434
+00:07:45,670 --> 00:07:45,680
+Mac OS desktop and then open a new
+ 
+
+435
+00:07:45,680 --> 00:07:47,510
+Mac OS desktop and then open a new
+window to interact and view the
+
+436
+00:07:47,510 --> 00:07:47,520
+window to interact and view the
+ 
+
+437
+00:07:47,520 --> 00:07:49,589
+window to interact and view the
+information that's on your iPhone. This
+
+438
+00:07:49,589 --> 00:07:49,599
+information that's on your iPhone. This
+ 
+
+439
+00:07:49,599 --> 00:07:51,510
+information that's on your iPhone. This
+also forwards text messages between
+
+440
+00:07:51,510 --> 00:07:51,520
+also forwards text messages between
+ 
+
+441
+00:07:51,520 --> 00:07:53,830
+also forwards text messages between
+devices and allows you to easily airdrop
+
+442
+00:07:53,830 --> 00:07:53,840
+devices and allows you to easily airdrop
+ 
+
+443
+00:07:53,840 --> 00:07:56,309
+devices and allows you to easily airdrop
+files from one device to another. This
+
+444
+00:07:56,309 --> 00:07:56,319
+files from one device to another. This
+ 
+
+445
+00:07:56,319 --> 00:07:58,710
+files from one device to another. This
+is a feature that is built into iCloud,
+
+446
+00:07:58,710 --> 00:07:58,720
+is a feature that is built into iCloud,
+ 
+
+447
+00:07:58,720 --> 00:08:00,390
+is a feature that is built into iCloud,
+so if you're logged into iCloud through
+
+448
+00:08:00,390 --> 00:08:00,400
+so if you're logged into iCloud through
+ 
+
+449
+00:08:00,400 --> 00:08:03,629
+so if you're logged into iCloud through
+all of your devices, you're able to use
+
+450
+00:08:03,629 --> 00:08:03,639
+all of your devices, you're able to use
+ 
+
+451
+00:08:03,639 --> 00:08:05,749
+all of your devices, you're able to use
+continuity. If you're working with
+
+452
+00:08:05,749 --> 00:08:05,759
+continuity. If you're working with
+ 
+
+453
+00:08:05,759 --> 00:08:08,550
+continuity. If you're working with
+drives, storage, or anything to do with
+
+454
+00:08:08,550 --> 00:08:08,560
+drives, storage, or anything to do with
+ 
+
+455
+00:08:08,560 --> 00:08:11,189
+drives, storage, or anything to do with
+saving information on a Mac OS system,
+
+456
+00:08:11,189 --> 00:08:11,199
+saving information on a Mac OS system,
+ 
+
+457
+00:08:11,199 --> 00:08:12,869
+saving information on a Mac OS system,
+then you need to become very familiar
+
+458
+00:08:12,869 --> 00:08:12,879
+then you need to become very familiar
+ 
+
+459
+00:08:12,879 --> 00:08:15,749
+then you need to become very familiar
+with disk utility. Disutility is a
+
+460
+00:08:15,749 --> 00:08:15,759
+with disk utility. Disutility is a
+ 
+
+461
+00:08:15,759 --> 00:08:17,990
+with disk utility. Disutility is a
+management frontend for all of your file
+
+462
+00:08:17,990 --> 00:08:18,000
+management frontend for all of your file
+ 
+
+463
+00:08:18,000 --> 00:08:20,390
+management frontend for all of your file
+systems on all of your devices. Disk
+
+464
+00:08:20,390 --> 00:08:20,400
+systems on all of your devices. Disk
+ 
+
+465
+00:08:20,400 --> 00:08:22,550
+systems on all of your devices. Disk
+Utility is a way to manage all of the
+
+466
+00:08:22,550 --> 00:08:22,560
+Utility is a way to manage all of the
+ 
+
+467
+00:08:22,560 --> 00:08:24,309
+Utility is a way to manage all of the
+storage devices that are connected to
+
+468
+00:08:24,309 --> 00:08:24,319
+storage devices that are connected to
+ 
+
+469
+00:08:24,319 --> 00:08:26,629
+storage devices that are connected to
+your Mac OS machine. If you simply need
+
+470
+00:08:26,629 --> 00:08:26,639
+your Mac OS machine. If you simply need
+ 
+
+471
+00:08:26,639 --> 00:08:28,550
+your Mac OS machine. If you simply need
+to view and manage the configuration of
+
+472
+00:08:28,550 --> 00:08:28,560
+to view and manage the configuration of
+ 
+
+473
+00:08:28,560 --> 00:08:30,469
+to view and manage the configuration of
+those devices, you can see it in disk
+
+474
+00:08:30,469 --> 00:08:30,479
+those devices, you can see it in disk
+ 
+
+475
+00:08:30,479 --> 00:08:32,310
+those devices, you can see it in disk
+utility. You can also modify the
+
+476
+00:08:32,310 --> 00:08:32,320
+utility. You can also modify the
+ 
+
+477
+00:08:32,320 --> 00:08:34,469
+utility. You can also modify the
+configuration of these file systems,
+
+478
+00:08:34,469 --> 00:08:34,479
+configuration of these file systems,
+ 
+
+479
+00:08:34,479 --> 00:08:36,870
+configuration of these file systems,
+create new partitions, format drives,
+
+480
+00:08:36,870 --> 00:08:36,880
+create new partitions, format drives,
+ 
+
+481
+00:08:36,880 --> 00:08:39,269
+create new partitions, format drives,
+and be able to manage any aspect of your
+
+482
+00:08:39,269 --> 00:08:39,279
+and be able to manage any aspect of your
+ 
+
+483
+00:08:39,279 --> 00:08:41,589
+and be able to manage any aspect of your
+storage. You can also create images
+
+484
+00:08:41,589 --> 00:08:41,599
+storage. You can also create images
+ 
+
+485
+00:08:41,599 --> 00:08:43,670
+storage. You can also create images
+within disk utility. So, you could take
+
+486
+00:08:43,670 --> 00:08:43,680
+within disk utility. So, you could take
+ 
+
+487
+00:08:43,680 --> 00:08:45,670
+within disk utility. So, you could take
+an entire directory or everything that's
+
+488
+00:08:45,670 --> 00:08:45,680
+an entire directory or everything that's
+ 
+
+489
+00:08:45,680 --> 00:08:48,389
+an entire directory or everything that's
+on a drive, create an image file of that
+
+490
+00:08:48,389 --> 00:08:48,399
+on a drive, create an image file of that
+ 
+
+491
+00:08:48,399 --> 00:08:50,150
+on a drive, create an image file of that
+drive, and then transfer that image
+
+492
+00:08:50,150 --> 00:08:50,160
+drive, and then transfer that image
+ 
+
+493
+00:08:50,160 --> 00:08:51,710
+drive, and then transfer that image
+drive to a third
+
+494
+00:08:51,710 --> 00:08:51,720
+drive to a third
+ 
+
+495
+00:08:51,720 --> 00:08:54,389
+drive to a third
+party. In Windows, you might be familiar
+
+496
+00:08:54,389 --> 00:08:54,399
+party. In Windows, you might be familiar
+ 
+
+497
+00:08:54,399 --> 00:08:55,829
+party. In Windows, you might be familiar
+with the full disk encryption
+
+498
+00:08:55,829 --> 00:08:55,839
+with the full disk encryption
+ 
+
+499
+00:08:55,839 --> 00:08:57,750
+with the full disk encryption
+capabilities that are provided by Bit
+
+500
+00:08:57,750 --> 00:08:57,760
+capabilities that are provided by Bit
+ 
+
+501
+00:08:57,760 --> 00:08:59,829
+capabilities that are provided by Bit
+Locker. In Mac OS, we have a similar
+
+502
+00:08:59,829 --> 00:08:59,839
+Locker. In Mac OS, we have a similar
+ 
+
+503
+00:08:59,839 --> 00:09:01,990
+Locker. In Mac OS, we have a similar
+feature known as file vault. This
+
+504
+00:09:01,990 --> 00:09:02,000
+feature known as file vault. This
+ 
+
+505
+00:09:02,000 --> 00:09:03,910
+feature known as file vault. This
+provides full disk encryption for the
+
+506
+00:09:03,910 --> 00:09:03,920
+provides full disk encryption for the
+ 
+
+507
+00:09:03,920 --> 00:09:05,990
+provides full disk encryption for the
+entire operating system and it encrypts
+
+508
+00:09:05,990 --> 00:09:06,000
+entire operating system and it encrypts
+ 
+
+509
+00:09:06,000 --> 00:09:07,990
+entire operating system and it encrypts
+everything using your local password or
+
+510
+00:09:07,990 --> 00:09:08,000
+everything using your local password or
+ 
+
+511
+00:09:08,000 --> 00:09:09,870
+everything using your local password or
+it integrates into your iCloud
+
+512
+00:09:09,870 --> 00:09:09,880
+it integrates into your iCloud
+ 
+
+513
+00:09:09,880 --> 00:09:11,990
+it integrates into your iCloud
+authentication. This means that any of
+
+514
+00:09:11,990 --> 00:09:12,000
+authentication. This means that any of
+ 
+
+515
+00:09:12,000 --> 00:09:13,910
+authentication. This means that any of
+the data that you store in your drive is
+
+516
+00:09:13,910 --> 00:09:13,920
+the data that you store in your drive is
+ 
+
+517
+00:09:13,920 --> 00:09:15,829
+the data that you store in your drive is
+protected and if somebody does gain
+
+518
+00:09:15,829 --> 00:09:15,839
+protected and if somebody does gain
+ 
+
+519
+00:09:15,839 --> 00:09:17,990
+protected and if somebody does gain
+access to your physical storage drive,
+
+520
+00:09:17,990 --> 00:09:18,000
+access to your physical storage drive,
+ 
+
+521
+00:09:18,000 --> 00:09:19,829
+access to your physical storage drive,
+they would not have access to the data
+
+522
+00:09:19,829 --> 00:09:19,839
+they would not have access to the data
+ 
+
+523
+00:09:19,839 --> 00:09:21,350
+they would not have access to the data
+unless they also had these
+
+524
+00:09:21,350 --> 00:09:21,360
+unless they also had these
+ 
+
+525
+00:09:21,360 --> 00:09:23,430
+unless they also had these
+authentication credentials. If you want
+
+526
+00:09:23,430 --> 00:09:23,440
+authentication credentials. If you want
+ 
+
+527
+00:09:23,440 --> 00:09:25,990
+authentication credentials. If you want
+to turn on or turn off the file vault
+
+528
+00:09:25,990 --> 00:09:26,000
+to turn on or turn off the file vault
+ 
+
+529
+00:09:26,000 --> 00:09:28,070
+to turn on or turn off the file vault
+capabilities of your Mac OS operating
+
+530
+00:09:28,070 --> 00:09:28,080
+capabilities of your Mac OS operating
+ 
+
+531
+00:09:28,080 --> 00:09:30,070
+capabilities of your Mac OS operating
+system, you can find those options
+
+532
+00:09:30,070 --> 00:09:30,080
+system, you can find those options
+ 
+
+533
+00:09:30,080 --> 00:09:32,310
+system, you can find those options
+inside of your system preferences under
+
+534
+00:09:32,310 --> 00:09:32,320
+inside of your system preferences under
+ 
+
+535
+00:09:32,320 --> 00:09:34,190
+inside of your system preferences under
+privacy and
+
+536
+00:09:34,190 --> 00:09:34,200
+privacy and
+ 
+
+537
+00:09:34,200 --> 00:09:36,630
+privacy and
+security. As a system administrator,
+
+538
+00:09:36,630 --> 00:09:36,640
+security. As a system administrator,
+ 
+
+539
+00:09:36,640 --> 00:09:38,230
+security. As a system administrator,
+you're probably very familiar with
+
+540
+00:09:38,230 --> 00:09:38,240
+you're probably very familiar with
+ 
+
+541
+00:09:38,240 --> 00:09:39,990
+you're probably very familiar with
+working at the command line and
+
+542
+00:09:39,990 --> 00:09:40,000
+working at the command line and
+ 
+
+543
+00:09:40,000 --> 00:09:41,750
+working at the command line and
+understand the importance of being able
+
+544
+00:09:41,750 --> 00:09:41,760
+understand the importance of being able
+ 
+
+545
+00:09:41,760 --> 00:09:43,990
+understand the importance of being able
+to manage a system from this terminal
+
+546
+00:09:43,990 --> 00:09:44,000
+to manage a system from this terminal
+ 
+
+547
+00:09:44,000 --> 00:09:46,070
+to manage a system from this terminal
+screen. In Mac OS, you would use the
+
+548
+00:09:46,070 --> 00:09:46,080
+screen. In Mac OS, you would use the
+ 
+
+549
+00:09:46,080 --> 00:09:48,150
+screen. In Mac OS, you would use the
+terminal app to gain access to the
+
+550
+00:09:48,150 --> 00:09:48,160
+terminal app to gain access to the
+ 
+
+551
+00:09:48,160 --> 00:09:50,070
+terminal app to gain access to the
+command line. From here, you can view
+
+552
+00:09:50,070 --> 00:09:50,080
+command line. From here, you can view
+ 
+
+553
+00:09:50,080 --> 00:09:51,990
+command line. From here, you can view
+information in your file system. You can
+
+554
+00:09:51,990 --> 00:09:52,000
+information in your file system. You can
+ 
+
+555
+00:09:52,000 --> 00:09:54,150
+information in your file system. You can
+run shell scripts or you can modify
+
+556
+00:09:54,150 --> 00:09:54,160
+run shell scripts or you can modify
+ 
+
+557
+00:09:54,160 --> 00:09:55,670
+run shell scripts or you can modify
+configuration settings for your
+
+558
+00:09:55,670 --> 00:09:55,680
+configuration settings for your
+ 
+
+559
+00:09:55,680 --> 00:09:57,910
+configuration settings for your
+applications. In a future video, you'll
+
+560
+00:09:57,910 --> 00:09:57,920
+applications. In a future video, you'll
+ 
+
+561
+00:09:57,920 --> 00:09:59,590
+applications. In a future video, you'll
+learn a number of different commands
+
+562
+00:09:59,590 --> 00:09:59,600
+learn a number of different commands
+ 
+
+563
+00:09:59,600 --> 00:10:02,910
+learn a number of different commands
+that you can use inside of the Mac OS
+
+564
+00:10:02,910 --> 00:10:02,920
+that you can use inside of the Mac OS
+ 
+
+565
+00:10:02,920 --> 00:10:05,430
+that you can use inside of the Mac OS
+terminal. Unfortunately, not every
+
+566
+00:10:05,430 --> 00:10:05,440
+terminal. Unfortunately, not every
+ 
+
+567
+00:10:05,440 --> 00:10:07,670
+terminal. Unfortunately, not every
+application we use is going to operate
+
+568
+00:10:07,670 --> 00:10:07,680
+application we use is going to operate
+ 
+
+569
+00:10:07,680 --> 00:10:10,470
+application we use is going to operate
+the way we might expect 100% of the
+
+570
+00:10:10,470 --> 00:10:10,480
+the way we might expect 100% of the
+ 
+
+571
+00:10:10,480 --> 00:10:12,870
+the way we might expect 100% of the
+time. There might be cases where we need
+
+572
+00:10:12,870 --> 00:10:12,880
+time. There might be cases where we need
+ 
+
+573
+00:10:12,880 --> 00:10:15,269
+time. There might be cases where we need
+to administratively stop an application
+
+574
+00:10:15,269 --> 00:10:15,279
+to administratively stop an application
+ 
+
+575
+00:10:15,279 --> 00:10:17,350
+to administratively stop an application
+from running, especially an application
+
+576
+00:10:17,350 --> 00:10:17,360
+from running, especially an application
+ 
+
+577
+00:10:17,360 --> 00:10:19,269
+from running, especially an application
+that seems to have hung up or is not
+
+578
+00:10:19,269 --> 00:10:19,279
+that seems to have hung up or is not
+ 
+
+579
+00:10:19,279 --> 00:10:21,110
+that seems to have hung up or is not
+accessible from the normal user
+
+580
+00:10:21,110 --> 00:10:21,120
+accessible from the normal user
+ 
+
+581
+00:10:21,120 --> 00:10:23,430
+accessible from the normal user
+interface. One way that you can stop
+
+582
+00:10:23,430 --> 00:10:23,440
+interface. One way that you can stop
+ 
+
+583
+00:10:23,440 --> 00:10:25,750
+interface. One way that you can stop
+that application from executing is by
+
+584
+00:10:25,750 --> 00:10:25,760
+that application from executing is by
+ 
+
+585
+00:10:25,760 --> 00:10:28,150
+that application from executing is by
+using the force quit option within Mac
+
+586
+00:10:28,150 --> 00:10:28,160
+using the force quit option within Mac
+ 
+
+587
+00:10:28,160 --> 00:10:31,190
+using the force quit option within Mac
+OS. A common way to use force quit is to
+
+588
+00:10:31,190 --> 00:10:31,200
+OS. A common way to use force quit is to
+ 
+
+589
+00:10:31,200 --> 00:10:34,069
+OS. A common way to use force quit is to
+use the keystroke command option escape.
+
+590
+00:10:34,069 --> 00:10:34,079
+use the keystroke command option escape.
+ 
+
+591
+00:10:34,079 --> 00:10:36,230
+use the keystroke command option escape.
+It will bring up a window that shows all
+
+592
+00:10:36,230 --> 00:10:36,240
+It will bring up a window that shows all
+ 
+
+593
+00:10:36,240 --> 00:10:37,829
+It will bring up a window that shows all
+of the applications that are currently
+
+594
+00:10:37,829 --> 00:10:37,839
+of the applications that are currently
+ 
+
+595
+00:10:37,839 --> 00:10:39,590
+of the applications that are currently
+running. You can highlight any one of
+
+596
+00:10:39,590 --> 00:10:39,600
+running. You can highlight any one of
+ 
+
+597
+00:10:39,600 --> 00:10:41,110
+running. You can highlight any one of
+those and then choose the option to
+
+598
+00:10:41,110 --> 00:10:41,120
+those and then choose the option to
+ 
+
+599
+00:10:41,120 --> 00:10:43,509
+those and then choose the option to
+force quit. You can also force quit
+
+600
+00:10:43,509 --> 00:10:43,519
+force quit. You can also force quit
+ 
+
+601
+00:10:43,519 --> 00:10:45,670
+force quit. You can also force quit
+directly from the doc. So you can view
+
+602
+00:10:45,670 --> 00:10:45,680
+directly from the doc. So you can view
+ 
+
+603
+00:10:45,680 --> 00:10:47,269
+directly from the doc. So you can view
+the applications that are running in the
+
+604
+00:10:47,269 --> 00:10:47,279
+the applications that are running in the
+ 
+
+605
+00:10:47,279 --> 00:10:49,670
+the applications that are running in the
+doc, hold down your option key, right
+
+606
+00:10:49,670 --> 00:10:49,680
+doc, hold down your option key, right
+ 
+
+607
+00:10:49,680 --> 00:10:51,750
+doc, hold down your option key, right
+mouse click on the icon, and it will
+
+608
+00:10:51,750 --> 00:10:51,760
+mouse click on the icon, and it will
+ 
+
+609
+00:10:51,760 --> 00:10:53,670
+mouse click on the icon, and it will
+give you the option to force quit that
+
+610
+00:10:53,670 --> 00:10:53,680
+give you the option to force quit that
+ 
+
+611
+00:10:53,680 --> 00:10:55,750
+give you the option to force quit that
+app. So if you find that your operating
+
+612
+00:10:55,750 --> 00:10:55,760
+app. So if you find that your operating
+ 
+
+613
+00:10:55,760 --> 00:10:57,430
+app. So if you find that your operating
+system is not working the way you would
+
+614
+00:10:57,430 --> 00:10:57,440
+system is not working the way you would
+ 
+
+615
+00:10:57,440 --> 00:10:59,269
+system is not working the way you would
+expect, and you believe the problem is
+
+616
+00:10:59,269 --> 00:10:59,279
+expect, and you believe the problem is
+ 
+
+617
+00:10:59,279 --> 00:11:01,430
+expect, and you believe the problem is
+associated with a single application,
+
+618
+00:11:01,430 --> 00:11:01,440
+associated with a single application,
+ 
+
+619
+00:11:01,440 --> 00:11:02,790
+associated with a single application,
+you may want to force quit that
+
+620
+00:11:02,790 --> 00:11:02,800
+you may want to force quit that
+ 
+
+621
+00:11:02,800 --> 00:11:04,550
+you may want to force quit that
+application and see if you can regain
+
+622
+00:11:04,550 --> 00:11:04,560
+application and see if you can regain
+ 
+
+623
+00:11:04,560 --> 00:11:08,680
+application and see if you can regain
+control of your operating system.
+

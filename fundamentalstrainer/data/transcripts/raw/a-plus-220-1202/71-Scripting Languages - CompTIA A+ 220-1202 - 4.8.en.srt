@@ -1,0 +1,1605 @@
+1
+00:00:02,000 --> 00:00:04,390
+
+One topic you'll hear quite a lot of in
+
+2
+00:00:04,390 --> 00:00:04,400
+One topic you'll hear quite a lot of in
+ 
+
+3
+00:00:04,400 --> 00:00:06,869
+One topic you'll hear quite a lot of in
+information technology is automation and
+
+4
+00:00:06,869 --> 00:00:06,879
+information technology is automation and
+ 
+
+5
+00:00:06,879 --> 00:00:08,629
+information technology is automation and
+scripting. There are a lot of different
+
+6
+00:00:08,629 --> 00:00:08,639
+scripting. There are a lot of different
+ 
+
+7
+00:00:08,639 --> 00:00:11,110
+scripting. There are a lot of different
+ways to automate processes and we have a
+
+8
+00:00:11,110 --> 00:00:11,120
+ways to automate processes and we have a
+ 
+
+9
+00:00:11,120 --> 00:00:12,230
+ways to automate processes and we have a
+number of different scripting
+
+10
+00:00:12,230 --> 00:00:12,240
+number of different scripting
+ 
+
+11
+00:00:12,240 --> 00:00:14,629
+number of different scripting
+technologies available to us. But you
+
+12
+00:00:14,629 --> 00:00:14,639
+technologies available to us. But you
+ 
+
+13
+00:00:14,639 --> 00:00:15,990
+technologies available to us. But you
+have to make sure that you're using the
+
+14
+00:00:15,990 --> 00:00:16,000
+have to make sure that you're using the
+ 
+
+15
+00:00:16,000 --> 00:00:18,310
+have to make sure that you're using the
+right script for the right purpose. The
+
+16
+00:00:18,310 --> 00:00:18,320
+right script for the right purpose. The
+ 
+
+17
+00:00:18,320 --> 00:00:19,910
+right script for the right purpose. The
+type of scripting language that you
+
+18
+00:00:19,910 --> 00:00:19,920
+type of scripting language that you
+ 
+
+19
+00:00:19,920 --> 00:00:21,910
+type of scripting language that you
+choose may be based on the application
+
+20
+00:00:21,910 --> 00:00:21,920
+choose may be based on the application
+ 
+
+21
+00:00:21,920 --> 00:00:23,509
+choose may be based on the application
+you're running or the task that you're
+
+22
+00:00:23,509 --> 00:00:23,519
+you're running or the task that you're
+ 
+
+23
+00:00:23,519 --> 00:00:25,830
+you're running or the task that you're
+performing or it might be specific to an
+
+24
+00:00:25,830 --> 00:00:25,840
+performing or it might be specific to an
+ 
+
+25
+00:00:25,840 --> 00:00:27,670
+performing or it might be specific to an
+operating system and there might be a
+
+26
+00:00:27,670 --> 00:00:27,680
+operating system and there might be a
+ 
+
+27
+00:00:27,680 --> 00:00:29,750
+operating system and there might be a
+limited number of options available in
+
+28
+00:00:29,750 --> 00:00:29,760
+limited number of options available in
+ 
+
+29
+00:00:29,760 --> 00:00:32,150
+limited number of options available in
+that OS. This means that you'll probably
+
+30
+00:00:32,150 --> 00:00:32,160
+that OS. This means that you'll probably
+ 
+
+31
+00:00:32,160 --> 00:00:33,990
+that OS. This means that you'll probably
+learn a number of different scripting
+
+32
+00:00:33,990 --> 00:00:34,000
+learn a number of different scripting
+ 
+
+33
+00:00:34,000 --> 00:00:36,389
+learn a number of different scripting
+languages so you can automate regardless
+
+34
+00:00:36,389 --> 00:00:36,399
+languages so you can automate regardless
+ 
+
+35
+00:00:36,399 --> 00:00:39,190
+languages so you can automate regardless
+of what task you're performing.
+
+36
+00:00:39,190 --> 00:00:39,200
+of what task you're performing.
+ 
+
+37
+00:00:39,200 --> 00:00:40,869
+of what task you're performing.
+If you're running an automated task in
+
+38
+00:00:40,869 --> 00:00:40,879
+If you're running an automated task in
+ 
+
+39
+00:00:40,879 --> 00:00:42,869
+If you're running an automated task in
+Windows, you could be running a batch
+
+40
+00:00:42,869 --> 00:00:42,879
+Windows, you could be running a batch
+ 
+
+41
+00:00:42,879 --> 00:00:44,709
+Windows, you could be running a batch
+file. You'll know this because the name
+
+42
+00:00:44,709 --> 00:00:44,719
+file. You'll know this because the name
+ 
+
+43
+00:00:44,719 --> 00:00:48,470
+file. You'll know this because the name
+of the file has aBABBAT file extension.
+
+44
+00:00:48,470 --> 00:00:48,480
+of the file has aBABBAT file extension.
+ 
+
+45
+00:00:48,480 --> 00:00:49,990
+of the file has aBABBAT file extension.
+This is something that you'll run at the
+
+46
+00:00:49,990 --> 00:00:50,000
+This is something that you'll run at the
+ 
+
+47
+00:00:50,000 --> 00:00:52,229
+This is something that you'll run at the
+command line inside of Windows, but the
+
+48
+00:00:52,229 --> 00:00:52,239
+command line inside of Windows, but the
+ 
+
+49
+00:00:52,239 --> 00:00:54,549
+command line inside of Windows, but the
+use of batch files goes back to DOSs and
+
+50
+00:00:54,549 --> 00:00:54,559
+use of batch files goes back to DOSs and
+ 
+
+51
+00:00:54,559 --> 00:00:57,270
+use of batch files goes back to DOSs and
+OS2. This means that you have decades of
+
+52
+00:00:57,270 --> 00:00:57,280
+OS2. This means that you have decades of
+ 
+
+53
+00:00:57,280 --> 00:00:59,189
+OS2. This means that you have decades of
+documentation that can help you build a
+
+54
+00:00:59,189 --> 00:00:59,199
+documentation that can help you build a
+ 
+
+55
+00:00:59,199 --> 00:01:01,670
+documentation that can help you build a
+batch file to automate processes inside
+
+56
+00:01:01,670 --> 00:01:01,680
+batch file to automate processes inside
+ 
+
+57
+00:01:01,680 --> 00:01:04,070
+batch file to automate processes inside
+of your Windows system.
+
+58
+00:01:04,070 --> 00:01:04,080
+of your Windows system.
+ 
+
+59
+00:01:04,080 --> 00:01:05,429
+of your Windows system.
+If you're a Windows system
+
+60
+00:01:05,429 --> 00:01:05,439
+If you're a Windows system
+ 
+
+61
+00:01:05,439 --> 00:01:07,429
+If you're a Windows system
+administrator, then you're probably not
+
+62
+00:01:07,429 --> 00:01:07,439
+administrator, then you're probably not
+ 
+
+63
+00:01:07,439 --> 00:01:09,190
+administrator, then you're probably not
+using a batch file, but instead you're
+
+64
+00:01:09,190 --> 00:01:09,200
+using a batch file, but instead you're
+ 
+
+65
+00:01:09,200 --> 00:01:11,670
+using a batch file, but instead you're
+using PowerShell. This is a command line
+
+66
+00:01:11,670 --> 00:01:11,680
+using PowerShell. This is a command line
+ 
+
+67
+00:01:11,680 --> 00:01:13,350
+using PowerShell. This is a command line
+that's a bit of an upgrade from the
+
+68
+00:01:13,350 --> 00:01:13,360
+that's a bit of an upgrade from the
+ 
+
+69
+00:01:13,360 --> 00:01:15,590
+that's a bit of an upgrade from the
+batch file days and it provides a number
+
+70
+00:01:15,590 --> 00:01:15,600
+batch file days and it provides a number
+ 
+
+71
+00:01:15,600 --> 00:01:17,670
+batch file days and it provides a number
+of additional capabilities, especially
+
+72
+00:01:17,670 --> 00:01:17,680
+of additional capabilities, especially
+ 
+
+73
+00:01:17,680 --> 00:01:19,910
+of additional capabilities, especially
+for system administrators. PowerShell
+
+74
+00:01:19,910 --> 00:01:19,920
+for system administrators. PowerShell
+ 
+
+75
+00:01:19,920 --> 00:01:22,630
+for system administrators. PowerShell
+scripts commonly have a PS1 file
+
+76
+00:01:22,630 --> 00:01:22,640
+scripts commonly have a PS1 file
+ 
+
+77
+00:01:22,640 --> 00:01:24,390
+scripts commonly have a PS1 file
+extension. And if you're running Windows
+
+78
+00:01:24,390 --> 00:01:24,400
+extension. And if you're running Windows
+ 
+
+79
+00:01:24,400 --> 00:01:26,630
+extension. And if you're running Windows
+10 or Windows 11, you can simply click
+
+80
+00:01:26,630 --> 00:01:26,640
+10 or Windows 11, you can simply click
+ 
+
+81
+00:01:26,640 --> 00:01:28,710
+10 or Windows 11, you can simply click
+the button to install PowerShell if it's
+
+82
+00:01:28,710 --> 00:01:28,720
+the button to install PowerShell if it's
+ 
+
+83
+00:01:28,720 --> 00:01:31,510
+the button to install PowerShell if it's
+not installed already. PowerShell
+
+84
+00:01:31,510 --> 00:01:31,520
+not installed already. PowerShell
+ 
+
+85
+00:01:31,520 --> 00:01:33,429
+not installed already. PowerShell
+scripts can take advantage of built-in
+
+86
+00:01:33,429 --> 00:01:33,439
+scripts can take advantage of built-in
+ 
+
+87
+00:01:33,439 --> 00:01:36,069
+scripts can take advantage of built-in
+functions referred to as commandlets.
+
+88
+00:01:36,069 --> 00:01:36,079
+functions referred to as commandlets.
+ 
+
+89
+00:01:36,079 --> 00:01:37,670
+functions referred to as commandlets.
+They allow you to extend the
+
+90
+00:01:37,670 --> 00:01:37,680
+They allow you to extend the
+ 
+
+91
+00:01:37,680 --> 00:01:39,910
+They allow you to extend the
+functionality of PowerShell to be able
+
+92
+00:01:39,910 --> 00:01:39,920
+functionality of PowerShell to be able
+ 
+
+93
+00:01:39,920 --> 00:01:42,230
+functionality of PowerShell to be able
+to access an operating system directly
+
+94
+00:01:42,230 --> 00:01:42,240
+to access an operating system directly
+ 
+
+95
+00:01:42,240 --> 00:01:44,069
+to access an operating system directly
+or be able to change things in the
+
+96
+00:01:44,069 --> 00:01:44,079
+or be able to change things in the
+ 
+
+97
+00:01:44,079 --> 00:01:45,670
+or be able to change things in the
+operating system that you normally
+
+98
+00:01:45,670 --> 00:01:45,680
+operating system that you normally
+ 
+
+99
+00:01:45,680 --> 00:01:47,590
+operating system that you normally
+wouldn't have access to from a standard
+
+100
+00:01:47,590 --> 00:01:47,600
+wouldn't have access to from a standard
+ 
+
+101
+00:01:47,600 --> 00:01:49,910
+wouldn't have access to from a standard
+command line and a batch file. You can
+
+102
+00:01:49,910 --> 00:01:49,920
+command line and a batch file. You can
+ 
+
+103
+00:01:49,920 --> 00:01:52,230
+command line and a batch file. You can
+even build these PowerShell scripts into
+
+104
+00:01:52,230 --> 00:01:52,240
+even build these PowerShell scripts into
+ 
+
+105
+00:01:52,240 --> 00:01:54,310
+even build these PowerShell scripts into
+standalone executables and simply
+
+106
+00:01:54,310 --> 00:01:54,320
+standalone executables and simply
+ 
+
+107
+00:01:54,320 --> 00:01:56,310
+standalone executables and simply
+distribute that executable to whoever
+
+108
+00:01:56,310 --> 00:01:56,320
+distribute that executable to whoever
+ 
+
+109
+00:01:56,320 --> 00:01:58,630
+distribute that executable to whoever
+needs to run that script. So, if you're
+
+110
+00:01:58,630 --> 00:01:58,640
+needs to run that script. So, if you're
+ 
+
+111
+00:01:58,640 --> 00:02:00,950
+needs to run that script. So, if you're
+doing any type of Windows administration
+
+112
+00:02:00,950 --> 00:02:00,960
+doing any type of Windows administration
+ 
+
+113
+00:02:00,960 --> 00:02:03,350
+doing any type of Windows administration
+or you need to administer a large Active
+
+114
+00:02:03,350 --> 00:02:03,360
+or you need to administer a large Active
+ 
+
+115
+00:02:03,360 --> 00:02:05,190
+or you need to administer a large Active
+Directory infrastructure, you want to
+
+116
+00:02:05,190 --> 00:02:05,200
+Directory infrastructure, you want to
+ 
+
+117
+00:02:05,200 --> 00:02:07,109
+Directory infrastructure, you want to
+become very familiar with Windows
+
+118
+00:02:07,109 --> 00:02:07,119
+become very familiar with Windows
+ 
+
+119
+00:02:07,119 --> 00:02:09,350
+become very familiar with Windows
+PowerShell.
+
+120
+00:02:09,350 --> 00:02:09,360
+PowerShell.
+ 
+
+121
+00:02:09,360 --> 00:02:11,350
+PowerShell.
+Windows also includes a generalpurpose
+
+122
+00:02:11,350 --> 00:02:11,360
+Windows also includes a generalpurpose
+ 
+
+123
+00:02:11,360 --> 00:02:13,190
+Windows also includes a generalpurpose
+scripting language that you can run
+
+124
+00:02:13,190 --> 00:02:13,200
+scripting language that you can run
+ 
+
+125
+00:02:13,200 --> 00:02:15,670
+scripting language that you can run
+outside of the command line. This is the
+
+126
+00:02:15,670 --> 00:02:15,680
+outside of the command line. This is the
+ 
+
+127
+00:02:15,680 --> 00:02:17,589
+outside of the command line. This is the
+Microsoft Visual Basic Scripting
+
+128
+00:02:17,589 --> 00:02:17,599
+Microsoft Visual Basic Scripting
+ 
+
+129
+00:02:17,599 --> 00:02:19,750
+Microsoft Visual Basic Scripting
+Edition. So, you can perform functions
+
+130
+00:02:19,750 --> 00:02:19,760
+Edition. So, you can perform functions
+ 
+
+131
+00:02:19,760 --> 00:02:21,990
+Edition. So, you can perform functions
+such as a back-end web server script.
+
+132
+00:02:21,990 --> 00:02:22,000
+such as a back-end web server script.
+ 
+
+133
+00:02:22,000 --> 00:02:23,990
+such as a back-end web server script.
+You can script on the Windows desktop
+
+134
+00:02:23,990 --> 00:02:24,000
+You can script on the Windows desktop
+ 
+
+135
+00:02:24,000 --> 00:02:26,630
+You can script on the Windows desktop
+itself, but you commonly see these VB
+
+136
+00:02:26,630 --> 00:02:26,640
+itself, but you commonly see these VB
+ 
+
+137
+00:02:26,640 --> 00:02:28,710
+itself, but you commonly see these VB
+scripts inside of Microsoft Office
+
+138
+00:02:28,710 --> 00:02:28,720
+scripts inside of Microsoft Office
+ 
+
+139
+00:02:28,720 --> 00:02:31,110
+scripts inside of Microsoft Office
+applications. These Visual Basic scripts
+
+140
+00:02:31,110 --> 00:02:31,120
+applications. These Visual Basic scripts
+ 
+
+141
+00:02:31,120 --> 00:02:32,790
+applications. These Visual Basic scripts
+are often identified with a file
+
+142
+00:02:32,790 --> 00:02:32,800
+are often identified with a file
+ 
+
+143
+00:02:32,800 --> 00:02:36,150
+are often identified with a file
+extension of VBS.
+
+144
+00:02:36,150 --> 00:02:36,160
+extension of VBS.
+ 
+
+145
+00:02:36,160 --> 00:02:37,670
+extension of VBS.
+As we mentioned earlier, if you're
+
+146
+00:02:37,670 --> 00:02:37,680
+As we mentioned earlier, if you're
+ 
+
+147
+00:02:37,680 --> 00:02:39,430
+As we mentioned earlier, if you're
+scripting at the Windows command prompt,
+
+148
+00:02:39,430 --> 00:02:39,440
+scripting at the Windows command prompt,
+ 
+
+149
+00:02:39,440 --> 00:02:41,589
+scripting at the Windows command prompt,
+you're using a batch file. But if you're
+
+150
+00:02:41,589 --> 00:02:41,599
+you're using a batch file. But if you're
+ 
+
+151
+00:02:41,599 --> 00:02:44,150
+you're using a batch file. But if you're
+scripting inside of Linux, you're using
+
+152
+00:02:44,150 --> 00:02:44,160
+scripting inside of Linux, you're using
+ 
+
+153
+00:02:44,160 --> 00:02:46,470
+scripting inside of Linux, you're using
+a shell script. Shell scripts are the
+
+154
+00:02:46,470 --> 00:02:46,480
+a shell script. Shell scripts are the
+ 
+
+155
+00:02:46,480 --> 00:02:48,869
+a shell script. Shell scripts are the
+process used inside of Unix and Linux to
+
+156
+00:02:48,869 --> 00:02:48,879
+process used inside of Unix and Linux to
+ 
+
+157
+00:02:48,879 --> 00:02:51,270
+process used inside of Unix and Linux to
+be able to automate inside of a Linux
+
+158
+00:02:51,270 --> 00:02:51,280
+be able to automate inside of a Linux
+ 
+
+159
+00:02:51,280 --> 00:02:53,830
+be able to automate inside of a Linux
+shell. Shell scripts don't require a
+
+160
+00:02:53,830 --> 00:02:53,840
+shell. Shell scripts don't require a
+ 
+
+161
+00:02:53,840 --> 00:02:55,830
+shell. Shell scripts don't require a
+specific extension type, but we commonly
+
+162
+00:02:55,830 --> 00:02:55,840
+specific extension type, but we commonly
+ 
+
+163
+00:02:55,840 --> 00:02:58,790
+specific extension type, but we commonly
+put ash on the end of the file so that
+
+164
+00:02:58,790 --> 00:02:58,800
+put ash on the end of the file so that
+ 
+
+165
+00:02:58,800 --> 00:03:01,110
+put ash on the end of the file so that
+we can easily identify them. If you look
+
+166
+00:03:01,110 --> 00:03:01,120
+we can easily identify them. If you look
+ 
+
+167
+00:03:01,120 --> 00:03:03,110
+we can easily identify them. If you look
+at the script itself, you'll notice that
+
+168
+00:03:03,110 --> 00:03:03,120
+at the script itself, you'll notice that
+ 
+
+169
+00:03:03,120 --> 00:03:05,030
+at the script itself, you'll notice that
+the first two characters of the script
+
+170
+00:03:05,030 --> 00:03:05,040
+the first two characters of the script
+ 
+
+171
+00:03:05,040 --> 00:03:07,910
+the first two characters of the script
+are a hash and an exclamation mark. This
+
+172
+00:03:07,910 --> 00:03:07,920
+are a hash and an exclamation mark. This
+ 
+
+173
+00:03:07,920 --> 00:03:10,470
+are a hash and an exclamation mark. This
+is known as a shebang or a hashbang and
+
+174
+00:03:10,470 --> 00:03:10,480
+is known as a shebang or a hashbang and
+ 
+
+175
+00:03:10,480 --> 00:03:12,390
+is known as a shebang or a hashbang and
+it designates that everything following
+
+176
+00:03:12,390 --> 00:03:12,400
+it designates that everything following
+ 
+
+177
+00:03:12,400 --> 00:03:14,869
+it designates that everything following
+that information is a Unix or Linux
+
+178
+00:03:14,869 --> 00:03:14,879
+that information is a Unix or Linux
+ 
+
+179
+00:03:14,879 --> 00:03:17,430
+that information is a Unix or Linux
+shell script.
+
+180
+00:03:17,430 --> 00:03:17,440
+shell script.
+ 
+
+181
+00:03:17,440 --> 00:03:19,270
+shell script.
+Another script that often works behind
+
+182
+00:03:19,270 --> 00:03:19,280
+Another script that often works behind
+ 
+
+183
+00:03:19,280 --> 00:03:22,229
+Another script that often works behind
+the scenes in our browser is JavaScript.
+
+184
+00:03:22,229 --> 00:03:22,239
+the scenes in our browser is JavaScript.
+ 
+
+185
+00:03:22,239 --> 00:03:24,949
+the scenes in our browser is JavaScript.
+These usually have ajs file extension
+
+186
+00:03:24,949 --> 00:03:24,959
+These usually have ajs file extension
+ 
+
+187
+00:03:24,959 --> 00:03:27,110
+These usually have ajs file extension
+and they're used for interactivity in
+
+188
+00:03:27,110 --> 00:03:27,120
+and they're used for interactivity in
+ 
+
+189
+00:03:27,120 --> 00:03:29,430
+and they're used for interactivity in
+our browser screens. So if you go to a
+
+190
+00:03:29,430 --> 00:03:29,440
+our browser screens. So if you go to a
+ 
+
+191
+00:03:29,440 --> 00:03:31,030
+our browser screens. So if you go to a
+website and you click something on the
+
+192
+00:03:31,030 --> 00:03:31,040
+website and you click something on the
+ 
+
+193
+00:03:31,040 --> 00:03:32,710
+website and you click something on the
+screen and notice that there's some
+
+194
+00:03:32,710 --> 00:03:32,720
+screen and notice that there's some
+ 
+
+195
+00:03:32,720 --> 00:03:35,350
+screen and notice that there's some
+interactivity that's all probably being
+
+196
+00:03:35,350 --> 00:03:35,360
+interactivity that's all probably being
+ 
+
+197
+00:03:35,360 --> 00:03:38,309
+interactivity that's all probably being
+created through the use of JavaScript.
+
+198
+00:03:38,309 --> 00:03:38,319
+created through the use of JavaScript.
+ 
+
+199
+00:03:38,319 --> 00:03:39,990
+created through the use of JavaScript.
+It's also important to keep in mind that
+
+200
+00:03:39,990 --> 00:03:40,000
+It's also important to keep in mind that
+ 
+
+201
+00:03:40,000 --> 00:03:42,149
+It's also important to keep in mind that
+there is a difference between JavaScript
+
+202
+00:03:42,149 --> 00:03:42,159
+there is a difference between JavaScript
+ 
+
+203
+00:03:42,159 --> 00:03:44,710
+there is a difference between JavaScript
+and Java. JavaScript is the scripting
+
+204
+00:03:44,710 --> 00:03:44,720
+and Java. JavaScript is the scripting
+ 
+
+205
+00:03:44,720 --> 00:03:46,550
+and Java. JavaScript is the scripting
+language that we use inside of our
+
+206
+00:03:46,550 --> 00:03:46,560
+language that we use inside of our
+ 
+
+207
+00:03:46,560 --> 00:03:49,030
+language that we use inside of our
+browsers. But Java is a programming
+
+208
+00:03:49,030 --> 00:03:49,040
+browsers. But Java is a programming
+ 
+
+209
+00:03:49,040 --> 00:03:50,710
+browsers. But Java is a programming
+language that you would use to create
+
+210
+00:03:50,710 --> 00:03:50,720
+language that you would use to create
+ 
+
+211
+00:03:50,720 --> 00:03:52,630
+language that you would use to create
+applications. These have a very
+
+212
+00:03:52,630 --> 00:03:52,640
+applications. These have a very
+ 
+
+213
+00:03:52,640 --> 00:03:53,830
+applications. These have a very
+different use, a different
+
+214
+00:03:53,830 --> 00:03:53,840
+different use, a different
+ 
+
+215
+00:03:53,840 --> 00:03:55,910
+different use, a different
+implementation and they were created by
+
+216
+00:03:55,910 --> 00:03:55,920
+implementation and they were created by
+ 
+
+217
+00:03:55,920 --> 00:03:58,149
+implementation and they were created by
+completely different organizations. So,
+
+218
+00:03:58,149 --> 00:03:58,159
+completely different organizations. So,
+ 
+
+219
+00:03:58,159 --> 00:04:00,149
+completely different organizations. So,
+if you're working with JavaScript, keep
+
+220
+00:04:00,149 --> 00:04:00,159
+if you're working with JavaScript, keep
+ 
+
+221
+00:04:00,159 --> 00:04:02,229
+if you're working with JavaScript, keep
+in mind that this is not related at all
+
+222
+00:04:02,229 --> 00:04:02,239
+in mind that this is not related at all
+ 
+
+223
+00:04:02,239 --> 00:04:04,789
+in mind that this is not related at all
+to Java.
+
+224
+00:04:04,789 --> 00:04:04,799
+to Java.
+ 
+
+225
+00:04:04,799 --> 00:04:06,710
+to Java.
+Cloud-based services have changed the
+
+226
+00:04:06,710 --> 00:04:06,720
+Cloud-based services have changed the
+ 
+
+227
+00:04:06,720 --> 00:04:08,869
+Cloud-based services have changed the
+way that we think about automation. This
+
+228
+00:04:08,869 --> 00:04:08,879
+way that we think about automation. This
+ 
+
+229
+00:04:08,879 --> 00:04:10,869
+way that we think about automation. This
+is because cloud-based services are not
+
+230
+00:04:10,869 --> 00:04:10,879
+is because cloud-based services are not
+ 
+
+231
+00:04:10,879 --> 00:04:13,190
+is because cloud-based services are not
+about a specific operating system or a
+
+232
+00:04:13,190 --> 00:04:13,200
+about a specific operating system or a
+ 
+
+233
+00:04:13,200 --> 00:04:15,350
+about a specific operating system or a
+specific work environment. Instead, we'd
+
+234
+00:04:15,350 --> 00:04:15,360
+specific work environment. Instead, we'd
+ 
+
+235
+00:04:15,360 --> 00:04:17,189
+specific work environment. Instead, we'd
+like to have scripting and automation
+
+236
+00:04:17,189 --> 00:04:17,199
+like to have scripting and automation
+ 
+
+237
+00:04:17,199 --> 00:04:19,349
+like to have scripting and automation
+done in the cloud that can be applied
+
+238
+00:04:19,349 --> 00:04:19,359
+done in the cloud that can be applied
+ 
+
+239
+00:04:19,359 --> 00:04:22,069
+done in the cloud that can be applied
+towards any operating system. That was
+
+240
+00:04:22,069 --> 00:04:22,079
+towards any operating system. That was
+ 
+
+241
+00:04:22,079 --> 00:04:24,150
+towards any operating system. That was
+part of the reason behind the success of
+
+242
+00:04:24,150 --> 00:04:24,160
+part of the reason behind the success of
+ 
+
+243
+00:04:24,160 --> 00:04:26,790
+part of the reason behind the success of
+Python. Python is a generalpurpose
+
+244
+00:04:26,790 --> 00:04:26,800
+Python. Python is a generalpurpose
+ 
+
+245
+00:04:26,800 --> 00:04:28,469
+Python. Python is a generalpurpose
+scripting language that works across
+
+246
+00:04:28,469 --> 00:04:28,479
+scripting language that works across
+ 
+
+247
+00:04:28,479 --> 00:04:30,310
+scripting language that works across
+many different operating systems and
+
+248
+00:04:30,310 --> 00:04:30,320
+many different operating systems and
+ 
+
+249
+00:04:30,320 --> 00:04:32,230
+many different operating systems and
+provides flexibility whether you're in
+
+250
+00:04:32,230 --> 00:04:32,240
+provides flexibility whether you're in
+ 
+
+251
+00:04:32,240 --> 00:04:35,670
+provides flexibility whether you're in
+Windows, Mac OS, or Linux. You'll often
+
+252
+00:04:35,670 --> 00:04:35,680
+Windows, Mac OS, or Linux. You'll often
+ 
+
+253
+00:04:35,680 --> 00:04:38,710
+Windows, Mac OS, or Linux. You'll often
+see Python scripts labeled with AP py
+
+254
+00:04:38,710 --> 00:04:38,720
+see Python scripts labeled with AP py
+ 
+
+255
+00:04:38,720 --> 00:04:41,830
+see Python scripts labeled with AP py
+file extension. Python has a great deal
+
+256
+00:04:41,830 --> 00:04:41,840
+file extension. Python has a great deal
+ 
+
+257
+00:04:41,840 --> 00:04:43,749
+file extension. Python has a great deal
+of support in the industry and has
+
+258
+00:04:43,749 --> 00:04:43,759
+of support in the industry and has
+ 
+
+259
+00:04:43,759 --> 00:04:45,830
+of support in the industry and has
+become very popular as a way to script
+
+260
+00:04:45,830 --> 00:04:45,840
+become very popular as a way to script
+ 
+
+261
+00:04:45,840 --> 00:04:47,990
+become very popular as a way to script
+across many different operating systems
+
+262
+00:04:47,990 --> 00:04:48,000
+across many different operating systems
+ 
+
+263
+00:04:48,000 --> 00:04:49,749
+across many different operating systems
+without having to change a lot of
+
+264
+00:04:49,749 --> 00:04:49,759
+without having to change a lot of
+ 
+
+265
+00:04:49,759 --> 00:04:52,230
+without having to change a lot of
+information inside the script. Here's a
+
+266
+00:04:52,230 --> 00:04:52,240
+information inside the script. Here's a
+ 
+
+267
+00:04:52,240 --> 00:04:54,230
+information inside the script. Here's a
+simple interactive shell script. It
+
+268
+00:04:54,230 --> 00:04:54,240
+simple interactive shell script. It
+ 
+
+269
+00:04:54,240 --> 00:04:56,070
+simple interactive shell script. It
+starts with the hashbang right at the
+
+270
+00:04:56,070 --> 00:04:56,080
+starts with the hashbang right at the
+ 
+
+271
+00:04:56,080 --> 00:04:58,390
+starts with the hashbang right at the
+beginning and it runs as a shell script.
+
+272
+00:04:58,390 --> 00:04:58,400
+beginning and it runs as a shell script.
+ 
+
+273
+00:04:58,400 --> 00:05:01,510
+beginning and it runs as a shell script.
+You can see the /bin /sh. It has a
+
+274
+00:05:01,510 --> 00:05:01,520
+You can see the /bin /sh. It has a
+ 
+
+275
+00:05:01,520 --> 00:05:03,510
+You can see the /bin /sh. It has a
+variable called input string that is
+
+276
+00:05:03,510 --> 00:05:03,520
+variable called input string that is
+ 
+
+277
+00:05:03,520 --> 00:05:05,830
+variable called input string that is
+being set to hello. And then there is a
+
+278
+00:05:05,830 --> 00:05:05,840
+being set to hello. And then there is a
+ 
+
+279
+00:05:05,840 --> 00:05:08,230
+being set to hello. And then there is a
+loop as part of the shell script. This
+
+280
+00:05:08,230 --> 00:05:08,240
+loop as part of the shell script. This
+ 
+
+281
+00:05:08,240 --> 00:05:09,830
+loop as part of the shell script. This
+has an echo which means it's putting
+
+282
+00:05:09,830 --> 00:05:09,840
+has an echo which means it's putting
+ 
+
+283
+00:05:09,840 --> 00:05:11,670
+has an echo which means it's putting
+information on the screen that says
+
+284
+00:05:11,670 --> 00:05:11,680
+information on the screen that says
+ 
+
+285
+00:05:11,680 --> 00:05:14,390
+information on the screen that says
+please type something in or type by to
+
+286
+00:05:14,390 --> 00:05:14,400
+please type something in or type by to
+ 
+
+287
+00:05:14,400 --> 00:05:16,790
+please type something in or type by to
+quit. And then it waits for you to input
+
+288
+00:05:16,790 --> 00:05:16,800
+quit. And then it waits for you to input
+ 
+
+289
+00:05:16,800 --> 00:05:19,029
+quit. And then it waits for you to input
+information into this script. When you
+
+290
+00:05:19,029 --> 00:05:19,039
+information into this script. When you
+ 
+
+291
+00:05:19,039 --> 00:05:20,950
+information into this script. When you
+hit enter, it echoes information to the
+
+292
+00:05:20,950 --> 00:05:20,960
+hit enter, it echoes information to the
+ 
+
+293
+00:05:20,960 --> 00:05:22,710
+hit enter, it echoes information to the
+screen that says you typed. And then
+
+294
+00:05:22,710 --> 00:05:22,720
+screen that says you typed. And then
+ 
+
+295
+00:05:22,720 --> 00:05:24,390
+screen that says you typed. And then
+there's a variable that repeats the
+
+296
+00:05:24,390 --> 00:05:24,400
+there's a variable that repeats the
+ 
+
+297
+00:05:24,400 --> 00:05:25,990
+there's a variable that repeats the
+information that you typed into the
+
+298
+00:05:25,990 --> 00:05:26,000
+information that you typed into the
+ 
+
+299
+00:05:26,000 --> 00:05:28,070
+information that you typed into the
+system. It will continue through this
+
+300
+00:05:28,070 --> 00:05:28,080
+system. It will continue through this
+ 
+
+301
+00:05:28,080 --> 00:05:30,870
+system. It will continue through this
+loop until you put in the string by. And
+
+302
+00:05:30,870 --> 00:05:30,880
+loop until you put in the string by. And
+ 
+
+303
+00:05:30,880 --> 00:05:32,469
+loop until you put in the string by. And
+at that point, it will say that you
+
+304
+00:05:32,469 --> 00:05:32,479
+at that point, it will say that you
+ 
+
+305
+00:05:32,479 --> 00:05:35,430
+at that point, it will say that you
+typed by and it will then quit the loop.
+
+306
+00:05:35,430 --> 00:05:35,440
+typed by and it will then quit the loop.
+ 
+
+307
+00:05:35,440 --> 00:05:37,510
+typed by and it will then quit the loop.
+This is a very simple example of being
+
+308
+00:05:37,510 --> 00:05:37,520
+This is a very simple example of being
+ 
+
+309
+00:05:37,520 --> 00:05:39,430
+This is a very simple example of being
+able to automate a process within a
+
+310
+00:05:39,430 --> 00:05:39,440
+able to automate a process within a
+ 
+
+311
+00:05:39,440 --> 00:05:40,790
+able to automate a process within a
+script. And as you become more
+
+312
+00:05:40,790 --> 00:05:40,800
+script. And as you become more
+ 
+
+313
+00:05:40,800 --> 00:05:42,070
+script. And as you become more
+comfortable with the scripting
+
+314
+00:05:42,070 --> 00:05:42,080
+comfortable with the scripting
+ 
+
+315
+00:05:42,080 --> 00:05:44,230
+comfortable with the scripting
+languages, you'll start creating longer
+
+316
+00:05:44,230 --> 00:05:44,240
+languages, you'll start creating longer
+ 
+
+317
+00:05:44,240 --> 00:05:46,469
+languages, you'll start creating longer
+and more complex scripts so that you can
+
+318
+00:05:46,469 --> 00:05:46,479
+and more complex scripts so that you can
+ 
+
+319
+00:05:46,479 --> 00:05:48,230
+and more complex scripts so that you can
+automate the things that normally you
+
+320
+00:05:48,230 --> 00:05:48,240
+automate the things that normally you
+ 
+
+321
+00:05:48,240 --> 00:05:51,800
+automate the things that normally you
+would have done manually.
+

@@ -1,0 +1,1245 @@
+1
+00:00:02,080 --> 00:00:04,070
+
+One way that an attacker can create
+
+2
+00:00:04,070 --> 00:00:04,080
+One way that an attacker can create
+ 
+
+3
+00:00:04,080 --> 00:00:06,630
+One way that an attacker can create
+problems for you and all of your users
+
+4
+00:00:06,630 --> 00:00:06,640
+problems for you and all of your users
+ 
+
+5
+00:00:06,640 --> 00:00:08,950
+problems for you and all of your users
+is to prevent your systems from working
+
+6
+00:00:08,950 --> 00:00:08,960
+is to prevent your systems from working
+ 
+
+7
+00:00:08,960 --> 00:00:12,150
+is to prevent your systems from working
+at all. We refer to this as a denial of
+
+8
+00:00:12,150 --> 00:00:12,160
+at all. We refer to this as a denial of
+ 
+
+9
+00:00:12,160 --> 00:00:14,629
+at all. We refer to this as a denial of
+service attack. The attacker is forcing
+
+10
+00:00:14,629 --> 00:00:14,639
+service attack. The attacker is forcing
+ 
+
+11
+00:00:14,639 --> 00:00:16,790
+service attack. The attacker is forcing
+a particular service to fail and
+
+12
+00:00:16,790 --> 00:00:16,800
+a particular service to fail and
+ 
+
+13
+00:00:16,800 --> 00:00:18,950
+a particular service to fail and
+therefore people cannot access that
+
+14
+00:00:18,950 --> 00:00:18,960
+therefore people cannot access that
+ 
+
+15
+00:00:18,960 --> 00:00:21,269
+therefore people cannot access that
+service to perform their work. A very
+
+16
+00:00:21,269 --> 00:00:21,279
+service to perform their work. A very
+ 
+
+17
+00:00:21,279 --> 00:00:23,349
+service to perform their work. A very
+simplified form of a denial of service
+
+18
+00:00:23,349 --> 00:00:23,359
+simplified form of a denial of service
+ 
+
+19
+00:00:23,359 --> 00:00:25,349
+simplified form of a denial of service
+is an attacker that overwhelms the
+
+20
+00:00:25,349 --> 00:00:25,359
+is an attacker that overwhelms the
+ 
+
+21
+00:00:25,359 --> 00:00:27,670
+is an attacker that overwhelms the
+capability of a particular server. So
+
+22
+00:00:27,670 --> 00:00:27,680
+capability of a particular server. So
+ 
+
+23
+00:00:27,680 --> 00:00:29,830
+capability of a particular server. So
+instead of having a few people access a
+
+24
+00:00:29,830 --> 00:00:29,840
+instead of having a few people access a
+ 
+
+25
+00:00:29,840 --> 00:00:31,910
+instead of having a few people access a
+server at a time, an attacker might have
+
+26
+00:00:31,910 --> 00:00:31,920
+server at a time, an attacker might have
+ 
+
+27
+00:00:31,920 --> 00:00:34,470
+server at a time, an attacker might have
+hundreds or thousands of devices trying
+
+28
+00:00:34,470 --> 00:00:34,480
+hundreds or thousands of devices trying
+ 
+
+29
+00:00:34,480 --> 00:00:37,270
+hundreds or thousands of devices trying
+to access a system simultaneously.
+
+30
+00:00:37,270 --> 00:00:37,280
+to access a system simultaneously.
+ 
+
+31
+00:00:37,280 --> 00:00:39,190
+to access a system simultaneously.
+Or the attacker may have found a
+
+32
+00:00:39,190 --> 00:00:39,200
+Or the attacker may have found a
+ 
+
+33
+00:00:39,200 --> 00:00:41,430
+Or the attacker may have found a
+particular combination of events that
+
+34
+00:00:41,430 --> 00:00:41,440
+particular combination of events that
+ 
+
+35
+00:00:41,440 --> 00:00:43,910
+particular combination of events that
+causes the system to fail. This might be
+
+36
+00:00:43,910 --> 00:00:43,920
+causes the system to fail. This might be
+ 
+
+37
+00:00:43,920 --> 00:00:46,069
+causes the system to fail. This might be
+a vulnerability within software or it
+
+38
+00:00:46,069 --> 00:00:46,079
+a vulnerability within software or it
+ 
+
+39
+00:00:46,079 --> 00:00:48,790
+a vulnerability within software or it
+might be a design failure in the system.
+
+40
+00:00:48,790 --> 00:00:48,800
+might be a design failure in the system.
+ 
+
+41
+00:00:48,800 --> 00:00:50,709
+might be a design failure in the system.
+Regardless of the process used, the
+
+42
+00:00:50,709 --> 00:00:50,719
+Regardless of the process used, the
+ 
+
+43
+00:00:50,719 --> 00:00:52,709
+Regardless of the process used, the
+result is the same. the system is
+
+44
+00:00:52,709 --> 00:00:52,719
+result is the same. the system is
+ 
+
+45
+00:00:52,719 --> 00:00:54,709
+result is the same. the system is
+unavailable and anyone who wants to
+
+46
+00:00:54,709 --> 00:00:54,719
+unavailable and anyone who wants to
+ 
+
+47
+00:00:54,719 --> 00:00:56,630
+unavailable and anyone who wants to
+access the service will find that the
+
+48
+00:00:56,630 --> 00:00:56,640
+access the service will find that the
+ 
+
+49
+00:00:56,640 --> 00:00:59,430
+access the service will find that the
+service is no longer accessible.
+
+50
+00:00:59,430 --> 00:00:59,440
+service is no longer accessible.
+ 
+
+51
+00:00:59,440 --> 00:01:01,750
+service is no longer accessible.
+Sometimes the denial of service is for
+
+52
+00:01:01,750 --> 00:01:01,760
+Sometimes the denial of service is for
+ 
+
+53
+00:01:01,760 --> 00:01:03,990
+Sometimes the denial of service is for
+the technical people to spend their time
+
+54
+00:01:03,990 --> 00:01:04,000
+the technical people to spend their time
+ 
+
+55
+00:01:04,000 --> 00:01:06,149
+the technical people to spend their time
+trying to resolve the denial of service
+
+56
+00:01:06,149 --> 00:01:06,159
+trying to resolve the denial of service
+ 
+
+57
+00:01:06,159 --> 00:01:08,710
+trying to resolve the denial of service
+issue while at the same time other
+
+58
+00:01:08,710 --> 00:01:08,720
+issue while at the same time other
+ 
+
+59
+00:01:08,720 --> 00:01:10,630
+issue while at the same time other
+attackers are trying to take advantage
+
+60
+00:01:10,630 --> 00:01:10,640
+attackers are trying to take advantage
+ 
+
+61
+00:01:10,640 --> 00:01:12,710
+attackers are trying to take advantage
+of vulnerabilities with completely
+
+62
+00:01:12,710 --> 00:01:12,720
+of vulnerabilities with completely
+ 
+
+63
+00:01:12,720 --> 00:01:15,270
+of vulnerabilities with completely
+unrelated systems. And although we may
+
+64
+00:01:15,270 --> 00:01:15,280
+unrelated systems. And although we may
+ 
+
+65
+00:01:15,280 --> 00:01:17,350
+unrelated systems. And although we may
+be thinking that a denial of service is
+
+66
+00:01:17,350 --> 00:01:17,360
+be thinking that a denial of service is
+ 
+
+67
+00:01:17,360 --> 00:01:19,510
+be thinking that a denial of service is
+relatively complex and it involves a lot
+
+68
+00:01:19,510 --> 00:01:19,520
+relatively complex and it involves a lot
+ 
+
+69
+00:01:19,520 --> 00:01:21,590
+relatively complex and it involves a lot
+of different resources, the reality is
+
+70
+00:01:21,590 --> 00:01:21,600
+of different resources, the reality is
+ 
+
+71
+00:01:21,600 --> 00:01:23,270
+of different resources, the reality is
+that a denial of service can be
+
+72
+00:01:23,270 --> 00:01:23,280
+that a denial of service can be
+ 
+
+73
+00:01:23,280 --> 00:01:25,030
+that a denial of service can be
+relatively simple. For example, if
+
+74
+00:01:25,030 --> 00:01:25,040
+relatively simple. For example, if
+ 
+
+75
+00:01:25,040 --> 00:01:26,870
+relatively simple. For example, if
+somebody goes to the back of a building
+
+76
+00:01:26,870 --> 00:01:26,880
+somebody goes to the back of a building
+ 
+
+77
+00:01:26,880 --> 00:01:29,270
+somebody goes to the back of a building
+and turns off the main power, that will
+
+78
+00:01:29,270 --> 00:01:29,280
+and turns off the main power, that will
+ 
+
+79
+00:01:29,280 --> 00:01:32,870
+and turns off the main power, that will
+certainly be a denial of service.
+
+80
+00:01:32,870 --> 00:01:32,880
+certainly be a denial of service.
+ 
+
+81
+00:01:32,880 --> 00:01:35,429
+certainly be a denial of service.
+Sometimes a denial of service or a DOSs
+
+82
+00:01:35,429 --> 00:01:35,439
+Sometimes a denial of service or a DOSs
+ 
+
+83
+00:01:35,439 --> 00:01:37,910
+Sometimes a denial of service or a DOSs
+is something that we do to ourselves, an
+
+84
+00:01:37,910 --> 00:01:37,920
+is something that we do to ourselves, an
+ 
+
+85
+00:01:37,920 --> 00:01:40,550
+is something that we do to ourselves, an
+unintended situation that was caused by
+
+86
+00:01:40,550 --> 00:01:40,560
+unintended situation that was caused by
+ 
+
+87
+00:01:40,560 --> 00:01:42,789
+unintended situation that was caused by
+something that we did inside of our own
+
+88
+00:01:42,789 --> 00:01:42,799
+something that we did inside of our own
+ 
+
+89
+00:01:42,799 --> 00:01:44,630
+something that we did inside of our own
+network. For example, if you're
+
+90
+00:01:44,630 --> 00:01:44,640
+network. For example, if you're
+ 
+
+91
+00:01:44,640 --> 00:01:46,469
+network. For example, if you're
+connecting different switches together
+
+92
+00:01:46,469 --> 00:01:46,479
+connecting different switches together
+ 
+
+93
+00:01:46,479 --> 00:01:48,230
+connecting different switches together
+and you accidentally connect two
+
+94
+00:01:48,230 --> 00:01:48,240
+and you accidentally connect two
+ 
+
+95
+00:01:48,240 --> 00:01:49,990
+and you accidentally connect two
+switches together with two separate
+
+96
+00:01:49,990 --> 00:01:50,000
+switches together with two separate
+ 
+
+97
+00:01:50,000 --> 00:01:52,069
+switches together with two separate
+cables, you'll create a loop on the
+
+98
+00:01:52,069 --> 00:01:52,079
+cables, you'll create a loop on the
+ 
+
+99
+00:01:52,079 --> 00:01:53,990
+cables, you'll create a loop on the
+switch network, assuming that you're not
+
+100
+00:01:53,990 --> 00:01:54,000
+switch network, assuming that you're not
+ 
+
+101
+00:01:54,000 --> 00:01:56,230
+switch network, assuming that you're not
+already running spanning tree protocol.
+
+102
+00:01:56,230 --> 00:01:56,240
+already running spanning tree protocol.
+ 
+
+103
+00:01:56,240 --> 00:01:57,830
+already running spanning tree protocol.
+But if you're not running spanning tree,
+
+104
+00:01:57,830 --> 00:01:57,840
+But if you're not running spanning tree,
+ 
+
+105
+00:01:57,840 --> 00:01:59,670
+But if you're not running spanning tree,
+you'll find that your network will stop
+
+106
+00:01:59,670 --> 00:01:59,680
+you'll find that your network will stop
+ 
+
+107
+00:01:59,680 --> 00:02:01,830
+you'll find that your network will stop
+working almost immediately because
+
+108
+00:02:01,830 --> 00:02:01,840
+working almost immediately because
+ 
+
+109
+00:02:01,840 --> 00:02:03,910
+working almost immediately because
+you've created a network denial of
+
+110
+00:02:03,910 --> 00:02:03,920
+you've created a network denial of
+ 
+
+111
+00:02:03,920 --> 00:02:06,389
+you've created a network denial of
+service. Or maybe you're at a remote
+
+112
+00:02:06,389 --> 00:02:06,399
+service. Or maybe you're at a remote
+ 
+
+113
+00:02:06,399 --> 00:02:08,389
+service. Or maybe you're at a remote
+location that has limited bandwidth to
+
+114
+00:02:08,389 --> 00:02:08,399
+location that has limited bandwidth to
+ 
+
+115
+00:02:08,399 --> 00:02:10,630
+location that has limited bandwidth to
+the internet, but you need to download a
+
+116
+00:02:10,630 --> 00:02:10,640
+the internet, but you need to download a
+ 
+
+117
+00:02:10,640 --> 00:02:12,869
+the internet, but you need to download a
+Linux distribution. And by doing that,
+
+118
+00:02:12,869 --> 00:02:12,879
+Linux distribution. And by doing that,
+ 
+
+119
+00:02:12,879 --> 00:02:14,390
+Linux distribution. And by doing that,
+you're now taking up all of the
+
+120
+00:02:14,390 --> 00:02:14,400
+you're now taking up all of the
+ 
+
+121
+00:02:14,400 --> 00:02:16,869
+you're now taking up all of the
+available bandwidth over that very small
+
+122
+00:02:16,869 --> 00:02:16,879
+available bandwidth over that very small
+ 
+
+123
+00:02:16,879 --> 00:02:19,110
+available bandwidth over that very small
+internet connection. Anyone else who
+
+124
+00:02:19,110 --> 00:02:19,120
+internet connection. Anyone else who
+ 
+
+125
+00:02:19,120 --> 00:02:20,949
+internet connection. Anyone else who
+needs to perform any type of function to
+
+126
+00:02:20,949 --> 00:02:20,959
+needs to perform any type of function to
+ 
+
+127
+00:02:20,959 --> 00:02:22,949
+needs to perform any type of function to
+the internet may find that it's too slow
+
+128
+00:02:22,949 --> 00:02:22,959
+the internet may find that it's too slow
+ 
+
+129
+00:02:22,959 --> 00:02:25,270
+the internet may find that it's too slow
+to access. And so you've created a
+
+130
+00:02:25,270 --> 00:02:25,280
+to access. And so you've created a
+ 
+
+131
+00:02:25,280 --> 00:02:27,830
+to access. And so you've created a
+bandwidth related denial of service. And
+
+132
+00:02:27,830 --> 00:02:27,840
+bandwidth related denial of service. And
+ 
+
+133
+00:02:27,840 --> 00:02:29,589
+bandwidth related denial of service. And
+I've been part of a denial of service
+
+134
+00:02:29,589 --> 00:02:29,599
+I've been part of a denial of service
+ 
+
+135
+00:02:29,599 --> 00:02:31,910
+I've been part of a denial of service
+that involved water. We had a coffee
+
+136
+00:02:31,910 --> 00:02:31,920
+that involved water. We had a coffee
+ 
+
+137
+00:02:31,920 --> 00:02:33,830
+that involved water. We had a coffee
+machine on the seventh floor that had a
+
+138
+00:02:33,830 --> 00:02:33,840
+machine on the seventh floor that had a
+ 
+
+139
+00:02:33,840 --> 00:02:36,229
+machine on the seventh floor that had a
+water supply and that water supply
+
+140
+00:02:36,229 --> 00:02:36,239
+water supply and that water supply
+ 
+
+141
+00:02:36,239 --> 00:02:38,949
+water supply and that water supply
+connection broke on a Friday afternoon.
+
+142
+00:02:38,949 --> 00:02:38,959
+connection broke on a Friday afternoon.
+ 
+
+143
+00:02:38,959 --> 00:02:40,470
+connection broke on a Friday afternoon.
+No one was in the building over the
+
+144
+00:02:40,470 --> 00:02:40,480
+No one was in the building over the
+ 
+
+145
+00:02:40,480 --> 00:02:42,869
+No one was in the building over the
+weekend and the water seeped down past
+
+146
+00:02:42,869 --> 00:02:42,879
+weekend and the water seeped down past
+ 
+
+147
+00:02:42,879 --> 00:02:45,270
+weekend and the water seeped down past
+the sixth floor, the fifth floor, and
+
+148
+00:02:45,270 --> 00:02:45,280
+the sixth floor, the fifth floor, and
+ 
+
+149
+00:02:45,280 --> 00:02:47,190
+the sixth floor, the fifth floor, and
+finally hit the data center on the
+
+150
+00:02:47,190 --> 00:02:47,200
+finally hit the data center on the
+ 
+
+151
+00:02:47,200 --> 00:02:49,670
+finally hit the data center on the
+fourth floor. Fortunately, not a lot of
+
+152
+00:02:49,670 --> 00:02:49,680
+fourth floor. Fortunately, not a lot of
+ 
+
+153
+00:02:49,680 --> 00:02:51,589
+fourth floor. Fortunately, not a lot of
+systems were affected, but there were
+
+154
+00:02:51,589 --> 00:02:51,599
+systems were affected, but there were
+ 
+
+155
+00:02:51,599 --> 00:02:54,150
+systems were affected, but there were
+some outages caused by this water-based
+
+156
+00:02:54,150 --> 00:02:54,160
+some outages caused by this water-based
+ 
+
+157
+00:02:54,160 --> 00:02:56,470
+some outages caused by this water-based
+denial of service.
+
+158
+00:02:56,470 --> 00:02:56,480
+denial of service.
+ 
+
+159
+00:02:56,480 --> 00:02:58,229
+denial of service.
+Attackers that are using a denial of
+
+160
+00:02:58,229 --> 00:02:58,239
+Attackers that are using a denial of
+ 
+
+161
+00:02:58,239 --> 00:03:00,470
+Attackers that are using a denial of
+service are not commonly attacking with
+
+162
+00:03:00,470 --> 00:03:00,480
+service are not commonly attacking with
+ 
+
+163
+00:03:00,480 --> 00:03:03,190
+service are not commonly attacking with
+a single system. Instead, they will use
+
+164
+00:03:03,190 --> 00:03:03,200
+a single system. Instead, they will use
+ 
+
+165
+00:03:03,200 --> 00:03:05,509
+a single system. Instead, they will use
+multiple systems that are often located
+
+166
+00:03:05,509 --> 00:03:05,519
+multiple systems that are often located
+ 
+
+167
+00:03:05,519 --> 00:03:08,149
+multiple systems that are often located
+around the world. We refer to this as a
+
+168
+00:03:08,149 --> 00:03:08,159
+around the world. We refer to this as a
+ 
+
+169
+00:03:08,159 --> 00:03:11,430
+around the world. We refer to this as a
+distributed denial of service or a DDoS.
+
+170
+00:03:11,430 --> 00:03:11,440
+distributed denial of service or a DDoS.
+ 
+
+171
+00:03:11,440 --> 00:03:13,750
+distributed denial of service or a DDoS.
+Advanced forms of a DDoS might involve
+
+172
+00:03:13,750 --> 00:03:13,760
+Advanced forms of a DDoS might involve
+ 
+
+173
+00:03:13,760 --> 00:03:15,750
+Advanced forms of a DDoS might involve
+an entire botnet. There might be
+
+174
+00:03:15,750 --> 00:03:15,760
+an entire botnet. There might be
+ 
+
+175
+00:03:15,760 --> 00:03:18,149
+an entire botnet. There might be
+millions of devices infected with the
+
+176
+00:03:18,149 --> 00:03:18,159
+millions of devices infected with the
+ 
+
+177
+00:03:18,159 --> 00:03:20,790
+millions of devices infected with the
+same malware around the world. And that
+
+178
+00:03:20,790 --> 00:03:20,800
+same malware around the world. And that
+ 
+
+179
+00:03:20,800 --> 00:03:23,030
+same malware around the world. And that
+malware allows the attacker to send
+
+180
+00:03:23,030 --> 00:03:23,040
+malware allows the attacker to send
+ 
+
+181
+00:03:23,040 --> 00:03:25,670
+malware allows the attacker to send
+messages to all of these devices and
+
+182
+00:03:25,670 --> 00:03:25,680
+messages to all of these devices and
+ 
+
+183
+00:03:25,680 --> 00:03:27,910
+messages to all of these devices and
+have them perform different functions.
+
+184
+00:03:27,910 --> 00:03:27,920
+have them perform different functions.
+ 
+
+185
+00:03:27,920 --> 00:03:30,550
+have them perform different functions.
+Imagine having 3.6 million devices
+
+186
+00:03:30,550 --> 00:03:30,560
+Imagine having 3.6 million devices
+ 
+
+187
+00:03:30,560 --> 00:03:32,550
+Imagine having 3.6 million devices
+around the world infected with the Zeus
+
+188
+00:03:32,550 --> 00:03:32,560
+around the world infected with the Zeus
+ 
+
+189
+00:03:32,560 --> 00:03:34,869
+around the world infected with the Zeus
+botnet. The people that are managing
+
+190
+00:03:34,869 --> 00:03:34,879
+botnet. The people that are managing
+ 
+
+191
+00:03:34,879 --> 00:03:38,070
+botnet. The people that are managing
+that botnet can now tell all 3.6 million
+
+192
+00:03:38,070 --> 00:03:38,080
+that botnet can now tell all 3.6 million
+ 
+
+193
+00:03:38,080 --> 00:03:40,710
+that botnet can now tell all 3.6 million
+devices to begin attacking one single
+
+194
+00:03:40,710 --> 00:03:40,720
+devices to begin attacking one single
+ 
+
+195
+00:03:40,720 --> 00:03:42,630
+devices to begin attacking one single
+device on the internet. The worst part
+
+196
+00:03:42,630 --> 00:03:42,640
+device on the internet. The worst part
+ 
+
+197
+00:03:42,640 --> 00:03:44,550
+device on the internet. The worst part
+is that the people who are participating
+
+198
+00:03:44,550 --> 00:03:44,560
+is that the people who are participating
+ 
+
+199
+00:03:44,560 --> 00:03:47,030
+is that the people who are participating
+in this botnet may have no idea it's
+
+200
+00:03:47,030 --> 00:03:47,040
+in this botnet may have no idea it's
+ 
+
+201
+00:03:47,040 --> 00:03:49,030
+in this botnet may have no idea it's
+even occurring. The botnet is running in
+
+202
+00:03:49,030 --> 00:03:49,040
+even occurring. The botnet is running in
+ 
+
+203
+00:03:49,040 --> 00:03:51,030
+even occurring. The botnet is running in
+the background of people's computers and
+
+204
+00:03:51,030 --> 00:03:51,040
+the background of people's computers and
+ 
+
+205
+00:03:51,040 --> 00:03:53,190
+the background of people's computers and
+those machines are effectively zombies.
+
+206
+00:03:53,190 --> 00:03:53,200
+those machines are effectively zombies.
+ 
+
+207
+00:03:53,200 --> 00:03:54,949
+those machines are effectively zombies.
+They are under the control of the person
+
+208
+00:03:54,949 --> 00:03:54,959
+They are under the control of the person
+ 
+
+209
+00:03:54,959 --> 00:03:56,710
+They are under the control of the person
+running the botnet while at the same
+
+210
+00:03:56,710 --> 00:03:56,720
+running the botnet while at the same
+ 
+
+211
+00:03:56,720 --> 00:03:59,030
+running the botnet while at the same
+time still acting as the main computing
+
+212
+00:03:59,030 --> 00:03:59,040
+time still acting as the main computing
+ 
+
+213
+00:03:59,040 --> 00:04:01,910
+time still acting as the main computing
+system for that user.
+
+214
+00:04:01,910 --> 00:04:01,920
+system for that user.
+ 
+
+215
+00:04:01,920 --> 00:04:04,149
+system for that user.
+Some types of DOS attacks can be
+
+216
+00:04:04,149 --> 00:04:04,159
+Some types of DOS attacks can be
+ 
+
+217
+00:04:04,159 --> 00:04:06,149
+Some types of DOS attacks can be
+identified by the information inside of
+
+218
+00:04:06,149 --> 00:04:06,159
+identified by the information inside of
+ 
+
+219
+00:04:06,159 --> 00:04:08,229
+identified by the information inside of
+a packet. And if all of those packets
+
+220
+00:04:08,229 --> 00:04:08,239
+a packet. And if all of those packets
+ 
+
+221
+00:04:08,239 --> 00:04:09,990
+a packet. And if all of those packets
+are very similar, you may be able to
+
+222
+00:04:09,990 --> 00:04:10,000
+are very similar, you may be able to
+ 
+
+223
+00:04:10,000 --> 00:04:12,470
+are very similar, you may be able to
+filter that packet at your firewall.
+
+224
+00:04:12,470 --> 00:04:12,480
+filter that packet at your firewall.
+ 
+
+225
+00:04:12,480 --> 00:04:14,229
+filter that packet at your firewall.
+Some internet service providers have
+
+226
+00:04:14,229 --> 00:04:14,239
+Some internet service providers have
+ 
+
+227
+00:04:14,239 --> 00:04:16,949
+Some internet service providers have
+DDoS prevention systems in the core of
+
+228
+00:04:16,949 --> 00:04:16,959
+DDoS prevention systems in the core of
+ 
+
+229
+00:04:16,959 --> 00:04:19,189
+DDoS prevention systems in the core of
+their internet service provider network.
+
+230
+00:04:19,189 --> 00:04:19,199
+their internet service provider network.
+ 
+
+231
+00:04:19,199 --> 00:04:21,909
+their internet service provider network.
+So your ISP may be able to enable that
+
+232
+00:04:21,909 --> 00:04:21,919
+So your ISP may be able to enable that
+ 
+
+233
+00:04:21,919 --> 00:04:24,310
+So your ISP may be able to enable that
+DDoS mitigation and prevent that traffic
+
+234
+00:04:24,310 --> 00:04:24,320
+DDoS mitigation and prevent that traffic
+ 
+
+235
+00:04:24,320 --> 00:04:26,710
+DDoS mitigation and prevent that traffic
+from reaching your local network. And
+
+236
+00:04:26,710 --> 00:04:26,720
+from reaching your local network. And
+ 
+
+237
+00:04:26,720 --> 00:04:28,070
+from reaching your local network. And
+some companies on the internet
+
+238
+00:04:28,070 --> 00:04:28,080
+some companies on the internet
+ 
+
+239
+00:04:28,080 --> 00:04:30,070
+some companies on the internet
+specialize in preventing these types of
+
+240
+00:04:30,070 --> 00:04:30,080
+specialize in preventing these types of
+ 
+
+241
+00:04:30,080 --> 00:04:32,070
+specialize in preventing these types of
+attacks. A good example is the reverse
+
+242
+00:04:32,070 --> 00:04:32,080
+attacks. A good example is the reverse
+ 
+
+243
+00:04:32,080 --> 00:04:34,870
+attacks. A good example is the reverse
+proxy capabilities at Cloudflare where a
+
+244
+00:04:34,870 --> 00:04:34,880
+proxy capabilities at Cloudflare where a
+ 
+
+245
+00:04:34,880 --> 00:04:37,830
+proxy capabilities at Cloudflare where a
+customer can turn on DDoS prevention and
+
+246
+00:04:37,830 --> 00:04:37,840
+customer can turn on DDoS prevention and
+ 
+
+247
+00:04:37,840 --> 00:04:39,830
+customer can turn on DDoS prevention and
+stop all of those attacks from reaching
+
+248
+00:04:39,830 --> 00:04:39,840
+stop all of those attacks from reaching
+ 
+
+249
+00:04:39,840 --> 00:04:43,479
+stop all of those attacks from reaching
+their local servers.
+

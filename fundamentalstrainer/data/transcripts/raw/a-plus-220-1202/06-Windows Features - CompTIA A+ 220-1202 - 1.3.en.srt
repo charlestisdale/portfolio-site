@@ -1,0 +1,2265 @@
+1
+00:00:02,000 --> 00:00:03,350
+
+There are a number of challenges
+
+2
+00:00:03,350 --> 00:00:03,360
+There are a number of challenges
+ 
+
+3
+00:00:03,360 --> 00:00:05,670
+There are a number of challenges
+associated with supporting a Windows
+
+4
+00:00:05,670 --> 00:00:05,680
+associated with supporting a Windows
+ 
+
+5
+00:00:05,680 --> 00:00:08,310
+associated with supporting a Windows
+environment in a large enterprise. There
+
+6
+00:00:08,310 --> 00:00:08,320
+environment in a large enterprise. There
+ 
+
+7
+00:00:08,320 --> 00:00:10,549
+environment in a large enterprise. There
+might be hundreds or thousands of
+
+8
+00:00:10,549 --> 00:00:10,559
+might be hundreds or thousands of
+ 
+
+9
+00:00:10,559 --> 00:00:13,190
+might be hundreds or thousands of
+devices. You have an IT team that needs
+
+10
+00:00:13,190 --> 00:00:13,200
+devices. You have an IT team that needs
+ 
+
+11
+00:00:13,200 --> 00:00:15,749
+devices. You have an IT team that needs
+to be able to install, update, and
+
+12
+00:00:15,749 --> 00:00:15,759
+to be able to install, update, and
+ 
+
+13
+00:00:15,759 --> 00:00:18,230
+to be able to install, update, and
+manage all of these Windows devices
+
+14
+00:00:18,230 --> 00:00:18,240
+manage all of these Windows devices
+ 
+
+15
+00:00:18,240 --> 00:00:19,910
+manage all of these Windows devices
+wherever they might be in the
+
+16
+00:00:19,910 --> 00:00:19,920
+wherever they might be in the
+ 
+
+17
+00:00:19,920 --> 00:00:22,230
+wherever they might be in the
+organization. We also have security
+
+18
+00:00:22,230 --> 00:00:22,240
+organization. We also have security
+ 
+
+19
+00:00:22,240 --> 00:00:24,710
+organization. We also have security
+concerns, especially with mobile devices
+
+20
+00:00:24,710 --> 00:00:24,720
+concerns, especially with mobile devices
+ 
+
+21
+00:00:24,720 --> 00:00:26,390
+concerns, especially with mobile devices
+where there may be important and
+
+22
+00:00:26,390 --> 00:00:26,400
+where there may be important and
+ 
+
+23
+00:00:26,400 --> 00:00:28,950
+where there may be important and
+sensitive data on those devices, but we
+
+24
+00:00:28,950 --> 00:00:28,960
+sensitive data on those devices, but we
+ 
+
+25
+00:00:28,960 --> 00:00:30,710
+sensitive data on those devices, but we
+need to be sure that we're able to
+
+26
+00:00:30,710 --> 00:00:30,720
+need to be sure that we're able to
+ 
+
+27
+00:00:30,720 --> 00:00:33,030
+need to be sure that we're able to
+secure all of that information wherever
+
+28
+00:00:33,030 --> 00:00:33,040
+secure all of that information wherever
+ 
+
+29
+00:00:33,040 --> 00:00:35,670
+secure all of that information wherever
+these mobile devices might be. We also
+
+30
+00:00:35,670 --> 00:00:35,680
+these mobile devices might be. We also
+ 
+
+31
+00:00:35,680 --> 00:00:37,590
+these mobile devices might be. We also
+have to set rights and permissions for
+
+32
+00:00:37,590 --> 00:00:37,600
+have to set rights and permissions for
+ 
+
+33
+00:00:37,600 --> 00:00:39,910
+have to set rights and permissions for
+any local file shares that people may be
+
+34
+00:00:39,910 --> 00:00:39,920
+any local file shares that people may be
+ 
+
+35
+00:00:39,920 --> 00:00:42,229
+any local file shares that people may be
+accessing. And of course, if someone has
+
+36
+00:00:42,229 --> 00:00:42,239
+accessing. And of course, if someone has
+ 
+
+37
+00:00:42,239 --> 00:00:44,549
+accessing. And of course, if someone has
+a laptop, that information can be picked
+
+38
+00:00:44,549 --> 00:00:44,559
+a laptop, that information can be picked
+ 
+
+39
+00:00:44,559 --> 00:00:47,029
+a laptop, that information can be picked
+up and moved anywhere that laptop might
+
+40
+00:00:47,029 --> 00:00:47,039
+up and moved anywhere that laptop might
+ 
+
+41
+00:00:47,039 --> 00:00:49,430
+up and moved anywhere that laptop might
+go. So whether you're working on a big
+
+42
+00:00:49,430 --> 00:00:49,440
+go. So whether you're working on a big
+ 
+
+43
+00:00:49,440 --> 00:00:51,270
+go. So whether you're working on a big
+spreadsheet or you're watching a movie
+
+44
+00:00:51,270 --> 00:00:51,280
+spreadsheet or you're watching a movie
+ 
+
+45
+00:00:51,280 --> 00:00:53,350
+spreadsheet or you're watching a movie
+on your computer, there are a number of
+
+46
+00:00:53,350 --> 00:00:53,360
+on your computer, there are a number of
+ 
+
+47
+00:00:53,360 --> 00:00:55,270
+on your computer, there are a number of
+different features included with Windows
+
+48
+00:00:55,270 --> 00:00:55,280
+different features included with Windows
+ 
+
+49
+00:00:55,280 --> 00:00:57,270
+different features included with Windows
+that can help you regardless of what
+
+50
+00:00:57,270 --> 00:00:57,280
+that can help you regardless of what
+ 
+
+51
+00:00:57,280 --> 00:00:58,110
+that can help you regardless of what
+you're
+
+52
+00:00:58,110 --> 00:00:58,120
+you're
+ 
+
+53
+00:00:58,120 --> 00:01:00,630
+you're
+doing. In a business, all of your
+
+54
+00:01:00,630 --> 00:01:00,640
+doing. In a business, all of your
+ 
+
+55
+00:01:00,640 --> 00:01:03,189
+doing. In a business, all of your
+systems are probably documented in a
+
+56
+00:01:03,189 --> 00:01:03,199
+systems are probably documented in a
+ 
+
+57
+00:01:03,199 --> 00:01:05,270
+systems are probably documented in a
+central database called the active
+
+58
+00:01:05,270 --> 00:01:05,280
+central database called the active
+ 
+
+59
+00:01:05,280 --> 00:01:08,070
+central database called the active
+directory domain services database. This
+
+60
+00:01:08,070 --> 00:01:08,080
+directory domain services database. This
+ 
+
+61
+00:01:08,080 --> 00:01:10,230
+directory domain services database. This
+is a very large database that contains
+
+62
+00:01:10,230 --> 00:01:10,240
+is a very large database that contains
+ 
+
+63
+00:01:10,240 --> 00:01:12,550
+is a very large database that contains
+everything about every component that is
+
+64
+00:01:12,550 --> 00:01:12,560
+everything about every component that is
+ 
+
+65
+00:01:12,560 --> 00:01:14,630
+everything about every component that is
+connected to your network, including
+
+66
+00:01:14,630 --> 00:01:14,640
+connected to your network, including
+ 
+
+67
+00:01:14,640 --> 00:01:17,270
+connected to your network, including
+individual usernames, their permissions,
+
+68
+00:01:17,270 --> 00:01:17,280
+individual usernames, their permissions,
+ 
+
+69
+00:01:17,280 --> 00:01:19,910
+individual usernames, their permissions,
+information about security features, and
+
+70
+00:01:19,910 --> 00:01:19,920
+information about security features, and
+ 
+
+71
+00:01:19,920 --> 00:01:22,070
+information about security features, and
+anything else that may be connected to
+
+72
+00:01:22,070 --> 00:01:22,080
+anything else that may be connected to
+ 
+
+73
+00:01:22,080 --> 00:01:24,390
+anything else that may be connected to
+your infrastructure. Having all of these
+
+74
+00:01:24,390 --> 00:01:24,400
+your infrastructure. Having all of these
+ 
+
+75
+00:01:24,400 --> 00:01:26,789
+your infrastructure. Having all of these
+servers and printers and laptops and
+
+76
+00:01:26,789 --> 00:01:26,799
+servers and printers and laptops and
+ 
+
+77
+00:01:26,799 --> 00:01:29,429
+servers and printers and laptops and
+user accounts in one database allows for
+
+78
+00:01:29,429 --> 00:01:29,439
+user accounts in one database allows for
+ 
+
+79
+00:01:29,439 --> 00:01:31,590
+user accounts in one database allows for
+central management of all of this
+
+80
+00:01:31,590 --> 00:01:31,600
+central management of all of this
+ 
+
+81
+00:01:31,600 --> 00:01:33,749
+central management of all of this
+information. This allows organizations
+
+82
+00:01:33,749 --> 00:01:33,759
+information. This allows organizations
+ 
+
+83
+00:01:33,759 --> 00:01:36,069
+information. This allows organizations
+to scale up their computing platforms
+
+84
+00:01:36,069 --> 00:01:36,079
+to scale up their computing platforms
+ 
+
+85
+00:01:36,079 --> 00:01:38,390
+to scale up their computing platforms
+and be able to manage all of these very
+
+86
+00:01:38,390 --> 00:01:38,400
+and be able to manage all of these very
+ 
+
+87
+00:01:38,400 --> 00:01:41,030
+and be able to manage all of these very
+different devices. You'll also find that
+
+88
+00:01:41,030 --> 00:01:41,040
+different devices. You'll also find that
+ 
+
+89
+00:01:41,040 --> 00:01:43,109
+different devices. You'll also find that
+Active Directory is one that is a
+
+90
+00:01:43,109 --> 00:01:43,119
+Active Directory is one that is a
+ 
+
+91
+00:01:43,119 --> 00:01:45,270
+Active Directory is one that is a
+distributed database, so you can have
+
+92
+00:01:45,270 --> 00:01:45,280
+distributed database, so you can have
+ 
+
+93
+00:01:45,280 --> 00:01:47,109
+distributed database, so you can have
+multiple versions of the Active
+
+94
+00:01:47,109 --> 00:01:47,119
+multiple versions of the Active
+ 
+
+95
+00:01:47,119 --> 00:01:49,109
+multiple versions of the Active
+Directory database located in different
+
+96
+00:01:49,109 --> 00:01:49,119
+Directory database located in different
+ 
+
+97
+00:01:49,119 --> 00:01:51,429
+Directory database located in different
+parts of your network. This provides
+
+98
+00:01:51,429 --> 00:01:51,439
+parts of your network. This provides
+ 
+
+99
+00:01:51,439 --> 00:01:53,990
+parts of your network. This provides
+scalability and redundancy for all of
+
+100
+00:01:53,990 --> 00:01:54,000
+scalability and redundancy for all of
+ 
+
+101
+00:01:54,000 --> 00:01:55,830
+scalability and redundancy for all of
+this important information that keeps
+
+102
+00:01:55,830 --> 00:01:55,840
+this important information that keeps
+ 
+
+103
+00:01:55,840 --> 00:01:58,069
+this important information that keeps
+your network running. This is probably
+
+104
+00:01:58,069 --> 00:01:58,079
+your network running. This is probably
+ 
+
+105
+00:01:58,079 --> 00:02:00,709
+your network running. This is probably
+why you often don't see Active Directory
+
+106
+00:02:00,709 --> 00:02:00,719
+why you often don't see Active Directory
+ 
+
+107
+00:02:00,719 --> 00:02:02,950
+why you often don't see Active Directory
+being used in a home environment since
+
+108
+00:02:02,950 --> 00:02:02,960
+being used in a home environment since
+ 
+
+109
+00:02:02,960 --> 00:02:05,190
+being used in a home environment since
+usually we only have a handful of user
+
+110
+00:02:05,190 --> 00:02:05,200
+usually we only have a handful of user
+ 
+
+111
+00:02:05,200 --> 00:02:06,950
+usually we only have a handful of user
+accounts and passwords that we need to
+
+112
+00:02:06,950 --> 00:02:06,960
+accounts and passwords that we need to
+ 
+
+113
+00:02:06,960 --> 00:02:09,350
+accounts and passwords that we need to
+keep up with. So if you are logging on
+
+114
+00:02:09,350 --> 00:02:09,360
+keep up with. So if you are logging on
+ 
+
+115
+00:02:09,360 --> 00:02:11,029
+keep up with. So if you are logging on
+to your corporate network, you're
+
+116
+00:02:11,029 --> 00:02:11,039
+to your corporate network, you're
+ 
+
+117
+00:02:11,039 --> 00:02:13,190
+to your corporate network, you're
+authenticating to the VPN or you're
+
+118
+00:02:13,190 --> 00:02:13,200
+authenticating to the VPN or you're
+ 
+
+119
+00:02:13,200 --> 00:02:15,190
+authenticating to the VPN or you're
+simply accessing a share across the
+
+120
+00:02:15,190 --> 00:02:15,200
+simply accessing a share across the
+ 
+
+121
+00:02:15,200 --> 00:02:17,190
+simply accessing a share across the
+network, you're probably doing this
+
+122
+00:02:17,190 --> 00:02:17,200
+network, you're probably doing this
+ 
+
+123
+00:02:17,200 --> 00:02:19,270
+network, you're probably doing this
+based on information contained within
+
+124
+00:02:19,270 --> 00:02:19,280
+based on information contained within
+ 
+
+125
+00:02:19,280 --> 00:02:21,510
+based on information contained within
+the Active Directory domain services
+
+126
+00:02:21,510 --> 00:02:21,520
+the Active Directory domain services
+ 
+
+127
+00:02:21,520 --> 00:02:23,670
+the Active Directory domain services
+database.
+
+128
+00:02:23,670 --> 00:02:23,680
+database.
+ 
+
+129
+00:02:23,680 --> 00:02:25,030
+database.
+On your home network, it's still
+
+130
+00:02:25,030 --> 00:02:25,040
+On your home network, it's still
+ 
+
+131
+00:02:25,040 --> 00:02:27,270
+On your home network, it's still
+possible to logically group together
+
+132
+00:02:27,270 --> 00:02:27,280
+possible to logically group together
+ 
+
+133
+00:02:27,280 --> 00:02:29,910
+possible to logically group together
+devices. We refer to this as a Windows
+
+134
+00:02:29,910 --> 00:02:29,920
+devices. We refer to this as a Windows
+ 
+
+135
+00:02:29,920 --> 00:02:31,750
+devices. We refer to this as a Windows
+workg groupoup. Instead of managing
+
+136
+00:02:31,750 --> 00:02:31,760
+workg groupoup. Instead of managing
+ 
+
+137
+00:02:31,760 --> 00:02:33,589
+workg groupoup. Instead of managing
+everything from a central database like
+
+138
+00:02:33,589 --> 00:02:33,599
+everything from a central database like
+ 
+
+139
+00:02:33,599 --> 00:02:35,670
+everything from a central database like
+you do with Active Directory, a Windows
+
+140
+00:02:35,670 --> 00:02:35,680
+you do with Active Directory, a Windows
+ 
+
+141
+00:02:35,680 --> 00:02:37,990
+you do with Active Directory, a Windows
+workg groupoup manages each individual
+
+142
+00:02:37,990 --> 00:02:38,000
+workg groupoup manages each individual
+ 
+
+143
+00:02:38,000 --> 00:02:40,630
+workg groupoup manages each individual
+device as a single unit. But on your
+
+144
+00:02:40,630 --> 00:02:40,640
+device as a single unit. But on your
+ 
+
+145
+00:02:40,640 --> 00:02:42,470
+device as a single unit. But on your
+work network, you're using a Windows
+
+146
+00:02:42,470 --> 00:02:42,480
+work network, you're using a Windows
+ 
+
+147
+00:02:42,480 --> 00:02:44,470
+work network, you're using a Windows
+domain. With Active Directory,
+
+148
+00:02:44,470 --> 00:02:44,480
+domain. With Active Directory,
+ 
+
+149
+00:02:44,480 --> 00:02:46,390
+domain. With Active Directory,
+everything is centralized. All of your
+
+150
+00:02:46,390 --> 00:02:46,400
+everything is centralized. All of your
+ 
+
+151
+00:02:46,400 --> 00:02:48,470
+everything is centralized. All of your
+authentication is contained within one
+
+152
+00:02:48,470 --> 00:02:48,480
+authentication is contained within one
+ 
+
+153
+00:02:48,480 --> 00:02:50,309
+authentication is contained within one
+single database and you're able to
+
+154
+00:02:50,309 --> 00:02:50,319
+single database and you're able to
+ 
+
+155
+00:02:50,319 --> 00:02:52,710
+single database and you're able to
+support those thousands of devices from
+
+156
+00:02:52,710 --> 00:02:52,720
+support those thousands of devices from
+ 
+
+157
+00:02:52,720 --> 00:02:55,710
+support those thousands of devices from
+this one Active Directory
+
+158
+00:02:55,710 --> 00:02:55,720
+this one Active Directory
+ 
+
+159
+00:02:55,720 --> 00:02:57,589
+this one Active Directory
+infrastructure. Depending on where we
+
+160
+00:02:57,589 --> 00:02:57,599
+infrastructure. Depending on where we
+ 
+
+161
+00:02:57,599 --> 00:02:59,670
+infrastructure. Depending on where we
+are, we might want to customize some of
+
+162
+00:02:59,670 --> 00:02:59,680
+are, we might want to customize some of
+ 
+
+163
+00:02:59,680 --> 00:03:02,309
+are, we might want to customize some of
+the features available on a laptop or a
+
+164
+00:03:02,309 --> 00:03:02,319
+the features available on a laptop or a
+ 
+
+165
+00:03:02,319 --> 00:03:04,309
+the features available on a laptop or a
+desktop that we use on our Windows
+
+166
+00:03:04,309 --> 00:03:04,319
+desktop that we use on our Windows
+ 
+
+167
+00:03:04,319 --> 00:03:06,229
+desktop that we use on our Windows
+network. If you're at work, there's
+
+168
+00:03:06,229 --> 00:03:06,239
+network. If you're at work, there's
+ 
+
+169
+00:03:06,239 --> 00:03:08,630
+network. If you're at work, there's
+usually a standard desktop. It has a
+
+170
+00:03:08,630 --> 00:03:08,640
+usually a standard desktop. It has a
+ 
+
+171
+00:03:08,640 --> 00:03:10,949
+usually a standard desktop. It has a
+very specific user interface and it
+
+172
+00:03:10,949 --> 00:03:10,959
+very specific user interface and it
+ 
+
+173
+00:03:10,959 --> 00:03:12,869
+very specific user interface and it
+might have a very limited amount of
+
+174
+00:03:12,869 --> 00:03:12,879
+might have a very limited amount of
+ 
+
+175
+00:03:12,879 --> 00:03:14,949
+might have a very limited amount of
+customization. You might not be able to
+
+176
+00:03:14,949 --> 00:03:14,959
+customization. You might not be able to
+ 
+
+177
+00:03:14,959 --> 00:03:16,869
+customization. You might not be able to
+change the background. You might not be
+
+178
+00:03:16,869 --> 00:03:16,879
+change the background. You might not be
+ 
+
+179
+00:03:16,879 --> 00:03:19,030
+change the background. You might not be
+able to modify the language settings
+
+180
+00:03:19,030 --> 00:03:19,040
+able to modify the language settings
+ 
+
+181
+00:03:19,040 --> 00:03:20,790
+able to modify the language settings
+that are available. And you might not
+
+182
+00:03:20,790 --> 00:03:20,800
+that are available. And you might not
+ 
+
+183
+00:03:20,800 --> 00:03:23,430
+that are available. And you might not
+even be able to install or remove any of
+
+184
+00:03:23,430 --> 00:03:23,440
+even be able to install or remove any of
+ 
+
+185
+00:03:23,440 --> 00:03:25,830
+even be able to install or remove any of
+the software on that device. But this
+
+186
+00:03:25,830 --> 00:03:25,840
+the software on that device. But this
+ 
+
+187
+00:03:25,840 --> 00:03:27,750
+the software on that device. But this
+does make all of these systems easier to
+
+188
+00:03:27,750 --> 00:03:27,760
+does make all of these systems easier to
+ 
+
+189
+00:03:27,760 --> 00:03:29,589
+does make all of these systems easier to
+manage because they all have a very
+
+190
+00:03:29,589 --> 00:03:29,599
+manage because they all have a very
+ 
+
+191
+00:03:29,599 --> 00:03:31,910
+manage because they all have a very
+similar user interface. And it also
+
+192
+00:03:31,910 --> 00:03:31,920
+similar user interface. And it also
+ 
+
+193
+00:03:31,920 --> 00:03:33,750
+similar user interface. And it also
+means that you could sit down at any
+
+194
+00:03:33,750 --> 00:03:33,760
+means that you could sit down at any
+ 
+
+195
+00:03:33,760 --> 00:03:35,990
+means that you could sit down at any
+computer and be able to immediately
+
+196
+00:03:35,990 --> 00:03:36,000
+computer and be able to immediately
+ 
+
+197
+00:03:36,000 --> 00:03:37,910
+computer and be able to immediately
+understand where all of the important
+
+198
+00:03:37,910 --> 00:03:37,920
+understand where all of the important
+ 
+
+199
+00:03:37,920 --> 00:03:40,470
+understand where all of the important
+resources might be. At home, of course,
+
+200
+00:03:40,470 --> 00:03:40,480
+resources might be. At home, of course,
+ 
+
+201
+00:03:40,480 --> 00:03:42,229
+resources might be. At home, of course,
+we don't have these restrictions and we
+
+202
+00:03:42,229 --> 00:03:42,239
+we don't have these restrictions and we
+ 
+
+203
+00:03:42,239 --> 00:03:43,990
+we don't have these restrictions and we
+might want to customize our computing
+
+204
+00:03:43,990 --> 00:03:44,000
+might want to customize our computing
+ 
+
+205
+00:03:44,000 --> 00:03:47,030
+might want to customize our computing
+platform to be specific to us. We might
+
+206
+00:03:47,030 --> 00:03:47,040
+platform to be specific to us. We might
+ 
+
+207
+00:03:47,040 --> 00:03:48,470
+platform to be specific to us. We might
+want to change the background and the
+
+208
+00:03:48,470 --> 00:03:48,480
+want to change the background and the
+ 
+
+209
+00:03:48,480 --> 00:03:50,710
+want to change the background and the
+colors we use. We can change the type
+
+210
+00:03:50,710 --> 00:03:50,720
+colors we use. We can change the type
+ 
+
+211
+00:03:50,720 --> 00:03:52,869
+colors we use. We can change the type
+faces and the size of the fonts on the
+
+212
+00:03:52,869 --> 00:03:52,879
+faces and the size of the fonts on the
+ 
+
+213
+00:03:52,879 --> 00:03:55,190
+faces and the size of the fonts on the
+screen. And we can really customize the
+
+214
+00:03:55,190 --> 00:03:55,200
+screen. And we can really customize the
+ 
+
+215
+00:03:55,200 --> 00:03:57,429
+screen. And we can really customize the
+device to be something that we use in
+
+216
+00:03:57,429 --> 00:03:57,439
+device to be something that we use in
+ 
+
+217
+00:03:57,439 --> 00:03:59,229
+device to be something that we use in
+our personal home
+
+218
+00:03:59,229 --> 00:03:59,239
+our personal home
+ 
+
+219
+00:03:59,239 --> 00:04:01,429
+our personal home
+environment. If you've ever worked in a
+
+220
+00:04:01,429 --> 00:04:01,439
+environment. If you've ever worked in a
+ 
+
+221
+00:04:01,439 --> 00:04:02,869
+environment. If you've ever worked in a
+corporate help desk, then you're
+
+222
+00:04:02,869 --> 00:04:02,879
+corporate help desk, then you're
+ 
+
+223
+00:04:02,879 --> 00:04:05,830
+corporate help desk, then you're
+probably familiar with remote desktop.
+
+224
+00:04:05,830 --> 00:04:05,840
+probably familiar with remote desktop.
+ 
+
+225
+00:04:05,840 --> 00:04:07,910
+probably familiar with remote desktop.
+This is a way that you can remotely
+
+226
+00:04:07,910 --> 00:04:07,920
+This is a way that you can remotely
+ 
+
+227
+00:04:07,920 --> 00:04:10,710
+This is a way that you can remotely
+connect to a computer and be able to see
+
+228
+00:04:10,710 --> 00:04:10,720
+connect to a computer and be able to see
+ 
+
+229
+00:04:10,720 --> 00:04:13,350
+connect to a computer and be able to see
+and interact with a desktop that's on a
+
+230
+00:04:13,350 --> 00:04:13,360
+and interact with a desktop that's on a
+ 
+
+231
+00:04:13,360 --> 00:04:15,350
+and interact with a desktop that's on a
+different computer. This means that you
+
+232
+00:04:15,350 --> 00:04:15,360
+different computer. This means that you
+ 
+
+233
+00:04:15,360 --> 00:04:17,909
+different computer. This means that you
+can sit in your chair and interact with
+
+234
+00:04:17,909 --> 00:04:17,919
+can sit in your chair and interact with
+ 
+
+235
+00:04:17,919 --> 00:04:20,069
+can sit in your chair and interact with
+any of the Windows devices that are on
+
+236
+00:04:20,069 --> 00:04:20,079
+any of the Windows devices that are on
+ 
+
+237
+00:04:20,079 --> 00:04:22,069
+any of the Windows devices that are on
+your corporate network wherever they
+
+238
+00:04:22,069 --> 00:04:22,079
+your corporate network wherever they
+ 
+
+239
+00:04:22,079 --> 00:04:24,870
+your corporate network wherever they
+might be. To be able to connect to these
+
+240
+00:04:24,870 --> 00:04:24,880
+might be. To be able to connect to these
+ 
+
+241
+00:04:24,880 --> 00:04:27,350
+might be. To be able to connect to these
+remote devices, we need a client that's
+
+242
+00:04:27,350 --> 00:04:27,360
+remote devices, we need a client that's
+ 
+
+243
+00:04:27,360 --> 00:04:29,590
+remote devices, we need a client that's
+able to provide that functionality. We
+
+244
+00:04:29,590 --> 00:04:29,600
+able to provide that functionality. We
+ 
+
+245
+00:04:29,600 --> 00:04:31,749
+able to provide that functionality. We
+refer to this as the remote desktop
+
+246
+00:04:31,749 --> 00:04:31,759
+refer to this as the remote desktop
+ 
+
+247
+00:04:31,759 --> 00:04:35,030
+refer to this as the remote desktop
+protocol client or the RDP client. The
+
+248
+00:04:35,030 --> 00:04:35,040
+protocol client or the RDP client. The
+ 
+
+249
+00:04:35,040 --> 00:04:37,270
+protocol client or the RDP client. The
+client is the software that connects to
+
+250
+00:04:37,270 --> 00:04:37,280
+client is the software that connects to
+ 
+
+251
+00:04:37,280 --> 00:04:40,070
+client is the software that connects to
+a remote desktop service. This client
+
+252
+00:04:40,070 --> 00:04:40,080
+a remote desktop service. This client
+ 
+
+253
+00:04:40,080 --> 00:04:41,909
+a remote desktop service. This client
+software is available on many different
+
+254
+00:04:41,909 --> 00:04:41,919
+software is available on many different
+ 
+
+255
+00:04:41,919 --> 00:04:43,590
+software is available on many different
+operating systems and many different
+
+256
+00:04:43,590 --> 00:04:43,600
+operating systems and many different
+ 
+
+257
+00:04:43,600 --> 00:04:45,909
+operating systems and many different
+platforms. There are RDP clients
+
+258
+00:04:45,909 --> 00:04:45,919
+platforms. There are RDP clients
+ 
+
+259
+00:04:45,919 --> 00:04:48,710
+platforms. There are RDP clients
+available for Windows, Mac OS, Linux,
+
+260
+00:04:48,710 --> 00:04:48,720
+available for Windows, Mac OS, Linux,
+ 
+
+261
+00:04:48,720 --> 00:04:51,629
+available for Windows, Mac OS, Linux,
+Android, iOS, and almost any other
+
+262
+00:04:51,629 --> 00:04:51,639
+Android, iOS, and almost any other
+ 
+
+263
+00:04:51,639 --> 00:04:54,150
+Android, iOS, and almost any other
+platform. The software that is running
+
+264
+00:04:54,150 --> 00:04:54,160
+platform. The software that is running
+ 
+
+265
+00:04:54,160 --> 00:04:56,629
+platform. The software that is running
+on that remote device that allows us to
+
+266
+00:04:56,629 --> 00:04:56,639
+on that remote device that allows us to
+ 
+
+267
+00:04:56,639 --> 00:04:59,030
+on that remote device that allows us to
+connect with our remote desktop client
+
+268
+00:04:59,030 --> 00:04:59,040
+connect with our remote desktop client
+ 
+
+269
+00:04:59,040 --> 00:05:02,070
+connect with our remote desktop client
+is the remote desktop service. This is a
+
+270
+00:05:02,070 --> 00:05:02,080
+is the remote desktop service. This is a
+ 
+
+271
+00:05:02,080 --> 00:05:04,230
+is the remote desktop service. This is a
+service that's available in Windows 10
+
+272
+00:05:04,230 --> 00:05:04,240
+service that's available in Windows 10
+ 
+
+273
+00:05:04,240 --> 00:05:07,510
+service that's available in Windows 10
+Pro and Enterprise and Windows 11 Pro
+
+274
+00:05:07,510 --> 00:05:07,520
+Pro and Enterprise and Windows 11 Pro
+ 
+
+275
+00:05:07,520 --> 00:05:10,230
+Pro and Enterprise and Windows 11 Pro
+and Enterprise. If that remote desktop
+
+276
+00:05:10,230 --> 00:05:10,240
+and Enterprise. If that remote desktop
+ 
+
+277
+00:05:10,240 --> 00:05:12,150
+and Enterprise. If that remote desktop
+service is running on that remote
+
+278
+00:05:12,150 --> 00:05:12,160
+service is running on that remote
+ 
+
+279
+00:05:12,160 --> 00:05:14,230
+service is running on that remote
+computer, then we can connect to that
+
+280
+00:05:14,230 --> 00:05:14,240
+computer, then we can connect to that
+ 
+
+281
+00:05:14,240 --> 00:05:17,510
+computer, then we can connect to that
+computer using a remote desktop client.
+
+282
+00:05:17,510 --> 00:05:17,520
+computer using a remote desktop client.
+ 
+
+283
+00:05:17,520 --> 00:05:19,830
+computer using a remote desktop client.
+You'll notice that this remote desktop
+
+284
+00:05:19,830 --> 00:05:19,840
+You'll notice that this remote desktop
+ 
+
+285
+00:05:19,840 --> 00:05:22,469
+You'll notice that this remote desktop
+service is not available in Windows 10
+
+286
+00:05:22,469 --> 00:05:22,479
+service is not available in Windows 10
+ 
+
+287
+00:05:22,479 --> 00:05:25,350
+service is not available in Windows 10
+home or Windows 11 home. That's because
+
+288
+00:05:25,350 --> 00:05:25,360
+home or Windows 11 home. That's because
+ 
+
+289
+00:05:25,360 --> 00:05:27,270
+home or Windows 11 home. That's because
+in a home environment, you don't need
+
+290
+00:05:27,270 --> 00:05:27,280
+in a home environment, you don't need
+ 
+
+291
+00:05:27,280 --> 00:05:29,590
+in a home environment, you don't need
+that remote desktop functionality. you
+
+292
+00:05:29,590 --> 00:05:29,600
+that remote desktop functionality. you
+ 
+
+293
+00:05:29,600 --> 00:05:31,670
+that remote desktop functionality. you
+can simply walk to the other room if you
+
+294
+00:05:31,670 --> 00:05:31,680
+can simply walk to the other room if you
+ 
+
+295
+00:05:31,680 --> 00:05:33,350
+can simply walk to the other room if you
+need to provide any support for that
+
+296
+00:05:33,350 --> 00:05:33,360
+need to provide any support for that
+ 
+
+297
+00:05:33,360 --> 00:05:34,830
+need to provide any support for that
+Windows
+
+298
+00:05:34,830 --> 00:05:34,840
+Windows
+ 
+
+299
+00:05:34,840 --> 00:05:37,029
+Windows
+computer. There's also a difference in
+
+300
+00:05:37,029 --> 00:05:37,039
+computer. There's also a difference in
+ 
+
+301
+00:05:37,039 --> 00:05:39,029
+computer. There's also a difference in
+the amount of memory that is supported
+
+302
+00:05:39,029 --> 00:05:39,039
+the amount of memory that is supported
+ 
+
+303
+00:05:39,039 --> 00:05:41,430
+the amount of memory that is supported
+across different Windows editions.
+
+304
+00:05:41,430 --> 00:05:41,440
+across different Windows editions.
+ 
+
+305
+00:05:41,440 --> 00:05:43,749
+across different Windows editions.
+You'll notice for Windows 10 and Windows
+
+306
+00:05:43,749 --> 00:05:43,759
+You'll notice for Windows 10 and Windows
+ 
+
+307
+00:05:43,759 --> 00:05:48,070
+You'll notice for Windows 10 and Windows
+11 Home, we have 128 GB of memory that
+
+308
+00:05:48,070 --> 00:05:48,080
+11 Home, we have 128 GB of memory that
+ 
+
+309
+00:05:48,080 --> 00:05:50,870
+11 Home, we have 128 GB of memory that
+is supported in the 64-bit version of
+
+310
+00:05:50,870 --> 00:05:50,880
+is supported in the 64-bit version of
+ 
+
+311
+00:05:50,880 --> 00:05:53,029
+is supported in the 64-bit version of
+that software. If you're running the
+
+312
+00:05:53,029 --> 00:05:53,039
+that software. If you're running the
+ 
+
+313
+00:05:53,039 --> 00:05:55,749
+that software. If you're running the
+32-bit version of Windows Home, then
+
+314
+00:05:55,749 --> 00:05:55,759
+32-bit version of Windows Home, then
+ 
+
+315
+00:05:55,759 --> 00:05:57,830
+32-bit version of Windows Home, then
+you're only running Windows 10 because
+
+316
+00:05:57,830 --> 00:05:57,840
+you're only running Windows 10 because
+ 
+
+317
+00:05:57,840 --> 00:06:00,950
+you're only running Windows 10 because
+Windows 11 Home does not have a 32-bit
+
+318
+00:06:00,950 --> 00:06:00,960
+Windows 11 Home does not have a 32-bit
+ 
+
+319
+00:06:00,960 --> 00:06:03,350
+Windows 11 Home does not have a 32-bit
+version. But Windows 10 Home does have a
+
+320
+00:06:03,350 --> 00:06:03,360
+version. But Windows 10 Home does have a
+ 
+
+321
+00:06:03,360 --> 00:06:05,909
+version. But Windows 10 Home does have a
+32-bit version and it supports up to 4
+
+322
+00:06:05,909 --> 00:06:05,919
+32-bit version and it supports up to 4
+ 
+
+323
+00:06:05,919 --> 00:06:09,510
+32-bit version and it supports up to 4
+GB of memory. Since 4 GB of memory is
+
+324
+00:06:09,510 --> 00:06:09,520
+GB of memory. Since 4 GB of memory is
+ 
+
+325
+00:06:09,520 --> 00:06:11,430
+GB of memory. Since 4 GB of memory is
+the maximum amount that you can support
+
+326
+00:06:11,430 --> 00:06:11,440
+the maximum amount that you can support
+ 
+
+327
+00:06:11,440 --> 00:06:14,230
+the maximum amount that you can support
+in a 32-bit version of Windows, that
+
+328
+00:06:14,230 --> 00:06:14,240
+in a 32-bit version of Windows, that
+ 
+
+329
+00:06:14,240 --> 00:06:16,790
+in a 32-bit version of Windows, that
+same amount is included for Windows 10
+
+330
+00:06:16,790 --> 00:06:16,800
+same amount is included for Windows 10
+ 
+
+331
+00:06:16,800 --> 00:06:19,670
+same amount is included for Windows 10
+Home, Windows 10 Pro, and Windows 10
+
+332
+00:06:19,670 --> 00:06:19,680
+Home, Windows 10 Pro, and Windows 10
+ 
+
+333
+00:06:19,680 --> 00:06:21,990
+Home, Windows 10 Pro, and Windows 10
+Enterprise as the maximum amount of
+
+334
+00:06:21,990 --> 00:06:22,000
+Enterprise as the maximum amount of
+ 
+
+335
+00:06:22,000 --> 00:06:23,909
+Enterprise as the maximum amount of
+memory that's supported. If you're
+
+336
+00:06:23,909 --> 00:06:23,919
+memory that's supported. If you're
+ 
+
+337
+00:06:23,919 --> 00:06:26,070
+memory that's supported. If you're
+running the 64-bit version of Windows 10
+
+338
+00:06:26,070 --> 00:06:26,080
+running the 64-bit version of Windows 10
+ 
+
+339
+00:06:26,080 --> 00:06:28,629
+running the 64-bit version of Windows 10
+and Windows 11 Pro, you can support up
+
+340
+00:06:28,629 --> 00:06:28,639
+and Windows 11 Pro, you can support up
+ 
+
+341
+00:06:28,639 --> 00:06:31,350
+and Windows 11 Pro, you can support up
+to 2 terabt of memory. And if you're
+
+342
+00:06:31,350 --> 00:06:31,360
+to 2 terabt of memory. And if you're
+ 
+
+343
+00:06:31,360 --> 00:06:33,670
+to 2 terabt of memory. And if you're
+running the 64-bit version of Windows 10
+
+344
+00:06:33,670 --> 00:06:33,680
+running the 64-bit version of Windows 10
+ 
+
+345
+00:06:33,680 --> 00:06:36,070
+running the 64-bit version of Windows 10
+and Windows 11 Enterprise, you can
+
+346
+00:06:36,070 --> 00:06:36,080
+and Windows 11 Enterprise, you can
+ 
+
+347
+00:06:36,080 --> 00:06:38,909
+and Windows 11 Enterprise, you can
+support up to 6 TB of
+
+348
+00:06:38,909 --> 00:06:38,919
+support up to 6 TB of
+ 
+
+349
+00:06:38,919 --> 00:06:41,670
+support up to 6 TB of
+RAM. We mentioned earlier how important
+
+350
+00:06:41,670 --> 00:06:41,680
+RAM. We mentioned earlier how important
+ 
+
+351
+00:06:41,680 --> 00:06:43,909
+RAM. We mentioned earlier how important
+it is to keep data safe on your mobile
+
+352
+00:06:43,909 --> 00:06:43,919
+it is to keep data safe on your mobile
+ 
+
+353
+00:06:43,919 --> 00:06:45,909
+it is to keep data safe on your mobile
+devices, your laptops, your desktops,
+
+354
+00:06:45,909 --> 00:06:45,919
+devices, your laptops, your desktops,
+ 
+
+355
+00:06:45,919 --> 00:06:47,909
+devices, your laptops, your desktops,
+and anything else that you're using at
+
+356
+00:06:47,909 --> 00:06:47,919
+and anything else that you're using at
+ 
+
+357
+00:06:47,919 --> 00:06:50,469
+and anything else that you're using at
+home and at work. The technologies that
+
+358
+00:06:50,469 --> 00:06:50,479
+home and at work. The technologies that
+ 
+
+359
+00:06:50,479 --> 00:06:52,710
+home and at work. The technologies that
+allow us to apply encryption to the
+
+360
+00:06:52,710 --> 00:06:52,720
+allow us to apply encryption to the
+ 
+
+361
+00:06:52,720 --> 00:06:54,309
+allow us to apply encryption to the
+information that we're saving on these
+
+362
+00:06:54,309 --> 00:06:54,319
+information that we're saving on these
+ 
+
+363
+00:06:54,319 --> 00:06:58,230
+information that we're saving on these
+storage devices is Bit Locker and EFS.
+
+364
+00:06:58,230 --> 00:06:58,240
+storage devices is Bit Locker and EFS.
+ 
+
+365
+00:06:58,240 --> 00:07:00,870
+storage devices is Bit Locker and EFS.
+EFS is the encrypting file system and
+
+366
+00:07:00,870 --> 00:07:00,880
+EFS is the encrypting file system and
+ 
+
+367
+00:07:00,880 --> 00:07:03,510
+EFS is the encrypting file system and
+it's part of the NTFS file system that
+
+368
+00:07:03,510 --> 00:07:03,520
+it's part of the NTFS file system that
+ 
+
+369
+00:07:03,520 --> 00:07:05,749
+it's part of the NTFS file system that
+could run on your Windows 10 or Windows
+
+370
+00:07:05,749 --> 00:07:05,759
+could run on your Windows 10 or Windows
+ 
+
+371
+00:07:05,759 --> 00:07:08,629
+could run on your Windows 10 or Windows
+11 systems. EFS allows you to select
+
+372
+00:07:08,629 --> 00:07:08,639
+11 systems. EFS allows you to select
+ 
+
+373
+00:07:08,639 --> 00:07:10,950
+11 systems. EFS allows you to select
+individual files or individual folders
+
+374
+00:07:10,950 --> 00:07:10,960
+individual files or individual folders
+ 
+
+375
+00:07:10,960 --> 00:07:13,189
+individual files or individual folders
+on your system and the operating system
+
+376
+00:07:13,189 --> 00:07:13,199
+on your system and the operating system
+ 
+
+377
+00:07:13,199 --> 00:07:15,430
+on your system and the operating system
+will encrypt all of the data that you
+
+378
+00:07:15,430 --> 00:07:15,440
+will encrypt all of the data that you
+ 
+
+379
+00:07:15,440 --> 00:07:18,150
+will encrypt all of the data that you
+store on those resources. Bit Locker
+
+380
+00:07:18,150 --> 00:07:18,160
+store on those resources. Bit Locker
+ 
+
+381
+00:07:18,160 --> 00:07:19,909
+store on those resources. Bit Locker
+takes a much broader approach to
+
+382
+00:07:19,909 --> 00:07:19,919
+takes a much broader approach to
+ 
+
+383
+00:07:19,919 --> 00:07:22,710
+takes a much broader approach to
+encryption. This is full disk encryption
+
+384
+00:07:22,710 --> 00:07:22,720
+encryption. This is full disk encryption
+ 
+
+385
+00:07:22,720 --> 00:07:26,230
+encryption. This is full disk encryption
+or FDE. This means that everything on a
+
+386
+00:07:26,230 --> 00:07:26,240
+or FDE. This means that everything on a
+ 
+
+387
+00:07:26,240 --> 00:07:28,309
+or FDE. This means that everything on a
+drive will be encrypted, including the
+
+388
+00:07:28,309 --> 00:07:28,319
+drive will be encrypted, including the
+ 
+
+389
+00:07:28,319 --> 00:07:30,710
+drive will be encrypted, including the
+operating system, your data files, and
+
+390
+00:07:30,710 --> 00:07:30,720
+operating system, your data files, and
+ 
+
+391
+00:07:30,720 --> 00:07:32,550
+operating system, your data files, and
+anything else that's stored on that
+
+392
+00:07:32,550 --> 00:07:32,560
+anything else that's stored on that
+ 
+
+393
+00:07:32,560 --> 00:07:35,029
+anything else that's stored on that
+volume. This means if someone does get
+
+394
+00:07:35,029 --> 00:07:35,039
+volume. This means if someone does get
+ 
+
+395
+00:07:35,039 --> 00:07:37,430
+volume. This means if someone does get
+access to your mobile device or to your
+
+396
+00:07:37,430 --> 00:07:37,440
+access to your mobile device or to your
+ 
+
+397
+00:07:37,440 --> 00:07:39,990
+access to your mobile device or to your
+laptop, they can pull the drive out of
+
+398
+00:07:39,990 --> 00:07:40,000
+laptop, they can pull the drive out of
+ 
+
+399
+00:07:40,000 --> 00:07:42,150
+laptop, they can pull the drive out of
+that system, but they'll have no idea
+
+400
+00:07:42,150 --> 00:07:42,160
+that system, but they'll have no idea
+ 
+
+401
+00:07:42,160 --> 00:07:43,990
+that system, but they'll have no idea
+how to view any of the information on
+
+402
+00:07:43,990 --> 00:07:44,000
+how to view any of the information on
+ 
+
+403
+00:07:44,000 --> 00:07:46,230
+how to view any of the information on
+that drive because everything has been
+
+404
+00:07:46,230 --> 00:07:46,240
+that drive because everything has been
+ 
+
+405
+00:07:46,240 --> 00:07:48,550
+that drive because everything has been
+encrypted with Bit Locker. You'll find
+
+406
+00:07:48,550 --> 00:07:48,560
+encrypted with Bit Locker. You'll find
+ 
+
+407
+00:07:48,560 --> 00:07:51,029
+encrypted with Bit Locker. You'll find
+that there's use for both EFS and Bit
+
+408
+00:07:51,029 --> 00:07:51,039
+that there's use for both EFS and Bit
+ 
+
+409
+00:07:51,039 --> 00:07:53,430
+that there's use for both EFS and Bit
+Locker for both business and home use.
+
+410
+00:07:53,430 --> 00:07:53,440
+Locker for both business and home use.
+ 
+
+411
+00:07:53,440 --> 00:07:55,350
+Locker for both business and home use.
+And you'll find functionalities for both
+
+412
+00:07:55,350 --> 00:07:55,360
+And you'll find functionalities for both
+ 
+
+413
+00:07:55,360 --> 00:07:57,510
+And you'll find functionalities for both
+of these technologies available in all
+
+414
+00:07:57,510 --> 00:07:57,520
+of these technologies available in all
+ 
+
+415
+00:07:57,520 --> 00:07:58,909
+of these technologies available in all
+of these Windows
+
+416
+00:07:58,909 --> 00:07:58,919
+of these Windows
+ 
+
+417
+00:07:58,919 --> 00:08:01,430
+of these Windows
+editions. We also mentioned that at
+
+418
+00:08:01,430 --> 00:08:01,440
+editions. We also mentioned that at
+ 
+
+419
+00:08:01,440 --> 00:08:03,430
+editions. We also mentioned that at
+work, you're able to manage thousands of
+
+420
+00:08:03,430 --> 00:08:03,440
+work, you're able to manage thousands of
+ 
+
+421
+00:08:03,440 --> 00:08:05,830
+work, you're able to manage thousands of
+systems from one central place. The way
+
+422
+00:08:05,830 --> 00:08:05,840
+systems from one central place. The way
+ 
+
+423
+00:08:05,840 --> 00:08:07,430
+systems from one central place. The way
+that you're able to do this is through
+
+424
+00:08:07,430 --> 00:08:07,440
+that you're able to do this is through
+ 
+
+425
+00:08:07,440 --> 00:08:09,990
+that you're able to do this is through
+the group policy editor. This is part of
+
+426
+00:08:09,990 --> 00:08:10,000
+the group policy editor. This is part of
+ 
+
+427
+00:08:10,000 --> 00:08:11,909
+the group policy editor. This is part of
+Active Directory and it allows you to
+
+428
+00:08:11,909 --> 00:08:11,919
+Active Directory and it allows you to
+ 
+
+429
+00:08:11,919 --> 00:08:14,790
+Active Directory and it allows you to
+set policies of how systems can be used
+
+430
+00:08:14,790 --> 00:08:14,800
+set policies of how systems can be used
+ 
+
+431
+00:08:14,800 --> 00:08:17,350
+set policies of how systems can be used
+on your network. If you're managing a
+
+432
+00:08:17,350 --> 00:08:17,360
+on your network. If you're managing a
+ 
+
+433
+00:08:17,360 --> 00:08:19,670
+on your network. If you're managing a
+single device without active directory,
+
+434
+00:08:19,670 --> 00:08:19,680
+single device without active directory,
+ 
+
+435
+00:08:19,680 --> 00:08:21,670
+single device without active directory,
+then you can simply use a local group
+
+436
+00:08:21,670 --> 00:08:21,680
+then you can simply use a local group
+ 
+
+437
+00:08:21,680 --> 00:08:23,990
+then you can simply use a local group
+policy and you can open the group policy
+
+438
+00:08:23,990 --> 00:08:24,000
+policy and you can open the group policy
+ 
+
+439
+00:08:24,000 --> 00:08:26,589
+policy and you can open the group policy
+editor by using
+
+440
+00:08:26,589 --> 00:08:26,599
+editor by using
+ 
+
+441
+00:08:26,599 --> 00:08:29,029
+editor by using
+gpedit.msc. But at work, you probably
+
+442
+00:08:29,029 --> 00:08:29,039
+gpedit.msc. But at work, you probably
+ 
+
+443
+00:08:29,039 --> 00:08:30,869
+gpedit.msc. But at work, you probably
+have a large active directory
+
+444
+00:08:30,869 --> 00:08:30,879
+have a large active directory
+ 
+
+445
+00:08:30,879 --> 00:08:32,630
+have a large active directory
+infrastructure and you would use the
+
+446
+00:08:32,630 --> 00:08:32,640
+infrastructure and you would use the
+ 
+
+447
+00:08:32,640 --> 00:08:36,750
+infrastructure and you would use the
+group policy management console or
+
+448
+00:08:36,750 --> 00:08:36,760
+group policy management console or
+ 
+
+449
+00:08:36,760 --> 00:08:39,190
+group policy management console or
+gpmc.msc that will allow you to set all
+
+450
+00:08:39,190 --> 00:08:39,200
+gpmc.msc that will allow you to set all
+ 
+
+451
+00:08:39,200 --> 00:08:41,509
+gpmc.msc that will allow you to set all
+of the policies for all of your systems
+
+452
+00:08:41,509 --> 00:08:41,519
+of the policies for all of your systems
+ 
+
+453
+00:08:41,519 --> 00:08:45,800
+of the policies for all of your systems
+across the entire enterprise.
+
