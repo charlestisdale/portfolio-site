@@ -8,6 +8,11 @@ const GRAPH_SCOPES = ["focused", "expanded"];
 const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v1";
 const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v1";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
+const FIT_VIEW_PADDING = 42;
+const FIT_NODE_MARGIN_X = 86;
+const FIT_NODE_MARGIN_Y = 42;
+const MIN_AUTO_FIT_ZOOM = 0.55;
+const MAX_AUTO_FIT_ZOOM = 1.35;
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -40,10 +45,11 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const activeId = activeConcept?.id || null;
   const layoutKey = graphLayoutKey({ activeId, scope: graphScope });
   const viewportKey = graphViewportKey({ activeId, scope: graphScope });
-  const viewport = readStoredViewports()[viewportKey] || DEFAULT_VIEWPORT;
   const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
   const layout = applySavedLayout(layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId }), layoutKey);
+  const storedViewports = readStoredViewports();
+  const viewport = storedViewports[viewportKey] || getFittedViewport(layout);
   const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related")).sort();
 
   registerScopeRenderer({ graph, activeConcept, activeEdges });
@@ -80,6 +86,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
           </button>
         `).join("")}
         <button class="graph-scope-button" data-graph-reset-layout="${escapeHtml(layoutKey)}" type="button">Reset nodes</button>
+        <button class="graph-scope-button" type="button" onclick="window.__fitKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Fit view</button>
         <button class="graph-scope-button" type="button" onclick="window.__resetKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Reset view</button>
       </div>
 
@@ -126,6 +133,18 @@ function registerScopeRenderer(renderState) {
     renderCurrentScope();
   };
 
+  window.__fitKnowledgeGraphViewport = viewportKey => {
+    const canvas = document.querySelector(".graph-visualizer [data-graph-canvas]");
+    if (!canvas || !viewportKey) return;
+
+    const layout = readLayoutFromRenderedNodes(canvas);
+    const next = getFittedViewport(layout, canvas.getBoundingClientRect());
+    const viewports = readStoredViewports();
+    viewports[viewportKey] = next;
+    writeStoredViewports(viewports);
+    applyViewportToCanvas(canvas, next);
+  };
+
   window.__zoomKnowledgeGraphViewport = event => {
     const canvas = event.currentTarget;
     const visualizer = canvas.closest(".graph-visualizer");
@@ -134,7 +153,7 @@ function registerScopeRenderer(renderState) {
 
     event.preventDefault();
     const viewports = readStoredViewports();
-    const current = viewports[viewportKey] || { ...DEFAULT_VIEWPORT };
+    const current = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
     const rect = canvas.getBoundingClientRect();
     const mouse = { x: event.clientX - rect.left, y: event.clientY - rect.top };
     const zoomFactor = event.deltaY < 0 ? 1.12 : 0.88;
@@ -161,7 +180,7 @@ function registerScopeRenderer(renderState) {
     if (!viewportKey) return;
 
     const viewports = readStoredViewports();
-    const current = viewports[viewportKey] || { ...DEFAULT_VIEWPORT };
+    const current = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
     const start = { x: event.clientX, y: event.clientY, viewportX: current.x, viewportY: current.y };
     let didPan = false;
 
@@ -212,7 +231,7 @@ function registerScopeRenderer(renderState) {
     const nodeId = node.dataset.id;
     if (!canvas || !layoutKey || !nodeId) return;
 
-    const viewport = readStoredViewports()[visualizer?.dataset.graphViewportKey] || DEFAULT_VIEWPORT;
+    const viewport = readStoredViewports()[visualizer?.dataset.graphViewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
     const start = { x: event.clientX, y: event.clientY };
     const startX = Number(node.dataset.graphX || 0);
     const startY = Number(node.dataset.graphY || 0);
@@ -292,6 +311,58 @@ function normalizeViewport(viewport) {
     y: clamp(Number(viewport?.y ?? 0), -1200, 1200),
     zoom: clamp(Number(viewport?.zoom ?? 1), 0.35, 3.5)
   };
+}
+
+function getFittedViewport(layout, rect = null) {
+  const bounds = getLayoutBounds(layout);
+  if (!bounds) return { ...DEFAULT_VIEWPORT };
+
+  const width = Number(rect?.width) || VIEWBOX_WIDTH;
+  const height = Number(rect?.height) || VIEWBOX_HEIGHT;
+  const scaleX = width / VIEWBOX_WIDTH;
+  const scaleY = height / VIEWBOX_HEIGHT;
+  const minX = Math.max(0, bounds.minX - FIT_NODE_MARGIN_X) * scaleX;
+  const maxX = Math.min(VIEWBOX_WIDTH, bounds.maxX + FIT_NODE_MARGIN_X) * scaleX;
+  const minY = Math.max(0, bounds.minY - FIT_NODE_MARGIN_Y) * scaleY;
+  const maxY = Math.min(VIEWBOX_HEIGHT, bounds.maxY + FIT_NODE_MARGIN_Y) * scaleY;
+  const graphWidth = Math.max(1, maxX - minX);
+  const graphHeight = Math.max(1, maxY - minY);
+  const zoom = clamp(
+    Math.min((width - FIT_VIEW_PADDING * 2) / graphWidth, (height - FIT_VIEW_PADDING * 2) / graphHeight),
+    MIN_AUTO_FIT_ZOOM,
+    MAX_AUTO_FIT_ZOOM
+  );
+
+  return normalizeViewport({
+    zoom,
+    x: (width - (minX + maxX) * zoom) / 2,
+    y: (height - (minY + maxY) * zoom) / 2
+  });
+}
+
+function getLayoutBounds(layout) {
+  const points = [...layout.values()].filter(point => Number.isFinite(point?.x) && Number.isFinite(point?.y));
+  if (!points.length) return null;
+
+  return {
+    minX: Math.min(...points.map(point => point.x)),
+    maxX: Math.max(...points.map(point => point.x)),
+    minY: Math.min(...points.map(point => point.y)),
+    maxY: Math.max(...points.map(point => point.y))
+  };
+}
+
+function readLayoutFromRenderedNodes(root) {
+  const layout = new Map();
+  root.querySelectorAll("[data-graph-x][data-graph-y]").forEach(node => {
+    const id = node.dataset.id || node.getAttribute("title");
+    if (!id) return;
+    layout.set(id, {
+      x: Number(node.dataset.graphX),
+      y: Number(node.dataset.graphY)
+    });
+  });
+  return layout;
 }
 
 function readStoredLayouts() {
@@ -534,9 +605,9 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: drag empty space to pan, scroll to zoom, and drag nodes to clean up overlap.";
+    return "Expanded view: drag empty space to pan, scroll to zoom, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
   }
-  return "Focused view: drag empty space to pan, scroll to zoom, and drag nodes to clean up overlap.";
+  return "Focused view: drag empty space to pan, scroll to zoom, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
 }
 
 function formatRelationshipLabel(type) {
