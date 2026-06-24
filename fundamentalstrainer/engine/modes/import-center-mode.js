@@ -48,9 +48,7 @@ function estimateReviewMinutes(metrics) {
 }
 
 function renderImportRows(imports, folderReport) {
-  if (!imports.length) {
-    return `<p class="muted">No pending imports found.</p>`;
-  }
+  if (!imports.length) return `<p class="muted">No pending imports found.</p>`;
 
   return `
     <div class="import-review-list">
@@ -108,6 +106,43 @@ function renderEvidence(candidate) {
   `;
 }
 
+function qualityRank(candidate) {
+  const band = candidate.quality?.band || "unknown";
+  if (band === "high") return 0;
+  if (band === "needs-edit") return 1;
+  if (band === "low") return 2;
+  return 3;
+}
+
+function renderQualityAudit(candidate) {
+  const quality = candidate.quality;
+  if (!quality) return `<span class="quality-pill quality-pill--unknown">No quality audit</span>`;
+  const label = quality.band === "high" ? "High quality" : quality.band === "needs-edit" ? "Needs edit" : quality.band === "low" ? "Low quality" : "Unknown quality";
+  const flags = quality.flags || [];
+
+  return `
+    <div class="quality-audit" data-quality-band="${escapeHtml(quality.band)}">
+      <span class="quality-pill quality-pill--${escapeHtml(quality.band)}">${escapeHtml(label)} · ${formatNumber(quality.score)}%</span>
+      ${flags.length ? `
+        <details class="quality-flags">
+          <summary>${formatNumber(flags.length)} warning(s)</summary>
+          <ul>
+            ${flags.map(flag => `<li><strong>${escapeHtml(flag.code)}</strong>: ${escapeHtml(flag.message)}</li>`).join("")}
+          </ul>
+        </details>
+      ` : `<span class="muted">No warnings detected.</span>`}
+    </div>
+  `;
+}
+
+function qualitySummary(candidates) {
+  return candidates.reduce((summary, candidate) => {
+    const band = candidate.quality?.band || "unknown";
+    summary[band] = (summary[band] || 0) + 1;
+    return summary;
+  }, { high: 0, "needs-edit": 0, low: 0, unknown: 0 });
+}
+
 function primeCandidateCache(preview, candidates) {
   if (typeof window === "undefined") return;
   window.__importReviewCandidateCache = {};
@@ -128,7 +163,7 @@ function renderCandidateCard(preview, candidate) {
   const mergeTargetValue = record?.mergeTarget || record?.edits?.mergeTarget || "";
 
   return `
-    <article class="candidate-preview-item candidate-review-item" data-review-candidate="${escapeHtml(key)}">
+    <article class="candidate-preview-item candidate-review-item" data-review-candidate="${escapeHtml(key)}" data-quality-band="${escapeHtml(candidate.quality?.band || "unknown")}">
       <div class="candidate-review-header">
         <div>
           <h3>${escapeHtml(candidate.title)}</h3>
@@ -137,6 +172,8 @@ function renderCandidateCard(preview, candidate) {
         </div>
         <span class="pill review-status-pill" data-review-status="${escapeHtml(record?.decision || "undecided")}">${escapeHtml(record?.decision || candidate.reviewDecision || "undecided")}</span>
       </div>
+
+      ${renderQualityAudit(candidate)}
 
       <label class="review-field">
         <span>Title</span>
@@ -206,7 +243,8 @@ function renderCandidatePreview(preview) {
     `;
   }
 
-  const candidates = preview.candidates || [];
+  const candidates = [...(preview.candidates || [])].sort((a, b) => qualityRank(a) - qualityRank(b) || (b.confidence || 0) - (a.confidence || 0));
+  const quality = qualitySummary(candidates);
   primeCandidateCache(preview, candidates);
 
   return `
@@ -216,6 +254,12 @@ function renderCandidatePreview(preview) {
           <p class="eyebrow">${escapeHtml(preview.lessonId || "")}</p>
           <h2>${escapeHtml(preview.lessonTitle || preview.id || "Candidate Review")}</h2>
           <p class="muted"><span data-visible-candidate-count>${formatNumber(candidates.length)}</span> visible of ${formatNumber(candidates.length)} candidate(s). Review decisions are saved locally in your browser until exported.</p>
+          <div class="import-metric-strip compact quality-summary-strip">
+            <span><strong>${formatNumber(quality.high)}</strong> high quality</span>
+            <span><strong>${formatNumber(quality["needs-edit"])}</strong> needs edit</span>
+            <span><strong>${formatNumber(quality.low)}</strong> low quality</span>
+            <span><strong>${formatNumber(quality.unknown)}</strong> unaudited</span>
+          </div>
         </div>
         <button class="review-export-button" type="button" data-review-export>Export approved JSON</button>
       </div>
@@ -253,6 +297,7 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
         <ol>
           <li>Put raw sources in <code>data/transcripts/raw/&lt;cert&gt;/</code>.</li>
           <li>Run <code>npm run ingest:folder -- --cert=a-plus-220-1202</code>.</li>
+          <li>Run <code>npm run ingest:postprocess</code>.</li>
           <li>Review candidates in this tab.</li>
           <li>Export approved Knowledge Objects for merge.</li>
         </ol>
