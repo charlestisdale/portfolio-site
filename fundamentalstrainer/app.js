@@ -5,6 +5,7 @@ import { renderDashboardMode } from "./engine/modes/dashboard-mode.js";
 import { renderAssessmentMode } from "./engine/modes/assessment-mode.js";
 import { renderGraphMode } from "./engine/modes/graph-mode.js";
 import { renderStudyPathMode } from "./engine/modes/study-path-mode.js";
+import { renderImportCenterMode } from "./engine/modes/import-center-mode.js";
 import { buildStudyPath } from "./engine/study-paths/index.js";
 import { buildRecommendations } from "./engine/recommendations/index.js";
 import { generateAssessmentFromKnowledge, gradeAssessment, LocalAssessmentAttemptStore } from "./engine/assessment/index.js";
@@ -27,11 +28,14 @@ let currentAssessment = null;
 let assessmentAnswers = {};
 let currentAssessmentGrade = null;
 let currentAttemptSaved = false;
+let importCenterState = { loading: true, manifest: null, folderReport: null, error: null };
+let selectedImportPreview = null;
 
 const searchBox = document.querySelector("#searchBox");
 const results = document.querySelector("#results");
 const conceptView = document.querySelector("#conceptView");
 const dashboardView = document.querySelector("#dashboardView");
+const importCenterView = document.querySelector("#importCenterView");
 const studyPathView = document.querySelector("#studyPathView");
 const assessmentView = document.querySelector("#assessmentView");
 const platformStats = document.querySelector("#platformStats");
@@ -50,6 +54,8 @@ async function loadPlatform() {
   renderAssessment();
   renderGraph();
   renderStudyPath();
+  renderImportCenter();
+  void loadImportCenterData();
   startJobsActivityPanel();
 
   const hashState = readHashState();
@@ -90,6 +96,64 @@ function renderDashboard() {
     }),
     jobs: jobs.list()
   });
+}
+
+function renderImportCenter() {
+  if (!importCenterView) return;
+  importCenterView.innerHTML = renderImportCenterMode({
+    state: importCenterState,
+    selectedPreview: selectedImportPreview
+  });
+}
+
+async function loadImportCenterData() {
+  if (!importCenterView) return;
+
+  try {
+    const [manifest, folderReport] = await Promise.all([
+      fetchJsonOrNull("data/imports/pending/manifest.json"),
+      fetchJsonOrNull("data/imports/reports/folder-import-report.json")
+    ]);
+
+    importCenterState = {
+      loading: false,
+      manifest,
+      folderReport,
+      error: !manifest && !folderReport ? "No generated import manifest/report found in this browser context." : null
+    };
+  } catch (error) {
+    importCenterState = {
+      loading: false,
+      manifest: null,
+      folderReport: null,
+      error: error.message
+    };
+  }
+
+  renderImportCenter();
+}
+
+async function fetchJsonOrNull(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+  return response.json();
+}
+
+async function previewImportCandidates(path) {
+  if (!path) return;
+  selectedImportPreview = { loading: true, lessonTitle: "Loading candidates…", candidates: [] };
+  renderImportCenter();
+
+  try {
+    const normalizedPath = path.replace(/^\.\//, "");
+    selectedImportPreview = await fetchJsonOrNull(normalizedPath);
+    if (!selectedImportPreview) selectedImportPreview = { error: `Could not find ${normalizedPath}` };
+  } catch (error) {
+    selectedImportPreview = { error: error.message };
+  }
+
+  renderImportCenter();
 }
 
 function renderSearch() {
@@ -255,6 +319,7 @@ function setMode(mode, { updateHash = true } = {}) {
   activeMode = validMode;
 
   if (validMode === "dashboard") renderDashboard();
+  if (validMode === "import") renderImportCenter();
   if (validMode === "assessment") renderAssessment();
   if (validMode === "graph") renderGraph();
   if (validMode === "path") renderStudyPath();
@@ -453,6 +518,14 @@ if (dashboardView) {
     const conceptButton = event.target.closest("button[data-id]");
     if (!conceptButton) return;
     renderConcept(conceptButton.dataset.id);
+  });
+}
+
+if (importCenterView) {
+  importCenterView.addEventListener("click", event => {
+    const openButton = event.target.closest("button[data-import-open]");
+    if (!openButton) return;
+    void previewImportCandidates(openButton.dataset.importOpen);
   });
 }
 
