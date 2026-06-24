@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build/cache output
+dist/
+build/
+.cache/
+.DS_Store
+Thumbs.db
+
+# Fundamentalstrainer generated ingestion output
+# Raw transcripts are source material and may be intentionally versioned.
+# The files below are generated/rebuildable from raw sources and scripts.
+fundamentalstrainer/data/transcripts/cleaned/**
+!fundamentalstrainer/data/transcripts/cleaned/.gitkeep
+
+fundamentalstrainer/data/imports/evidence/**
+!fundamentalstrainer/data/imports/evidence/.gitkeep
+
+fundamentalstrainer/data/imports/pending/*-candidates.json
+fundamentalstrainer/data/imports/pending/manifest.json
+!fundamentalstrainer/data/imports/pending/.gitkeep
+!fundamentalstrainer/data/imports/pending/sample-lesson-16-candidates.json
+
+fundamentalstrainer/data/imports/reports/**
+!fundamentalstrainer/data/imports/reports/.gitkeep
+
+fundamentalstrainer/data/imports/approved/**
+!fundamentalstrainer/data/imports/approved/.gitkeep
+
+fundamentalstrainer/data/imports/rejected/**
+!fundamentalstrainer/data/imports/rejected/.gitkeep
