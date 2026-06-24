@@ -32,6 +32,28 @@ export function cleanOutputFile({ cleanedDir, lessonId, title }) {
   return path.join(cleanedDir, `${lessonId}-${safeTitle}.txt`);
 }
 
+export function findRawTranscriptByLesson({ root = process.cwd(), certificationId = "a-plus-220-1202", lessonId, rawDir }) {
+  if (!lessonId) return null;
+  const normalizedLessonId = String(lessonId).padStart(2, "0");
+  const resolvedRawDir = path.resolve(root, rawDir || `data/transcripts/raw/${certificationId}`);
+  if (!fs.existsSync(resolvedRawDir)) return null;
+
+  const matches = fs.readdirSync(resolvedRawDir, { withFileTypes: true })
+    .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith(".srt"))
+    .filter(entry => {
+      const info = lessonInfo(entry.name);
+      return info.lessonId === normalizedLessonId;
+    })
+    .map(entry => path.join(resolvedRawDir, entry.name))
+    .sort();
+
+  if (matches.length > 1) {
+    throw new Error(`Multiple raw transcripts matched lesson ${normalizedLessonId}: ${matches.map(file => toProjectPath(file, root)).join(", ")}`);
+  }
+
+  return matches[0] || null;
+}
+
 function runNode(root, script, scriptArgs) {
   const result = spawnSync(process.execPath, [script, ...scriptArgs], {
     cwd: root,
@@ -58,7 +80,7 @@ export function summarizeTranscriptImport(lesson) {
     candidatesBuilt: lesson.steps.extract?.ok ? 1 : 0,
     duplicateReports: lesson.steps.duplicates?.ok ? 1 : 0,
     importReports: lesson.steps.report?.ok ? 1 : 0,
-    failed: Object.values(lesson.steps).filter(step => step && !step.ok).length,
+    failed: Object.values(lesson.steps).filter(step => step && !step.ok).length + (lesson.error ? 1 : 0),
     candidates: lesson.candidateMetrics?.candidates || 0,
     evidenceRecords: lesson.evidenceMetrics?.evidenceRecords || 0,
     conceptGroups: lesson.evidenceMetrics?.conceptGroups || 0
@@ -71,13 +93,13 @@ export function importTranscript(rawFile, options = {}) {
   const cleanedDir = path.resolve(root, options.cleanedDir || `data/transcripts/cleaned/${certificationId}`);
   const skipEvidence = Boolean(options.skipEvidence);
   const skipExtract = Boolean(options.skipExtract);
+  const resolvedRawFile = path.resolve(root, rawFile);
   const { lessonId, title } = options.lessonId && options.title
     ? { lessonId: String(options.lessonId).padStart(2, "0"), title: options.title }
-    : lessonInfo(rawFile);
+    : lessonInfo(resolvedRawFile);
 
   fs.mkdirSync(cleanedDir, { recursive: true });
 
-  const resolvedRawFile = path.resolve(root, rawFile);
   const cleanedFile = cleanOutputFile({ cleanedDir, lessonId, title });
   const pendingFile = path.resolve(root, "data", "imports", "pending", `${lessonId}-candidates.json`);
   const evidenceFile = path.resolve(root, "data", "imports", "evidence", certificationId, `${lessonId}-evidence.json`);
@@ -91,6 +113,12 @@ export function importTranscript(rawFile, options = {}) {
     candidatesFile: toProjectPath(pendingFile, root),
     steps: {}
   };
+
+  if (!fs.existsSync(resolvedRawFile)) {
+    lesson.error = `Raw transcript not found: ${lesson.rawFile}`;
+    lesson.metrics = summarizeTranscriptImport(lesson);
+    return lesson;
+  }
 
   lesson.steps.clean = runNode(root, "tools/ingestion/clean-srt.mjs", [lesson.rawFile, lesson.cleanedFile]);
   if (!lesson.steps.clean.ok) {
@@ -132,7 +160,6 @@ export function importTranscript(rawFile, options = {}) {
 }
 
 export function createSingleTranscriptReport(lesson, options = {}) {
-  const root = options.root || process.cwd();
   const certificationId = options.certificationId || "a-plus-220-1202";
 
   return {
@@ -149,14 +176,27 @@ export function createSingleTranscriptReport(lesson, options = {}) {
   };
 }
 
+function printStepFailures(lesson) {
+  if (lesson.error) console.error(lesson.error);
+
+  for (const [name, step] of Object.entries(lesson.steps || {})) {
+    if (!step || step.ok) continue;
+    console.error(`Step failed: ${name}`);
+    if (step.stderr) console.error(step.stderr);
+    else if (step.stdout) console.error(step.stdout);
+  }
+}
+
 async function main() {
   const args = parseImportArgs();
   const root = process.cwd();
   const certificationId = args.cert || args.certification || "a-plus-220-1202";
-  const rawFile = args.file || args._;
+  const rawDir = args.raw || `data/transcripts/raw/${certificationId}`;
+  const rawFile = args.file || (args.lesson ? findRawTranscriptByLesson({ root, certificationId, lessonId: args.lesson, rawDir }) : null);
 
   if (!rawFile) {
-    console.error("Usage: node tools/ingestion/import-transcript.mjs --file=data/transcripts/raw/a-plus-220-1202/01-title.srt [--cert=a-plus-220-1202]");
+    console.error("Usage: node tools/ingestion/import-transcript.mjs --lesson=01 [--cert=a-plus-220-1202]");
+    console.error("   or: node tools/ingestion/import-transcript.mjs --file=data/transcripts/raw/a-plus-220-1202/<exact-file-name>.srt [--cert=a-plus-220-1202]");
     process.exit(1);
   }
 
@@ -168,7 +208,7 @@ async function main() {
     skipExtract: args["skip-extract"] === "true"
   });
 
-  const report = createSingleTranscriptReport(lesson, { root, certificationId });
+  const report = createSingleTranscriptReport(lesson, { certificationId });
   const reportDir = path.resolve(root, "data", "imports", "reports");
   fs.mkdirSync(reportDir, { recursive: true });
   const reportFile = path.join(reportDir, `${lesson.lessonId}-transcript-import-report.json`);
@@ -177,10 +217,14 @@ async function main() {
   console.log(JSON.stringify({
     report: toProjectPath(reportFile, root),
     lesson: lesson.lessonId,
+    source: lesson.rawFile,
     totals: report.totals
   }, null, 2));
 
-  if (report.totals.failed) process.exit(1);
+  if (report.totals.failed) {
+    printStepFailures(lesson);
+    process.exit(1);
+  }
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
