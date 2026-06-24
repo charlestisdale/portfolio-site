@@ -502,6 +502,11 @@ function updateSearchFilter(name, value) {
   renderSearch();
 }
 
+function shouldIgnoreGraphClick() {
+  if (Date.now() < Number(window.__knowledgeGraphSuppressClickUntil || 0)) return true;
+  return false;
+}
+
 modeTabs.forEach(tab => {
   tab.addEventListener("click", () => setMode(tab.dataset.modeTarget));
 });
@@ -596,6 +601,18 @@ if (results) {
 
 if (relatedView) {
   relatedView.addEventListener("click", event => {
+    const resetLayoutButton = event.target.closest("button[data-graph-reset-layout]");
+    if (resetLayoutButton) {
+      window.__resetKnowledgeGraphLayout?.(resetLayoutButton.dataset.graphResetLayout);
+      return;
+    }
+
+    if (shouldIgnoreGraphClick()) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     const button = event.target.closest("button[data-id]");
     if (!button) return;
     renderConcept(button.dataset.id);
