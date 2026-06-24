@@ -13,6 +13,7 @@ const FIT_NODE_MARGIN_X = 86;
 const FIT_NODE_MARGIN_Y = 42;
 const MIN_AUTO_FIT_ZOOM = 0.55;
 const MAX_AUTO_FIT_ZOOM = 1.35;
+const ZOOM_BUTTON_STEP = 1.16;
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -86,6 +87,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
           </button>
         `).join("")}
         <button class="graph-scope-button" data-graph-reset-layout="${escapeHtml(layoutKey)}" type="button">Reset nodes</button>
+        <button class="graph-scope-button" type="button" onclick="window.__zoomKnowledgeGraphViewportByButton?.('${escapeAttribute(viewportKey)}', ${ZOOM_BUTTON_STEP})">Zoom in</button>
+        <button class="graph-scope-button" type="button" onclick="window.__zoomKnowledgeGraphViewportByButton?.('${escapeAttribute(viewportKey)}', ${1 / ZOOM_BUTTON_STEP})">Zoom out</button>
         <button class="graph-scope-button" type="button" onclick="window.__fitKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Fit view</button>
         <button class="graph-scope-button" type="button" onclick="window.__resetKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Reset view</button>
       </div>
@@ -96,7 +99,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
-      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onwheel="window.__zoomKnowledgeGraphViewport?.(event)" onpointerdown="window.__startKnowledgeGraphPan?.(event)">
+      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onpointerdown="window.__startKnowledgeGraphPan?.(event)">
         <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
           <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
             ${renderEdges(graphModel.edges, layout)}
@@ -145,24 +148,20 @@ function registerScopeRenderer(renderState) {
     applyViewportToCanvas(canvas, next);
   };
 
-  window.__zoomKnowledgeGraphViewport = event => {
-    const canvas = event.currentTarget;
-    const visualizer = canvas.closest(".graph-visualizer");
-    const viewportKey = visualizer?.dataset.graphViewportKey;
-    if (!viewportKey) return;
+  window.__zoomKnowledgeGraphViewportByButton = (viewportKey, zoomFactor) => {
+    const canvas = document.querySelector(".graph-visualizer [data-graph-canvas]");
+    if (!canvas || !viewportKey) return;
 
-    event.preventDefault();
     const viewports = readStoredViewports();
     const current = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
     const rect = canvas.getBoundingClientRect();
-    const mouse = { x: event.clientX - rect.left, y: event.clientY - rect.top };
-    const zoomFactor = event.deltaY < 0 ? 1.12 : 0.88;
-    const nextZoom = clamp(current.zoom * zoomFactor, 0.35, 3.5);
+    const center = { x: rect.width / 2, y: rect.height / 2 };
+    const nextZoom = clamp(current.zoom * Number(zoomFactor || 1), 0.35, 3.5);
     const ratio = nextZoom / current.zoom;
     const next = {
       zoom: nextZoom,
-      x: clamp(mouse.x - (mouse.x - current.x) * ratio, -1800, 1800),
-      y: clamp(mouse.y - (mouse.y - current.y) * ratio, -1200, 1200)
+      x: clamp(center.x - (center.x - current.x) * ratio, -1800, 1800),
+      y: clamp(center.y - (center.y - current.y) * ratio, -1200, 1200)
     };
 
     viewports[viewportKey] = next;
@@ -605,9 +604,9 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: drag empty space to pan, scroll to zoom, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
+    return "Expanded view: drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
   }
-  return "Focused view: drag empty space to pan, scroll to zoom, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
+  return "Focused view: drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
 }
 
 function formatRelationshipLabel(type) {
