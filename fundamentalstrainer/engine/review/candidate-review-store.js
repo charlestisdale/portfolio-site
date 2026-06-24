@@ -1,8 +1,10 @@
 const STORAGE_KEY = "it-learning-platform.import-review.v1";
 
 function safeJsonParse(value, fallback) {
+  if (!value) return fallback;
   try {
-    return JSON.parse(value);
+    const parsed = JSON.parse(value);
+    return parsed && typeof parsed === "object" ? parsed : fallback;
   } catch {
     return fallback;
   }
@@ -27,12 +29,12 @@ function uniq(values) {
 export function readReviewState() {
   if (typeof localStorage === "undefined") return { records: {} };
   const state = safeJsonParse(localStorage.getItem(STORAGE_KEY), { records: {} });
-  return { records: state.records || {} };
+  return { records: state?.records && typeof state.records === "object" ? state.records : {} };
 }
 
 export function writeReviewState(state) {
   if (typeof localStorage === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ records: state.records || {} }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ records: state?.records || {} }));
 }
 
 export function candidateReviewKey(preview = {}, candidate = {}) {
