@@ -17,17 +17,27 @@ function downloadJson(filename, payload) {
   URL.revokeObjectURL(url);
 }
 
-function setCardStatus(card, record) {
+function setCardStatus(card, record, message = "") {
+  const decision = record?.decision || "undecided";
   const status = card.querySelector("[data-review-status]");
-  if (!status) return;
-  if (!record) {
-    status.textContent = "undecided";
-    status.dataset.reviewStatus = "undecided";
-    return;
+  if (status) {
+    status.textContent = decision;
+    status.dataset.reviewStatus = decision;
   }
 
-  status.textContent = record.decision;
-  status.dataset.reviewStatus = record.decision;
+  card.dataset.reviewDecision = decision;
+
+  let feedback = card.querySelector("[data-review-feedback]");
+  if (!feedback) {
+    feedback = document.createElement("p");
+    feedback.className = "review-feedback";
+    feedback.dataset.reviewFeedback = "";
+    const actions = card.querySelector(".candidate-review-actions");
+    actions?.insertAdjacentElement("beforebegin", feedback);
+  }
+
+  feedback.textContent = message || `Saved as ${decision}.`;
+  feedback.hidden = false;
 }
 
 function candidateCache() {
@@ -43,6 +53,10 @@ document.addEventListener("click", event => {
       generatedAt: new Date().toISOString(),
       objects
     });
+    exportButton.textContent = `Exported ${objects.length} approved object(s)`;
+    window.setTimeout(() => {
+      exportButton.textContent = "Export approved JSON";
+    }, 2200);
     return;
   }
 
@@ -55,7 +69,7 @@ document.addEventListener("click", event => {
   const key = card.dataset.reviewCandidate;
   const cached = candidateCache()[key];
   if (!cached) {
-    setCardStatus(card, { decision: "missing candidate cache" });
+    setCardStatus(card, { decision: "error" }, "Could not find this candidate in the review cache. Reopen the lesson preview and try again.");
     return;
   }
 
@@ -63,7 +77,7 @@ document.addEventListener("click", event => {
 
   if (action === "reset") {
     resetCandidateReview(key);
-    setCardStatus(card, null);
+    setCardStatus(card, { decision: "undecided" }, "Review decision reset.");
     return;
   }
 
@@ -77,5 +91,12 @@ document.addEventListener("click", event => {
     edits
   });
 
-  setCardStatus(card, record);
+  const messages = {
+    approved: "Approved locally. This candidate will be included when you export approved JSON.",
+    rejected: "Rejected locally. This candidate will not be exported as a Knowledge Object.",
+    merge: "Marked for merge locally. Use the merge target field to point at the existing Knowledge Object.",
+    edited: "Edits saved locally in this browser."
+  };
+
+  setCardStatus(card, record, messages[decision]);
 });
