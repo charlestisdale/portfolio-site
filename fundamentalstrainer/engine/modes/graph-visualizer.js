@@ -73,6 +73,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const activeId = activeConcept?.id || null;
   const layoutKey = graphLayoutKey({ activeId, scope: graphScope });
   const viewportKey = graphViewportKey({ activeId, scope: graphScope });
+  const graphSearchId = `graph-search-${classToken(layoutKey)}`;
   const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
   const layout = applySavedLayout(layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId }), layoutKey);
@@ -128,6 +129,16 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
+      <div class="graph-search" role="search" aria-label="Search visible graph nodes">
+        <label for="${escapeHtml(graphSearchId)}">Find visible node</label>
+        <input id="${escapeHtml(graphSearchId)}" data-graph-search-input list="${escapeHtml(graphSearchId)}-options" placeholder="Search title, id, or domain…" onkeydown="if(event.key === 'Enter') window.__centerKnowledgeGraphSearch?.('${escapeAttribute(viewportKey)}')" />
+        <datalist id="${escapeHtml(graphSearchId)}-options">
+          ${graphModel.nodes.map(node => `<option value="${escapeHtml(node.title || node.id)}" label="${escapeHtml(node.id)}"></option>`).join("")}
+        </datalist>
+        <button class="graph-scope-button" type="button" onclick="window.__centerKnowledgeGraphSearch?.('${escapeAttribute(viewportKey)}')">Center</button>
+        ${activeId ? `<button class="graph-scope-button" type="button" onclick="window.__centerKnowledgeGraphNode?.('${escapeAttribute(viewportKey)}', '${escapeAttribute(activeId)}')">Center active</button>` : ""}
+      </div>
+
       <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onpointerdown="window.__startKnowledgeGraphPan?.(event)">
         <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
           <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
@@ -175,6 +186,27 @@ function registerScopeRenderer(renderState) {
     viewports[viewportKey] = next;
     writeStoredViewports(viewports);
     applyViewportToCanvas(canvas, next);
+  };
+
+  window.__centerKnowledgeGraphSearch = viewportKey => {
+    const visualizer = document.querySelector(`.graph-visualizer[data-graph-viewport-key="${cssEscape(viewportKey)}"]`);
+    const query = visualizer?.querySelector("[data-graph-search-input]")?.value?.trim().toLowerCase();
+    if (!query) return;
+
+    const nodes = [...visualizer.querySelectorAll(".graph-visual-node[data-id]")];
+    const match = nodes.find(node => node.dataset.id?.toLowerCase() === query)
+      || nodes.find(node => node.dataset.graphTitle?.toLowerCase() === query)
+      || nodes.find(node => node.dataset.graphTitle?.toLowerCase().includes(query))
+      || nodes.find(node => node.dataset.id?.toLowerCase().includes(query))
+      || nodes.find(node => node.dataset.graphDomains?.toLowerCase().includes(query));
+
+    if (match) centerGraphOnNode(viewportKey, match);
+  };
+
+  window.__centerKnowledgeGraphNode = (viewportKey, nodeId) => {
+    const visualizer = document.querySelector(`.graph-visualizer[data-graph-viewport-key="${cssEscape(viewportKey)}"]`);
+    const node = visualizer?.querySelector(`.graph-visual-node[data-id="${cssEscape(nodeId)}"]`);
+    if (node) centerGraphOnNode(viewportKey, node);
   };
 
   window.__zoomKnowledgeGraphViewportByButton = (viewportKey, zoomFactor) => {
@@ -319,6 +351,34 @@ function registerScopeRenderer(renderState) {
     window.addEventListener("pointerup", stop, { once: true });
     window.addEventListener("pointercancel", stop, { once: true });
   };
+}
+
+function centerGraphOnNode(viewportKey, node) {
+  const canvas = node.closest("[data-graph-canvas]");
+  if (!canvas || !viewportKey) return;
+
+  const viewports = readStoredViewports();
+  const current = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
+  const rect = canvas.getBoundingClientRect();
+  const graphX = Number(node.dataset.graphX || 0);
+  const graphY = Number(node.dataset.graphY || 0);
+  const next = normalizeViewport({
+    zoom: Math.max(current.zoom, 0.85),
+    x: rect.width / 2 - graphX * Math.max(current.zoom, 0.85),
+    y: rect.height / 2 - graphY * Math.max(current.zoom, 0.85)
+  });
+
+  viewports[viewportKey] = next;
+  writeStoredViewports(viewports);
+  applyViewportToCanvas(canvas, next);
+  flashGraphNode(node);
+}
+
+function flashGraphNode(node) {
+  node.classList.remove("graph-visual-node--search-hit");
+  void node.offsetWidth;
+  node.classList.add("graph-visual-node--search-hit");
+  window.setTimeout(() => node.classList.remove("graph-visual-node--search-hit"), 1200);
 }
 
 function renderCurrentScope() {
@@ -703,7 +763,7 @@ function renderNode(node, point, { activeId }) {
   const disabled = node.missing ? "disabled" : `data-id="${escapeHtml(node.id)}"`;
 
   return `
-    <button class="${classes}" ${disabled} style="${style}" type="button" title="${escapeHtml(node.id)}" data-graph-x="${escapeHtml(point.x)}" data-graph-y="${escapeHtml(point.y)}" onpointerdown="window.__startKnowledgeGraphDrag?.(event)">
+    <button class="${classes}" ${disabled} style="${style}" type="button" title="${escapeHtml(node.id)}" data-graph-title="${escapeHtml(node.title || node.id)}" data-graph-domains="${escapeHtml((node.domains || []).join(" "))}" data-graph-x="${escapeHtml(point.x)}" data-graph-y="${escapeHtml(point.y)}" onpointerdown="window.__startKnowledgeGraphDrag?.(event)">
       <strong>${escapeHtml(node.title || node.id)}</strong>
       <span>${escapeHtml(primaryDomain)}</span>
     </button>
@@ -746,6 +806,11 @@ function classToken(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "") || "related";
+}
+
+function cssEscape(value) {
+  if (typeof CSS !== "undefined" && typeof CSS.escape === "function") return CSS.escape(String(value ?? ""));
+  return String(value ?? "").replaceAll("\\", "\\\\").replaceAll('"', '\\"');
 }
 
 function escapeAttribute(value) {
