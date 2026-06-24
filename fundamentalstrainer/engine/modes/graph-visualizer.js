@@ -6,6 +6,8 @@ const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
 const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v1";
+const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v1";
+const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -37,6 +39,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const graphScope = GRAPH_SCOPES.includes(scope) ? scope : "focused";
   const activeId = activeConcept?.id || null;
   const layoutKey = graphLayoutKey({ activeId, scope: graphScope });
+  const viewportKey = graphViewportKey({ activeId, scope: graphScope });
+  const viewport = readStoredViewports()[viewportKey] || DEFAULT_VIEWPORT;
   const nodeMap = new Map(sourceNodes.map(node => [node.id, normalizeExistingNode(node)]));
   const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
   const layout = applySavedLayout(layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId }), layoutKey);
@@ -54,7 +58,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   }
 
   return `
-    <section class="graph-visualizer" aria-label="Interactive knowledge graph" data-graph-layout-key="${escapeHtml(layoutKey)}">
+    <section class="graph-visualizer" aria-label="Interactive knowledge graph" data-graph-layout-key="${escapeHtml(layoutKey)}" data-graph-viewport-key="${escapeHtml(viewportKey)}">
       <header class="graph-visualizer__header">
         <div>
           <h3>Interactive graph</h3>
@@ -75,7 +79,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
             ${escapeHtml(capitalize(item))}
           </button>
         `).join("")}
-        <button class="graph-scope-button" data-graph-reset-layout="${escapeHtml(layoutKey)}" type="button">Reset layout</button>
+        <button class="graph-scope-button" data-graph-reset-layout="${escapeHtml(layoutKey)}" type="button">Reset nodes</button>
+        <button class="graph-scope-button" type="button" onclick="window.__resetKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Reset view</button>
       </div>
 
       <div class="graph-legend" aria-label="Relationship types">
@@ -84,12 +89,14 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
-      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas>
-        <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
-          ${renderEdges(graphModel.edges, layout)}
-        </svg>
-        <div class="graph-canvas__nodes">
-          ${graphModel.nodes.map(node => renderNode(node, layout.get(node.id), { activeId })).join("")}
+      <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onwheel="window.__zoomKnowledgeGraphViewport?.(event)" onpointerdown="window.__startKnowledgeGraphPan?.(event)">
+        <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
+          <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
+            ${renderEdges(graphModel.edges, layout)}
+          </svg>
+          <div class="graph-canvas__nodes">
+            ${graphModel.nodes.map(node => renderNode(node, layout.get(node.id), { activeId })).join("")}
+          </div>
         </div>
       </div>
     </section>
@@ -109,8 +116,89 @@ function registerScopeRenderer(renderState) {
     const layouts = readStoredLayouts();
     delete layouts[layoutKey];
     writeStoredLayouts(layouts);
-    const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
-    window.__renderKnowledgeGraphScope(scope);
+    renderCurrentScope();
+  };
+
+  window.__resetKnowledgeGraphViewport = viewportKey => {
+    const viewports = readStoredViewports();
+    delete viewports[viewportKey];
+    writeStoredViewports(viewports);
+    renderCurrentScope();
+  };
+
+  window.__zoomKnowledgeGraphViewport = event => {
+    const canvas = event.currentTarget;
+    const visualizer = canvas.closest(".graph-visualizer");
+    const viewportKey = visualizer?.dataset.graphViewportKey;
+    if (!viewportKey) return;
+
+    event.preventDefault();
+    const viewports = readStoredViewports();
+    const current = viewports[viewportKey] || { ...DEFAULT_VIEWPORT };
+    const rect = canvas.getBoundingClientRect();
+    const mouse = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    const zoomFactor = event.deltaY < 0 ? 1.12 : 0.88;
+    const nextZoom = clamp(current.zoom * zoomFactor, 0.35, 3.5);
+    const ratio = nextZoom / current.zoom;
+    const next = {
+      zoom: nextZoom,
+      x: clamp(mouse.x - (mouse.x - current.x) * ratio, -1800, 1800),
+      y: clamp(mouse.y - (mouse.y - current.y) * ratio, -1200, 1200)
+    };
+
+    viewports[viewportKey] = next;
+    writeStoredViewports(viewports);
+    applyViewportToCanvas(canvas, next);
+  };
+
+  window.__startKnowledgeGraphPan = event => {
+    if (event.button !== undefined && event.button !== 0) return;
+    if (event.target.closest("button[data-id]")) return;
+
+    const canvas = event.currentTarget;
+    const visualizer = canvas.closest(".graph-visualizer");
+    const viewportKey = visualizer?.dataset.graphViewportKey;
+    if (!viewportKey) return;
+
+    const viewports = readStoredViewports();
+    const current = viewports[viewportKey] || { ...DEFAULT_VIEWPORT };
+    const start = { x: event.clientX, y: event.clientY, viewportX: current.x, viewportY: current.y };
+    let didPan = false;
+
+    canvas.setPointerCapture?.(event.pointerId);
+    canvas.classList.add("graph-canvas--panning");
+    event.preventDefault();
+
+    const move = moveEvent => {
+      const dx = moveEvent.clientX - start.x;
+      const dy = moveEvent.clientY - start.y;
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didPan = true;
+      const next = {
+        zoom: current.zoom,
+        x: clamp(start.viewportX + dx, -1800, 1800),
+        y: clamp(start.viewportY + dy, -1200, 1200)
+      };
+      viewports[viewportKey] = next;
+      writeStoredViewports(viewports);
+      applyViewportToCanvas(canvas, next);
+    };
+
+    const stop = stopEvent => {
+      canvas.releasePointerCapture?.(event.pointerId);
+      canvas.classList.remove("graph-canvas--panning");
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
+      if (didPan) {
+        window.__knowledgeGraphSuppressClickUntil = Date.now() + 250;
+        stopEvent?.preventDefault?.();
+        stopEvent?.stopPropagation?.();
+      }
+    };
+
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", stop, { once: true });
+    window.addEventListener("pointercancel", stop, { once: true });
   };
 
   window.__startKnowledgeGraphDrag = event => {
@@ -124,6 +212,7 @@ function registerScopeRenderer(renderState) {
     const nodeId = node.dataset.id;
     if (!canvas || !layoutKey || !nodeId) return;
 
+    const viewport = readStoredViewports()[visualizer?.dataset.graphViewportKey] || DEFAULT_VIEWPORT;
     const start = { x: event.clientX, y: event.clientY };
     const startX = Number(node.dataset.graphX || 0);
     const startY = Number(node.dataset.graphY || 0);
@@ -136,8 +225,8 @@ function registerScopeRenderer(renderState) {
 
     const move = moveEvent => {
       const rect = canvas.getBoundingClientRect();
-      const dx = ((moveEvent.clientX - start.x) / rect.width) * VIEWBOX_WIDTH;
-      const dy = ((moveEvent.clientY - start.y) / rect.height) * VIEWBOX_HEIGHT;
+      const dx = ((moveEvent.clientX - start.x) / rect.width) * VIEWBOX_WIDTH / viewport.zoom;
+      const dy = ((moveEvent.clientY - start.y) / rect.height) * VIEWBOX_HEIGHT / viewport.zoom;
       if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
       const next = {
         x: clamp(startX + dx, 30, VIEWBOX_WIDTH - 30),
@@ -167,14 +256,41 @@ function registerScopeRenderer(renderState) {
         window.__knowledgeGraphSuppressClickUntil = Date.now() + 450;
         stopEvent?.preventDefault?.();
         stopEvent?.stopPropagation?.();
-        const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
-        window.__renderKnowledgeGraphScope(scope);
+        renderCurrentScope();
       }
     };
 
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerup", stop, { once: true });
     window.addEventListener("pointercancel", stop, { once: true });
+  };
+}
+
+function renderCurrentScope() {
+  const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
+  window.__renderKnowledgeGraphScope?.(scope);
+}
+
+function applyViewportToCanvas(canvas, viewport) {
+  const target = canvas.querySelector("[data-graph-viewport]");
+  if (!target) return;
+  target.style.transform = viewportTransform(viewport);
+}
+
+function viewportStyle(viewport) {
+  return `transform:${viewportTransform(viewport)};`;
+}
+
+function viewportTransform(viewport) {
+  const next = normalizeViewport(viewport);
+  return `translate(${next.x}px, ${next.y}px) scale(${next.zoom})`;
+}
+
+function normalizeViewport(viewport) {
+  return {
+    x: clamp(Number(viewport?.x ?? 0), -1800, 1800),
+    y: clamp(Number(viewport?.y ?? 0), -1200, 1200),
+    zoom: clamp(Number(viewport?.zoom ?? 1), 0.35, 3.5)
   };
 }
 
@@ -190,11 +306,31 @@ function writeStoredLayouts(layouts) {
   try {
     window.localStorage.setItem(GRAPH_LAYOUT_STORAGE_KEY, JSON.stringify(layouts));
   } catch {
-    // Ignore localStorage failures. Dragging should still work for the current session.
+    // Ignore localStorage failures.
+  }
+}
+
+function readStoredViewports() {
+  try {
+    return JSON.parse(window.localStorage.getItem(GRAPH_VIEWPORT_STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeStoredViewports(viewports) {
+  try {
+    window.localStorage.setItem(GRAPH_VIEWPORT_STORAGE_KEY, JSON.stringify(viewports));
+  } catch {
+    // Ignore localStorage failures.
   }
 }
 
 function graphLayoutKey({ activeId, scope }) {
+  return `${scope}:${activeId || "all"}`;
+}
+
+function graphViewportKey({ activeId, scope }) {
   return `${scope}:${activeId || "all"}`;
 }
 
@@ -398,9 +534,9 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: drag nodes to clean up overlap. Reset layout restores the generated view.";
+    return "Expanded view: drag empty space to pan, scroll to zoom, and drag nodes to clean up overlap.";
   }
-  return "Focused view: drag nodes to clean up overlap. Stub nodes mark referenced concepts that still need full discovery.";
+  return "Focused view: drag empty space to pan, scroll to zoom, and drag nodes to clean up overlap.";
 }
 
 function formatRelationshipLabel(type) {
@@ -432,6 +568,10 @@ function classToken(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "") || "related";
+}
+
+function escapeAttribute(value) {
+  return String(value ?? "").replaceAll("\\", "\\\\").replaceAll("'", "\\'").replaceAll("\n", " ");
 }
 
 function escapeHtml(value) {
