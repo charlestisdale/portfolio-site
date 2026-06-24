@@ -38,11 +38,26 @@ const sentences = paragraphs.flatMap(paragraph => {
     .map((text, index) => ({ paragraph: paragraph.paragraph, sentence: index + 1, text }));
 });
 
-const stopWords = new Set([
-  "the", "and", "for", "with", "that", "this", "from", "your", "you", "are", "can", "will", "have", "has", "not", "but", "into", "there", "their", "windows", "microsoft", "computer", "system", "systems", "operating", "using", "used", "also", "then", "than", "when", "what", "where", "which", "would", "could", "should", "lets", "because", "about", "these", "those"
-]);
+const conceptCatalog = [
+  // Operating system overview concepts
+  { title: "Operating System", id: "operating-systems.operating-system", type: "operating-system", domains: ["operating-systems"], aliases: ["OS", "operating systems"] },
+  { title: "Kernel", id: "operating-systems.kernel", type: "concept", domains: ["operating-systems"], aliases: ["OS kernel"] },
+  { title: "Application Compatibility", id: "operating-systems.application-compatibility", type: "concept", domains: ["operating-systems", "software"], aliases: ["app compatibility", "software compatibility"] },
+  { title: "Open Source Software", id: "software.open-source-software", type: "concept", domains: ["software", "linux"], aliases: ["open-source", "open source"] },
+  { title: "App Store", id: "software.app-store", type: "tool", domains: ["software", "macos", "mobile"], aliases: ["Apple App Store"] },
+  { title: "Google Play Store", id: "software.google-play-store", type: "tool", domains: ["software", "mobile"], aliases: ["Play Store"] },
+  { title: "Software Development Kit", id: "software.software-development-kit", type: "concept", domains: ["software"], aliases: ["SDK", "software developers kit", "software developer kit"] },
 
-const knownConcepts = [
+  // Operating systems
+  { title: "Windows", id: "windows.windows", type: "operating-system", domains: ["windows", "operating-systems"], aliases: ["Microsoft Windows"] },
+  { title: "Linux", id: "linux.linux", type: "operating-system", domains: ["linux", "operating-systems"], aliases: [] },
+  { title: "macOS", id: "macos.macos", type: "operating-system", domains: ["macos", "operating-systems"], aliases: ["Mac OS", "MacOS", "Mac"] },
+  { title: "iOS", id: "mobile.ios", type: "operating-system", domains: ["mobile", "operating-systems"], aliases: ["Apple iOS", "iPhone OS"] },
+  { title: "iPadOS", id: "mobile.ipados", type: "operating-system", domains: ["mobile", "operating-systems"], aliases: ["iPad OS"] },
+  { title: "Android", id: "mobile.android", type: "operating-system", domains: ["mobile", "operating-systems", "linux"], aliases: ["Google Android"] },
+  { title: "ChromeOS", id: "linux.chromeos", type: "operating-system", domains: ["linux", "operating-systems"], aliases: ["Chrome OS"] },
+
+  // Windows tools and commands
   { title: "Task Manager", id: "windows.task-manager", type: "tool", domains: ["windows", "software-troubleshooting"], aliases: ["Windows Task Manager"] },
   { title: "Event Viewer", id: "windows.event-viewer", type: "tool", domains: ["windows", "software-troubleshooting"], aliases: [] },
   { title: "Control Panel", id: "windows.control-panel", type: "tool", domains: ["windows"], aliases: [] },
@@ -61,140 +76,134 @@ const knownConcepts = [
   { title: "tracert", id: "commands.tracert", type: "command", domains: ["commands", "networking"], aliases: ["traceroute"] },
   { title: "nslookup", id: "commands.nslookup", type: "command", domains: ["commands", "networking"], aliases: [] },
   { title: "netstat", id: "commands.netstat", type: "command", domains: ["commands", "networking"], aliases: [] },
-  { title: "net use", id: "commands.net-use", type: "command", domains: ["commands", "networking"], aliases: [] },
-  { title: "net user", id: "commands.net-user", type: "command", domains: ["commands", "windows", "security"], aliases: [] },
   { title: "chkdsk", id: "commands.chkdsk", type: "command", domains: ["commands", "windows", "hardware"], aliases: [] },
   { title: "sfc", id: "commands.sfc", type: "command", domains: ["commands", "windows", "software-troubleshooting"], aliases: ["System File Checker"] },
   { title: "DISM", id: "commands.dism", type: "command", domains: ["commands", "windows", "software-troubleshooting"], aliases: [] },
-  { title: "gpupdate", id: "commands.gpupdate", type: "command", domains: ["commands", "windows"], aliases: [] },
+
+  // Networking and security foundations
   { title: "DNS", id: "networking.dns", type: "protocol", domains: ["networking"], aliases: ["Domain Name System"] },
   { title: "DHCP", id: "networking.dhcp", type: "protocol", domains: ["networking"], aliases: ["Dynamic Host Configuration Protocol"] },
-  { title: "IP address", id: "networking.ip-address", type: "concept", domains: ["networking"], aliases: ["IPv4 address", "IPv6 address"] },
-  { title: "subnet mask", id: "networking.subnet-mask", type: "concept", domains: ["networking"], aliases: [] },
-  { title: "default gateway", id: "networking.default-gateway", type: "concept", domains: ["networking"], aliases: [] },
+  { title: "IP Address", id: "networking.ip-address", type: "concept", domains: ["networking"], aliases: ["IPv4 address", "IPv6 address"] },
+  { title: "Default Gateway", id: "networking.default-gateway", type: "concept", domains: ["networking"], aliases: [] },
   { title: "ARP", id: "networking.arp", type: "protocol", domains: ["networking"], aliases: ["Address Resolution Protocol"] },
   { title: "TCP/IP", id: "networking.tcp-ip", type: "protocol", domains: ["networking"], aliases: [] },
-  { title: "IPv4", id: "networking.ipv4", type: "protocol", domains: ["networking"], aliases: [] },
-  { title: "IPv6", id: "networking.ipv6", type: "protocol", domains: ["networking"], aliases: [] },
-  { title: "network adapter", id: "networking.network-adapter", type: "hardware", domains: ["networking", "hardware"], aliases: ["NIC"] },
   { title: "NTFS", id: "windows.ntfs", type: "file-system", domains: ["windows"], aliases: [] },
-  { title: "FAT32", id: "storage.fat32", type: "file-system", domains: ["hardware"], aliases: [] },
-  { title: "exFAT", id: "storage.exfat", type: "file-system", domains: ["hardware"], aliases: [] },
   { title: "APFS", id: "macos.apfs", type: "file-system", domains: ["macos"], aliases: [] },
   { title: "ext4", id: "linux.ext4", type: "file-system", domains: ["linux"], aliases: [] },
-  { title: "BitLocker", id: "security.bitlocker", type: "security-control", domains: ["security", "windows"], aliases: [] },
-  { title: "EFS", id: "security.efs", type: "security-control", domains: ["security", "windows"], aliases: ["Encrypting File System"] },
-  { title: "permissions", id: "security.permissions", type: "security-control", domains: ["security"], aliases: [] },
-  { title: "share permissions", id: "security.share-permissions", type: "security-control", domains: ["security", "networking"], aliases: [] },
-  { title: "Windows Update", id: "windows.windows-update", type: "tool", domains: ["windows"], aliases: [] },
-  { title: "Settings", id: "windows.settings", type: "tool", domains: ["windows"], aliases: ["Windows Settings"] },
-  { title: "UAC", id: "security.user-account-control", type: "security-control", domains: ["security", "windows"], aliases: ["User Account Control"] },
-  { title: "Remote Desktop", id: "windows.remote-desktop", type: "tool", domains: ["windows", "networking"], aliases: ["RDP"] },
-  { title: "Safe Mode", id: "windows.safe-mode", type: "procedure", domains: ["windows", "software-troubleshooting"], aliases: [] },
-  { title: "System Restore", id: "windows.system-restore", type: "tool", domains: ["windows", "software-troubleshooting"], aliases: [] }
+  { title: "BitLocker", id: "security.bitlocker", type: "security-control", domains: ["security", "windows"], aliases: [] }
 ];
 
-function slugify(value) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const junkTitlePattern = /^(although|another|because|before|fortunately|generally|here|most|once|one|since|some|sometimes|these|unlike)$/i;
+
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function sentenceLooksUseful(text) {
-  return /\b(is|are|shows|displays|uses|used|allows|provides|configures|enables|disables|troubleshoot|troubleshooting|command|tool|service|protocol|address|permission|firewall|network|error|issue|problem)\b/i.test(text);
-}
-
-function safeSnippet(text, max = 220) {
-  const cleaned = text.replace(/\s+/g, " ").trim();
+function safeSnippet(text, max = 260) {
+  const cleaned = String(text || "").replace(/\s+/g, " ").trim();
   return cleaned.length > max ? cleaned.slice(0, max - 1).trimEnd() + "…" : cleaned;
 }
 
-function inferDomainFromText(value) {
-  const t = value.toLowerCase();
-  if (/\b(dns|dhcp|gateway|arp|tcp|ip|ipv4|ipv6|subnet|network|adapter|wireless|wifi|wi-fi)\b/.test(t)) return "networking";
-  if (/\b(firewall|bitlocker|efs|uac|permission|authentication|encryption|malware|defender)\b/.test(t)) return "security";
-  if (/\b(command|powershell|terminal|cmd|ipconfig|ping|tracert|nslookup|netstat|chkdsk|sfc|dism)\b/.test(t)) return "commands";
-  if (/\b(disk|partition|ntfs|fat32|exfat|drive|storage|volume)\b/.test(t)) return "hardware";
-  if (/\b(linux|ext4|bash|apt|systemd)\b/.test(t)) return "linux";
-  if (/\b(macos|apfs|finder|keychain)\b/.test(t)) return "macos";
-  return "windows";
+function sentenceLooksUseful(text) {
+  return /\b(is|are|was|were|runs|based on|allows|provides|uses|used|develop|install|supports|designed|open-source|open source|kernel|operating system|application|app store|play store|compatib)\b/i.test(text);
 }
 
-function inferTypeFromTitle(title, domain) {
-  const t = title.toLowerCase();
-  if (/\b(ipconfig|ping|tracert|nslookup|netstat|net use|net user|chkdsk|sfc|dism|gpupdate)\b/i.test(title)) return "command";
-  if (/\b(dns|dhcp|arp|tcp\/ip|ipv4|ipv6|imap|pop3|smtp|http|https|ssh|rdp)\b/.test(t)) return "protocol";
-  if (/\b(ntfs|fat32|exfat|apfs|ext4)\b/.test(t)) return "file-system";
-  if (/\b(firewall|bitlocker|uac|permission|encryption)\b/.test(t)) return "security-control";
-  if (/\b(manager|viewer|panel|settings|console|editor|monitor|desktop|restore)\b/.test(t)) return "tool";
-  if (domain === "hardware") return "hardware";
-  return "concept";
-}
+function findConceptMentions(sentence) {
+  const matches = [];
+  for (const concept of conceptCatalog) {
+    const terms = [concept.title, ...(concept.aliases || [])]
+      .filter(Boolean)
+      .sort((a, b) => b.length - a.length);
 
-function canonicalIdFor(title, domains) {
-  const primary = domains[0] || inferDomainFromText(title);
-  return `${primary}.${slugify(title)}`;
-}
-
-const mentions = new Map();
-function addMention(concept, evidence, confidence = 0.65) {
-  const slug = slugify(concept.title);
-  const id = concept.id || canonicalIdFor(concept.title, concept.domains || [inferDomainFromText(concept.title)]);
-  if (!mentions.has(id)) {
-    const domains = concept.domains || [inferDomainFromText(concept.title)];
-    mentions.set(id, {
-      title: concept.title,
-      slug,
-      proposedKnowledgeId: id,
-      type: concept.type || inferTypeFromTitle(concept.title, domains[0]),
-      domains,
-      aliases: concept.aliases || [],
-      evidence: [],
-      factTexts: new Set(),
-      confidence
-    });
-  }
-
-  const item = mentions.get(id);
-  item.confidence = Math.max(item.confidence, confidence);
-  if (item.evidence.length < 6) item.evidence.push(evidence);
-  if (sentenceLooksUseful(evidence.text)) item.factTexts.add(safeSnippet(evidence.text));
-}
-
-for (const item of sentences) {
-  for (const concept of knownConcepts) {
-    const searchable = [concept.title, ...(concept.aliases || [])];
-    for (const phrase of searchable) {
-      const pattern = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
-      if (pattern.test(item.text)) {
-        addMention(concept, item, phrase === concept.title ? 0.9 : 0.82);
+    for (const term of terms) {
+      const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegex(term)}([^a-z0-9]|$)`, "i");
+      if (pattern.test(sentence.text)) {
+        matches.push({ concept, term });
         break;
       }
     }
   }
+  return matches;
+}
 
-  const commandMatches = item.text.match(/\b(ipconfig|ping|tracert|nslookup|netstat|chkdsk|sfc|DISM|gpupdate)(?:\s+\/[a-z]+)?\b/gi) || [];
-  for (const command of commandMatches) {
-    const base = command.split(/\s+/)[0];
-    const known = knownConcepts.find(c => c.title.toLowerCase() === base.toLowerCase());
-    if (known) addMention(known, item, 0.9);
+function relationshipType(source, target, text) {
+  const lower = text.toLowerCase();
+  if (lower.includes("based on") || lower.includes("based off")) return "depends_on";
+  if (source.id.includes("app-store") || target.id.includes("app-store") || target.id.includes("google-play-store")) return "related_to";
+  if (lower.includes("unlike") || lower.includes("different")) return "contrasts_with";
+  return "related_to";
+}
+
+const mentions = new Map();
+const relationshipMap = new Map();
+
+function addMention(concept, evidence, term, confidence = 0.85) {
+  if (junkTitlePattern.test(concept.title)) return;
+  if (!mentions.has(concept.id)) {
+    mentions.set(concept.id, {
+      title: concept.title,
+      slug: concept.id.split(".").at(-1),
+      proposedKnowledgeId: concept.id,
+      type: concept.type,
+      domains: concept.domains,
+      aliases: concept.aliases || [],
+      evidence: [],
+      factTexts: new Set(),
+      confidence: 0
+    });
   }
 
-  const caps = item.text.match(/\b[A-Z][A-Za-z0-9+/#.-]{2,}(?:\s+[A-Z][A-Za-z0-9+/#.-]{2,}){0,3}\b/g) || [];
-  for (const phrase of caps) {
-    const cleaned = phrase.trim();
-    const first = cleaned.split(/\s+/)[0].toLowerCase();
-    if (!stopWords.has(first) && cleaned.length <= 60) {
-      const domain = inferDomainFromText(cleaned);
-      addMention({ title: cleaned, domains: [domain], type: inferTypeFromTitle(cleaned, domain), aliases: [] }, item, 0.45);
+  const item = mentions.get(concept.id);
+  item.confidence = Math.max(item.confidence, confidence);
+  if (item.evidence.length < 8) item.evidence.push({ ...evidence, matchedTerm: term });
+  if (sentenceLooksUseful(evidence.text)) item.factTexts.add(safeSnippet(evidence.text));
+}
+
+for (const sentence of sentences) {
+  const found = findConceptMentions(sentence);
+  for (const { concept, term } of found) {
+    const exactTitle = concept.title.toLowerCase() === term.toLowerCase();
+    addMention(concept, sentence, term, exactTitle ? 0.9 : 0.82);
+  }
+
+  if (found.length >= 2) {
+    for (const source of found) {
+      for (const target of found) {
+        if (source.concept.id === target.concept.id) continue;
+        const key = `${source.concept.id}->${target.concept.id}`;
+        if (!relationshipMap.has(key)) {
+          relationshipMap.set(key, {
+            source: source.concept.id,
+            target: target.concept.id,
+            type: relationshipType(source.concept, target.concept, sentence.text),
+            evidence: safeSnippet(sentence.text, 220)
+          });
+        }
+      }
     }
   }
+}
+
+function relationshipsFor(id) {
+  return [...relationshipMap.values()]
+    .filter(item => item.source === id)
+    .filter(item => !item.target.startsWith(id + "."))
+    .slice(0, 8)
+    .map(item => ({ id: item.target, type: item.type, evidence: item.evidence }));
 }
 
 const candidates = [...mentions.values()]
   .filter(item => item.evidence.length >= 1)
   .sort((a, b) => b.confidence - a.confidence || a.title.localeCompare(b.title))
   .map((item, index) => {
-    const factTexts = [...item.factTexts].slice(0, 5);
-    const bestEvidence = item.evidence[0]?.text || "";
+    const factTexts = [...item.factTexts].slice(0, 6);
+    const evidence = item.evidence.map(e => ({
+      paragraph: e.paragraph,
+      sentence: e.sentence,
+      matchedTerm: e.matchedTerm,
+      text: e.text
+    }));
+
     return {
       candidateId: `CAND-${String(index + 1).padStart(3, "0")}`,
       title: item.title,
@@ -206,20 +215,20 @@ const candidates = [...mentions.values()]
       aliases: item.aliases,
       confidence: Number(item.confidence.toFixed(2)),
       summaryDraft: factTexts[0] || `${item.title} appears in the transcript and needs human review before becoming trusted learning content.`,
-      explanationDraft: bestEvidence ? safeSnippet(bestEvidence, 500) : "",
+      explanationDraft: factTexts.join(" "),
       factsDraft: factTexts.map(text => ({
         text,
         importance: item.confidence >= 0.85 ? "high" : "medium",
-        tags: [item.domains[0]]
+        tags: item.domains
       })),
       examplesDraft: [],
       examTipsDraft: [],
       commonMistakesDraft: [],
       scenariosDraft: [],
       pbqIdeasDraft: [],
-      evidence: item.evidence.map(e => ({ paragraph: e.paragraph, sentence: e.sentence, text: e.text })),
+      evidence,
       possibleDuplicates: [],
-      suggestedRelationships: [],
+      suggestedRelationships: relationshipsFor(item.proposedKnowledgeId),
       reviewDecision: "undecided",
       reviewNotes: ""
     };
@@ -238,11 +247,12 @@ const output = {
     transcriptSentences: sentences.length,
     candidates: candidates.length,
     highConfidenceCandidates: candidates.filter(c => c.confidence >= 0.85).length,
-    candidatesWithFactDrafts: candidates.filter(c => c.factsDraft.length).length
+    candidatesWithFactDrafts: candidates.filter(c => c.factsDraft.length).length,
+    relationshipsSuggested: candidates.reduce((sum, candidate) => sum + candidate.suggestedRelationships.length, 0)
   },
   notes: [
-    "Auto-extracted candidates. Review every candidate before merging into content/knowledge.",
-    "This script is intentionally conservative and does not edit trusted knowledge objects.",
+    "Auto-extracted candidates from a controlled concept catalog. Review every candidate before merging into content/knowledge.",
+    "This script does not create certification-specific concept IDs.",
     "Evidence belongs in private import records; public knowledge objects should keep only generic source references."
   ],
   candidates
