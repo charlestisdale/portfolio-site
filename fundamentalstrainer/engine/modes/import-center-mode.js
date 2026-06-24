@@ -21,7 +21,7 @@ function formatNumber(value) {
 function statusMessage(state) {
   if (state.loading) return "Loading local import data…";
   if (state.error) return state.error;
-  if (!state.manifest && !state.folderReport) return "No local import data found yet. Run npm run ingest:folder -- --cert=a-plus-220-1202 to parse transcripts, build evidence, generate candidates, normalize them, and refresh the review manifest.";
+  if (!state.manifest && !state.folderReport) return "No local import data found yet. Run npm run ingest:folder -- --cert=a-plus-220-1202 for the fallback importer, or start the AI-first flow with npm run ai:import:prompt -- --lesson=01 --cert=a-plus-220-1202.";
   return "Local import data loaded. Review generated candidates before merging into Knowledge Objects.";
 }
 
@@ -251,7 +251,7 @@ function renderCandidatePreview(preview) {
     <section class="card import-preview-card">
       <div class="section-heading-row">
         <div>
-          <p class="eyebrow">${escapeHtml(preview.lessonId || "")}</p>
+          <p class="eyebrow">${escapeHtml(preview.importSource === "ai-transcript-import" ? "AI import" : preview.lessonId || "")}</p>
           <h2>${escapeHtml(preview.lessonTitle || preview.id || "Candidate Review")}</h2>
           <p class="muted"><span data-visible-candidate-count>${formatNumber(candidates.length)}</span> visible of ${formatNumber(candidates.length)} candidate(s). Review decisions are saved locally in your browser until exported.</p>
           <div class="import-metric-strip compact quality-summary-strip">
@@ -281,7 +281,7 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
   return `
     <section class="import-center-grid">
       <section class="card import-center-hero">
-        <p class="eyebrow">Evidence-first ingestion</p>
+        <p class="eyebrow">AI-first ingestion with review-safe fallback</p>
         <h2>Import Center</h2>
         <p>${escapeHtml(statusMessage(state || {}))}</p>
         <div class="summary-grid import-summary-grid">
@@ -295,13 +295,13 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
       <section class="card import-instructions-card">
         <h2>Local workflow</h2>
         <ol>
-          <li>Put raw sources in <code>data/transcripts/raw/&lt;cert&gt;/</code>.</li>
-          <li>Run <code>npm run ingest:folder -- --cert=a-plus-220-1202</code>.</li>
-          <li>Review generated evidence, quality warnings, and candidate drafts in this tab.</li>
-          <li>Approve, edit, merge, or reject each candidate.</li>
-          <li>Export approved Knowledge Objects for merge.</li>
+          <li>Use <code>npm run ingest:folder -- --cert=a-plus-220-1202</code> for the current fallback importer.</li>
+          <li>Use <code>npm run ai:import:prompt -- --lesson=01 --cert=a-plus-220-1202</code> to generate an AI-first transcript prompt.</li>
+          <li>Save the AI JSON response in <code>data/ai-imports/responses/</code>.</li>
+          <li>Run <code>npm run ai:import:normalize -- --file=data/ai-imports/responses/&lt;response&gt;.json</code>, then <code>npm run review:manifest</code>.</li>
+          <li>Review, edit, approve, merge, or reject candidates before they become Knowledge Objects.</li>
         </ol>
-        <p class="muted">For one file, run <code>npm run ingest:transcript -- --file=&lt;path-to-srt&gt; --cert=a-plus-220-1202</code>. Folder import uses the same transcript import function for every source file.</p>
+        <p class="muted">Architecture notes live in <code>docs/ingestion-architecture.md</code>. AI candidates are still only review candidates; they are not canonical Knowledge Objects until approved.</p>
         <div class="import-metric-strip compact">
           <span><strong>${formatNumber(reviewed.approved)}</strong> approved</span>
           <span><strong>${formatNumber(reviewed.rejected)}</strong> rejected</span>
