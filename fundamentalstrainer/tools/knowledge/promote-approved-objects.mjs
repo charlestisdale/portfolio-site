@@ -8,6 +8,7 @@ const root = process.cwd();
 const inputFile = args.file;
 const dryRun = args["dry-run"] === "true";
 const cleanBuild = args.clean === "true";
+const createStubs = args.stubs !== "false";
 
 const allowedTypes = new Set([
   "concept",
@@ -57,6 +58,15 @@ function slugify(value, fallback = "item") {
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "") || fallback;
+}
+
+function titleFromId(id) {
+  return String(id || "Knowledge Object")
+    .split(".")
+    .at(-1)
+    .split("-")
+    .map(word => word ? word[0].toUpperCase() + word.slice(1) : word)
+    .join(" ");
 }
 
 function canonicalDomain(value) {
@@ -121,7 +131,7 @@ function normalizeRelationshipList(items) {
 function normalizeObjectForCompile(sourceObject) {
   const domains = asArray(sourceObject.domains).map(domain => slugify(domain)).filter(Boolean);
   const id = normalizeId(sourceObject.id, sourceObject.title, domains);
-  const title = sourceObject.title || id;
+  const title = sourceObject.title || titleFromId(id);
   const today = new Date().toISOString().slice(0, 10);
   const summary = sourceObject.learning?.summary || sourceObject.learning?.explanation || sourceObject.summaryDraft || `${title} is a reviewed concept from the learning platform import pipeline.`;
   const facts = mergeTextRecords(sourceObject.learning?.facts?.length ? sourceObject.learning.facts : sourceObject.factsDraft || []);
@@ -223,7 +233,128 @@ function compileObjects(sourceObjects) {
     }
   }
 
-  return { objects: [...byId.values()].map(stripCompilerMetadata), duplicateInputs };
+  const objects = [...byId.values()];
+  resolveRelationshipTargets(objects);
+  const stubs = createStubs ? createMissingRelationshipStubs(objects) : [];
+  for (const stub of stubs) objects.push(stub);
+
+  return {
+    objects: objects.map(stripCompilerMetadata),
+    duplicateInputs,
+    stubs
+  };
+}
+
+function relationshipTargetAliasMap(objects) {
+  const aliases = new Map();
+  for (const object of objects) {
+    const idParts = object.id.split(".");
+    const slug = idParts.at(-1);
+    aliases.set(object.id, object.id);
+    aliases.set(slug, object.id);
+    aliases.set(`${idParts[0]}.${slug}`, object.id);
+    aliases.set(slugify(object.title), object.id);
+    for (const alias of object.aliases || []) aliases.set(slugify(alias), object.id);
+  }
+  return aliases;
+}
+
+function resolveTargetId(targetId, objectIds, aliases) {
+  if (!targetId) return "";
+  if (objectIds.has(targetId)) return targetId;
+  const slug = targetId.split(".").at(-1);
+  return aliases.get(targetId) || aliases.get(slug) || targetId;
+}
+
+function resolveRelationshipTargets(objects) {
+  const objectIds = new Set(objects.map(object => object.id));
+  const aliases = relationshipTargetAliasMap(objects);
+
+  for (const object of objects) {
+    object.relationships.prerequisites = object.relationships.prerequisites.map(id => resolveTargetId(id, objectIds, aliases));
+    object.relationships.parents = object.relationships.parents.map(id => resolveTargetId(id, objectIds, aliases));
+    object.relationships.children = object.relationships.children.map(id => resolveTargetId(id, objectIds, aliases));
+    object.relationships.replacedBy = object.relationships.replacedBy.map(id => resolveTargetId(id, objectIds, aliases));
+    object.relationships.related = object.relationships.related.map(item => ({ ...item, id: resolveTargetId(item.id, objectIds, aliases) }));
+    object.relationships.contrastsWith = object.relationships.contrastsWith.map(item => ({ ...item, id: resolveTargetId(item.id, objectIds, aliases) }));
+  }
+}
+
+function allRelationshipTargetIds(objects) {
+  return uniqueBy(objects.flatMap(object => [
+    ...asArray(object.relationships?.prerequisites),
+    ...asArray(object.relationships?.parents),
+    ...asArray(object.relationships?.children),
+    ...asArray(object.relationships?.replacedBy),
+    ...asArray(object.relationships?.related).map(item => item.id),
+    ...asArray(object.relationships?.contrastsWith).map(item => item.id)
+  ]).filter(Boolean), item => item);
+}
+
+function createMissingRelationshipStubs(objects) {
+  const existingIds = new Set(objects.map(object => object.id));
+  const certificationMappings = objects[0]?.certificationMappings || [];
+  const today = new Date().toISOString().slice(0, 10);
+
+  return allRelationshipTargetIds(objects)
+    .filter(id => !existingIds.has(id))
+    .map(id => {
+      const title = titleFromId(id);
+      const domain = id.split(".")[0];
+      return {
+        schemaVersion: "1.0.0",
+        id,
+        slug: slugify(id.split(".").at(-1)),
+        title,
+        aliases: [],
+        type: "concept",
+        status: "stub",
+        domains: [domain],
+        difficulty: "foundational",
+        importance: "medium",
+        certificationMappings,
+        learning: {
+          summary: `${title} is a placeholder concept created because another reviewed Knowledge Object references it.`,
+          explanation: `${title} needs review and enrichment before it becomes a complete Knowledge Object.`,
+          facts: [{ text: `${title} is referenced by another Knowledge Object and needs human review.`, importance: "low", tags: ["stub"] }],
+          commands: [],
+          examples: [],
+          tables: [],
+          media: [],
+          notes: [{ text: "Auto-created by the Knowledge Builder to prevent dangling relationship targets.", type: "builder-note" }]
+        },
+        assessmentSeeds: {
+          examTips: [],
+          commonMistakes: [],
+          scenarios: [],
+          pbqIdeas: [],
+          questionTargets: []
+        },
+        relationships: {
+          prerequisites: [],
+          parents: [],
+          children: [],
+          related: [],
+          contrastsWith: [],
+          replacedBy: []
+        },
+        sources: {
+          references: []
+        },
+        quality: {
+          createdAt: today,
+          updatedAt: today,
+          lastReviewedAt: today,
+          reviewedBy: "knowledge-builder",
+          confidence: "low",
+          needsHumanReview: true,
+          reviewNotes: ["Auto-created relationship target stub."]
+        },
+        _compiler: {
+          stub: true
+        }
+      };
+    });
 }
 
 function stripCompilerMetadata(object) {
@@ -358,7 +489,7 @@ function mergeGraph(certification, newEdges) {
   return { path: graphPath, count: relationships.length };
 }
 
-if (!inputFile) fail("Usage: node tools/knowledge/promote-approved-objects.mjs --file=approved-knowledge-objects.json [--clean=true]");
+if (!inputFile) fail("Usage: node tools/knowledge/promote-approved-objects.mjs --file=approved-knowledge-objects.json [--clean=true] [--stubs=false]");
 const sourcePath = path.resolve(root, inputFile);
 if (!fs.existsSync(sourcePath)) fail(`Approved export not found: ${inputFile}`);
 
@@ -375,6 +506,7 @@ if (validationErrors.length) {
 
 const removedDuringClean = cleanKnowledgeDirectory();
 const promoted = [];
+const stubs = [];
 const edges = [];
 const indexPaths = [];
 
@@ -382,7 +514,9 @@ for (const object of compilation.objects) {
   const filePath = canonicalPathForObject(object);
   const projectPath = toProjectPath(filePath, root);
   writeJson(filePath, object);
-  promoted.push({ id: object.id, title: object.title, path: projectPath });
+  const record = { id: object.id, title: object.title, status: object.status, path: projectPath };
+  if (object.status === "stub") stubs.push(record);
+  else promoted.push(record);
   indexPaths.push(projectPath);
   edges.push(...relationshipEdgesFor(object));
 }
@@ -395,14 +529,17 @@ const report = {
   generatedBy: "knowledge-builder-compiler",
   dryRun,
   cleanBuild,
+  createStubs,
   source: toProjectPath(sourcePath, root),
   inputCount: sourceObjects.length,
   promotedCount: promoted.length,
+  stubCount: stubs.length,
   duplicateInputCount: compilation.duplicateInputs.length,
   relationshipEdges: edges.length,
   removedDuringClean,
   duplicateInputs: compilation.duplicateInputs,
   promoted,
+  stubs,
   skipped: [],
   index: { path: toProjectPath(indexResult.path, root), count: indexResult.count },
   graph: { path: toProjectPath(graphResult.path, root), count: graphResult.count }
@@ -419,6 +556,6 @@ console.log(JSON.stringify({
   next: [
     "Run npm run validate:knowledge.",
     "Reload the app and confirm Knowledge Objects and graph edges increased.",
-    "Archive or remove promoted pending candidates after verification."
+    "Review stub Knowledge Objects and replace them with full discoveries when lessons teach them directly."
   ]
 }, null, 2));
