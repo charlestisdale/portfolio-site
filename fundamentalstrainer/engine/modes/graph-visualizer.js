@@ -1,7 +1,7 @@
 import { getGraphScope } from "./graph-scope.js";
 
-const VIEWBOX_WIDTH = 760;
-const VIEWBOX_HEIGHT = 420;
+const VIEWBOX_WIDTH = 980;
+const VIEWBOX_HEIGHT = 620;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
@@ -9,15 +9,18 @@ const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v1";
 const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v1";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 const FIT_VIEW_PADDING = 42;
-const FIT_NODE_MARGIN_X = 86;
-const FIT_NODE_MARGIN_Y = 42;
-const MIN_AUTO_FIT_ZOOM = 0.55;
-const MAX_AUTO_FIT_ZOOM = 1.35;
+const FIT_NODE_MARGIN_X = 96;
+const FIT_NODE_MARGIN_Y = 54;
+const MIN_AUTO_FIT_ZOOM = 0.45;
+const MAX_AUTO_FIT_ZOOM = 1.25;
 const ZOOM_BUTTON_STEP = 1.16;
-const NODE_CARD_WIDTH = 172;
-const NODE_CARD_HEIGHT = 58;
-const NODE_CARD_TALL_HEIGHT = 74;
-const NODE_EDGE_GAP = 7;
+const NODE_CARD_WIDTH = 188;
+const NODE_CARD_HEIGHT = 66;
+const NODE_CARD_TALL_HEIGHT = 84;
+const NODE_EDGE_GAP = 10;
+const NODE_COLLISION_PADDING_X = 24;
+const NODE_COLLISION_PADDING_Y = 18;
+const LAYOUT_RELAXATION_PASSES = 18;
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -251,8 +254,8 @@ function registerScopeRenderer(renderState) {
       const dy = ((moveEvent.clientY - start.y) / rect.height) * VIEWBOX_HEIGHT / viewport.zoom;
       if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
       const next = {
-        x: clamp(startX + dx, 30, VIEWBOX_WIDTH - 30),
-        y: clamp(startY + dy, 24, VIEWBOX_HEIGHT - 24)
+        x: clamp(startX + dx, 40, VIEWBOX_WIDTH - 40),
+        y: clamp(startY + dy, 34, VIEWBOX_HEIGHT - 34)
       };
       node.dataset.graphX = String(next.x);
       node.dataset.graphY = String(next.y);
@@ -310,8 +313,8 @@ function viewportTransform(viewport) {
 
 function normalizeViewport(viewport) {
   return {
-    x: clamp(Number(viewport?.x ?? 0), -1800, 1800),
-    y: clamp(Number(viewport?.y ?? 0), -1200, 1200),
+    x: clamp(Number(viewport?.x ?? 0), -2200, 2200),
+    y: clamp(Number(viewport?.y ?? 0), -1600, 1600),
     zoom: clamp(Number(viewport?.zoom ?? 1), 0.35, 3.5)
   };
 }
@@ -414,8 +417,8 @@ function applySavedLayout(layout, layoutKey) {
   for (const [nodeId, point] of Object.entries(saved)) {
     if (!layout.has(nodeId)) continue;
     layout.set(nodeId, {
-      x: clamp(Number(point.x), 30, VIEWBOX_WIDTH - 30),
-      y: clamp(Number(point.y), 24, VIEWBOX_HEIGHT - 24)
+      x: clamp(Number(point.x), 40, VIEWBOX_WIDTH - 40),
+      y: clamp(Number(point.y), 34, VIEWBOX_HEIGHT - 34)
     });
   }
   return layout;
@@ -513,24 +516,67 @@ function layoutNodes({ nodes, edges, activeId }) {
   const neighbors = nodes.filter(node => node.id !== activeId && neighborIds.has(node.id));
   const context = nodes.filter(node => node.id !== activeId && !neighborIds.has(node.id));
 
-  distributeAround(layout, neighbors, activeNode ? 135 : 155, -90);
-  distributeAround(layout, context, activeNode ? 225 : 155, -72);
+  if (activeNode) {
+    distributeAroundEllipse(layout, neighbors, 275, 165, -92);
+    distributeAroundEllipse(layout, context, 405, 245, -70);
+  } else {
+    distributeAroundEllipse(layout, nodes, 330, 210, -86);
+  }
 
   if (!activeNode && nodes.length === 1) layout.set(nodes[0].id, CENTER);
+  relaxLayout(layout, nodes, activeNode?.id || null);
   return layout;
 }
 
-function distributeAround(layout, nodes, radius, startDegrees) {
+function distributeAroundEllipse(layout, nodes, radiusX, radiusY, startDegrees) {
   if (!nodes.length) return;
   const step = 360 / nodes.length;
 
   nodes.forEach((node, index) => {
     const angle = ((startDegrees + index * step) * Math.PI) / 180;
     layout.set(node.id, {
-      x: CENTER.x + Math.cos(angle) * radius,
-      y: CENTER.y + Math.sin(angle) * radius
+      x: CENTER.x + Math.cos(angle) * radiusX,
+      y: CENTER.y + Math.sin(angle) * radiusY
     });
   });
+}
+
+function relaxLayout(layout, nodes, fixedId = null) {
+  for (let pass = 0; pass < LAYOUT_RELAXATION_PASSES; pass += 1) {
+    for (let leftIndex = 0; leftIndex < nodes.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < nodes.length; rightIndex += 1) {
+        const leftNode = nodes[leftIndex];
+        const rightNode = nodes[rightIndex];
+        const left = layout.get(leftNode.id);
+        const right = layout.get(rightNode.id);
+        if (!left || !right) continue;
+
+        const leftSize = getNodeCardSize(leftNode);
+        const rightSize = getNodeCardSize(rightNode);
+        const minX = (leftSize.width + rightSize.width) / 2 + NODE_COLLISION_PADDING_X;
+        const minY = (leftSize.height + rightSize.height) / 2 + NODE_COLLISION_PADDING_Y;
+        const dx = right.x - left.x || 0.01;
+        const dy = right.y - left.y || 0.01;
+        const overlapX = minX - Math.abs(dx);
+        const overlapY = minY - Math.abs(dy);
+        if (overlapX <= 0 || overlapY <= 0) continue;
+
+        const moveX = Math.sign(dx) * overlapX * 0.28;
+        const moveY = Math.sign(dy) * overlapY * 0.28;
+        const leftLocked = leftNode.id === fixedId;
+        const rightLocked = rightNode.id === fixedId;
+
+        if (!leftLocked) {
+          left.x = clamp(left.x - moveX, 60, VIEWBOX_WIDTH - 60);
+          left.y = clamp(left.y - moveY, 50, VIEWBOX_HEIGHT - 50);
+        }
+        if (!rightLocked) {
+          right.x = clamp(right.x + moveX, 60, VIEWBOX_WIDTH - 60);
+          right.y = clamp(right.y + moveY, 50, VIEWBOX_HEIGHT - 50);
+        }
+      }
+    }
+  }
 }
 
 function renderEdges(edges, layout, nodes = []) {
@@ -616,8 +662,8 @@ function getEdgeLabelPosition(source, target, index = 0) {
   const verticalBias = Math.abs(dx) < 24 ? -20 : 0;
 
   return {
-    x: clamp(midpoint.x + perpendicular.x * 32 * direction, 52, VIEWBOX_WIDTH - 52),
-    y: clamp(midpoint.y + perpendicular.y * 32 * direction + verticalBias, 30, VIEWBOX_HEIGHT - 30)
+    x: clamp(midpoint.x + perpendicular.x * 36 * direction, 52, VIEWBOX_WIDTH - 52),
+    y: clamp(midpoint.y + perpendicular.y * 36 * direction + verticalBias, 30, VIEWBOX_HEIGHT - 30)
   };
 }
 
