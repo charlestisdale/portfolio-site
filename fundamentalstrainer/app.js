@@ -119,7 +119,7 @@ async function loadImportCenterData() {
       loading: false,
       manifest,
       folderReport,
-      error: !manifest && !folderReport ? "No generated import manifest/report found in this browser context." : null
+      error: !manifest && !folderReport ? "No generated import manifest/report found in this browser context. Run the importer locally and open the local app server to see review data." : null
     };
   } catch (error) {
     importCenterState = {
@@ -135,9 +135,17 @@ async function loadImportCenterData() {
 
 async function fetchJsonOrNull(url) {
   const response = await fetch(url, { cache: "no-store" });
+  const text = await response.text();
+
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
-  return response.json();
+  if (!text.trim()) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
 }
 
 async function previewImportCandidates(path) {
@@ -343,7 +351,7 @@ function getPanelExists(mode) {
 function getDefaultMode() {
   const panels = [...document.querySelectorAll("[data-mode-panel]")];
   if (panels.some(panel => panel.dataset.modePanel === "dashboard")) return "dashboard";
-  if (panels.some(panel => panel.dataset.modePanel === "learn")) return "learn";
+  if (panels.some(panel => panel.datasetModePanel === "learn")) return "learn";
   return panels[0]?.dataset.modePanel || "learn";
 }
 
