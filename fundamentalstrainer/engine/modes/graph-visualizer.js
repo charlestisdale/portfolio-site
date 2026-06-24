@@ -775,7 +775,7 @@ function getNodeCardSize(node) {
 function clamp(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
-  return Math.min(Math.max(number), max);
+  return Math.min(Math.max(number, min), max);
 }
 
 function renderNode(node, point, { activeId }) {
