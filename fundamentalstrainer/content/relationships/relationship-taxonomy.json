@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Canonical relationship taxonomy for the IT Learning Platform knowledge graph.",
+  "relationships": [
+    {
+      "type": "contains",
+      "label": "contains",
+      "meaning": "Parent concept includes or is composed of the target concept."
+    },
+    {
+      "type": "part_of",
+      "label": "part of",
+      "meaning": "Source concept is a component or subtopic of the target concept."
+    },
+    {
+      "type": "prerequisite",
+      "label": "prerequisite",
+      "meaning": "Target concept should be understood before the source concept."
+    },
+    {
+      "type": "uses",
+      "label": "uses",
+      "meaning": "Source concept uses the target concept during operation or administration."
+    },
+    {
+      "type": "supports",
+      "label": "supports",
+      "meaning": "Source concept enables, supports, or provides a platform for the target concept."
+    },
+    {
+      "type": "runs_on",
+      "label": "runs on",
+      "meaning": "Source concept runs on the target platform or operating system."
+    },
+    {
+      "type": "manages",
+      "label": "manages",
+      "meaning": "Source concept manages or administers the target concept."
+    },
+    {
+      "type": "stores",
+      "label": "stores",
+      "meaning": "Source concept stores or organizes target data."
+    },
+    {
+      "type": "executes",
+      "label": "executes",
+      "meaning": "Source concept runs, launches, or executes the target."
+    },
+    {
+      "type": "communicates_with",
+      "label": "communicates with",
+      "meaning": "Source concept communicates with the target over a local or network channel."
+    },
+    {
+      "type": "contrasts_with",
+      "label": "contrasts with",
+      "meaning": "Source concept is commonly compared with the target concept."
+    },
+    {
+      "type": "replaces",
+      "label": "replaces",
+      "meaning": "Source concept replaces or supersedes the target concept."
+    },
+    {
+      "type": "related",
+      "label": "related",
+      "meaning": "Source concept is generally related to the target when a more precise relationship is not known yet."
+    }
+  ]
+}
