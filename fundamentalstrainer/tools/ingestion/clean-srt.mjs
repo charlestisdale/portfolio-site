@@ -23,7 +23,7 @@ function removeRepeatedWords(text) {
     // Captions often repeat the same phrase 2-3 times inside one cue.
     // Try longer chunks first so "Android itself is open source" collapses as a phrase,
     // not just as individual repeated words.
-    for (let size = Math.min(12, Math.floor((words.length - i) / 2)); size >= 2; size--) {
+    for (let size = Math.min(14, Math.floor((words.length - i) / 2)); size >= 2; size--) {
       const chunk = words.slice(i, i + size).join(" ").toLowerCase();
       const next = words.slice(i + size, i + size * 2).join(" ").toLowerCase();
       const third = words.slice(i + size * 2, i + size * 3).join(" ").toLowerCase();
@@ -43,6 +43,26 @@ function removeRepeatedWords(text) {
   }
 
   return output.join(" ");
+}
+
+function overlapLength(left, right, maxWords = 18) {
+  const leftWords = normalizeWhitespace(left).split(" ").filter(Boolean);
+  const rightWords = normalizeWhitespace(right).split(" ").filter(Boolean);
+  const max = Math.min(maxWords, leftWords.length, rightWords.length);
+
+  for (let size = max; size >= 3; size--) {
+    const leftChunk = leftWords.slice(-size).join(" ").toLowerCase();
+    const rightChunk = rightWords.slice(0, size).join(" ").toLowerCase();
+    if (leftChunk === rightChunk) return size;
+  }
+
+  return 0;
+}
+
+function removeCueOverlap(previousText, nextText) {
+  const overlap = overlapLength(previousText, nextText);
+  if (!overlap) return nextText;
+  return normalizeWhitespace(nextText).split(" ").slice(overlap).join(" ");
 }
 
 function cleanCueText(lines) {
@@ -66,16 +86,18 @@ for (const block of blocks) {
     .filter(line => !/^\d+$/.test(line))
     .filter(line => !/^\d{2}:\d{2}:\d{2},\d{3}\s+-->\s+\d{2}:\d{2}:\d{2},\d{3}/.test(line));
 
-  const text = cleanCueText(textLines);
+  let text = cleanCueText(textLines);
   if (!text) continue;
 
   const previous = cues.at(-1);
   if (previous && previous.toLowerCase() === text.toLowerCase()) continue;
+  if (previous) text = removeCueOverlap(previous, text);
+  if (!text) continue;
   cues.push(text);
 }
 
-const text = cues
-  .join(" ")
+const cleanedBody = removeRepeatedWords(cues.join(" "));
+const text = cleanedBody
   .replace(/\s+/g, " ")
   .replace(/([.!?])\s+/g, "$1\n\n")
   .trim() + "\n";
