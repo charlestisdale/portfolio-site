@@ -1,12 +1,24 @@
 import { renderKnowledgeGraphVisualizer } from "./graph-visualizer.js";
 
 const RELATIONSHIP_LABELS = {
+  contains: "contains",
+  part_of: "part of",
+  prerequisite: "prerequisite",
+  uses: "uses",
+  supports: "supports",
+  runs_on: "runs on",
+  manages: "manages",
+  stores: "stores",
+  executes: "executes",
+  communicates_with: "communicates with",
+  contrasts_with: "contrasts with",
+  replaces: "replaces",
+  implements: "implements",
+  related: "related",
+  related_to: "related",
   troubleshoots: "troubleshooting",
   troubleshooting: "troubleshooting",
-  uses: "uses",
   depends_on: "depends on",
-  prerequisite: "prerequisite",
-  related_to: "related to",
   command: "command",
   security: "security",
   networking: "networking"
@@ -22,7 +34,7 @@ export function renderGraphMode({ activeConcept = null, edges = [], stats = {}, 
         <div>
           <p class="eyebrow">Knowledge Graph</p>
           <h2>${escapeHtml(activeConcept?.title || "Graph Explorer")}</h2>
-          <p class="muted">Explore how concepts connect through reusable relationship edges.</p>
+          <p class="muted">Explore how concepts connect through reusable typed relationship edges.</p>
         </div>
         <div class="graph-summary-grid">
           <article><strong>${escapeHtml(nodes.length)}</strong><span>Nodes</span></article>
@@ -43,7 +55,7 @@ function renderActiveConcept(concept, edges) {
   return `
     <section class="graph-layout">
       <article class="graph-node-card graph-node-card--active">
-        <span class="pill">${escapeHtml(concept.type || "concept")}</span>
+        <span class="pill">${escapeHtml(concept.status === "stub" ? "stub" : concept.type || "concept")}</span>
         <h3>${escapeHtml(concept.title)}</h3>
         <p>${escapeHtml(concept.learning?.summary || "No summary available yet.")}</p>
         <div class="tag-list">
@@ -97,7 +109,7 @@ function renderMissingTargets(missing) {
 }
 
 function formatRelationshipLabel(type) {
-  const key = String(type || "related_to");
+  const key = String(type || "related");
   return RELATIONSHIP_LABELS[key] || key.replaceAll("_", " ");
 }
 
