@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { normalizeCandidateDraft } from "./normalizers/candidate-draft-normalizer.mjs";
+import { auditCandidateQuality, summarizeCandidateQuality } from "./normalizers/candidate-quality-auditor.mjs";
 
 const args = Object.fromEntries(process.argv.slice(2).map(arg => {
   const [key, ...rest] = arg.replace(/^--/, "").split("=");
@@ -43,28 +44,36 @@ function normalizeFile(filePath) {
     });
 
     factsAfter += draft.factsDraft.length;
-    return {
+    const updatedCandidate = {
       ...candidate,
       summaryDraft: draft.summaryDraft,
       explanationDraft: draft.explanationDraft,
       factsDraft: draft.factsDraft,
       suggestedRelationships: draft.suggestedRelationships
     };
+
+    return {
+      ...updatedCandidate,
+      quality: auditCandidateQuality(updatedCandidate)
+    };
   });
 
+  const qualitySummary = summarizeCandidateQuality(updatedCandidates);
   const output = {
     ...data,
     candidates: updatedCandidates,
     metrics: {
       ...(data.metrics || {}),
       candidatesWithFactDrafts: updatedCandidates.filter(candidate => candidate.factsDraft?.length).length,
-      relationshipsSuggested: updatedCandidates.reduce((sum, candidate) => sum + (candidate.suggestedRelationships?.length || 0), 0)
+      relationshipsSuggested: updatedCandidates.reduce((sum, candidate) => sum + (candidate.suggestedRelationships?.length || 0), 0),
+      quality: qualitySummary
     },
     normalization: {
       normalizedAt: new Date().toISOString(),
       normalizedCandidates: updatedCandidates.length,
       factsBefore,
-      factsAfter
+      factsAfter,
+      quality: qualitySummary
     }
   };
 
@@ -90,6 +99,7 @@ const summary = {
   files: files.length,
   normalized: 0,
   failed: 0,
+  quality: { total: 0, high: 0, "needs-edit": 0, low: 0, unknown: 0 },
   results: []
 };
 
@@ -97,6 +107,9 @@ for (const file of files) {
   try {
     const normalization = normalizeFile(file);
     summary.normalized += 1;
+    for (const [key, value] of Object.entries(normalization.quality || {})) {
+      summary.quality[key] = (summary.quality[key] || 0) + value;
+    }
     summary.results.push({ file: toProjectPath(file), ok: true, normalization });
   } catch (error) {
     summary.failed += 1;
