@@ -14,6 +14,10 @@ const FIT_NODE_MARGIN_Y = 42;
 const MIN_AUTO_FIT_ZOOM = 0.55;
 const MAX_AUTO_FIT_ZOOM = 1.35;
 const ZOOM_BUTTON_STEP = 1.16;
+const NODE_CARD_WIDTH = 172;
+const NODE_CARD_HEIGHT = 58;
+const NODE_CARD_TALL_HEIGHT = 74;
+const NODE_EDGE_GAP = 7;
 
 const RELATIONSHIP_LABELS = {
   contains: "contains",
@@ -102,7 +106,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onpointerdown="window.__startKnowledgeGraphPan?.(event)">
         <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
           <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
-            ${renderEdges(graphModel.edges, layout)}
+            ${renderEdges(graphModel.edges, layout, graphModel.nodes)}
           </svg>
           <div class="graph-canvas__nodes">
             ${graphModel.nodes.map(node => renderNode(node, layout.get(node.id), { activeId })).join("")}
@@ -529,19 +533,28 @@ function distributeAround(layout, nodes, radius, startDegrees) {
   });
 }
 
-function renderEdges(edges, layout) {
+function renderEdges(edges, layout, nodes = []) {
+  const nodeLookup = new Map(nodes.map(node => [node.id, node]));
+
   return edges.map((edge, index) => {
-    const source = layout.get(edge.sourceId);
-    const target = layout.get(edge.targetId);
-    if (!source || !target) return "";
+    const sourceCenter = layout.get(edge.sourceId);
+    const targetCenter = layout.get(edge.targetId);
+    if (!sourceCenter || !targetCenter) return "";
+
     const type = edge.type || "related";
     const label = formatRelationshipLabel(type);
-    const labelPosition = getEdgeLabelPosition(source, target, index);
+    const line = getClippedEdgeLine({
+      sourceCenter,
+      targetCenter,
+      sourceNode: nodeLookup.get(edge.sourceId),
+      targetNode: nodeLookup.get(edge.targetId)
+    });
+    const labelPosition = getEdgeLabelPosition(line.source, line.target, index);
     const labelWidth = estimateLabelWidth(label);
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
-        <line x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}"></line>
+        <line x1="${line.source.x}" y1="${line.source.y}" x2="${line.target.x}" y2="${line.target.y}"></line>
         <g class="graph-edge-label">
           <rect x="${labelPosition.x - labelWidth / 2}" y="${labelPosition.y - 12}" width="${labelWidth}" height="18" rx="9"></rect>
           <text x="${labelPosition.x}" y="${labelPosition.y}">${escapeHtml(label)}</text>
@@ -549,6 +562,42 @@ function renderEdges(edges, layout) {
       </g>
     `;
   }).join("");
+}
+
+function getClippedEdgeLine({ sourceCenter, targetCenter, sourceNode, targetNode }) {
+  return {
+    source: getNodeBoundaryPoint(sourceCenter, targetCenter, getNodeCardSize(sourceNode)),
+    target: getNodeBoundaryPoint(targetCenter, sourceCenter, getNodeCardSize(targetNode))
+  };
+}
+
+function getNodeBoundaryPoint(from, toward, size) {
+  const dx = toward.x - from.x;
+  const dy = toward.y - from.y;
+  const length = Math.hypot(dx, dy);
+  if (!length) return from;
+
+  const halfWidth = size.width / 2;
+  const halfHeight = size.height / 2;
+  const xScale = dx === 0 ? Number.POSITIVE_INFINITY : halfWidth / Math.abs(dx);
+  const yScale = dy === 0 ? Number.POSITIVE_INFINITY : halfHeight / Math.abs(dy);
+  const boundaryScale = Math.min(xScale, yScale);
+  const gapScale = NODE_EDGE_GAP / length;
+  const scale = Math.min(0.98, boundaryScale + gapScale);
+
+  return {
+    x: from.x + dx * scale,
+    y: from.y + dy * scale
+  };
+}
+
+function getNodeCardSize(node) {
+  const title = String(node?.title || node?.id || "");
+  const hasWrappedTitle = title.length > 22 || title.includes(" ");
+  return {
+    width: NODE_CARD_WIDTH,
+    height: hasWrappedTitle ? NODE_CARD_TALL_HEIGHT : NODE_CARD_HEIGHT
+  };
 }
 
 function getEdgeLabelPosition(source, target, index = 0) {
