@@ -17,21 +17,32 @@ function downloadJson(filename, payload) {
   URL.revokeObjectURL(url);
 }
 
-function updateVisibleCandidateCount(card) {
-  const reviewPanel = card.closest(".import-preview-card");
+function updateVisibleCandidateCount(reviewPanel) {
   const countTarget = reviewPanel?.querySelector("[data-visible-candidate-count]");
   if (!countTarget) return;
 
-  const visibleCards = reviewPanel.querySelectorAll("[data-review-candidate]:not([hidden])").length;
+  const visibleCards = reviewPanel.querySelectorAll("[data-review-candidate]").length;
   countTarget.textContent = String(visibleCards.toLocaleString());
 }
 
 function hideReviewedCard(card) {
-  card.classList.add("candidate-review-item--closing");
+  const reviewPanel = card.closest(".import-preview-card");
+  card.style.maxHeight = `${card.scrollHeight}px`;
+  card.style.overflow = "hidden";
+
+  window.requestAnimationFrame(() => {
+    card.classList.add("candidate-review-item--closing");
+    card.style.maxHeight = "0px";
+    card.style.marginTop = "0px";
+    card.style.marginBottom = "0px";
+    card.style.paddingTop = "0px";
+    card.style.paddingBottom = "0px";
+  });
+
   window.setTimeout(() => {
-    card.hidden = true;
-    updateVisibleCandidateCount(card);
-  }, 180);
+    card.remove();
+    updateVisibleCandidateCount(reviewPanel);
+  }, 220);
 }
 
 function setCardStatus(card, record, message = "") {
