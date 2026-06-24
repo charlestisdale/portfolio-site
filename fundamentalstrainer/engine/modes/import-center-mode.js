@@ -215,7 +215,7 @@ function renderCandidatePreview(preview) {
         <div>
           <p class="eyebrow">${escapeHtml(preview.lessonId || "")}</p>
           <h2>${escapeHtml(preview.lessonTitle || preview.id || "Candidate Review")}</h2>
-          <p class="muted">${formatNumber(candidates.length)} candidate(s). Review decisions are saved locally in your browser until exported.</p>
+          <p class="muted"><span data-visible-candidate-count>${formatNumber(candidates.length)}</span> visible of ${formatNumber(candidates.length)} candidate(s). Review decisions are saved locally in your browser until exported.</p>
         </div>
         <button class="review-export-button" type="button" data-review-export>Export approved JSON</button>
       </div>
