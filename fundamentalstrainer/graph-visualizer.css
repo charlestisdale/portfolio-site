@@ -114,9 +114,17 @@
   pointer-events: none;
 }
 
+.graph-edge path,
 .graph-edge line {
+  fill: none;
   stroke: rgba(147, 197, 253, .42);
+  stroke-linecap: round;
   stroke-width: 2;
+}
+
+.graph-arrowhead {
+  fill: rgba(147, 197, 253, .72);
+  stroke: none;
 }
 
 .graph-edge-label rect {
@@ -132,25 +140,33 @@
   text-anchor: middle;
 }
 
+.graph-edge-type--depends-on path,
+.graph-edge-type--prerequisite path,
 .graph-edge-type--depends-on line,
 .graph-edge-type--prerequisite line {
   stroke: rgba(248, 113, 113, .58);
 }
 
+.graph-edge-type--uses path,
+.graph-edge-type--command path,
 .graph-edge-type--uses line,
 .graph-edge-type--command line {
   stroke: rgba(52, 211, 153, .58);
 }
 
+.graph-edge-type--troubleshooting path,
+.graph-edge-type--troubleshoots path,
 .graph-edge-type--troubleshooting line,
 .graph-edge-type--troubleshoots line {
   stroke: rgba(251, 191, 36, .62);
 }
 
+.graph-edge-type--security path,
 .graph-edge-type--security line {
   stroke: rgba(196, 181, 253, .62);
 }
 
+.graph-edge-type--networking path,
 .graph-edge-type--networking line {
   stroke: rgba(125, 211, 252, .62);
 }
