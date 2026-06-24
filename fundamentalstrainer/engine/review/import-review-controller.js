@@ -17,6 +17,23 @@ function downloadJson(filename, payload) {
   URL.revokeObjectURL(url);
 }
 
+function updateVisibleCandidateCount(card) {
+  const reviewPanel = card.closest(".import-preview-card");
+  const countTarget = reviewPanel?.querySelector("[data-visible-candidate-count]");
+  if (!countTarget) return;
+
+  const visibleCards = reviewPanel.querySelectorAll("[data-review-candidate]:not([hidden])").length;
+  countTarget.textContent = String(visibleCards.toLocaleString());
+}
+
+function hideReviewedCard(card) {
+  card.classList.add("candidate-review-item--closing");
+  window.setTimeout(() => {
+    card.hidden = true;
+    updateVisibleCandidateCount(card);
+  }, 180);
+}
+
 function setCardStatus(card, record, message = "") {
   const decision = record?.decision || "undecided";
   const status = card.querySelector("[data-review-status]");
@@ -99,4 +116,8 @@ document.addEventListener("click", event => {
   };
 
   setCardStatus(card, record, messages[decision]);
+
+  if (decision === "approved" || decision === "rejected") {
+    hideReviewedCard(card);
+  }
 });
