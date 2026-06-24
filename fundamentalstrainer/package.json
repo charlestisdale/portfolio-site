@@ -17,6 +17,7 @@
     "ingest:report": "node tools/ingestion/build-import-report.mjs",
     "ingest:merge": "node tools/ingestion/merge-review.mjs",
     "ingest:audit": "node tools/ingestion/audit-transcripts.mjs",
+    "ai:batch": "node tools/ai/create-ai-batch.mjs",
     "review:manifest": "node tools/ingestion/build-review-manifest.mjs"
   }
 }
