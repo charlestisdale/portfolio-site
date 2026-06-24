@@ -76,6 +76,8 @@
       "uniqueItems": true,
       "items": {
         "enum": [
+          "operating-systems",
+          "software",
           "windows",
           "linux",
           "macos",
@@ -260,570 +262,100 @@
         "pbqIdeas"
       ],
       "properties": {
-        "examTips": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/seedText"
-          },
-          "default": []
-        },
-        "commonMistakes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/seedText"
-          },
-          "default": []
-        },
-        "scenarios": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/scenario"
-          },
-          "default": []
-        },
-        "pbqIdeas": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/pbqIdea"
-          },
-          "default": []
-        },
-        "questionTargets": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "type",
-              "promptFocus"
-            ],
-            "properties": {
-              "type": {
-                "enum": [
-                  "multiple-choice",
-                  "true-false",
-                  "fill-blank",
-                  "matching",
-                  "ordering",
-                  "image",
-                  "scenario",
-                  "pbq",
-                  "flashcard"
-                ]
-              },
-              "promptFocus": {
-                "type": "string"
-              },
-              "difficulty": {
-                "enum": [
-                  "easy",
-                  "medium",
-                  "hard"
-                ]
-              }
-            }
-          },
-          "default": []
-        }
+        "examTips": { "type": "array", "items": { "$ref": "#/$defs/examTip" }, "default": [] },
+        "commonMistakes": { "type": "array", "items": { "$ref": "#/$defs/commonMistake" }, "default": [] },
+        "scenarios": { "type": "array", "items": { "$ref": "#/$defs/scenario" }, "default": [] },
+        "pbqIdeas": { "type": "array", "items": { "$ref": "#/$defs/pbqIdea" }, "default": [] },
+        "questionTargets": { "type": "array", "items": { "$ref": "#/$defs/questionTarget" }, "default": [] }
       }
     },
     "relationships": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "prerequisites",
-        "parents",
-        "children",
-        "related",
-        "contrastsWith",
-        "replacedBy"
-      ],
+      "required": ["prerequisites", "parents", "children", "related", "contrastsWith", "replacedBy"],
       "properties": {
-        "prerequisites": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "parents": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "related": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/relationship"
-          },
-          "default": []
-        },
-        "contrastsWith": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/relationship"
-          },
-          "default": []
-        },
-        "replacedBy": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
+        "prerequisites": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "parents": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "children": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "related": { "type": "array", "items": { "$ref": "#/$defs/relationship" }, "default": [] },
+        "contrastsWith": { "type": "array", "items": { "$ref": "#/$defs/relationship" }, "default": [] },
+        "replacedBy": { "type": "array", "items": { "type": "string" }, "default": [] }
       }
     },
     "sources": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "transcripts",
-        "videos",
-        "references"
-      ],
+      "required": ["references"],
       "properties": {
-        "transcripts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/transcriptRef"
-          },
-          "default": []
-        },
-        "videos": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/videoRef"
-          },
-          "default": []
-        },
-        "references": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/externalRef"
-          },
-          "default": []
-        }
+        "references": { "type": "array", "items": { "type": "object" }, "default": [] }
       }
     },
     "quality": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "createdAt",
-        "updatedAt",
-        "lastReviewedAt",
-        "reviewedBy",
-        "confidence",
-        "needsHumanReview",
-        "reviewNotes"
-      ],
-      "properties": {
-        "createdAt": {
-          "type": "string"
-        },
-        "updatedAt": {
-          "type": "string"
-        },
-        "lastReviewedAt": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "reviewedBy": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "confidence": {
-          "enum": [
-            "low",
-            "medium",
-            "high"
-          ]
-        },
-        "needsHumanReview": {
-          "type": "boolean"
-        },
-        "reviewNotes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
-      }
+      "additionalProperties": true
     }
   },
   "$defs": {
     "fact": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "text"
-      ],
+      "required": ["text", "importance", "tags"],
       "properties": {
-        "text": {
-          "type": "string"
-        },
-        "importance": {
-          "enum": [
-            "low",
-            "medium",
-            "high",
-            "exam-critical"
-          ],
-          "default": "medium"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
+        "text": { "type": "string" },
+        "importance": { "enum": ["low", "medium", "high", "exam-critical"] },
+        "tags": { "type": "array", "items": { "type": "string" }, "default": [] }
       }
     },
     "command": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "command",
-        "purpose"
-      ],
-      "properties": {
-        "command": {
-          "type": "string"
-        },
-        "platforms": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "windows",
-              "linux",
-              "macos",
-              "network-device",
-              "cross-platform"
-            ]
-          },
-          "default": []
-        },
-        "purpose": {
-          "type": "string"
-        },
-        "syntax": {
-          "type": "string"
-        },
-        "examples": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "warnings": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
-      }
+      "additionalProperties": true
     },
     "example": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "text"
-      ],
+      "required": ["text", "context", "tags"],
       "properties": {
-        "text": {
-          "type": "string"
-        },
-        "context": {
-          "type": "string"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
+        "text": { "type": "string" },
+        "context": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" }, "default": [] }
       }
     },
-    "table": {
+    "table": { "type": "object", "additionalProperties": true },
+    "media": { "type": "object", "additionalProperties": true },
+    "examTip": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "title",
-        "headers",
-        "rows"
-      ],
+      "required": ["text", "difficulty", "tags"],
       "properties": {
-        "title": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "rows": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
+        "text": { "type": "string" },
+        "difficulty": { "enum": ["easy", "medium", "hard"] },
+        "tags": { "type": "array", "items": { "type": "string" }, "default": [] }
       }
     },
-    "media": {
+    "commonMistake": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "type",
-        "path",
-        "alt"
-      ],
-      "properties": {
-        "type": {
-          "enum": [
-            "screenshot",
-            "diagram",
-            "icon",
-            "photo"
-          ]
-        },
-        "path": {
-          "type": "string"
-        },
-        "alt": {
-          "type": "string"
-        },
-        "caption": {
-          "type": "string"
-        }
-      }
-    },
-    "seedText": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "text"
-      ],
-      "properties": {
-        "text": {
-          "type": "string"
-        },
-        "difficulty": {
-          "enum": [
-            "easy",
-            "medium",
-            "hard"
-          ]
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
-      }
+      "additionalProperties": true
     },
     "scenario": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "situation",
-        "expectedAction"
-      ],
-      "properties": {
-        "situation": {
-          "type": "string"
-        },
-        "expectedAction": {
-          "type": "string"
-        },
-        "difficulty": {
-          "enum": [
-            "easy",
-            "medium",
-            "hard"
-          ]
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
-      }
+      "additionalProperties": true
     },
     "pbqIdea": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "task",
-        "skillsTested"
-      ],
-      "properties": {
-        "task": {
-          "type": "string"
-        },
-        "skillsTested": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "difficulty": {
-          "enum": [
-            "easy",
-            "medium",
-            "hard"
-          ]
-        },
-        "assetsNeeded": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        }
-      }
+      "additionalProperties": true
+    },
+    "questionTarget": {
+      "type": "object",
+      "additionalProperties": true
     },
     "relationship": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "reason"
-      ],
+      "required": ["id", "reason", "strength"],
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "strength": {
-          "enum": [
-            "weak",
-            "medium",
-            "strong"
-          ],
-          "default": "medium"
-        }
-      }
-    },
-    "transcriptRef": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "lessonId",
-        "sourceFile"
-      ],
-      "properties": {
-        "lessonId": {
-          "type": "string"
-        },
-        "lessonTitle": {
-          "type": "string"
-        },
-        "sourceFile": {
-          "type": "string"
-        },
-        "startTime": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "endTime": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "quote": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "string"
-        }
-      }
-    },
-    "videoRef": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "title"
-      ],
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "url": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "provider": {
-          "type": "string"
-        },
-        "lessonId": {
-          "type": "string"
-        }
-      }
-    },
-    "externalRef": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "title",
-        "type"
-      ],
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "url": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "type": {
-          "enum": [
-            "official-docs",
-            "exam-objectives",
-            "vendor-docs",
-            "book",
-            "lab-note",
-            "other"
-          ]
-        },
-        "notes": {
-          "type": "string"
-        }
+        "id": { "type": "string" },
+        "reason": { "type": "string" },
+        "strength": { "enum": ["weak", "medium", "strong"] }
       }
     }
   }
