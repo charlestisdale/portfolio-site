@@ -7,12 +7,24 @@ const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
 
 const RELATIONSHIP_LABELS = {
+  contains: "contains",
+  part_of: "part of",
+  prerequisite: "prerequisite",
+  uses: "uses",
+  supports: "supports",
+  runs_on: "runs on",
+  manages: "manages",
+  stores: "stores",
+  executes: "executes",
+  communicates_with: "communicates with",
+  contrasts_with: "contrasts with",
+  replaces: "replaces",
+  implements: "implements",
+  related: "related",
+  related_to: "related",
   troubleshoots: "troubleshooting",
   troubleshooting: "troubleshooting",
-  uses: "uses",
   depends_on: "depends on",
-  prerequisite: "prerequisite",
-  related_to: "related to",
   command: "command",
   security: "security",
   networking: "networking"
@@ -26,7 +38,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const activeId = activeConcept?.id || null;
   const graphModel = buildVisibleGraphModel({ nodeMap, edges: sourceEdges, activeId, scope: graphScope });
   const layout = layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId });
-  const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related_to")).sort();
+  const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related")).sort();
 
   registerScopeRenderer({ graph, activeConcept, activeEdges });
 
@@ -50,6 +62,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
           <span class="pill">${escapeHtml(graphModel.nodes.length)} visible nodes</span>
           <span class="pill">${escapeHtml(graphModel.edges.length)} visible edges</span>
           ${activeId ? `<span class="pill">${escapeHtml(activeEdges.length)} active links</span>` : ""}
+          ${graphModel.stubCount ? `<span class="pill">${escapeHtml(graphModel.stubCount)} stub nodes</span>` : ""}
           ${graphModel.missingCount ? `<span class="pill">${escapeHtml(graphModel.missingCount)} missing nodes</span>` : ""}
         </div>
       </header>
@@ -64,6 +77,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
 
       <div class="graph-legend" aria-label="Relationship types">
         ${relationshipTypes.map(type => `<span class="graph-legend__item graph-edge-type--${classToken(type)}">${escapeHtml(formatRelationshipLabel(type))}</span>`).join("")}
+        ${graphModel.stubCount ? `<span class="graph-legend__item graph-legend__item--stub">stub Knowledge Object</span>` : ""}
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
 
@@ -134,7 +148,8 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
   return {
     nodes,
     edges: visibleEdges,
-    missingCount: nodes.filter(node => node.missing).length
+    missingCount: nodes.filter(node => node.missing).length,
+    stubCount: nodes.filter(node => node.status === "stub").length
   };
 }
 
@@ -143,6 +158,7 @@ function normalizeExistingNode(node) {
     ...node,
     title: node.title || node.id,
     type: node.type || "concept",
+    status: node.status || "draft",
     domains: node.domains || [],
     missing: false
   };
@@ -154,6 +170,7 @@ function ensureNode(nodeMap, id, role) {
     id,
     title: id,
     type: "missing",
+    status: "missing",
     domains: [role === "source" ? "missing source" : "missing target"],
     missing: true
   });
@@ -202,7 +219,7 @@ function renderEdges(edges, layout) {
     const source = layout.get(edge.sourceId);
     const target = layout.get(edge.targetId);
     if (!source || !target) return "";
-    const type = edge.type || "related_to";
+    const type = edge.type || "related";
     const label = formatRelationshipLabel(type);
     const labelPosition = getEdgeLabelPosition(source, target, index);
     const labelWidth = estimateLabelWidth(label);
@@ -241,7 +258,7 @@ function getEdgeLabelPosition(source, target, index = 0) {
 }
 
 function estimateLabelWidth(label) {
-  return Math.max(44, Math.min(150, String(label).length * 7.2 + 18));
+  return Math.max(44, Math.min(170, String(label).length * 7.2 + 18));
 }
 
 function clamp(value, min, max) {
@@ -250,12 +267,13 @@ function clamp(value, min, max) {
 
 function renderNode(node, point, { activeId }) {
   if (!point) return "";
-  const primaryDomain = node.domains?.[0] || node.type || "concept";
+  const primaryDomain = node.status === "stub" ? "stub" : node.domains?.[0] || node.type || "concept";
   const style = `left: ${(point.x / VIEWBOX_WIDTH) * 100}%; top: ${(point.y / VIEWBOX_HEIGHT) * 100}%;`;
   const classes = [
     "graph-visual-node",
     node.id === activeId ? "graph-visual-node--active" : "",
-    node.missing ? "graph-visual-node--missing" : ""
+    node.missing ? "graph-visual-node--missing" : "",
+    node.status === "stub" ? "graph-visual-node--stub" : ""
   ].filter(Boolean).join(" ");
   const disabled = node.missing ? "disabled" : `data-id="${escapeHtml(node.id)}"`;
 
@@ -269,13 +287,13 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: active concept, direct relationships, and nearby context. Dashed nodes are missing Knowledge Objects that should be created or fixed.";
+    return "Expanded view: active concept, direct relationships, stubs, and nearby typed context.";
   }
-  return "Focused view: active concept plus direct relationships. Dashed nodes are missing Knowledge Objects that should be created or fixed.";
+  return "Focused view: active concept plus direct typed relationships. Stub nodes mark referenced concepts that still need full discovery.";
 }
 
 function formatRelationshipLabel(type) {
-  const key = String(type || "related_to");
+  const key = String(type || "related");
   return RELATIONSHIP_LABELS[key] || key.replaceAll("_", " ");
 }
 
