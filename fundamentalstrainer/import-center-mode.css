@@ -124,12 +124,13 @@
 .candidate-review-item {
   display: grid;
   gap: .9rem;
-  transition: opacity .18s ease, transform .18s ease, border-color .18s ease;
+  transition: opacity .2s ease, transform .2s ease, max-height .2s ease, padding .2s ease, margin .2s ease, border-color .2s ease;
 }
 
 .candidate-review-item--closing {
   opacity: 0;
   transform: translateX(1rem) scale(.98);
+  pointer-events: none;
 }
 
 .candidate-review-item[data-review-decision="approved"] {
