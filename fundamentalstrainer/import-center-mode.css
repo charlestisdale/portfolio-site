@@ -109,9 +109,33 @@
   background: rgba(37, 99, 235, 0.34);
 }
 
+.candidate-review-actions button[data-review-action="approve"] {
+  border-color: rgba(74, 222, 128, 0.5);
+}
+
+.candidate-review-actions button[data-review-action="reject"] {
+  border-color: rgba(248, 113, 113, 0.5);
+}
+
+.candidate-review-actions button[data-review-action="merge"] {
+  border-color: rgba(251, 191, 36, 0.55);
+}
+
 .candidate-review-item {
   display: grid;
   gap: .9rem;
+}
+
+.candidate-review-item[data-review-decision="approved"] {
+  border-color: rgba(74, 222, 128, 0.52);
+}
+
+.candidate-review-item[data-review-decision="rejected"] {
+  border-color: rgba(248, 113, 113, 0.52);
+}
+
+.candidate-review-item[data-review-decision="merge"] {
+  border-color: rgba(251, 191, 36, 0.58);
 }
 
 .candidate-review-header {
@@ -139,6 +163,9 @@
 .review-field {
   display: grid;
   gap: .35rem;
+}
+
+.review-field > span {
   font-weight: 750;
 }
 
@@ -150,7 +177,9 @@
   border-radius: .75rem;
   background: rgba(2, 6, 23, 0.42);
   color: inherit;
-  font: inherit;
+  font-family: inherit;
+  font-size: .92rem;
+  font-weight: 400;
   line-height: 1.45;
   padding: .7rem;
 }
@@ -172,6 +201,15 @@
 .candidate-evidence-list {
   margin-bottom: 0;
   padding-left: 1.2rem;
+}
+
+.review-feedback {
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  border-radius: .75rem;
+  background: rgba(37, 99, 235, 0.12);
+  color: #dbeafe;
+  font-size: .88rem;
+  padding: .55rem .7rem;
 }
 
 .error-text {
