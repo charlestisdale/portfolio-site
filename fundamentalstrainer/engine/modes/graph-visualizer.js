@@ -22,6 +22,26 @@ const NODE_COLLISION_PADDING_X = 24;
 const NODE_COLLISION_PADDING_Y = 18;
 const LAYOUT_RELAXATION_PASSES = 18;
 
+const FOCUSED_RELATIONSHIP_TYPES = new Set([
+  "contains",
+  "part_of",
+  "prerequisite",
+  "uses",
+  "supports",
+  "runs_on",
+  "manages",
+  "stores",
+  "executes",
+  "communicates_with",
+  "implements",
+  "depends_on",
+  "troubleshoots",
+  "troubleshooting",
+  "command",
+  "security",
+  "networking"
+]);
+
 const RELATIONSHIP_LABELS = {
   contains: "contains",
   part_of: "part of",
@@ -81,7 +101,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         <div class="graph-visualizer__tools" aria-label="Graph summary">
           <span class="pill">${escapeHtml(graphModel.nodes.length)} visible nodes</span>
           <span class="pill">${escapeHtml(graphModel.edges.length)} visible edges</span>
-          ${activeId ? `<span class="pill">${escapeHtml(activeEdges.length)} active links</span>` : ""}
+          ${activeId ? `<span class="pill">${escapeHtml(graphModel.activeEdgeCount)} active links</span>` : ""}
+          ${graphModel.hiddenWeakEdgeCount ? `<span class="pill">${escapeHtml(graphModel.hiddenWeakEdgeCount)} hidden weak links</span>` : ""}
           ${graphModel.stubCount ? `<span class="pill">${escapeHtml(graphModel.stubCount)} stub nodes</span>` : ""}
           ${graphModel.missingCount ? `<span class="pill">${escapeHtml(graphModel.missingCount)} missing nodes</span>` : ""}
         </div>
@@ -102,6 +123,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
 
       <div class="graph-legend" aria-label="Relationship types">
         ${relationshipTypes.map(type => `<span class="graph-legend__item graph-edge-type--${classToken(type)}">${escapeHtml(formatRelationshipLabel(type))}</span>`).join("")}
+        ${graphModel.hiddenWeakEdgeCount ? `<span class="graph-legend__item graph-legend__item--missing">generic related links hidden in focused view</span>` : ""}
         ${graphModel.stubCount ? `<span class="graph-legend__item graph-legend__item--stub">stub Knowledge Object</span>` : ""}
         ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
       </div>
@@ -436,14 +458,21 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
   const resolvedNodeMap = new Map(nodeMap);
   const candidateIds = new Set();
   const candidateEdges = [];
+  let activeEdgeCount = 0;
+  let hiddenWeakEdgeCount = 0;
 
   if (activeId) {
     candidateIds.add(activeId);
     for (const edge of edges) {
       if (edge.sourceId === activeId || edge.targetId === activeId) {
-        candidateIds.add(edge.sourceId);
-        candidateIds.add(edge.targetId);
-        candidateEdges.push(edge);
+        if (isVisibleRelationshipForScope(edge, scope)) {
+          candidateIds.add(edge.sourceId);
+          candidateIds.add(edge.targetId);
+          candidateEdges.push(edge);
+          activeEdgeCount += 1;
+        } else {
+          hiddenWeakEdgeCount += 1;
+        }
       }
     }
 
@@ -460,6 +489,7 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
   } else {
     for (const id of resolvedNodeMap.keys()) candidateIds.add(id);
     candidateEdges.push(...edges);
+    activeEdgeCount = candidateEdges.length;
   }
 
   for (const edge of candidateEdges) {
@@ -478,9 +508,16 @@ function buildVisibleGraphModel({ nodeMap, edges, activeId, scope }) {
   return {
     nodes,
     edges: visibleEdges,
+    activeEdgeCount,
+    hiddenWeakEdgeCount,
     missingCount: nodes.filter(node => node.missing).length,
     stubCount: nodes.filter(node => node.status === "stub").length
   };
+}
+
+function isVisibleRelationshipForScope(edge, scope) {
+  if (scope === "expanded") return true;
+  return FOCUSED_RELATIONSHIP_TYPES.has(edge.type || "related");
 }
 
 function normalizeExistingNode(node) {
@@ -675,9 +712,9 @@ function renderNode(node, point, { activeId }) {
 
 function getScopeDescription(scope) {
   if (scope === "expanded") {
-    return "Expanded view: drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
+    return "Expanded view: broader related context is visible. Drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
   }
-  return "Focused view: drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
+  return "Focused view: generic related links are hidden so only stronger instructional relationships stay visible.";
 }
 
 function formatRelationshipLabel(type) {
