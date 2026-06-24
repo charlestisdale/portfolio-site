@@ -12,6 +12,7 @@
     "ingest:folder": "node tools/ingestion/import-folder.mjs",
     "ingest:evidence": "node tools/ingestion/build-evidence.mjs",
     "ingest:extract": "node tools/ingestion/extract-concepts.mjs",
+    "ingest:postprocess": "node tools/ingestion/normalize-folder-candidates.mjs",
     "ingest:duplicates": "node tools/ingestion/detect-duplicates.mjs",
     "ingest:report": "node tools/ingestion/build-import-report.mjs",
     "ingest:merge": "node tools/ingestion/merge-review.mjs",
