@@ -22,6 +22,15 @@ function scheduleCenterActiveGraphNode() {
   window.setTimeout(() => centerActiveGraphNode(), 0);
 }
 
+function fitGraphViewFromResetButton(resetButton) {
+  const visualizer = resetButton.closest(".graph-visualizer");
+  const viewportKey = visualizer?.dataset.graphViewportKey;
+  if (!viewportKey || typeof window.__fitKnowledgeGraphViewport !== "function") return false;
+
+  window.__fitKnowledgeGraphViewport(viewportKey);
+  return true;
+}
+
 function normalizeGraphCenterControls() {
   const visualizer = document.querySelector(".graph-visualizer");
   if (!visualizer) return;
@@ -80,6 +89,14 @@ function scheduleNormalizeGraphControls() {
 }
 
 document.addEventListener("click", event => {
+  const resetViewButton = event.target.closest("button[onclick*='__resetKnowledgeGraphViewport']");
+  if (resetViewButton && fitGraphViewFromResetButton(resetViewButton)) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    return;
+  }
+
   const expandButton = event.target.closest("[data-graph-expand-toggle]");
   if (expandButton) {
     toggleExpandedGraph();
