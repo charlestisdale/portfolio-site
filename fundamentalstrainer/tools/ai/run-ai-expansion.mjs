@@ -192,17 +192,16 @@ const queue = asArray(review.authoringQueue);
 if (!queue.length) fail(`No authoringQueue found in ${toProjectPath(reviewedFile, root)}`);
 
 const executed = [];
-let advancedConcepts = 0;
+let generatedPrompts = 0;
 let waitingForAi = null;
 let stoppedOnFailure = false;
 
 for (const item of queue) {
-  if (advancedConcepts >= Math.max(1, batch)) break;
-
   let state = statusFor(item);
   if (state.status === "promoted") continue;
 
   if (state.status === "needs-prompt") {
+    if (generatedPrompts >= Math.max(1, batch)) break;
     const result = run([
       "tools/ai/create-knowledge-author-prompt.mjs",
       `--file=${toProjectPath(reviewedFile, root)}`,
@@ -213,7 +212,7 @@ for (const item of queue) {
       stoppedOnFailure = true;
       break;
     }
-    advancedConcepts += 1;
+    generatedPrompts += 1;
     state = statusFor(item);
   }
 
@@ -237,7 +236,6 @@ for (const item of queue) {
       stoppedOnFailure = true;
       break;
     }
-    advancedConcepts += 1;
     continue;
   }
 
@@ -247,7 +245,6 @@ for (const item of queue) {
       stoppedOnFailure = true;
       break;
     }
-    advancedConcepts += 1;
   }
 }
 
