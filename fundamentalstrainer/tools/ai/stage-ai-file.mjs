@@ -38,14 +38,19 @@ function ensureQueue() {
   }
 }
 
-function loadQueue() {
+function loadQueueFile() {
   ensureQueue();
-  const data = readJson(queueFile);
+  return readJson(queueFile);
+}
+
+function loadQueue() {
+  const data = loadQueueFile();
   return Array.isArray(data.queue) ? data.queue : [];
 }
 
-function saveQueue(queue) {
-  writeJson(queueFile, { queue });
+function saveQueue(queue, metadata = {}) {
+  const existing = fs.existsSync(queueFile) ? readJson(queueFile) : {};
+  writeJson(queueFile, { ...existing, ...metadata, queue });
 }
 
 function listStagingFiles() {
@@ -112,6 +117,18 @@ function completeItem(item) {
   return destination;
 }
 
+function nextCommandForCompletedItem(item, remaining, queueData) {
+  if (remaining.length) return "npm run ai:stage:next";
+  const lesson = item.lesson || queueData.lesson || "<lesson>";
+  if (item.type === "transcript-intelligence" || item.type === "discovery-review") {
+    return `npm run ai:lesson -- --lesson=${lesson}`;
+  }
+  if (item.type === "knowledge-author") {
+    return `npm run ai:expand -- --lesson=${lesson} --promote=true`;
+  }
+  return `npm run ai:lesson -- --lesson=${lesson}`;
+}
+
 function printStatus(queue) {
   console.log(JSON.stringify({
     generatedBy: "ai-staging-helper",
@@ -143,7 +160,8 @@ async function runNext() {
 }
 
 function runComplete() {
-  const queue = loadQueue();
+  const queueData = loadQueueFile();
+  const queue = Array.isArray(queueData.queue) ? queueData.queue : [];
   if (!queue.length) {
     printStatus(queue);
     return;
@@ -152,13 +170,14 @@ function runComplete() {
   const item = queue[0];
   const destination = completeItem(item);
   const remaining = queue.slice(1);
-  saveQueue(remaining);
+  saveQueue(remaining, { lastCompleted: item });
 
   console.log(JSON.stringify({
     completed: true,
+    completedType: item.type || "unknown",
     outputMovedTo: toProjectPath(destination, root),
     remaining: remaining.length,
-    nextCommand: remaining.length ? "npm run ai:stage:next" : "Queue complete. Run npm run ai:expand -- --lesson=<lesson> --promote=true"
+    nextCommand: nextCommandForCompletedItem(item, remaining, queueData)
   }, null, 2));
 }
 
