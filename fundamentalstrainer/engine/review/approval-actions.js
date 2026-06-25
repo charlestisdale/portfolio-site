@@ -22,12 +22,12 @@ export function summarizeDecisions(candidateSet) {
   return counts;
 }
 
-export function buildApprovedReview(candidateSet) {
+export function buildReviewBackup(candidateSet) {
   return {
     ...candidateSet,
-    status: 'approved',
-    reviewedAt: new Date().toISOString(),
-    candidates: candidateSet.candidates.filter(candidate => candidate.reviewDecision !== 'undecided')
+    backupOnly: true,
+    backupReason: 'Static review UI cannot write to disk. Canonical review state should be saved in-place to the original pending candidate file by the local review command or a future admin backend.',
+    backedUpAt: new Date().toISOString()
   };
 }
 
