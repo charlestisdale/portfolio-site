@@ -197,7 +197,7 @@ function renderCandidateCard(preview, candidate) {
 
       <label class="review-field">
         <span>Merge target <small class="muted">use when this candidate duplicates an existing object</small></span>
-        <input data-review-field="mergeTarget" value="${escapeHtml(mergeTargetValue)}" placeholder="windows.task-manager" />
+        <input data-review-field="mergeTarget" value="${escapeHtml(mergeTargetValue)}" placeholder="Only set when merging into an existing Knowledge Object" />
       </label>
 
       <label class="review-field">
@@ -264,7 +264,7 @@ function renderCandidatePreview(preview) {
         <button class="review-export-button" type="button" data-review-export>Export approved JSON</button>
       </div>
       <div class="candidate-preview-list">
-        ${candidates.slice(0, 12).map(candidate => renderCandidateCard(preview, candidate)).join("")}
+        ${candidates.map(candidate => renderCandidateCard(preview, candidate)).join("")}
       </div>
     </section>
   `;
@@ -292,36 +292,27 @@ export function renderImportCenterMode({ state, selectedPreview } = {}) {
         </div>
       </section>
 
-      <section class="card import-instructions-card">
-        <h2>Local workflow</h2>
-        <ol>
-          <li>Use <code>npm run ingest:folder -- --cert=a-plus-220-1202</code> for the current fallback importer.</li>
-          <li>Use <code>npm run ai:import:prompt -- --lesson=01 --cert=a-plus-220-1202</code> to generate an AI-first transcript prompt.</li>
-          <li>Save the AI JSON response in <code>data/ai-imports/responses/</code>.</li>
-          <li>Run <code>npm run ai:import:normalize -- --file=data/ai-imports/responses/&lt;response&gt;.json</code>, then <code>npm run review:manifest</code>.</li>
-          <li>Review, edit, approve, merge, or reject candidates before they become Knowledge Objects.</li>
-        </ol>
-        <p class="muted">Architecture notes live in <code>docs/ingestion-architecture.md</code>. AI candidates are still only review candidates; they are not canonical Knowledge Objects until approved.</p>
-        <div class="import-metric-strip compact">
+      <section class="card import-status-card">
+        <h3>Local Review Summary</h3>
+        <div class="import-metric-strip">
           <span><strong>${formatNumber(reviewed.approved)}</strong> approved</span>
           <span><strong>${formatNumber(reviewed.rejected)}</strong> rejected</span>
           <span><strong>${formatNumber(reviewed.merge)}</strong> merge</span>
           <span><strong>${formatNumber(reviewed.edited)}</strong> edited</span>
         </div>
+        <p class="muted">Stored in browser localStorage. Export approved JSON before clearing site data.</p>
       </section>
-    </section>
 
-    <section class="import-center-layout">
-      <section class="card import-queue-card">
+      <section class="card import-list-card">
         <div class="section-heading-row">
           <div>
-            <p class="eyebrow">Review Queue</p>
-            <h2>Pending Lessons</h2>
+            <p class="eyebrow">Pending Imports</p>
+            <h3>Review Queue</h3>
           </div>
-          <span class="pill">${formatNumber(imports.length)} import(s)</span>
         </div>
         ${renderImportRows(topImports, state?.folderReport)}
       </section>
+
       ${renderCandidatePreview(selectedPreview)}
     </section>
   `;
