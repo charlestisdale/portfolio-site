@@ -1,7 +1,11 @@
+body:has([data-mode-panel="import"].active) .shell {
+  width: min(1480px, calc(100% - 2rem));
+}
+
 .import-center-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  grid-template-columns: minmax(320px, 0.75fr) minmax(760px, 1.85fr);
   align-items: start;
   margin-bottom: 1.25rem;
 }
@@ -9,9 +13,16 @@
 .import-center-hero,
 .import-instructions-card,
 .import-preview-card,
-.import-queue-card {
+.import-queue-card,
+.import-list-card,
+.import-status-card {
   min-width: 0;
   overflow: hidden;
+}
+
+.import-preview-card {
+  width: 100%;
+  max-width: none;
 }
 
 .import-summary-grid {
@@ -23,7 +34,7 @@
 .import-center-layout {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
+  grid-template-columns: minmax(320px, 0.75fr) minmax(760px, 1.85fr);
   align-items: start;
   clear: both;
 }
@@ -40,6 +51,8 @@
 .candidate-preview-list {
   display: grid;
   gap: 1rem;
+  width: 100%;
+  max-width: none;
 }
 
 .import-review-card,
@@ -290,7 +303,14 @@
   color: #fca5a5;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1280px) {
+  .import-center-grid,
+  .import-center-layout {
+    grid-template-columns: minmax(280px, 0.8fr) minmax(640px, 1.6fr);
+  }
+}
+
+@media (max-width: 1050px) {
   .import-center-grid,
   .import-center-layout {
     grid-template-columns: 1fr;
