@@ -1,6 +1,6 @@
 import { loadPendingManifest, loadCandidateSet } from "./candidate-loader.js";
 import { renderDuplicateList, renderRelationshipList, renderEvidenceList, escapeHtml } from "./duplicate-view.js";
-import { buildApprovedReview, downloadJson, setDecision, summarizeDecisions } from "./approval-actions.js";
+import { buildReviewBackup, downloadJson, setDecision, summarizeDecisions } from "./approval-actions.js";
 
 const importSelect = document.querySelector("#importSelect");
 const decisionFilter = document.querySelector("#decisionFilter");
@@ -20,7 +20,7 @@ async function init() {
   renderImportOptions();
 
   if (!manifestItems.length) {
-    candidateList.innerHTML = '<article class="empty-card"><h2>No pending imports</h2><p>Run the ingestion pipeline to create candidate files in content/imports/review-queue/.</p></article>';
+    candidateList.innerHTML = '<article class="empty-card"><h2>No pending imports</h2><p>Run the ingestion pipeline to create candidate files in data/imports/pending/.</p></article>';
     return;
   }
 
@@ -28,7 +28,7 @@ async function init() {
 
   importSelect.addEventListener("change", event => selectImport(event.target.value));
   decisionFilter.addEventListener("change", render);
-  exportBtn.addEventListener("click", exportReview);
+  exportBtn.addEventListener("click", exportBackup);
 }
 
 function renderImportOptions() {
@@ -86,16 +86,23 @@ function renderCandidates() {
   });
 }
 
+function renderDraftItem(item) {
+  if (typeof item === "string") return `<li>${escapeHtml(item)}</li>`;
+  const basis = item.basis ? ` <span class="pill">${escapeHtml(item.basis)}</span>` : "";
+  return `<li>${escapeHtml(item.text || item.situation || item.task || "")}${basis}</li>`;
+}
+
 function renderCandidate(candidate) {
   const facts = candidate.factsDraft || [];
   const tips = candidate.examTipsDraft || [];
   const duplicateStatus = candidate.duplicateReview?.status || (candidate.possibleDuplicates?.length ? "possible-duplicate" : "no-match");
+  const quality = candidate.quality?.band ? ` • quality ${candidate.quality.band}` : "";
 
   return `
     <article class="candidate-card" data-candidate-id="${escapeHtml(candidate.candidateId)}">
       <header>
         <div>
-          <p class="eyebrow">${escapeHtml(candidate.category)} • confidence ${Math.round((candidate.confidence || 0) * 100)}% • ${escapeHtml(duplicateStatus)}</p>
+          <p class="eyebrow">${escapeHtml(candidate.category)} • confidence ${Math.round((candidate.confidence || 0) * 100)}% • ${escapeHtml(duplicateStatus)}${escapeHtml(quality)}</p>
           <h2>${escapeHtml(candidate.title)}</h2>
           <code>${escapeHtml(candidate.proposedKnowledgeId)}</code>
           ${(candidate.domains || []).length ? `<p>${candidate.domains.map(domain => `<span class="pill">${escapeHtml(domain)}</span>`).join(" ")}</p>` : ""}
@@ -112,12 +119,12 @@ function renderCandidate(candidate) {
 
       <details open>
         <summary>Facts</summary>
-        ${facts.length ? `<ul>${facts.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<p class="muted">No facts drafted.</p>'}
+        ${facts.length ? `<ul>${facts.map(renderDraftItem).join("")}</ul>` : '<p class="muted">No facts drafted.</p>'}
       </details>
 
       <details>
         <summary>Exam tips</summary>
-        ${tips.length ? `<ul>${tips.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<p class="muted">No exam tips drafted.</p>'}
+        ${tips.length ? `<ul>${tips.map(renderDraftItem).join("")}</ul>` : '<p class="muted">No exam tips drafted.</p>'}
       </details>
 
       <details>
@@ -131,7 +138,7 @@ function renderCandidate(candidate) {
       </details>
 
       <details>
-        <summary>Transcript evidence</summary>
+        <summary>Source evidence</summary>
         ${renderEvidenceList(candidate)}
       </details>
 
@@ -147,9 +154,9 @@ function decisionOption(candidate, value, label) {
   return `<label><input data-decision type="radio" name="decision-${escapeHtml(candidate.candidateId)}" value="${value}" ${checked}> ${label}</label>`;
 }
 
-function exportReview() {
+function exportBackup() {
   if (!activeSet) return;
-  const approved = buildApprovedReview(activeSet);
-  const filename = `${activeSet.id.toLowerCase()}-reviewed.json`;
-  downloadJson(filename, approved);
+  const backup = buildReviewBackup(activeSet);
+  const filename = `${activeSet.id.toLowerCase()}-review-backup.json`;
+  downloadJson(filename, backup);
 }
