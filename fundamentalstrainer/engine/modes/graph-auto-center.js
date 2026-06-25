@@ -22,6 +22,30 @@ function scheduleCenterActiveGraphNode() {
   window.setTimeout(() => centerActiveGraphNode(), 0);
 }
 
+function scrollLearnModeToTop() {
+  document.body.classList.remove(GRAPH_EXPANDED_CLASS);
+  updateGraphExpandButtonLabel();
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      const learnPanel = document.querySelector('[data-mode-panel="learn"]');
+      const conceptView = document.querySelector("#conceptView");
+      const target = conceptView || learnPanel;
+
+      if (target) {
+        target.scrollIntoView({ block: "start", inline: "nearest" });
+      }
+
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+  });
+}
+
+function scheduleScrollLearnModeToTop() {
+  window.setTimeout(scrollLearnModeToTop, 0);
+  window.setTimeout(scrollLearnModeToTop, 75);
+}
+
 function normalizeGraphCenterControls() {
   const visualizer = document.querySelector(".graph-visualizer");
   if (!visualizer) return;
@@ -104,6 +128,12 @@ function scheduleNormalizeGraphControls() {
 }
 
 document.addEventListener("click", event => {
+  const openLearnButton = event.target.closest("[data-graph-open-learn]");
+  if (openLearnButton) {
+    scheduleScrollLearnModeToTop();
+    return;
+  }
+
   const centerButton = event.target.closest("[data-graph-center-active]");
   if (centerButton) {
     centerActiveGraphNode();
