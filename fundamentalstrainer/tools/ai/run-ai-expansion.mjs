@@ -24,21 +24,12 @@ function asArray(value) {
 }
 
 function run(commandArgs) {
-  const result = spawnSync(process.execPath, commandArgs, {
+  return spawnSync(process.execPath, commandArgs, {
     cwd: root,
     stdio: "pipe",
     encoding: "utf8",
     shell: false
   });
-  return result;
-}
-
-function runOrFail(commandArgs) {
-  const result = run(commandArgs);
-  if (result.stdout) process.stdout.write(result.stdout);
-  if (result.stderr) process.stderr.write(result.stderr);
-  if (result.status !== 0) process.exit(result.status || 1);
-  return result;
 }
 
 function listFiles(dir, matcher = () => true) {
@@ -81,18 +72,12 @@ function lessonMatch(file) {
   return path.basename(file).startsWith(`${lesson}-`);
 }
 
-function firstProject(files) {
-  return files[0] ? toProjectPath(files[0], root) : null;
-}
-
 function findReviewedFile() {
-  const files = listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
-  return files[0] || null;
+  return listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file))[0] || null;
 }
 
 function findIntelligenceFile() {
-  const files = listFiles("data/imports/pending", file => file.includes("transcript-intelligence") && file.endsWith(".json") && lessonMatch(file));
-  return files[0] || null;
+  return listFiles("data/imports/pending", file => file.includes("transcript-intelligence") && file.endsWith(".json") && lessonMatch(file))[0] || null;
 }
 
 function canonicalById(id) {
@@ -109,37 +94,34 @@ function canonicalById(id) {
 }
 
 function promptFor(item) {
-  const files = listFiles("data/ai-imports/prompts/knowledge-author", file => {
+  return listFiles("data/ai-imports/prompts/knowledge-author", file => {
     const base = path.basename(file);
     return file.endsWith("knowledge-author-prompt.md")
       && lessonMatch(file)
       && (base.includes(slugify(item.proposedKnowledgeId)) || base.includes(slugify(item.title)));
-  });
-  return files[0] || null;
+  })[0] || null;
 }
 
 function responseFor(item) {
-  const files = listFiles("data/ai-imports/responses/knowledge-author", file => {
+  return listFiles("data/ai-imports/responses/knowledge-author", file => {
     if (!file.endsWith(".json")) return false;
     try {
       return readJson(file).id === item.proposedKnowledgeId;
     } catch {
       return false;
     }
-  });
-  return files[0] || null;
+  })[0] || null;
 }
 
 function draftFor(item) {
-  const files = listFiles("data/imports/authored", file => {
+  return listFiles("data/imports/authored", file => {
     if (!file.endsWith(".draft.json")) return false;
     try {
       return readJson(file).id === item.proposedKnowledgeId;
     } catch {
       return false;
     }
-  });
-  return files[0] || null;
+  })[0] || null;
 }
 
 function promoteDraft(file) {
@@ -155,97 +137,19 @@ function dryRunDraft(file) {
   return run(command);
 }
 
-if (!lesson) fail("Usage: npm run ai:expand -- --lesson=01 [--batch=3] [--promote=true]");
-
-const reviewedFile = findReviewedFile();
-if (!reviewedFile) {
-  fail(`No normalized discovery review found for lesson ${lesson}. Run npm run ai:lesson -- --lesson=${lesson} first.`);
+function recordExecution(executed, action, item, result) {
+  executed.push({
+    type: action,
+    conceptId: item.conceptId,
+    proposedKnowledgeId: item.proposedKnowledgeId,
+    status: result.status,
+    stdout: (result.stdout || "").trim(),
+    stderr: (result.stderr || "").trim()
+  });
+  return result.status === 0;
 }
 
-const intelligenceFile = findIntelligenceFile();
-if (!intelligenceFile) {
-  fail(`No transcript intelligence file found for lesson ${lesson}. Run npm run ai:lesson -- --lesson=${lesson} first.`);
-}
-
-const review = readJson(reviewedFile);
-const queue = asArray(review.authoringQueue);
-if (!queue.length) fail(`No authoringQueue found in ${toProjectPath(reviewedFile, root)}`);
-
-const statuses = [];
-const actions = [];
-
-for (const item of queue) {
-  const canonical = canonicalById(item.proposedKnowledgeId);
-  const prompt = promptFor(item);
-  const response = responseFor(item);
-  let draft = draftFor(item);
-
-  if (!prompt && !canonical) {
-    actions.push({ type: "generate-prompt", item });
-    statuses.push({ item, status: "needs-prompt", canonical, prompt, response, draft });
-    continue;
-  }
-
-  if (!response && !canonical) {
-    statuses.push({ item, status: "waiting-for-ai", canonical, prompt, response, draft });
-    continue;
-  }
-
-  if (response && !draft && !canonical) {
-    actions.push({ type: "normalize-author-output", item, response });
-    statuses.push({ item, status: "needs-normalization", canonical, prompt, response, draft });
-    continue;
-  }
-
-  if (draft && !canonical) {
-    if (promote) {
-      actions.push({ type: "promote-draft", item, draft });
-      statuses.push({ item, status: "ready-to-promote", canonical, prompt, response, draft });
-    } else {
-      actions.push({ type: "dry-run-draft", item, draft });
-      statuses.push({ item, status: "ready-for-dry-run", canonical, prompt, response, draft });
-    }
-    continue;
-  }
-
-  statuses.push({ item, status: "promoted", canonical, prompt, response, draft });
-}
-
-const executable = actions.slice(0, Math.max(1, batch));
-const executed = [];
-
-for (const action of executable) {
-  if (action.type === "generate-prompt") {
-    const result = run([
-      "tools/ai/create-knowledge-author-prompt.mjs",
-      `--file=${toProjectPath(reviewedFile, root)}`,
-      `--intelligence=${toProjectPath(intelligenceFile, root)}`,
-      `--concept=${action.item.conceptId}`
-    ]);
-    executed.push({ type: action.type, conceptId: action.item.conceptId, status: result.status, stdout: result.stdout.trim(), stderr: result.stderr.trim() });
-    if (result.status !== 0) break;
-  }
-
-  if (action.type === "normalize-author-output") {
-    const result = run(["tools/ai/normalize-knowledge-author-output.mjs", `--file=${toProjectPath(action.response, root)}`]);
-    executed.push({ type: action.type, conceptId: action.item.conceptId, status: result.status, stdout: result.stdout.trim(), stderr: result.stderr.trim() });
-    if (result.status !== 0) break;
-  }
-
-  if (action.type === "dry-run-draft") {
-    const result = dryRunDraft(action.draft);
-    executed.push({ type: action.type, conceptId: action.item.conceptId, status: result.status, stdout: result.stdout.trim(), stderr: result.stderr.trim() });
-    if (result.status !== 0) break;
-  }
-
-  if (action.type === "promote-draft") {
-    const result = promoteDraft(action.draft);
-    executed.push({ type: action.type, conceptId: action.item.conceptId, status: result.status, stdout: result.stdout.trim(), stderr: result.stderr.trim() });
-    if (result.status !== 0) break;
-  }
-}
-
-const refreshed = queue.map(item => {
+function statusFor(item) {
   const canonical = canonicalById(item.proposedKnowledgeId);
   const prompt = promptFor(item);
   const response = responseFor(item);
@@ -256,18 +160,98 @@ const refreshed = queue.map(item => {
   else if (response) status = "needs-normalization";
   else if (prompt) status = "waiting-for-ai";
 
-  return {
-    conceptId: item.conceptId,
-    proposedKnowledgeId: item.proposedKnowledgeId,
-    title: item.title,
-    status,
-    prompt: prompt ? toProjectPath(prompt, root) : null,
-    response: response ? toProjectPath(response, root) : null,
-    draft: draft ? toProjectPath(draft, root) : null,
-    canonical: canonical ? toProjectPath(canonical.file, root) : null
-  };
-});
+  return { item, status, canonical, prompt, response, draft };
+}
 
+function renderQueue(queue) {
+  return queue.map(item => {
+    const state = statusFor(item);
+    return {
+      conceptId: item.conceptId,
+      proposedKnowledgeId: item.proposedKnowledgeId,
+      title: item.title,
+      status: state.status,
+      prompt: state.prompt ? toProjectPath(state.prompt, root) : null,
+      response: state.response ? toProjectPath(state.response, root) : null,
+      draft: state.draft ? toProjectPath(state.draft, root) : null,
+      canonical: state.canonical ? toProjectPath(state.canonical.file, root) : null
+    };
+  });
+}
+
+if (!lesson) fail("Usage: npm run ai:expand -- --lesson=01 [--batch=3] [--promote=true]");
+
+const reviewedFile = findReviewedFile();
+if (!reviewedFile) fail(`No normalized discovery review found for lesson ${lesson}. Run npm run ai:lesson -- --lesson=${lesson} first.`);
+
+const intelligenceFile = findIntelligenceFile();
+if (!intelligenceFile) fail(`No transcript intelligence file found for lesson ${lesson}. Run npm run ai:lesson -- --lesson=${lesson} first.`);
+
+const review = readJson(reviewedFile);
+const queue = asArray(review.authoringQueue);
+if (!queue.length) fail(`No authoringQueue found in ${toProjectPath(reviewedFile, root)}`);
+
+const executed = [];
+let advancedConcepts = 0;
+let waitingForAi = null;
+let stoppedOnFailure = false;
+
+for (const item of queue) {
+  if (advancedConcepts >= Math.max(1, batch)) break;
+
+  let state = statusFor(item);
+  if (state.status === "promoted") continue;
+
+  if (state.status === "needs-prompt") {
+    const result = run([
+      "tools/ai/create-knowledge-author-prompt.mjs",
+      `--file=${toProjectPath(reviewedFile, root)}`,
+      `--intelligence=${toProjectPath(intelligenceFile, root)}`,
+      `--concept=${item.conceptId}`
+    ]);
+    if (!recordExecution(executed, "generate-prompt", item, result)) {
+      stoppedOnFailure = true;
+      break;
+    }
+    advancedConcepts += 1;
+    state = statusFor(item);
+  }
+
+  if (state.status === "waiting-for-ai") {
+    waitingForAi = state;
+    break;
+  }
+
+  if (state.status === "needs-normalization") {
+    const result = run(["tools/ai/normalize-knowledge-author-output.mjs", `--file=${toProjectPath(state.response, root)}`]);
+    if (!recordExecution(executed, "normalize-author-output", item, result)) {
+      stoppedOnFailure = true;
+      break;
+    }
+    state = statusFor(item);
+  }
+
+  if (state.status === "ready-for-dry-run") {
+    const result = dryRunDraft(state.draft);
+    if (!recordExecution(executed, "dry-run-draft", item, result)) {
+      stoppedOnFailure = true;
+      break;
+    }
+    advancedConcepts += 1;
+    continue;
+  }
+
+  if (state.status === "ready-to-promote") {
+    const result = promoteDraft(state.draft);
+    if (!recordExecution(executed, "promote-draft", item, result)) {
+      stoppedOnFailure = true;
+      break;
+    }
+    advancedConcepts += 1;
+  }
+}
+
+const refreshed = renderQueue(queue);
 const summary = refreshed.reduce((counts, item) => {
   counts[item.status] = (counts[item.status] || 0) + 1;
   counts.total += 1;
@@ -289,19 +273,20 @@ console.log(JSON.stringify({
   promote,
   summary,
   executed,
+  stoppedOnFailure,
   queue: refreshed,
-  nextAction: nextWaiting
+  nextAction: waitingForAi || nextWaiting
     ? {
         type: "send-prompt-to-ai",
-        conceptId: nextWaiting.conceptId,
-        expectedKnowledgeId: nextWaiting.proposedKnowledgeId,
-        prompt: nextWaiting.prompt,
+        conceptId: (waitingForAi || nextWaiting).item?.conceptId || nextWaiting.conceptId,
+        expectedKnowledgeId: (waitingForAi || nextWaiting).item?.proposedKnowledgeId || nextWaiting.proposedKnowledgeId,
+        prompt: (waitingForAi || nextWaiting).prompt ? toProjectPath((waitingForAi || nextWaiting).prompt, root) : nextWaiting.prompt,
         saveResponseUnder: "data/ai-imports/responses/knowledge-author/"
       }
     : nextNeedsNormalization
       ? {
           type: "normalize-ai-response",
-          command: `npm run ai:expand -- --lesson=${lesson}`,
+          command: `npm run ai:expand -- --lesson=${lesson}${promote ? " --promote=true" : ""}`,
           conceptId: nextNeedsNormalization.conceptId
         }
       : nextReady
