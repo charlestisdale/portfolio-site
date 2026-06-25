@@ -21,6 +21,7 @@
     "ai:batch": "node tools/ai/create-ai-batch.mjs",
     "ai:import:prompt": "node tools/ai/create-ai-import-prompt.mjs",
     "ai:import:normalize": "node tools/ai/normalize-ai-import.mjs",
+    "ai:discovery:manifest": "node tools/ai/create-discovery-manifest.mjs",
     "discovery:prompt": "node tools/ai/create-discovery-prompt.mjs",
     "discovery:normalize": "node tools/ai/normalize-discovery-package.mjs",
     "knowledge:reset": "node tools/knowledge/reset-knowledge-store.mjs",
