@@ -8,11 +8,15 @@ The `engine/` folder must not contain certification-specific content. All certif
 
 Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, graph exploration, recommendations, and future AI tutoring should be generated from canonical knowledge objects instead of separate duplicate content sets.
 
+Curriculum controls teaching order. Study paths should be generated from curriculum mappings, not raw transcript lesson order and not ad-hoc `Unmapped Knowledge` buckets.
+
 ## Current phase
 
 The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, and an interactive Knowledge Graph explorer.
 
-The ingestion direction is transcript-triggered AI enrichment. Transcripts and source documents identify what topics matter; AI expands those topics into learner-ready draft Knowledge Objects using general IT knowledge when the source is incomplete; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
+The ingestion direction is transcript-triggered AI enrichment. Transcripts identify what topics matter; AI expands those topics into learner-ready draft Knowledge Objects using general IT knowledge when the transcript is incomplete; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
+
+The Curriculum Engine foundation is active. Curriculum files reference reviewed Knowledge Objects and organize them into certification sections/modules with outcomes and temporary auto-map rules. Knowledge Objects remain reusable and certification-agnostic.
 
 The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
@@ -20,10 +24,9 @@ The public portfolio version must remain learner-only and content-read-only. Upl
 
 ```text
 engine/                  Reusable learning engine only
-content/                 Certification/objective/knowledge data
+content/                 Certification/objective/knowledge/curriculum data
 data/transcripts/raw/    Local/private raw source files only
-data/transcripts/cleaned Local/private lossless readable source text only
-data/ai-imports/         Local/private AI prompts and responses
+data/transcripts/cleaned Local/private cleaned source text only
 data/imports/            Local/private ingestion and review records
 tools/                   Schemas and ingestion utilities
 docs/                    Architecture and safety documentation
@@ -36,6 +39,7 @@ The deployed learner app should allow users to:
 - learn from existing reviewed content
 - search concepts
 - explore Knowledge Object relationships in Graph mode
+- follow curriculum-based study paths
 - generate practice assessments
 - save local browser progress
 - save local browser assessment history
@@ -72,26 +76,23 @@ Specific provenance can remain in private/admin-only records when needed for rev
 
 No source material should enter the trusted knowledge base directly.
 
-The transcript/source is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
-
-Source handling must be lossless before AI import. For `.srt` files, cleanup may remove cue numbers, timestamps, and markup only. Do not collapse repeated phrases, remove overlapping cues, summarize text, or delete context before AI sees it.
-
-Review state belongs in the existing pending candidate file under `data/imports/pending/`. Do not manually download an approved JSON file and re-upload/copy it into another folder. If a candidate is in the review queue, it is already in the local/admin system. Approval updates that existing record in place; rejected items are marked `ignore` and excluded from promotion.
+The transcript is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
 
 ```text
 source material
-→ lossless source parsing
+→ cleaner
 → transcript-triggered topic discovery
 → AI enrichment into learner-ready draft Knowledge Objects
 → normalization and quality audit
 → duplicate detection
-→ in-place promotion review
+→ promotion review
 → import report
 → merge plan
 → dry run
 → controlled write or pull request
 → validation
 → canonical Knowledge Objects
+→ curriculum mapping
 ```
 
 Review means checking whether the enriched Knowledge Object is accurate, useful, deduplicated, and ready to become canonical. Do not approve raw transcript mentions as knowledge.
@@ -106,9 +107,43 @@ is only transcript evidence that the topic appeared. It should either trigger a 
 
 The merge command should stay dry-run-first. Use real writes only after review and validation.
 
+## Curriculum rule
+
+Curriculum is a separate layer from Knowledge Objects and the Knowledge Graph.
+
+```text
+Knowledge Object = what the learner needs to know
+Knowledge Graph = how concepts relate
+Curriculum = where and when concepts are taught
+```
+
+Curriculum files live under:
+
+```text
+content/curriculum/
+```
+
+The current starter curriculum is:
+
+```text
+content/curriculum/a-plus-220-1202/curriculum.json
+```
+
+The design document is:
+
+```text
+docs/curriculum-engine.md
+```
+
+The schema is:
+
+```text
+tools/schemas/curriculum.schema.json
+```
+
 ## Example local commands
 
-Create a lossless readable transcript from `.srt` when needed:
+Clean a local/private transcript:
 
 ```bash
 node tools/ingestion/clean-srt.mjs \
@@ -116,13 +151,13 @@ node tools/ingestion/clean-srt.mjs \
   data/transcripts/cleaned/a-plus-220-1202/16-lesson-title.txt
 ```
 
-Generate a transcript-triggered AI import prompt. With `--lesson`, the script prefers the raw `.srt` and parses it losslessly in memory:
+Create an import record:
 
 ```bash
-npm run ai:import:prompt -- --lesson=16
+node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
 ```
 
-Or pass an already-clean source file directly:
+Generate a transcript-triggered AI import prompt:
 
 ```bash
 npm run ai:import:prompt -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
@@ -140,32 +175,12 @@ Normalize the AI response into pending review candidates:
 npm run ai:import:normalize -- --file=data/ai-imports/responses/16-response.json
 ```
 
-Detect duplicates:
+Review/import commands:
 
 ```bash
 npm run ingest:duplicates -- --file=data/imports/pending/16-ai-candidates.json
-```
-
-List candidates:
-
-```bash
-npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --list=true
-```
-
-Approve, merge, or reject candidates in place:
-
-```bash
-npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-001 --decision=create-new --notes="Accurate and useful draft."
-npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-002 --decision=merge-existing --notes="Merge into existing object."
-npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-003 --decision=ignore --notes="Mentioned only."
-```
-
-Build an import report and merge:
-
-```bash
 npm run ingest:report -- --file=data/imports/pending/16-ai-candidates.json
 npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json
-npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json --dry-run=false
 ```
 
 Build the pending-import manifest for local review:
@@ -193,12 +208,15 @@ The static review UI is for inspection and backup snapshots. It should not becom
 ```text
 tools/knowledge-object.schema.json
 tools/import-record.schema.json
+tools/schemas/curriculum.schema.json
 tools/ingestion-workflow.md
 tools/ingestion/review-workflow.md
 tools/ingestion/review-candidates.mjs
 tools/ai/create-ai-import-prompt.mjs
 tools/ai/normalize-ai-import.mjs
 docs/transcript-triggered-enrichment.md
+docs/curriculum-engine.md
+content/curriculum/a-plus-220-1202/curriculum.json
 content/knowledge/_templates/knowledge-object.template.json
 data/imports/a-plus-220-1202/import-record.template.json
 content/indexes/knowledge-index.json
@@ -233,6 +251,13 @@ Validate both knowledge content and architecture references:
 npm run validate:all
 ```
 
+The current sample objects are:
+
+```text
+content/knowledge/windows/task-manager.json
+content/knowledge/commands/ipconfig.json
+```
+
 Important rule: do not write quiz questions directly during ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
 
 ## Data architecture layer
@@ -244,6 +269,7 @@ docs/data-architecture.md
 docs/id-conventions.md
 docs/relationship-types.md
 docs/transcript-triggered-enrichment.md
+docs/curriculum-engine.md
 ```
 
 Additional schemas:
@@ -252,6 +278,7 @@ Additional schemas:
 tools/schemas/certification.schema.json
 tools/schemas/objective.schema.json
 tools/schemas/lesson.schema.json
+tools/schemas/curriculum.schema.json
 tools/schemas/relationship.schema.json
 tools/schemas/assessment.schema.json
 tools/schemas/media.schema.json
@@ -279,6 +306,8 @@ rel.commands.ipconfig.uses.networking.dhcp
 
 This supports future concept maps, prerequisite paths, AI tutor context, analytics, and assessment generation.
 
+Curriculum mapping is not the same as a graph edge. Curriculum says where a concept is taught; graph edges say how concepts relate.
+
 ## Knowledge Engine
 
 The platform includes a certification-neutral internal Knowledge Engine under `engine/knowledge/`. UI code should use this API instead of loading raw knowledge JSON directly.
@@ -291,6 +320,7 @@ knowledge.search(query)
 knowledge.related(id)
 knowledge.objective(objectiveId)
 knowledge.lesson(lessonId)
+knowledge.curriculum(curriculumId)
 knowledge.certification(certId)
 knowledge.commands()
 knowledge.scenarios()
