@@ -187,6 +187,7 @@ function registerScopeRenderer(renderState) {
     const viewports = readStoredViewports();
     viewports[viewportKey] = next;
     writeStoredViewports(viewports);
+    resetCanvasScroll(canvas);
     applyViewportToCanvas(canvas, next);
   };
 
@@ -229,6 +230,7 @@ function registerScopeRenderer(renderState) {
 
     viewports[viewportKey] = next;
     writeStoredViewports(viewports);
+    resetCanvasScroll(canvas);
     applyViewportToCanvas(canvas, next);
   };
 
@@ -261,6 +263,7 @@ function registerScopeRenderer(renderState) {
       };
       viewports[viewportKey] = next;
       writeStoredViewports(viewports);
+      resetCanvasScroll(canvas);
       applyViewportToCanvas(canvas, next);
     };
 
@@ -374,6 +377,7 @@ function centerGraphOnNode(viewportKey, node) {
 
   viewports[viewportKey] = next;
   writeStoredViewports(viewports);
+  resetCanvasScroll(canvas);
   applyViewportToCanvas(canvas, next);
   flashGraphNode(node);
 }
@@ -398,6 +402,12 @@ function getCanvasScroll(canvas) {
     left: Number(canvas?.scrollLeft || 0),
     top: Number(canvas?.scrollTop || 0)
   };
+}
+
+function resetCanvasScroll(canvas) {
+  if (!canvas) return;
+  canvas.scrollLeft = 0;
+  canvas.scrollTop = 0;
 }
 
 function restoreCanvasScroll(scrollPosition) {
@@ -438,12 +448,10 @@ function getFittedViewport(layout, rect = null) {
 
   const width = Number(rect?.width) || VIEWBOX_WIDTH;
   const height = Number(rect?.height) || VIEWBOX_HEIGHT;
-  const scaleX = width / VIEWBOX_WIDTH;
-  const scaleY = height / VIEWBOX_HEIGHT;
-  const minX = Math.max(0, bounds.minX - FIT_NODE_MARGIN_X) * scaleX;
-  const maxX = Math.min(VIEWBOX_WIDTH, bounds.maxX + FIT_NODE_MARGIN_X) * scaleX;
-  const minY = Math.max(0, bounds.minY - FIT_NODE_MARGIN_Y) * scaleY;
-  const maxY = Math.min(VIEWBOX_HEIGHT, bounds.maxY + FIT_NODE_MARGIN_Y) * scaleY;
+  const minX = clamp(bounds.minX - FIT_NODE_MARGIN_X, 0, VIEWBOX_WIDTH);
+  const maxX = clamp(bounds.maxX + FIT_NODE_MARGIN_X, 0, VIEWBOX_WIDTH);
+  const minY = clamp(bounds.minY - FIT_NODE_MARGIN_Y, 0, VIEWBOX_HEIGHT);
+  const maxY = clamp(bounds.maxY + FIT_NODE_MARGIN_Y, 0, VIEWBOX_HEIGHT);
   const graphWidth = Math.max(1, maxX - minX);
   const graphHeight = Math.max(1, maxY - minY);
   const zoom = clamp(
@@ -451,11 +459,13 @@ function getFittedViewport(layout, rect = null) {
     MIN_AUTO_FIT_ZOOM,
     MAX_AUTO_FIT_ZOOM
   );
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
 
   return normalizeViewport({
     zoom,
-    x: (width - (minX + maxX) * zoom) / 2,
-    y: (height - (minY + maxY) * zoom) / 2
+    x: width / 2 - centerX * zoom,
+    y: height / 2 - centerY * zoom
   });
 }
 
