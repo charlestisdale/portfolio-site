@@ -5,8 +5,8 @@ const VIEWBOX_HEIGHT = 760;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
-const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v3";
-const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v3";
+const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v4";
+const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v4";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 const FIT_VIEW_PADDING = 42;
 const FIT_NODE_MARGIN_X = 110;
@@ -18,9 +18,6 @@ const NODE_CARD_WIDTH = 188;
 const NODE_CARD_HEIGHT = 66;
 const NODE_CARD_TALL_HEIGHT = 84;
 const NODE_EDGE_GAP = 2;
-const NODE_COLLISION_PADDING_X = 24;
-const NODE_COLLISION_PADDING_Y = 18;
-const LAYOUT_RELAXATION_PASSES = 0;
 
 const FOCUSED_RELATIONSHIP_TYPES = new Set([
   "contains",
@@ -221,8 +218,8 @@ function registerScopeRenderer(renderState) {
     const ratio = nextZoom / current.zoom;
     const next = {
       zoom: nextZoom,
-      x: clamp(center.x - (center.x - current.x) * ratio, -1800, 1800),
-      y: clamp(center.y - (center.y - current.y) * ratio, -1200, 1200)
+      x: clamp(center.x - (center.x - current.x) * ratio, -2600, 2600),
+      y: clamp(center.y - (center.y - current.y) * ratio, -1900, 1900)
     };
 
     viewports[viewportKey] = next;
@@ -254,8 +251,8 @@ function registerScopeRenderer(renderState) {
       if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didPan = true;
       const next = {
         zoom: current.zoom,
-        x: clamp(start.viewportX + dx, -1800, 1800),
-        y: clamp(start.viewportY + dy, -1200, 1200)
+        x: clamp(start.viewportX + dx, -2600, 2600),
+        y: clamp(start.viewportY + dy, -1900, 1900)
       };
       viewports[viewportKey] = next;
       writeStoredViewports(viewports);
@@ -294,6 +291,7 @@ function registerScopeRenderer(renderState) {
 
     const viewports = readStoredViewports();
     const viewport = viewports[viewportKey] || getFittedViewport(readLayoutFromRenderedNodes(canvas), canvas.getBoundingClientRect());
+    const initialScroll = getCanvasScroll(canvas);
     viewports[viewportKey] = viewport;
     writeStoredViewports(viewports);
 
@@ -343,7 +341,7 @@ function registerScopeRenderer(renderState) {
         window.__knowledgeGraphSuppressClickUntil = Date.now() + 450;
         stopEvent?.preventDefault?.();
         stopEvent?.stopPropagation?.();
-        renderCurrentScope();
+        renderCurrentScope({ restoreScroll: initialScroll });
       }
     };
 
@@ -362,10 +360,11 @@ function centerGraphOnNode(viewportKey, node) {
   const rect = canvas.getBoundingClientRect();
   const graphX = Number(node.dataset.graphX || 0);
   const graphY = Number(node.dataset.graphY || 0);
+  const nextZoom = Math.max(current.zoom, 0.85);
   const next = normalizeViewport({
-    zoom: Math.max(current.zoom, 0.85),
-    x: rect.width / 2 - graphX * Math.max(current.zoom, 0.85),
-    y: rect.height / 2 - graphY * Math.max(current.zoom, 0.85)
+    zoom: nextZoom,
+    x: rect.width / 2 - graphX * nextZoom,
+    y: rect.height / 2 - graphY * nextZoom
   });
 
   viewports[viewportKey] = next;
@@ -381,9 +380,28 @@ function flashGraphNode(node) {
   window.setTimeout(() => node.classList.remove("graph-visual-node--search-hit"), 1200);
 }
 
-function renderCurrentScope() {
+function renderCurrentScope(options = {}) {
   const scope = document.querySelector(".graph-scope-button.active")?.dataset.graphScope || getGraphScope();
   window.__renderKnowledgeGraphScope?.(scope);
+  if (options.restoreScroll) {
+    restoreCanvasScroll(options.restoreScroll);
+  }
+}
+
+function getCanvasScroll(canvas) {
+  return {
+    left: Number(canvas?.scrollLeft || 0),
+    top: Number(canvas?.scrollTop || 0)
+  };
+}
+
+function restoreCanvasScroll(scrollPosition) {
+  window.requestAnimationFrame?.(() => {
+    const canvas = document.querySelector(".graph-visualizer [data-graph-canvas]");
+    if (!canvas) return;
+    canvas.scrollLeft = scrollPosition.left;
+    canvas.scrollTop = scrollPosition.top;
+  });
 }
 
 function applyViewportToCanvas(canvas, viewport) {
@@ -622,29 +640,13 @@ function layoutNodes({ nodes, edges, activeId }) {
   const context = sortNodesForLayout(nodes.filter(node => node.id !== activeId && !neighborIds.has(node.id)));
 
   if (activeNode) {
-    distributeAcrossLanes(layout, neighbors, [
-      { x: CENTER.x - 300, y: CENTER.y, step: 118 },
-      { x: CENTER.x + 300, y: CENTER.y, step: 118 },
-      { x: CENTER.x, y: CENTER.y - 235, step: 205, horizontal: true },
-      { x: CENTER.x, y: CENTER.y + 235, step: 205, horizontal: true }
-    ]);
-    distributeAcrossLanes(layout, context, [
-      { x: CENTER.x - 500, y: CENTER.y, step: 118 },
-      { x: CENTER.x + 500, y: CENTER.y, step: 118 },
-      { x: CENTER.x, y: CENTER.y - 325, step: 215, horizontal: true },
-      { x: CENTER.x, y: CENTER.y + 325, step: 215, horizontal: true }
-    ]);
+    distributeAroundEllipse(layout, neighbors, 365, 220, -92);
+    distributeAroundEllipse(layout, context, 500, 315, -70);
   } else {
-    distributeAcrossLanes(layout, sortNodesForLayout(nodes), [
-      { x: CENTER.x - 325, y: CENTER.y, step: 118 },
-      { x: CENTER.x + 325, y: CENTER.y, step: 118 },
-      { x: CENTER.x, y: CENTER.y - 245, step: 205, horizontal: true },
-      { x: CENTER.x, y: CENTER.y + 245, step: 205, horizontal: true }
-    ]);
+    distributeAroundEllipse(layout, sortNodesForLayout(nodes), 410, 260, -86);
   }
 
   if (!activeNode && nodes.length === 1) layout.set(nodes[0].id, CENTER);
-  relaxLayout(layout, nodes, activeNode?.id || null);
   return layout;
 }
 
@@ -654,24 +656,6 @@ function sortNodesForLayout(nodes) {
     const rightStub = right.status === "stub" ? 1 : 0;
     if (leftStub !== rightStub) return leftStub - rightStub;
     return String(left.title || left.id).localeCompare(String(right.title || right.id));
-  });
-}
-
-function distributeAcrossLanes(layout, nodes, lanes) {
-  nodes.forEach((node, index) => {
-    const lane = lanes[index % lanes.length];
-    const laneIndex = Math.floor(index / lanes.length);
-    const direction = laneIndex % 2 === 0 ? 1 : -1;
-    const magnitude = Math.ceil(laneIndex / 2) * lane.step;
-    const offset = direction * magnitude;
-
-    layout.set(node.id, lane.horizontal ? {
-      x: clamp(lane.x + offset, 90, VIEWBOX_WIDTH - 90),
-      y: clamp(lane.y, 70, VIEWBOX_HEIGHT - 70)
-    } : {
-      x: clamp(lane.x, 90, VIEWBOX_WIDTH - 90),
-      y: clamp(lane.y + offset, 70, VIEWBOX_HEIGHT - 70)
-    });
   });
 }
 
@@ -686,44 +670,6 @@ function distributeAroundEllipse(layout, nodes, radiusX, radiusY, startDegrees) 
       y: clamp(CENTER.y + Math.sin(angle) * radiusY, 70, VIEWBOX_HEIGHT - 70)
     });
   });
-}
-
-function relaxLayout(layout, nodes, fixedId = null) {
-  for (let pass = 0; pass < LAYOUT_RELAXATION_PASSES; pass += 1) {
-    for (let leftIndex = 0; leftIndex < nodes.length; leftIndex += 1) {
-      for (let rightIndex = leftIndex + 1; rightIndex < nodes.length; rightIndex += 1) {
-        const leftNode = nodes[leftIndex];
-        const rightNode = nodes[rightIndex];
-        const left = layout.get(leftNode.id);
-        const right = layout.get(rightNode.id);
-        if (!left || !right) continue;
-
-        const leftSize = getNodeCardSize(leftNode);
-        const rightSize = getNodeCardSize(rightNode);
-        const minX = (leftSize.width + rightSize.width) / 2 + NODE_COLLISION_PADDING_X;
-        const minY = (leftSize.height + rightSize.height) / 2 + NODE_COLLISION_PADDING_Y;
-        const dx = right.x - left.x || 0.01;
-        const dy = right.y - left.y || 0.01;
-        const overlapX = minX - Math.abs(dx);
-        const overlapY = minY - Math.abs(dy);
-        if (overlapX <= 0 || overlapY <= 0) continue;
-
-        const moveX = Math.sign(dx) * overlapX * 0.28;
-        const moveY = Math.sign(dy) * overlapY * 0.28;
-        const leftLocked = leftNode.id === fixedId;
-        const rightLocked = rightNode.id === fixedId;
-
-        if (!leftLocked) {
-          left.x = clamp(left.x - moveX, 60, VIEWBOX_WIDTH - 60);
-          left.y = clamp(left.y - moveY, 50, VIEWBOX_HEIGHT - 50);
-        }
-        if (!rightLocked) {
-          right.x = clamp(right.x + moveX, 60, VIEWBOX_WIDTH - 60);
-          right.y = clamp(right.y + moveY, 50, VIEWBOX_HEIGHT - 50);
-        }
-      }
-    }
-  }
 }
 
 function renderEdges(edges, layout, nodes = []) {
