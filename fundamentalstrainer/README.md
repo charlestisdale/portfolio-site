@@ -12,6 +12,8 @@ Knowledge is the source of truth. Learn mode, search, assessments, flashcards, P
 
 The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, and an interactive Knowledge Graph explorer.
 
+The ingestion direction is transcript-triggered AI enrichment. Transcripts identify what topics matter; AI expands those topics into learner-ready draft Knowledge Objects using general IT knowledge when the transcript is incomplete; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
+
 The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
 ## Architecture
@@ -69,18 +71,33 @@ Specific provenance can remain in private/admin-only records when needed for rev
 
 No source material should enter the trusted knowledge base directly.
 
+The transcript is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
+
 ```text
 source material
 → cleaner
-→ candidate extraction
+→ transcript-triggered topic discovery
+→ AI enrichment into learner-ready draft Knowledge Objects
+→ normalization and quality audit
 → duplicate detection
-→ human review
+→ promotion review
 → import report
 → merge plan
 → dry run
 → controlled write or pull request
 → validation
+→ canonical Knowledge Objects
 ```
+
+Review means checking whether the enriched Knowledge Object is accurate, useful, deduplicated, and ready to become canonical. Do not approve raw transcript mentions as knowledge.
+
+A weak sentence such as:
+
+```text
+Another popular file system you might run into is ext4.
+```
+
+is only transcript evidence that the topic appeared. It should either trigger a useful enriched `filesystems.ext4` draft or be rejected as `mentioned-only`. It should not become the learning summary.
 
 The merge command should stay dry-run-first. Use real writes only after review and validation.
 
@@ -100,13 +117,30 @@ Create an import record:
 node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
 ```
 
+Generate a transcript-triggered AI import prompt:
+
+```bash
+npm run ai:import:prompt -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
+```
+
+Save the AI response under:
+
+```text
+data/ai-imports/responses/
+```
+
+Normalize the AI response into pending review candidates:
+
+```bash
+npm run ai:import:normalize -- --file=data/ai-imports/responses/16-response.json
+```
+
 Review/import commands:
 
 ```bash
-npm run ingest:extract -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
-npm run ingest:duplicates -- --file=data/imports/pending/16-candidates.json
-npm run ingest:report -- --file=data/imports/pending/16-candidates.json
-npm run ingest:merge -- --file=data/imports/pending/16-candidates.json
+npm run ingest:duplicates -- --file=data/imports/pending/16-ai-candidates.json
+npm run ingest:report -- --file=data/imports/pending/16-ai-candidates.json
+npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json
 ```
 
 Build the pending-import manifest for local review:
@@ -136,6 +170,9 @@ tools/knowledge-object.schema.json
 tools/import-record.schema.json
 tools/ingestion-workflow.md
 tools/ingestion/review-workflow.md
+tools/ai/create-ai-import-prompt.mjs
+tools/ai/normalize-ai-import.mjs
+docs/transcript-triggered-enrichment.md
 content/knowledge/_templates/knowledge-object.template.json
 data/imports/a-plus-220-1202/import-record.template.json
 content/indexes/knowledge-index.json
@@ -187,6 +224,7 @@ The project includes canonical architecture documentation and schemas for the fu
 docs/data-architecture.md
 docs/id-conventions.md
 docs/relationship-types.md
+docs/transcript-triggered-enrichment.md
 ```
 
 Additional schemas:
