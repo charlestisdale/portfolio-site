@@ -27,18 +27,22 @@ async function readJson(file) {
 }
 
 async function walk(dir) {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-  const files = [];
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (entry.name === "_templates") continue;
-      files.push(...await walk(full));
-    } else if (entry.name.endsWith(".json")) {
-      files.push(full);
+  try {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    const files = [];
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        if (entry.name === "_templates") continue;
+        files.push(...await walk(full));
+      } else if (entry.name.endsWith(".json")) {
+        files.push(full);
+      }
     }
+    return files;
+  } catch {
+    return [];
   }
-  return files;
 }
 
 function requireFields(file, obj, fields) {
@@ -58,7 +62,7 @@ if (cert) {
   requireFields(certificationFile, cert, ["schemaVersion", "id", "name", "vendor", "status", "objectiveManifest", "lessonManifest", "knowledgeIndex"]);
   validateId(certificationFile, cert.id, /^[a-z0-9]+(-[a-z0-9]+)*$/);
 
-  for (const ref of [cert.objectiveManifest, cert.lessonManifest, cert.knowledgeIndex, cert.relationshipGraph].filter(Boolean)) {
+  for (const ref of [cert.objectiveManifest, cert.lessonManifest, cert.knowledgeIndex, cert.relationshipGraph, cert.curriculumManifest].filter(Boolean)) {
     try {
       await fs.access(path.join(root, ref));
     } catch {
@@ -118,6 +122,54 @@ if (lessons) {
   }
 }
 
+const curriculumFiles = await walk(path.join(root, "content", "curriculum"));
+let curriculumCount = 0;
+let curriculumModuleCount = 0;
+let curriculumKnowledgeRefs = 0;
+
+function validateAutoMap(file, module) {
+  const autoMap = module.autoMap;
+  if (!autoMap) return;
+  const hasRule = ["domains", "types", "idPrefixes", "titleIncludes", "tags"].some(key => Array.isArray(autoMap[key]) && autoMap[key].length);
+  if (!hasRule) warning(file, `curriculum module ${module.id} has empty autoMap rules`);
+}
+
+for (const file of curriculumFiles) {
+  const curriculum = await readJson(file);
+  if (!curriculum) continue;
+  curriculumCount += 1;
+  requireFields(file, curriculum, ["schemaVersion", "id", "title", "sections"]);
+  validateId(file, curriculum.id, /^[a-z0-9]+(-[a-z0-9]+)*$/);
+
+  const sectionIds = new Set();
+  const moduleIds = new Set();
+
+  for (const section of curriculum.sections || []) {
+    requireFields(file, section, ["id", "title", "order", "modules"]);
+    if (sectionIds.has(section.id)) error(file, `duplicate curriculum section id: ${section.id}`);
+    sectionIds.add(section.id);
+
+    for (const objectiveId of section.objectiveIds || []) {
+      if (!objectiveIds.has(objectiveId)) warning(file, `curriculum section ${section.id} references missing/planned objective: ${objectiveId}`);
+    }
+
+    for (const module of section.modules || []) {
+      requireFields(file, module, ["id", "title", "order"]);
+      const moduleKey = `${section.id}.${module.id}`;
+      if (moduleIds.has(moduleKey)) error(file, `duplicate curriculum module id: ${moduleKey}`);
+      moduleIds.add(moduleKey);
+      curriculumModuleCount += 1;
+      validateId(file, module.id, /^[a-z0-9]+(-[a-z0-9]+)*$/, "module id");
+      validateAutoMap(file, module);
+
+      for (const kid of module.knowledge || []) {
+        curriculumKnowledgeRefs += 1;
+        if (!knowledgeIds.has(kid)) warning(file, `curriculum module ${moduleKey} references missing/planned knowledge object: ${kid}`);
+      }
+    }
+  }
+}
+
 const graphFile = path.join(root, "content", "relationships", "a-plus-220-1202.graph.json");
 const graph = await readJson(graphFile);
 const relationshipIds = new Set();
@@ -142,4 +194,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Architecture validation passed. ${knowledgeIds.size} knowledge object(s), ${objectiveIds.size} objective(s), ${lessonIds.size} lesson(s), ${relationshipIds.size} relationship(s).`);
+console.log(`Architecture validation passed. ${knowledgeIds.size} knowledge object(s), ${objectiveIds.size} objective(s), ${lessonIds.size} lesson(s), ${relationshipIds.size} relationship(s), ${curriculumCount} curriculum file(s), ${curriculumModuleCount} curriculum module(s), ${curriculumKnowledgeRefs} curriculum knowledge reference(s).`);
