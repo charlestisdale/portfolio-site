@@ -7,6 +7,7 @@ const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
 const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v4";
 const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v4";
+const GRAPH_HISTORY_STORAGE_KEY = "it-learning-platform.graph-history.v1";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 const FIT_VIEW_PADDING = 42;
 const FIT_NODE_MARGIN_X = 110;
@@ -18,6 +19,7 @@ const NODE_CARD_WIDTH = 188;
 const NODE_CARD_HEIGHT = 66;
 const NODE_CARD_TALL_HEIGHT = 84;
 const NODE_EDGE_GAP = 2;
+const MAX_GRAPH_HISTORY_ITEMS = 6;
 
 const FOCUSED_RELATIONSHIP_TYPES = new Set([
   "contains",
@@ -39,30 +41,6 @@ const FOCUSED_RELATIONSHIP_TYPES = new Set([
   "networking"
 ]);
 
-const RELATIONSHIP_LABELS = {
-  contains: "contains",
-  part_of: "part of",
-  prerequisite: "prerequisite",
-  uses: "uses",
-  supports: "supports",
-  runs_on: "runs on",
-  manages: "manages",
-  stores: "stores",
-  executes: "executes",
-  communicates_with: "communicates with",
-  contrasts_with: "contrasts with",
-  replaces: "replaces",
-  implements: "implements",
-  related: "related",
-  related_to: "related",
-  troubleshoots: "troubleshooting",
-  troubleshooting: "troubleshooting",
-  depends_on: "depends on",
-  command: "command",
-  security: "security",
-  networking: "networking"
-};
-
 export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = null, activeEdges = [], scope = getGraphScope() } = {}) {
   const sourceNodes = graph?.nodes || [];
   const sourceEdges = graph?.edges || [];
@@ -76,7 +54,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
   const layout = applySavedLayout(layoutNodes({ nodes: graphModel.nodes, edges: graphModel.edges, activeId }), layoutKey);
   const storedViewports = readStoredViewports();
   const viewport = storedViewports[viewportKey] || getFittedViewport(layout);
-  const relationshipTypes = unique(graphModel.edges.map(edge => edge.type || "related")).sort();
+  const graphHistory = updateGraphHistory(activeConcept);
 
   registerScopeRenderer({ graph, activeConcept, activeEdges });
 
@@ -120,12 +98,16 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${activeId ? `<button class="graph-scope-button graph-scope-button--primary" type="button" data-graph-open-learn="${escapeHtml(activeId)}">Open active in Learn</button>` : ""}
       </div>
 
-      <div class="graph-legend" aria-label="Relationship types">
-        ${relationshipTypes.map(type => `<span class="graph-legend__item graph-edge-type--${classToken(type)}">${escapeHtml(formatRelationshipLabel(type))}</span>`).join("")}
-        ${graphModel.hiddenWeakEdgeCount ? `<span class="graph-legend__item graph-legend__item--missing">generic related links hidden in focused view</span>` : ""}
-        ${graphModel.stubCount ? `<span class="graph-legend__item graph-legend__item--stub">stub Knowledge Object</span>` : ""}
-        ${graphModel.missingCount ? `<span class="graph-legend__item graph-legend__item--missing">missing Knowledge Object</span>` : ""}
-      </div>
+      ${graphHistory.length > 1 ? `
+        <div class="graph-history" aria-label="Recent graph nodes">
+          <span>Recent:</span>
+          ${graphHistory.slice(1).map(item => `
+            <button class="graph-history__item" type="button" data-id="${escapeHtml(item.id)}" title="${escapeHtml(item.id)}">
+              ${escapeHtml(item.title || item.id)}
+            </button>
+          `).join("")}
+        </div>
+      ` : ""}
 
       <div class="graph-search" role="search" aria-label="Search visible graph nodes">
         <label for="${escapeHtml(graphSearchId)}">Find visible node</label>
@@ -512,6 +494,33 @@ function writeStoredViewports(viewports) {
   }
 }
 
+function updateGraphHistory(activeConcept) {
+  if (typeof window === "undefined" || !activeConcept?.id) return [];
+
+  const nextItem = {
+    id: activeConcept.id,
+    title: activeConcept.title || activeConcept.id
+  };
+  const previous = readGraphHistory().filter(item => item.id !== nextItem.id);
+  const next = [nextItem, ...previous].slice(0, MAX_GRAPH_HISTORY_ITEMS);
+
+  try {
+    window.localStorage.setItem(GRAPH_HISTORY_STORAGE_KEY, JSON.stringify(next));
+  } catch {
+    // Ignore localStorage failures.
+  }
+
+  return next;
+}
+
+function readGraphHistory() {
+  try {
+    return JSON.parse(window.localStorage.getItem(GRAPH_HISTORY_STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
 function graphLayoutKey({ activeId, scope }) {
   return `${scope}:${activeId || "all"}`;
 }
@@ -787,11 +796,6 @@ function getScopeDescription(scope) {
     return "Expanded view: broader related context is visible. Drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
   }
   return "Focused view: generic related links are hidden so only stronger instructional relationships stay visible.";
-}
-
-function formatRelationshipLabel(type) {
-  const key = String(type || "related");
-  return RELATIONSHIP_LABELS[key] || key.replaceAll("_", " ");
 }
 
 function unique(values) {
