@@ -1,6 +1,14 @@
 import { loadPendingManifest, loadCandidateSet } from "./candidate-loader.js";
 import { renderDuplicateList, renderRelationshipList, renderEvidenceList, escapeHtml } from "./duplicate-view.js";
-import { buildReviewBackup, downloadJson, setDecision, summarizeDecisions } from "./approval-actions.js";
+import {
+  applyStoredReviewState,
+  buildReviewBackup,
+  downloadJson,
+  setDecision,
+  setMergeTarget,
+  setReviewNotes,
+  summarizeDecisions
+} from "./approval-actions.js";
 
 const importSelect = document.querySelector("#importSelect");
 const decisionFilter = document.querySelector("#decisionFilter");
@@ -38,7 +46,7 @@ function renderImportOptions() {
 }
 
 async function selectImport(path) {
-  activeSet = await loadCandidateSet(path);
+  activeSet = applyStoredReviewState(await loadCandidateSet(path));
   render();
 }
 
@@ -72,6 +80,8 @@ function renderCandidates() {
     input.addEventListener("change", event => {
       const card = event.target.closest("[data-candidate-id]");
       const notes = card.querySelector("[data-notes]").value;
+      const mergeTarget = card.querySelector("[data-merge-target]")?.value || "";
+      setMergeTarget(activeSet, card.dataset.candidateId, mergeTarget);
       setDecision(activeSet, card.dataset.candidateId, event.target.value, notes);
       render();
     });
@@ -80,8 +90,14 @@ function renderCandidates() {
   candidateList.querySelectorAll("[data-notes]").forEach(input => {
     input.addEventListener("input", event => {
       const card = event.target.closest("[data-candidate-id]");
-      const candidate = activeSet.candidates.find(item => item.candidateId === card.dataset.candidateId);
-      if (candidate) candidate.reviewNotes = event.target.value;
+      setReviewNotes(activeSet, card.dataset.candidateId, event.target.value);
+    });
+  });
+
+  candidateList.querySelectorAll("[data-merge-target]").forEach(input => {
+    input.addEventListener("input", event => {
+      const card = event.target.closest("[data-candidate-id]");
+      setMergeTarget(activeSet, card.dataset.candidateId, event.target.value);
     });
   });
 }
@@ -111,11 +127,15 @@ function renderCandidate(candidate) {
           ${decisionOption(candidate, "undecided", "Undecided")}
           ${decisionOption(candidate, "create-new", "Create New")}
           ${decisionOption(candidate, "merge-existing", "Merge")}
-          ${decisionOption(candidate, "ignore", "Ignore")}
+          ${decisionOption(candidate, "ignore", "Reject")}
         </fieldset>
       </header>
 
       <p>${escapeHtml(candidate.summaryDraft || "No summary draft yet.")}</p>
+
+      <label class="notes-label">Merge target
+        <input data-merge-target type="text" placeholder="Only set when merging into an existing Knowledge Object" value="${escapeHtml(candidate.mergeTarget || "")}">
+      </label>
 
       <details open>
         <summary>Facts</summary>
@@ -143,7 +163,7 @@ function renderCandidate(candidate) {
       </details>
 
       <label class="notes-label">Review notes
-        <textarea data-notes rows="3" placeholder="Why create, merge, or ignore this candidate?">${escapeHtml(candidate.reviewNotes || "")}</textarea>
+        <textarea data-notes rows="3" placeholder="Why create, merge, or reject this candidate?">${escapeHtml(candidate.reviewNotes || "")}</textarea>
       </label>
     </article>
   `;
