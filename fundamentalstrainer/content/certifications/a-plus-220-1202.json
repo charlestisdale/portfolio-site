@@ -14,8 +14,9 @@
   ],
   "objectiveManifest": "content/objectives/a-plus-220-1202.json",
   "lessonManifest": "content/lessons/a-plus-220-1202/lessons.json",
+  "curriculumManifest": "content/curriculum/a-plus-220-1202/curriculum.json",
   "knowledgeIndex": "content/indexes/knowledge-index.json",
   "relationshipGraph": "content/relationships/a-plus-220-1202.graph.json",
   "assessmentRoot": "content/assessments/a-plus-220-1202",
-  "notes": "Initial content was created from reviewed study material and should remain source-generic in the public portfolio. Source provenance, when needed, belongs in private/admin-only review records."
+  "notes": "Initial content was created from reviewed study material and should remain source-generic in the public portfolio. Source provenance, when needed, belongs in private/admin-only review records. Study Path should use curriculumManifest instead of transcript lesson order whenever available."
 }
