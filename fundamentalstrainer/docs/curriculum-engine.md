@@ -20,16 +20,19 @@ This layer sits between the Knowledge Graph and learner-facing features such as 
 
 ## Core rule
 
-Knowledge Objects remain the single source of truth. Curriculum files may reference Knowledge Object IDs, but they must not copy explanations, facts, exam tips, or PBQ content.
+Knowledge Objects remain the single source of truth. Curriculum files may reference Knowledge Object IDs, but they must not copy explanations, facts, exam tips, PBQ content, scenarios, or common mistakes.
 
 ```text
 Sources / transcripts
-  -> AI import candidates
+  -> AI topic discovery
+  -> AI deep knowledge enrichment
   -> reviewed canonical Knowledge Objects
   -> Knowledge Graph
   -> Curriculum mappings
   -> Study Path / assessments / PBQs / tutoring / analytics
 ```
+
+Curriculum is not a replacement for Knowledge Objects. It is an ordering and placement layer.
 
 ## Why this layer exists
 
@@ -126,6 +129,7 @@ Use explicit references when:
 - order matters
 - the module needs an exact concept list
 - the concept appears in multiple possible modules
+- auto-map may place the concept too broadly
 
 ## Auto-map rules
 
@@ -143,6 +147,27 @@ Supported rules:
 ```
 
 Auto-map should be used carefully. It is useful during ingestion and early development, but reviewed curriculum should gradually move important objects into explicit `knowledge` arrays.
+
+## AI curriculum suggestions
+
+AI import now returns `curriculumSuggestions` for teachable and merge-existing candidates.
+
+Example:
+
+```json
+{
+  "knowledgeId": "filesystems.ext4",
+  "curriculumId": "a-plus-220-1202",
+  "sectionId": "1.0",
+  "moduleId": "file-systems",
+  "reason": "ext4 is a Linux file system and belongs with OS file system comparisons.",
+  "basis": "ai-enriched",
+  "confidence": 0.86,
+  "requiresReview": true
+}
+```
+
+These suggestions are reviewable metadata. They do not automatically become canonical curriculum. Human review decides whether a suggestion should become an explicit curriculum reference, a new module, or be ignored.
 
 ## Review meaning
 
@@ -177,26 +202,34 @@ Only objects not matched by explicit references or auto-map rules should appear 
 
 As curriculum coverage improves, `Unmapped Knowledge` should shrink toward zero.
 
-## AI import integration
+## Relationship to the Knowledge Graph
 
-AI import should eventually return suggested curriculum placement for each candidate:
+Curriculum placement is not a graph relationship.
 
-```json
-{
-  "proposedKnowledgeId": "filesystems.ext4",
-  "curriculumSuggestions": [
-    {
-      "curriculumId": "a-plus-220-1202",
-      "sectionId": "1.0",
-      "moduleId": "file-systems",
-      "reason": "ext4 is a Linux file system and belongs with OS file system comparisons.",
-      "confidence": 0.84
-    }
-  ]
-}
+Graph relationships answer:
+
+```text
+How do concepts relate?
 ```
 
-The suggestion should not automatically become canonical. It should be reviewed like every other import decision.
+Curriculum answers:
+
+```text
+Where should this be taught?
+```
+
+Do not mix these responsibilities. A Knowledge Object may be graph-related to one concept but taught in a different curriculum module.
+
+## Relationship to AI authoring
+
+AI should propose curriculum placement during import because the AI has context about what the lesson was teaching and what module a concept probably belongs to.
+
+However:
+
+- AI suggestions require review.
+- Bad fits should not be forced.
+- A proposed new module is allowed when no existing module fits.
+- Curriculum review should happen separately from knowledge accuracy review.
 
 ## What not to do
 
@@ -207,6 +240,7 @@ Do not:
 - create certification-specific duplicate Knowledge Objects just to place content in a path
 - hide unmapped knowledge silently
 - mix graph relationships with curriculum placement
+- automatically treat AI curriculum suggestions as canonical
 
 ## What to do
 
@@ -218,3 +252,4 @@ Do:
 - track learning outcomes at module level
 - use auto-map as a temporary safety net
 - review curriculum placement separately from knowledge accuracy
+- move reviewed AI placement suggestions into explicit curriculum references over time
