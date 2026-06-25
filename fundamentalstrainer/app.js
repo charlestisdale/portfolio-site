@@ -299,7 +299,11 @@ function resolvePrimaryLessonContext(concept) {
     .find(Boolean);
 
   if (!lessonMapping) return null;
-  return knowledge.lesson(lessonMapping.lessonId || lessonMapping.id || lessonMapping.order);
+  return knowledge.lesson(lessonMapping.lessonId || mappingId(lessonMapping));
+}
+
+function mappingId(lessonMapping) {
+  return lessonMapping.id || lessonMapping.order;
 }
 
 function resolveObjectiveContext(concept) {
@@ -615,8 +619,8 @@ if (relatedView) {
 
     const button = event.target.closest("button[data-id]");
     if (!button) return;
-    renderConcept(button.dataset.id);
-    setMode("learn");
+    renderConcept(button.dataset.id, { switchMode: false });
+    setMode("graph", { updateHash: true });
   });
 }
 
