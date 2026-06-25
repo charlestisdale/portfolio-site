@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "a-plus-220-1202",
+  "title": "CompTIA A+ Core 2 Curriculum",
+  "type": "certification",
+  "certificationId": "a-plus-220-1202",
+  "version": "220-1202",
+  "status": "draft",
+  "description": "Starter curriculum layer for A+ Core 2. Knowledge Objects remain canonical; this file controls teachable order and module placement.",
+  "sections": [
+    {
+      "id": "1.0",
+      "title": "Operating Systems",
+      "description": "Operating system concepts, supported OS families, file systems, tools, and administrative workflows.",
+      "order": 1,
+      "objectiveIds": ["1.0"],
+      "modules": [
+        {
+          "id": "operating-system-foundations",
+          "title": "Operating System Foundations",
+          "description": "Core operating system responsibilities and why applications, users, and hardware depend on the OS layer.",
+          "order": 1,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Explain the role of an operating system.",
+            "Describe how operating systems manage hardware resources and files.",
+            "Explain why applications are written for specific operating systems."
+          ],
+          "knowledge": [
+            "operating-system.core",
+            "os.file-management",
+            "os.application-platform",
+            "software.cross-platform"
+          ],
+          "autoMap": {
+            "domains": ["operating-systems"],
+            "types": ["concept"],
+            "titleIncludes": ["operating system", "file management", "application platform", "cross-platform", "compatibility"]
+          },
+          "notes": "Starter auto-map catches lesson 01 foundation concepts until explicit mappings are reviewed."
+        },
+        {
+          "id": "desktop-operating-systems",
+          "title": "Desktop Operating Systems",
+          "description": "Major desktop operating systems and how learners should distinguish them.",
+          "order": 2,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Compare Windows, Linux, macOS, and ChromeOS at a high level.",
+            "Identify which operating systems are commercial, open-source, or tied to specific hardware ecosystems.",
+            "Recognize common desktop OS use cases."
+          ],
+          "knowledge": [
+            "windows.os",
+            "linux.os",
+            "macos.os",
+            "chromeos.os"
+          ],
+          "autoMap": {
+            "domains": ["operating-systems"],
+            "types": ["operating-system"],
+            "idPrefixes": ["windows.", "linux.", "macos.", "chromeos."],
+            "titleIncludes": ["windows", "linux", "macos", "chromeos", "desktop"]
+          }
+        },
+        {
+          "id": "mobile-operating-systems",
+          "title": "Mobile Operating Systems",
+          "description": "Mobile OS families and the relationship between device ecosystem and application support.",
+          "order": 3,
+          "estimatedMinutes": 25,
+          "outcomes": [
+            "Identify common mobile operating systems.",
+            "Differentiate iOS, iPadOS, and Android at a high level.",
+            "Explain why mobile apps are platform-specific."
+          ],
+          "knowledge": [
+            "apple.mobile-os",
+            "android.os"
+          ],
+          "autoMap": {
+            "domains": ["operating-systems", "mobile"],
+            "types": ["operating-system"],
+            "idPrefixes": ["android.", "apple.", "ios.", "ipados.", "mobile."],
+            "titleIncludes": ["android", "ios", "ipados", "mobile"]
+          }
+        },
+        {
+          "id": "file-systems",
+          "title": "File Systems",
+          "description": "File systems commonly associated with desktop and mobile operating systems.",
+          "order": 4,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Identify common file systems and the operating systems they are associated with.",
+            "Contrast Windows, Linux, and macOS file system examples.",
+            "Recognize file system names in exam scenarios."
+          ],
+          "knowledge": [
+            "filesystems.ntfs",
+            "filesystems.ext4",
+            "filesystems.apfs",
+            "linux.ext4",
+            "macos.apfs"
+          ],
+          "autoMap": {
+            "domains": ["operating-systems", "filesystems", "storage"],
+            "types": ["file-system"],
+            "idPrefixes": ["filesystems.", "linux.ext", "macos.apfs", "windows.ntfs"],
+            "titleIncludes": ["file system", "ntfs", "ext4", "apfs", "fat32", "exfat"]
+          }
+        },
+        {
+          "id": "os-maintenance-and-lifecycle",
+          "title": "OS Maintenance and Lifecycle",
+          "description": "Updates, support lifecycle, compatibility, and maintenance responsibilities.",
+          "order": 5,
+          "estimatedMinutes": 25,
+          "outcomes": [
+            "Explain why operating system updates matter.",
+            "Recognize support lifecycle and end-of-life concerns.",
+            "Connect OS maintenance to stability and security."
+          ],
+          "knowledge": [
+            "os.updates",
+            "operating-systems.operating-system-updates",
+            "operating.operating-system-end-of-life"
+          ],
+          "autoMap": {
+            "domains": ["operating-systems"],
+            "titleIncludes": ["update", "lifecycle", "end of life", "support", "compatibility"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2.0",
+      "title": "Security",
+      "description": "Security concepts and administrative practices for Core 2.",
+      "order": 2,
+      "objectiveIds": ["2.0"],
+      "modules": [
+        {
+          "id": "security-foundations",
+          "title": "Security Foundations",
+          "description": "Starter placeholder for security objects until the security lessons are imported.",
+          "order": 1,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Recognize security concepts mapped to A+ Core 2.",
+            "Connect security Knowledge Objects to troubleshooting and operational practice."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": ["security"],
+            "idPrefixes": ["security."]
+          }
+        }
+      ]
+    },
+    {
+      "id": "3.0",
+      "title": "Software Troubleshooting",
+      "description": "Troubleshooting symptoms, tools, and workflows.",
+      "order": 3,
+      "objectiveIds": ["3.0"],
+      "modules": [
+        {
+          "id": "software-troubleshooting-foundations",
+          "title": "Software Troubleshooting Foundations",
+          "description": "Starter placeholder for troubleshooting objects until those lessons are imported.",
+          "order": 1,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Recognize software troubleshooting Knowledge Objects.",
+            "Connect symptoms to likely causes and next actions."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": ["software-troubleshooting", "troubleshooting"],
+            "types": ["troubleshooting-step"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "4.0",
+      "title": "Operational Procedures",
+      "description": "Documentation, change management, safety, professionalism, and operational workflows.",
+      "order": 4,
+      "objectiveIds": ["4.0"],
+      "modules": [
+        {
+          "id": "operational-procedures-foundations",
+          "title": "Operational Procedures Foundations",
+          "description": "Starter placeholder for operations objects until those lessons are imported.",
+          "order": 1,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Recognize operational procedure Knowledge Objects.",
+            "Connect documentation and process knowledge to technician workflows."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": ["operational-procedures"],
+            "idPrefixes": ["operations.", "documentation.", "change-management."]
+          }
+        }
+      ]
+    }
+  ]
+}
