@@ -123,6 +123,19 @@
   outline: none;
 }
 
+.graph-search button[onclick*="__centerKnowledgeGraphSearch"] {
+  display: none;
+}
+
+.graph-search button[onclick*="__centerKnowledgeGraphNode"] {
+  font-size: 0;
+}
+
+.graph-search button[onclick*="__centerKnowledgeGraphNode"]::before {
+  content: "Center";
+  font-size: .8rem;
+}
+
 .graph-scope-button {
   border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: 999px;
