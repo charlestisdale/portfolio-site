@@ -6,11 +6,11 @@ This project is organized as a reusable learning platform instead of a single qu
 
 The `engine/` folder must not contain certification-specific content. All certification-specific data belongs in `content/`.
 
-Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, and future AI tutoring should be generated from canonical knowledge objects instead of separate duplicate content sets.
+Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, graph exploration, recommendations, and future AI tutoring should be generated from canonical knowledge objects instead of separate duplicate content sets.
 
 ## Current phase
 
-The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, and assessment attempt history.
+The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, and an interactive Knowledge Graph explorer.
 
 The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
@@ -32,6 +32,7 @@ The deployed learner app should allow users to:
 
 - learn from existing reviewed content
 - search concepts
+- explore Knowledge Object relationships in Graph mode
 - generate practice assessments
 - save local browser progress
 - save local browser assessment history
@@ -140,6 +141,7 @@ data/imports/a-plus-220-1202/import-record.template.json
 content/indexes/knowledge-index.json
 content/relationships/a-plus-220-1202.graph.json
 docs/admin-upload-security.md
+docs/graph-visualizer.md
 ```
 
 ## Canonical knowledge object schema
@@ -242,3 +244,34 @@ knowledge.graph()
 ```
 
 See `docs/knowledge-engine.md` for usage and design rules.
+
+## Interactive Knowledge Graph
+
+Graph mode is a learner-facing explorer for canonical Knowledge Object relationships. It must stay downstream of Knowledge Objects and the Knowledge Engine; it should not define content itself.
+
+Current graph files:
+
+```text
+engine/modes/graph-visualizer.js
+engine/modes/graph-auto-center.js
+graph-visualizer.css
+```
+
+Current graph controls include:
+
+```text
+Focused | Expanded | Reset nodes | Zoom in | Zoom out | Fit graph | Center | Open active in Learn | Expand graph
+```
+
+Important graph behavior:
+
+- Clicking graph nodes stays in Graph mode.
+- `Center` centers the active node and belongs in the main toolbar, not beside search.
+- `Fit graph` fits all visible graph nodes in the current canvas.
+- `Reset view` was intentionally removed.
+- `Reset nodes` only clears saved manual node positions.
+- Expanded graph mode is canvas-focused and exits with Escape.
+- Open active in Learn should land at the top of Learn mode.
+- The graph world is fixed at `1180 x 760`; do not stretch one graph layer without the others or relationship lines can drift.
+
+See `docs/graph-visualizer.md` for the current graph handoff, known-good behavior, and future graph roadmap.
