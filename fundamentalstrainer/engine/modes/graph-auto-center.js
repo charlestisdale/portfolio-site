@@ -21,6 +21,32 @@ function scheduleCenterActiveGraphNode() {
   window.setTimeout(() => centerActiveGraphNode(), 0);
 }
 
+function normalizeGraphCenterControls() {
+  const visualizer = document.querySelector(".graph-visualizer");
+  if (!visualizer) return;
+
+  visualizer.querySelectorAll("button[onclick]").forEach(button => {
+    const action = button.getAttribute("onclick") || "";
+
+    if (action.includes("__centerKnowledgeGraphSearch")) {
+      button.remove();
+      return;
+    }
+
+    if (action.includes("__centerKnowledgeGraphNode")) {
+      button.textContent = "Center";
+      button.setAttribute("aria-label", "Center active graph node");
+    }
+  });
+}
+
+function scheduleNormalizeGraphControls() {
+  window.requestAnimationFrame(() => {
+    normalizeGraphCenterControls();
+    window.setTimeout(normalizeGraphCenterControls, 50);
+  });
+}
+
 document.addEventListener("click", event => {
   const graphRoot = event.target.closest("#relatedView");
   if (!graphRoot) return;
@@ -29,4 +55,14 @@ document.addEventListener("click", event => {
   if (!graphNavigationButton) return;
 
   scheduleCenterActiveGraphNode();
+  scheduleNormalizeGraphControls();
 }, true);
+
+window.addEventListener("DOMContentLoaded", scheduleNormalizeGraphControls);
+window.addEventListener("hashchange", scheduleNormalizeGraphControls);
+
+document.addEventListener("click", event => {
+  if (event.target.closest("[data-mode-target='graph'], [data-graph-scope], [data-graph-reset-layout]")) {
+    scheduleNormalizeGraphControls();
+  }
+});
