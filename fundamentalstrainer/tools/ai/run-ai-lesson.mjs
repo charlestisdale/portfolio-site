@@ -37,6 +37,23 @@ function listFiles(dir, matcher = () => true) {
     .sort();
 }
 
+function walkJsonFiles(dir) {
+  const full = path.resolve(root, dir);
+  if (!fs.existsSync(full)) return [];
+  return fs.readdirSync(full, { withFileTypes: true }).flatMap(entry => {
+    const entryPath = path.join(full, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name === "_templates") return [];
+      return walkJsonFiles(entryPath);
+    }
+    return entry.isFile() && entry.name.endsWith(".json") ? [entryPath] : [];
+  });
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
 function lessonMatch(file) {
   if (!lesson) return true;
   return path.basename(file).startsWith(`${lesson}-`);
@@ -56,6 +73,29 @@ function checkpoint(title, message, files = []) {
     for (const file of files) console.log(`- ${toProjectPath(file, root)}`);
   }
   console.log("");
+}
+
+function canonicalMatchesId(id) {
+  if (!id) return [];
+  return walkJsonFiles("content/knowledge")
+    .map(file => {
+      try {
+        return { file, object: readJson(file) };
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean)
+    .filter(record => record.object?.id === id);
+}
+
+function draftKnowledgeId(draftFile) {
+  if (!draftFile) return "";
+  try {
+    return readJson(draftFile).id || "";
+  } catch {
+    return "";
+  }
 }
 
 if (!lesson) fail("Usage: npm run ai:lesson -- --lesson=01 [--concept=DISC-001] [--promote=true]");
@@ -114,7 +154,7 @@ if (!reviewedFile.length) {
   reviewedFile = listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
 }
 
-let authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file) && file.includes(concept.toLowerCase().replace(/[^a-z0-9]+/g, "-")));
+let authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file));
 if (!authorPrompt.length) {
   run([
     "tools/ai/create-knowledge-author-prompt.mjs",
@@ -141,7 +181,21 @@ if (!authoredDraft.length) {
   authoredDraft = listFiles("data/imports/authored", file => file.endsWith(".draft.json"));
 }
 
-run(["tools/knowledge/promote-authored-draft.mjs", `--file=${firstProject(authoredDraft)}`, "--dry-run=true"]);
+const draftId = draftKnowledgeId(authoredDraft[0]);
+const existingCanonical = canonicalMatchesId(draftId);
+
+if (existingCanonical.length && !promote && !allowOverwrite) {
+  checkpoint(
+    "ALREADY PROMOTED",
+    `The authored draft id ${draftId} already exists in the canonical knowledge store. Nothing else is required unless you intentionally want to overwrite it.`,
+    existingCanonical.map(record => record.file)
+  );
+  process.exit(0);
+}
+
+const dryRunArgs = ["tools/knowledge/promote-authored-draft.mjs", `--file=${firstProject(authoredDraft)}`, "--dry-run=true"];
+if (allowOverwrite) dryRunArgs.push("--allow-overwrite=true");
+run(dryRunArgs);
 
 if (!promote) {
   checkpoint(
