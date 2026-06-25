@@ -5,16 +5,18 @@ Do not create assessments during transcript ingestion.
 
 The transcript is a topic trigger, not the full source of knowledge. If a transcript mentions an important technical concept but does not teach it deeply enough, AI may enrich the draft with general IT knowledge. Enriched facts must be clearly marked for human review before promotion.
 
-## For each lesson
-1. Save raw `.srt` in `data/transcripts/raw/<certification>/`.
-2. Clean it into `data/transcripts/cleaned/<certification>/`.
-3. Create an import record in `data/imports/<certification>/`.
-4. Discover candidate topics from the transcript.
+Source handling must be lossless before AI import. Do not run aggressive cleanup, repeated-word collapse, cue-overlap removal, summarization, or concept extraction before the AI sees the source. The cleaner may remove SRT cue numbers, timestamps, and markup, but it must not delete repeated phrases or collapse context.
+
+## For each lesson or source document
+1. Save the original source in the appropriate local/private source folder when available.
+2. If the source is `.srt`, create only a lossless cleaned text view by removing cue numbers, timestamps, and markup.
+3. Generate the AI import prompt from the original source or lossless cleaned text.
+4. Discover candidate topics from the source text.
 5. Classify each topic as teachable, merge-existing, mentioned-only, ignore, or needs-enrichment.
-6. Enrich teachable topics into learner-ready Knowledge Object drafts when the transcript is incomplete.
+6. Enrich teachable topics into learner-ready Knowledge Object drafts when the source text is incomplete.
 7. Check for existing knowledge objects before creating new ones.
 8. Merge new facts into the authoritative object.
-9. Add transcript references as topic triggers and mark AI-enriched facts separately.
+9. Add source references as topic triggers and mark AI-enriched facts separately.
 10. Add related concepts.
 11. Mark uncertain items in `needsReview`.
 12. Only mark the import record `reviewed` after duplicates, enrichment, and objective mapping are checked.
