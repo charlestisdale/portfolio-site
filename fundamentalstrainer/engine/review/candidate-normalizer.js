@@ -20,8 +20,10 @@ export function normalizeCandidate(candidate) {
   const transcriptEvidence = candidate.evidence || candidate.transcriptEvidence || [];
   const facts = candidate.factsDraft || (candidate.learning?.facts || []).map(fact => fact.text || fact).filter(Boolean);
   const tips = candidate.examTipsDraft || (candidate.assessmentSeeds?.examTips || []).map(tip => tip.text || tip).filter(Boolean);
+  const normalizedDuplicates = duplicateMatches.map(normalizeDuplicate).filter(item => item.knowledgeId);
+  const reviewDecision = normalizeDecision(candidate.reviewDecision || candidate.status || "undecided");
 
-  return {
+  const normalized = {
     ...candidate,
     candidateId: candidate.candidateId || candidate.proposedKnowledgeId || candidate.id,
     proposedKnowledgeId: candidate.proposedKnowledgeId || candidate.id,
@@ -30,12 +32,59 @@ export function normalizeCandidate(candidate) {
     summaryDraft: candidate.summaryDraft || candidate.learning?.summary || "No summary draft yet.",
     factsDraft: facts,
     examTipsDraft: tips,
-    possibleDuplicates: duplicateMatches.map(normalizeDuplicate),
-    suggestedRelationships: relationshipSuggestions.map(normalizeRelationship),
+    possibleDuplicates: normalizedDuplicates,
+    suggestedRelationships: uniqueRelationships(relationshipSuggestions.map(normalizeRelationship)),
     evidence: transcriptEvidence.map(normalizeEvidence),
-    reviewDecision: candidate.reviewDecision || "undecided",
+    reviewDecision,
     reviewNotes: candidate.reviewNotes || ""
   };
+
+  normalized.mergeTarget = sanitizeMergeTarget(candidate, normalized);
+  return normalized;
+}
+
+function normalizeDecision(value) {
+  const normalized = String(value || "undecided").trim().toLowerCase();
+  if (["reject", "rejected", "ignored"].includes(normalized)) return "ignore";
+  if (["approve", "approved", "create", "create-new"].includes(normalized)) return normalized === "create-new" ? "create-new" : "create-new";
+  if (["merge", "merge-existing"].includes(normalized)) return "merge-existing";
+  if (["undecided", "create-new", "merge-existing", "ignore"].includes(normalized)) return normalized;
+  return "undecided";
+}
+
+function sanitizeMergeTarget(candidate, normalized) {
+  const rawTarget = candidate.mergeTarget || candidate.mergeTargetId || candidate.merge?.targetId || candidate.merge?.knowledgeId || "";
+  const target = String(rawTarget || "").trim();
+  if (!target) return "";
+
+  const duplicateIds = new Set((normalized.possibleDuplicates || []).map(item => item.knowledgeId).filter(Boolean));
+  const isDuplicateMatch = duplicateIds.has(target);
+  const isSelf = target === normalized.proposedKnowledgeId;
+
+  // This was a UI/development placeholder and should never appear as a default merge target.
+  if (target === "windows.task-manager" && !isDuplicateMatch && normalized.proposedKnowledgeId !== "windows.task-manager") {
+    return "";
+  }
+
+  if (isSelf) return "";
+  if (isDuplicateMatch) return target;
+
+  // Keep explicit reviewer-entered merge targets, but never keep accidental placeholders.
+  return target;
+}
+
+function uniqueRelationships(relationships) {
+  const seen = new Set();
+  const unique = [];
+
+  for (const relationship of relationships) {
+    const key = `${relationship.target}|${relationship.type}|${relationship.reason}`.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(relationship);
+  }
+
+  return unique;
 }
 
 function normalizeDuplicate(match) {
@@ -50,7 +99,7 @@ function normalizeDuplicate(match) {
 function normalizeRelationship(relationship) {
   return {
     type: relationship.type || "related_to",
-    target: relationship.target || relationship.targetId || relationship.targetTitle || "unknown-target",
+    target: relationship.target || relationship.targetId || relationship.id || relationship.targetTitle || "unknown-target",
     reason: relationship.reason || relationship.notes || relationship.method || "Suggested relationship needs review.",
     confidence: relationship.confidence || null,
     strength: relationship.strength || null,
