@@ -4,14 +4,28 @@
 
 The import pipeline exists to turn instructional source material into canonical Knowledge Objects.
 
-The transcript is not the final learning content. The transcript is the signal that tells the system which technical topics matter.
+The transcript or source document is not the final learning content. The source is the signal that tells the system which technical topics matter.
 
-When a transcript mentions an important concept, tool, command, file system, protocol, symptom, procedure, or comparison, AI should build a complete learner-ready draft for that topic instead of repeating the transcript sentence.
+When a source mentions an important concept, tool, command, file system, protocol, symptom, procedure, or comparison, AI should build a complete learner-ready draft for that topic instead of repeating the source sentence.
+
+## Source handling rule
+
+AI should see the least-destructive usable source text available.
+
+For `.srt` files, lossless cleaning may remove only:
+
+- cue numbers
+- timestamps
+- caption markup
+
+Lossless cleaning must not remove repeated words, repeated phrases, overlapping cues, adjacent context, examples, comparisons, or topic details. Caption repetition is better than missing context because the AI can ignore noise, but it cannot recover deleted information.
+
+If the user provides an already-clean transcript or document, use that as the source text directly. Do not create extra transcript copies just to satisfy the pipeline.
 
 ## Core rule
 
 ```text
-Transcript mentions a topic
+Source mentions a topic
     ↓
 AI identifies the topic
     ↓
@@ -24,7 +38,7 @@ Human review promotes accurate, useful, deduplicated knowledge
 Canonical Knowledge Object
 ```
 
-Do not promote transcript wording as knowledge just because it appeared in the lesson.
+Do not promote source wording as knowledge just because it appeared in the lesson.
 
 ## Example
 
@@ -50,10 +64,10 @@ If AI cannot produce useful learner-ready content, the topic should be rejected 
 
 AI import output must separate:
 
-1. `transcriptEvidence` — why this topic was triggered by the lesson.
+1. `transcriptEvidence` — why this topic was triggered by the source.
 2. `ai-enriched` content — useful learning facts, examples, comparisons, exam tips, common mistakes, scenarios, PBQ ideas, and relationships added from general IT knowledge.
 
-Transcript evidence can support the topic trigger without supporting every enriched fact.
+Transcript/source evidence can support the topic trigger without supporting every enriched fact.
 
 Enriched facts must be marked with:
 
@@ -64,7 +78,7 @@ Enriched facts must be marked with:
 }
 ```
 
-Transcript-supported facts should be marked with:
+Transcript/source-supported facts should be marked with:
 
 ```json
 {
@@ -81,7 +95,7 @@ Every discovered topic should be classified before review:
 
 - `teachable` — useful enough to become or update a Knowledge Object.
 - `merge-existing` — should update an existing object instead of creating a duplicate.
-- `mentioned-only` — appeared in the transcript but is not useful enough for import.
+- `mentioned-only` — appeared in the source but is not useful enough for import.
 - `ignore` — not technical, not relevant, or not worth tracking.
 - `needs-enrichment` — relevant topic, but the AI draft is incomplete or uncertain.
 
@@ -123,6 +137,7 @@ Do not:
 - create one object for every transcript sentence
 - create Knowledge Objects from weak mentions without enrichment
 - use transcript wording as the final explanation when it does not teach enough
+- run aggressive text cleanup before AI sees the source
 - create placeholder objects just because another object references them
 - generate finished quiz questions during ingestion
 - expose transcript import/upload in the public learner UI
@@ -131,7 +146,8 @@ Do not:
 
 Do:
 
-- use transcripts to discover relevant topics
+- use the least-destructive usable source text
+- use transcripts and documents to discover relevant topics
 - enrich important topics into learner-ready draft Knowledge Objects
 - mark enriched facts as review-required
 - reject mentioned-only concepts cleanly
