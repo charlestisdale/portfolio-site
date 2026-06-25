@@ -108,13 +108,13 @@ const transcriptInputMode = isSrtFile(transcriptFile) ? "lossless-srt-parse" : "
 const transcriptText = trimText(transcriptTextFromFile(transcriptFile), maxTranscriptChars);
 const outputDir = path.resolve(root, "data", "ai-imports", "prompts");
 fs.mkdirSync(outputDir, { recursive: true });
-const outputFile = path.join(outputDir, `${resolvedLessonId}-${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-ai-import-prompt.md`);
+const outputFile = path.join(outputDir, `${resolvedLessonId}-${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-transcript-intelligence-prompt.md`);
 
-const prompt = `# AI Transcript-Triggered Deep Knowledge Import
+const prompt = `# AI Transcript Intelligence Import
 
-You are converting instructional IT source text into reviewable, learner-ready Knowledge Object candidates for a knowledge-first learning platform.
+You are analyzing instructional IT source text for a knowledge-first learning platform.
 
-This is not a quiz generator, not a transcript summarizer, not a starter schema, and not a minimal extraction job. The source text is a topic trigger: it tells you which concepts matter in this lesson. Your job is to use your full IT knowledge to build deep, useful, reviewable draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
+This is not a quiz generator, not a transcript summarizer, and not a Knowledge Object authoring step. The source text is evidence. Your job is to act as a curriculum analyst and produce a reviewable discovery package that explains what concepts exist, which ones deserve authoring, which should merge, which are only mentioned, which prerequisites and relationships matter, where concepts belong in the curriculum, and what gaps the lesson reveals.
 
 ## Source Metadata
 - certificationId: ${certificationId}
@@ -126,61 +126,59 @@ This is not a quiz generator, not a transcript summarizer, not a starter schema,
 ## Required Pipeline
 Source text
   ↓
-AI discovers technical topics mentioned or taught
+Identify source evidence
   ↓
-AI classifies each topic as teachable, merge-existing, mentioned-only, ignore, or needs-enrichment
+Discover concepts
   ↓
-AI uses general IT knowledge to enrich teachable topics deeply when the source text is incomplete
+Classify concepts
   ↓
-AI proposes curriculum placement for each teachable or merge-existing topic
+Identify prerequisites and relationships
   ↓
-AI clearly separates source evidence from enriched learning content
+Suggest curriculum placement
   ↓
-AI returns a rich review package, not a bare starter import
+Detect merge candidates and duplicate risks
   ↓
-Reviewable Knowledge Object candidates
+Detect knowledge gaps
+  ↓
+Return Transcript Intelligence JSON
+  ↓
+Review decides what goes to Knowledge Authoring
 
 ## Critical Rules
 - Return JSON only. No markdown around the JSON.
-- Do not return a starter import, sample schema, representative subset, outline, or bare list of concepts.
-- Do not merely repeat weak source wording. If a topic is worth importing, explain what a learner needs to know about it.
-- Use the source text to decide which topics are relevant, but do not limit useful learning facts to source wording.
-- Use your general IT knowledge aggressively and carefully. Give the learner as much useful knowledge about each relevant concept as the review format can support.
-- Separate source-supported facts from AI-enriched facts.
-- Mark AI-enriched facts as requiring human review.
-- Every candidate must include at least one transcriptEvidence entry showing why the topic was triggered by this source.
-- Every fact, example, exam tip, common mistake, scenario, PBQ idea, relationship, and curriculum suggestion should include evidenceIds when source evidence exists.
-- A source quote can prove that a topic was mentioned; it does not need to prove every enriched fact.
-- Prefer reusable Knowledge Objects over certification-only facts.
-- Avoid one object per sentence. Create objects only for concepts worth teaching, testing, linking, or reviewing.
-- Prefer stable IDs like "windows.task-manager", "networking.dhcp", "security.firewall", "filesystems.ext4".
-- If a concept is mentioned but not worth a Knowledge Object yet, put it in rejectedConcepts with classification "mentioned-only".
-- Relationships may use general IT knowledge, but mark whether they are transcript-supported or AI-enriched.
-- Curriculum placement is not a graph relationship. It says where the concept should be taught.
-- Keep explanations learner-focused, not transcript-focused.
-- Mark uncertainty explicitly with confidence below 0.7.
+- Do not return draft Knowledge Objects in this stage.
+- Do not write full learner explanations, full fact lists, flashcards, or quiz questions.
+- Do not create concepts merely to satisfy a target count.
+- Return every concept that exceeds the minimum teaching threshold.
+- Weak mentions should be included in rejectedMentions or classified as mentioned-only.
+- Use stable proposed IDs like "windows.task-manager", "networking.dhcp", "security.firewall", "filesystems.ext4".
+- Keep curriculum placement separate from graph relationships.
+- Mark review-required items clearly.
+- Split confidence into topicConfidence, evidenceStrength, enrichmentLevel, and reviewPriority.
+- Use basis labels: source-supported, ai-inference, general-it-knowledge, common-practice, exam-knowledge.
 
-## Deep Enrichment Requirements
-For each teachable concept, think like an instructor building a reusable learning object. Include the information a learner would need to understand, recognize, compare, troubleshoot, and apply the topic.
+## Concept Classification
+Use one of:
+- teachable
+- merge-existing
+- mentioned-only
+- ignore
+- needs-enrichment
 
-For a normal lesson, return 25–40 Knowledge Object candidates. If the lesson genuinely contains fewer than 25 useful concepts, explain why in importNotes and still make the candidates deep.
-
-Each teachable or merge-existing candidate should include:
-- summaryDraft: 2–3 useful sentences.
-- explanationDraft: 2–4 short paragraphs that teach the concept.
-- factsDraft: at least 6 atomic facts for important concepts, minimum 4 for smaller concepts.
-- transcriptEvidence: at least 1 evidence item, preferably 2–4 when the source supports it.
-- suggestedRelationships: at least 2 useful relationships when applicable.
-- curriculumSuggestions: at least 1 suggested placement for teachable or merge-existing concepts.
-- examTipsDraft: at least 1 item when the concept is exam-relevant.
-- commonMistakesDraft: at least 1 item when learners commonly confuse it with another concept.
-- examplesDraft and/or scenariosDraft when the concept benefits from examples.
-- pbqIdeasDraft when the concept can support hands-on, matching, ordering, configuration, troubleshooting, or identification tasks.
-- confidence, difficulty, importance, evidence IDs, and review flags.
-
-The top-level relationships array should include meaningful cross-candidate graph edges such as prerequisite_of, depends_on, related_to, contrasts_with, part_of, and used_for.
-
-A candidate with zero facts is incomplete. A candidate with only one sentence of summary and no facts is incomplete. A candidate that simply repeats the transcript is incomplete. A candidate with no curriculumSuggestions is incomplete unless it is rejected or mentioned-only.
+## Minimum Teaching Threshold
+A concept should move forward when it supports at least two of:
+- definition
+- purpose
+- how it is used
+- comparison
+- exam relevance
+- procedure
+- example
+- common mistake
+- relationship to another taught concept
+- curriculum relevance
+- prerequisite value
+- troubleshooting value
 
 ## Curriculum Placement Guidance
 Use the current curriculum layer. Suggested sections/modules may include:
@@ -195,179 +193,153 @@ Use the current curriculum layer. Suggested sections/modules may include:
 
 If no existing module fits, propose a new module with proposedModuleTitle and reason. Do not force a bad fit.
 
-## Minimum Knowledge Threshold
-Do not promote a topic into concepts unless the candidate teaches something useful. A valid candidate should include at least two of these: definition, purpose, how it is used, comparison, exam relevance, procedure, example, common mistake, relationship to another taught concept.
-
-If the source only says something like "Another popular file system is ext4", do not return that sentence as the summary. Either enrich it into a useful file-system Knowledge Object or reject it as mentioned-only if it is not relevant enough for this lesson.
-
 ## Required JSON Shape
 {
-  "schemaVersion": "ai-transcript-import.v4",
+  "schemaVersion": "transcript-intelligence.v1",
   "certificationId": "${certificationId}",
   "lessonId": "${resolvedLessonId}",
   "lessonTitle": "${lessonTitle}",
   "sourceTranscript": "${toProjectPath(transcriptFile, root)}",
   "transcriptInputMode": "${transcriptInputMode}",
-  "importQuality": {
-    "isStarterImport": false,
-    "candidateTarget": "25-40 for normal lessons",
-    "deepEnrichmentUsed": true,
-    "curriculumSuggestionsIncluded": true,
-    "richnessNotes": "Explain any unavoidable shortage or uncertainty."
+  "analysisQuality": {
+    "isStarterAnalysis": false,
+    "fixedCandidateTargetUsed": false,
+    "conceptCountPolicy": "Return every concept above the minimum teaching threshold. Do not invent concepts to hit a number.",
+    "gapsIncluded": true,
+    "mergeDetectionIncluded": true,
+    "curriculumPlacementIncluded": true,
+    "relationshipDiscoveryIncluded": true,
+    "richnessNotes": "Explain source limitations, uncertainty, or unusual concept counts."
   },
-  "concepts": [
+  "conceptsDiscovered": [
     {
-      "candidateId": "AI-CAND-001",
+      "conceptId": "DISC-001",
       "title": "Human readable concept title",
       "proposedKnowledgeId": "domain.stable-slug",
       "type": "concept | tool | command | protocol | operating-system | service | security-control | file-system | hardware | troubleshooting-step",
       "domains": ["domain"],
       "aliases": ["optional alias"],
       "classification": "teachable | merge-existing | mentioned-only | ignore | needs-enrichment",
-      "confidence": 0.0,
-      "difficulty": "foundational | intermediate | advanced",
-      "importance": "exam-critical | high | medium | low",
-      "summaryDraft": "Learner-ready summary. Do not merely repeat the transcript.",
-      "explanationDraft": "Complete explanation of what the learner should understand.",
-      "transcriptEvidence": [
+      "teachingValue": "high | medium | low",
+      "topicConfidence": 0.0,
+      "evidenceStrength": "strong | medium | weak",
+      "enrichmentLevel": "none | low | medium | high",
+      "reviewPriority": "low | normal | high",
+      "sourceEvidence": [
         {
-          "evidenceId": "AI-EVID-001",
+          "evidenceId": "EVID-001",
           "quote": "Short source quote or close excerpt that triggered this topic.",
           "reason": "Why this quote makes the topic relevant.",
           "evidenceType": "definition | example | comparison | relationship | procedure | exam-note | mention",
-          "supports": "topic-trigger | fact | relationship | curriculum-placement"
+          "supports": "topic-trigger | prerequisite | relationship | curriculum-placement | gap"
         }
       ],
-      "factsDraft": [
+      "prerequisites": [
         {
-          "text": "Useful learner fact. This may be enriched beyond the source text.",
-          "importance": "exam-critical | high | medium | low",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "tags": ["tag"]
+          "proposedKnowledgeId": "domain.prerequisite-id",
+          "reason": "Why this should be understood first.",
+          "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
+          "requiresReview": true
         }
       ],
-      "examplesDraft": [
+      "relationshipSuggestions": [
         {
-          "text": "Concrete example when useful.",
-          "context": "When this matters.",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "tags": ["tag"]
-        }
-      ],
-      "examTipsDraft": [
-        {
-          "text": "Exam-useful lesson.",
-          "difficulty": "easy | medium | hard",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "tags": ["tag"]
-        }
-      ],
-      "commonMistakesDraft": [
-        {
-          "text": "Common learner mistake.",
-          "difficulty": "easy | medium | hard",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "tags": ["tag"]
-        }
-      ],
-      "scenariosDraft": [
-        {
-          "situation": "Scenario if useful.",
-          "expectedAction": "Correct action or answer.",
-          "difficulty": "easy | medium | hard",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "tags": ["tag"]
-        }
-      ],
-      "pbqIdeasDraft": [
-        {
-          "task": "Possible hands-on task if appropriate.",
-          "skillsTested": ["skill"],
-          "difficulty": "easy | medium | hard",
-          "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"],
-          "assetsNeeded": []
-        }
-      ],
-      "suggestedRelationships": [
-        {
-          "id": "other.knowledge-id",
+          "targetKnowledgeId": "domain.related-id",
           "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
           "reason": "Why these concepts are related.",
-          "basis": "transcript-supported | ai-enriched",
+          "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
           "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"]
+          "evidenceIds": ["EVID-001"]
         }
       ],
-      "curriculumSuggestions": [
+      "curriculumPlacementSuggestions": [
         {
           "curriculumId": "${certificationId}",
           "sectionId": "1.0",
           "moduleId": "operating-system-foundations",
           "proposedModuleTitle": "Optional only when proposing a new module",
           "reason": "Why this concept belongs in this curriculum location.",
-          "basis": "transcript-supported | ai-enriched",
-          "confidence": 0.0,
+          "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
           "requiresReview": true,
-          "evidenceIds": ["AI-EVID-001"]
+          "evidenceIds": ["EVID-001"]
         }
       ],
-      "sourceQuality": {
-        "transcriptSupport": "strong | medium | weak",
-        "aiEnrichmentUsed": true,
-        "enrichmentReason": "Why enrichment was needed.",
-        "minimumKnowledgeThresholdMet": true,
-        "richnessLevel": "rich | acceptable | thin | incomplete"
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "existing.id-if-known",
+        "reason": "Why this should merge instead of becoming a new object.",
+        "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
+        "requiresReview": true
       },
-      "reviewDecision": "undecided",
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief | normal | deep",
+        "mustCover": ["Important points the Knowledge Author should cover later."],
+        "niceToCover": ["Optional points."],
+        "avoidCreatingDuplicateOf": ["existing.knowledge-id"],
+        "notes": ["Authoring warnings or enrichment needs."]
+      },
       "reviewNotes": ""
     }
   ],
-  "relationships": [
+  "mergeRecommendations": [
     {
-      "source": "domain.source-id",
-      "target": "domain.target-id",
-      "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
-      "reason": "Relationship reason.",
-      "basis": "transcript-supported | ai-enriched",
-      "requiresReview": true,
-      "evidenceIds": ["AI-EVID-001"]
+      "sourceConceptId": "DISC-001",
+      "targetKnowledgeId": "existing.knowledge-id",
+      "reason": "Why these should merge.",
+      "basis": "ai-inference",
+      "requiresReview": true
     }
   ],
-  "curriculumSuggestions": [
+  "relationshipSuggestions": [
     {
-      "knowledgeId": "domain.stable-slug",
+      "sourceConceptId": "DISC-001",
+      "sourceKnowledgeId": "domain.source-id",
+      "targetKnowledgeId": "domain.target-id",
+      "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
+      "reason": "Relationship reason.",
+      "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
+      "requiresReview": true,
+      "evidenceIds": ["EVID-001"]
+    }
+  ],
+  "curriculumPlacementSuggestions": [
+    {
+      "conceptId": "DISC-001",
+      "proposedKnowledgeId": "domain.stable-slug",
       "curriculumId": "${certificationId}",
       "sectionId": "1.0",
       "moduleId": "operating-system-foundations",
       "proposedModuleTitle": "Optional only when proposing a new module",
       "reason": "Top-level curriculum placement suggestion.",
-      "basis": "transcript-supported | ai-enriched",
-      "confidence": 0.0,
+      "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
       "requiresReview": true,
-      "evidenceIds": ["AI-EVID-001"]
+      "evidenceIds": ["EVID-001"]
     }
   ],
-  "rejectedConcepts": [
+  "knowledgeGaps": [
+    {
+      "gapId": "GAP-001",
+      "title": "Missing prerequisite or assumed knowledge",
+      "description": "What the lesson assumes, skips, or mentions too weakly.",
+      "relatedConceptIds": ["domain.related-id"],
+      "recommendation": "Create, enrich, or link a supporting concept/module.",
+      "severity": "low | medium | high",
+      "basis": "source-supported | ai-inference | general-it-knowledge | common-practice | exam-knowledge",
+      "requiresReview": true,
+      "evidenceIds": ["EVID-001"]
+    }
+  ],
+  "rejectedMentions": [
     {
       "title": "Mentioned but not imported",
       "classification": "mentioned-only | too-vague | duplicate | out-of-scope | not-technical",
       "reason": "Why this should not become a Knowledge Object.",
-      "transcriptEvidence": "Optional short quote or phrase that triggered rejection."
+      "basis": "source-supported | ai-inference",
+      "sourceEvidence": "Optional short quote or phrase that triggered rejection."
     }
   ],
-  "importNotes": ["Any uncertainty, shortage, source limitation, duplicate concern, enrichment warning, or curriculum-placement warning."]
+  "importNotes": ["Any uncertainty, source limitation, duplicate concern, enrichment warning, or curriculum-placement warning."]
 }
 
 ## Source Text
@@ -382,6 +354,7 @@ console.log(JSON.stringify({
   sourceTranscript: toProjectPath(transcriptFile, root),
   transcriptInputMode,
   transcriptChars: transcriptText.length,
+  schemaVersion: "transcript-intelligence.v1",
   next: [
     "Paste this prompt into your AI tool and save the JSON response under data/ai-imports/responses/.",
     "Then run npm run ai:import:normalize -- --file=data/ai-imports/responses/<response>.json."
