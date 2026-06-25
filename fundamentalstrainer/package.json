@@ -20,6 +20,7 @@
     "ingest:audit": "node tools/ingestion/audit-transcripts.mjs",
     "ai:batch": "node tools/ai/create-ai-batch.mjs",
     "ai:lesson": "node tools/ai/run-ai-lesson.mjs",
+    "ai:expand": "node tools/ai/run-ai-expansion.mjs",
     "ai:status": "node tools/ai/run-ai-pipeline-status.mjs",
     "ai:import:prompt": "node tools/ai/create-ai-import-prompt.mjs",
     "ai:import:normalize": "node tools/ai/normalize-ai-import.mjs",
