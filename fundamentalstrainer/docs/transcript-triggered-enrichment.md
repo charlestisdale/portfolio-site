@@ -40,6 +40,27 @@ Canonical Knowledge Object
 
 Do not promote source wording as knowledge just because it appeared in the lesson.
 
+## Rich import rule
+
+The AI import should be rich enough to review and promote. It should not be a starter import, outline, representative subset, or bare list of concepts.
+
+For a normal lesson, target **25–40 Knowledge Object candidates**. Fewer candidates are acceptable only when the source genuinely contains fewer useful concepts, and the response must explain that limitation in `importNotes`.
+
+Each teachable or merge-existing candidate should usually include:
+
+- 2–3 sentence `summaryDraft`
+- 1–3 short paragraph `explanationDraft`
+- at least 4 atomic `factsDraft` items
+- at least 1 `transcriptEvidence` item, preferably 2–4 when supported
+- at least 2 useful relationships when applicable
+- exam tips when the concept is exam-relevant
+- common mistakes when learners commonly confuse the concept
+- examples or scenarios when they help teach the concept
+- PBQ ideas when the concept supports hands-on, matching, ordering, configuration, troubleshooting, or identification tasks
+- confidence, difficulty, importance, evidence IDs, and review flags
+
+A candidate with zero facts is incomplete. A candidate with only a one-sentence summary and no facts is incomplete. A candidate that simply repeats the source is incomplete.
+
 ## Example
 
 Weak transcript wording:
@@ -135,10 +156,12 @@ The reviewer is not approving whether a transcript sentence exists. The reviewer
 Do not:
 
 - create one object for every transcript sentence
+- return a starter import, outline, representative subset, or bare schema
 - create Knowledge Objects from weak mentions without enrichment
 - use transcript wording as the final explanation when it does not teach enough
 - run aggressive text cleanup before AI sees the source
 - create placeholder objects just because another object references them
+- mark zero-fact candidates as high quality
 - generate finished quiz questions during ingestion
 - expose transcript import/upload in the public learner UI
 
@@ -149,6 +172,7 @@ Do:
 - use the least-destructive usable source text
 - use transcripts and documents to discover relevant topics
 - enrich important topics into learner-ready draft Knowledge Objects
+- include facts, evidence, relationships, exam tips, common mistakes, scenarios, and PBQ ideas where appropriate
 - mark enriched facts as review-required
 - reject mentioned-only concepts cleanly
 - deduplicate before promotion
