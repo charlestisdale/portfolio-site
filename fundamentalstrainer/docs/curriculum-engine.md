@@ -24,8 +24,9 @@ Knowledge Objects remain the single source of truth. Curriculum files may refere
 
 ```text
 Sources / transcripts
-  -> AI topic discovery
-  -> AI deep knowledge enrichment
+  -> Transcript Intelligence
+  -> discovery review
+  -> Knowledge Authoring
   -> reviewed canonical Knowledge Objects
   -> Knowledge Graph
   -> Curriculum mappings
@@ -150,19 +151,21 @@ Auto-map should be used carefully. It is useful during ingestion and early devel
 
 ## AI curriculum suggestions
 
-AI import now returns `curriculumSuggestions` for teachable and merge-existing candidates.
+Transcript Intelligence may return curriculum placement suggestions for teachable and merge-existing concepts.
 
 Example:
 
 ```json
 {
-  "knowledgeId": "filesystems.ext4",
+  "conceptId": "DISC-004",
+  "proposedKnowledgeId": "filesystems.ext4",
   "curriculumId": "a-plus-220-1202",
   "sectionId": "1.0",
   "moduleId": "file-systems",
   "reason": "ext4 is a Linux file system and belongs with OS file system comparisons.",
-  "basis": "ai-enriched",
-  "confidence": 0.86,
+  "basis": "general-it-knowledge",
+  "topicConfidence": 0.86,
+  "evidenceStrength": "weak",
   "requiresReview": true
 }
 ```
@@ -171,12 +174,18 @@ These suggestions are reviewable metadata. They do not automatically become cano
 
 ## Review meaning
 
-Curriculum review is different from Knowledge Object review.
+Curriculum review is different from Knowledge Object review and different from discovery review.
+
+Discovery review asks:
+
+```text
+Should this concept exist, merge, move, wait for enrichment, or be rejected?
+```
 
 Knowledge review asks:
 
 ```text
-Is this concept accurate and useful?
+Is this authored concept accurate and useful?
 ```
 
 Curriculum review asks:
@@ -220,9 +229,11 @@ Where should this be taught?
 
 Do not mix these responsibilities. A Knowledge Object may be graph-related to one concept but taught in a different curriculum module.
 
-## Relationship to AI authoring
+## Relationship to AI stages
 
-AI should propose curriculum placement during import because the AI has context about what the lesson was teaching and what module a concept probably belongs to.
+Transcript Intelligence should propose curriculum placement because it has source context and can identify what the lesson was trying to teach.
+
+Knowledge Authoring may preserve or refine reviewed placement context, but it should not be the first stage deciding whether a concept belongs in the curriculum.
 
 However:
 
