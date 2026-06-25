@@ -52,6 +52,7 @@ function normalizeDraftItem(item, candidate, defaults = {}) {
       importance: defaults.importance || (candidate.confidence >= 0.85 ? "high" : "medium"),
       basis: defaults.basis || "ai-enriched",
       requiresReview: true,
+      evidenceIds: [],
       tags: candidate.domains || []
     };
   }
@@ -62,6 +63,7 @@ function normalizeDraftItem(item, candidate, defaults = {}) {
     importance: item?.importance || defaults.importance || (candidate.confidence >= 0.85 ? "high" : "medium"),
     basis: normalizeBasis(item?.basis, defaults.basis || "ai-enriched"),
     requiresReview: item?.requiresReview !== false,
+    evidenceIds: asArray(item?.evidenceIds).map(String),
     tags: Array.isArray(item?.tags) ? item.tags : candidate.domains || []
   };
 }
@@ -96,7 +98,8 @@ function normalizeRelationship(relationship) {
     reason: relationship?.reason || relationship?.evidence || "AI-suggested relationship.",
     evidence: relationship?.evidence || relationship?.reason || "",
     basis: normalizeBasis(relationship?.basis, relationship?.evidence ? "transcript-supported" : "ai-enriched"),
-    requiresReview: relationship?.requiresReview !== false
+    requiresReview: relationship?.requiresReview !== false,
+    evidenceIds: asArray(relationship?.evidenceIds).map(String)
   };
 }
 
@@ -114,12 +117,14 @@ function normalizeSourceQuality(candidate, normalized) {
     ...normalized.pbqIdeasDraft,
     ...normalized.suggestedRelationships
   ].filter(item => item.basis === "ai-enriched");
+  const richnessLevel = calculateRichnessLevel(normalized);
 
   return {
     transcriptSupport,
-    aiEnrichmentUsed: sourceQuality.aiEnrichmentUsed ?? enrichedItems.length > 0,
+    aiEnrichmentUsed: enrichedItems.length > 0,
     enrichmentReason: sourceQuality.enrichmentReason || (enrichedItems.length ? "Source text triggered the topic, and AI expanded it into learner-ready content." : "No enrichment reason provided."),
-    minimumKnowledgeThresholdMet: sourceQuality.minimumKnowledgeThresholdMet ?? hasMinimumKnowledge(normalized)
+    minimumKnowledgeThresholdMet: hasMinimumKnowledge(normalized),
+    richnessLevel
   };
 }
 
@@ -136,6 +141,17 @@ function hasMinimumKnowledge(candidate) {
   return score >= 2;
 }
 
+function calculateRichnessLevel(candidate) {
+  if (!candidate.factsDraft.length) return "incomplete";
+  if (candidate.factsDraft.length >= 4 && candidate.explanationDraft.length >= 220 && candidate.suggestedRelationships.length >= 2) {
+    if (candidate.examTipsDraft.length || candidate.commonMistakesDraft.length || candidate.examplesDraft.length || candidate.scenariosDraft.length || candidate.pbqIdeasDraft.length) {
+      return "rich";
+    }
+  }
+  if (candidate.factsDraft.length >= 3 && candidate.explanationDraft.length >= 120) return "acceptable";
+  return "thin";
+}
+
 function normalizeCandidate(candidate, index, globalRelationships = []) {
   const domains = Array.isArray(candidate.domains) && candidate.domains.length ? candidate.domains.map(String) : ["general"];
   const confidence = normalizeConfidence(candidate.confidence);
@@ -143,7 +159,7 @@ function normalizeCandidate(candidate, index, globalRelationships = []) {
   const ownRelationships = Array.isArray(candidate.suggestedRelationships) ? candidate.suggestedRelationships : [];
   const matchingGlobalRelationships = globalRelationships
     .filter(item => item.source === proposedKnowledgeId)
-    .map(item => ({ id: item.target, type: item.type, reason: item.reason, evidence: item.evidence, basis: item.basis, requiresReview: item.requiresReview }));
+    .map(item => ({ id: item.target, type: item.type, reason: item.reason, evidence: item.evidence, basis: item.basis, requiresReview: item.requiresReview, evidenceIds: item.evidenceIds }));
 
   const transcriptEvidence = asArray(candidate.transcriptEvidence || candidate.evidence).map(normalizeEvidence).filter(item => item.text);
   const classification = candidate.classification || candidate.importClassification || "teachable";
@@ -160,6 +176,8 @@ function normalizeCandidate(candidate, index, globalRelationships = []) {
     aliases: Array.isArray(candidate.aliases) ? candidate.aliases : [],
     classification,
     confidence,
+    difficulty: candidate.difficulty || "foundational",
+    importance: candidate.importance || "medium",
     summaryDraft: String(candidate.summaryDraft || candidate.summary || enrichment.summary || "").trim(),
     explanationDraft: String(candidate.explanationDraft || candidate.explanation || enrichment.explanation || candidate.summaryDraft || "").trim(),
     transcriptEvidence,
@@ -189,8 +207,8 @@ function normalizeCandidate(candidate, index, globalRelationships = []) {
 }
 
 function qualityBand(score) {
-  if (score >= 80) return "high";
-  if (score >= 55) return "needs-edit";
+  if (score >= 85) return "high";
+  if (score >= 60) return "needs-edit";
   return "low";
 }
 
@@ -198,21 +216,39 @@ function auditAiCandidate(candidate) {
   const flags = [];
   const textVolume = `${candidate.summaryDraft} ${candidate.explanationDraft}`.trim().length;
   const enrichedFacts = candidate.factsDraft.filter(fact => fact.basis === "ai-enriched").length;
+  const richFields = [
+    candidate.examplesDraft.length,
+    candidate.examTipsDraft.length,
+    candidate.commonMistakesDraft.length,
+    candidate.scenariosDraft.length,
+    candidate.pbqIdeasDraft.length,
+    candidate.suggestedRelationships.length
+  ].filter(Boolean).length;
 
   if (!candidate.transcriptEvidence.length) flags.push({ code: "missing-source-trigger", message: "AI candidate has no source evidence showing why the topic was triggered." });
   if (!candidate.factsDraft.length) flags.push({ code: "missing-facts", message: "AI candidate has no fact drafts." });
+  if (candidate.factsDraft.length > 0 && candidate.factsDraft.length < 4) flags.push({ code: "too-few-facts", message: "Rich candidates should usually include at least 4 atomic facts." });
   if (candidate.confidence < 0.7) flags.push({ code: "low-confidence", message: "AI confidence is below 0.70." });
   if (!candidate.proposedKnowledgeId.includes(".")) flags.push({ code: "unstable-id", message: "Knowledge ID does not look domain-scoped." });
   if (!candidate.sourceQuality.aiEnrichmentUsed && candidate.sourceQuality.transcriptSupport === "weak") flags.push({ code: "weak-source-only", message: "Weak source mention was not enriched into useful learning content." });
   if (!candidate.sourceQuality.minimumKnowledgeThresholdMet) flags.push({ code: "minimum-knowledge-threshold", message: "Candidate does not meet the minimum threshold for useful learner knowledge." });
-  if (textVolume < 160 && enrichedFacts < 2) flags.push({ code: "thin-learning-content", message: "Candidate may be repeating the source instead of teaching the concept." });
+  if (textVolume < 220 && enrichedFacts < 3) flags.push({ code: "thin-learning-content", message: "Candidate may be repeating the source instead of teaching the concept." });
+  if (richFields < 2) flags.push({ code: "missing-rich-review-fields", message: "Candidate is missing supporting review fields such as relationships, exam tips, examples, mistakes, scenarios, or PBQ ideas." });
 
   let score = Math.round(candidate.confidence * 100);
   score -= flags.length * 12;
   score += Math.min(10, candidate.transcriptEvidence.length * 2);
-  score += Math.min(12, candidate.factsDraft.length * 2);
+  score += Math.min(16, candidate.factsDraft.length * 4);
+  score += Math.min(12, richFields * 3);
   score += candidate.sourceQuality.aiEnrichmentUsed ? 8 : 0;
   score += candidate.sourceQuality.minimumKnowledgeThresholdMet ? 8 : 0;
+
+  if (!candidate.factsDraft.length) score = Math.min(score, 45);
+  if (candidate.factsDraft.length > 0 && candidate.factsDraft.length < 4) score = Math.min(score, 65);
+  if (candidate.sourceQuality.richnessLevel === "thin") score = Math.min(score, 70);
+  if (candidate.sourceQuality.richnessLevel === "incomplete") score = Math.min(score, 50);
+  if (richFields < 2) score = Math.min(score, 75);
+
   score = Math.max(0, Math.min(100, score));
 
   return {
@@ -240,7 +276,7 @@ for (const candidate of candidates) candidate.quality = auditAiCandidate(candida
 const output = {
   id: `AI-IMPORT-${certificationId}-${lessonId}`.toUpperCase().replace(/[^A-Z0-9-]+/g, "-"),
   importSource: "ai-transcript-triggered-enrichment",
-  schemaVersion: "pending-candidates.v2",
+  schemaVersion: "pending-candidates.v3",
   sourceSchemaVersion: data.schemaVersion || "unknown",
   certificationId,
   lessonId,
@@ -254,6 +290,10 @@ const output = {
     transcriptParagraphs: data.metrics?.transcriptParagraphs || null,
     transcriptSentences: data.metrics?.transcriptSentences || null,
     candidates: candidates.length,
+    richCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "rich").length,
+    acceptableCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "acceptable").length,
+    thinCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "thin").length,
+    incompleteCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "incomplete").length,
     highConfidenceCandidates: candidates.filter(candidate => candidate.confidence >= 0.85).length,
     candidatesWithFactDrafts: candidates.filter(candidate => candidate.factsDraft.length).length,
     enrichedCandidates: candidates.filter(candidate => candidate.sourceQuality.aiEnrichmentUsed).length,
@@ -269,6 +309,7 @@ const output = {
   notes: [
     "Candidates were generated by transcript-triggered AI enrichment, not transcript-only extraction.",
     "Source evidence shows why the topic was triggered; enriched facts still require human review before canonical promotion.",
+    "Quality scoring now penalizes starter imports, missing facts, thin explanations, and missing rich review fields.",
     ...(data.importNotes || [])
   ],
   rejectedConcepts: data.rejectedConcepts || [],
@@ -283,8 +324,10 @@ fs.writeFileSync(outFile, JSON.stringify(output, null, 2));
 console.log(JSON.stringify({
   output: toProjectPath(outFile, root),
   candidates: candidates.length,
-  highConfidenceCandidates: output.metrics.highConfidenceCandidates,
-  enrichedCandidates: output.metrics.enrichedCandidates,
+  richCandidates: output.metrics.richCandidates,
+  acceptableCandidates: output.metrics.acceptableCandidates,
+  thinCandidates: output.metrics.thinCandidates,
+  incompleteCandidates: output.metrics.incompleteCandidates,
   relationshipsSuggested: output.metrics.relationshipsSuggested,
   rejectedConcepts: output.metrics.rejectedConcepts,
   transcriptInputMode: output.transcriptInputMode,
