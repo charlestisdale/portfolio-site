@@ -26,6 +26,7 @@
     "knowledge:promote": "node tools/knowledge/promote-approved-objects.mjs",
     "graph:retag": "node tools/knowledge/retag-relationships.mjs",
     "review:archive": "node tools/ingestion/archive-promoted-import.mjs",
+    "review:candidates": "node tools/ingestion/review-candidates.mjs",
     "review:manifest": "node tools/ingestion/build-review-manifest.mjs"
   }
 }
