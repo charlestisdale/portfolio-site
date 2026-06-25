@@ -31,17 +31,26 @@ function normalizeEnum(value, allowed, fallback) {
 }
 
 function normalizeDecision(value) {
-  return normalizeEnum(value, [
-    "accept-for-authoring",
-    "merge",
-    "reject",
-    "defer",
-    "needs-enrichment"
-  ], "defer");
+  const normalized = String(value || "").trim().toLowerCase();
+  const map = {
+    accept: "accept-for-authoring",
+    approved: "accept-for-authoring",
+    "send-to-authoring": "accept-for-authoring",
+    "accept-for-authoring": "accept-for-authoring",
+    merge: "merge",
+    "merge-existing": "merge",
+    reject: "reject",
+    rejected: "reject",
+    defer: "defer",
+    deferred: "defer",
+    "needs-enrichment": "needs-enrichment",
+    "enrich-before-authoring": "needs-enrichment"
+  };
+  return map[normalized] || normalizeEnum(value, ["accept-for-authoring", "merge", "reject", "defer", "needs-enrichment"], "defer");
 }
 
 function normalizePriority(value, fallback = "normal") {
-  return normalizeEnum(value, ["high", "normal", "low", "none"], fallback);
+  return normalizeEnum(value, ["high", "normal", "medium", "low", "none"], fallback).replace("medium", "normal");
 }
 
 function normalizeDepth(value, fallback = "normal") {
@@ -54,8 +63,8 @@ function normalizeDuplicateRisk(value) {
 
 function normalizeCurriculumDecision(value = {}) {
   return {
-    status: normalizeEnum(value.status, ["accept", "change", "reject", "defer"], "defer"),
-    curriculumId: value.curriculumId || "",
+    status: normalizeEnum(value.status || value.decision, ["accept", "change", "reject", "defer", "approve"], "defer").replace("approve", "accept"),
+    curriculumId: value.curriculumId || value.certificationId || "",
     sectionId: value.sectionId || "",
     moduleId: value.moduleId || "",
     reason: value.reason || ""
@@ -72,21 +81,22 @@ function normalizeRelationshipDecision(value = {}) {
 }
 
 function normalizeConceptDecision(item, index) {
-  const decision = normalizeDecision(item.decision);
+  const rawDecision = item.decision || item.reviewDecision || item.promotionStatus;
+  const decision = normalizeDecision(rawDecision);
   const priorityFallback = decision === "accept-for-authoring" ? "normal" : "none";
   const depthFallback = decision === "accept-for-authoring" ? "normal" : "none";
 
   return {
     conceptId: item.conceptId || `DISC-${String(index + 1).padStart(3, "0")}`,
     title: item.title || item.proposedKnowledgeId || "Untitled concept",
-    proposedKnowledgeId: item.proposedKnowledgeId || "",
+    proposedKnowledgeId: item.proposedKnowledgeId || item.sourceKnowledgeId || "",
     decision,
-    targetKnowledgeId: item.targetKnowledgeId || "",
-    authoringPriority: normalizePriority(item.authoringPriority, priorityFallback),
+    targetKnowledgeId: item.targetKnowledgeId || item.authoringAction?.targetKnowledgeId || "",
+    authoringPriority: normalizePriority(item.authoringPriority || item.reviewPriority, priorityFallback),
     recommendedDepth: normalizeDepth(item.recommendedDepth, depthFallback),
-    reason: item.reason || "No review reason provided.",
-    mustCover: asArray(item.mustCover).map(String),
-    avoidAuthoringAsStandalone: item.avoidAuthoringAsStandalone === true,
+    reason: item.reason || item.decisionReason || "No review reason provided.",
+    mustCover: asArray(item.mustCover || item.authoringAction?.notes).map(String),
+    avoidAuthoringAsStandalone: item.avoidAuthoringAsStandalone === true || item.authoringAction?.shouldAuthorNow === false,
     duplicateRisk: normalizeDuplicateRisk(item.duplicateRisk),
     curriculumDecision: normalizeCurriculumDecision(item.curriculumDecision),
     relationshipDecision: normalizeRelationshipDecision(item.relationshipDecision),
@@ -94,8 +104,21 @@ function normalizeConceptDecision(item, index) {
   };
 }
 
-function normalizeQueueItem(item, decisionByConceptId = new Map()) {
-  const source = decisionByConceptId.get(item.conceptId) || {};
+function normalizeQueueItem(item, decisionByConceptId = new Map(), decisionByKnowledgeId = new Map()) {
+  if (typeof item === "string") {
+    const source = decisionByKnowledgeId.get(item) || {};
+    return {
+      conceptId: source.conceptId || "",
+      proposedKnowledgeId: item,
+      title: source.title || item,
+      priority: normalizePriority(source.authoringPriority, "normal"),
+      recommendedDepth: normalizeDepth(source.recommendedDepth, "normal"),
+      reason: source.reason || "Selected for next-stage processing.",
+      mustCover: asArray(source.mustCover).map(String)
+    };
+  }
+
+  const source = decisionByConceptId.get(item.conceptId) || decisionByKnowledgeId.get(item.proposedKnowledgeId) || {};
   return {
     conceptId: item.conceptId || source.conceptId || "",
     proposedKnowledgeId: item.proposedKnowledgeId || source.proposedKnowledgeId || "",
@@ -117,19 +140,30 @@ function normalizeMerge(item) {
   };
 }
 
-function normalizeEnrichment(item, decisionByConceptId = new Map()) {
-  const source = decisionByConceptId.get(item.conceptId) || {};
+function normalizeEnrichment(item, decisionByConceptId = new Map(), decisionByKnowledgeId = new Map()) {
+  if (typeof item === "string") {
+    const source = decisionByKnowledgeId.get(item) || {};
+    return {
+      conceptId: source.conceptId || "",
+      proposedKnowledgeId: item,
+      title: source.title || item,
+      neededEvidenceOrContext: [],
+      reason: source.reason || "Needs enrichment before authoring."
+    };
+  }
+
+  const source = decisionByConceptId.get(item.conceptId) || decisionByKnowledgeId.get(item.proposedKnowledgeId) || {};
   return {
     conceptId: item.conceptId || source.conceptId || "",
     proposedKnowledgeId: item.proposedKnowledgeId || source.proposedKnowledgeId || "",
     title: item.title || source.title || "Untitled concept",
-    neededEvidenceOrContext: asArray(item.neededEvidenceOrContext).map(String),
+    neededEvidenceOrContext: asArray(item.neededEvidenceOrContext || item.notes).map(String),
     reason: item.reason || source.reason || "Needs enrichment before authoring."
   };
 }
 
-function normalizeRejected(item, decisionByConceptId = new Map()) {
-  const source = decisionByConceptId.get(item.conceptId) || {};
+function normalizeRejected(item, decisionByConceptId = new Map(), decisionByKnowledgeId = new Map()) {
+  const source = decisionByConceptId.get(item.conceptId) || decisionByKnowledgeId.get(item.proposedKnowledgeId) || {};
   return {
     conceptId: item.conceptId || source.conceptId || "",
     proposedKnowledgeId: item.proposedKnowledgeId || source.proposedKnowledgeId || "",
@@ -141,22 +175,34 @@ function normalizeRejected(item, decisionByConceptId = new Map()) {
 function normalizeGap(item, index) {
   return {
     gapId: item.gapId || `GAP-${String(index + 1).padStart(3, "0")}`,
-    decision: normalizeEnum(item.decision, ["accept", "reject", "defer", "convert-to-authoring-target"], "defer"),
+    decision: normalizeEnum(item.decision, ["accept", "reject", "defer", "convert-to-authoring-target", "accept-gap"], "defer").replace("accept-gap", "accept"),
     relatedConceptIds: asArray(item.relatedConceptIds).map(String),
-    reason: item.reason || "No gap review reason provided.",
+    reason: item.reason || item.title || "No gap review reason provided.",
     recommendedAction: item.recommendedAction || "Review required."
   };
+}
+
+function normalizeAlternateConceptDecisions(data) {
+  if (Array.isArray(data.conceptDecisions)) return data.conceptDecisions;
+  if (Array.isArray(data.conceptReviews)) return data.conceptReviews.map(item => ({
+    ...item,
+    decision: item.reviewDecision,
+    reason: item.decisionReason,
+    authoringPriority: item.reviewPriority,
+    targetKnowledgeId: item.authoringAction?.targetKnowledgeId || item.targetKnowledgeId || ""
+  }));
+  return [];
 }
 
 function auditReview(output) {
   const flags = [];
 
   for (const decision of output.conceptDecisions) {
+    if (!decision.conceptId || !decision.proposedKnowledgeId || !decision.title) {
+      flags.push({ code: "incomplete-concept-decision", conceptId: decision.conceptId, message: "Concept decision is missing conceptId, proposedKnowledgeId, or title." });
+    }
     if (decision.decision === "merge" && !decision.targetKnowledgeId) {
       flags.push({ code: "merge-missing-target", conceptId: decision.conceptId, message: "Merge decision has no targetKnowledgeId." });
-    }
-    if (decision.decision === "accept-for-authoring" && decision.avoidAuthoringAsStandalone) {
-      flags.push({ code: "accepted-but-avoid-standalone", conceptId: decision.conceptId, message: "Concept is accepted for authoring but marked avoidAuthoringAsStandalone." });
     }
     if (decision.decision === "accept-for-authoring" && decision.authoringPriority === "none") {
       flags.push({ code: "accepted-no-priority", conceptId: decision.conceptId, message: "Accepted concept has authoringPriority none." });
@@ -195,8 +241,12 @@ const outDir = path.resolve(root, "data", "imports", "reviewed");
 fs.mkdirSync(outDir, { recursive: true });
 const outFile = path.join(outDir, `${lessonId}-${slugify(lessonTitle)}-discovery-review.json`);
 
-const conceptDecisions = asArray(data.conceptDecisions).map(normalizeConceptDecision);
+const conceptDecisions = normalizeAlternateConceptDecisions(data).map(normalizeConceptDecision);
 const decisionByConceptId = new Map(conceptDecisions.map(item => [item.conceptId, item]));
+const decisionByKnowledgeId = new Map(conceptDecisions.map(item => [item.proposedKnowledgeId, item]));
+const authoringQueueSource = asArray(data.authoringQueue).length
+  ? data.authoringQueue
+  : conceptDecisions.filter(item => item.decision === "accept-for-authoring");
 
 const output = {
   id: `DISCOVERY-REVIEW-${lessonId}`,
@@ -204,7 +254,7 @@ const output = {
   sourceSchemaVersion: data.schemaVersion,
   lessonId,
   lessonTitle,
-  sourceReviewInput: data.sourceReviewInput || "",
+  sourceReviewInput: data.sourceReviewInput || data.sourcePackage?.sourceManifest || "",
   sourceAiResponse: toProjectPath(sourcePath, root),
   status: "reviewed-for-authoring",
   createdAt: new Date().toISOString(),
@@ -214,15 +264,15 @@ const output = {
     rejected: conceptDecisions.filter(item => item.decision === "reject").length,
     deferred: conceptDecisions.filter(item => item.decision === "defer").length,
     needsEnrichment: conceptDecisions.filter(item => item.decision === "needs-enrichment").length,
-    reviewNotes: asArray(data.reviewSummary?.reviewNotes).map(String)
+    reviewNotes: asArray(data.reviewSummary?.reviewNotes || data.reviewSummary?.qualityNotes || data.reviewNotes).map(String)
   },
   conceptDecisions,
-  mergePlan: asArray(data.mergePlan).map(normalizeMerge),
-  authoringQueue: asArray(data.authoringQueue).map(item => normalizeQueueItem(item, decisionByConceptId)),
-  enrichmentQueue: asArray(data.enrichmentQueue).map(item => normalizeEnrichment(item, decisionByConceptId)),
-  rejectedConcepts: asArray(data.rejectedConcepts).map(item => normalizeRejected(item, decisionByConceptId)),
-  gapReview: asArray(data.gapReview).map(normalizeGap),
-  globalReviewNotes: asArray(data.globalReviewNotes).map(String)
+  mergePlan: asArray(data.mergePlan || data.mergeActions).map(normalizeMerge),
+  authoringQueue: asArray(authoringQueueSource).map(item => normalizeQueueItem(item, decisionByConceptId, decisionByKnowledgeId)),
+  enrichmentQueue: asArray(data.enrichmentQueue || data.deferredQueue).map(item => normalizeEnrichment(item, decisionByConceptId, decisionByKnowledgeId)),
+  rejectedConcepts: asArray(data.rejectedConcepts).map(item => normalizeRejected(item, decisionByConceptId, decisionByKnowledgeId)),
+  gapReview: asArray(data.gapReview || data.knowledgeGapReview).map(normalizeGap),
+  globalReviewNotes: asArray(data.globalReviewNotes || data.reviewNotes).map(String)
 };
 
 output.audit = auditReview(output);
