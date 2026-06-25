@@ -12,7 +12,7 @@ Knowledge is the source of truth. Learn mode, search, assessments, flashcards, P
 
 The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, and an interactive Knowledge Graph explorer.
 
-The ingestion direction is transcript-triggered AI enrichment. Transcripts identify what topics matter; AI expands those topics into learner-ready draft Knowledge Objects using general IT knowledge when the transcript is incomplete; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
+The ingestion direction is transcript-triggered AI enrichment. Transcripts and source documents identify what topics matter; AI expands those topics into learner-ready draft Knowledge Objects using general IT knowledge when the source is incomplete; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
 
 The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
@@ -22,7 +22,8 @@ The public portfolio version must remain learner-only and content-read-only. Upl
 engine/                  Reusable learning engine only
 content/                 Certification/objective/knowledge data
 data/transcripts/raw/    Local/private raw source files only
-data/transcripts/cleaned Local/private cleaned source text only
+data/transcripts/cleaned Local/private lossless readable source text only
+data/ai-imports/         Local/private AI prompts and responses
 data/imports/            Local/private ingestion and review records
 tools/                   Schemas and ingestion utilities
 docs/                    Architecture and safety documentation
@@ -71,16 +72,20 @@ Specific provenance can remain in private/admin-only records when needed for rev
 
 No source material should enter the trusted knowledge base directly.
 
-The transcript is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
+The transcript/source is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
+
+Source handling must be lossless before AI import. For `.srt` files, cleanup may remove cue numbers, timestamps, and markup only. Do not collapse repeated phrases, remove overlapping cues, summarize text, or delete context before AI sees it.
+
+Review state belongs in the existing pending candidate file under `data/imports/pending/`. Do not manually download an approved JSON file and re-upload/copy it into another folder. If a candidate is in the review queue, it is already in the local/admin system. Approval updates that existing record in place; rejected items are marked `ignore` and excluded from promotion.
 
 ```text
 source material
-→ cleaner
+→ lossless source parsing
 → transcript-triggered topic discovery
 → AI enrichment into learner-ready draft Knowledge Objects
 → normalization and quality audit
 → duplicate detection
-→ promotion review
+→ in-place promotion review
 → import report
 → merge plan
 → dry run
@@ -103,7 +108,7 @@ The merge command should stay dry-run-first. Use real writes only after review a
 
 ## Example local commands
 
-Clean a local/private transcript:
+Create a lossless readable transcript from `.srt` when needed:
 
 ```bash
 node tools/ingestion/clean-srt.mjs \
@@ -111,13 +116,13 @@ node tools/ingestion/clean-srt.mjs \
   data/transcripts/cleaned/a-plus-220-1202/16-lesson-title.txt
 ```
 
-Create an import record:
+Generate a transcript-triggered AI import prompt. With `--lesson`, the script prefers the raw `.srt` and parses it losslessly in memory:
 
 ```bash
-node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
+npm run ai:import:prompt -- --lesson=16
 ```
 
-Generate a transcript-triggered AI import prompt:
+Or pass an already-clean source file directly:
 
 ```bash
 npm run ai:import:prompt -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
@@ -135,12 +140,32 @@ Normalize the AI response into pending review candidates:
 npm run ai:import:normalize -- --file=data/ai-imports/responses/16-response.json
 ```
 
-Review/import commands:
+Detect duplicates:
 
 ```bash
 npm run ingest:duplicates -- --file=data/imports/pending/16-ai-candidates.json
+```
+
+List candidates:
+
+```bash
+npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --list=true
+```
+
+Approve, merge, or reject candidates in place:
+
+```bash
+npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-001 --decision=create-new --notes="Accurate and useful draft."
+npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-002 --decision=merge-existing --notes="Merge into existing object."
+npm run review:candidates -- --file=data/imports/pending/16-ai-candidates.json --candidate=AI-CAND-003 --decision=ignore --notes="Mentioned only."
+```
+
+Build an import report and merge:
+
+```bash
 npm run ingest:report -- --file=data/imports/pending/16-ai-candidates.json
 npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json
+npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json --dry-run=false
 ```
 
 Build the pending-import manifest for local review:
@@ -161,7 +186,7 @@ Open:
 http://localhost:8000/review.html
 ```
 
-The review UI is for local/admin review. It should not become a public upload feature without the backend controls documented in `docs/admin-upload-security.md`.
+The static review UI is for inspection and backup snapshots. It should not become a public upload feature. Canonical review decisions should be written in place by `npm run review:candidates` or by a future authenticated local/admin backend.
 
 ## Important files
 
@@ -170,6 +195,7 @@ tools/knowledge-object.schema.json
 tools/import-record.schema.json
 tools/ingestion-workflow.md
 tools/ingestion/review-workflow.md
+tools/ingestion/review-candidates.mjs
 tools/ai/create-ai-import-prompt.mjs
 tools/ai/normalize-ai-import.mjs
 docs/transcript-triggered-enrichment.md
@@ -205,13 +231,6 @@ Validate both knowledge content and architecture references:
 
 ```bash
 npm run validate:all
-```
-
-The current sample objects are:
-
-```text
-content/knowledge/windows/task-manager.json
-content/knowledge/commands/ipconfig.json
 ```
 
 Important rule: do not write quiz questions directly during ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
