@@ -54,6 +54,14 @@ function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+function slugify(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "") || "item";
+}
+
 function lessonMatch(file) {
   if (!lesson) return true;
   return path.basename(file).startsWith(`${lesson}-`);
@@ -96,6 +104,31 @@ function draftKnowledgeId(draftFile) {
   } catch {
     return "";
   }
+}
+
+function findAuthoringQueueItem(reviewedFilePath) {
+  const review = readJson(reviewedFilePath);
+  const queue = Array.isArray(review.authoringQueue) ? review.authoringQueue : [];
+  const selected = queue.find(item => item.conceptId === concept || item.proposedKnowledgeId === concept || slugify(item.title) === slugify(concept));
+  if (!selected) {
+    const available = queue.map(item => `${item.conceptId}: ${item.title} (${item.proposedKnowledgeId})`).join("\n- ");
+    fail(`Concept ${concept} was not found in authoringQueue. Available concepts:\n- ${available}`);
+  }
+  return selected;
+}
+
+function matchesSelectedKnowledgeObject(file, selected) {
+  try {
+    const object = readJson(file);
+    return object.id === selected.proposedKnowledgeId;
+  } catch {
+    return false;
+  }
+}
+
+function selectedPromptMatches(file, selected) {
+  const base = path.basename(file);
+  return base.includes(slugify(selected.proposedKnowledgeId)) || base.includes(slugify(selected.title));
 }
 
 if (!lesson) fail("Usage: npm run ai:lesson -- --lesson=01 [--concept=DISC-001] [--promote=true]");
@@ -154,7 +187,9 @@ if (!reviewedFile.length) {
   reviewedFile = listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
 }
 
-let authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file));
+const selected = findAuthoringQueueItem(reviewedFile[0]);
+
+let authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file) && selectedPromptMatches(file, selected));
 if (!authorPrompt.length) {
   run([
     "tools/ai/create-knowledge-author-prompt.mjs",
@@ -162,23 +197,23 @@ if (!authorPrompt.length) {
     `--intelligence=${firstProject(tiPending)}`,
     `--concept=${concept}`
   ]);
-  authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file));
+  authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file) && selectedPromptMatches(file, selected));
 }
 
-const authorResponse = listFiles("data/ai-imports/responses/knowledge-author", file => file.endsWith(".json"));
+const authorResponse = listFiles("data/ai-imports/responses/knowledge-author", file => file.endsWith(".json") && matchesSelectedKnowledgeObject(file, selected));
 if (!authorResponse.length) {
   checkpoint(
-    "WAITING FOR AI: Knowledge Author",
-    "Paste the Knowledge Author prompt into ChatGPT or your AI agent, then save the returned Knowledge Object JSON under data/ai-imports/responses/knowledge-author/.",
+    `WAITING FOR AI: Knowledge Author (${selected.conceptId})`,
+    `Paste the Knowledge Author prompt into ChatGPT or your AI agent, then save the returned Knowledge Object JSON under data/ai-imports/responses/knowledge-author/. Expected id: ${selected.proposedKnowledgeId}`,
     authorPrompt
   );
   process.exit(0);
 }
 
-let authoredDraft = listFiles("data/imports/authored", file => file.endsWith(".draft.json"));
+let authoredDraft = listFiles("data/imports/authored", file => file.endsWith(".draft.json") && matchesSelectedKnowledgeObject(file, selected));
 if (!authoredDraft.length) {
   run(["tools/ai/normalize-knowledge-author-output.mjs", `--file=${firstProject(authorResponse)}`]);
-  authoredDraft = listFiles("data/imports/authored", file => file.endsWith(".draft.json"));
+  authoredDraft = listFiles("data/imports/authored", file => file.endsWith(".draft.json") && matchesSelectedKnowledgeObject(file, selected));
 }
 
 const draftId = draftKnowledgeId(authoredDraft[0]);
