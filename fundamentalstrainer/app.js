@@ -611,6 +611,13 @@ if (relatedView) {
       return;
     }
 
+    const openLearnButton = event.target.closest("button[data-graph-open-learn]");
+    if (openLearnButton) {
+      renderConcept(openLearnButton.dataset.graphOpenLearn, { switchMode: true });
+      setMode("learn");
+      return;
+    }
+
     if (shouldIgnoreGraphClick()) {
       event.preventDefault();
       event.stopPropagation();
