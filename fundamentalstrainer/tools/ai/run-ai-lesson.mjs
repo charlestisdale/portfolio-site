@@ -54,6 +54,14 @@ function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+function tryReadJson(file) {
+  try {
+    return readJson(file);
+  } catch {
+    return null;
+  }
+}
+
 function slugify(value) {
   return String(value || "")
     .toLowerCase()
@@ -65,6 +73,13 @@ function slugify(value) {
 function lessonMatch(file) {
   if (!lesson) return true;
   return path.basename(file).startsWith(`${lesson}-`);
+}
+
+function jsonLessonMatch(file, schemaVersion) {
+  const object = tryReadJson(file);
+  if (!object) return false;
+  if (schemaVersion && object.schemaVersion !== schemaVersion) return false;
+  return String(object.lessonId || "").padStart(2, "0") === lesson;
 }
 
 function firstProject(files) {
@@ -107,6 +122,7 @@ function draftKnowledgeId(draftFile) {
 }
 
 function findAuthoringQueueItem(reviewedFilePath) {
+  if (!reviewedFilePath) fail(`No normalized discovery review file found for lesson ${lesson}. Save the discovery-review.v1 AI response for lesson ${lesson}, then rerun this command.`);
   const review = readJson(reviewedFilePath);
   const queue = Array.isArray(review.authoringQueue) ? review.authoringQueue : [];
   const selected = queue.find(item => item.conceptId === concept || item.proposedKnowledgeId === concept || slugify(item.title) === slugify(concept));
@@ -143,11 +159,11 @@ if (!tiPrompt.length) {
   tiPrompt = listFiles("data/ai-imports/prompts", file => file.includes("transcript-intelligence-prompt") && lessonMatch(file));
 }
 
-const tiResponse = listFiles("data/ai-imports/responses", file => file.includes("transcript-intelligence") && file.endsWith(".json"));
+const tiResponse = listFiles("data/ai-imports/responses", file => file.endsWith(".json") && jsonLessonMatch(file, "transcript-intelligence.v1"));
 if (!tiResponse.length) {
   checkpoint(
     "WAITING FOR AI: Transcript Intelligence",
-    "Paste the Transcript Intelligence prompt into ChatGPT or your AI agent, then save the returned JSON under data/ai-imports/responses/.",
+    "Paste the Transcript Intelligence prompt into ChatGPT or your AI agent, then save the returned transcript-intelligence.v1 JSON under data/ai-imports/responses/.",
     tiPrompt
   );
   process.exit(0);
@@ -171,7 +187,7 @@ if (!reviewPrompt.length) {
   reviewPrompt = listFiles("data/ai-imports/prompts", file => file.includes("discovery-review-prompt") && lessonMatch(file));
 }
 
-const reviewResponse = listFiles("data/ai-imports/responses", file => file.includes("discovery-review") && file.endsWith(".json"));
+const reviewResponse = listFiles("data/ai-imports/responses", file => file.endsWith(".json") && jsonLessonMatch(file, "discovery-review.v1"));
 if (!reviewResponse.length) {
   checkpoint(
     "WAITING FOR AI: Discovery Review",
