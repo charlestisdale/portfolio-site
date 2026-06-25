@@ -5,8 +5,8 @@ const VIEWBOX_HEIGHT = 620;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
-const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v1";
-const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v1";
+const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v2";
+const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v2";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 const FIT_VIEW_PADDING = 42;
 const FIT_NODE_MARGIN_X = 96;
@@ -20,7 +20,7 @@ const NODE_CARD_TALL_HEIGHT = 84;
 const NODE_EDGE_GAP = 2;
 const NODE_COLLISION_PADDING_X = 24;
 const NODE_COLLISION_PADDING_Y = 18;
-const LAYOUT_RELAXATION_PASSES = 18;
+const LAYOUT_RELAXATION_PASSES = 0;
 
 const FOCUSED_RELATIONSHIP_TYPES = new Set([
   "contains",
@@ -142,11 +142,6 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
       <div class="graph-canvas" role="group" aria-label="Knowledge graph visualization" data-graph-canvas onpointerdown="window.__startKnowledgeGraphPan?.(event)">
         <div class="graph-canvas__viewport" data-graph-viewport style="position:absolute; inset:0; transform-origin:0 0; ${viewportStyle(viewport)}">
           <svg class="graph-canvas__edges" viewBox="0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}" role="img" aria-label="Knowledge object relationships">
-            <defs>
-              <marker id="graph-arrowhead" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
-                <path d="M 0 0 L 9 4.5 L 0 9 z" class="graph-arrowhead"></path>
-              </marker>
-            </defs>
             ${renderEdges(graphModel.edges, layout, graphModel.nodes)}
           </svg>
           <div class="graph-canvas__nodes">
@@ -627,10 +622,10 @@ function layoutNodes({ nodes, edges, activeId }) {
   const context = nodes.filter(node => node.id !== activeId && !neighborIds.has(node.id));
 
   if (activeNode) {
-    distributeAroundEllipse(layout, neighbors, 275, 165, -92);
-    distributeAroundEllipse(layout, context, 405, 245, -70);
+    distributeAroundEllipse(layout, neighbors, 360, 215, -92);
+    distributeAroundEllipse(layout, context, 430, 260, -70);
   } else {
-    distributeAroundEllipse(layout, nodes, 330, 210, -86);
+    distributeAroundEllipse(layout, nodes, 360, 230, -86);
   }
 
   if (!activeNode && nodes.length === 1) layout.set(nodes[0].id, CENTER);
@@ -645,8 +640,8 @@ function distributeAroundEllipse(layout, nodes, radiusX, radiusY, startDegrees) 
   nodes.forEach((node, index) => {
     const angle = ((startDegrees + index * step) * Math.PI) / 180;
     layout.set(node.id, {
-      x: CENTER.x + Math.cos(angle) * radiusX,
-      y: CENTER.y + Math.sin(angle) * radiusY
+      x: clamp(CENTER.x + Math.cos(angle) * radiusX, 90, VIEWBOX_WIDTH - 90),
+      y: clamp(CENTER.y + Math.sin(angle) * radiusY, 70, VIEWBOX_HEIGHT - 70)
     });
   });
 }
@@ -708,7 +703,7 @@ function renderEdges(edges, layout, nodes = []) {
 
     return `
       <g class="graph-edge graph-edge-type--${classToken(type)}">
-        <path d="${path}" marker-end="url(#graph-arrowhead)"></path>
+        <path d="${path}"></path>
       </g>
     `;
   }).join("");
@@ -727,7 +722,7 @@ function getCurvedEdgePath(source, target, index = 0) {
     y: dx / length
   };
   const direction = index % 2 === 0 ? 1 : -1;
-  const curve = clamp(length * 0.12, 14, 46) * direction;
+  const curve = clamp(length * 0.08, 10, 32) * direction;
   const control = {
     x: midpoint.x + normal.x * curve,
     y: midpoint.y + normal.y * curve
