@@ -22,39 +22,54 @@ function scheduleCenterActiveGraphNode() {
   window.setTimeout(() => centerActiveGraphNode(), 0);
 }
 
-function fitGraphViewFromResetButton(resetButton) {
-  const visualizer = resetButton.closest(".graph-visualizer");
-  const viewportKey = visualizer?.dataset.graphViewportKey;
-  if (!viewportKey || typeof window.__fitKnowledgeGraphViewport !== "function") return false;
-
-  window.__fitKnowledgeGraphViewport(viewportKey);
-  return true;
-}
-
 function normalizeGraphCenterControls() {
   const visualizer = document.querySelector(".graph-visualizer");
   if (!visualizer) return;
 
+  const toolbar = visualizer.querySelector(".graph-scope-toggle");
+
   visualizer.querySelectorAll("button[onclick]").forEach(button => {
     const action = button.getAttribute("onclick") || "";
 
-    if (action.includes("__centerKnowledgeGraphSearch")) {
+    if (action.includes("__centerKnowledgeGraphSearch") || action.includes("__resetKnowledgeGraphViewport")) {
       button.remove();
       return;
     }
 
+    if (action.includes("__fitKnowledgeGraphViewport")) {
+      button.textContent = "Fit graph";
+      button.setAttribute("aria-label", "Fit visible graph");
+    }
+
     if (action.includes("__centerKnowledgeGraphNode")) {
-      button.textContent = "Center";
-      button.setAttribute("aria-label", "Center active graph node");
+      button.remove();
     }
   });
 
-  ensureGraphExpandButton(visualizer);
+  ensureGraphToolbarCenterButton(visualizer, toolbar);
+  ensureGraphExpandButton(visualizer, toolbar);
   updateGraphExpandButtonLabel();
 }
 
-function ensureGraphExpandButton(visualizer) {
-  const toolbar = visualizer.querySelector(".graph-scope-toggle");
+function ensureGraphToolbarCenterButton(visualizer, toolbar = visualizer.querySelector(".graph-scope-toggle")) {
+  if (!toolbar || toolbar.querySelector("[data-graph-center-active]")) return;
+
+  const fitButton = toolbar.querySelector("button[onclick*='__fitKnowledgeGraphViewport']");
+  const button = document.createElement("button");
+  button.className = "graph-scope-button graph-center-active";
+  button.type = "button";
+  button.dataset.graphCenterActive = "true";
+  button.textContent = "Center";
+  button.setAttribute("aria-label", "Center active graph node");
+
+  if (fitButton?.nextSibling) {
+    toolbar.insertBefore(button, fitButton.nextSibling);
+  } else {
+    toolbar.appendChild(button);
+  }
+}
+
+function ensureGraphExpandButton(visualizer, toolbar = visualizer.querySelector(".graph-scope-toggle")) {
   if (!toolbar || toolbar.querySelector("[data-graph-expand-toggle]")) return;
 
   const button = document.createElement("button");
@@ -89,11 +104,11 @@ function scheduleNormalizeGraphControls() {
 }
 
 document.addEventListener("click", event => {
-  const resetViewButton = event.target.closest("button[onclick*='__resetKnowledgeGraphViewport']");
-  if (resetViewButton && fitGraphViewFromResetButton(resetViewButton)) {
+  const centerButton = event.target.closest("[data-graph-center-active]");
+  if (centerButton) {
+    centerActiveGraphNode();
     event.preventDefault();
     event.stopPropagation();
-    event.stopImmediatePropagation();
     return;
   }
 
