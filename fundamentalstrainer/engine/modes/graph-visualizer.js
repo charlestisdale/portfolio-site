@@ -98,6 +98,8 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         ${activeId ? `<button class="graph-scope-button graph-scope-button--primary" type="button" data-graph-open-learn="${escapeHtml(activeId)}">Open active in Learn</button>` : ""}
       </div>
 
+      ${activeConcept ? renderActiveGraphContext(activeConcept, graphModel) : ""}
+
       ${graphHistory.length > 1 ? `
         <div class="graph-history" aria-label="Recent graph nodes">
           <span>Recent:</span>
@@ -130,6 +132,26 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         </div>
       </div>
     </section>
+  `;
+}
+
+function renderActiveGraphContext(concept, graphModel) {
+  const domain = concept.status === "stub" ? "stub" : concept.domains?.[0] || concept.type || "concept";
+  const summary = truncateText(concept.learning?.summary || "No summary available yet.", 190);
+
+  return `
+    <aside class="graph-active-context" aria-label="Active graph concept">
+      <div>
+        <span class="graph-active-context__eyebrow">Active concept</span>
+        <strong>${escapeHtml(concept.title || concept.id)}</strong>
+        <p>${escapeHtml(summary)}</p>
+      </div>
+      <div class="graph-active-context__meta">
+        <span class="pill">${escapeHtml(domain)}</span>
+        <span class="pill">${escapeHtml(concept.status || "draft")}</span>
+        <span class="pill">${escapeHtml(graphModel.activeEdgeCount)} links</span>
+      </div>
+    </aside>
   `;
 }
 
@@ -765,6 +787,12 @@ function getNodeCardSize(node) {
   };
 }
 
+function truncateText(value, maxLength) {
+  const text = String(value || "").trim();
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, Math.max(0, maxLength - 1)).trim()}…`;
+}
+
 function clamp(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
@@ -796,10 +824,6 @@ function getScopeDescription(scope) {
     return "Expanded view: broader related context is visible. Drag empty space to pan, use Zoom in/out, drag nodes to clean up overlap, and use Fit view to recenter the current graph.";
   }
   return "Focused view: generic related links are hidden so only stronger instructional relationships stay visible.";
-}
-
-function unique(values) {
-  return [...new Set(values.filter(Boolean))];
 }
 
 function uniqueEdges(edges) {
