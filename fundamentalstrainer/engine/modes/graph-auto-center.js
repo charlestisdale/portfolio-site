@@ -1,22 +1,32 @@
-function centerGraphAfterNavigation(nodeId) {
-  if (!nodeId) return;
+const MAX_CENTER_ATTEMPTS = 8;
 
+function centerActiveGraphNode(attempt = 1) {
   window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(() => {
-      const visualizer = document.querySelector(".graph-visualizer");
-      const viewportKey = visualizer?.dataset.graphViewportKey;
-      if (!viewportKey) return;
-      window.__centerKnowledgeGraphNode?.(viewportKey, nodeId);
-    });
+    const visualizer = document.querySelector(".graph-visualizer");
+    const viewportKey = visualizer?.dataset.graphViewportKey;
+    const activeNode = visualizer?.querySelector(".graph-visual-node--active[data-id]");
+
+    if (viewportKey && activeNode?.dataset.id && typeof window.__centerKnowledgeGraphNode === "function") {
+      window.__centerKnowledgeGraphNode(viewportKey, activeNode.dataset.id);
+      return;
+    }
+
+    if (attempt < MAX_CENTER_ATTEMPTS) {
+      window.setTimeout(() => centerActiveGraphNode(attempt + 1), 35);
+    }
   });
+}
+
+function scheduleCenterActiveGraphNode() {
+  window.setTimeout(() => centerActiveGraphNode(), 0);
 }
 
 document.addEventListener("click", event => {
   const graphRoot = event.target.closest("#relatedView");
   if (!graphRoot) return;
 
-  const graphNodeButton = event.target.closest("button[data-id]");
-  if (!graphNodeButton) return;
+  const graphNavigationButton = event.target.closest("button[data-id]");
+  if (!graphNavigationButton) return;
 
-  centerGraphAfterNavigation(graphNodeButton.dataset.id);
-});
+  scheduleCenterActiveGraphNode();
+}, true);
