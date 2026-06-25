@@ -91,8 +91,7 @@ export function importTranscript(rawFile, options = {}) {
   const root = options.root || process.cwd();
   const certificationId = options.certificationId || "a-plus-220-1202";
   const cleanedDir = path.resolve(root, options.cleanedDir || `data/transcripts/cleaned/${certificationId}`);
-  const skipEvidence = Boolean(options.skipEvidence);
-  const skipExtract = Boolean(options.skipExtract);
+  const legacyExtract = Boolean(options.legacyExtract);
   const resolvedRawFile = path.resolve(root, rawFile);
   const { lessonId, title } = options.lessonId && options.title
     ? { lessonId: String(options.lessonId).padStart(2, "0"), title: options.title }
@@ -109,8 +108,9 @@ export function importTranscript(rawFile, options = {}) {
     title,
     rawFile: toProjectPath(resolvedRawFile, root),
     cleanedFile: toProjectPath(cleanedFile, root),
-    evidenceFile: toProjectPath(evidenceFile, root),
-    candidatesFile: toProjectPath(pendingFile, root),
+    evidenceFile: legacyExtract ? toProjectPath(evidenceFile, root) : null,
+    candidatesFile: legacyExtract ? toProjectPath(pendingFile, root) : null,
+    mode: legacyExtract ? "legacy-clean-evidence-extract" : "lossless-clean-only",
     steps: {}
   };
 
@@ -126,7 +126,7 @@ export function importTranscript(rawFile, options = {}) {
     return lesson;
   }
 
-  if (!skipEvidence) {
+  if (legacyExtract) {
     lesson.steps.evidence = runNode(root, "tools/ingestion/build-evidence.mjs", [
       `--lesson=${lessonId}`,
       `--title=${title}`,
@@ -136,9 +136,7 @@ export function importTranscript(rawFile, options = {}) {
 
     const evidenceData = readJsonIfExists(evidenceFile);
     if (lesson.steps.evidence.ok && evidenceData) lesson.evidenceMetrics = evidenceData.metrics;
-  }
 
-  if (!skipExtract) {
     lesson.steps.extract = runNode(root, "tools/ingestion/extract-concepts.mjs", [
       `--lesson=${lessonId}`,
       `--title=${title}`,
@@ -168,11 +166,17 @@ export function createSingleTranscriptReport(lesson, options = {}) {
     createdAt: new Date().toISOString(),
     lesson,
     totals: lesson.metrics,
-    next: [
-      "Review the candidate file before merging into canonical Knowledge Objects.",
-      "Run npm run ingest:postprocess when you want quality normalization across pending candidates.",
-      "Run npm run review:manifest to refresh the browser review queue."
-    ]
+    next: lesson.mode === "legacy-clean-evidence-extract"
+      ? [
+        "Review the legacy candidate file before merging into canonical Knowledge Objects.",
+        "Run npm run ingest:postprocess when you want quality normalization across pending candidates.",
+        "Run npm run review:manifest to refresh the browser review queue."
+      ]
+      : [
+        "Use npm run ai:import:prompt -- --lesson=<lesson> to generate a transcript-triggered AI enrichment prompt.",
+        "Save the AI JSON response under data/ai-imports/responses/.",
+        "Run npm run ai:import:normalize -- --file=data/ai-imports/responses/<response>.json."
+      ]
   };
 }
 
@@ -197,6 +201,7 @@ async function main() {
   if (!rawFile) {
     console.error("Usage: node tools/ingestion/import-transcript.mjs --lesson=01 [--cert=a-plus-220-1202]");
     console.error("   or: node tools/ingestion/import-transcript.mjs --file=data/transcripts/raw/a-plus-220-1202/<exact-file-name>.srt [--cert=a-plus-220-1202]");
+    console.error("By default this creates a lossless cleaned text copy only. Use --legacy-extract=true to run the old evidence/extract pipeline.");
     process.exit(1);
   }
 
@@ -204,8 +209,7 @@ async function main() {
     root,
     certificationId,
     cleanedDir: args.cleaned || `data/transcripts/cleaned/${certificationId}`,
-    skipEvidence: args["skip-evidence"] === "true",
-    skipExtract: args["skip-extract"] === "true"
+    legacyExtract: args["legacy-extract"] === "true"
   });
 
   const report = createSingleTranscriptReport(lesson, { certificationId });
@@ -218,6 +222,7 @@ async function main() {
     report: toProjectPath(reportFile, root),
     lesson: lesson.lessonId,
     source: lesson.rawFile,
+    mode: lesson.mode,
     totals: report.totals
   }, null, 2));
 
