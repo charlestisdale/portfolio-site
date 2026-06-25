@@ -193,20 +193,44 @@ body.graph-workspace-expanded .graph-visualizer {
   position: fixed;
   inset: .75rem;
   z-index: 1000;
-  overflow: auto;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: .65rem;
+  overflow: hidden;
   border-radius: 1rem;
   background: rgb(15, 23, 42);
   box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
   padding: .9rem;
 }
 
-body.graph-workspace-expanded .graph-canvas {
-  min-height: calc(100vh - 25rem);
+body.graph-workspace-expanded .graph-active-context,
+body.graph-workspace-expanded .graph-history,
+body.graph-workspace-expanded .graph-search,
+body.graph-workspace-expanded .graph-visualizer__tools {
+  display: none;
 }
 
-body.graph-workspace-expanded .graph-active-context,
-body.graph-workspace-expanded .graph-search {
-  background: rgba(2, 6, 23, .55);
+body.graph-workspace-expanded .graph-visualizer__header {
+  align-items: center;
+}
+
+body.graph-workspace-expanded .graph-visualizer__header p {
+  margin-bottom: 0;
+}
+
+body.graph-workspace-expanded .graph-scope-toggle {
+  align-content: start;
+}
+
+body.graph-workspace-expanded .graph-canvas {
+  min-height: 0;
+  height: 100%;
+}
+
+body.graph-workspace-expanded .graph-canvas__edges,
+body.graph-workspace-expanded .graph-canvas__nodes {
+  min-width: 1180px;
+  min-height: 760px;
 }
 
 .graph-edge path,
@@ -347,7 +371,7 @@ body.graph-workspace-expanded .graph-search {
     min-height: 520px;
   }
 
-  body.graph-workspace-expanded .graph-canvas {
-    min-height: calc(100vh - 30rem);
+  body.graph-workspace-expanded .graph-visualizer {
+    inset: .35rem;
   }
 }
