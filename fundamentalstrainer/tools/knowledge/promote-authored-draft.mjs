@@ -112,43 +112,72 @@ function stripDraftOnlyFields(object) {
   return clone;
 }
 
+function canonicalGraphType(type) {
+  const normalized = String(type || "").trim().toLowerCase();
+  const map = {
+    prerequisite: "requires",
+    prerequisites: "requires",
+    depends_on: "requires",
+    requires: "requires",
+    parent: "parent_of",
+    parents: "parent_of",
+    parent_of: "parent_of",
+    child: "child_of",
+    children: "child_of",
+    child_of: "child_of",
+    replaced_by: "supersedes",
+    replacedby: "supersedes",
+    related: "uses",
+    related_to: "uses",
+    uses: "uses",
+    contrastswith: "contrasts_with",
+    contrasts_with: "contrasts_with",
+    compares: "compares",
+    alternative_to: "alternative_to"
+  };
+  return map[normalized] || "uses";
+}
+
 function relationshipEdgesFor(object) {
   const today = new Date().toISOString().slice(0, 10);
   const scalarGroups = [
-    ["prerequisite", object.relationships?.prerequisites],
-    ["parent", object.relationships?.parents],
-    ["child", object.relationships?.children],
-    ["replaced_by", object.relationships?.replacedBy]
+    ["requires", object.relationships?.prerequisites],
+    ["parent_of", object.relationships?.parents],
+    ["child_of", object.relationships?.children],
+    ["supersedes", object.relationships?.replacedBy]
   ];
   const objectGroups = [
-    ["related", object.relationships?.related],
+    ["uses", object.relationships?.related],
     ["contrasts_with", object.relationships?.contrastsWith]
   ];
 
   const scalarEdges = scalarGroups.flatMap(([type, ids]) => asArray(ids).map(targetId => ({ targetId, type, reason: "Promoted from reviewed authored draft." })));
-  const objectEdges = objectGroups.flatMap(([type, items]) => asArray(items).map(item => ({
+  const objectEdges = objectGroups.flatMap(([fallbackType, items]) => asArray(items).map(item => ({
     targetId: item.id,
-    type,
+    type: canonicalGraphType(item.relationship || item.type || fallbackType),
     reason: item.reason || "Promoted from reviewed authored draft.",
     strength: item.strength || "medium"
   })));
 
   return [...scalarEdges, ...objectEdges]
     .filter(edge => edge.targetId && edge.targetId !== object.id)
-    .map(edge => ({
-      schemaVersion: "1.0.0",
-      id: `rel.${object.id}.${edge.type}.${edge.targetId}`.replace(/[^a-zA-Z0-9.-]+/g, "-"),
-      sourceId: object.id,
-      targetId: edge.targetId,
-      type: edge.type,
-      strength: edge.strength || "medium",
-      direction: "outbound",
-      status: "draft",
-      evidence: [],
-      notes: edge.reason,
-      createdAt: today,
-      updatedAt: today
-    }));
+    .map(edge => {
+      const type = canonicalGraphType(edge.type);
+      return {
+        schemaVersion: "1.0.0",
+        id: `rel.${object.id}.${type}.${edge.targetId}`.replace(/[^a-zA-Z0-9.-]+/g, "-"),
+        sourceId: object.id,
+        targetId: edge.targetId,
+        type,
+        strength: edge.strength || "medium",
+        direction: "outbound",
+        status: "draft",
+        evidence: [],
+        notes: edge.reason,
+        createdAt: today,
+        updatedAt: today
+      };
+    });
 }
 
 function mergeIndex(newPath) {
@@ -175,7 +204,7 @@ function mergeGraph(certification, edges) {
     certification,
     relationships: []
   };
-  const byId = new Map(asArray(graph.relationships).map(edge => [edge.id, edge]));
+  const byId = new Map(asArray(graph.relationships).map(edge => [edge.id, { ...edge, type: canonicalGraphType(edge.type) }]));
   for (const edge of edges) byId.set(edge.id, edge);
   const updated = {
     ...graph,
