@@ -2,6 +2,8 @@
 
 This workflow prevents transcript imports from directly polluting the trusted knowledge base.
 
+The review step is a promotion review, not a raw transcript approval step. The AI may use the transcript as a topic trigger and enrich useful concepts with general IT knowledge. Human review decides whether that enriched draft is accurate, useful, deduplicated, and ready to become canonical platform knowledge.
+
 ## 1. Clean the transcript
 
 Place `.srt` files in:
@@ -16,22 +18,36 @@ Then run:
 npm run clean:srt -- data/transcripts/raw/16-example.srt data/transcripts/cleaned/16-example.txt
 ```
 
-## 2. Extract candidate concepts
+## 2. Generate an AI import prompt
 
 ```bash
-npm run ingest:extract -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
+npm run ai:import:prompt -- --lesson=16 --file=data/transcripts/cleaned/16-example.txt
+```
+
+The generated prompt treats the transcript as a topic trigger. It asks the AI to return learner-ready Knowledge Object candidates with transcript evidence separated from AI-enriched learning content.
+
+Save the AI JSON response under:
+
+```text
+data/ai-imports/responses/
+```
+
+Then normalize it:
+
+```bash
+npm run ai:import:normalize -- --file=data/ai-imports/responses/16-response.json
 ```
 
 This creates:
 
 ```text
-data/imports/pending/16-candidates.json
+data/imports/pending/16-ai-candidates.json
 ```
 
 ## 3. Detect possible duplicates
 
 ```bash
-npm run ingest:duplicates -- --file=data/imports/pending/16-candidates.json
+npm run ingest:duplicates -- --file=data/imports/pending/16-ai-candidates.json
 ```
 
 This updates the pending candidate file and writes a report to:
@@ -42,7 +58,7 @@ data/imports/reports/
 
 ## 4. Human review
 
-Open the pending candidate file and set each candidate to one of:
+Open the pending candidate file or local review UI and set each candidate to one of:
 
 ```text
 undecided
@@ -53,16 +69,32 @@ ignore
 
 Do not merge while anything is still `undecided`.
 
+### What review means
+
+Approve only knowledge decisions, not raw transcript mentions.
+
+For each candidate, check:
+
+- Is this a real reusable Knowledge Object?
+- Should it create a new object or merge into an existing object?
+- Does transcript evidence show why this topic was triggered by the lesson?
+- Are AI-enriched facts accurate and useful?
+- Does the candidate meet the minimum knowledge threshold?
+- Are relationships useful and not graph pollution?
+- Should weak mentions be ignored instead of promoted?
+
+A sentence like `Another popular file system you might run into is ext4.` is only transcript evidence. It should never be approved as the whole learning object. Either approve a useful enriched `filesystems.ext4` draft or reject the item as `mentioned-only`.
+
 ## 5. Build an import report
 
 ```bash
-npm run ingest:report -- --file=data/imports/pending/16-candidates.json
+npm run ingest:report -- --file=data/imports/pending/16-ai-candidates.json
 ```
 
 ## 6. Dry-run merge
 
 ```bash
-npm run ingest:merge -- --file=data/imports/pending/16-candidates.json
+npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json
 ```
 
 By default this is a dry run.
@@ -70,14 +102,14 @@ By default this is a dry run.
 ## 7. Real merge
 
 ```bash
-npm run ingest:merge -- --file=data/imports/pending/16-candidates.json --dry-run=false
+npm run ingest:merge -- --file=data/imports/pending/16-ai-candidates.json --dry-run=false
 ```
 
 `create-new` candidates become draft knowledge objects. `merge-existing` candidates are flagged for manual merge because blindly merging can damage high-quality records.
 
 ## Browser Review UI
 
-The project now includes a local review page:
+The project includes a local review page:
 
 ```text
 review.html
