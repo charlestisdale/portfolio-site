@@ -30,6 +30,7 @@
     "ai:knowledge:author-prompt": "node tools/ai/create-knowledge-author-prompt.mjs",
     "ai:knowledge:author-normalize": "node tools/ai/normalize-knowledge-author-output.mjs",
     "ai:knowledge:promote-authored": "node tools/knowledge/promote-authored-draft.mjs",
+    "curriculum:map-reviewed": "node tools/curriculum/map-reviewed-knowledge.mjs",
     "discovery:prompt": "node tools/ai/create-discovery-prompt.mjs",
     "discovery:normalize": "node tools/ai/normalize-discovery-package.mjs",
     "knowledge:reset": "node tools/knowledge/reset-knowledge-store.mjs",
