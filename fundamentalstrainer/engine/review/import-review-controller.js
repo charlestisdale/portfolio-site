@@ -77,8 +77,13 @@ document.addEventListener("click", event => {
   if (exportButton) {
     const objects = exportApprovedObjects();
     downloadJson("approved-knowledge-objects.json", {
-      generatedBy: "browser-import-review-ui",
+      generatedBy: "import-center-enriched-review-ui",
+      schemaVersion: "approved-knowledge-objects.v2",
       generatedAt: new Date().toISOString(),
+      notes: [
+        "Generated from enriched pending candidates reviewed in the Import Center.",
+        "Run npm run knowledge:audit-export -- --file=approved-knowledge-objects.json before promotion."
+      ],
       objects
     });
     exportButton.textContent = `Exported ${objects.length} approved object(s)`;
