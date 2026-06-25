@@ -7,6 +7,7 @@ export class KnowledgeEngine {
   constructor({ contentSource = new JsonContentSource() } = {}) {
     this.source = contentSource;
     this.certifications = new Map();
+    this.curricula = new Map();
     this.objectives = new Map();
     this.lessons = new Map();
     this.objects = new Map();
@@ -30,6 +31,11 @@ export class KnowledgeEngine {
         const id = lesson.id || `${certification.id}.lesson-${String(lesson.lessonId || lesson.order).padStart(2, "0")}`;
         this.lessons.set(id, { ...lesson, id, certification: certification.id });
       }
+    }
+
+    if (certification.curriculumManifest) {
+      const curriculum = await this.source.json(certification.curriculumManifest);
+      this.curricula.set(curriculum.id || certification.id, { ...curriculum, certification: certification.id });
     }
 
     if (certification.knowledgeIndex) {
@@ -98,9 +104,14 @@ export class KnowledgeEngine {
     return { lesson, knowledge: this.all().filter(object => hasLessonMapping(object, key)) };
   }
 
+  curriculum(curriculumId) {
+    return this.curricula.get(curriculumId) || this.curricula.get(this.certifications.get(curriculumId)?.id) || null;
+  }
+
   certification(certId) {
     return {
       certification: this.certifications.get(certId) || null,
+      curriculum: this.curriculum(certId),
       objectives: [...this.objectives.values()].filter(objective => objective.certification === certId),
       lessons: [...this.lessons.values()].filter(lesson => lesson.certification === certId),
       knowledge: this.all({ certification: certId })
@@ -142,6 +153,7 @@ export class KnowledgeEngine {
     const objects = this.all();
     return {
       certifications: this.certifications.size,
+      curricula: this.curricula.size,
       objectives: this.objectives.size,
       lessons: this.lessons.size,
       knowledgeObjects: objects.length,
