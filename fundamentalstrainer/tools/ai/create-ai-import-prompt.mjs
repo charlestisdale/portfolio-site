@@ -62,11 +62,11 @@ const outputDir = path.resolve(root, "data", "ai-imports", "prompts");
 fs.mkdirSync(outputDir, { recursive: true });
 const outputFile = path.join(outputDir, `${resolvedLessonId}-${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-ai-import-prompt.md`);
 
-const prompt = `# AI Transcript Import
+const prompt = `# AI Transcript-Triggered Knowledge Import
 
-You are converting an instructional IT lesson transcript into reviewable Knowledge Object candidates for a knowledge-first learning platform.
+You are converting an instructional IT lesson transcript into reviewable, learner-ready Knowledge Object candidates for a knowledge-first learning platform.
 
-This is not a quiz generator. The goal is to identify durable concepts, evidence, and relationships that can later power study paths, flashcards, PBQs, assessments, tutoring, recommendations, and analytics.
+This is not a quiz generator and it is not a transcript summarizer. The transcript is a topic trigger: it tells you which concepts matter in this lesson. Your job is to build complete draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
 
 ## Source Metadata
 - certificationId: ${certificationId}
@@ -77,29 +77,40 @@ This is not a quiz generator. The goal is to identify durable concepts, evidence
 ## Required Pipeline
 Transcript
   ↓
-AI identifies concepts
+AI discovers technical topics mentioned or taught
   ↓
-AI identifies relationships
+AI classifies each topic as teachable, merge-existing, mentioned-only, or ignore
   ↓
-AI identifies evidence
+AI enriches teachable topics with general IT knowledge when the transcript is incomplete
   ↓
-Candidate Knowledge Objects
+AI clearly separates transcript evidence from enriched learning content
+  ↓
+Reviewable Knowledge Object candidates
 
 ## Critical Rules
 - Return JSON only. No markdown around the JSON.
-- Do not invent facts that are not supported by the transcript.
-- Every candidate must include evidence from the transcript.
+- Do not merely repeat weak transcript wording. If a topic is worth importing, explain what a learner needs to know about it.
+- Use the transcript to decide which topics are relevant, but do not limit useful learning facts to transcript wording.
+- Separate transcript-supported facts from AI-enriched facts.
+- Mark AI-enriched facts as requiring human review.
+- Every candidate must include at least one transcriptEvidence entry showing why the topic was triggered by this lesson.
+- A transcript quote can prove that a topic was mentioned; it does not need to prove every enriched fact.
 - Prefer reusable Knowledge Objects over certification-only facts.
-- Avoid making one object for every sentence. Create objects only for concepts worth teaching or testing.
-- Prefer stable IDs like "windows.task-manager", "networking.dhcp", "security.firewall".
-- If a concept is only mentioned in passing and not taught, put it in rejectedConcepts.
-- Relationships must be supported by transcript evidence or obvious learning structure.
-- Keep explanations concise and learner-focused.
+- Avoid one object per sentence. Create objects only for concepts worth teaching, testing, linking, or reviewing.
+- Prefer stable IDs like "windows.task-manager", "networking.dhcp", "security.firewall", "filesystems.ext4".
+- If a concept is mentioned but not worth a Knowledge Object yet, put it in rejectedConcepts with classification "mentioned-only".
+- Relationships may use general IT knowledge, but mark whether they are transcript-supported or AI-enriched.
+- Keep explanations learner-focused, not transcript-focused.
 - Mark uncertainty explicitly with confidence below 0.7.
+
+## Minimum Knowledge Threshold
+Do not promote a topic into concepts unless the candidate teaches something useful. A valid candidate should include at least two of these: definition, purpose, how it is used, comparison, exam relevance, procedure, example, common mistake, relationship to another taught concept.
+
+If the transcript only says something like "Another popular file system is ext4", do not return that sentence as the summary. Either enrich it into a useful file-system Knowledge Object or reject it as mentioned-only if it is not relevant enough for this lesson.
 
 ## Required JSON Shape
 {
-  "schemaVersion": "ai-transcript-import.v1",
+  "schemaVersion": "ai-transcript-import.v2",
   "certificationId": "${certificationId}",
   "lessonId": "${resolvedLessonId}",
   "lessonTitle": "${lessonTitle}",
@@ -112,42 +123,62 @@ Candidate Knowledge Objects
       "type": "concept | tool | command | protocol | operating-system | service | security-control | file-system | hardware | troubleshooting-step",
       "domains": ["domain"],
       "aliases": ["optional alias"],
+      "classification": "teachable | merge-existing | mentioned-only | ignore | needs-enrichment",
       "confidence": 0.0,
-      "summaryDraft": "One or two sentence learning summary.",
-      "explanationDraft": "Short explanation of what the learner should understand.",
+      "summaryDraft": "Learner-ready summary. Do not merely repeat the transcript.",
+      "explanationDraft": "Complete explanation of what the learner should understand.",
+      "transcriptEvidence": [
+        {
+          "evidenceId": "AI-EVID-001",
+          "quote": "Short transcript quote or close excerpt that triggered this topic.",
+          "reason": "Why this quote makes the topic relevant.",
+          "evidenceType": "definition | example | comparison | relationship | procedure | exam-note | mention",
+          "supports": "topic-trigger | fact | relationship"
+        }
+      ],
       "factsDraft": [
         {
-          "text": "Supported fact from the lesson.",
+          "text": "Useful learner fact. This may be enriched beyond the transcript.",
           "importance": "exam-critical | high | medium | low",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "tags": ["tag"]
         }
       ],
       "examplesDraft": [
         {
-          "text": "Concrete example if supported.",
+          "text": "Concrete example when useful.",
           "context": "When this matters.",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "tags": ["tag"]
         }
       ],
       "examTipsDraft": [
         {
-          "text": "Exam-useful lesson if supported.",
+          "text": "Exam-useful lesson.",
           "difficulty": "easy | medium | hard",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "tags": ["tag"]
         }
       ],
       "commonMistakesDraft": [
         {
-          "text": "Common learner mistake if supported.",
+          "text": "Common learner mistake.",
           "difficulty": "easy | medium | hard",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "tags": ["tag"]
         }
       ],
       "scenariosDraft": [
         {
-          "situation": "Scenario if supported.",
+          "situation": "Scenario if useful.",
           "expectedAction": "Correct action or answer.",
           "difficulty": "easy | medium | hard",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "tags": ["tag"]
         }
       ],
@@ -156,15 +187,9 @@ Candidate Knowledge Objects
           "task": "Possible hands-on task if appropriate.",
           "skillsTested": ["skill"],
           "difficulty": "easy | medium | hard",
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true,
           "assetsNeeded": []
-        }
-      ],
-      "evidence": [
-        {
-          "evidenceId": "AI-EVID-001",
-          "quote": "Short quote or close transcript excerpt.",
-          "reason": "Why this supports the candidate.",
-          "evidenceType": "definition | example | comparison | relationship | procedure | exam-note | mention"
         }
       ],
       "suggestedRelationships": [
@@ -172,9 +197,16 @@ Candidate Knowledge Objects
           "id": "other.knowledge-id",
           "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
           "reason": "Why these concepts are related.",
-          "evidence": "Transcript support for the relationship."
+          "basis": "transcript-supported | ai-enriched",
+          "requiresReview": true
         }
       ],
+      "sourceQuality": {
+        "transcriptSupport": "strong | medium | weak",
+        "aiEnrichmentUsed": true,
+        "enrichmentReason": "Why enrichment was needed.",
+        "minimumKnowledgeThresholdMet": true
+      },
       "reviewDecision": "undecided",
       "reviewNotes": ""
     }
@@ -185,13 +217,16 @@ Candidate Knowledge Objects
       "target": "domain.target-id",
       "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
       "reason": "Relationship reason.",
-      "evidence": "Transcript support."
+      "basis": "transcript-supported | ai-enriched",
+      "requiresReview": true
     }
   ],
   "rejectedConcepts": [
     {
       "title": "Mentioned but not imported",
-      "reason": "Why this should not become a Knowledge Object."
+      "classification": "mentioned-only | too-vague | duplicate | out-of-scope | not-technical",
+      "reason": "Why this should not become a Knowledge Object.",
+      "transcriptEvidence": "Optional short quote or phrase that triggered rejection."
     }
   ],
   "importNotes": ["Any uncertainty or cleanup warnings."]
