@@ -39,42 +39,31 @@ function normalizeConfidence(value) {
   return Math.max(0, Math.min(1, number));
 }
 
-function normalizeBasis(value, fallback = "ai-enriched") {
-  const normalized = String(value || fallback).trim().toLowerCase();
-  if (["transcript-supported", "ai-enriched"].includes(normalized)) return normalized;
-  return fallback;
+function normalizeEnum(value, allowed, fallback) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return allowed.includes(normalized) ? normalized : fallback;
 }
 
-function normalizeDraftItem(item, candidate, defaults = {}) {
-  if (typeof item === "string") {
-    return {
-      text: item,
-      importance: defaults.importance || (candidate.confidence >= 0.85 ? "high" : "medium"),
-      basis: defaults.basis || "ai-enriched",
-      requiresReview: true,
-      evidenceIds: [],
-      tags: candidate.domains || []
-    };
-  }
-
-  return {
-    ...item,
-    text: String(item?.text || item?.situation || item?.task || "").trim(),
-    importance: item?.importance || defaults.importance || (candidate.confidence >= 0.85 ? "high" : "medium"),
-    basis: normalizeBasis(item?.basis, defaults.basis || "ai-enriched"),
-    requiresReview: item?.requiresReview !== false,
-    evidenceIds: asArray(item?.evidenceIds).map(String),
-    tags: Array.isArray(item?.tags) ? item.tags : candidate.domains || []
-  };
+function normalizeBasis(value, fallback = "ai-inference") {
+  return normalizeEnum(value, [
+    "source-supported",
+    "ai-inference",
+    "general-it-knowledge",
+    "common-practice",
+    "exam-knowledge",
+    "transcript-supported",
+    "ai-enriched"
+  ], fallback)
+    .replace("transcript-supported", "source-supported")
+    .replace("ai-enriched", "general-it-knowledge");
 }
 
 function normalizeEvidence(evidence, index) {
   if (typeof evidence === "string") {
     return {
-      evidenceId: `AI-EVID-${String(index + 1).padStart(3, "0")}`,
-      text: evidence,
+      evidenceId: `EVID-${String(index + 1).padStart(3, "0")}`,
       quote: evidence,
-      reason: "AI-selected source evidence.",
+      reason: "Source excerpt selected during AI analysis.",
       evidenceType: "mention",
       supports: "topic-trigger"
     };
@@ -82,207 +71,195 @@ function normalizeEvidence(evidence, index) {
 
   const quote = String(evidence?.quote || evidence?.text || evidence?.excerpt || "").trim();
   return {
-    evidenceId: evidence?.evidenceId || `AI-EVID-${String(index + 1).padStart(3, "0")}`,
-    text: quote,
+    evidenceId: evidence?.evidenceId || `EVID-${String(index + 1).padStart(3, "0")}`,
     quote,
-    reason: evidence?.reason || "AI-selected source evidence.",
+    reason: evidence?.reason || "Source excerpt selected during AI analysis.",
     evidenceType: evidence?.evidenceType || "mention",
     supports: evidence?.supports || "topic-trigger"
   };
 }
 
-function normalizeRelationship(relationship) {
+function normalizeReviewRequired(item) {
   return {
-    id: relationship?.id || relationship?.target || relationship?.targetId || "",
-    type: relationship?.type || "related_to",
-    reason: relationship?.reason || relationship?.evidence || "AI-suggested relationship.",
-    evidence: relationship?.evidence || relationship?.reason || "",
-    basis: normalizeBasis(relationship?.basis, relationship?.evidence ? "transcript-supported" : "ai-enriched"),
-    requiresReview: relationship?.requiresReview !== false,
-    evidenceIds: asArray(relationship?.evidenceIds).map(String)
+    ...item,
+    basis: normalizeBasis(item?.basis),
+    requiresReview: item?.requiresReview !== false
   };
 }
 
-function normalizeCurriculumSuggestion(suggestion, candidate = {}, defaults = {}) {
-  const knowledgeId = suggestion?.knowledgeId || candidate.proposedKnowledgeId || candidate.id || "";
-  return {
-    knowledgeId,
+function normalizePlacement(suggestion, concept = {}, defaults = {}) {
+  return normalizeReviewRequired({
+    conceptId: suggestion?.conceptId || concept.conceptId || "",
+    proposedKnowledgeId: suggestion?.proposedKnowledgeId || concept.proposedKnowledgeId || concept.id || "",
     curriculumId: String(suggestion?.curriculumId || defaults.certificationId || "a-plus-220-1202"),
     sectionId: String(suggestion?.sectionId || "").trim(),
     moduleId: String(suggestion?.moduleId || "").trim(),
     proposedModuleTitle: suggestion?.proposedModuleTitle || "",
     reason: suggestion?.reason || "AI-suggested curriculum placement.",
-    basis: normalizeBasis(suggestion?.basis, "ai-enriched"),
-    confidence: normalizeConfidence(suggestion?.confidence ?? candidate.confidence ?? 0.7),
-    requiresReview: suggestion?.requiresReview !== false,
     evidenceIds: asArray(suggestion?.evidenceIds).map(String)
-  };
+  });
 }
 
-function normalizeSourceQuality(candidate, normalized) {
-  const sourceQuality = candidate.sourceQuality || {};
-  const transcriptSupport = ["strong", "medium", "weak"].includes(sourceQuality.transcriptSupport)
-    ? sourceQuality.transcriptSupport
-    : normalized.transcriptEvidence.length > 1 ? "medium" : "weak";
-  const enrichedItems = [
-    ...normalized.factsDraft,
-    ...normalized.examplesDraft,
-    ...normalized.examTipsDraft,
-    ...normalized.commonMistakesDraft,
-    ...normalized.scenariosDraft,
-    ...normalized.pbqIdeasDraft,
-    ...normalized.suggestedRelationships,
-    ...normalized.curriculumSuggestions
-  ].filter(item => item.basis === "ai-enriched");
-  const richnessLevel = calculateRichnessLevel(normalized);
-
-  return {
-    transcriptSupport,
-    aiEnrichmentUsed: enrichedItems.length > 0,
-    enrichmentReason: sourceQuality.enrichmentReason || (enrichedItems.length ? "Source text triggered the topic, and AI expanded it into learner-ready content." : "No enrichment reason provided."),
-    minimumKnowledgeThresholdMet: hasMinimumKnowledge(normalized),
-    richnessLevel
-  };
+function normalizeRelationship(relationship, concept = {}) {
+  return normalizeReviewRequired({
+    sourceConceptId: relationship?.sourceConceptId || concept.conceptId || "",
+    sourceKnowledgeId: relationship?.sourceKnowledgeId || relationship?.source || concept.proposedKnowledgeId || "",
+    targetKnowledgeId: relationship?.targetKnowledgeId || relationship?.target || relationship?.id || "",
+    type: relationship?.type || "related_to",
+    reason: relationship?.reason || relationship?.evidence || "AI-suggested relationship.",
+    evidenceIds: asArray(relationship?.evidenceIds).map(String)
+  });
 }
 
-function hasMinimumKnowledge(candidate) {
-  let score = 0;
-  if (candidate.summaryDraft && candidate.summaryDraft.length >= 80) score += 1;
-  if (candidate.explanationDraft && candidate.explanationDraft.length >= 160) score += 1;
-  if (candidate.factsDraft.length >= 2) score += 1;
-  if (candidate.examplesDraft.length) score += 1;
-  if (candidate.examTipsDraft.length) score += 1;
-  if (candidate.commonMistakesDraft.length) score += 1;
-  if (candidate.scenariosDraft.length || candidate.pbqIdeasDraft.length) score += 1;
-  if (candidate.suggestedRelationships.length) score += 1;
-  if (candidate.curriculumSuggestions.length) score += 1;
-  return score >= 2;
-}
-
-function calculateRichnessLevel(candidate) {
-  if (!candidate.factsDraft.length) return "incomplete";
-  if (candidate.factsDraft.length >= 6 && candidate.explanationDraft.length >= 260 && candidate.suggestedRelationships.length >= 2 && candidate.curriculumSuggestions.length >= 1) {
-    if (candidate.examTipsDraft.length || candidate.commonMistakesDraft.length || candidate.examplesDraft.length || candidate.scenariosDraft.length || candidate.pbqIdeasDraft.length) {
-      return "rich";
-    }
+function normalizePrerequisite(prerequisite) {
+  if (typeof prerequisite === "string") {
+    return normalizeReviewRequired({
+      proposedKnowledgeId: prerequisite,
+      reason: "AI-suggested prerequisite."
+    });
   }
-  if (candidate.factsDraft.length >= 4 && candidate.explanationDraft.length >= 160 && candidate.curriculumSuggestions.length >= 1) return "acceptable";
-  return "thin";
+
+  return normalizeReviewRequired({
+    proposedKnowledgeId: prerequisite?.proposedKnowledgeId || prerequisite?.knowledgeId || prerequisite?.id || "",
+    reason: prerequisite?.reason || "AI-suggested prerequisite.",
+    evidenceIds: asArray(prerequisite?.evidenceIds).map(String)
+  });
 }
 
-function normalizeCandidate(candidate, index, globalRelationships = [], globalCurriculumSuggestions = [], defaults = {}) {
-  const domains = Array.isArray(candidate.domains) && candidate.domains.length ? candidate.domains.map(String) : ["general"];
-  const confidence = normalizeConfidence(candidate.confidence);
-  const proposedKnowledgeId = normalizeId(candidate.proposedKnowledgeId || candidate.id, candidate.title, domains);
-  const ownRelationships = Array.isArray(candidate.suggestedRelationships) ? candidate.suggestedRelationships : [];
-  const matchingGlobalRelationships = globalRelationships
-    .filter(item => item.source === proposedKnowledgeId)
-    .map(item => ({ id: item.target, type: item.type, reason: item.reason, evidence: item.evidence, basis: item.basis, requiresReview: item.requiresReview, evidenceIds: item.evidenceIds }));
-  const ownCurriculumSuggestions = asArray(candidate.curriculumSuggestions);
-  const matchingGlobalCurriculumSuggestions = globalCurriculumSuggestions.filter(item => item.knowledgeId === proposedKnowledgeId);
+function normalizeMergeRecommendation(recommendation, concept = {}) {
+  if (!recommendation) return null;
+  if (recommendation.shouldMerge === false && !recommendation.targetKnowledgeId) return null;
 
-  const transcriptEvidence = asArray(candidate.transcriptEvidence || candidate.evidence).map(normalizeEvidence).filter(item => item.text);
-  const classification = candidate.classification || candidate.importClassification || "teachable";
-  const enrichment = candidate.enrichment || {};
+  return normalizeReviewRequired({
+    sourceConceptId: recommendation.sourceConceptId || concept.conceptId || "",
+    sourceKnowledgeId: recommendation.sourceKnowledgeId || concept.proposedKnowledgeId || "",
+    targetKnowledgeId: recommendation.targetKnowledgeId || recommendation.targetId || recommendation.id || "",
+    reason: recommendation.reason || "AI-suggested merge review.",
+    shouldMerge: recommendation.shouldMerge !== false
+  });
+}
+
+function normalizeAuthoringGuidance(guidance = {}, classification = "teachable") {
+  const shouldAuthor = guidance.shouldAuthor ?? ["teachable", "merge-existing", "needs-enrichment"].includes(classification);
+  return {
+    shouldAuthor,
+    recommendedDepth: normalizeEnum(guidance.recommendedDepth, ["brief", "normal", "deep"], shouldAuthor ? "normal" : "brief"),
+    mustCover: asArray(guidance.mustCover).map(String),
+    niceToCover: asArray(guidance.niceToCover).map(String),
+    avoidCreatingDuplicateOf: asArray(guidance.avoidCreatingDuplicateOf).map(String),
+    notes: asArray(guidance.notes).map(String)
+  };
+}
+
+function normalizeDiscoveryConcept(concept, index, defaults = {}) {
+  const domains = Array.isArray(concept.domains) && concept.domains.length ? concept.domains.map(String) : [concept.category || "general"];
+  const proposedKnowledgeId = normalizeId(concept.proposedKnowledgeId || concept.knowledgeId || concept.id, concept.title, domains);
+  const classification = normalizeEnum(
+    concept.classification || concept.importClassification,
+    ["teachable", "merge-existing", "mentioned-only", "ignore", "needs-enrichment"],
+    "teachable"
+  );
+  const conceptId = concept.conceptId || concept.candidateId || `DISC-${String(index + 1).padStart(3, "0")}`;
+  const sourceEvidence = asArray(concept.sourceEvidence || concept.transcriptEvidence || concept.evidence)
+    .map(normalizeEvidence)
+    .filter(item => item.quote);
 
   const normalized = {
-    candidateId: candidate.candidateId || `AI-CAND-${String(index + 1).padStart(3, "0")}`,
-    title: String(candidate.title || proposedKnowledgeId).trim(),
-    slug: slugify(candidate.slug || candidate.title || proposedKnowledgeId.split(".").at(-1)),
+    conceptId,
+    title: String(concept.title || proposedKnowledgeId).trim(),
+    slug: slugify(concept.slug || concept.title || proposedKnowledgeId.split(".").at(-1)),
     proposedKnowledgeId,
-    type: candidate.type || "concept",
-    category: domains[0],
+    type: concept.type || "concept",
     domains,
-    aliases: Array.isArray(candidate.aliases) ? candidate.aliases : [],
+    aliases: Array.isArray(concept.aliases) ? concept.aliases.map(String) : [],
     classification,
-    confidence,
-    difficulty: candidate.difficulty || "foundational",
-    importance: candidate.importance || "medium",
-    summaryDraft: String(candidate.summaryDraft || candidate.summary || enrichment.summary || "").trim(),
-    explanationDraft: String(candidate.explanationDraft || candidate.explanation || enrichment.explanation || candidate.summaryDraft || "").trim(),
-    transcriptEvidence,
-    evidence: transcriptEvidence,
-    factsDraft: asArray(candidate.factsDraft || candidate.facts || enrichment.facts).map(fact => normalizeDraftItem(fact, { confidence, domains })).filter(fact => fact.text),
-    examplesDraft: asArray(candidate.examplesDraft || candidate.examples || enrichment.examples).map(item => normalizeDraftItem(item, { confidence, domains })).filter(item => item.text),
-    examTipsDraft: asArray(candidate.examTipsDraft || enrichment.examTips).map(item => normalizeDraftItem(item, { confidence, domains }, { importance: "exam-critical" })).filter(item => item.text),
-    commonMistakesDraft: asArray(candidate.commonMistakesDraft || enrichment.commonMistakes).map(item => normalizeDraftItem(item, { confidence, domains })).filter(item => item.text),
-    scenariosDraft: asArray(candidate.scenariosDraft || enrichment.scenarios).map(item => normalizeDraftItem(item, { confidence, domains })).filter(item => item.text),
-    pbqIdeasDraft: asArray(candidate.pbqIdeasDraft || enrichment.pbqIdeas).map(item => normalizeDraftItem(item, { confidence, domains })).filter(item => item.text),
-    possibleDuplicates: [],
-    suggestedRelationships: [...ownRelationships, ...matchingGlobalRelationships]
-      .map(normalizeRelationship)
-      .filter(item => item.id && item.id !== proposedKnowledgeId),
-    curriculumSuggestions: [...ownCurriculumSuggestions, ...matchingGlobalCurriculumSuggestions]
-      .map(item => normalizeCurriculumSuggestion(item, { ...candidate, proposedKnowledgeId, confidence }, defaults))
+    teachingValue: normalizeEnum(concept.teachingValue || concept.importance, ["high", "medium", "low", "exam-critical"], "medium").replace("exam-critical", "high"),
+    topicConfidence: normalizeConfidence(concept.topicConfidence ?? concept.confidence),
+    evidenceStrength: normalizeEnum(concept.evidenceStrength || concept.sourceQuality?.transcriptSupport, ["strong", "medium", "weak"], sourceEvidence.length > 1 ? "medium" : "weak"),
+    enrichmentLevel: normalizeEnum(concept.enrichmentLevel, ["none", "low", "medium", "high"], concept.sourceQuality?.aiEnrichmentUsed ? "medium" : "high"),
+    reviewPriority: normalizeEnum(concept.reviewPriority, ["low", "normal", "high"], "normal"),
+    sourceEvidence,
+    prerequisites: asArray(concept.prerequisites).map(normalizePrerequisite).filter(item => item.proposedKnowledgeId),
+    relationshipSuggestions: asArray(concept.relationshipSuggestions || concept.suggestedRelationships)
+      .map(item => normalizeRelationship(item, { conceptId, proposedKnowledgeId }))
+      .filter(item => item.targetKnowledgeId),
+    curriculumPlacementSuggestions: asArray(concept.curriculumPlacementSuggestions || concept.curriculumSuggestions)
+      .map(item => normalizePlacement(item, { conceptId, proposedKnowledgeId }, defaults))
       .filter(item => item.sectionId || item.moduleId || item.proposedModuleTitle),
-    reviewDecision: candidate.reviewDecision || "undecided",
-    reviewNotes: candidate.reviewNotes || ""
+    mergeRecommendation: normalizeMergeRecommendation(concept.mergeRecommendation, { conceptId, proposedKnowledgeId }),
+    authoringGuidance: normalizeAuthoringGuidance(concept.authoringGuidance, classification),
+    reviewDecision: concept.reviewDecision || "undecided",
+    reviewNotes: concept.reviewNotes || ""
   };
 
-  if (!normalized.summaryDraft) {
-    normalized.summaryDraft = `${normalized.title} was identified by AI from the source text and needs human review before becoming a Knowledge Object.`;
-  }
-
-  if (!normalized.explanationDraft) normalized.explanationDraft = normalized.summaryDraft;
-  normalized.sourceQuality = normalizeSourceQuality(candidate, normalized);
-
+  normalized.quality = auditDiscoveryConcept(normalized);
   return normalized;
 }
 
-function qualityBand(score) {
-  if (score >= 85) return "high";
-  if (score >= 60) return "needs-edit";
-  return "low";
-}
-
-function auditAiCandidate(candidate) {
+function auditDiscoveryConcept(concept) {
   const flags = [];
-  const textVolume = `${candidate.summaryDraft} ${candidate.explanationDraft}`.trim().length;
-  const enrichedFacts = candidate.factsDraft.filter(fact => fact.basis === "ai-enriched").length;
-  const richFields = [
-    candidate.examplesDraft.length,
-    candidate.examTipsDraft.length,
-    candidate.commonMistakesDraft.length,
-    candidate.scenariosDraft.length,
-    candidate.pbqIdeasDraft.length,
-    candidate.suggestedRelationships.length,
-    candidate.curriculumSuggestions.length
-  ].filter(Boolean).length;
 
-  if (!candidate.transcriptEvidence.length) flags.push({ code: "missing-source-trigger", message: "AI candidate has no source evidence showing why the topic was triggered." });
-  if (!candidate.factsDraft.length) flags.push({ code: "missing-facts", message: "AI candidate has no fact drafts." });
-  if (candidate.factsDraft.length > 0 && candidate.factsDraft.length < 4) flags.push({ code: "too-few-facts", message: "Rich candidates should usually include at least 4 atomic facts." });
-  if (candidate.factsDraft.length >= 4 && candidate.factsDraft.length < 6 && candidate.importance !== "low") flags.push({ code: "could-use-more-facts", message: "Important concepts should usually include 6+ atomic facts." });
-  if (candidate.confidence < 0.7) flags.push({ code: "low-confidence", message: "AI confidence is below 0.70." });
-  if (!candidate.proposedKnowledgeId.includes(".")) flags.push({ code: "unstable-id", message: "Knowledge ID does not look domain-scoped." });
-  if (!candidate.sourceQuality.aiEnrichmentUsed && candidate.sourceQuality.transcriptSupport === "weak") flags.push({ code: "weak-source-only", message: "Weak source mention was not enriched into useful learning content." });
-  if (!candidate.sourceQuality.minimumKnowledgeThresholdMet) flags.push({ code: "minimum-knowledge-threshold", message: "Candidate does not meet the minimum threshold for useful learner knowledge." });
-  if (textVolume < 260 && enrichedFacts < 4) flags.push({ code: "thin-learning-content", message: "Candidate may be repeating the source instead of teaching the concept deeply." });
-  if (richFields < 3) flags.push({ code: "missing-rich-review-fields", message: "Candidate is missing supporting review fields such as relationships, curriculum placement, exam tips, examples, mistakes, scenarios, or PBQ ideas." });
-  if (["teachable", "merge-existing", "needs-enrichment"].includes(candidate.classification) && !candidate.curriculumSuggestions.length) flags.push({ code: "missing-curriculum-suggestion", message: "Teachable candidates should propose at least one curriculum placement." });
+  if (!concept.sourceEvidence.length) flags.push({ code: "missing-source-evidence", message: "Concept has no source evidence showing why it was discovered." });
+  if (concept.topicConfidence < 0.7) flags.push({ code: "low-topic-confidence", message: "Topic confidence is below 0.70." });
+  if (!concept.proposedKnowledgeId.includes(".")) flags.push({ code: "unstable-id", message: "Proposed Knowledge ID does not look domain-scoped." });
+  if (["teachable", "merge-existing", "needs-enrichment"].includes(concept.classification) && !concept.curriculumPlacementSuggestions.length) flags.push({ code: "missing-curriculum-placement", message: "Forward-moving concepts should propose a curriculum placement." });
+  if (["teachable", "merge-existing", "needs-enrichment"].includes(concept.classification) && !concept.authoringGuidance.shouldAuthor) flags.push({ code: "authoring-guidance-disabled", message: "Forward-moving concept is not marked for authoring." });
+  if (concept.classification === "mentioned-only" && concept.authoringGuidance.shouldAuthor) flags.push({ code: "mentioned-only-marked-for-authoring", message: "Mentioned-only concepts should not be sent to authoring without review." });
+  if (concept.evidenceStrength === "weak" && concept.enrichmentLevel === "high") flags.push({ code: "weak-evidence-high-enrichment", message: "Concept depends heavily on enrichment and needs careful review." });
 
-  let score = Math.round(candidate.confidence * 100);
+  let score = Math.round(concept.topicConfidence * 100);
   score -= flags.length * 10;
-  score += Math.min(10, candidate.transcriptEvidence.length * 2);
-  score += Math.min(20, candidate.factsDraft.length * 3);
-  score += Math.min(15, richFields * 3);
-  score += candidate.sourceQuality.aiEnrichmentUsed ? 8 : 0;
-  score += candidate.sourceQuality.minimumKnowledgeThresholdMet ? 8 : 0;
-  score += candidate.curriculumSuggestions.length ? 6 : 0;
+  score += Math.min(10, concept.sourceEvidence.length * 3);
+  score += concept.curriculumPlacementSuggestions.length ? 8 : 0;
+  score += concept.relationshipSuggestions.length ? 6 : 0;
+  score += concept.prerequisites.length ? 4 : 0;
+  score += concept.authoringGuidance.mustCover.length ? 6 : 0;
 
-  if (!candidate.factsDraft.length) score = Math.min(score, 45);
-  if (candidate.factsDraft.length > 0 && candidate.factsDraft.length < 4) score = Math.min(score, 65);
-  if (candidate.sourceQuality.richnessLevel === "thin") score = Math.min(score, 70);
-  if (candidate.sourceQuality.richnessLevel === "incomplete") score = Math.min(score, 50);
-  if (!candidate.curriculumSuggestions.length && ["teachable", "merge-existing", "needs-enrichment"].includes(candidate.classification)) score = Math.min(score, 75);
-  if (richFields < 3) score = Math.min(score, 78);
+  if (!concept.sourceEvidence.length) score = Math.min(score, 60);
+  if (concept.classification === "ignore") score = Math.min(score, 60);
+  if (concept.classification === "mentioned-only") score = Math.min(score, 75);
+  if (concept.evidenceStrength === "weak" && concept.enrichmentLevel === "high") score = Math.min(score, 78);
 
   score = Math.max(0, Math.min(100, score));
 
   return {
     score,
-    band: qualityBand(score),
+    band: score >= 85 ? "high" : score >= 60 ? "needs-review" : "low",
     flags
+  };
+}
+
+function normalizeGap(gap, index) {
+  return normalizeReviewRequired({
+    gapId: gap?.gapId || `GAP-${String(index + 1).padStart(3, "0")}`,
+    title: String(gap?.title || "Knowledge gap").trim(),
+    description: String(gap?.description || gap?.reason || "").trim(),
+    relatedConceptIds: asArray(gap?.relatedConceptIds || gap?.relatedKnowledgeIds).map(String),
+    recommendation: gap?.recommendation || "Review this gap and decide whether to create, enrich, or link supporting curriculum content.",
+    severity: normalizeEnum(gap?.severity, ["low", "medium", "high"], "medium"),
+    evidenceIds: asArray(gap?.evidenceIds).map(String)
+  });
+}
+
+function normalizeRejectedMention(item, index) {
+  if (typeof item === "string") {
+    return {
+      id: `REJECT-${String(index + 1).padStart(3, "0")}`,
+      title: item,
+      classification: "mentioned-only",
+      reason: "Mentioned by source but not selected for authoring.",
+      basis: "source-supported",
+      sourceEvidence: item
+    };
+  }
+
+  return {
+    id: item.id || `REJECT-${String(index + 1).padStart(3, "0")}`,
+    title: String(item.title || "Rejected mention").trim(),
+    classification: item.classification || "mentioned-only",
+    reason: item.reason || "Not selected for authoring.",
+    basis: normalizeBasis(item.basis, "source-supported"),
+    sourceEvidence: item.sourceEvidence || item.transcriptEvidence || ""
   };
 }
 
@@ -292,80 +269,112 @@ const sourcePath = path.resolve(root, inputFile);
 if (!fs.existsSync(sourcePath)) fail(`AI import response not found: ${inputFile}`);
 
 const data = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
-const concepts = data.concepts || data.candidates || data.objects || [];
-const globalRelationships = Array.isArray(data.relationships) ? data.relationships : [];
-const globalCurriculumSuggestions = Array.isArray(data.curriculumSuggestions) ? data.curriculumSuggestions : [];
+const sourceSchemaVersion = data.schemaVersion || "unknown";
+const rawConcepts = data.conceptsDiscovered || data.concepts || data.candidates || data.objects || [];
 const lessonId = String(data.lessonId || args.lesson || "00").padStart(2, "0");
 const certificationId = data.certificationId || args.cert || args.certification || "a-plus-220-1202";
 const lessonTitle = data.lessonTitle || args.title || `Lesson ${lessonId}`;
 
-const candidates = concepts.map((candidate, index) => normalizeCandidate(candidate, index, globalRelationships, globalCurriculumSuggestions, { certificationId }));
-for (const candidate of candidates) candidate.quality = auditAiCandidate(candidate);
+const discoveredConcepts = rawConcepts.map((concept, index) => normalizeDiscoveryConcept(concept, index, { certificationId }));
+const conceptById = new Map(discoveredConcepts.map(concept => [concept.conceptId, concept]));
+const conceptByKnowledgeId = new Map(discoveredConcepts.map(concept => [concept.proposedKnowledgeId, concept]));
+
+const globalMergeRecommendations = [
+  ...asArray(data.mergeRecommendations),
+  ...discoveredConcepts.map(concept => concept.mergeRecommendation).filter(Boolean)
+].map(item => normalizeMergeRecommendation(item, conceptById.get(item?.sourceConceptId) || conceptByKnowledgeId.get(item?.sourceKnowledgeId) || {})).filter(Boolean);
+
+const globalRelationshipSuggestions = [
+  ...asArray(data.relationshipSuggestions || data.relationships),
+  ...discoveredConcepts.flatMap(concept => concept.relationshipSuggestions)
+].map(item => normalizeRelationship(item)).filter(item => item.targetKnowledgeId);
+
+const globalCurriculumPlacementSuggestions = [
+  ...asArray(data.curriculumPlacementSuggestions || data.curriculumSuggestions),
+  ...discoveredConcepts.flatMap(concept => concept.curriculumPlacementSuggestions)
+].map(item => normalizePlacement(item, {}, { certificationId })).filter(item => item.sectionId || item.moduleId || item.proposedModuleTitle);
+
+const knowledgeGaps = asArray(data.knowledgeGaps || data.gaps).map(normalizeGap);
+const rejectedMentions = asArray(data.rejectedMentions || data.rejectedConcepts).map(normalizeRejectedMention);
+
+const outDir = path.resolve(root, "data", "imports", "pending");
+fs.mkdirSync(outDir, { recursive: true });
+const outFile = path.join(outDir, `${lessonId}-transcript-intelligence.json`);
 
 const output = {
-  id: `AI-IMPORT-${certificationId}-${lessonId}`.toUpperCase().replace(/[^A-Z0-9-]+/g, "-"),
-  importSource: "ai-transcript-triggered-enrichment",
-  schemaVersion: "pending-candidates.v4",
-  sourceSchemaVersion: data.schemaVersion || "unknown",
+  id: `TRANSCRIPT-INTELLIGENCE-${certificationId}-${lessonId}`.toUpperCase().replace(/[^A-Z0-9-]+/g, "-"),
+  importSource: "transcript-intelligence",
+  schemaVersion: "pending-transcript-intelligence.v1",
+  sourceSchemaVersion,
   certificationId,
   lessonId,
   lessonTitle,
   sourceTranscript: data.sourceTranscript || "",
   transcriptInputMode: data.transcriptInputMode || "unknown",
   sourceAiResponse: toProjectPath(sourcePath, root),
-  status: "pending-review",
+  status: "pending-discovery-review",
   createdAt: new Date().toISOString(),
+  analysisQuality: {
+    isStarterAnalysis: data.analysisQuality?.isStarterAnalysis === true,
+    fixedCandidateTargetUsed: data.analysisQuality?.fixedCandidateTargetUsed === true,
+    conceptCountPolicy: data.analysisQuality?.conceptCountPolicy || "Return every concept above the minimum teaching threshold.",
+    gapsIncluded: knowledgeGaps.length > 0 || data.analysisQuality?.gapsIncluded === true,
+    mergeDetectionIncluded: globalMergeRecommendations.length > 0 || data.analysisQuality?.mergeDetectionIncluded === true,
+    curriculumPlacementIncluded: globalCurriculumPlacementSuggestions.length > 0 || data.analysisQuality?.curriculumPlacementIncluded === true,
+    relationshipDiscoveryIncluded: globalRelationshipSuggestions.length > 0 || data.analysisQuality?.relationshipDiscoveryIncluded === true,
+    richnessNotes: data.analysisQuality?.richnessNotes || ""
+  },
   metrics: {
-    transcriptParagraphs: data.metrics?.transcriptParagraphs || null,
-    transcriptSentences: data.metrics?.transcriptSentences || null,
-    candidates: candidates.length,
-    richCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "rich").length,
-    acceptableCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "acceptable").length,
-    thinCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "thin").length,
-    incompleteCandidates: candidates.filter(candidate => candidate.sourceQuality.richnessLevel === "incomplete").length,
-    highConfidenceCandidates: candidates.filter(candidate => candidate.confidence >= 0.85).length,
-    candidatesWithFactDrafts: candidates.filter(candidate => candidate.factsDraft.length).length,
-    enrichedCandidates: candidates.filter(candidate => candidate.sourceQuality.aiEnrichmentUsed).length,
-    transcriptOnlyCandidates: candidates.filter(candidate => !candidate.sourceQuality.aiEnrichmentUsed).length,
-    relationshipsSuggested: candidates.reduce((sum, candidate) => sum + candidate.suggestedRelationships.length, 0),
-    curriculumSuggestions: candidates.reduce((sum, candidate) => sum + candidate.curriculumSuggestions.length, 0),
-    candidatesWithCurriculumSuggestions: candidates.filter(candidate => candidate.curriculumSuggestions.length).length,
-    rejectedConcepts: (data.rejectedConcepts || []).length,
-    quality: candidates.reduce((summary, candidate) => {
+    conceptsDiscovered: discoveredConcepts.length,
+    teachable: discoveredConcepts.filter(concept => concept.classification === "teachable").length,
+    mergeExisting: discoveredConcepts.filter(concept => concept.classification === "merge-existing").length,
+    needsEnrichment: discoveredConcepts.filter(concept => concept.classification === "needs-enrichment").length,
+    mentionedOnly: discoveredConcepts.filter(concept => concept.classification === "mentioned-only").length,
+    ignored: discoveredConcepts.filter(concept => concept.classification === "ignore").length,
+    highPriorityReview: discoveredConcepts.filter(concept => concept.reviewPriority === "high").length,
+    weakEvidenceHighEnrichment: discoveredConcepts.filter(concept => concept.evidenceStrength === "weak" && concept.enrichmentLevel === "high").length,
+    mergeRecommendations: globalMergeRecommendations.length,
+    relationshipSuggestions: globalRelationshipSuggestions.length,
+    curriculumPlacementSuggestions: globalCurriculumPlacementSuggestions.length,
+    knowledgeGaps: knowledgeGaps.length,
+    rejectedMentions: rejectedMentions.length,
+    quality: discoveredConcepts.reduce((summary, concept) => {
       summary.total += 1;
-      summary[candidate.quality.band] = (summary[candidate.quality.band] || 0) + 1;
+      summary[concept.quality.band] = (summary[concept.quality.band] || 0) + 1;
       return summary;
-    }, { total: 0, high: 0, "needs-edit": 0, low: 0, unknown: 0 })
+    }, { total: 0, high: 0, "needs-review": 0, low: 0 })
   },
   notes: [
-    "Candidates were generated by transcript-triggered AI enrichment, not transcript-only extraction.",
-    "Source evidence shows why the topic was triggered; enriched facts still require human review before canonical promotion.",
-    "Quality scoring penalizes starter imports, missing facts, thin explanations, missing curriculum placement, and missing rich review fields.",
+    "This file is a Transcript Intelligence discovery package, not a draft Knowledge Object package.",
+    "Discovery review decides which concepts move to Knowledge Authoring.",
+    "Curriculum placement and relationship suggestions are reviewable metadata until promoted through the proper workflow.",
     ...(data.importNotes || [])
   ],
-  rejectedConcepts: data.rejectedConcepts || [],
-  candidates
+  discoveredConcepts,
+  mergeRecommendations: globalMergeRecommendations,
+  relationshipSuggestions: globalRelationshipSuggestions,
+  curriculumPlacementSuggestions: globalCurriculumPlacementSuggestions,
+  knowledgeGaps,
+  rejectedMentions
 };
 
-const outDir = path.resolve(root, "data", "imports", "pending");
-fs.mkdirSync(outDir, { recursive: true });
-const outFile = path.join(outDir, `${lessonId}-ai-candidates.json`);
 fs.writeFileSync(outFile, JSON.stringify(output, null, 2));
 
 console.log(JSON.stringify({
   output: toProjectPath(outFile, root),
-  candidates: candidates.length,
-  richCandidates: output.metrics.richCandidates,
-  acceptableCandidates: output.metrics.acceptableCandidates,
-  thinCandidates: output.metrics.thinCandidates,
-  incompleteCandidates: output.metrics.incompleteCandidates,
-  relationshipsSuggested: output.metrics.relationshipsSuggested,
-  curriculumSuggestions: output.metrics.curriculumSuggestions,
-  candidatesWithCurriculumSuggestions: output.metrics.candidatesWithCurriculumSuggestions,
-  rejectedConcepts: output.metrics.rejectedConcepts,
+  conceptsDiscovered: output.metrics.conceptsDiscovered,
+  teachable: output.metrics.teachable,
+  mergeExisting: output.metrics.mergeExisting,
+  needsEnrichment: output.metrics.needsEnrichment,
+  mentionedOnly: output.metrics.mentionedOnly,
+  knowledgeGaps: output.metrics.knowledgeGaps,
+  mergeRecommendations: output.metrics.mergeRecommendations,
+  relationshipSuggestions: output.metrics.relationshipSuggestions,
+  curriculumPlacementSuggestions: output.metrics.curriculumPlacementSuggestions,
+  rejectedMentions: output.metrics.rejectedMentions,
   transcriptInputMode: output.transcriptInputMode,
   next: [
-    "Run npm run review:manifest to show this AI import in the Import tab.",
-    "Review enriched AI candidates and curriculum suggestions before approving or merging."
+    "Review the Transcript Intelligence package before sending concepts to Knowledge Authoring.",
+    "Approved concepts should become inputs to a separate Knowledge Author stage."
   ]
 }, null, 2));
