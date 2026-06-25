@@ -54,8 +54,12 @@ async function walk(dir) {
   return files;
 }
 
+function relativeFile(file) {
+  return path.relative(root, file);
+}
+
 function fail(errors, file, message) {
-  errors.push(`${path.relative(root, file)}: ${message}`);
+  errors.push(`${relativeFile(file)}: ${message}`);
 }
 
 function isArray(value) {
@@ -125,13 +129,20 @@ const files = await walk(knowledgeRoot);
 const parsed = [];
 const errors = [];
 const ids = new Set();
+const idFiles = new Map();
 
 for (const file of files) {
   try {
     const obj = JSON.parse(await fs.readFile(file, "utf8"));
     parsed.push({ file, obj });
-    if (ids.has(obj.id)) fail(errors, file, `duplicate id "${obj.id}"`);
-    ids.add(obj.id);
+
+    if (ids.has(obj.id)) {
+      const firstFile = idFiles.get(obj.id);
+      fail(errors, file, `duplicate id "${obj.id}"; first seen in ${relativeFile(firstFile)}`);
+    } else {
+      ids.add(obj.id);
+      idFiles.set(obj.id, file);
+    }
   } catch (error) {
     fail(errors, file, `invalid JSON: ${error.message}`);
   }
