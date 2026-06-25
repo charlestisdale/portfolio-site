@@ -110,11 +110,11 @@ const outputDir = path.resolve(root, "data", "ai-imports", "prompts");
 fs.mkdirSync(outputDir, { recursive: true });
 const outputFile = path.join(outputDir, `${resolvedLessonId}-${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-ai-import-prompt.md`);
 
-const prompt = `# AI Transcript-Triggered Rich Knowledge Import
+const prompt = `# AI Transcript-Triggered Deep Knowledge Import
 
 You are converting instructional IT source text into reviewable, learner-ready Knowledge Object candidates for a knowledge-first learning platform.
 
-This is not a quiz generator, not a transcript summarizer, and not a starter schema. The source text is a topic trigger: it tells you which concepts matter in this lesson. Your job is to build rich draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
+This is not a quiz generator, not a transcript summarizer, not a starter schema, and not a minimal extraction job. The source text is a topic trigger: it tells you which concepts matter in this lesson. Your job is to use your full IT knowledge to build deep, useful, reviewable draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
 
 ## Source Metadata
 - certificationId: ${certificationId}
@@ -130,7 +130,9 @@ AI discovers technical topics mentioned or taught
   ↓
 AI classifies each topic as teachable, merge-existing, mentioned-only, ignore, or needs-enrichment
   ↓
-AI enriches teachable topics with general IT knowledge when the source text is incomplete
+AI uses general IT knowledge to enrich teachable topics deeply when the source text is incomplete
+  ↓
+AI proposes curriculum placement for each teachable or merge-existing topic
   ↓
 AI clearly separates source evidence from enriched learning content
   ↓
@@ -143,36 +145,55 @@ Reviewable Knowledge Object candidates
 - Do not return a starter import, sample schema, representative subset, outline, or bare list of concepts.
 - Do not merely repeat weak source wording. If a topic is worth importing, explain what a learner needs to know about it.
 - Use the source text to decide which topics are relevant, but do not limit useful learning facts to source wording.
+- Use your general IT knowledge aggressively and carefully. Give the learner as much useful knowledge about each relevant concept as the review format can support.
 - Separate source-supported facts from AI-enriched facts.
 - Mark AI-enriched facts as requiring human review.
 - Every candidate must include at least one transcriptEvidence entry showing why the topic was triggered by this source.
-- Every fact, example, exam tip, common mistake, scenario, PBQ idea, and relationship should include evidenceIds when source evidence exists.
+- Every fact, example, exam tip, common mistake, scenario, PBQ idea, relationship, and curriculum suggestion should include evidenceIds when source evidence exists.
 - A source quote can prove that a topic was mentioned; it does not need to prove every enriched fact.
 - Prefer reusable Knowledge Objects over certification-only facts.
 - Avoid one object per sentence. Create objects only for concepts worth teaching, testing, linking, or reviewing.
 - Prefer stable IDs like "windows.task-manager", "networking.dhcp", "security.firewall", "filesystems.ext4".
 - If a concept is mentioned but not worth a Knowledge Object yet, put it in rejectedConcepts with classification "mentioned-only".
 - Relationships may use general IT knowledge, but mark whether they are transcript-supported or AI-enriched.
+- Curriculum placement is not a graph relationship. It says where the concept should be taught.
 - Keep explanations learner-focused, not transcript-focused.
 - Mark uncertainty explicitly with confidence below 0.7.
 
-## Richness Requirements
-For a normal lesson, return 25–40 Knowledge Object candidates. If the lesson genuinely contains fewer than 25 useful concepts, explain why in importNotes and still make the candidates rich.
+## Deep Enrichment Requirements
+For each teachable concept, think like an instructor building a reusable learning object. Include the information a learner would need to understand, recognize, compare, troubleshoot, and apply the topic.
+
+For a normal lesson, return 25–40 Knowledge Object candidates. If the lesson genuinely contains fewer than 25 useful concepts, explain why in importNotes and still make the candidates deep.
 
 Each teachable or merge-existing candidate should include:
 - summaryDraft: 2–3 useful sentences.
-- explanationDraft: 1–3 short paragraphs that teach the concept.
-- factsDraft: at least 4 atomic facts.
+- explanationDraft: 2–4 short paragraphs that teach the concept.
+- factsDraft: at least 6 atomic facts for important concepts, minimum 4 for smaller concepts.
 - transcriptEvidence: at least 1 evidence item, preferably 2–4 when the source supports it.
 - suggestedRelationships: at least 2 useful relationships when applicable.
+- curriculumSuggestions: at least 1 suggested placement for teachable or merge-existing concepts.
 - examTipsDraft: at least 1 item when the concept is exam-relevant.
 - commonMistakesDraft: at least 1 item when learners commonly confuse it with another concept.
-- examplesDraft or scenariosDraft when the concept benefits from an example.
+- examplesDraft and/or scenariosDraft when the concept benefits from examples.
 - pbqIdeasDraft when the concept can support hands-on, matching, ordering, configuration, troubleshooting, or identification tasks.
+- confidence, difficulty, importance, evidence IDs, and review flags.
 
 The top-level relationships array should include meaningful cross-candidate graph edges such as prerequisite_of, depends_on, related_to, contrasts_with, part_of, and used_for.
 
-A candidate with zero facts is incomplete. A candidate with only one sentence of summary and no facts is incomplete. A candidate that simply repeats the transcript is incomplete.
+A candidate with zero facts is incomplete. A candidate with only one sentence of summary and no facts is incomplete. A candidate that simply repeats the transcript is incomplete. A candidate with no curriculumSuggestions is incomplete unless it is rejected or mentioned-only.
+
+## Curriculum Placement Guidance
+Use the current curriculum layer. Suggested sections/modules may include:
+- sectionId: "1.0", moduleId: "operating-system-foundations"
+- sectionId: "1.0", moduleId: "desktop-operating-systems"
+- sectionId: "1.0", moduleId: "mobile-operating-systems"
+- sectionId: "1.0", moduleId: "file-systems"
+- sectionId: "1.0", moduleId: "os-maintenance-and-lifecycle"
+- sectionId: "2.0", moduleId: "security-foundations"
+- sectionId: "3.0", moduleId: "software-troubleshooting-foundations"
+- sectionId: "4.0", moduleId: "operational-procedures-foundations"
+
+If no existing module fits, propose a new module with proposedModuleTitle and reason. Do not force a bad fit.
 
 ## Minimum Knowledge Threshold
 Do not promote a topic into concepts unless the candidate teaches something useful. A valid candidate should include at least two of these: definition, purpose, how it is used, comparison, exam relevance, procedure, example, common mistake, relationship to another taught concept.
@@ -181,7 +202,7 @@ If the source only says something like "Another popular file system is ext4", do
 
 ## Required JSON Shape
 {
-  "schemaVersion": "ai-transcript-import.v3",
+  "schemaVersion": "ai-transcript-import.v4",
   "certificationId": "${certificationId}",
   "lessonId": "${resolvedLessonId}",
   "lessonTitle": "${lessonTitle}",
@@ -190,6 +211,8 @@ If the source only says something like "Another popular file system is ext4", do
   "importQuality": {
     "isStarterImport": false,
     "candidateTarget": "25-40 for normal lessons",
+    "deepEnrichmentUsed": true,
+    "curriculumSuggestionsIncluded": true,
     "richnessNotes": "Explain any unavoidable shortage or uncertainty."
   },
   "concepts": [
@@ -212,7 +235,7 @@ If the source only says something like "Another popular file system is ext4", do
           "quote": "Short source quote or close excerpt that triggered this topic.",
           "reason": "Why this quote makes the topic relevant.",
           "evidenceType": "definition | example | comparison | relationship | procedure | exam-note | mention",
-          "supports": "topic-trigger | fact | relationship"
+          "supports": "topic-trigger | fact | relationship | curriculum-placement"
         }
       ],
       "factsDraft": [
@@ -287,6 +310,19 @@ If the source only says something like "Another popular file system is ext4", do
           "evidenceIds": ["AI-EVID-001"]
         }
       ],
+      "curriculumSuggestions": [
+        {
+          "curriculumId": "${certificationId}",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "proposedModuleTitle": "Optional only when proposing a new module",
+          "reason": "Why this concept belongs in this curriculum location.",
+          "basis": "transcript-supported | ai-enriched",
+          "confidence": 0.0,
+          "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"]
+        }
+      ],
       "sourceQuality": {
         "transcriptSupport": "strong | medium | weak",
         "aiEnrichmentUsed": true,
@@ -309,6 +345,20 @@ If the source only says something like "Another popular file system is ext4", do
       "evidenceIds": ["AI-EVID-001"]
     }
   ],
+  "curriculumSuggestions": [
+    {
+      "knowledgeId": "domain.stable-slug",
+      "curriculumId": "${certificationId}",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "proposedModuleTitle": "Optional only when proposing a new module",
+      "reason": "Top-level curriculum placement suggestion.",
+      "basis": "transcript-supported | ai-enriched",
+      "confidence": 0.0,
+      "requiresReview": true,
+      "evidenceIds": ["AI-EVID-001"]
+    }
+  ],
   "rejectedConcepts": [
     {
       "title": "Mentioned but not imported",
@@ -317,7 +367,7 @@ If the source only says something like "Another popular file system is ext4", do
       "transcriptEvidence": "Optional short quote or phrase that triggered rejection."
     }
   ],
-  "importNotes": ["Any uncertainty, shortage, source limitation, duplicate concern, or enrichment warning."]
+  "importNotes": ["Any uncertainty, shortage, source limitation, duplicate concern, enrichment warning, or curriculum-placement warning."]
 }
 
 ## Source Text
