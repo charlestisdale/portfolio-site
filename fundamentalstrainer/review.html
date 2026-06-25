@@ -11,8 +11,8 @@
     <section class="hero-card">
       <p class="eyebrow">Human-in-the-loop ingestion</p>
       <h1>Import Review</h1>
-      <p>Review transcript-derived candidates before they become trusted knowledge objects.</p>
-      <p class="muted">Static-site note: approval decisions are exported as JSON. Save the file into <code>data/imports/approved/</code>, then run <code>npm run ingest:merge</code>.</p>
+      <p>Review AI-enriched candidates before they become trusted knowledge objects.</p>
+      <p class="muted">Canonical review state belongs in the pending candidate file under <code>data/imports/pending/</code>. This static page can inspect candidates and produce a backup snapshot, but final approval should update the existing candidate record in place through the local review command or a future admin backend.</p>
       <nav class="mode-tabs">
         <a href="./index.html">Learning UI</a>
         <a class="active" href="./review.html">Review UI</a>
@@ -34,7 +34,7 @@
           <option value="ignore">Ignore</option>
         </select>
       </label>
-      <button id="exportBtn" type="button">Export Review JSON</button>
+      <button id="exportBtn" type="button">Download Backup Snapshot</button>
     </section>
 
     <section id="summary" class="summary-grid"></section>
