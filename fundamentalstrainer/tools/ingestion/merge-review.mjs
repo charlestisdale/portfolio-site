@@ -11,7 +11,7 @@ const inputFile = args.file;
 const dryRun = args["dry-run"] !== "false";
 
 if (!inputFile) {
-  console.error("Usage: node tools/ingestion/merge-review.mjs --file=data/imports/pending/16-candidates.json [--dry-run=false]");
+  console.error("Usage: node tools/ingestion/merge-review.mjs --file=data/imports/pending/16-ai-candidates.json [--dry-run=false]");
   process.exit(1);
 }
 
@@ -19,8 +19,9 @@ const root = process.cwd();
 const inputPath = path.resolve(root, inputFile);
 const data = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 const approved = data.candidates.filter(c => ["create-new", "merge-existing"].includes(c.reviewDecision));
+const rejected = data.candidates.filter(c => c.reviewDecision === "ignore");
 
-if (data.candidates.some(c => c.reviewDecision === "undecided")) {
+if (data.candidates.some(c => (c.reviewDecision || "undecided") === "undecided")) {
   console.error("Merge blocked: at least one candidate is still undecided.");
   process.exit(1);
 }
@@ -39,7 +40,9 @@ function ensureFactObjects(facts) {
     return {
       text: fact.text || "Imported fact needs review.",
       importance: fact.importance || "medium",
-      tags: fact.tags || []
+      tags: fact.tags || [],
+      basis: fact.basis || undefined,
+      requiresReview: fact.requiresReview !== false
     };
   });
 }
@@ -47,26 +50,40 @@ function ensureFactObjects(facts) {
 function ensureExamTipObjects(items) {
   return (items || []).map(item => {
     if (typeof item === "string") return { text: item, difficulty: "medium", tags: [] };
-    return { text: item.text || "Imported exam tip needs review.", difficulty: item.difficulty || "medium", tags: item.tags || [] };
+    return {
+      text: item.text || "Imported exam tip needs review.",
+      difficulty: item.difficulty || "medium",
+      tags: item.tags || [],
+      basis: item.basis || undefined,
+      requiresReview: item.requiresReview !== false
+    };
   });
 }
 
 function ensureExampleObjects(items) {
   return (items || []).map(item => {
-    if (typeof item === "string") return { text: item, context: "Imported transcript review", tags: [] };
-    return { text: item.text || "Imported example needs review.", context: item.context || "Imported transcript review", tags: item.tags || [] };
+    if (typeof item === "string") return { text: item, context: "Imported source review", tags: [] };
+    return {
+      text: item.text || "Imported example needs review.",
+      context: item.context || "Imported source review",
+      tags: item.tags || [],
+      basis: item.basis || undefined,
+      requiresReview: item.requiresReview !== false
+    };
   });
 }
 
 function normalizeRelationship(item) {
   if (typeof item === "string") {
-    return { id: item, reason: "Suggested during transcript import review.", strength: "weak" };
+    return { id: item, reason: "Suggested during import review.", strength: "weak" };
   }
 
   return {
     id: item.id,
-    reason: item.evidence || item.reason || "Suggested during transcript import review.",
-    strength: item.type === "depends_on" || item.type === "contrasts_with" ? "medium" : "weak"
+    reason: item.evidence || item.reason || "Suggested during import review.",
+    strength: item.type === "depends_on" || item.type === "contrasts_with" ? "medium" : "weak",
+    basis: item.basis || undefined,
+    requiresReview: item.requiresReview !== false
   };
 }
 
@@ -126,7 +143,7 @@ function makeObject(candidate) {
       examples: ensureExampleObjects(candidate.examplesDraft),
       tables: [],
       media: [],
-      notes: ["Imported from a private/admin transcript review record. Verify before marking reviewed."]
+      notes: ["Imported from a private/admin review record. Verify before marking reviewed."]
     },
     assessmentSeeds: {
       examTips: ensureExamTipObjects(candidate.examTipsDraft),
@@ -155,7 +172,7 @@ function makeObject(candidate) {
       needsHumanReview: true,
       reviewNotes: [
         `Created from import record ${data.id}.`,
-        "Private transcript evidence remains in data/imports and should not be copied into public knowledge JSON.",
+        "Private source evidence remains in data/imports and should not be copied into public knowledge JSON.",
         "Map certification objectives before marking reviewed."
       ]
     }
@@ -182,10 +199,22 @@ for (const candidate of approved) {
 }
 
 if (!dryRun) {
+  const now = new Date().toISOString();
   data.status = "merged";
-  const approvedDir = path.resolve(root, "data/imports/approved");
-  fs.mkdirSync(approvedDir, { recursive: true });
-  fs.writeFileSync(path.join(approvedDir, path.basename(inputFile)), JSON.stringify(data, null, 2));
+  data.mergedAt = now;
+  data.mergeState = {
+    mode: "in-place",
+    promoted: approved.length,
+    rejected: rejected.length,
+    retainedInSourceFile: true
+  };
+  fs.writeFileSync(inputPath, JSON.stringify(data, null, 2));
 }
 
-console.log(JSON.stringify({ dryRun, approvedCount: approved.length, actions }, null, 2));
+console.log(JSON.stringify({
+  dryRun,
+  approvedCount: approved.length,
+  rejectedCount: rejected.length,
+  retainedInSourceFile: true,
+  actions
+}, null, 2));
