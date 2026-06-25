@@ -6,17 +6,17 @@ This project is organized as a reusable learning platform instead of a single qu
 
 The `engine/` folder must not contain certification-specific content. All certification-specific data belongs in `content/`.
 
-Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, graph exploration, recommendations, and future AI tutoring should be generated from canonical knowledge objects instead of separate duplicate content sets.
+Knowledge is the source of truth. Learn mode, search, assessments, flashcards, PBQs, analytics, graph exploration, recommendations, and future AI tutoring should be generated from canonical Knowledge Objects instead of separate duplicate content sets.
 
 Curriculum controls teaching order. Study paths should be generated from curriculum mappings, not raw transcript lesson order and not ad-hoc `Unmapped Knowledge` buckets.
 
 ## Current phase
 
-The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, and an interactive Knowledge Graph explorer.
+The platform foundation is active: Knowledge Engine, Learn mode, Search mode, Dashboard, Jobs, local progress tracking, assessment generation, assessment attempt history, Curriculum Study Path, and an interactive Knowledge Graph explorer.
 
-The ingestion direction is transcript-triggered AI deep enrichment. Transcripts identify what topics matter; AI acts as a subject-matter author and expands those topics into learner-ready draft Knowledge Objects using broader IT knowledge; human review promotes only accurate, useful, deduplicated knowledge into the canonical store.
+The ingestion direction is now **transcript intelligence first, knowledge authoring second**. Transcripts and source documents are evidence. The first AI stage acts as a curriculum analyst: it discovers concepts, classifies them, identifies relationships, proposes curriculum placement, detects merge candidates, and calls out gaps. A later authoring stage creates reviewable Knowledge Object drafts only after the platform has decided which concepts deserve authoring.
 
-The Curriculum Engine foundation is active. Curriculum files reference reviewed Knowledge Objects and organize them into certification sections/modules with outcomes and temporary auto-map rules. Knowledge Objects remain reusable and certification-agnostic. AI imports now include reviewable `curriculumSuggestions` so new objects can propose where they belong in the Path system.
+The Curriculum Engine foundation is active. Curriculum files reference reviewed Knowledge Objects and organize them into certification sections/modules with outcomes and temporary auto-map rules. Knowledge Objects remain reusable and certification-agnostic. AI analysis may include reviewable curriculum placement suggestions, but those suggestions are not canonical until reviewed.
 
 The public portfolio version must remain learner-only and content-read-only. Upload/import workflows belong in local development or a future authenticated admin backend, not in the public learner UI.
 
@@ -24,11 +24,21 @@ The public portfolio version must remain learner-only and content-read-only. Upl
 
 Teach the concept, not the transcript.
 
-The transcript is evidence that a topic appeared in a lesson. The Knowledge Object is the learning product. AI is expected to use its broader IT knowledge to create dense, useful, reviewable learning content, not just repeat source wording.
+The transcript is evidence that a topic appeared in a lesson. The first AI stage should not immediately write canonical Knowledge Objects. It should analyze the instructional material like a curriculum designer and answer:
 
 ```text
-Transcript = topic trigger
-AI = subject-matter author
+What concepts are present?
+Which concepts deserve objects?
+Which should merge?
+Which are prerequisites?
+Where do they belong in the curriculum?
+What gaps does the lesson reveal?
+```
+
+```text
+Transcript = evidence
+Transcript Intelligence AI = curriculum analyst
+Knowledge Author AI = draft knowledge writer
 Human = verifier and promoter
 Knowledge Object = canonical learning unit
 Curriculum = where the unit is taught
@@ -41,15 +51,31 @@ Video / instructional source
     ↓
 Transcript / source text
     ↓
-AI topic discovery
+Least-destructive cleaning
     ↓
-AI deep knowledge enrichment
+Evidence Builder
     ↓
-Pending Knowledge Object candidates
+Evidence JSON
     ↓
-Normalization and quality audit
+Transcript Intelligence
     ↓
-Duplicate detection
+Concept Discovery
+    ↓
+Concept Classification
+    ↓
+Relationship Discovery
+    ↓
+Curriculum Placement
+    ↓
+Gap Analysis
+    ↓
+Merge Detection
+    ↓
+Review Queue
+    ↓
+Knowledge Author
+    ↓
+Draft Knowledge Objects
     ↓
 Human promotion review
     ↓
@@ -123,17 +149,19 @@ Specific provenance can remain in private/admin-only records when needed for rev
 
 No source material should enter the trusted knowledge base directly.
 
-The transcript is not the final knowledge source. It is the trigger that tells the system what knowledge to build.
+The transcript is not the final knowledge source. It is the evidence that tells the system what to analyze.
 
 ```text
 source material
 → least-destructive cleaner
-→ transcript-triggered topic discovery
-→ AI deep enrichment into learner-ready draft Knowledge Objects
-→ normalization and quality audit
-→ duplicate detection
+→ evidence builder
+→ transcript intelligence / curriculum analysis
+→ concept discovery package
+→ classification, gaps, relationships, curriculum placement, merge recommendations
+→ review queue
+→ knowledge authoring for approved concepts
+→ draft Knowledge Objects
 → promotion review
-→ safe approved export audit
 → controlled promotion
 → validation
 → canonical Knowledge Objects
@@ -141,7 +169,12 @@ source material
 → curriculum mapping
 ```
 
-Review means checking whether the enriched Knowledge Object is accurate, useful, deduplicated, and ready to become canonical. Do not approve raw transcript mentions as knowledge.
+Review now has two different meanings:
+
+```text
+Discovery review = should this concept exist, merge, move, or be rejected?
+Knowledge review = is the authored Knowledge Object accurate, useful, deduplicated, and ready to promote?
+```
 
 A weak sentence such as:
 
@@ -149,33 +182,43 @@ A weak sentence such as:
 Another popular file system you might run into is ext4.
 ```
 
-is only transcript evidence that the topic appeared. It should either trigger a useful enriched `filesystems.ext4` draft or be rejected as `mentioned-only`. It should not become the learning summary.
+is only evidence that the topic appeared. It should trigger curriculum analysis. The result may be `filesystems.ext4` as a teachable concept, a merge recommendation, a mentioned-only rejection, or a gap requiring enrichment. It should not immediately become a Knowledge Object just because it was mentioned.
 
 The promotion command should stay audit-first and safe. Use unsafe promotion only for deliberate testing.
 
-## AI authoring rule
+## AI stage rule
 
-AI import is expected to produce deep, reviewable learning candidates. Important candidates should include:
+The AI pipeline is split into two responsibilities.
 
-- summaries
-- multi-paragraph explanations
-- atomic facts
-- examples
-- scenarios
-- exam tips
-- common mistakes
-- PBQ ideas
-- suggested graph relationships
-- curriculum suggestions
+### Stage 1: Transcript Intelligence
+
+Stage 1 discovers and classifies curriculum-relevant concepts. It should include:
+
+- discovered concepts
 - source evidence
-- confidence and review metadata
+- topic confidence
+- evidence strength
+- enrichment need
+- teaching value
+- curriculum placement suggestions
+- prerequisite suggestions
+- relationship suggestions
+- merge recommendations
+- mentioned-only rejections
+- knowledge gaps
+- review priority
 
-The AI should use general IT knowledge aggressively and carefully. Source evidence proves why the topic was triggered; enriched facts still require human review.
+Stage 1 must not chase a fixed candidate count. It should return every concept that exceeds the minimum teaching threshold and reject weak mentions cleanly.
+
+### Stage 2: Knowledge Author
+
+Stage 2 writes draft Knowledge Objects only for concepts selected from the reviewed discovery package. It may include summaries, explanations, facts, examples, scenarios, exam tips, common mistakes, PBQ ideas, and suggested relationships, but all authored content remains review-required.
 
 See:
 
 ```text
 docs/ai-authoring-philosophy.md
+docs/transcript-intelligence.md
 docs/transcript-triggered-enrichment.md
 docs/ingestion-pipeline.md
 ```
@@ -230,7 +273,7 @@ Create an import record:
 node tools/ingestion/create-import-record.mjs a-plus-220-1202 16 "Lesson Title"
 ```
 
-Generate a transcript-triggered AI import prompt:
+Generate a transcript intelligence prompt:
 
 ```bash
 npm run ai:import:prompt -- --lesson=16 --file="data/transcripts/cleaned/a-plus-220-1202/16-example.txt"
@@ -242,7 +285,7 @@ Save the AI response under:
 data/ai-imports/responses/
 ```
 
-Normalize the AI response into pending review candidates:
+Normalize the AI response into a pending transcript intelligence package:
 
 ```bash
 npm run ai:import:normalize -- --file="data/ai-imports/responses/16-response.json"
@@ -251,11 +294,11 @@ npm run ai:import:normalize -- --file="data/ai-imports/responses/16-response.jso
 Review/import commands:
 
 ```bash
-npm run ingest:duplicates -- --file="data/imports/pending/16-ai-candidates.json"
+npm run ingest:duplicates -- --file="data/imports/pending/16-transcript-intelligence.json"
 npm run review:manifest
 ```
 
-After browser review, audit the exported approved Knowledge Objects:
+After Knowledge Author output and browser review, audit the exported approved Knowledge Objects:
 
 ```bash
 npm run knowledge:audit-export -- --file="approved-knowledge-objects.json"
@@ -285,6 +328,7 @@ npx serve .
 docs/project-vision.md
 docs/ai-authoring-philosophy.md
 docs/ingestion-pipeline.md
+docs/transcript-intelligence.md
 docs/transcript-triggered-enrichment.md
 docs/curriculum-engine.md
 tools/knowledge-object.schema.json
@@ -306,7 +350,7 @@ docs/graph-visualizer.md
 
 ## Canonical knowledge object schema
 
-The platform uses `tools/knowledge-object.schema.json` as the canonical shape for every concept. The template lives at:
+The platform uses `tools/knowledge-object.schema.json` as the canonical shape for every promoted concept. The template lives at:
 
 ```text
 content/knowledge/_templates/knowledge-object.template.json
@@ -330,7 +374,7 @@ Validate both knowledge content and architecture references:
 npm run validate:all
 ```
 
-Important rule: do not write quiz questions directly during ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the knowledge object. Assessment files should be generated later from those objects.
+Important rule: do not write quiz questions directly during ingestion. Add facts, examples, common mistakes, scenarios, PBQ ideas, and relationships to the authored Knowledge Object. Assessment files should be generated later from canonical Knowledge Objects.
 
 ## Data architecture layer
 
@@ -341,6 +385,7 @@ docs/project-vision.md
 docs/data-architecture.md
 docs/id-conventions.md
 docs/relationship-types.md
+docs/transcript-intelligence.md
 docs/transcript-triggered-enrichment.md
 docs/curriculum-engine.md
 docs/ai-authoring-philosophy.md
