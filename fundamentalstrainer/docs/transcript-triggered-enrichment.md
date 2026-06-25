@@ -1,22 +1,32 @@
-# Transcript-Triggered AI Enrichment
+# Transcript-Triggered Analysis and Enrichment
 
 ## Purpose
 
-The import pipeline exists to turn instructional source material into canonical Knowledge Objects.
+The import pipeline exists to turn instructional source material into canonical Knowledge Objects, but source material should first be analyzed before anything is authored.
 
-The transcript or source document is not the final learning content. The source is the signal that tells the system which technical topics matter.
+The transcript or source document is not the final learning content. The source is evidence that tells the system which technical topics matter, which topics are assumed, which topics are incomplete, and which topics may belong elsewhere in the curriculum.
 
-When a source mentions an important concept, tool, command, file system, protocol, symptom, procedure, or comparison, AI should build a complete learner-ready draft for that topic instead of repeating the source sentence.
+When a source mentions an important concept, tool, command, file system, protocol, symptom, procedure, or comparison, AI should first decide what curriculum action is appropriate:
+
+```text
+create new concept candidate
+merge with existing concept
+mark mentioned-only
+reject as out-of-scope
+flag as knowledge gap
+send to Knowledge Author for later drafting
+```
 
 ## Current philosophy
 
 Teach the concept, not the transcript.
 
-The AI should use the transcript to discover what topics matter, then use broader IT knowledge to create useful learner-ready content. Human review verifies that the AI-enriched content is accurate, useful, deduplicated, and mapped correctly before promotion.
+The AI should use the transcript to discover what topics matter, but the first output is no longer a full Knowledge Object draft. The first output is a Transcript Intelligence package. Human review or system review then decides which concepts deserve authoring.
 
 ```text
-Transcript = topic trigger
-AI = subject-matter author
+Transcript = topic evidence
+Transcript Intelligence = curriculum analysis
+Knowledge Author = draft knowledge writing
 Human = verifier
 Knowledge Object = canonical learning unit
 Curriculum = where the unit is taught
@@ -39,15 +49,19 @@ If the user provides an already-clean transcript or document, use that as the so
 ## Core rule
 
 ```text
-Source mentions a topic
+Source mentions or teaches a topic
     ↓
 AI identifies the topic
     ↓
-AI enriches the topic into useful learning content
+AI classifies the topic
     ↓
-AI proposes relationships and curriculum placement
+AI identifies curriculum placement, relationships, prerequisites, merges, and gaps
     ↓
-System normalizes and audits the draft
+AI returns a Transcript Intelligence package
+    ↓
+Review selects concepts for authoring
+    ↓
+Knowledge Author writes draft Knowledge Objects
     ↓
 Human review promotes accurate, useful, deduplicated knowledge
     ↓
@@ -56,27 +70,31 @@ Canonical Knowledge Object
 
 Do not promote source wording as knowledge just because it appeared in the lesson.
 
-## Deep import rule
+## Discovery rule
 
-The AI import should be rich enough to review and promote. It should not be a starter import, outline, representative subset, or bare list of concepts.
+The AI import should be rich enough to support review, but it should not force a fixed number of Knowledge Object candidates.
 
-For a normal lesson, target **25–40 Knowledge Object candidates**. Fewer candidates are acceptable only when the source genuinely contains fewer useful concepts, and the response must explain that limitation in `importNotes`.
+Return every concept that exceeds the minimum teaching threshold. Do not create concepts merely to satisfy a target count.
 
-Each teachable or merge-existing candidate should usually include:
+A normal Transcript Intelligence package should include:
 
-- 2–3 sentence `summaryDraft`
-- 2–4 short paragraph `explanationDraft`
-- at least 6 atomic `factsDraft` items for important concepts, minimum 4 for smaller concepts
-- at least 1 `transcriptEvidence` item, preferably 2–4 when supported
-- at least 2 useful relationships when applicable
-- at least 1 `curriculumSuggestions` item for teachable concepts
-- exam tips when the concept is exam-relevant
-- common mistakes when learners commonly confuse the concept
-- examples or scenarios when they help teach the concept
-- PBQ ideas when the concept supports hands-on, matching, ordering, configuration, troubleshooting, or identification tasks
-- confidence, difficulty, importance, evidence IDs, and review flags
+- discovered concepts
+- source evidence
+- concept classification
+- topic confidence
+- evidence strength
+- teaching value
+- enrichment level
+- review priority
+- prerequisite suggestions
+- relationship suggestions
+- curriculum placement suggestions
+- merge recommendations
+- rejected mentions
+- knowledge gaps
+- import notes
 
-A candidate with zero facts is incomplete. A candidate with only a one-sentence summary and no facts is incomplete. A candidate that simply repeats the source is incomplete. A teachable candidate with no curriculum suggestion is incomplete unless it is intentionally marked for additional review.
+A package with only a bare list of terms is incomplete. A package that turns every sentence into a concept is noisy. A package that hides gaps, duplicates, or weak evidence is incomplete.
 
 ## Example
 
@@ -86,47 +104,55 @@ Weak transcript wording:
 Another popular file system you might run into is ext4.
 ```
 
-This is only a topic trigger. It proves that `ext4` appeared in the lesson, but it does not teach enough.
+This is only evidence that `ext4` appeared in the lesson. A strong Transcript Intelligence result would not immediately write a Knowledge Object. It would decide something like:
 
-A useful AI-enriched draft should explain what a learner needs to know, such as:
+```json
+{
+  "title": "ext4",
+  "proposedKnowledgeId": "filesystems.ext4",
+  "classification": "teachable",
+  "teachingValue": "medium",
+  "topicConfidence": 0.92,
+  "evidenceStrength": "weak",
+  "enrichmentLevel": "high",
+  "reviewPriority": "normal",
+  "curriculumPlacement": {
+    "curriculumId": "a-plus-220-1202",
+    "sectionId": "1.0",
+    "moduleId": "file-systems"
+  },
+  "analysisNotes": [
+    "The source only mentions ext4, so authoring will require general IT knowledge.",
+    "This should be contrasted with NTFS, FAT32, exFAT, APFS, and other Linux file systems."
+  ]
+}
+```
 
-- ext4 is a common Linux file system.
-- ext4 supports journaling.
-- ext4 is not the normal Windows system file system.
-- ext4 should be contrasted with NTFS, FAT32/exFAT, and APFS where relevant.
-- For certification study, ext4 is mainly recognized as a Linux-associated file system.
-- ext4 belongs in a file systems curriculum module, not as an isolated transcript fragment.
-
-If AI cannot produce useful learner-ready content, the topic should be rejected as `mentioned-only`, not promoted as a weak Knowledge Object.
+The Knowledge Author stage may later create the full `filesystems.ext4` draft if review agrees the concept belongs.
 
 ## Required separation
 
-AI import output must separate:
+Stage 1 AI output must separate:
 
-1. `transcriptEvidence` — why this topic was triggered by the source.
-2. `ai-enriched` content — useful learning facts, examples, comparisons, exam tips, common mistakes, scenarios, PBQ ideas, relationships, and curriculum suggestions added from general IT knowledge.
+1. `sourceEvidence` — why this topic was triggered by the source.
+2. `analysis` — classification, teaching value, curriculum location, relationships, prerequisites, gaps, and merge recommendations.
+3. `authoringGuidance` — what a later Knowledge Author should cover if this concept is approved.
 
-Transcript/source evidence can support the topic trigger without supporting every enriched fact.
+Stage 1 should not produce final learner explanations, full fact lists, flashcards, or quiz questions.
 
-Enriched facts must be marked with:
+Stage 2 Knowledge Author output may produce learner-ready content, but it must preserve basis metadata and review requirements.
 
-```json
-{
-  "basis": "ai-enriched",
-  "requiresReview": true
-}
-```
+## Truth basis labels
 
-Transcript/source-supported facts should be marked with:
+Every meaningful analysis item should include one of these basis labels:
 
-```json
-{
-  "basis": "transcript-supported",
-  "requiresReview": true
-}
-```
+- `source-supported` — directly supported by source evidence.
+- `ai-inference` — inferred from the source and curriculum context.
+- `general-it-knowledge` — added from stable general IT knowledge.
+- `common-practice` — based on common industry practice.
+- `exam-knowledge` — based on certification/exam framing.
 
-`requiresReview` remains true because even transcript-supported and AI-enriched content must be checked before canonical promotion.
+Do not collapse these into one generic confidence score.
 
 ## Candidate classifications
 
@@ -136,13 +162,13 @@ Every discovered topic should be classified before review:
 - `merge-existing` — should update an existing object instead of creating a duplicate.
 - `mentioned-only` — appeared in the source but is not useful enough for import.
 - `ignore` — not technical, not relevant, or not worth tracking.
-- `needs-enrichment` — relevant topic, but the AI draft is incomplete or uncertain.
+- `needs-enrichment` — relevant topic, but authoring should wait for more evidence or external enrichment.
 
 Human review should focus on `teachable`, `merge-existing`, and `needs-enrichment` items. `mentioned-only` and `ignore` should not pollute the graph, curriculum, or knowledge base.
 
 ## Curriculum suggestions
 
-AI import should include `curriculumSuggestions` for teachable and merge-existing candidates.
+Transcript Intelligence should include curriculum suggestions for teachable and merge-existing candidates.
 
 A curriculum suggestion says where the concept should be taught. It is not a graph relationship and it is not canonical until reviewed.
 
@@ -150,13 +176,14 @@ Example:
 
 ```json
 {
-  "knowledgeId": "filesystems.ext4",
+  "proposedKnowledgeId": "filesystems.ext4",
   "curriculumId": "a-plus-220-1202",
   "sectionId": "1.0",
   "moduleId": "file-systems",
   "reason": "ext4 is a Linux file system and belongs with OS file system comparisons.",
-  "basis": "ai-enriched",
-  "confidence": 0.86,
+  "basis": "general-it-knowledge",
+  "topicConfidence": 0.92,
+  "evidenceStrength": "weak",
   "requiresReview": true
 }
 ```
@@ -175,9 +202,9 @@ How does this concept relate to other concepts?
 
 Do not mix these responsibilities.
 
-## Minimum knowledge threshold
+## Minimum teaching threshold
 
-A candidate must teach something useful before it can be promoted. It should include at least two of:
+A concept should move forward only when it supports at least two of these:
 
 - definition
 - purpose
@@ -189,21 +216,30 @@ A candidate must teach something useful before it can be promoted. It should inc
 - common mistake
 - relationship to another taught concept
 - curriculum relevance
+- prerequisite value
+- troubleshooting value
 
-Thin candidates should be flagged by normalization and quality audit.
+Thin mentions should be flagged, not inflated into fake Knowledge Objects.
 
 ## Review meaning
 
-Human review is promotion review.
+Human review of Transcript Intelligence asks:
 
-The reviewer is not approving whether a transcript sentence exists. The reviewer is approving whether the proposed Knowledge Object change is:
+- Is this a real concept?
+- Should it be taught?
+- Should it merge?
+- Is it in the right curriculum location?
+- Is the source evidence strong enough?
+- Does it require enrichment?
+- Are there missing prerequisites or gaps?
 
-- accurate
-- useful for learners
-- deduplicated against existing objects
-- mapped correctly to curriculum
-- safe to use as canonical content
-- connected to the graph with meaningful relationships
+Human review of Knowledge Object drafts asks:
+
+- Is the authored content accurate?
+- Is it useful for learners?
+- Is it deduplicated against existing objects?
+- Is it safe to promote into canonical content?
+- Is it connected to the graph with meaningful relationships?
 
 ## What not to do
 
@@ -211,14 +247,14 @@ Do not:
 
 - create one object for every transcript sentence
 - return a starter import, outline, representative subset, or bare schema
-- create Knowledge Objects from weak mentions without enrichment
+- create Knowledge Objects from weak mentions before discovery review
 - use transcript wording as the final explanation when it does not teach enough
 - run aggressive text cleanup before AI sees the source
 - create placeholder objects just because another object references them
-- mark zero-fact candidates as high quality
 - generate finished quiz questions during ingestion
 - expose transcript import/upload in the public learner UI
-- skip curriculum suggestions for teachable candidates
+- skip curriculum analysis for teachable candidates
+- force a 25–40 object target
 
 ## What to do
 
@@ -226,11 +262,11 @@ Do:
 
 - use the least-destructive usable source text
 - use transcripts and documents to discover relevant topics
-- enrich important topics into learner-ready draft Knowledge Objects
-- include facts, evidence, relationships, exam tips, common mistakes, scenarios, PBQ ideas, and curriculum suggestions where appropriate
-- mark enriched facts as review-required
+- classify every discovered topic
+- identify merges, prerequisites, relationships, curriculum placement, and gaps
+- mark truth basis clearly
 - reject mentioned-only concepts cleanly
-- deduplicate before promotion
+- deduplicate before authoring and before promotion
 - keep graph relationships downstream of reviewed Knowledge Objects
 - keep curriculum placement separate from graph relationships
 - keep import/write workflows local or admin-only
@@ -239,4 +275,4 @@ Do:
 
 Knowledge Objects remain the single source of truth. Learn mode, search, graph exploration, curriculum study paths, assessment seeds, flashcards, PBQs, AI tutor context, recommendations, and analytics should consume canonical Knowledge Objects.
 
-Transcript-triggered enrichment is only the intake method. It must not bypass review, validation, duplicate detection, curriculum review, or controlled promotion.
+Transcript-triggered analysis is only the intake method. It must not bypass review, validation, duplicate detection, curriculum review, authoring review, or controlled promotion.
