@@ -173,10 +173,19 @@
   background-size: auto, 38px 38px, 38px 38px;
 }
 
+.graph-canvas__viewport {
+  width: 1180px;
+  height: 760px;
+  right: auto !important;
+  bottom: auto !important;
+}
+
 .graph-canvas__edges,
 .graph-canvas__nodes {
   position: absolute;
   inset: 0;
+  width: 1180px;
+  height: 760px;
   min-width: 1180px;
   min-height: 760px;
 }
@@ -225,12 +234,6 @@ body.graph-workspace-expanded .graph-scope-toggle {
 body.graph-workspace-expanded .graph-canvas {
   min-height: 0;
   height: 100%;
-}
-
-body.graph-workspace-expanded .graph-canvas__edges,
-body.graph-workspace-expanded .graph-canvas__nodes {
-  min-width: 1180px;
-  min-height: 760px;
 }
 
 .graph-edge path,
