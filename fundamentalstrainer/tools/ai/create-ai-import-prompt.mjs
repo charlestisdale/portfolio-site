@@ -110,11 +110,11 @@ const outputDir = path.resolve(root, "data", "ai-imports", "prompts");
 fs.mkdirSync(outputDir, { recursive: true });
 const outputFile = path.join(outputDir, `${resolvedLessonId}-${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-ai-import-prompt.md`);
 
-const prompt = `# AI Transcript-Triggered Knowledge Import
+const prompt = `# AI Transcript-Triggered Rich Knowledge Import
 
 You are converting instructional IT source text into reviewable, learner-ready Knowledge Object candidates for a knowledge-first learning platform.
 
-This is not a quiz generator and it is not a transcript summarizer. The source text is a topic trigger: it tells you which concepts matter in this lesson. Your job is to build complete draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
+This is not a quiz generator, not a transcript summarizer, and not a starter schema. The source text is a topic trigger: it tells you which concepts matter in this lesson. Your job is to build rich draft knowledge for those concepts so they can later power Learn mode, flashcards, PBQs, assessments, tutoring, recommendations, analytics, and the Knowledge Graph.
 
 ## Source Metadata
 - certificationId: ${certificationId}
@@ -128,21 +128,25 @@ Source text
   ↓
 AI discovers technical topics mentioned or taught
   ↓
-AI classifies each topic as teachable, merge-existing, mentioned-only, or ignore
+AI classifies each topic as teachable, merge-existing, mentioned-only, ignore, or needs-enrichment
   ↓
 AI enriches teachable topics with general IT knowledge when the source text is incomplete
   ↓
 AI clearly separates source evidence from enriched learning content
   ↓
+AI returns a rich review package, not a bare starter import
+  ↓
 Reviewable Knowledge Object candidates
 
 ## Critical Rules
 - Return JSON only. No markdown around the JSON.
+- Do not return a starter import, sample schema, representative subset, outline, or bare list of concepts.
 - Do not merely repeat weak source wording. If a topic is worth importing, explain what a learner needs to know about it.
 - Use the source text to decide which topics are relevant, but do not limit useful learning facts to source wording.
 - Separate source-supported facts from AI-enriched facts.
 - Mark AI-enriched facts as requiring human review.
 - Every candidate must include at least one transcriptEvidence entry showing why the topic was triggered by this source.
+- Every fact, example, exam tip, common mistake, scenario, PBQ idea, and relationship should include evidenceIds when source evidence exists.
 - A source quote can prove that a topic was mentioned; it does not need to prove every enriched fact.
 - Prefer reusable Knowledge Objects over certification-only facts.
 - Avoid one object per sentence. Create objects only for concepts worth teaching, testing, linking, or reviewing.
@@ -152,6 +156,24 @@ Reviewable Knowledge Object candidates
 - Keep explanations learner-focused, not transcript-focused.
 - Mark uncertainty explicitly with confidence below 0.7.
 
+## Richness Requirements
+For a normal lesson, return 25–40 Knowledge Object candidates. If the lesson genuinely contains fewer than 25 useful concepts, explain why in importNotes and still make the candidates rich.
+
+Each teachable or merge-existing candidate should include:
+- summaryDraft: 2–3 useful sentences.
+- explanationDraft: 1–3 short paragraphs that teach the concept.
+- factsDraft: at least 4 atomic facts.
+- transcriptEvidence: at least 1 evidence item, preferably 2–4 when the source supports it.
+- suggestedRelationships: at least 2 useful relationships when applicable.
+- examTipsDraft: at least 1 item when the concept is exam-relevant.
+- commonMistakesDraft: at least 1 item when learners commonly confuse it with another concept.
+- examplesDraft or scenariosDraft when the concept benefits from an example.
+- pbqIdeasDraft when the concept can support hands-on, matching, ordering, configuration, troubleshooting, or identification tasks.
+
+The top-level relationships array should include meaningful cross-candidate graph edges such as prerequisite_of, depends_on, related_to, contrasts_with, part_of, and used_for.
+
+A candidate with zero facts is incomplete. A candidate with only one sentence of summary and no facts is incomplete. A candidate that simply repeats the transcript is incomplete.
+
 ## Minimum Knowledge Threshold
 Do not promote a topic into concepts unless the candidate teaches something useful. A valid candidate should include at least two of these: definition, purpose, how it is used, comparison, exam relevance, procedure, example, common mistake, relationship to another taught concept.
 
@@ -159,12 +181,17 @@ If the source only says something like "Another popular file system is ext4", do
 
 ## Required JSON Shape
 {
-  "schemaVersion": "ai-transcript-import.v2",
+  "schemaVersion": "ai-transcript-import.v3",
   "certificationId": "${certificationId}",
   "lessonId": "${resolvedLessonId}",
   "lessonTitle": "${lessonTitle}",
   "sourceTranscript": "${toProjectPath(transcriptFile, root)}",
   "transcriptInputMode": "${transcriptInputMode}",
+  "importQuality": {
+    "isStarterImport": false,
+    "candidateTarget": "25-40 for normal lessons",
+    "richnessNotes": "Explain any unavoidable shortage or uncertainty."
+  },
   "concepts": [
     {
       "candidateId": "AI-CAND-001",
@@ -175,6 +202,8 @@ If the source only says something like "Another popular file system is ext4", do
       "aliases": ["optional alias"],
       "classification": "teachable | merge-existing | mentioned-only | ignore | needs-enrichment",
       "confidence": 0.0,
+      "difficulty": "foundational | intermediate | advanced",
+      "importance": "exam-critical | high | medium | low",
       "summaryDraft": "Learner-ready summary. Do not merely repeat the transcript.",
       "explanationDraft": "Complete explanation of what the learner should understand.",
       "transcriptEvidence": [
@@ -192,6 +221,7 @@ If the source only says something like "Another popular file system is ext4", do
           "importance": "exam-critical | high | medium | low",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "tags": ["tag"]
         }
       ],
@@ -201,6 +231,7 @@ If the source only says something like "Another popular file system is ext4", do
           "context": "When this matters.",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "tags": ["tag"]
         }
       ],
@@ -210,6 +241,7 @@ If the source only says something like "Another popular file system is ext4", do
           "difficulty": "easy | medium | hard",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "tags": ["tag"]
         }
       ],
@@ -219,6 +251,7 @@ If the source only says something like "Another popular file system is ext4", do
           "difficulty": "easy | medium | hard",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "tags": ["tag"]
         }
       ],
@@ -229,6 +262,7 @@ If the source only says something like "Another popular file system is ext4", do
           "difficulty": "easy | medium | hard",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "tags": ["tag"]
         }
       ],
@@ -239,6 +273,7 @@ If the source only says something like "Another popular file system is ext4", do
           "difficulty": "easy | medium | hard",
           "basis": "transcript-supported | ai-enriched",
           "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"],
           "assetsNeeded": []
         }
       ],
@@ -248,14 +283,16 @@ If the source only says something like "Another popular file system is ext4", do
           "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
           "reason": "Why these concepts are related.",
           "basis": "transcript-supported | ai-enriched",
-          "requiresReview": true
+          "requiresReview": true,
+          "evidenceIds": ["AI-EVID-001"]
         }
       ],
       "sourceQuality": {
         "transcriptSupport": "strong | medium | weak",
         "aiEnrichmentUsed": true,
         "enrichmentReason": "Why enrichment was needed.",
-        "minimumKnowledgeThresholdMet": true
+        "minimumKnowledgeThresholdMet": true,
+        "richnessLevel": "rich | acceptable | thin | incomplete"
       },
       "reviewDecision": "undecided",
       "reviewNotes": ""
@@ -268,7 +305,8 @@ If the source only says something like "Another popular file system is ext4", do
       "type": "related_to | depends_on | prerequisite_of | contrasts_with | part_of | used_for",
       "reason": "Relationship reason.",
       "basis": "transcript-supported | ai-enriched",
-      "requiresReview": true
+      "requiresReview": true,
+      "evidenceIds": ["AI-EVID-001"]
     }
   ],
   "rejectedConcepts": [
@@ -279,7 +317,7 @@ If the source only says something like "Another popular file system is ext4", do
       "transcriptEvidence": "Optional short quote or phrase that triggered rejection."
     }
   ],
-  "importNotes": ["Any uncertainty or cleanup warnings."]
+  "importNotes": ["Any uncertainty, shortage, source limitation, duplicate concern, or enrichment warning."]
 }
 
 ## Source Text
