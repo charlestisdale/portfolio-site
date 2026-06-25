@@ -117,6 +117,7 @@ export function renderKnowledgeGraphVisualizer({ graph = null, activeConcept = n
         <button class="graph-scope-button" type="button" onclick="window.__zoomKnowledgeGraphViewportByButton?.('${escapeAttribute(viewportKey)}', ${1 / ZOOM_BUTTON_STEP})">Zoom out</button>
         <button class="graph-scope-button" type="button" onclick="window.__fitKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Fit view</button>
         <button class="graph-scope-button" type="button" onclick="window.__resetKnowledgeGraphViewport?.('${escapeAttribute(viewportKey)}')">Reset view</button>
+        ${activeId ? `<button class="graph-scope-button graph-scope-button--primary" type="button" data-graph-open-learn="${escapeHtml(activeId)}">Open active in Learn</button>` : ""}
       </div>
 
       <div class="graph-legend" aria-label="Relationship types">
