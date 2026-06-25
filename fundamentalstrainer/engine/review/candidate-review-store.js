@@ -26,6 +26,49 @@ function uniq(values) {
   return [...new Set((values || []).filter(Boolean))];
 }
 
+function asArray(value) {
+  return Array.isArray(value) ? value : value ? [value] : [];
+}
+
+function normalizeTextRecord(item, fallbackImportance = "medium") {
+  if (typeof item === "string") return { text: item, importance: fallbackImportance, tags: [] };
+  return {
+    text: item?.text || item?.situation || item?.task || "",
+    importance: item?.importance || fallbackImportance,
+    difficulty: item?.difficulty || undefined,
+    basis: item?.basis || undefined,
+    requiresReview: item?.requiresReview ?? true,
+    evidenceIds: asArray(item?.evidenceIds),
+    tags: asArray(item?.tags)
+  };
+}
+
+function normalizeScenario(item) {
+  if (typeof item === "string") return { situation: item, expectedAction: "", difficulty: "medium", tags: [] };
+  return {
+    situation: item?.situation || item?.text || "",
+    expectedAction: item?.expectedAction || "",
+    difficulty: item?.difficulty || "medium",
+    basis: item?.basis || undefined,
+    requiresReview: item?.requiresReview ?? true,
+    evidenceIds: asArray(item?.evidenceIds),
+    tags: asArray(item?.tags)
+  };
+}
+
+function normalizePbqIdea(item) {
+  if (typeof item === "string") return { task: item, skillsTested: [], difficulty: "medium", assetsNeeded: [] };
+  return {
+    task: item?.task || item?.text || "",
+    skillsTested: asArray(item?.skillsTested),
+    difficulty: item?.difficulty || "medium",
+    basis: item?.basis || undefined,
+    requiresReview: item?.requiresReview ?? true,
+    evidenceIds: asArray(item?.evidenceIds),
+    assetsNeeded: asArray(item?.assetsNeeded)
+  };
+}
+
 export function readReviewState() {
   if (typeof localStorage === "undefined") return { records: {} };
   const state = safeJsonParse(localStorage.getItem(STORAGE_KEY), { records: {} });
@@ -74,7 +117,7 @@ export function serializeRelationships(candidate = {}) {
   return (candidate.suggestedRelationships || [])
     .map(relationship => {
       if (typeof relationship === "string") return relationship;
-      return [relationship.id || relationship.targetId, relationship.type || "related", relationship.reason || relationship.rationale || ""].filter(Boolean).join(" | ");
+      return [relationship.id || relationship.target || relationship.targetId, relationship.type || "related", relationship.reason || relationship.rationale || ""].filter(Boolean).join(" | ");
     })
     .filter(Boolean)
     .join("\n");
@@ -92,37 +135,76 @@ export function collectCandidateEdits(card) {
 }
 
 function sourceEvidence(preview = {}, candidate = {}) {
-  return (candidate.evidence || []).map(item => {
+  return (candidate.evidence || candidate.transcriptEvidence || []).map(item => {
     if (typeof item === "string") {
       return {
         lessonId: preview.lessonId || null,
         lessonTitle: preview.lessonTitle || preview.title || null,
-        sourceFile: null,
+        sourceFile: preview.sourceTranscript || null,
         startTime: null,
         endTime: null,
         quote: item,
-        notes: "Imported candidate evidence."
+        notes: "Topic-trigger evidence from reviewed import candidate."
       };
     }
 
     return {
       lessonId: item.lessonId || preview.lessonId || null,
       lessonTitle: item.lessonTitle || preview.lessonTitle || preview.title || null,
-      sourceFile: item.sourceFile || item.file || null,
+      sourceFile: item.sourceFile || item.file || preview.sourceTranscript || null,
       startTime: item.startTime || item.start || null,
       endTime: item.endTime || item.end || null,
       quote: item.quote || item.text || item.excerpt || "",
-      notes: item.notes || "Imported candidate evidence."
+      notes: item.notes || item.reason || "Topic-trigger evidence from reviewed import candidate."
     };
   });
+}
+
+function relationshipsByType(relationships) {
+  const grouped = {
+    prerequisites: [],
+    parents: [],
+    children: [],
+    related: [],
+    contrastsWith: [],
+    replacedBy: []
+  };
+
+  for (const relationship of relationships || []) {
+    const id = relationship.id || relationship.target || relationship.targetId;
+    if (!id) continue;
+    const type = relationship.type || "related_to";
+    const record = {
+      id,
+      reason: relationship.reason || relationship.rationale || "Imported relationship suggestion.",
+      strength: relationship.strength || "medium"
+    };
+
+    if (["depends_on", "prerequisite", "prerequisite_of"].includes(type)) grouped.prerequisites.push(id);
+    else if (["part_of", "parent"].includes(type)) grouped.parents.push(id);
+    else if (["has_part", "child"].includes(type)) grouped.children.push(id);
+    else if (["contrasts_with", "contrastsWith"].includes(type)) grouped.contrastsWith.push(record);
+    else if (["replaced_by", "replacedBy"].includes(type)) grouped.replacedBy.push(id);
+    else grouped.related.push(record);
+  }
+
+  return grouped;
 }
 
 export function buildKnowledgeObject(candidate = {}, preview = {}, edits = {}) {
   const id = candidate.proposedKnowledgeId || candidate.id || slugify(edits.title || candidate.title);
   const title = edits.title || candidate.title || id;
-  const facts = edits.facts?.length ? edits.facts : (candidate.factsDraft || []).map(fact => typeof fact === "string" ? fact : fact.text).filter(Boolean);
-  const relationships = edits.relationships?.length ? edits.relationships : (candidate.suggestedRelationships || []);
+  const facts = edits.facts?.length
+    ? edits.facts.map(text => ({ text, importance: "medium", tags: [] }))
+    : asArray(candidate.factsDraft || candidate.facts).map(item => normalizeTextRecord(item)).filter(item => item.text);
+  const relationships = edits.relationships?.length ? edits.relationships : asArray(candidate.suggestedRelationships || []);
+  const groupedRelationships = relationshipsByType(relationships);
   const date = new Date().toISOString().slice(0, 10);
+  const examTips = asArray(candidate.examTipsDraft).map(item => normalizeTextRecord(item, "exam-critical")).filter(item => item.text);
+  const commonMistakes = asArray(candidate.commonMistakesDraft).map(item => normalizeTextRecord(item)).filter(item => item.text);
+  const examples = asArray(candidate.examplesDraft).map(item => normalizeTextRecord(item)).filter(item => item.text);
+  const scenarios = asArray(candidate.scenariosDraft).map(normalizeScenario).filter(item => item.situation);
+  const pbqIdeas = asArray(candidate.pbqIdeasDraft).map(normalizePbqIdea).filter(item => item.task);
 
   return {
     schemaVersion: "1.0.0",
@@ -151,35 +233,28 @@ export function buildKnowledgeObject(candidate = {}, preview = {}, edits = {}) {
     ],
     learning: {
       summary: edits.summary || candidate.summaryDraft || "",
-      explanation: edits.summary || candidate.explanationDraft || candidate.summaryDraft || "",
-      facts: facts.map(text => ({ text, importance: "medium", tags: [] })),
+      explanation: candidate.explanationDraft || edits.summary || candidate.summaryDraft || "",
+      facts,
       commands: candidate.commands || [],
-      examples: candidate.examples || [],
+      examples,
       tables: [],
       media: [],
       notes: edits.notes ? [{ text: edits.notes, type: "review-note" }] : []
     },
     assessmentSeeds: {
-      examTips: [],
-      commonMistakes: [],
-      scenarios: [],
-      pbqIdeas: [],
+      examTips,
+      commonMistakes,
+      scenarios,
+      pbqIdeas,
       questionTargets: []
     },
     relationships: {
-      prerequisites: [],
-      parents: [],
-      children: [],
-      related: relationships.map(relationship => {
-        if (typeof relationship === "string") return { id: relationship, reason: "Imported relationship suggestion.", strength: "medium" };
-        return {
-          id: relationship.id || relationship.targetId,
-          reason: relationship.reason || relationship.rationale || "Imported relationship suggestion.",
-          strength: relationship.strength || "medium"
-        };
-      }).filter(item => item.id),
-      contrastsWith: [],
-      replacedBy: []
+      prerequisites: uniq(groupedRelationships.prerequisites),
+      parents: uniq(groupedRelationships.parents),
+      children: uniq(groupedRelationships.children),
+      related: groupedRelationships.related,
+      contrastsWith: groupedRelationships.contrastsWith,
+      replacedBy: uniq(groupedRelationships.replacedBy)
     },
     sources: {
       transcripts: sourceEvidence(preview, candidate),
@@ -192,7 +267,7 @@ export function buildKnowledgeObject(candidate = {}, preview = {}, edits = {}) {
       lastReviewedAt: date,
       reviewedBy: "local-review-ui",
       confidence: candidate.confidence || "medium",
-      needsHumanReview: false,
+      needsHumanReview: true,
       reviewNotes: edits.notes ? [edits.notes] : []
     }
   };
