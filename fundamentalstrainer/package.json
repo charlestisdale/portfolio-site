@@ -23,6 +23,7 @@
     "ai:import:normalize": "node tools/ai/normalize-ai-import.mjs",
     "discovery:prompt": "node tools/ai/create-discovery-prompt.mjs",
     "discovery:normalize": "node tools/ai/normalize-discovery-package.mjs",
+    "knowledge:audit-export": "node tools/knowledge/audit-approved-export.mjs",
     "knowledge:promote": "node tools/knowledge/promote-approved-objects.mjs",
     "graph:retag": "node tools/knowledge/retag-relationships.mjs",
     "review:archive": "node tools/ingestion/archive-promoted-import.mjs",
