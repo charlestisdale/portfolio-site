@@ -1,18 +1,18 @@
 import { getGraphScope } from "./graph-scope.js";
 
-const VIEWBOX_WIDTH = 980;
-const VIEWBOX_HEIGHT = 620;
+const VIEWBOX_WIDTH = 1180;
+const VIEWBOX_HEIGHT = 760;
 const CENTER = { x: VIEWBOX_WIDTH / 2, y: VIEWBOX_HEIGHT / 2 };
 const MAX_VISIBLE_NODES = 42;
 const GRAPH_SCOPES = ["focused", "expanded"];
-const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v2";
-const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v2";
+const GRAPH_LAYOUT_STORAGE_KEY = "it-learning-platform.graph-layout.v3";
+const GRAPH_VIEWPORT_STORAGE_KEY = "it-learning-platform.graph-viewport.v3";
 const DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 1 };
 const FIT_VIEW_PADDING = 42;
-const FIT_NODE_MARGIN_X = 96;
-const FIT_NODE_MARGIN_Y = 54;
-const MIN_AUTO_FIT_ZOOM = 0.45;
-const MAX_AUTO_FIT_ZOOM = 1.25;
+const FIT_NODE_MARGIN_X = 110;
+const FIT_NODE_MARGIN_Y = 68;
+const MIN_AUTO_FIT_ZOOM = 0.42;
+const MAX_AUTO_FIT_ZOOM = 1.18;
 const ZOOM_BUTTON_STEP = 1.16;
 const NODE_CARD_WIDTH = 188;
 const NODE_CARD_HEIGHT = 66;
@@ -403,8 +403,8 @@ function viewportTransform(viewport) {
 
 function normalizeViewport(viewport) {
   return {
-    x: clamp(Number(viewport?.x ?? 0), -2200, 2200),
-    y: clamp(Number(viewport?.y ?? 0), -1600, 1600),
+    x: clamp(Number(viewport?.x ?? 0), -2600, 2600),
+    y: clamp(Number(viewport?.y ?? 0), -1900, 1900),
     zoom: clamp(Number(viewport?.zoom ?? 1), 0.35, 3.5)
   };
 }
@@ -618,19 +618,61 @@ function layoutNodes({ nodes, edges, activeId }) {
 
   if (activeNode) layout.set(activeNode.id, CENTER);
 
-  const neighbors = nodes.filter(node => node.id !== activeId && neighborIds.has(node.id));
-  const context = nodes.filter(node => node.id !== activeId && !neighborIds.has(node.id));
+  const neighbors = sortNodesForLayout(nodes.filter(node => node.id !== activeId && neighborIds.has(node.id)));
+  const context = sortNodesForLayout(nodes.filter(node => node.id !== activeId && !neighborIds.has(node.id)));
 
   if (activeNode) {
-    distributeAroundEllipse(layout, neighbors, 360, 215, -92);
-    distributeAroundEllipse(layout, context, 430, 260, -70);
+    distributeAcrossLanes(layout, neighbors, [
+      { x: CENTER.x - 300, y: CENTER.y, step: 118 },
+      { x: CENTER.x + 300, y: CENTER.y, step: 118 },
+      { x: CENTER.x, y: CENTER.y - 235, step: 205, horizontal: true },
+      { x: CENTER.x, y: CENTER.y + 235, step: 205, horizontal: true }
+    ]);
+    distributeAcrossLanes(layout, context, [
+      { x: CENTER.x - 500, y: CENTER.y, step: 118 },
+      { x: CENTER.x + 500, y: CENTER.y, step: 118 },
+      { x: CENTER.x, y: CENTER.y - 325, step: 215, horizontal: true },
+      { x: CENTER.x, y: CENTER.y + 325, step: 215, horizontal: true }
+    ]);
   } else {
-    distributeAroundEllipse(layout, nodes, 360, 230, -86);
+    distributeAcrossLanes(layout, sortNodesForLayout(nodes), [
+      { x: CENTER.x - 325, y: CENTER.y, step: 118 },
+      { x: CENTER.x + 325, y: CENTER.y, step: 118 },
+      { x: CENTER.x, y: CENTER.y - 245, step: 205, horizontal: true },
+      { x: CENTER.x, y: CENTER.y + 245, step: 205, horizontal: true }
+    ]);
   }
 
   if (!activeNode && nodes.length === 1) layout.set(nodes[0].id, CENTER);
   relaxLayout(layout, nodes, activeNode?.id || null);
   return layout;
+}
+
+function sortNodesForLayout(nodes) {
+  return [...nodes].sort((left, right) => {
+    const leftStub = left.status === "stub" ? 1 : 0;
+    const rightStub = right.status === "stub" ? 1 : 0;
+    if (leftStub !== rightStub) return leftStub - rightStub;
+    return String(left.title || left.id).localeCompare(String(right.title || right.id));
+  });
+}
+
+function distributeAcrossLanes(layout, nodes, lanes) {
+  nodes.forEach((node, index) => {
+    const lane = lanes[index % lanes.length];
+    const laneIndex = Math.floor(index / lanes.length);
+    const direction = laneIndex % 2 === 0 ? 1 : -1;
+    const magnitude = Math.ceil(laneIndex / 2) * lane.step;
+    const offset = direction * magnitude;
+
+    layout.set(node.id, lane.horizontal ? {
+      x: clamp(lane.x + offset, 90, VIEWBOX_WIDTH - 90),
+      y: clamp(lane.y, 70, VIEWBOX_HEIGHT - 70)
+    } : {
+      x: clamp(lane.x, 90, VIEWBOX_WIDTH - 90),
+      y: clamp(lane.y + offset, 70, VIEWBOX_HEIGHT - 70)
+    });
+  });
 }
 
 function distributeAroundEllipse(layout, nodes, radiusX, radiusY, startDegrees) {
