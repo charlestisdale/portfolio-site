@@ -75,6 +75,25 @@ function runExpansion() {
   });
 }
 
+function parseExpansionOutput(expansionResult) {
+  const stdout = expansionResult?.stdout?.trim();
+  if (!stdout) return null;
+
+  try {
+    return JSON.parse(stdout);
+  } catch {
+    const start = stdout.indexOf("{");
+    const end = stdout.lastIndexOf("}");
+    if (start === -1 || end === -1 || end <= start) return null;
+
+    try {
+      return JSON.parse(stdout.slice(start, end + 1));
+    } catch {
+      return null;
+    }
+  }
+}
+
 function promptFor(item) {
   return listFiles("data/ai-imports/prompts/knowledge-author", file => {
     const base = path.basename(file);
@@ -127,6 +146,21 @@ function hasCanonical(item) {
   return false;
 }
 
+function knowledgeAuthorQueueItem(item, prompt) {
+  const expectedOutputName = `${slugify(item.proposedKnowledgeId)}.knowledge-object.json`;
+  return {
+    type: "knowledge-author",
+    lesson,
+    conceptId: item.conceptId,
+    proposedKnowledgeId: item.proposedKnowledgeId,
+    expectedKnowledgeId: item.proposedKnowledgeId,
+    title: item.title,
+    promptPath: toProjectPath(prompt, root),
+    outputPath: `data/ai-imports/responses/knowledge-author/${expectedOutputName}`,
+    expectedOutputName
+  };
+}
+
 function buildKnowledgeAuthorQueue(reviewedFile) {
   const review = readJson(reviewedFile);
   const queue = [];
@@ -134,18 +168,36 @@ function buildKnowledgeAuthorQueue(reviewedFile) {
     if (hasCanonical(item) || hasDraft(item) || hasResponse(item)) continue;
     const prompt = promptFor(item);
     if (!prompt) continue;
-    const expectedOutputName = `${slugify(item.proposedKnowledgeId)}.knowledge-object.json`;
-    queue.push({
-      type: "knowledge-author",
-      conceptId: item.conceptId,
-      proposedKnowledgeId: item.proposedKnowledgeId,
-      title: item.title,
-      promptPath: toProjectPath(prompt, root),
-      outputPath: `data/ai-imports/responses/knowledge-author/${expectedOutputName}`,
-      expectedOutputName
-    });
+    queue.push(knowledgeAuthorQueueItem(item, prompt));
   }
   return queue;
+}
+
+function buildQueueFromExpansionNextAction(expansionResult, reviewedFile) {
+  if (!expansionResult || expansionResult.status !== 0) return [];
+
+  const expansion = parseExpansionOutput(expansionResult);
+  const nextAction = expansion?.nextAction;
+  if (nextAction?.type !== "send-prompt-to-ai" || !nextAction.prompt) return [];
+
+  const prompt = path.resolve(root, nextAction.prompt);
+  if (!fs.existsSync(prompt)) return [];
+
+  const expectedKnowledgeId = nextAction.expectedKnowledgeId;
+  const review = readJson(reviewedFile);
+  const reviewedItem = (review.authoringQueue || [])
+    .find(item => item.proposedKnowledgeId === expectedKnowledgeId || item.conceptId === nextAction.conceptId);
+
+  const item = reviewedItem || {
+    conceptId: nextAction.conceptId,
+    proposedKnowledgeId: expectedKnowledgeId,
+    title: expectedKnowledgeId
+  };
+
+  if (!item.proposedKnowledgeId) return [];
+  if (hasCanonical(item) || hasDraft(item) || hasResponse(item)) return [];
+
+  return [knowledgeAuthorQueueItem(item, prompt)];
 }
 
 function writeQueue(queue, metadata = {}) {
@@ -173,6 +225,7 @@ if (!reviewedFile && bootstrap) {
       writeQueue([
         {
           type: reviewPrompt ? "discovery-review" : "transcript-intelligence",
+          lesson,
           promptPath: toProjectPath(waitingPrompt, root),
           outputPath,
           expectedOutputName: expectedName
@@ -203,6 +256,10 @@ let expansionResult = null;
 if (!queue.length && bootstrap) {
   expansionResult = runExpansion();
   queue = buildKnowledgeAuthorQueue(reviewedFile);
+
+  if (!queue.length) {
+    queue = buildQueueFromExpansionNextAction(expansionResult, reviewedFile);
+  }
 }
 
 writeQueue(queue, {
