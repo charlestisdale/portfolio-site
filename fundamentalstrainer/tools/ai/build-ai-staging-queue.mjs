@@ -94,6 +94,17 @@ function parseExpansionOutput(expansionResult) {
   }
 }
 
+function expansionMetadata(expansionResult) {
+  const parsed = parseExpansionOutput(expansionResult);
+  return {
+    parsed,
+    nextAction: parsed?.nextAction || null,
+    summary: parsed?.summary || null,
+    stoppedOnFailure: Boolean(parsed?.stoppedOnFailure),
+    executed: Array.isArray(parsed?.executed) ? parsed.executed : []
+  };
+}
+
 function promptFor(item) {
   return listFiles("data/ai-imports/prompts/knowledge-author", file => {
     const base = path.basename(file);
@@ -252,9 +263,11 @@ if (!reviewedFile) fail(`No normalized discovery review found for lesson ${lesso
 
 let queue = buildKnowledgeAuthorQueue(reviewedFile);
 let expansionResult = null;
+let expansionInfo = expansionMetadata(null);
 
 if (!queue.length && bootstrap) {
   expansionResult = runExpansion();
+  expansionInfo = expansionMetadata(expansionResult);
   queue = buildKnowledgeAuthorQueue(reviewedFile);
 
   if (!queue.length) {
@@ -262,12 +275,20 @@ if (!queue.length && bootstrap) {
   }
 }
 
+const nextCommand = queue.length
+  ? "npm run ai:stage:next"
+  : expansionInfo.nextAction?.command || "No pending Knowledge Author prompts found. Run npm run ai:expand -- --lesson=<lesson> --promote=true.";
+
 writeQueue(queue, {
   status: "knowledge-author-queue",
   reviewedFile: toProjectPath(reviewedFile, root),
   expansionStdout: expansionResult?.stdout?.trim() || "",
   expansionStderr: expansionResult?.stderr?.trim() || "",
-  expansionStatus: expansionResult ? expansionResult.status : null
+  expansionStatus: expansionResult ? expansionResult.status : null,
+  expansionSummary: expansionInfo.summary,
+  expansionNextAction: expansionInfo.nextAction,
+  expansionStoppedOnFailure: expansionInfo.stoppedOnFailure,
+  expansionExecuted: expansionInfo.executed
 });
 
 console.log(JSON.stringify({
@@ -276,5 +297,8 @@ console.log(JSON.stringify({
   queued: queue.length,
   expansionRan: Boolean(expansionResult),
   expansionStatus: expansionResult ? expansionResult.status : null,
-  nextCommand: queue.length ? "npm run ai:stage:next" : "No pending Knowledge Author prompts found. Run npm run ai:expand -- --lesson=<lesson> --promote=true."
+  expansionStoppedOnFailure: expansionInfo.stoppedOnFailure,
+  expansionSummary: expansionInfo.summary,
+  expansionNextAction: expansionInfo.nextAction,
+  nextCommand
 }, null, 2));
