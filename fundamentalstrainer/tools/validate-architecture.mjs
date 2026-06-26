@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const errors = [];
 const warnings = [];
+const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
 
 function rel(file) {
   return path.relative(root, file);
@@ -77,7 +78,7 @@ const knowledgeIds = new Set();
 for (const file of knowledgeFiles) {
   const obj = await readJson(file);
   if (!obj) continue;
-  validateId(file, obj.id, /^[a-z0-9]+(\.[a-z0-9-]+)+$/, "knowledge id");
+  validateId(file, obj.id, knowledgeIdPattern, "knowledge id");
   if (knowledgeIds.has(obj.id)) error(file, `duplicate knowledge id: ${obj.id}`);
   knowledgeIds.add(obj.id);
 }
