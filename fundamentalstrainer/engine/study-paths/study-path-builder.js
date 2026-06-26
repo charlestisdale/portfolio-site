@@ -77,12 +77,14 @@ function matchesAutoMap(object, autoMap) {
   const domainMatch = !autoMap.domains?.length || (object.domains || []).some(domain => autoMap.domains.includes(domain));
   const typeMatch = !autoMap.types?.length || autoMap.types.includes(object.type);
   const prefixMatch = !autoMap.idPrefixes?.length || autoMap.idPrefixes.some(prefix => object.id.startsWith(prefix));
+  const idExactMatch = !autoMap.idExact?.length || autoMap.idExact.includes(object.id);
+  const idIncludeMatch = !autoMap.idIncludes?.length || autoMap.idIncludes.some(value => object.id.toLowerCase().includes(String(value).toLowerCase()));
   const title = String(object.title || "").toLowerCase();
   const id = String(object.id || "").toLowerCase();
   const titleMatch = !autoMap.titleIncludes?.length || autoMap.titleIncludes.some(value => title.includes(String(value).toLowerCase()) || id.includes(String(value).toLowerCase().replaceAll(" ", "-")));
   const tagMatch = !autoMap.tags?.length || collectObjectTags(object).some(tag => autoMap.tags.includes(tag));
 
-  return domainMatch && typeMatch && prefixMatch && titleMatch && tagMatch;
+  return domainMatch && typeMatch && prefixMatch && idExactMatch && idIncludeMatch && titleMatch && tagMatch;
 }
 
 function collectObjectTags(object) {
