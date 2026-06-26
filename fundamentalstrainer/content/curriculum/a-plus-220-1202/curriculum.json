@@ -11,9 +11,11 @@
     {
       "id": "1.0",
       "title": "Operating Systems",
-      "description": "Operating system concepts, supported OS families, file systems, tools, and administrative workflows.",
+      "description": "Operating system concepts, supported OS families, file systems, installation methods, tools, and administrative workflows.",
       "order": 1,
-      "objectiveIds": ["1.0"],
+      "objectiveIds": [
+        "1.0"
+      ],
       "modules": [
         {
           "id": "operating-system-foundations",
@@ -28,14 +30,23 @@
           ],
           "knowledge": [
             "operating-system.core",
-            "os.file-management",
             "os.application-platform",
+            "os.file-management",
             "software.cross-platform"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "types": ["concept"],
-            "titleIncludes": ["operating system", "file management", "application platform", "cross-platform", "compatibility"]
+            "domains": [
+              "operating-systems"
+            ],
+            "types": [
+              "concept"
+            ],
+            "titleIncludes": [
+              "operating system",
+              "file management",
+              "application platform",
+              "cross-platform"
+            ]
           },
           "notes": "Starter auto-map catches lesson 01 foundation concepts until explicit mappings are reviewed."
         },
@@ -51,16 +62,31 @@
             "Recognize common desktop OS use cases."
           ],
           "knowledge": [
-            "windows.os",
+            "chromeos.os",
             "linux.os",
             "macos.os",
-            "chromeos.os"
+            "windows.os"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "types": ["operating-system"],
-            "idPrefixes": ["windows.", "linux.", "macos.", "chromeos."],
-            "titleIncludes": ["windows", "linux", "macos", "chromeos", "desktop"]
+            "domains": [
+              "operating-systems"
+            ],
+            "types": [
+              "operating-system"
+            ],
+            "idPrefixes": [
+              "windows.",
+              "linux.",
+              "macos.",
+              "chromeos."
+            ],
+            "titleIncludes": [
+              "windows",
+              "linux",
+              "macos",
+              "chromeos",
+              "desktop"
+            ]
           }
         },
         {
@@ -75,14 +101,30 @@
             "Explain why mobile apps are platform-specific."
           ],
           "knowledge": [
-            "apple.mobile-os",
-            "android.os"
+            "android.os",
+            "apple.mobile-os"
           ],
           "autoMap": {
-            "domains": ["operating-systems", "mobile"],
-            "types": ["operating-system"],
-            "idPrefixes": ["android.", "apple.", "ios.", "ipados.", "mobile."],
-            "titleIncludes": ["android", "ios", "ipados", "mobile"]
+            "domains": [
+              "operating-systems",
+              "mobile"
+            ],
+            "types": [
+              "operating-system"
+            ],
+            "idPrefixes": [
+              "android.",
+              "apple.",
+              "ios.",
+              "ipados.",
+              "mobile."
+            ],
+            "titleIncludes": [
+              "android",
+              "ios",
+              "ipados",
+              "mobile"
+            ]
           }
         },
         {
@@ -97,24 +139,186 @@
             "Recognize file system names in exam scenarios."
           ],
           "knowledge": [
-            "filesystems.ntfs",
-            "filesystems.ext4",
             "filesystems.apfs",
+            "filesystems.ext4",
+            "filesystems.ntfs",
             "linux.ext4",
             "macos.apfs"
           ],
           "autoMap": {
-            "domains": ["operating-systems", "filesystems", "storage"],
-            "types": ["file-system"],
-            "idPrefixes": ["filesystems.", "linux.ext", "macos.apfs", "windows.ntfs"],
-            "titleIncludes": ["file system", "ntfs", "ext4", "apfs", "fat32", "exfat"]
+            "domains": [
+              "operating-systems",
+              "filesystems",
+              "storage"
+            ],
+            "types": [
+              "file-system"
+            ],
+            "idPrefixes": [
+              "filesystems.",
+              "linux.ext",
+              "macos.apfs",
+              "windows.ntfs"
+            ],
+            "titleIncludes": [
+              "file system",
+              "ntfs",
+              "refs",
+              "xfs",
+              "ext4",
+              "apfs",
+              "fat32",
+              "exfat"
+            ]
+          }
+        },
+        {
+          "id": "firmware-and-boot-methods",
+          "title": "Firmware and Boot Methods",
+          "description": "Firmware interfaces, boot modes, installation media, and network boot concepts used during OS installation.",
+          "order": 5,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Distinguish UEFI and BIOS compatibility behavior.",
+            "Recognize bootable installation media and PXE network boot scenarios.",
+            "Connect firmware settings to OS installation readiness."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "firmware",
+              "boot"
+            ],
+            "idPrefixes": [
+              "firmware.",
+              "bios.",
+              "uefi.",
+              "boot.",
+              "pxe.",
+              "storage.iso"
+            ],
+            "titleIncludes": [
+              "firmware",
+              "uefi",
+              "bios",
+              "compatibility mode",
+              "pxe",
+              "network boot",
+              "bootable usb",
+              "iso image"
+            ]
+          }
+        },
+        {
+          "id": "os-installation-methods",
+          "title": "OS Installation Methods",
+          "description": "Common operating system installation approaches and when each method is appropriate.",
+          "order": 6,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Compare clean installs, in-place upgrades, and multiboot installations.",
+            "Explain how installation planning changes risk and outcome.",
+            "Choose an installation method for a given technician scenario."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "installation"
+            ],
+            "idPrefixes": [
+              "os.installation",
+              "os.clean-install",
+              "os.in-place-upgrade"
+            ],
+            "titleIncludes": [
+              "clean install",
+              "in-place upgrade",
+              "installation planning",
+              "multiboot",
+              "multi boot"
+            ]
+          }
+        },
+        {
+          "id": "os-deployment-and-recovery",
+          "title": "OS Deployment and Recovery",
+          "description": "Image-based deployment, recovery partitions, repair installations, and driver loading workflows.",
+          "order": 7,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Explain how image deployment differs from manual installation.",
+            "Recognize recovery and repair installation options.",
+            "Identify when third-party driver loading is needed during installation."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "deployment",
+              "recovery"
+            ],
+            "idPrefixes": [
+              "os.deployment",
+              "os.recovery",
+              "os.repair",
+              "os.driver-loading"
+            ],
+            "titleIncludes": [
+              "image deployment",
+              "zero touch",
+              "recovery partition",
+              "repair installation",
+              "third-party driver",
+              "driver loading"
+            ]
+          }
+        },
+        {
+          "id": "os-compatibility-and-readiness",
+          "title": "OS Compatibility and Readiness",
+          "description": "Hardware, firmware, application, driver, and security readiness checks before installation or upgrade.",
+          "order": 8,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Check hardware and firmware requirements before an OS upgrade.",
+            "Identify application and driver compatibility risks.",
+            "Recognize readiness tools such as System Information, PC Health Check, TPM, and Secure Boot."
+          ],
+          "knowledge": [],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "security",
+              "windows"
+            ],
+            "idPrefixes": [
+              "os.hardware-compatibility",
+              "windows.pc-health-check",
+              "windows.system-information",
+              "windows.application-driver-compatibility",
+              "security.tpm",
+              "windows.tpm",
+              "security.secure-boot"
+            ],
+            "titleIncludes": [
+              "compatibility",
+              "readiness",
+              "pc health check",
+              "system information",
+              "tpm",
+              "secure boot",
+              "hardware requirement",
+              "driver compatibility"
+            ]
           }
         },
         {
           "id": "os-maintenance-and-lifecycle",
           "title": "OS Maintenance and Lifecycle",
           "description": "Updates, support lifecycle, compatibility, and maintenance responsibilities.",
-          "order": 5,
+          "order": 9,
           "estimatedMinutes": 25,
           "outcomes": [
             "Explain why operating system updates matter.",
@@ -122,13 +326,21 @@
             "Connect OS maintenance to stability and security."
           ],
           "knowledge": [
-            "os.updates",
             "operating-systems.operating-system-updates",
-            "operating.operating-system-end-of-life"
+            "operating.operating-system-end-of-life",
+            "os.updates"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "titleIncludes": ["update", "lifecycle", "end of life", "support", "compatibility"]
+            "domains": [
+              "operating-systems"
+            ],
+            "titleIncludes": [
+              "update",
+              "lifecycle",
+              "end of life",
+              "support",
+              "patch"
+            ]
           }
         }
       ]
@@ -138,7 +350,9 @@
       "title": "Security",
       "description": "Security concepts and administrative practices for Core 2.",
       "order": 2,
-      "objectiveIds": ["2.0"],
+      "objectiveIds": [
+        "2.0"
+      ],
       "modules": [
         {
           "id": "security-foundations",
@@ -152,8 +366,12 @@
           ],
           "knowledge": [],
           "autoMap": {
-            "domains": ["security"],
-            "idPrefixes": ["security."]
+            "domains": [
+              "security"
+            ],
+            "idPrefixes": [
+              "security."
+            ]
           }
         }
       ]
@@ -163,7 +381,9 @@
       "title": "Software Troubleshooting",
       "description": "Troubleshooting symptoms, tools, and workflows.",
       "order": 3,
-      "objectiveIds": ["3.0"],
+      "objectiveIds": [
+        "3.0"
+      ],
       "modules": [
         {
           "id": "software-troubleshooting-foundations",
@@ -177,8 +397,13 @@
           ],
           "knowledge": [],
           "autoMap": {
-            "domains": ["software-troubleshooting", "troubleshooting"],
-            "types": ["troubleshooting-step"]
+            "domains": [
+              "software-troubleshooting",
+              "troubleshooting"
+            ],
+            "types": [
+              "troubleshooting-step"
+            ]
           }
         }
       ]
@@ -188,7 +413,9 @@
       "title": "Operational Procedures",
       "description": "Documentation, change management, safety, professionalism, and operational workflows.",
       "order": 4,
-      "objectiveIds": ["4.0"],
+      "objectiveIds": [
+        "4.0"
+      ],
       "modules": [
         {
           "id": "operational-procedures-foundations",
@@ -202,8 +429,14 @@
           ],
           "knowledge": [],
           "autoMap": {
-            "domains": ["operational-procedures"],
-            "idPrefixes": ["operations.", "documentation.", "change-management."]
+            "domains": [
+              "operational-procedures"
+            ],
+            "idPrefixes": [
+              "operations.",
+              "documentation.",
+              "change-management."
+            ]
           }
         }
       ]
