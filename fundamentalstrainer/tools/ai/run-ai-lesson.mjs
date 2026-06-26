@@ -8,7 +8,7 @@ const args = parseImportArgs();
 const root = process.cwd();
 const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
 const cert = args.cert || args.certification || "a-plus-220-1202";
-const concept = args.concept || "DISC-001";
+const concept = args.concept || null;
 const promote = args.promote === "true";
 const reviewed = args.reviewed === "true";
 const allowOverwrite = args["allow-overwrite"] === "true";
@@ -125,6 +125,10 @@ function findAuthoringQueueItem(reviewedFilePath) {
   if (!reviewedFilePath) fail(`No normalized discovery review file found for lesson ${lesson}. Save the discovery-review.v1 AI response for lesson ${lesson}, then rerun this command.`);
   const review = readJson(reviewedFilePath);
   const queue = Array.isArray(review.authoringQueue) ? review.authoringQueue : [];
+  if (!queue.length) fail(`No authoringQueue items found for lesson ${lesson}.`);
+
+  if (!concept) return queue[0];
+
   const selected = queue.find(item => item.conceptId === concept || item.proposedKnowledgeId === concept || slugify(item.title) === slugify(concept));
   if (!selected) {
     const available = queue.map(item => `${item.conceptId}: ${item.title} (${item.proposedKnowledgeId})`).join("\n- ");
@@ -211,7 +215,7 @@ if (!authorPrompt.length) {
     "tools/ai/create-knowledge-author-prompt.mjs",
     `--file=${firstProject(reviewedFile)}`,
     `--intelligence=${firstProject(tiPending)}`,
-    `--concept=${concept}`
+    `--concept=${selected.conceptId || selected.proposedKnowledgeId}`
   ]);
   authorPrompt = listFiles("data/ai-imports/prompts/knowledge-author", file => file.endsWith("knowledge-author-prompt.md") && lessonMatch(file) && selectedPromptMatches(file, selected));
 }
