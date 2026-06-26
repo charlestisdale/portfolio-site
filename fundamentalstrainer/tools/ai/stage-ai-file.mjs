@@ -21,6 +21,14 @@ function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+function tryReadJson(file) {
+  try {
+    return readJson(file);
+  } catch {
+    return null;
+  }
+}
+
 function writeJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -60,6 +68,10 @@ function listStagingFiles() {
     .map(entry => path.join(stagingDir, entry.name));
 }
 
+function listJsonOutputs() {
+  return listStagingFiles().filter(file => path.extname(file).toLowerCase() === ".json");
+}
+
 function clearStaging() {
   fs.mkdirSync(stagingDir, { recursive: true });
   for (const file of listStagingFiles()) fs.unlinkSync(file);
@@ -94,14 +106,67 @@ function stagePrompt(item) {
   return targetPrompt;
 }
 
-function completeItem(item) {
-  const stagedOutput = stagedExpectedOutputPath(item);
-  if (!fs.existsSync(stagedOutput)) {
-    fail(`Expected output not found in ai-staging: ${path.basename(stagedOutput)}\nSave the AI JSON there, then rerun npm run ai:stage:complete.`);
+function expectedKnowledgeId(item) {
+  return item.proposedKnowledgeId || item.expectedKnowledgeId || "";
+}
+
+function expectedSchemaVersion(item) {
+  if (item.type === "transcript-intelligence") return "transcript-intelligence.v1";
+  if (item.type === "discovery-review") return "discovery-review.v1";
+  return "";
+}
+
+function fileNameLooksRelated(file, item) {
+  const base = path.basename(file).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const expected = String(item.expectedOutputName || "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const knowledge = expectedKnowledgeId(item).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return Boolean(
+    (expected && base.includes(expected.replace(/-json$/, ""))) ||
+    (knowledge && base.includes(knowledge)) ||
+    (knowledge && base.includes(knowledge.replace(/-knowledge-object$/, "")))
+  );
+}
+
+function findStagedOutput(item) {
+  const exact = stagedExpectedOutputPath(item);
+  if (fs.existsSync(exact)) return exact;
+
+  const outputs = listJsonOutputs();
+  if (!outputs.length) {
+    fail(`No JSON output found in ai-staging.\nSave the AI JSON there, then rerun npm run ai:stage:complete.`);
   }
 
+  const expectedId = expectedKnowledgeId(item);
+  if (expectedId) {
+    const idMatches = outputs.filter(file => tryReadJson(file)?.id === expectedId);
+    if (idMatches.length === 1) return idMatches[0];
+    if (idMatches.length > 1) {
+      fail(`Multiple JSON outputs match id ${expectedId}:\n${idMatches.map(file => `- ${path.basename(file)}`).join("\n")}`);
+    }
+  }
+
+  const schema = expectedSchemaVersion(item);
+  if (schema) {
+    const schemaMatches = outputs.filter(file => {
+      const data = tryReadJson(file);
+      return data?.schemaVersion === schema && String(data.lessonId || "").padStart(2, "0") === String(item.lesson || "").padStart(2, "0");
+    });
+    if (schemaMatches.length === 1) return schemaMatches[0];
+  }
+
+  const nameMatches = outputs.filter(file => fileNameLooksRelated(file, item));
+  if (nameMatches.length === 1) return nameMatches[0];
+
+  if (outputs.length === 1) return outputs[0];
+
+  fail(`Could not determine which JSON output to use. Found:\n${outputs.map(file => `- ${path.basename(file)}`).join("\n")}\nRemove extra JSON files or make sure one file contains the expected id/schema.`);
+}
+
+function completeItem(item) {
+  const stagedOutput = findStagedOutput(item);
   const destination = expectedOutputPath(item);
   fs.mkdirSync(path.dirname(destination), { recursive: true });
+  if (fs.existsSync(destination)) fs.unlinkSync(destination);
   fs.renameSync(stagedOutput, destination);
 
   const stagedPrompt = stagedPromptPath(item);
@@ -153,8 +218,9 @@ async function runNext() {
   console.log("\nAI prompt staged:");
   console.log(`  ${toProjectPath(stagedPrompt, root)}`);
   console.log("\nUpload or paste that prompt into ChatGPT / your AI tool.");
-  console.log("\nSave the AI JSON response as:");
-  console.log(`  ${toProjectPath(stagedExpectedOutputPath(item), root)}`);
+  console.log("\nSave the AI JSON response in ai-staging. Suggested filename:");
+  console.log(`  ${path.basename(stagedExpectedOutputPath(item))}`);
+  console.log("\nThe helper will also accept a different filename if the JSON content matches the expected id/schema.");
   console.log("\nThen run:");
   console.log("  npm run ai:stage:complete");
 }
