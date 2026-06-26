@@ -11,77 +11,7 @@ const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
 const dryRun = args["dry-run"] === "true";
 const pruneMissing = args["prune-missing"] !== "false";
 const allowMultiplePlacements = args["allow-multiple"] === "true";
-
-const curriculumRules = [
-  {
-    sectionId: "1.0",
-    moduleId: "firmware-and-boot-methods",
-    reason: "Mapped by curriculum rule for firmware and boot method concepts.",
-    idPrefixes: ["firmware.", "bios.", "uefi.", "pxe.", "boot."],
-    idIncludes: ["firmware", "uefi", "bios", "pxe", "bootable-usb", "iso-image"],
-    titleIncludes: ["firmware", "uefi", "bios", "compatibility mode", "pxe", "network boot", "bootable usb", "iso image"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "os-installation-methods",
-    reason: "Mapped by curriculum rule for OS installation method concepts.",
-    idPrefixes: ["os.installation", "os.clean-install", "os.in-place-upgrade"],
-    idIncludes: ["clean-install", "in-place-upgrade", "multiboot", "installation-planning"],
-    titleIncludes: ["clean install", "in-place upgrade", "installation planning", "multiboot", "multi boot"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "os-deployment-and-recovery",
-    reason: "Mapped by curriculum rule for OS deployment and recovery concepts.",
-    idPrefixes: ["os.deployment", "os.recovery", "os.repair", "os.driver-loading"],
-    idIncludes: ["image-deployment", "zero-touch", "recovery-partition", "repair-installation", "third-party-driver-loading"],
-    titleIncludes: ["image deployment", "zero touch", "recovery partition", "repair installation", "third-party driver", "driver loading"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "os-compatibility-and-readiness",
-    reason: "Mapped by curriculum rule for OS compatibility and readiness concepts.",
-    idPrefixes: [
-      "os.hardware-compatibility",
-      "windows.pc-health-check",
-      "windows.system-information",
-      "windows.application-driver-compatibility",
-      "security.tpm",
-      "windows.tpm",
-      "security.secure-boot"
-    ],
-    idIncludes: ["compatibility-check", "pc-health-check", "system-information", "application-driver-compatibility", "hardware-compatibility", "tpm", "secure-boot"],
-    titleIncludes: ["compatibility", "readiness", "pc health check", "system information", "tpm", "secure boot", "hardware requirement", "driver compatibility"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "os-maintenance-and-lifecycle",
-    reason: "Mapped by curriculum rule for OS maintenance and lifecycle concepts.",
-    idIncludes: ["patch", "update", "end-of-life", "product-lifecycle"],
-    titleIncludes: ["update", "patch", "end of life", "product lifecycle", "lifecycle", "support lifecycle"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "file-systems",
-    reason: "Mapped by curriculum rule for file system concepts.",
-    idPrefixes: ["filesystems.", "linux.ext", "macos.apfs", "windows.ntfs"],
-    titleIncludes: ["file system", "ntfs", "refs", "xfs", "ext4", "apfs", "fat32", "exfat"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "mobile-operating-systems",
-    reason: "Mapped by curriculum rule for mobile operating system concepts.",
-    idPrefixes: ["android.", "apple.", "ios.", "ipados.", "mobile."],
-    titleIncludes: ["android", "ios", "ipados", "mobile"]
-  },
-  {
-    sectionId: "1.0",
-    moduleId: "desktop-operating-systems",
-    reason: "Mapped by curriculum rule for desktop operating system concepts.",
-    idPrefixes: ["windows.", "linux.", "macos.", "chromeos."],
-    titleIncludes: ["windows", "linux", "macos", "chromeos", "desktop"]
-  }
-];
+const minimumAutoMapScore = Number(args["minimum-score"] || 1);
 
 function fail(message) {
   console.error(message);
@@ -130,79 +60,136 @@ function lessonMatch(file) {
   return path.basename(file).startsWith(`${lesson}-`);
 }
 
-function canonicalKnowledgeIds() {
-  return new Set(walkJsonFiles("content/knowledge").map(file => readJson(file).id).filter(Boolean));
+function canonicalKnowledgeObjects() {
+  const objects = new Map();
+  for (const file of walkJsonFiles("content/knowledge")) {
+    const object = readJson(file);
+    if (object.id) objects.set(object.id, object);
+  }
+  return objects;
 }
 
 function findReviewedFiles() {
   return listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
 }
 
-function textFor(item) {
+function normalizedText(value) {
+  return String(value || "").toLowerCase();
+}
+
+function collectDecisionText(decision, object = null) {
   return {
-    id: String(item.proposedKnowledgeId || item.id || "").toLowerCase(),
-    title: String(item.title || "").toLowerCase()
+    id: normalizedText(decision.proposedKnowledgeId || object?.id),
+    title: normalizedText(decision.title || object?.title),
+    type: normalizedText(decision.type || object?.type),
+    domains: asArray(decision.domains || object?.domains).map(normalizedText),
+    tags: collectTags(decision, object).map(normalizedText)
   };
 }
 
-function matchesRule(item, rule) {
-  const { id, title } = textFor(item);
-  const idPrefixMatch = asArray(rule.idPrefixes).some(prefix => id.startsWith(String(prefix).toLowerCase()));
-  const idIncludeMatch = asArray(rule.idIncludes).some(value => id.includes(String(value).toLowerCase()));
-  const titleIncludeMatch = asArray(rule.titleIncludes).some(value => title.includes(String(value).toLowerCase()));
-  return idPrefixMatch || idIncludeMatch || titleIncludeMatch;
+function collectTags(decision, object = null) {
+  return [
+    ...asArray(decision.tags),
+    ...asArray(object?.tags),
+    ...asArray(object?.domains),
+    ...asArray(object?.learning?.facts).flatMap(fact => asArray(fact.tags)),
+    ...asArray(object?.assessmentSeeds?.examTips).flatMap(tip => asArray(tip.tags))
+  ];
 }
 
-function rulePlacementFor(item) {
-  const rule = curriculumRules.find(candidate => matchesRule(item, candidate));
-  if (!rule) return null;
+function scoreList(values, matcher, weight) {
+  return asArray(values).reduce((score, value) => score + (matcher(normalizedText(value)) ? weight : 0), 0);
+}
+
+function scoreAutoMap(autoMap, decision, object) {
+  if (!autoMap) return 0;
+  const text = collectDecisionText(decision, object);
+  let score = 0;
+
+  score += scoreList(autoMap.idExact, value => text.id === value, 100);
+  score += scoreList(autoMap.idPrefixes, value => text.id.startsWith(value), 40);
+  score += scoreList(autoMap.idIncludes, value => text.id.includes(value), 25);
+  score += scoreList(autoMap.titleIncludes, value => text.title.includes(value) || text.id.includes(value.replaceAll(" ", "-")), 15);
+  score += scoreList(autoMap.types, value => text.type === value, 10);
+  score += scoreList(autoMap.domains, value => text.domains.includes(value), 8);
+  score += scoreList(autoMap.tags, value => text.tags.includes(value), 6);
+
+  return score;
+}
+
+function flattenModules(curriculum) {
+  return asArray(curriculum.sections).flatMap(section =>
+    asArray(section.modules).map(module => ({ section, module }))
+  );
+}
+
+function bestAutoMapPlacement(curriculum, decision, object) {
+  const candidates = flattenModules(curriculum)
+    .map(target => ({
+      ...target,
+      score: scoreAutoMap(target.module.autoMap, decision, object)
+    }))
+    .filter(candidate => candidate.score >= minimumAutoMapScore)
+    .sort((a, b) => b.score - a.score || Number(a.section.order || 0) - Number(b.section.order || 0) || Number(a.module.order || 0) - Number(b.module.order || 0));
+
+  const best = candidates[0];
+  if (!best) return null;
+
   return {
-    sectionId: rule.sectionId,
-    moduleId: rule.moduleId,
-    reason: rule.reason
-  };
-}
-
-function defaultModuleFor(item) {
-  return rulePlacementFor(item)?.moduleId || "operating-system-foundations";
-}
-
-function placementForDecision(decision) {
-  const rulePlacement = rulePlacementFor(decision);
-  const cd = decision.curriculumDecision || {};
-
-  if (rulePlacement) {
-    return {
-      ...rulePlacement,
-      originalSectionId: cd.sectionId || null,
-      originalModuleId: cd.moduleId || null
-    };
-  }
-
-  if (cd.status === "accept" || cd.status === "change") {
-    return {
-      sectionId: cd.sectionId || "1.0",
-      moduleId: cd.moduleId || defaultModuleFor(decision),
-      reason: cd.reason || "Mapped from discovery review curriculum decision."
-    };
-  }
-
-  return {
-    sectionId: "1.0",
-    moduleId: defaultModuleFor(decision),
-    reason: "Mapped from default module rules because no accepted curriculum decision was supplied."
+    sectionId: best.section.id,
+    moduleId: best.module.id,
+    reason: `Mapped by curriculum autoMap rules in ${best.section.id}.${best.module.id} with score ${best.score}.`,
+    score: best.score
   };
 }
 
 function moduleById(curriculum) {
   const map = new Map();
-  for (const section of curriculum.sections || []) {
-    for (const module of section.modules || []) {
+  for (const section of asArray(curriculum.sections)) {
+    for (const module of asArray(section.modules)) {
       map.set(`${section.id}.${module.id}`, { section, module });
       map.set(module.id, { section, module });
     }
   }
   return map;
+}
+
+function fallbackPlacement(curriculum) {
+  const configured = curriculum.mappingDefaults || curriculum.autoMapDefaults || {};
+  if (configured.sectionId && configured.moduleId) {
+    return {
+      sectionId: configured.sectionId,
+      moduleId: configured.moduleId,
+      reason: "Mapped from curriculum mappingDefaults."
+    };
+  }
+
+  const firstSection = asArray(curriculum.sections).sort((a, b) => Number(a.order || 0) - Number(b.order || 0))[0];
+  const firstModule = asArray(firstSection?.modules).sort((a, b) => Number(a.order || 0) - Number(b.order || 0))[0];
+  return {
+    sectionId: firstSection?.id || "1.0",
+    moduleId: firstModule?.id || "operating-system-foundations",
+    reason: "Mapped to the first curriculum module because no autoMap or accepted curriculum decision matched."
+  };
+}
+
+function placementForDecision({ curriculum, modules, decision, object }) {
+  const autoMapPlacement = bestAutoMapPlacement(curriculum, decision, object);
+  if (autoMapPlacement) return autoMapPlacement;
+
+  const cd = decision.curriculumDecision || {};
+  if ((cd.status === "accept" || cd.status === "change") && cd.moduleId) {
+    const target = modules.get(`${cd.sectionId || "1.0"}.${cd.moduleId}`) || modules.get(cd.moduleId);
+    if (target) {
+      return {
+        sectionId: target.section.id,
+        moduleId: target.module.id,
+        reason: cd.reason || "Mapped from accepted discovery review curriculum decision."
+      };
+    }
+  }
+
+  return fallbackPlacement(curriculum);
 }
 
 function addUnique(array, value) {
@@ -217,8 +204,8 @@ function removeFromOtherModules(curriculum, id, target) {
   const removed = [];
   if (allowMultiplePlacements) return removed;
 
-  for (const section of curriculum.sections || []) {
-    for (const module of section.modules || []) {
+  for (const section of asArray(curriculum.sections)) {
+    for (const module of asArray(section.modules)) {
       if (sameModule({ section, module }, target)) continue;
       const before = asArray(module.knowledge);
       if (!before.includes(id)) {
@@ -234,8 +221,8 @@ function removeFromOtherModules(curriculum, id, target) {
 }
 
 function sortModuleKnowledge(curriculum) {
-  for (const section of curriculum.sections || []) {
-    for (const module of section.modules || []) {
+  for (const section of asArray(curriculum.sections)) {
+    for (const module of asArray(section.modules)) {
       module.knowledge = [...new Set(asArray(module.knowledge))].sort();
     }
   }
@@ -243,8 +230,8 @@ function sortModuleKnowledge(curriculum) {
 
 function pruneMissingKnowledge(curriculum, ids) {
   const removed = [];
-  for (const section of curriculum.sections || []) {
-    for (const module of section.modules || []) {
+  for (const section of asArray(curriculum.sections)) {
+    for (const module of asArray(section.modules)) {
       const before = asArray(module.knowledge);
       module.knowledge = before.filter(id => ids.has(id));
       for (const id of before) {
@@ -270,7 +257,8 @@ if (!fs.existsSync(curriculumFile)) fail(`Curriculum file not found: ${toProject
 const reviewedFiles = findReviewedFiles();
 if (!reviewedFiles.length) fail(`No reviewed discovery packages found for lesson ${lesson || "all"}.`);
 
-const ids = canonicalKnowledgeIds();
+const objects = canonicalKnowledgeObjects();
+const ids = new Set(objects.keys());
 const curriculum = readJson(curriculumFile);
 const modules = moduleById(curriculum);
 const added = [];
@@ -282,12 +270,13 @@ for (const file of reviewedFiles) {
   for (const decision of asArray(review.conceptDecisions)) {
     if (decision.decision !== "accept-for-authoring") continue;
     const id = decision.proposedKnowledgeId;
-    if (!ids.has(id)) {
+    const object = objects.get(id);
+    if (!object) {
       skipped.push({ id, reason: "Knowledge Object is not canonical yet." });
       continue;
     }
 
-    const placement = placementForDecision(decision);
+    const placement = placementForDecision({ curriculum, modules, decision, object });
     const target = modules.get(`${placement.sectionId}.${placement.moduleId}`) || modules.get(placement.moduleId);
     if (!target) {
       skipped.push({ id, reason: `Target module not found: ${placement.sectionId}.${placement.moduleId}` });
@@ -309,9 +298,7 @@ for (const file of reviewedFiles) {
         id,
         sectionId: target.section.id,
         moduleId: target.module.id,
-        reason: placement.reason,
-        originalSectionId: placement.originalSectionId || undefined,
-        originalModuleId: placement.originalModuleId || undefined
+        reason: placement.reason
       });
     }
   }
@@ -331,6 +318,7 @@ if (validation.status !== 0) {
 
 console.log(JSON.stringify({
   generatedBy: "reviewed-knowledge-curriculum-mapper",
+  mapperType: "curriculum-driven-autoMap",
   dryRun,
   certification: cert,
   lesson,
