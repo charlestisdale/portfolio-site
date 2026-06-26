@@ -6,6 +6,7 @@ import { parseImportArgs, toProjectPath } from "../ingestion/import-transcript.m
 const args = parseImportArgs();
 const root = process.cwd();
 const inputFile = args.file;
+const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
 
 function fail(message) {
   console.error(message);
@@ -163,7 +164,7 @@ function normalizeSources(value) {
 
 function audit(obj) {
   const flags = [];
-  if (!obj.id || !/^[a-z0-9]+(\.[a-z0-9-]+)+$/.test(obj.id)) flags.push({ code: "bad-id", message: "id must look like domain.slug." });
+  if (!obj.id || !knowledgeIdPattern.test(obj.id)) flags.push({ code: "bad-id", message: "id must look like domain.slug and may use hyphens inside segments." });
   if (!obj.learning.summary) flags.push({ code: "missing-summary", message: "learning.summary is required." });
   if (!obj.learning.explanation) flags.push({ code: "missing-explanation", message: "learning.explanation is required." });
   if (!obj.learning.facts.length) flags.push({ code: "missing-facts", message: "At least one learning fact is required." });
