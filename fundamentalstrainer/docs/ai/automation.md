@@ -4,71 +4,120 @@
 
 The AI automation tooling coordinates the lesson ingestion pipeline without giving AI direct write access to the trusted knowledge store.
 
-The current workflow is manual-AI, deterministic-tooling:
+The normal operating model is guided manual-AI with deterministic local tooling:
 
 ```text
-local tool generates prompt
+local tool prepares or finds the lesson transcript
+    ↓
+local tool stages the next AI prompt into ai-staging/
     ↓
 user sends prompt to AI
     ↓
-user saves JSON response
+user saves JSON response into ai-staging/
     ↓
-local tool normalizes / promotes / validates
+user presses Enter
     ↓
-local tool generates next prompt
+local tool moves, normalizes, promotes, validates, and generates the next prompt
 ```
 
-## Main commands
+AI produces structured JSON. Local deterministic scripts decide where files go and whether content can become canonical.
+
+## Primary command
+
+Use this command for normal lesson processing:
 
 ```bash
-npm run ai:lesson -- --lesson=03
-npm run ai:expand -- --lesson=03 --promote=true
-npm run ai:stage:build -- --lesson=03
+npm run ai:guided -- --lesson04
+```
+
+Equivalent accepted forms:
+
+```bash
+npm run ai:guided -- --lesson=04
+npm run ai:guided -- --lesson04
+npm run ai:guided -- --04
+```
+
+The guided command is the front door for processing the remaining video set. It should be used instead of manually deciding whether to run `ai:lesson`, `ai:expand`, or `ai:stage:*`.
+
+## What `ai:guided` does
+
+`ai:guided` checks the lesson state and continues from the correct place.
+
+It can:
+
+- use an existing cleaned transcript
+- clean a raw `.srt` transcript if the cleaned transcript is missing
+- generate and stage a Transcript Intelligence prompt
+- import the Transcript Intelligence JSON response
+- normalize Transcript Intelligence into a pending package
+- generate and stage a Discovery Review prompt
+- import and normalize the Discovery Review JSON response
+- generate and stage each Knowledge Author prompt
+- import and normalize each Knowledge Author JSON response
+- promote authored drafts through the safe authored-draft promotion path
+- generate the next prompt until the lesson is complete
+- optionally run curriculum mapping and validation at the end
+
+It pauses only when an AI JSON response is required.
+
+## Guided interaction loop
+
+When the command pauses, it will show a prompt file under:
+
+```text
+ai-staging/
+```
+
+Use that prompt with AI, save the returned JSON into the same `ai-staging/` folder, then press Enter in the terminal.
+
+The helper prefers the suggested filename, but it can identify the response by JSON content when the filename differs.
+
+## Optional flags
+
+```bash
+npm run ai:guided -- --lesson04 --validate=true
+```
+
+Runs final validation when the lesson finishes.
+
+```bash
+npm run ai:guided -- --lesson04 --map=false
+```
+
+Skips automatic curriculum mapping at the end.
+
+```bash
+npm run ai:guided -- --lesson04 --file="path/to/transcript.srt"
+```
+
+Uses an explicit raw transcript file if the normal lesson-number lookup is not enough.
+
+```bash
+npm run ai:guided -- --lesson04 --force-clean=true
+```
+
+Re-cleans the transcript even if a cleaned transcript already exists.
+
+## Lower-level commands
+
+These commands still exist for troubleshooting and debugging individual stages:
+
+```bash
+npm run ai:lesson -- --lesson=04
+npm run ai:expand -- --lesson=04 --promote=true
+npm run ai:stage:build -- --lesson=04
 npm run ai:stage:next
 npm run ai:stage:complete
 npm run ai:stage:status
 ```
 
-## `ai:lesson`
+Do not use these as the normal 70-video workflow unless debugging a specific failure.
 
-Runs deterministic lesson prerequisites until it reaches the next AI boundary.
+## Responsibility boundaries
 
-It can generate or normalize:
+`ai:guided` orchestrates the pipeline, but it does not give AI direct write access to canonical data.
 
-- Transcript Intelligence prompt
-- Transcript Intelligence package
-- Discovery Manifest
-- Discovery Review prompt
-- Discovery Review package
-- first Knowledge Author prompt
-
-It stops when a human/AI response is needed.
-
-## `ai:expand`
-
-Advances Knowledge Authoring after Discovery Review exists.
-
-It can:
-
-- normalize saved Knowledge Author responses
-- dry-run authored drafts
-- promote drafts when `--promote=true`
-- generate the next Knowledge Author prompt
-- report the next required action
-
-## `ai:stage:*`
-
-The staging helper removes folder-jumping from the manual AI process.
-
-- `ai:stage:build` builds a queue for the next AI prompt.
-- `ai:stage:next` copies the next prompt into `ai-staging/`.
-- `ai:stage:complete` moves the AI JSON response to the correct destination.
-- `ai:stage:status` shows the current queue and staging state.
-
-## Why the AI is not fully autonomous
-
-This project intentionally avoids giving AI direct control over canonical data.
-
-AI produces structured suggestions and draft content. Local deterministic tools normalize, validate, and promote.
+AI writes nothing directly into the canonical knowledge store. AI responses are saved as JSON, then local deterministic tools normalize, audit, promote, and validate them.
 
 This keeps the pipeline reviewable, debuggable, and safe for a portfolio project.
