@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const knowledgeRoot = path.join(root, "content", "knowledge");
+const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
 const requiredTopLevel = [
   "schemaVersion",
   "id",
@@ -92,7 +93,7 @@ function validateObject(obj, file, allIds, errors) {
   }
 
   if (obj.schemaVersion !== "1.0.0") fail(errors, file, "schemaVersion must be 1.0.0");
-  if (!/^[a-z0-9]+(\.[a-z0-9-]+)+$/.test(obj.id || "")) fail(errors, file, "id must look like domain.slug");
+  if (!knowledgeIdPattern.test(obj.id || "")) fail(errors, file, "id must look like domain.slug and may use hyphens inside segments");
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(obj.slug || "")) fail(errors, file, "slug must be lowercase kebab-case");
   if (!allowedTypes.has(obj.type)) fail(errors, file, `invalid type "${obj.type}"`);
   if (!allowedStatuses.has(obj.status)) fail(errors, file, `invalid status "${obj.status}"`);
