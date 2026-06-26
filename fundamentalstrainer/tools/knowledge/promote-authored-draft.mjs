@@ -10,6 +10,7 @@ const inputFile = args.file;
 const dryRun = args["dry-run"] === "true";
 const allowOverwrite = args["allow-overwrite"] === "true";
 const markReviewed = args.reviewed === "true";
+const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
 
 const allowedTypes = new Set([
   "concept",
@@ -81,11 +82,19 @@ function existingById(id) {
   return allCanonicalObjects().filter(record => record.obj?.id === id);
 }
 
+function staleBadIdOnlyAudit(object) {
+  const flags = asArray(object.audit?.flags);
+  return object.audit?.status === "needs-review"
+    && flags.length === 1
+    && flags[0]?.code === "bad-id"
+    && knowledgeIdPattern.test(object.id || "");
+}
+
 function validateDraftObject(object) {
   const errors = [];
 
   if (object.schemaVersion !== "1.0.0") errors.push("schemaVersion must be 1.0.0");
-  if (!/^[a-z0-9]+(\.[a-z0-9-]+)+$/.test(object.id || "")) errors.push("id must look like domain.slug");
+  if (!knowledgeIdPattern.test(object.id || "")) errors.push("id must look like domain.slug and may use hyphens inside segments");
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(object.slug || "")) errors.push("slug must be lowercase kebab-case");
   if (!allowedTypes.has(object.type)) errors.push(`invalid type ${object.type}`);
   if (!asArray(object.domains).length) errors.push("domains must be a non-empty array");
@@ -99,7 +108,7 @@ function validateDraftObject(object) {
   if (!Array.isArray(object.sources?.references)) errors.push("sources.references must be an array");
   if (!object.quality) errors.push("quality is required");
 
-  if (object.audit?.status && object.audit.status !== "passed") {
+  if (object.audit?.status && object.audit.status !== "passed" && !staleBadIdOnlyAudit(object)) {
     errors.push(`draft audit status must be passed before promotion; received ${object.audit.status}`);
   }
 
