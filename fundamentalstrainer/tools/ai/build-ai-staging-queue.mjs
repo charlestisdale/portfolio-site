@@ -9,6 +9,7 @@ const root = process.cwd();
 const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
 const queueFile = path.resolve(root, args.queue || "data/ai-imports/staging-queue.json");
 const bootstrap = args.bootstrap !== "false";
+const promote = args.promote !== "false";
 
 function fail(message) {
   console.error(message);
@@ -56,6 +57,17 @@ function findTranscriptPrompt() {
 
 function runLessonBootstrap() {
   return spawnSync(process.execPath, ["tools/ai/run-ai-lesson.mjs", `--lesson=${lesson}`], {
+    cwd: root,
+    stdio: "pipe",
+    encoding: "utf8",
+    shell: false
+  });
+}
+
+function runExpansion() {
+  const command = ["tools/ai/run-ai-expansion.mjs", `--lesson=${lesson}`];
+  if (promote) command.push("--promote=true");
+  return spawnSync(process.execPath, command, {
     cwd: root,
     stdio: "pipe",
     encoding: "utf8",
@@ -115,6 +127,27 @@ function hasCanonical(item) {
   return false;
 }
 
+function buildKnowledgeAuthorQueue(reviewedFile) {
+  const review = readJson(reviewedFile);
+  const queue = [];
+  for (const item of review.authoringQueue || []) {
+    if (hasCanonical(item) || hasDraft(item) || hasResponse(item)) continue;
+    const prompt = promptFor(item);
+    if (!prompt) continue;
+    const expectedOutputName = `${slugify(item.proposedKnowledgeId)}.knowledge-object.json`;
+    queue.push({
+      type: "knowledge-author",
+      conceptId: item.conceptId,
+      proposedKnowledgeId: item.proposedKnowledgeId,
+      title: item.title,
+      promptPath: toProjectPath(prompt, root),
+      outputPath: `data/ai-imports/responses/knowledge-author/${expectedOutputName}`,
+      expectedOutputName
+    });
+  }
+  return queue;
+}
+
 function writeQueue(queue, metadata = {}) {
   fs.mkdirSync(path.dirname(queueFile), { recursive: true });
   fs.writeFileSync(queueFile, `${JSON.stringify({ lesson, ...metadata, queue }, null, 2)}\n`, "utf8");
@@ -134,9 +167,7 @@ if (!reviewedFile && bootstrap) {
     const expectedName = reviewPrompt
       ? `${lesson}-discovery-review.json`
       : `${lesson}-transcript-intelligence.json`;
-    const outputPath = reviewPrompt
-      ? `data/ai-imports/responses/${expectedName}`
-      : `data/ai-imports/responses/${expectedName}`;
+    const outputPath = `data/ai-imports/responses/${expectedName}`;
 
     if (waitingPrompt) {
       writeQueue([
@@ -166,29 +197,27 @@ if (!reviewedFile && bootstrap) {
 
 if (!reviewedFile) fail(`No normalized discovery review found for lesson ${lesson}. Run npm run ai:lesson -- --lesson=${lesson} first.`);
 
-const review = readJson(reviewedFile);
-const queue = [];
-for (const item of review.authoringQueue || []) {
-  if (hasCanonical(item) || hasDraft(item) || hasResponse(item)) continue;
-  const prompt = promptFor(item);
-  if (!prompt) continue;
-  const expectedOutputName = `${slugify(item.proposedKnowledgeId)}.knowledge-object.json`;
-  queue.push({
-    type: "knowledge-author",
-    conceptId: item.conceptId,
-    proposedKnowledgeId: item.proposedKnowledgeId,
-    title: item.title,
-    promptPath: toProjectPath(prompt, root),
-    outputPath: `data/ai-imports/responses/knowledge-author/${expectedOutputName}`,
-    expectedOutputName
-  });
+let queue = buildKnowledgeAuthorQueue(reviewedFile);
+let expansionResult = null;
+
+if (!queue.length && bootstrap) {
+  expansionResult = runExpansion();
+  queue = buildKnowledgeAuthorQueue(reviewedFile);
 }
 
-writeQueue(queue, { status: "knowledge-author-queue", reviewedFile: toProjectPath(reviewedFile, root) });
+writeQueue(queue, {
+  status: "knowledge-author-queue",
+  reviewedFile: toProjectPath(reviewedFile, root),
+  expansionStdout: expansionResult?.stdout?.trim() || "",
+  expansionStderr: expansionResult?.stderr?.trim() || "",
+  expansionStatus: expansionResult ? expansionResult.status : null
+});
 
 console.log(JSON.stringify({
   output: toProjectPath(queueFile, root),
   lesson,
   queued: queue.length,
+  expansionRan: Boolean(expansionResult),
+  expansionStatus: expansionResult ? expansionResult.status : null,
   nextCommand: queue.length ? "npm run ai:stage:next" : "No pending Knowledge Author prompts found. Run npm run ai:expand -- --lesson=<lesson> --promote=true."
 }, null, 2));
