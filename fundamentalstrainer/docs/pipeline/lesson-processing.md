@@ -36,62 +36,108 @@ Validation
 Curriculum mapping
 ```
 
-## Preferred operating loop
+## Preferred operating command
+
+Use the guided importer for normal processing:
 
 ```bash
-npm run ai:stage:build -- --lesson=03
-npm run ai:stage:next
+npm run ai:guided -- --lesson04
 ```
 
-Use the staged prompt with AI and save the JSON response into `ai-staging/`, then run:
+Accepted forms:
 
 ```bash
-npm run ai:stage:complete
-npm run ai:stage:build -- --lesson=03
+npm run ai:guided -- --lesson=04
+npm run ai:guided -- --lesson04
+npm run ai:guided -- --04
 ```
 
-Repeat until no prompts remain.
+This command is intended for processing the remaining video set. It should be the only command the operator needs to remember during normal import work.
 
-## Manual fallback commands
+## What the guided command handles
 
-```bash
-npm run ai:lesson -- --lesson=03
-npm run ai:expand -- --lesson=03 --promote=true
-npm run curriculum:map-reviewed -- --lesson=03
-npm run validate:all
+`ai:guided` continues from the current lesson state.
+
+It will:
+
+- use the existing cleaned transcript when present
+- clean the raw `.srt` transcript only if the cleaned transcript is missing
+- generate the next required AI prompt
+- place that prompt in `ai-staging/`
+- pause for the AI JSON response
+- move the saved JSON response to the correct pipeline folder
+- normalize deterministic outputs
+- promote safe authored drafts
+- generate the next Knowledge Author prompt
+- repeat until the lesson is complete
+
+## Operator loop
+
+```text
+run npm run ai:guided -- --lesson04
+    ↓
+when it pauses, open the prompt in ai-staging/
+    ↓
+send the prompt to AI
+    ↓
+save the returned JSON into ai-staging/
+    ↓
+press Enter
+    ↓
+repeat until complete
 ```
 
 ## AI stage boundaries
 
-The pipeline stops when it needs one of these AI responses:
+The pipeline pauses when it needs one of these AI responses:
 
 - Transcript Intelligence JSON
 - Discovery Review JSON
 - Knowledge Author JSON
 
-The user saves those responses under the expected `data/ai-imports/responses/` location, either manually or through the staging helper.
+The user saves those responses into `ai-staging/`. The guided command moves them into the correct permanent location.
+
+## Manual fallback commands
+
+The lower-level commands are still available for troubleshooting:
+
+```bash
+npm run ai:lesson -- --lesson=04
+npm run ai:expand -- --lesson=04 --promote=true
+npm run ai:stage:build -- --lesson=04
+npm run ai:stage:next
+npm run ai:stage:complete
+npm run curriculum:map-reviewed -- --lesson=04
+npm run validate:all
+```
+
+Use these only when debugging a specific failure or inspecting an individual stage.
 
 ## Promotion rule
 
 Do not use older unsafe bulk promotion paths for authored drafts unless intentionally testing legacy compiler behavior.
 
-Use authored draft promotion:
+The normal safe promotion path is authored draft promotion:
 
 ```bash
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/<draft>.draft.json"
 ```
 
-or let `ai:expand -- --promote=true` call it.
+In the preferred workflow, `ai:guided` calls the safe promotion path through `ai:expand -- --promote=true` at the correct time.
 
 ## Curriculum mapping
 
 After concepts are promoted, map reviewed knowledge into curriculum modules:
 
 ```bash
-npm run curriculum:map-reviewed -- --lesson=03
+npm run curriculum:map-reviewed -- --lesson=04
 ```
 
-The curriculum mapper should place promoted objects into modules based on reviewed curriculum decisions and safe fallback rules.
+The guided command runs curriculum mapping automatically when lesson authoring is complete unless disabled with:
+
+```bash
+npm run ai:guided -- --lesson04 --map=false
+```
 
 ## Validation
 
@@ -102,3 +148,9 @@ npm run validate:all
 ```
 
 Warnings about missing/planned graph targets are acceptable during import. Validation errors must be fixed.
+
+To have guided import run final validation automatically:
+
+```bash
+npm run ai:guided -- --lesson04 --validate=true
+```
