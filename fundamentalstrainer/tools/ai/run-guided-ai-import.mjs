@@ -4,11 +4,19 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
-import { parseImportArgs, toProjectPath } from "../ingestion/import-transcript.mjs";
+import {
+  cleanOutputFile,
+  findRawTranscriptByLesson,
+  importTranscript,
+  lessonInfo,
+  parseImportArgs,
+  toProjectPath
+} from "../ingestion/import-transcript.mjs";
 
 const rawArgv = process.argv.slice(2);
 const args = parseImportArgs(rawArgv);
 const root = process.cwd();
+const certificationId = args.cert || args.certification || "a-plus-220-1202";
 
 function resolveLessonArg() {
   if (args.lesson) return String(args.lesson).padStart(2, "0");
@@ -108,6 +116,77 @@ function printHeader(title) {
   console.log(`\n${"=".repeat(72)}`);
   console.log(title);
   console.log("=".repeat(72));
+}
+
+function findCleanedTranscriptForLesson() {
+  const cleanedDir = path.resolve(root, `data/transcripts/cleaned/${certificationId}`);
+  if (!fs.existsSync(cleanedDir)) return null;
+
+  return fs.readdirSync(cleanedDir, { withFileTypes: true })
+    .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith(".txt"))
+    .map(entry => path.join(cleanedDir, entry.name))
+    .find(file => path.basename(file).startsWith(`${lesson}-`)) || null;
+}
+
+function prepareTranscript() {
+  printHeader(`TRANSCRIPT PREP LESSON ${lesson}`);
+
+  const existingCleaned = findCleanedTranscriptForLesson();
+  if (existingCleaned && args["force-clean"] !== "true") {
+    console.log(`Cleaned transcript already exists: ${toProjectPath(existingCleaned, root)}`);
+    return;
+  }
+
+  const rawFile = args.file
+    ? path.resolve(root, args.file)
+    : findRawTranscriptByLesson({
+        root,
+        certificationId,
+        lessonId: lesson,
+        rawDir: args.raw
+      });
+
+  if (!rawFile) {
+    fail([
+      `No raw transcript found for lesson ${lesson}.`,
+      `Expected location: data/transcripts/raw/${certificationId}/`,
+      "Add the .srt file there, or run with --file=path/to/transcript.srt."
+    ].join("\n"));
+  }
+
+  if (!fs.existsSync(rawFile)) fail(`Raw transcript file not found: ${toProjectPath(rawFile, root)}`);
+
+  const info = lessonInfo(rawFile);
+  const cleanedFile = cleanOutputFile({
+    cleanedDir: path.resolve(root, `data/transcripts/cleaned/${certificationId}`),
+    lessonId: lesson,
+    title: info.title
+  });
+
+  if (fs.existsSync(cleanedFile) && args["force-clean"] !== "true") {
+    console.log(`Cleaned transcript already exists: ${toProjectPath(cleanedFile, root)}`);
+    return;
+  }
+
+  const report = importTranscript(rawFile, {
+    root,
+    certificationId,
+    lessonId: lesson,
+    title: info.title,
+    legacyExtract: false
+  });
+
+  if (report.error || report.steps?.clean?.ok === false) {
+    console.log(JSON.stringify(report, null, 2));
+    fail(`Transcript prep failed for lesson ${lesson}.`);
+  }
+
+  console.log(JSON.stringify({
+    prepared: true,
+    raw: report.rawFile,
+    cleaned: report.cleanedFile,
+    mode: report.mode
+  }, null, 2));
 }
 
 function printStagedPromptHelp() {
@@ -240,7 +319,9 @@ async function main() {
 
   try {
     console.log(`Guided AI import started for lesson ${lesson}.`);
-    console.log("This is the normal one-command workflow. It will pause only when an AI JSON response is needed.");
+    console.log("This is the normal one-command workflow. It prepares the transcript, then pauses only when an AI JSON response is needed.");
+
+    prepareTranscript();
 
     for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
       const build = runBuild();
