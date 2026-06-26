@@ -11,8 +11,8 @@ This documentation describes the current AI curriculum compiler architecture.
 
 ## AI pipeline
 
-- `ai/automation.md` — lesson automation commands and responsibility boundaries.
-- `ai/staging-workflow.md` — temporary `ai-staging/` prompt workflow.
+- `ai/automation.md` — primary guided import workflow and automation boundaries.
+- `ai/staging-workflow.md` — temporary `ai-staging/` prompt workflow used by guided import.
 - `transcript-intelligence.md` — Transcript Intelligence stage details.
 - `ai-authoring-philosophy.md` — Knowledge Authoring philosophy.
 
@@ -20,6 +20,24 @@ This documentation describes the current AI curriculum compiler architecture.
 
 - `pipeline/lesson-processing.md` — end-to-end lesson processing flow.
 - `developer/commands.md` — command reference.
+
+## Normal import command
+
+Use this as the normal one-command lesson workflow:
+
+```bash
+npm run ai:guided -- --lesson04
+```
+
+The command accepts these forms:
+
+```bash
+npm run ai:guided -- --lesson=04
+npm run ai:guided -- --lesson04
+npm run ai:guided -- --04
+```
+
+It uses `ai-staging/` as the temporary prompt/response folder and pauses only when an AI JSON response is needed.
 
 ## Architecture decisions
 
