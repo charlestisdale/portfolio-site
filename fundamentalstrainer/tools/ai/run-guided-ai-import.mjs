@@ -6,9 +6,30 @@ import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { parseImportArgs, toProjectPath } from "../ingestion/import-transcript.mjs";
 
-const args = parseImportArgs();
+const rawArgv = process.argv.slice(2);
+const args = parseImportArgs(rawArgv);
 const root = process.cwd();
-const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
+
+function resolveLessonArg() {
+  if (args.lesson) return String(args.lesson).padStart(2, "0");
+
+  for (const arg of rawArgv) {
+    const compact = arg.match(/^--lesson[-_=]?(\d{1,3})$/i);
+    if (compact) return compact[1].padStart(2, "0");
+
+    const bare = arg.match(/^--(\d{1,3})$/);
+    if (bare) return bare[1].padStart(2, "0");
+  }
+
+  for (const key of Object.keys(args)) {
+    const compact = key.match(/^lesson[-_]?([0-9]{1,3})$/i);
+    if (compact) return compact[1].padStart(2, "0");
+  }
+
+  return null;
+}
+
+const lesson = resolveLessonArg();
 const maxCycles = args["max-cycles"] ? Number.parseInt(args["max-cycles"], 10) : 200;
 const autoValidate = args.validate === "true";
 const autoMap = args.map !== "false";
@@ -206,13 +227,20 @@ function runNextAction(action) {
 }
 
 async function main() {
-  if (!lesson) fail("Usage: npm run ai:guided -- --lesson=03");
+  if (!lesson) {
+    fail([
+      "Usage:",
+      "  npm run ai:guided -- --lesson=04",
+      "  npm run ai:guided -- --lesson04",
+      "  npm run ai:guided -- --04"
+    ].join("\n"));
+  }
 
   const rl = readline.createInterface({ input, output });
 
   try {
     console.log(`Guided AI import started for lesson ${lesson}.`);
-    console.log("This will run deterministic pipeline steps automatically and pause only for AI JSON responses.");
+    console.log("This is the normal one-command workflow. It will pause only when an AI JSON response is needed.");
 
     for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
       const build = runBuild();
