@@ -10,6 +10,78 @@ const cert = args.cert || args.certification || "a-plus-220-1202";
 const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
 const dryRun = args["dry-run"] === "true";
 const pruneMissing = args["prune-missing"] !== "false";
+const allowMultiplePlacements = args["allow-multiple"] === "true";
+
+const curriculumRules = [
+  {
+    sectionId: "1.0",
+    moduleId: "firmware-and-boot-methods",
+    reason: "Mapped by curriculum rule for firmware and boot method concepts.",
+    idPrefixes: ["firmware.", "bios.", "uefi.", "pxe.", "boot."],
+    idIncludes: ["firmware", "uefi", "bios", "pxe", "bootable-usb", "iso-image"],
+    titleIncludes: ["firmware", "uefi", "bios", "compatibility mode", "pxe", "network boot", "bootable usb", "iso image"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "os-installation-methods",
+    reason: "Mapped by curriculum rule for OS installation method concepts.",
+    idPrefixes: ["os.installation", "os.clean-install", "os.in-place-upgrade"],
+    idIncludes: ["clean-install", "in-place-upgrade", "multiboot", "installation-planning"],
+    titleIncludes: ["clean install", "in-place upgrade", "installation planning", "multiboot", "multi boot"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "os-deployment-and-recovery",
+    reason: "Mapped by curriculum rule for OS deployment and recovery concepts.",
+    idPrefixes: ["os.deployment", "os.recovery", "os.repair", "os.driver-loading"],
+    idIncludes: ["image-deployment", "zero-touch", "recovery-partition", "repair-installation", "third-party-driver-loading"],
+    titleIncludes: ["image deployment", "zero touch", "recovery partition", "repair installation", "third-party driver", "driver loading"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "os-compatibility-and-readiness",
+    reason: "Mapped by curriculum rule for OS compatibility and readiness concepts.",
+    idPrefixes: [
+      "os.hardware-compatibility",
+      "windows.pc-health-check",
+      "windows.system-information",
+      "windows.application-driver-compatibility",
+      "security.tpm",
+      "windows.tpm",
+      "security.secure-boot"
+    ],
+    idIncludes: ["compatibility-check", "pc-health-check", "system-information", "application-driver-compatibility", "hardware-compatibility", "tpm", "secure-boot"],
+    titleIncludes: ["compatibility", "readiness", "pc health check", "system information", "tpm", "secure boot", "hardware requirement", "driver compatibility"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "os-maintenance-and-lifecycle",
+    reason: "Mapped by curriculum rule for OS maintenance and lifecycle concepts.",
+    idIncludes: ["patch", "update", "end-of-life", "product-lifecycle"],
+    titleIncludes: ["update", "patch", "end of life", "product lifecycle", "lifecycle", "support lifecycle"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "file-systems",
+    reason: "Mapped by curriculum rule for file system concepts.",
+    idPrefixes: ["filesystems.", "linux.ext", "macos.apfs", "windows.ntfs"],
+    titleIncludes: ["file system", "ntfs", "refs", "xfs", "ext4", "apfs", "fat32", "exfat"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "mobile-operating-systems",
+    reason: "Mapped by curriculum rule for mobile operating system concepts.",
+    idPrefixes: ["android.", "apple.", "ios.", "ipados.", "mobile."],
+    titleIncludes: ["android", "ios", "ipados", "mobile"]
+  },
+  {
+    sectionId: "1.0",
+    moduleId: "desktop-operating-systems",
+    reason: "Mapped by curriculum rule for desktop operating system concepts.",
+    idPrefixes: ["windows.", "linux.", "macos.", "chromeos."],
+    titleIncludes: ["windows", "linux", "macos", "chromeos", "desktop"]
+  }
+];
 
 function fail(message) {
   console.error(message);
@@ -66,18 +138,47 @@ function findReviewedFiles() {
   return listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
 }
 
+function textFor(item) {
+  return {
+    id: String(item.proposedKnowledgeId || item.id || "").toLowerCase(),
+    title: String(item.title || "").toLowerCase()
+  };
+}
+
+function matchesRule(item, rule) {
+  const { id, title } = textFor(item);
+  const idPrefixMatch = asArray(rule.idPrefixes).some(prefix => id.startsWith(String(prefix).toLowerCase()));
+  const idIncludeMatch = asArray(rule.idIncludes).some(value => id.includes(String(value).toLowerCase()));
+  const titleIncludeMatch = asArray(rule.titleIncludes).some(value => title.includes(String(value).toLowerCase()));
+  return idPrefixMatch || idIncludeMatch || titleIncludeMatch;
+}
+
+function rulePlacementFor(item) {
+  const rule = curriculumRules.find(candidate => matchesRule(item, candidate));
+  if (!rule) return null;
+  return {
+    sectionId: rule.sectionId,
+    moduleId: rule.moduleId,
+    reason: rule.reason
+  };
+}
+
 function defaultModuleFor(item) {
-  const id = item.proposedKnowledgeId || "";
-  const title = String(item.title || "").toLowerCase();
-  if (id.startsWith("windows.") || id.startsWith("linux.") || id.startsWith("macos.") || id.startsWith("chromeos.")) return "desktop-operating-systems";
-  if (id.startsWith("android.") || id.startsWith("apple.") || id.startsWith("ios.") || id.startsWith("ipados.")) return "mobile-operating-systems";
-  if (id.startsWith("filesystems.") || title.includes("file system")) return "file-systems";
-  if (title.includes("update") || title.includes("patch") || title.includes("end of life") || id.includes("patch") || id.includes("end-of-life")) return "os-maintenance-and-lifecycle";
-  return "operating-system-foundations";
+  return rulePlacementFor(item)?.moduleId || "operating-system-foundations";
 }
 
 function placementForDecision(decision) {
+  const rulePlacement = rulePlacementFor(decision);
   const cd = decision.curriculumDecision || {};
+
+  if (rulePlacement) {
+    return {
+      ...rulePlacement,
+      originalSectionId: cd.sectionId || null,
+      originalModuleId: cd.moduleId || null
+    };
+  }
+
   if (cd.status === "accept" || cd.status === "change") {
     return {
       sectionId: cd.sectionId || "1.0",
@@ -85,6 +186,7 @@ function placementForDecision(decision) {
       reason: cd.reason || "Mapped from discovery review curriculum decision."
     };
   }
+
   return {
     sectionId: "1.0",
     moduleId: defaultModuleFor(decision),
@@ -105,6 +207,30 @@ function moduleById(curriculum) {
 
 function addUnique(array, value) {
   if (!array.includes(value)) array.push(value);
+}
+
+function sameModule(left, right) {
+  return left.section.id === right.section.id && left.module.id === right.module.id;
+}
+
+function removeFromOtherModules(curriculum, id, target) {
+  const removed = [];
+  if (allowMultiplePlacements) return removed;
+
+  for (const section of curriculum.sections || []) {
+    for (const module of section.modules || []) {
+      if (sameModule({ section, module }, target)) continue;
+      const before = asArray(module.knowledge);
+      if (!before.includes(id)) {
+        module.knowledge = before;
+        continue;
+      }
+      module.knowledge = before.filter(item => item !== id);
+      removed.push({ id, sectionId: section.id, moduleId: module.id });
+    }
+  }
+
+  return removed;
 }
 
 function sortModuleKnowledge(curriculum) {
@@ -148,6 +274,7 @@ const ids = canonicalKnowledgeIds();
 const curriculum = readJson(curriculumFile);
 const modules = moduleById(curriculum);
 const added = [];
+const relocated = [];
 const skipped = [];
 
 for (const file of reviewedFiles) {
@@ -167,11 +294,25 @@ for (const file of reviewedFiles) {
       continue;
     }
 
+    const movedFrom = removeFromOtherModules(curriculum, id, target);
+    relocated.push(...movedFrom.map(item => ({
+      ...item,
+      targetSectionId: target.section.id,
+      targetModuleId: target.module.id
+    })));
+
     target.module.knowledge = asArray(target.module.knowledge);
     const before = target.module.knowledge.length;
     addUnique(target.module.knowledge, id);
     if (target.module.knowledge.length !== before) {
-      added.push({ id, sectionId: target.section.id, moduleId: target.module.id, reason: placement.reason });
+      added.push({
+        id,
+        sectionId: target.section.id,
+        moduleId: target.module.id,
+        reason: placement.reason,
+        originalSectionId: placement.originalSectionId || undefined,
+        originalModuleId: placement.originalModuleId || undefined
+      });
     }
   }
 }
@@ -197,9 +338,11 @@ console.log(JSON.stringify({
   reviewedFiles: reviewedFiles.map(file => toProjectPath(file, root)),
   canonicalKnowledgeObjects: ids.size,
   addedCount: added.length,
+  relocatedCount: relocated.length,
   removedMissingCount: removed.length,
   skippedCount: skipped.length,
   added,
+  relocated,
   removedMissing: removed,
   skipped,
   validation: dryRun ? "skipped-dry-run" : "passed",
