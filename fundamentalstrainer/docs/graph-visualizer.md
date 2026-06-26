@@ -1,24 +1,44 @@
 # Interactive Knowledge Graph Visualizer
 
-This document captures the current graph implementation for future development chats.
+This document captures the current graph implementation and the architectural rules future chats should preserve.
 
 ## Purpose
 
-The graph is a learner-facing explorer for canonical Knowledge Objects. It is not a separate content system and it must not become a hand-authored concept map outside the Knowledge Object pipeline.
+The graph is a learner-facing explorer for canonical Knowledge Objects and their relationships.
 
-Knowledge flow remains:
+It is not a separate content system, not an authoring tool, and not a hand-maintained concept map outside the Knowledge Object pipeline.
+
+## Current knowledge-to-graph flow
 
 ```text
-Transcripts / reviewed source material
-→ Evidence
-→ Candidate Knowledge Objects
-→ Human Review
-→ Canonical Knowledge Objects
-→ Knowledge Graph
-→ Graph Visualizer / Learn mode / Search / Assessments
+Instructional source
+    ↓
+Transcript / source text
+    ↓
+Transcript Intelligence
+    ↓
+Discovery Review
+    ↓
+Knowledge Author
+    ↓
+Draft Knowledge Object
+    ↓
+Promotion + validation
+    ↓
+Canonical Knowledge Object
+    ↓
+Relationship extraction / merge
+    ↓
+content/relationships/*.graph.json
+    ↓
+Knowledge Engine
+    ↓
+Graph Visualizer
 ```
 
-## Source of truth
+The graph must stay downstream of canonical Knowledge Objects and relationship files.
+
+## Graph source of truth
 
 The graph consumes canonical platform data:
 
@@ -29,7 +49,52 @@ content/relationships/a-plus-220-1202.graph.json
 engine/knowledge/**
 ```
 
-Do not hardcode instructional facts, certification facts, or lesson content into the graph UI. Graph labels, controls, and layout behavior may live in UI code, but concept meaning belongs in Knowledge Objects and relationship data.
+Do not hardcode instructional facts, certification facts, transcript facts, or lesson content into the graph UI. Graph labels, controls, and layout behavior may live in UI code, but concept meaning belongs in Knowledge Objects and relationship data.
+
+## Graph versus curriculum
+
+The graph and curriculum answer different questions.
+
+```text
+Knowledge Object = what the learner needs to know
+Knowledge Graph  = how concepts relate
+Curriculum       = where and when concepts are taught
+```
+
+A graph edge should not be used as curriculum placement. A curriculum module reference should not be treated as a conceptual relationship.
+
+Examples:
+
+```text
+filesystems.ntfs contrasts_with filesystems.fat32     = graph relationship
+filesystems.ntfs appears in File Systems module       = curriculum placement
+```
+
+## Relationship lifecycle
+
+Relationships may originate from AI authoring, discovery review, or Knowledge Object metadata, but they are not trusted until promotion and validation.
+
+```text
+AI relationship suggestion
+    ↓
+normalized draft relationship
+    ↓
+promotion mapping
+    ↓
+allowed relationship type
+    ↓
+graph edge
+    ↓
+architecture validation
+```
+
+Promotion tooling should map or reject relationship aliases instead of letting arbitrary edge types enter the graph.
+
+## Stub and missing nodes
+
+Missing targets can appear as stub/planned nodes when a relationship points to a Knowledge Object that has not been authored yet.
+
+This is expected during ingestion. Warnings about missing graph targets are roadmap signals unless validation fails. Do not fix missing targets by creating shallow placeholder Knowledge Objects. Author those concepts through the normal pipeline.
 
 ## Current implementation files
 
@@ -72,7 +137,7 @@ Focused | Expanded | Reset nodes | Zoom in | Zoom out | Fit graph | Center | Ope
 
 Current cleanup rules:
 
-- Do not restore `Reset view`; it was removed because it duplicated Fit graph and caused left-shifted viewport behavior.
+- Do not restore `Reset view`; it duplicated Fit graph and caused left-shifted viewport behavior.
 - Do not put Center beside the search input. Search should stay search-only.
 - Center means center the active graph node.
 - Fit graph means fit all visible graph nodes into the current canvas.
@@ -114,8 +179,8 @@ The graph intentionally avoids extra clutter:
 
 - No arrowheads.
 - No relationship chips.
-- No edge label chips such as `supports`, `executes`, `related`, or `communicates with` displayed as separate UI clutter.
-- Stub nodes are visible as nodes, but stub explanation belongs in future cleanup tooling, not as repeated chips around the graph.
+- No edge label chips displayed as repeated UI clutter.
+- Stub nodes are visible as nodes, but stub explanation belongs in future cleanup tooling.
 
 ## LocalStorage keys
 
@@ -139,38 +204,16 @@ As of the latest graph pass:
 - Reset view was removed.
 - Center is now in the main toolbar.
 - Open active in Learn returns to Learn mode at the top of the page.
-- Expanded mode is acceptable and can be lived with, but future polish is still possible.
+- Expanded mode is usable, but future polish is still possible.
 
 ## Future graph improvements
 
-Good next graph improvements, in priority order:
-
 1. Relationship filtering.
-   - Hide weak/generic `related` edges.
-   - Show active links only.
-   - Toggle stubs on/off.
-
 2. Stub cleanup visibility.
-   - Show visible stub count.
-   - List stubs visible in the current graph.
-   - Explain which relationship created each stub.
-   - Later allow review/merge/create workflows through admin tooling.
-
 3. Node detail preview.
-   - Hover or side-panel preview with title, summary, domain, status, and relationship reason.
-   - Keep click behavior as navigation unless intentionally redesigned.
-
 4. Better layout engine.
-   - Keep active concept central.
-   - Put strong/direct edges closer.
-   - Push stubs and weak context outward.
-   - Reduce overlap automatically.
-
-5. Graph-to-learning bridge.
-   - Add mastery/weakness coloring later.
-   - Use graph prerequisites to recommend study paths.
-   - Keep recommendations generated from Knowledge Objects and progress state.
+5. Graph-to-learning bridge with mastery and prerequisite recommendations.
 
 ## Architecture rule
 
-The graph must stay downstream of the Knowledge Objects and Knowledge Engine. It should visualize relationships; it should not define the learning content itself.
+The graph must stay downstream of Knowledge Objects and the Knowledge Engine. It should visualize relationships; it should not define learning content, curriculum placement, or source ingestion behavior.
