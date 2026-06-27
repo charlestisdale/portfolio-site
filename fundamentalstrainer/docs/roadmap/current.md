@@ -25,27 +25,62 @@
 - Initial templates for Curriculum Plans, Curriculum Expectations, resolver results, knowledge update packages, and fragment-aware Knowledge Objects.
 - Curriculum Expectation validator.
 - Resolver Result validator.
+- Knowledge Update validator.
 - Deterministic Knowledge Resolver framework.
+- Resolver Summary command.
+- Resolver Work Plan command.
+- Knowledge Maintainer Prompt Generator.
+- Knowledge Update Preview command.
+- Guarded Knowledge Update Apply command with explicit approval.
 - Missing/planned reference warning summaries for knowledge and architecture validation.
+- `validate:all` now validates Knowledge Objects, Curriculum Expectations, Resolver Results, Knowledge Updates, and Architecture.
 
 ## Current active work
 
 - Pausing broad import expansion to stabilize curriculum architecture before processing the remaining video set.
-- Defining the Curriculum Engine as a first-class structural layer.
-- Separating Curriculum Plans from Curriculum Expectations.
-- Designing the Knowledge Resolver so AI receives existing-platform context before authoring.
+- Testing the resolver and maintainer path against Lesson 04 and the next imported lessons.
 - Preserving A+ Core 2 as the immediate learning target while keeping the system certification-agnostic.
 - Preventing duplicate canonical concepts across future certifications such as Network+, Security+, CCNA, Linux+, and cloud curricula.
+- Keeping AI out of direct canonical writes: AI proposes structured updates; deterministic tools validate, preview, back up, and apply only after explicit human approval.
+
+## Current implemented maintenance pipeline
+
+```text
+Transcript Intelligence
+    ↓
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Summary
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Maintainer Prompt
+    ↓
+Knowledge Update / Update Package
+    ↓
+validate:updates
+    ↓
+knowledge:update:preview
+    ↓
+Human review
+    ↓
+knowledge:update:apply -- --approve=true
+    ↓
+validate:all
+```
 
 ## Near-term structural work
 
-1. Test the deterministic resolver against the first imported lessons.
+1. Test the deterministic resolver and maintainer workflow against Lessons 01-04 and then the next imported lessons.
 2. Review resolver results for false positives and false negatives.
-3. Decide when a resolver result should route to Knowledge Author versus Knowledge Maintainer.
-4. Add duplicate-risk reporting from resolver results into pipeline status output.
-5. Decide how existing imported A+ objects should migrate into the resolver/expectation model.
-6. Insert the resolver stage into the guided import workflow only after manual resolver output is stable.
-7. Resume large-scale A+ Core 2 import only after the structure is clear.
+3. Review maintainer output for over-broad updates, weak relationships, duplicate facts, or curriculum-specific language leaking into canonical knowledge.
+4. Decide how `expectation-only` work items should generate Curriculum Expectation files.
+5. Decide how `relationship-only` work items should enter a relationship review queue.
+6. Add batch/queue support for generating all maintainer prompts from a Resolver Work Plan.
+7. Insert the resolver stage into the guided import workflow only after manual resolver output is stable.
+8. Resume large-scale A+ Core 2 import only after the structure is clear.
 
 ## Near-term workflow improvements
 
@@ -55,7 +90,38 @@
 4. Add graph stub reports.
 5. Improve relationship type normalization.
 6. Add lesson completion reports.
-7. Remove or archive obsolete old docs.
+7. Add apply preview summaries to pipeline status output.
+8. Remove or archive obsolete old docs.
+
+## Next major milestone
+
+Integrate resolver-aware routing into guided import.
+
+Current guided path:
+
+```text
+Discovery Review
+    ↓
+Knowledge Author
+```
+
+Target guided path:
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Work Plan
+    ↓
+Decision
+    ├── new-object → Knowledge Author
+    ├── expand-existing-object → Knowledge Maintainer
+    ├── expectation-only → Curriculum Expectation Writer
+    ├── relationship-only → Relationship Queue
+    ├── duplicate-no-change → No canonical change
+    └── defer / reject → Human review
+```
 
 ## Future learning features
 

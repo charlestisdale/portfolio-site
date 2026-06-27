@@ -6,7 +6,7 @@ This documentation describes the current AI curriculum compiler architecture for
 
 - `project-vision.md` — project mission and permanent design principles.
 - `architecture/overview.md` — current system architecture.
-- `architecture/curriculum-engine.md` — long-term curriculum, expectation, and resolver architecture.
+- `architecture/curriculum-engine.md` — curriculum, expectation, resolver, and maintenance architecture.
 - `architecture/schema-contracts.md` — first schema contracts for fragments, expectations, resolver results, and update packages.
 - `architecture/project-philosophy.md` — design philosophy and guardrails.
 - `graph-visualizer.md` — graph architecture and UI behavior.
@@ -50,13 +50,46 @@ npm run ai:guided -- --04
 
 It uses `ai-staging/` as the temporary prompt/response folder and pauses only when an AI JSON response is needed.
 
-## Manual resolver test command
+## Knowledge maintenance workflow
+
+The resolver and maintainer workflow is currently manual, deterministic, and review-first. It is not yet inserted into `ai:guided`.
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Summary
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Maintainer Prompt
+    ↓
+Knowledge Update Package
+    ↓
+Validate Update
+    ↓
+Preview Update
+    ↓
+Apply Update with explicit approval
+    ↓
+Validate Canonical Knowledge
+```
+
+Useful commands:
 
 ```bash
 npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
+npm run validate:all
 ```
 
-This writes resolver result files to `data/imports/resolver/` for review before the resolver is added to the guided workflow.
+Core rule: AI may propose structured updates, but deterministic tooling validates, previews, backs up, and applies those updates only after explicit human approval.
 
 ## Architecture decisions
 
@@ -66,6 +99,7 @@ This writes resolver result files to `data/imports/resolver/` for review before 
 - `architecture/architecture-decisions/ADR-004-deterministic-ai-pipeline.md`
 - `architecture/architecture-decisions/ADR-005-engine-content-separation.md`
 - `architecture/architecture-decisions/ADR-006-curriculum-engine-and-expectations.md`
+- `architecture/architecture-decisions/ADR-007-deterministic-knowledge-maintenance.md`
 
 ## Roadmap
 
@@ -84,7 +118,11 @@ Discovery Review
     ↓
 Knowledge Resolver
     ↓
+Resolver Work Plan
+    ↓
 Knowledge Author / Knowledge Maintainer
+    ↓
+Knowledge Update Preview / Apply when needed
     ↓
 Canonical Knowledge Objects
     ↓
