@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const errors = [];
 const warnings = [];
+const missingRefs = new Map();
 const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
 
 function rel(file) {
@@ -16,6 +17,37 @@ function error(file, message) {
 
 function warning(file, message) {
   warnings.push(`${rel(file)}: ${message}`);
+}
+
+function missingRef(file, missingId, refType, referencedBy) {
+  const key = `${refType}:${missingId}`;
+  if (!missingRefs.has(key)) {
+    missingRefs.set(key, {
+      missingId,
+      refType,
+      references: new Map()
+    });
+  }
+
+  const bucket = missingRefs.get(key);
+  const location = rel(file);
+  if (!bucket.references.has(location)) bucket.references.set(location, new Set());
+  bucket.references.get(location).add(referencedBy);
+}
+
+function printMissingRefSummary() {
+  if (!missingRefs.size) return;
+
+  console.warn(`Warning: ${missingRefs.size} missing/planned architecture reference(s).`);
+
+  for (const bucket of [...missingRefs.values()].sort((a, b) => a.refType.localeCompare(b.refType) || a.missingId.localeCompare(b.missingId))) {
+    const locations = [...bucket.references.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([location, references]) => `${location} (${[...references].sort().slice(0, 4).join(", ")}${references.size > 4 ? `, and ${references.size - 4} more` : ""})`);
+    const preview = locations.slice(0, 3).join("; ");
+    const suffix = locations.length > 3 ? `; and ${locations.length - 3} more file(s)` : "";
+    console.warn(`  - ${bucket.refType} ${bucket.missingId} <- ${preview}${suffix}`);
+  }
 }
 
 async function readJson(file) {
@@ -93,7 +125,7 @@ function collectObjectives(nodes, file) {
     if (objectiveIds.has(node.id)) error(file, `duplicate objective id: ${node.id}`);
     objectiveIds.add(node.id);
     for (const kid of node.knowledgeIds || []) {
-      if (!knowledgeIds.has(kid)) warning(file, `objective references missing/planned knowledge object: ${kid}`);
+      if (!knowledgeIds.has(kid)) missingRef(file, kid, "knowledge", `objective ${node.id}`);
     }
     collectObjectives(node.children || [], file);
   }
@@ -115,10 +147,10 @@ if (lessons) {
     if (lessonIds.has(lesson.id)) error(lessonFile, `duplicate lesson id: ${lesson.id}`);
     lessonIds.add(lesson.id);
     for (const oid of lesson.objectiveIds || []) {
-      if (!objectiveIds.has(oid)) warning(lessonFile, `lesson references missing/planned objective: ${oid}`);
+      if (!objectiveIds.has(oid)) missingRef(lessonFile, oid, "objective", `lesson ${lesson.id}`);
     }
     for (const kid of lesson.knowledgeIds || []) {
-      if (!knowledgeIds.has(kid)) warning(lessonFile, `lesson references missing/planned knowledge object: ${kid}`);
+      if (!knowledgeIds.has(kid)) missingRef(lessonFile, kid, "knowledge", `lesson ${lesson.id}`);
     }
   }
 }
@@ -151,7 +183,7 @@ for (const file of curriculumFiles) {
     sectionIds.add(section.id);
 
     for (const objectiveId of section.objectiveIds || []) {
-      if (!objectiveIds.has(objectiveId)) warning(file, `curriculum section ${section.id} references missing/planned objective: ${objectiveId}`);
+      if (!objectiveIds.has(objectiveId)) missingRef(file, objectiveId, "objective", `curriculum section ${section.id}`);
     }
 
     for (const module of section.modules || []) {
@@ -165,7 +197,7 @@ for (const file of curriculumFiles) {
 
       for (const kid of module.knowledge || []) {
         curriculumKnowledgeRefs += 1;
-        if (!knowledgeIds.has(kid)) warning(file, `curriculum module ${moduleKey} references missing/planned knowledge object: ${kid}`);
+        if (!knowledgeIds.has(kid)) missingRef(file, kid, "knowledge", `curriculum module ${moduleKey}`);
       }
     }
   }
@@ -183,12 +215,13 @@ if (graph) {
     if (relationshipIds.has(edge.id)) error(graphFile, `duplicate relationship id: ${edge.id}`);
     relationshipIds.add(edge.id);
     if (!allowedRelationshipTypes.has(edge.type)) error(graphFile, `invalid relationship type: ${edge.type}`);
-    if (!knowledgeIds.has(edge.sourceId)) warning(graphFile, `relationship source is missing/planned: ${edge.sourceId}`);
-    if (!knowledgeIds.has(edge.targetId) && !objectiveIds.has(edge.targetId) && !lessonIds.has(edge.targetId)) warning(graphFile, `relationship target is missing/planned: ${edge.targetId}`);
+    if (!knowledgeIds.has(edge.sourceId)) missingRef(graphFile, edge.sourceId, "knowledge", `relationship source ${edge.id}`);
+    if (!knowledgeIds.has(edge.targetId) && !objectiveIds.has(edge.targetId) && !lessonIds.has(edge.targetId)) missingRef(graphFile, edge.targetId, "knowledge/objective/lesson", `relationship target ${edge.id}`);
   }
 }
 
 for (const message of warnings) console.warn(`Warning: ${message}`);
+printMissingRefSummary();
 
 if (errors.length) {
   console.error("Architecture validation failed:\n" + errors.map(e => `- ${e}`).join("\n"));
