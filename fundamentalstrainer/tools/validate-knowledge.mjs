@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const knowledgeRoot = path.join(root, "content", "knowledge");
 const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
+const reservedPlaceholderIdPattern = /^(concept|topic|object|knowledge|placeholder|draft)\.\d+$/;
 const requiredTopLevel = [
   "schemaVersion",
   "id",
@@ -113,6 +114,9 @@ function validateObject(obj, file, allIds, errors) {
 
   if (obj.schemaVersion !== "1.0.0") fail(errors, file, "schemaVersion must be 1.0.0");
   if (!knowledgeIdPattern.test(obj.id || "")) fail(errors, file, "id must look like domain.slug and may use hyphens inside segments");
+  if (reservedPlaceholderIdPattern.test(obj.id || "")) {
+    fail(errors, file, `id "${obj.id}" is a reserved placeholder pattern; use a semantic canonical id such as windows.windows-n-edition`);
+  }
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(obj.slug || "")) fail(errors, file, "slug must be lowercase kebab-case");
   if (!allowedTypes.has(obj.type)) fail(errors, file, `invalid type "${obj.type}"`);
   if (!allowedStatuses.has(obj.status)) fail(errors, file, `invalid status "${obj.status}"`);
