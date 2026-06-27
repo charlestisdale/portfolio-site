@@ -95,6 +95,7 @@ npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
 npm run validate:updates
 npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
 npm run ai:knowledge:author-prompt -- --file="data/imports/reviewed/04-upgrading-windows-discovery-review.json" --intelligence="data/imports/pending/04-transcript-intelligence.json" --concept=DISC-002
 npm run ai:knowledge:author-normalize -- --file="data/ai-imports/responses/knowledge-author/example.knowledge-object.json"
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/example-knowledge-object.draft.json"
@@ -113,6 +114,7 @@ npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
 npm run validate:updates
 npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
 ```
 
 The resolver reads normalized Discovery Review output from `data/imports/reviewed/`, searches canonical Knowledge Objects, graph relationship hints, and existing Curriculum Expectations, then writes one resolver result per discovered concept into `data/imports/resolver/`.
@@ -126,6 +128,8 @@ The maintainer prompt command reads one work item and its target canonical Knowl
 The update validator checks Knowledge Maintainer response JSON before any canonical object can be changed.
 
 The update preview command validates the update, loads the target canonical Knowledge Object, and writes JSON and Markdown preview reports without modifying canonical knowledge.
+
+The update apply command requires `--approve=true`, creates a backup, applies additive changes only, validates canonical knowledge, and writes an apply report.
 
 These first implementations are deterministic. They do not author final content and do not change the guided import flow yet.
 
