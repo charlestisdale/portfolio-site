@@ -11,6 +11,7 @@ const queueFile = path.resolve(root, args.queue || "data/ai-imports/staging-queu
 const bootstrap = args.bootstrap !== "false";
 const promote = args.promote !== "false";
 const resolverAware = args.resolver !== "false";
+const reservedPlaceholderIdPattern = /^(concept|topic|object|knowledge|placeholder|draft)\.\d+$/;
 
 function fail(message) {
   console.error(message);
@@ -63,6 +64,10 @@ function slugify(value) {
 function lessonMatch(file) {
   if (!lesson) return true;
   return path.basename(file).startsWith(`${lesson}-`);
+}
+
+function isPlaceholderKnowledgeId(value) {
+  return reservedPlaceholderIdPattern.test(String(value || ""));
 }
 
 function parseJsonFromStdout(stdout) {
@@ -131,6 +136,7 @@ function findTranscriptIntelligenceFile() {
 }
 
 function findKnowledgeObjectById(knowledgeId) {
+  if (isPlaceholderKnowledgeId(knowledgeId)) return null;
   return walkJsonFiles("content/knowledge").find(file => tryReadJson(file)?.id === knowledgeId) || null;
 }
 
@@ -139,16 +145,22 @@ function hasCanonical(knowledgeId) {
 }
 
 function hasAuthorResponse(knowledgeId) {
+  if (isPlaceholderKnowledgeId(knowledgeId)) return false;
   return listFiles("data/ai-imports/responses/knowledge-author", file => {
     if (!file.endsWith(".json")) return false;
-    return tryReadJson(file)?.id === knowledgeId;
+    const data = tryReadJson(file);
+    if (isPlaceholderKnowledgeId(data?.id)) return false;
+    return data?.id === knowledgeId;
   }).length > 0;
 }
 
 function hasDraft(knowledgeId) {
+  if (isPlaceholderKnowledgeId(knowledgeId)) return false;
   return listFiles("data/imports/authored", file => {
     if (!file.endsWith(".draft.json")) return false;
-    return tryReadJson(file)?.id === knowledgeId;
+    const data = tryReadJson(file);
+    if (isPlaceholderKnowledgeId(data?.id)) return false;
+    return data?.id === knowledgeId;
   }).length > 0;
 }
 
@@ -258,6 +270,14 @@ function buildResolverAwareQueue({ reviewedFile, workPlan }) {
   const completedItems = [];
 
   for (const workItem of workPlan.workItems || []) {
+    if (isPlaceholderKnowledgeId(workItem.knowledgeId)) {
+      manualItems.push({
+        ...workItem,
+        reason: "Resolver proposed a reserved placeholder Knowledge ID. Fix Discovery Review / resolver routing to use a semantic canonical ID before authoring."
+      });
+      continue;
+    }
+
     if (workItem.action === "create-new-object") {
       if (hasCanonical(workItem.knowledgeId) || hasDraft(workItem.knowledgeId) || hasAuthorResponse(workItem.knowledgeId)) {
         completedItems.push(workItem);
@@ -302,6 +322,7 @@ function buildLegacyAuthorQueue(reviewedFile) {
       knowledgeId: item.proposedKnowledgeId,
       concepts: [{ conceptId: item.conceptId, title: item.title }]
     };
+    if (isPlaceholderKnowledgeId(item.proposedKnowledgeId)) continue;
     if (hasCanonical(item.proposedKnowledgeId) || hasDraft(item.proposedKnowledgeId) || hasAuthorResponse(item.proposedKnowledgeId)) continue;
     const prompt = authorPromptFor(workItem) || createAuthorPrompt(reviewedFile, workItem);
     if (prompt) queue.push(authorQueueItem(workItem, prompt));
