@@ -88,6 +88,7 @@ npm run ai:discovery:manifest -- --file="data/imports/pending/04-transcript-inte
 npm run ai:discovery:review-prompt -- --file="data/imports/manifests/04-upgrading-windows-discovery-manifest.md"
 npm run ai:discovery:review-normalize -- --file="data/ai-imports/responses/04-discovery-review.json"
 npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
 npm run ai:knowledge:author-prompt -- --file="data/imports/reviewed/04-upgrading-windows-discovery-review.json" --intelligence="data/imports/pending/04-transcript-intelligence.json" --concept=DISC-002
 npm run ai:knowledge:author-normalize -- --file="data/ai-imports/responses/knowledge-author/example.knowledge-object.json"
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/example-knowledge-object.draft.json"
@@ -101,9 +102,12 @@ These are useful for debugging individual pipeline stages.
 npm run ai:resolver -- --lesson=04
 npm run ai:resolver -- --lesson=04 --dry-run=true
 npm run ai:resolver -- --lesson=04 --minimum-score=20 --strong-score=85
+npm run ai:resolver:summary -- --lesson=04
 ```
 
 The resolver reads normalized Discovery Review output from `data/imports/reviewed/`, searches canonical Knowledge Objects, graph relationship hints, and existing Curriculum Expectations, then writes one resolver result per discovered concept into `data/imports/resolver/`.
+
+The summary command groups resolver results by decision, target Knowledge Object, confidence, and review queue. It writes a report to `data/imports/reports/`.
 
 The first implementation is deterministic. It does not author final content and does not change the guided import flow yet.
 
