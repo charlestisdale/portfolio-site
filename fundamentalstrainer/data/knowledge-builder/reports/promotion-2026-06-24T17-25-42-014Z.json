@@ -1,0 +1,144 @@
+{
+  "generatedBy": "knowledge-builder",
+  "dryRun": false,
+  "source": "approved-knowledge-objects.json",
+  "promotedCount": 25,
+  "skippedCount": 0,
+  "relationshipEdges": 33,
+  "promoted": [
+    {
+      "id": "mobile.android",
+      "title": "Android",
+      "path": "content/knowledge/mobile/android.json"
+    },
+    {
+      "id": "mobile.ios",
+      "title": "iOS",
+      "path": "content/knowledge/mobile/ios.json"
+    },
+    {
+      "id": "macos.apfs",
+      "title": "APFS",
+      "path": "content/knowledge/macos/apfs.json"
+    },
+    {
+      "id": "linux.ext4",
+      "title": "ext4",
+      "path": "content/knowledge/linux/ext4.json"
+    },
+    {
+      "id": "mobile.ios",
+      "title": "iOS",
+      "path": "content/knowledge/mobile/ios.json"
+    },
+    {
+      "id": "commands.command-prompt",
+      "title": "Command Prompt",
+      "path": "content/knowledge/commands/command-prompt.json"
+    },
+    {
+      "id": "networking.dhcp",
+      "title": "DHCP",
+      "path": "content/knowledge/networking/dhcp.json"
+    },
+    {
+      "id": "operating-systems.operating-system",
+      "title": "Operating System",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "operating-systems.operating-system",
+      "title": "Operating System",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "windows.windows",
+      "title": "Windows",
+      "path": "content/knowledge/windows/windows.json"
+    },
+    {
+      "id": "operating-systems.operating-system",
+      "title": "Operating System",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "mobile.ios",
+      "title": "iOS",
+      "path": "content/knowledge/mobile/ios.json"
+    },
+    {
+      "id": "commands.terminal",
+      "title": "Terminal",
+      "path": "content/knowledge/commands/terminal.json"
+    },
+    {
+      "id": "operating-systems.operating-system",
+      "title": "Operating System",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "operating-systems.microsoft-windows",
+      "title": "Microsoft Windows",
+      "path": "content/knowledge/operating-systems/microsoft-windows.json"
+    },
+    {
+      "id": "operating-systems.linux",
+      "title": "Linux",
+      "path": "content/knowledge/operating-systems/linux.json"
+    },
+    {
+      "id": "operating-systems.macos",
+      "title": "macOS",
+      "path": "content/knowledge/operating-systems/macos.json"
+    },
+    {
+      "id": "mobile-operating-systems.apple-ios",
+      "title": "Apple iOS",
+      "path": "content/knowledge/mobile-operating-systems/apple-ios.json"
+    },
+    {
+      "id": "mobile-operating-systems.android",
+      "title": "Android",
+      "path": "content/knowledge/mobile-operating-systems/android.json"
+    },
+    {
+      "id": "operating-systems.executable-compatibility",
+      "title": "Executable Compatibility",
+      "path": "content/knowledge/operating-systems/executable-compatibility.json"
+    },
+    {
+      "id": "operating-systems.operating-system-responsibilities",
+      "title": "Operating System Responsibilities",
+      "path": "content/knowledge/operating-systems/operating-system-responsibilities.json"
+    },
+    {
+      "id": "operating-systems.file-management",
+      "title": "File Management",
+      "path": "content/knowledge/operating-systems/file-management.json"
+    },
+    {
+      "id": "operating-systems.linux-distribution",
+      "title": "Linux Distribution",
+      "path": "content/knowledge/operating-systems/linux-distribution.json"
+    },
+    {
+      "id": "operating-systems.chromeos",
+      "title": "ChromeOS",
+      "path": "content/knowledge/operating-systems/chromeos.json"
+    },
+    {
+      "id": "operating-systems.operating-system-updates",
+      "title": "Operating System Updates",
+      "path": "content/knowledge/operating-systems/operating-system-updates.json"
+    }
+  ],
+  "skipped": [],
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 20
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 30
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "windows.tpm-msc",
+  "slug": "tpm-msc",
+  "title": "TPM Management Console Snap-in",
+  "aliases": [
+    "tpm.msc"
+  ],
+  "type": "command",
+  "status": "needs-review",
+  "domains": [
+    "windows",
+    "security"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "TPM.MSC is a Microsoft Management Console (MMC) snap-in used to view Trusted Platform Module information. It helps verify TPM presence, status, and readiness for Windows security features and Windows 11 upgrades.",
+    "explanation": "The TPM Management Console is launched with the command tpm.msc. It opens an MMC snap-in that displays information about the Trusted Platform Module installed in a computer.\n\nAdministrators can use the console to verify whether a TPM is present, determine its status and version, and confirm that it is ready for use. This information is useful when troubleshooting TPM-related issues or confirming Windows 11 upgrade readiness.",
+    "facts": [
+      {
+        "text": "tpm.msc opens the TPM Management Console.",
+        "importance": "exam-critical",
+        "tags": [
+          "command",
+          "mmc"
+        ]
+      },
+      {
+        "text": "The TPM Management Console is an MMC snap-in.",
+        "importance": "high",
+        "tags": [
+          "windows"
+        ]
+      },
+      {
+        "text": "Use TPM.MSC to verify TPM status, version, and readiness.",
+        "importance": "high",
+        "tags": [
+          "tpm"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "tpm.msc",
+        "description": "Open the TPM Management Console snap-in."
+      }
+    ],
+    "examples": [
+      {
+        "text": "A technician runs tpm.msc to verify TPM 2.0 is enabled before upgrading to Windows 11.",
+        "context": "Upgrade planning",
+        "tags": [
+          "windows-11"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": [
+      "Use this tool with the TPM concept rather than as a replacement for TPM knowledge."
+    ]
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know that tpm.msc opens the TPM Management Console.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing TPM.MSC with firmware configuration screens.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Verify TPM readiness before an operating system upgrade.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Choose the correct Windows tool to inspect TPM status.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "tpm.msc",
+      "MMC snap-ins",
+      "TPM verification"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "security.tpm-2-0",
+      "windows.microsoft-management-console"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "windows.windows-11-requirements",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Detailed field descriptions vary by Windows version and should be validated during review."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

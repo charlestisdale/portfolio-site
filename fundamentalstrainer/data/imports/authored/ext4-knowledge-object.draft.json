@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "filesystems.ext4",
+  "slug": "ext4",
+  "title": "ext4",
+  "aliases": [
+    "Fourth Extended File System"
+  ],
+  "type": "file-system",
+  "status": "needs-review",
+  "domains": [
+    "filesystems",
+    "linux",
+    "android"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "02",
+          "title": "File Systems",
+          "order": 2
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "ext4 is the fourth generation of the Extended File System family and is commonly used by Linux systems. It is also found in many Android devices because Android is built on the Linux kernel.",
+    "explanation": "ext4 is the fourth iteration of the Extended File System (ext) family. It is one of the most widely recognized file systems in Linux environments and serves as a common default choice for many Linux distributions.\n\nBecause Android is based on the Linux kernel, ext4 is also commonly encountered on Android devices. The file system provides the storage structures needed for organizing files and directories on supported operating systems.\n\nUnderstanding ext4 helps distinguish Linux- and Android-oriented storage from Windows file systems such as NTFS and removable-media file systems such as FAT32 and exFAT.",
+    "facts": [
+      {
+        "text": "ext4 is the fourth version of the Extended File System family.",
+        "importance": "high",
+        "tags": [
+          "ext4",
+          "lineage"
+        ]
+      },
+      {
+        "text": "ext4 is commonly used by Linux operating systems.",
+        "importance": "high",
+        "tags": [
+          "linux"
+        ]
+      },
+      {
+        "text": "ext4 is commonly found on Android devices.",
+        "importance": "medium",
+        "tags": [
+          "android"
+        ]
+      },
+      {
+        "text": "ext4 is a file system used to organize and store data.",
+        "importance": "medium",
+        "tags": [
+          "storage"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A Linux server is installed using an ext4-formatted partition for its operating system files.",
+        "context": "Linux installation",
+        "tags": [
+          "linux",
+          "server"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know that ext4 is primarily associated with Linux and Android.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing ext4 with Windows file systems such as NTFS.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Choose an appropriate file system for a Linux installation.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Match operating systems with their commonly used file systems.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Linux",
+      "Android",
+      "ext4",
+      "Extended File System"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "filesystems.file-system",
+      "operatingsystems.linux"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "operatingsystems.linux",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "operatingsystems.android",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "General Linux installation example added as illustrative enrichment beyond the transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

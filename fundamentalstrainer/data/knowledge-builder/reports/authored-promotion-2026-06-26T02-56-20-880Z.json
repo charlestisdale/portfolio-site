@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/bios-compatibility-mode-knowledge-object.draft.json",
+  "promoted": {
+    "id": "firmware.bios-compatibility-mode",
+    "title": "BIOS compatibility mode",
+    "status": "needs-review",
+    "path": "content/knowledge/firmware/bios-compatibility-mode.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 2,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 42
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 139
+  },
+  "validation": "passed"
+}

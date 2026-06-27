@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/installation-planning-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os.installation-planning",
+    "title": "Installation Planning Questions",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/installation-planning.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 4,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 51
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 177
+  },
+  "validation": "passed"
+}

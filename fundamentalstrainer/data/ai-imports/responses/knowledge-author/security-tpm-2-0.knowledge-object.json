@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "security.tpm-2-0",
+  "slug": "tpm-2-0",
+  "title": "Trusted Platform Module 2.0",
+  "aliases": [
+    "TPM 2.0"
+  ],
+  "type": "security-control",
+  "status": "needs-review",
+  "domains": [
+    "security",
+    "hardware",
+    "windows"
+  ],
+  "difficulty": "foundational",
+  "importance": "exam-critical",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Trusted Platform Module (TPM) 2.0 is a hardware-backed security component that securely stores cryptographic material. It is a Windows 11 requirement in this lesson and supports security features such as BitLocker and Windows Hello.",
+    "explanation": "A TPM is a dedicated security component, commonly implemented in motherboard hardware or firmware, that performs cryptographic operations and protects sensitive keys. Because secrets remain protected by the TPM, operating systems can use it as a hardware root of trust.\n\nWindows 11 requires TPM 2.0 support and that it be enabled. Before upgrading, verify that the system includes a compatible TPM and that it is enabled. TPM is commonly used by Windows security features including BitLocker and Windows Hello, but those technologies should be studied as separate concepts.",
+    "facts": [
+      {
+        "text": "TPM 2.0 provides hardware-backed cryptographic capabilities.",
+        "importance": "exam-critical",
+        "tags": [
+          "security",
+          "cryptography"
+        ]
+      },
+      {
+        "text": "Windows 11 requires TPM 2.0 support in this lesson context.",
+        "importance": "exam-critical",
+        "tags": [
+          "windows-11"
+        ]
+      },
+      {
+        "text": "TPM supports Windows security features such as BitLocker and Windows Hello.",
+        "importance": "high",
+        "tags": [
+          "bitlocker",
+          "windows-hello"
+        ]
+      },
+      {
+        "text": "A TPM may need to be enabled before an operating system upgrade.",
+        "importance": "high",
+        "tags": [
+          "firmware"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician enables TPM 2.0 in firmware settings before upgrading a computer to Windows 11.",
+        "context": "OS upgrade",
+        "tags": [
+          "windows",
+          "firmware"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": [
+      "Use TPM.MSC to inspect TPM status and version in Windows."
+    ]
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know that TPM 2.0 is a Windows 11 requirement and supports BitLocker and Windows Hello."
+    ],
+    "commonMistakes": [
+      "Confusing TPM with Secure Boot or assuming TPM is always enabled."
+    ],
+    "scenarios": [
+      "Determine why a Windows 11 upgrade is blocked because TPM is unavailable or disabled."
+    ],
+    "pbqIdeas": [
+      "Interpret system security settings and identify whether TPM meets upgrade requirements."
+    ],
+    "questionTargets": [
+      "TPM purpose",
+      "Windows 11",
+      "BitLocker",
+      "Windows Hello"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "security.cryptography-basics"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "windows.windows-11-requirements",
+      "security.bitlocker",
+      "identity.windows-hello",
+      "windows.tpm-msc"
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Expanded explanation beyond transcript should be validated during review.",
+      "Keep BitLocker and Windows Hello as separate knowledge objects."
+    ]
+  }
+}

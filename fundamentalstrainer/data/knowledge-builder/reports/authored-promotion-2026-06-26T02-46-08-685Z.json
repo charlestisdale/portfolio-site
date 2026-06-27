@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/multiboot-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os-installation.multiboot",
+    "title": "Multiboot systems",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/multiboot.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 2,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 33
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 122
+  },
+  "validation": "passed"
+}

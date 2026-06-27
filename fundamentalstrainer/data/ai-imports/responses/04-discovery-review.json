@@ -1,0 +1,878 @@
+{
+  "schemaVersion": "discovery-review.v1",
+  "lessonId": "04",
+  "lessonTitle": "Upgrading Windows",
+  "sourceReviewInput": "data/imports/manifests/04-upgrading-windows-discovery-manifest.md",
+  "reviewSummary": {
+    "acceptedForAuthoring": 11,
+    "merge": 7,
+    "rejected": 0,
+    "deferred": 0,
+    "needsEnrichment": 1,
+    "reviewNotes": [
+      "Prefer fewer stronger authoring targets: merge broad or thin concepts into existing backup, patch management, partition/formatting, UEFI, and installation planning concepts.",
+      "Windows 11 requirements and lifecycle policy require vendor verification before final authoring.",
+      "Several tool objects are acceptable as brief Knowledge Objects if the platform supports command/tool entries."
+    ]
+  },
+  "conceptDecisions": [
+    {
+      "conceptId": "DISC-001",
+      "title": "Operating System Upgrade",
+      "proposedKnowledgeId": "os.upgrade",
+      "decision": "merge",
+      "targetKnowledgeId": "os.in-place-upgrade",
+      "authoringPriority": "none",
+      "recommendedDepth": "normal",
+      "reason": "The manifest treats general upgrade as a broad lead-in to in-place upgrade. Preserve the comparison and preservation guidance, but avoid a separate duplicate Knowledge Object.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.in-place-upgrade",
+          "os.clean-install"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-medium"
+      ]
+    },
+    {
+      "conceptId": "DISC-002",
+      "title": "In-Place Upgrade",
+      "proposedKnowledgeId": "os.in-place-upgrade",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported, core lesson concept that contrasts directly with clean install and belongs in OS maintenance planning.",
+      "mustCover": [
+        "Preserves applications, documents, settings, user accounts, and existing OS context.",
+        "Usually launched from inside the existing operating system.",
+        "Best when data, applications, or specialized configurations should remain in place.",
+        "Still requires backup and compatibility planning."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.clean-install",
+          "windows.pc-health-check"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-003",
+      "title": "Clean Install",
+      "proposedKnowledgeId": "os.clean-install",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported, core lesson concept with clear consequences, procedure distinction, and backup/partition risk.",
+      "mustCover": [
+        "Removes existing OS files, applications, user data, and settings.",
+        "Usually starts by booting from installation media.",
+        "Requires backup and drive/partition review before proceeding.",
+        "Use when a fresh system state is desired."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.in-place-upgrade",
+          "boot.installation-media"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-004",
+      "title": "Backup Before OS Installation",
+      "proposedKnowledgeId": "storage.backup-before-os-installation",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.backup",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "This is a contextual use case of backup before destructive OS work, not a separate standalone concept.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "4.0",
+        "moduleId": "operational-procedures-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.clean-install",
+          "operational-procedures.change-management"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-medium"
+      ]
+    },
+    {
+      "conceptId": "DISC-005",
+      "title": "Partitioning and Formatting During Installation",
+      "proposedKnowledgeId": "storage.partition-formatting-during-installation",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "The installation-specific material should enrich the existing partitioning/formatting concept rather than create a duplicate.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          "os.clean-install"
+        ],
+        "rejected": [
+          "storage.data-recovery"
+        ],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-medium"
+      ]
+    },
+    {
+      "conceptId": "DISC-006",
+      "title": "OS Hardware Compatibility Check",
+      "proposedKnowledgeId": "os.hardware-compatibility-check",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Clear pre-upgrade planning concept with strong source support and broad relevance across OS installation and upgrade decisions.",
+      "mustCover": [
+        "Check memory, drive space, processor support, and feature support.",
+        "Use vendor documentation and compatibility tools.",
+        "Run checks before upgrade or installation.",
+        "Incompatibility may require upgrades or replacement."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          "windows.pc-health-check"
+        ],
+        "rejected": [
+          "os.in-place-upgrade"
+        ],
+        "notes": [
+          "Reject or revise any relationship whose direction implies the upgrade procedure is a prerequisite for the compatibility check; the check should inform the upgrade decision."
+        ]
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-007",
+      "title": "Windows PC Health Check",
+      "proposedKnowledgeId": "windows.pc-health-check",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Specific Windows readiness tool is supported by the manifest and useful as a linked tool object, but should remain brief.",
+      "mustCover": [
+        "PC Health Check checks Windows 11 readiness.",
+        "It reports which requirements pass or fail.",
+        "It can identify missing or disabled Secure Boot or TPM 2.0."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "desktop-operating-systems",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "windows.windows-11-requirements",
+          "security.tpm-2-0"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-008",
+      "title": "Application and Driver Compatibility",
+      "proposedKnowledgeId": "windows.application-driver-compatibility",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Worth authoring because incompatible apps and drivers are a practical upgrade risk; enrich with realistic troubleshooting context.",
+      "mustCover": [
+        "Applications and device drivers may not support the newer OS.",
+        "Check vendor/developer documentation before upgrading.",
+        "Compatibility problems can block or complicate upgrades."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "3.0",
+        "moduleId": "software-troubleshooting-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.in-place-upgrade",
+          "hardware.device-driver"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-009",
+      "title": "Windows Product Lifecycle",
+      "proposedKnowledgeId": "windows.product-lifecycle",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Lifecycle calendars and support retirement are central to upgrade planning; current dates must be verified during authoring.",
+      "mustCover": [
+        "Lifecycle calendars show support and retirement dates.",
+        "Lifecycle status affects upgrade planning.",
+        "Quality and feature updates are tied to lifecycle support.",
+        "Verify current Microsoft lifecycle details before publishing."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.end-of-life",
+          "os.patch-management"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-010",
+      "title": "Quality Updates",
+      "proposedKnowledgeId": "windows.quality-updates",
+      "decision": "merge",
+      "targetKnowledgeId": "os.patch-management",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "Quality updates are only lightly covered and fit best under broader patch/update management unless the curriculum later models Windows update types separately.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.patch-management",
+          "windows.product-lifecycle"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-high"
+      ]
+    },
+    {
+      "conceptId": "DISC-011",
+      "title": "Feature Updates",
+      "proposedKnowledgeId": "windows.feature-updates",
+      "decision": "merge",
+      "targetKnowledgeId": "os.patch-management",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "Feature updates are mentioned as an update type and should enrich patch/update management rather than become a standalone object here.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "os-maintenance-and-lifecycle",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "windows.quality-updates",
+          "windows.product-lifecycle"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-high"
+      ]
+    },
+    {
+      "conceptId": "DISC-012",
+      "title": "Windows 11 System Requirements",
+      "proposedKnowledgeId": "windows.windows-11-requirements",
+      "decision": "needs-enrichment",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "High-value Windows readiness topic, but exact requirements are vendor-maintained and should be verified against current Microsoft documentation before Knowledge Authoring.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "desktop-operating-systems",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "windows.pc-health-check",
+          "security.tpm-2-0",
+          "security.secure-boot"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "vendor-verification-required",
+        "duplicate-risk-medium"
+      ]
+    },
+    {
+      "conceptId": "DISC-013",
+      "title": "Trusted Platform Module 2.0",
+      "proposedKnowledgeId": "security.tpm-2-0",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported security/hardware concept with direct Windows 11, BitLocker, and Windows Hello relationships.",
+      "mustCover": [
+        "TPM is hardware-backed cryptographic capability.",
+        "TPM 2.0 or later is required for Windows 11 in this lesson context.",
+        "TPM can support BitLocker and Windows Hello.",
+        "TPM may need to be supported and enabled."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "2.0",
+        "moduleId": "security-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "windows.windows-11-requirements",
+          "security.bitlocker",
+          "identity.windows-hello",
+          "windows.tpm-msc"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-014",
+      "title": "TPM Management Console Snap-in",
+      "proposedKnowledgeId": "windows.tpm-msc",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Useful Windows command/tool object for checking TPM details; should link to TPM without duplicating the full TPM explanation.",
+      "mustCover": [
+        "tpm.msc opens TPM management details.",
+        "It is an MMC snap-in.",
+        "Use it to verify TPM status/version/readiness."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "2.0",
+        "moduleId": "security-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "security.tpm-2-0",
+          "windows.windows-11-requirements"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-015",
+      "title": "UEFI Firmware",
+      "proposedKnowledgeId": "firmware.uefi",
+      "decision": "merge",
+      "targetKnowledgeId": "firmware.uefi",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "UEFI should already be represented from firmware lessons; this source should enrich it with Windows 11 and Secure Boot context.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "security.secure-boot",
+          "windows.windows-11-requirements"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-high"
+      ]
+    },
+    {
+      "conceptId": "DISC-016",
+      "title": "Secure Boot",
+      "proposedKnowledgeId": "security.secure-boot",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported security control and Windows 11 readiness requirement; check for an existing Secure Boot object before final authoring.",
+      "mustCover": [
+        "Secure Boot is required for Windows 11 in this lesson context.",
+        "Secure Boot is tied to UEFI firmware.",
+        "Status can be checked in System Information under System Summary.",
+        "Enabled/on is the desired readiness state."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "2.0",
+        "moduleId": "security-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "firmware.uefi",
+          "windows.system-information",
+          "windows.windows-11-requirements"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "duplicate-risk-medium"
+      ]
+    },
+    {
+      "conceptId": "DISC-017",
+      "title": "Windows System Information Utility",
+      "proposedKnowledgeId": "windows.system-information",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "A useful Windows tool object for checking Secure Boot State and system summary details.",
+      "mustCover": [
+        "System Information can inspect System Summary details.",
+        "Secure Boot State is checked there.",
+        "Secure Boot should be on for Windows 11 readiness."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "desktop-operating-systems",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "security.secure-boot",
+          "windows.windows-11-requirements"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-018",
+      "title": "Installation Planning Questions",
+      "proposedKnowledgeId": "os.installation-planning",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Good checklist-style procedure concept that consolidates target drive, partition plan, license keys, backup, and compatibility checks.",
+      "mustCover": [
+        "Confirm target drive.",
+        "Plan partition configuration.",
+        "Have license keys available.",
+        "Check data, partitions, backups, requirements, apps, and drivers before proceeding."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "4.0",
+        "moduleId": "operational-procedures-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.clean-install",
+          "os.in-place-upgrade"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-019",
+      "title": "User Preferences Preservation",
+      "proposedKnowledgeId": "os.user-preferences-preservation",
+      "decision": "merge",
+      "targetKnowledgeId": "os.installation-planning",
+      "authoringPriority": "none",
+      "recommendedDepth": "brief",
+      "reason": "Too thin for standalone authoring; preserve as a checklist note under installation planning and backup scope.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "4.0",
+        "moduleId": "operational-procedures-foundations",
+        "reason": "Placement is appropriate for the reviewed concept and should be preserved unless the target concept already exists in another canonical module."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [
+          "os.clean-install",
+          "os.installation-planning",
+          "storage.backup"
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "merge-before-authoring",
+        "duplicate-risk-high"
+      ]
+    }
+  ],
+  "mergePlan": [
+    {
+      "sourceConceptId": "DISC-001",
+      "sourceKnowledgeId": "os.upgrade",
+      "targetKnowledgeId": "os.in-place-upgrade",
+      "reason": "The manifest treats general upgrade as a broad lead-in to in-place upgrade. Preserve the comparison and preservation guidance, but avoid a separate duplicate Knowledge Object.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-004",
+      "sourceKnowledgeId": "storage.backup-before-os-installation",
+      "targetKnowledgeId": "storage.backup",
+      "reason": "This is a contextual use case of backup before destructive OS work, not a separate standalone concept.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-005",
+      "sourceKnowledgeId": "storage.partition-formatting-during-installation",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "reason": "The installation-specific material should enrich the existing partitioning/formatting concept rather than create a duplicate.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-010",
+      "sourceKnowledgeId": "windows.quality-updates",
+      "targetKnowledgeId": "os.patch-management",
+      "reason": "Quality updates are only lightly covered and fit best under broader patch/update management unless the curriculum later models Windows update types separately.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-011",
+      "sourceKnowledgeId": "windows.feature-updates",
+      "targetKnowledgeId": "os.patch-management",
+      "reason": "Feature updates are mentioned as an update type and should enrich patch/update management rather than become a standalone object here.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-015",
+      "sourceKnowledgeId": "firmware.uefi",
+      "targetKnowledgeId": "firmware.uefi",
+      "reason": "UEFI should already be represented from firmware lessons; this source should enrich it with Windows 11 and Secure Boot context.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-019",
+      "sourceKnowledgeId": "os.user-preferences-preservation",
+      "targetKnowledgeId": "os.installation-planning",
+      "reason": "Too thin for standalone authoring; preserve as a checklist note under installation planning and backup scope.",
+      "preserveAuthoringGuidance": true
+    }
+  ],
+  "authoringQueue": [
+    {
+      "conceptId": "DISC-002",
+      "proposedKnowledgeId": "os.in-place-upgrade",
+      "title": "In-Place Upgrade",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported, core lesson concept that contrasts directly with clean install and belongs in OS maintenance planning."
+    },
+    {
+      "conceptId": "DISC-003",
+      "proposedKnowledgeId": "os.clean-install",
+      "title": "Clean Install",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported, core lesson concept with clear consequences, procedure distinction, and backup/partition risk."
+    },
+    {
+      "conceptId": "DISC-006",
+      "proposedKnowledgeId": "os.hardware-compatibility-check",
+      "title": "OS Hardware Compatibility Check",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Clear pre-upgrade planning concept with strong source support and broad relevance across OS installation and upgrade decisions."
+    },
+    {
+      "conceptId": "DISC-007",
+      "proposedKnowledgeId": "windows.pc-health-check",
+      "title": "Windows PC Health Check",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Specific Windows readiness tool is supported by the manifest and useful as a linked tool object, but should remain brief."
+    },
+    {
+      "conceptId": "DISC-008",
+      "proposedKnowledgeId": "windows.application-driver-compatibility",
+      "title": "Application and Driver Compatibility",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Worth authoring because incompatible apps and drivers are a practical upgrade risk; enrich with realistic troubleshooting context."
+    },
+    {
+      "conceptId": "DISC-009",
+      "proposedKnowledgeId": "windows.product-lifecycle",
+      "title": "Windows Product Lifecycle",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Lifecycle calendars and support retirement are central to upgrade planning; current dates must be verified during authoring."
+    },
+    {
+      "conceptId": "DISC-013",
+      "proposedKnowledgeId": "security.tpm-2-0",
+      "title": "Trusted Platform Module 2.0",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported security/hardware concept with direct Windows 11, BitLocker, and Windows Hello relationships."
+    },
+    {
+      "conceptId": "DISC-014",
+      "proposedKnowledgeId": "windows.tpm-msc",
+      "title": "TPM Management Console Snap-in",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Useful Windows command/tool object for checking TPM details; should link to TPM without duplicating the full TPM explanation."
+    },
+    {
+      "conceptId": "DISC-016",
+      "proposedKnowledgeId": "security.secure-boot",
+      "title": "Secure Boot",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strongly supported security control and Windows 11 readiness requirement; check for an existing Secure Boot object before final authoring."
+    },
+    {
+      "conceptId": "DISC-017",
+      "proposedKnowledgeId": "windows.system-information",
+      "title": "Windows System Information Utility",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "A useful Windows tool object for checking Secure Boot State and system summary details."
+    },
+    {
+      "conceptId": "DISC-018",
+      "proposedKnowledgeId": "os.installation-planning",
+      "title": "Installation Planning Questions",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Good checklist-style procedure concept that consolidates target drive, partition plan, license keys, backup, and compatibility checks."
+    }
+  ],
+  "enrichmentQueue": [
+    {
+      "conceptId": "DISC-012",
+      "proposedKnowledgeId": "windows.windows-11-requirements",
+      "title": "Windows 11 System Requirements",
+      "neededEvidenceOrContext": [
+        "Current Microsoft Windows 11 minimum requirements.",
+        "Current PC Health Check behavior or Microsoft guidance.",
+        "Any edition, version, or supported processor nuance relevant to A+ authoring."
+      ],
+      "reason": "The concept is important, but exact requirement details are vendor-maintained and should not be authored from the transcript alone."
+    }
+  ],
+  "rejectedConcepts": [],
+  "gapReview": [
+    {
+      "gapId": "GAP-001",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "os.clean-install",
+        "boot.installation-media"
+      ],
+      "reason": "The lesson depends on installation media without teaching it.",
+      "recommendedAction": "Link to an existing installation media concept/procedure or create one if absent."
+    },
+    {
+      "gapId": "GAP-002",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "storage.backup",
+        "os.installation-planning"
+      ],
+      "reason": "Backup is emphasized but scope and verification are not explained.",
+      "recommendedAction": "Enrich backup and installation planning with backup scope, verification, user profile data, and preference capture."
+    },
+    {
+      "gapId": "GAP-003",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "windows.windows-11-requirements",
+        "windows.pc-health-check"
+      ],
+      "reason": "Exact Windows 11 requirements must be verified against Microsoft before authoring.",
+      "recommendedAction": "Send Windows 11 requirements to enrichment before Knowledge Authoring."
+    },
+    {
+      "gapId": "GAP-004",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "security.tpm-2-0",
+        "security.bitlocker",
+        "identity.windows-hello"
+      ],
+      "reason": "TPM purpose is only briefly introduced.",
+      "recommendedAction": "Author TPM at normal depth and link to BitLocker and Windows Hello without expanding those features here."
+    },
+    {
+      "gapId": "GAP-005",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "windows.product-lifecycle",
+        "os.end-of-life"
+      ],
+      "reason": "Lifecycle timing and support status change over time.",
+      "recommendedAction": "Verify Microsoft lifecycle terminology and dates during authoring; avoid hardcoding transcript-only support windows."
+    }
+  ],
+  "globalReviewNotes": [
+    "Do not recreate Transcript Intelligence during review.",
+    "Do not over-author a complete Windows installation walkthrough from this lesson alone.",
+    "Normalize the source phrase 'UEFI BIOS' carefully as UEFI firmware in the canonical knowledge base.",
+    "Preserve upgrade-versus-clean-install decision-making as the main lesson outcome."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/image-deployment-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os-deployment.image-deployment",
+    "title": "Image deployment",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/image-deployment.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 2,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 36
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 127
+  },
+  "validation": "passed"
+}

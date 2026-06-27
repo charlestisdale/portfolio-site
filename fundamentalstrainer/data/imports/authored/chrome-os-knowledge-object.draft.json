@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "chromeos.chrome-os",
+  "slug": "chrome-os",
+  "title": "Chrome OS",
+  "aliases": [
+    "ChromeOS"
+  ],
+  "type": "operating-system",
+  "status": "needs-review",
+  "domains": [
+    "chromeos",
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Chrome OS is Google's operating system designed primarily for Chromebooks. It emphasizes a lightweight, browser-centered experience while leveraging cloud-based services and web applications.",
+    "explanation": "Chrome OS is an operating system created by Google and built on the Linux kernel. It is designed to be lightweight, fast to start, and simple to manage, making it common in education and organizations with centralized device management.\n\nThe operating system is centered around the web browser, where many applications run as web apps. Although Chrome OS supports additional application types in modern implementations, its core design emphasizes browser-based computing.\n\nBecause many workflows rely on internet-connected services, Chrome OS provides the best experience when connected to a network. Its streamlined design generally requires fewer system resources than many traditional desktop operating systems.",
+    "facts": [
+      {
+        "text": "Chrome OS was created by Google.",
+        "importance": "high",
+        "tags": [
+          "google"
+        ]
+      },
+      {
+        "text": "Chrome OS is based on the Linux kernel.",
+        "importance": "high",
+        "tags": [
+          "kernel"
+        ]
+      },
+      {
+        "text": "Chrome OS is designed around browser-based applications.",
+        "importance": "high",
+        "tags": [
+          "browser",
+          "web-apps"
+        ]
+      },
+      {
+        "text": "Chrome OS is optimized for lightweight, cloud-centric computing.",
+        "importance": "medium",
+        "tags": [
+          "cloud"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A school deploys Chromebooks so students can access web-based learning platforms through the Chrome browser.",
+        "context": "Education deployment",
+        "tags": [
+          "chromebook",
+          "education"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Remember that Chrome OS is Google's browser-centered operating system built on the Linux kernel.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming Chrome OS requires locally installed desktop applications for most tasks.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Recommend Chrome OS for users whose work primarily uses web applications.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Compare Chrome OS, Windows, macOS, and Linux for different deployment scenarios.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Linux kernel",
+      "Browser",
+      "Cloud",
+      "Web applications"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "linux.linux-kernel"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "software.web-application",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Reference to the Linux kernel prerequisite was added per gap guidance.",
+      "Low-overhead and cloud-centric characteristics were summarized as contextual enrichment beyond the explicit transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

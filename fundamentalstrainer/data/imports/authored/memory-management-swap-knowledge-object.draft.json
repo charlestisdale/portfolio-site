@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.memory-management-swap",
+  "slug": "memory-management-swap",
+  "title": "Memory Management and Swap Files",
+  "aliases": [],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "storage"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Operating systems manage RAM and use swap space on a storage device when physical memory is limited. Swap extends usable memory but is much slower than RAM, so excessive swapping reduces performance.",
+    "explanation": "The operating system continuously manages which data and applications remain in RAM so the processor can access them quickly. When RAM becomes full, the operating system can move less frequently used memory pages to a swap file or swap partition on a storage device.\n\nThis process, commonly called swapping or paging, allows the system to continue running more applications than would fit entirely in physical memory. Because storage devices are much slower than RAM, frequent swapping can significantly reduce system responsiveness. Adding RAM or reducing memory usage can decrease reliance on swap space.",
+    "facts": [
+      {
+        "text": "The operating system manages what data resides in RAM.",
+        "importance": "high",
+        "tags": [
+          "memory",
+          "os"
+        ]
+      },
+      {
+        "text": "A swap file uses storage space to supplement physical memory when RAM is limited.",
+        "importance": "high",
+        "tags": [
+          "swap",
+          "virtual-memory"
+        ]
+      },
+      {
+        "text": "Excessive swapping reduces system performance because storage is slower than RAM.",
+        "importance": "high",
+        "tags": [
+          "performance",
+          "swap"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A user opens many applications until RAM is nearly full. The operating system moves inactive memory pages to the swap file so active applications can continue running.",
+        "context": "Desktop operating system",
+        "tags": [
+          "swap",
+          "performance"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Swap space improves capacity, not speed.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming swap memory is as fast as RAM.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Identify performance issues caused by excessive swapping.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Interpret system behavior under low-memory conditions.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Purpose of swap files",
+      "Performance impact of swapping"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "hardware.ram",
+      "storage.storage-device"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "hardware.ram",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "storage.storage-device",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Enriched explanation of paging, RAM, and performance beyond directly supported transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

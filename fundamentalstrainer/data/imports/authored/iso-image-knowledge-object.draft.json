@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "storage.iso-image",
+  "slug": "iso-image",
+  "title": "ISO image",
+  "aliases": [
+    "ISO file",
+    "Optical disc image"
+  ],
+  "type": "file-system",
+  "status": "needs-review",
+  "domains": [
+    "storage",
+    "operating-systems",
+    "virtualization"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "03",
+          "title": "Installing Operating Systems",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "An ISO image is a single file containing the complete contents of an optical disc. ISO files are commonly used to create bootable installation media, mount software installers, and provide installation media for virtual machines.",
+    "explanation": "An ISO image stores the files and structure of a CD, DVD, or Blu-ray disc in a single file. Instead of requiring a physical disc, the ISO can be written to a USB drive or mounted directly by an operating system or virtualization platform.\n\nISO images are widely used for operating system installation because they preserve the original installation media. Virtualization software can boot directly from an ISO, allowing operating systems to be installed without physical media.",
+    "facts": [
+      {
+        "text": "An ISO image is a complete image of an optical disc.",
+        "importance": "high",
+        "tags": [
+          "definition"
+        ]
+      },
+      {
+        "text": "ISO files can be used to create bootable installation media.",
+        "importance": "high",
+        "tags": [
+          "installation"
+        ]
+      },
+      {
+        "text": "Many operating systems can mount ISO files without burning them to a disc.",
+        "importance": "medium",
+        "tags": [
+          "mount"
+        ]
+      },
+      {
+        "text": "Virtual machines commonly boot directly from ISO images.",
+        "importance": "medium",
+        "tags": [
+          "virtualization"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "Download a Windows installation ISO, write it to a USB drive, and boot a computer to install the operating system.",
+        "context": "OS deployment",
+        "tags": [
+          "installation"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know what an ISO image is and its common installation uses.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming an ISO must always be burned to a physical disc.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Select an ISO to install an operating system in a virtual machine.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Choose the correct installation media for physical and virtual systems.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "ISO definition",
+      "Mounting",
+      "Bootable media",
+      "Virtual machines"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "virtualization.virtual-machine-installation-media",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "os-installation.bootable-usb",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "medium",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Mounting ISO files and virtualization examples are enriched beyond the explicit transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

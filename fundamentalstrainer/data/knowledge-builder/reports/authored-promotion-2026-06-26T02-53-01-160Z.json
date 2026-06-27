@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/third-party-driver-loading-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os-installation.third-party-driver-loading",
+    "title": "Third-party driver loading during OS installation",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/third-party-driver-loading.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 1,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 40
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 135
+  },
+  "validation": "passed"
+}

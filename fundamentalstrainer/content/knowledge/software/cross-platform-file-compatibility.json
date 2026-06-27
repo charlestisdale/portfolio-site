@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "software.cross-platform-file-compatibility",
+  "slug": "cross-platform-file-compatibility",
+  "title": "Cross-Platform Data and File Format Compatibility",
+  "aliases": [
+    "Cross-Platform File Compatibility",
+    "Data Portability"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "software",
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Many documents, media files, and other standard data formats can be shared across different operating systems. This portability is different from application compatibility because the data may work even when the original executable does not.",
+    "explanation": "Cross-platform file compatibility refers to the ability to open and use the same data file on different operating systems. Standard file formats allow documents, spreadsheets, images, audio, video, and other data to move between supported applications running on different platforms.\n\nThis differs from executable compatibility. An application compiled for one operating system may not run on another, but the files it creates can often still be opened by compatible software on another platform.\n\nUsing widely supported file formats improves collaboration and portability across Windows, macOS, Linux, Chrome OS, and other operating systems.",
+    "facts": [
+      {
+        "text": "Standard file formats enable data portability across operating systems.",
+        "importance": "high",
+        "tags": [
+          "file-formats"
+        ]
+      },
+      {
+        "text": "Documents and media files are often usable across multiple operating systems.",
+        "importance": "high",
+        "tags": [
+          "documents",
+          "media"
+        ]
+      },
+      {
+        "text": "File compatibility is different from executable compatibility.",
+        "importance": "high",
+        "tags": [
+          "executables"
+        ]
+      },
+      {
+        "text": "Cross-platform support depends on applications that understand the file format.",
+        "importance": "medium",
+        "tags": [
+          "applications"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A .pdf document created on Windows is opened on macOS and Linux using compatible PDF readers.",
+        "context": "Cross-platform document sharing",
+        "tags": [
+          "pdf",
+          "portability"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Differentiate portable file formats from OS-specific executable files.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming that if a data file opens on another OS, the original application will also run there.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Recommend a file format for users working across multiple operating systems.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Classify examples as executable compatibility or file compatibility.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Standard formats",
+      "Data portability",
+      "Executables",
+      "Cross-platform"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "os.file-management"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "software.web-application",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "software.application-os-compatibility",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Example file format (.pdf) added as illustrative enrichment beyond the transcript evidence.",
+      "Promoted from authored draft as needs-review canonical content."
+    ]
+  }
+}

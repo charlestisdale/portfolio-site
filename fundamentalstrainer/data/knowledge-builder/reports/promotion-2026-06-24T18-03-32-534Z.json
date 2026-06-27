@@ -1,0 +1,228 @@
+{
+  "generatedBy": "knowledge-builder-compiler",
+  "dryRun": false,
+  "cleanBuild": true,
+  "createStubs": true,
+  "source": "approved-knowledge-objects.json",
+  "inputCount": 25,
+  "promotedCount": 19,
+  "stubCount": 7,
+  "duplicateInputCount": 6,
+  "relationshipEdges": 30,
+  "removedDuringClean": [
+    "content/knowledge/commands/command-prompt.json",
+    "content/knowledge/commands/terminal.json",
+    "content/knowledge/linux/ext4.json",
+    "content/knowledge/macos/apfs.json",
+    "content/knowledge/mobile/android.json",
+    "content/knowledge/mobile/ios.json",
+    "content/knowledge/mobile-operating-systems/apple-ios.json",
+    "content/knowledge/networking/dhcp.json",
+    "content/knowledge/operating-systems/chromeos.json",
+    "content/knowledge/operating-systems/executable-compatibility.json",
+    "content/knowledge/operating-systems/file-management.json",
+    "content/knowledge/operating-systems/linux-distribution.json",
+    "content/knowledge/operating-systems/linux.json",
+    "content/knowledge/operating-systems/macos.json",
+    "content/knowledge/operating-systems/microsoft-windows.json",
+    "content/knowledge/operating-systems/operating-system-responsibilities.json",
+    "content/knowledge/operating-systems/operating-system-updates.json",
+    "content/knowledge/operating-systems/operating-system.json",
+    "content/knowledge/windows/windows.json"
+  ],
+  "duplicateInputs": [
+    {
+      "id": "mobile.ios",
+      "title": "iOS"
+    },
+    {
+      "id": "operating.operating-system",
+      "title": "Operating System"
+    },
+    {
+      "id": "operating.operating-system",
+      "title": "Operating System"
+    },
+    {
+      "id": "mobile.ios",
+      "title": "iOS"
+    },
+    {
+      "id": "operating.operating-system",
+      "title": "Operating System"
+    },
+    {
+      "id": "mobile.android",
+      "title": "Android"
+    }
+  ],
+  "promoted": [
+    {
+      "id": "mobile.android",
+      "title": "Android",
+      "status": "draft",
+      "path": "content/knowledge/mobile/android.json"
+    },
+    {
+      "id": "mobile.ios",
+      "title": "iOS",
+      "status": "draft",
+      "path": "content/knowledge/mobile/ios.json"
+    },
+    {
+      "id": "macos.apfs",
+      "title": "APFS",
+      "status": "draft",
+      "path": "content/knowledge/macos/apfs.json"
+    },
+    {
+      "id": "linux.ext4",
+      "title": "ext4",
+      "status": "draft",
+      "path": "content/knowledge/linux/ext4.json"
+    },
+    {
+      "id": "commands.command-prompt",
+      "title": "Command Prompt",
+      "status": "draft",
+      "path": "content/knowledge/commands/command-prompt.json"
+    },
+    {
+      "id": "networking.dhcp",
+      "title": "DHCP",
+      "status": "draft",
+      "path": "content/knowledge/networking/dhcp.json"
+    },
+    {
+      "id": "operating.operating-system",
+      "title": "Operating System",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "windows.windows",
+      "title": "Windows",
+      "status": "draft",
+      "path": "content/knowledge/windows/windows.json"
+    },
+    {
+      "id": "commands.terminal",
+      "title": "Terminal",
+      "status": "draft",
+      "path": "content/knowledge/commands/terminal.json"
+    },
+    {
+      "id": "operating.microsoft-windows",
+      "title": "Microsoft Windows",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/microsoft-windows.json"
+    },
+    {
+      "id": "operating.linux",
+      "title": "Linux",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/linux.json"
+    },
+    {
+      "id": "operating.macos",
+      "title": "macOS",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/macos.json"
+    },
+    {
+      "id": "mobile.apple-ios",
+      "title": "Apple iOS",
+      "status": "draft",
+      "path": "content/knowledge/mobile-operating-systems/apple-ios.json"
+    },
+    {
+      "id": "operating.executable-compatibility",
+      "title": "Executable Compatibility",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/executable-compatibility.json"
+    },
+    {
+      "id": "operating.operating-system-responsibilities",
+      "title": "Operating System Responsibilities",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system-responsibilities.json"
+    },
+    {
+      "id": "operating.file-management",
+      "title": "File Management",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/file-management.json"
+    },
+    {
+      "id": "operating.linux-distribution",
+      "title": "Linux Distribution",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/linux-distribution.json"
+    },
+    {
+      "id": "operating.chromeos",
+      "title": "ChromeOS",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/chromeos.json"
+    },
+    {
+      "id": "operating.operating-system-updates",
+      "title": "Operating System Updates",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system-updates.json"
+    }
+  ],
+  "stubs": [
+    {
+      "id": "software.open-source-software",
+      "title": "Open Source Software",
+      "status": "stub",
+      "path": "content/knowledge/software/open-source-software.json"
+    },
+    {
+      "id": "mobile.ipados",
+      "title": "Ipados",
+      "status": "stub",
+      "path": "content/knowledge/mobile/ipados.json"
+    },
+    {
+      "id": "software.software-development-kit",
+      "title": "Software Development Kit",
+      "status": "stub",
+      "path": "content/knowledge/software/software-development-kit.json"
+    },
+    {
+      "id": "software.app-store",
+      "title": "App Store",
+      "status": "stub",
+      "path": "content/knowledge/software/app-store.json"
+    },
+    {
+      "id": "networking.ip-address",
+      "title": "Ip Address",
+      "status": "stub",
+      "path": "content/knowledge/networking/ip-address.json"
+    },
+    {
+      "id": "operating.application-platform",
+      "title": "Application Platform",
+      "status": "stub",
+      "path": "content/knowledge/operating/application-platform.json"
+    },
+    {
+      "id": "operating.operating-system-end-of-life",
+      "title": "Operating System End Of Life",
+      "status": "stub",
+      "path": "content/knowledge/operating/operating-system-end-of-life.json"
+    }
+  ],
+  "skipped": [],
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 26
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 29
+  }
+}

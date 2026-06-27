@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "android.google-android",
+  "slug": "google-android",
+  "title": "Google Android",
+  "aliases": [
+    "Android"
+  ],
+  "type": "operating-system",
+  "status": "needs-review",
+  "domains": [
+    "mobile-operating-systems",
+    "android"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Google Android is a widely used mobile operating system based on Linux and associated with Google. It is open source at its core and runs on devices from many hardware manufacturers.",
+    "explanation": "Android is a mobile operating system maintained through the Open Handset Alliance, a consortium of companies led by Google. Its foundation is based on the Linux kernel and an open-source development model.\n\nUnlike Apple's mobile operating systems, Android is used by many hardware manufacturers, resulting in a broad ecosystem of smartphones and tablets with different capabilities and price points.\n\nDevelopers can create Android applications for distribution through official and alternative channels, giving manufacturers and organizations flexibility in how software is deployed.",
+    "facts": [
+      {
+        "text": "Android is associated with Google and maintained through the Open Handset Alliance.",
+        "importance": "high",
+        "tags": [
+          "google",
+          "oha"
+        ]
+      },
+      {
+        "text": "Android is based on the Linux kernel.",
+        "importance": "high",
+        "tags": [
+          "linux"
+        ]
+      },
+      {
+        "text": "Android is an open-source operating system.",
+        "importance": "high",
+        "tags": [
+          "open-source"
+        ]
+      },
+      {
+        "text": "Android supports devices from many different hardware manufacturers.",
+        "importance": "high",
+        "tags": [
+          "hardware"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A company deploys Android phones from multiple manufacturers while running the same Android operating system.",
+        "context": "Enterprise mobile deployment",
+        "tags": [
+          "android",
+          "enterprise"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know that Android is Linux-based, open source, and used by many manufacturers."
+    ],
+    "commonMistakes": [
+      "Assuming Android is limited to Google-branded devices."
+    ],
+    "scenarios": [
+      "Recommend Android when hardware choice and flexibility are priorities."
+    ],
+    "pbqIdeas": [
+      "Compare Android and iOS characteristics for deployment scenarios."
+    ],
+    "questionTargets": [
+      "Open Handset Alliance",
+      "Linux",
+      "Open source",
+      "Manufacturers"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "opensource.open-source-software"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "opensource.open-source-software",
+      "linux.linux"
+    ],
+    "contrastsWith": [
+      "apple.ios"
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Application distribution options were summarized as contextual enrichment beyond the directly cited transcript evidence."
+    ]
+  }
+}

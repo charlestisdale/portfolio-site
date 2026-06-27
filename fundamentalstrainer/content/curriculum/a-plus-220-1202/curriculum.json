@@ -13,7 +13,9 @@
       "title": "Operating Systems",
       "description": "Operating system concepts, supported OS families, file systems, tools, and administrative workflows.",
       "order": 1,
-      "objectiveIds": ["1.0"],
+      "objectiveIds": [
+        "1.0"
+      ],
       "modules": [
         {
           "id": "operating-system-foundations",
@@ -27,15 +29,30 @@
             "Explain why applications are written for specific operating systems."
           ],
           "knowledge": [
-            "operating-system.core",
-            "os.file-management",
-            "os.application-platform",
-            "software.cross-platform"
+            "hardware.device-drivers",
+            "opensource.open-source-software",
+            "os.hardware-platform-compatibility",
+            "os.memory-management-swap",
+            "os.operating-system",
+            "software.application-os-compatibility",
+            "software.closed-source-software",
+            "software.cross-platform-file-compatibility",
+            "software.web-application"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "types": ["concept"],
-            "titleIncludes": ["operating system", "file management", "application platform", "cross-platform", "compatibility"]
+            "domains": [
+              "operating-systems"
+            ],
+            "types": [
+              "concept"
+            ],
+            "titleIncludes": [
+              "operating system",
+              "file management",
+              "application platform",
+              "cross-platform",
+              "compatibility"
+            ]
           },
           "notes": "Starter auto-map catches lesson 01 foundation concepts until explicit mappings are reviewed."
         },
@@ -51,16 +68,35 @@
             "Recognize common desktop OS use cases."
           ],
           "knowledge": [
-            "windows.os",
-            "linux.os",
-            "macos.os",
-            "chromeos.os"
+            "chromeos.chrome-os",
+            "linux.distributions",
+            "linux.linux",
+            "macos.apple-macos",
+            "os.desktop-user-interface",
+            "windows.microsoft-windows",
+            "windows.pc-health-check",
+            "windows.system-information"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "types": ["operating-system"],
-            "idPrefixes": ["windows.", "linux.", "macos.", "chromeos."],
-            "titleIncludes": ["windows", "linux", "macos", "chromeos", "desktop"]
+            "domains": [
+              "operating-systems"
+            ],
+            "types": [
+              "operating-system"
+            ],
+            "idPrefixes": [
+              "windows.",
+              "linux.",
+              "macos.",
+              "chromeos."
+            ],
+            "titleIncludes": [
+              "windows",
+              "linux",
+              "macos",
+              "chromeos",
+              "desktop"
+            ]
           }
         },
         {
@@ -75,14 +111,31 @@
             "Explain why mobile apps are platform-specific."
           ],
           "knowledge": [
-            "apple.mobile-os",
-            "android.os"
+            "android.google-android",
+            "apple.ios",
+            "ios.ipados"
           ],
           "autoMap": {
-            "domains": ["operating-systems", "mobile"],
-            "types": ["operating-system"],
-            "idPrefixes": ["android.", "apple.", "ios.", "ipados.", "mobile."],
-            "titleIncludes": ["android", "ios", "ipados", "mobile"]
+            "domains": [
+              "operating-systems",
+              "mobile"
+            ],
+            "types": [
+              "operating-system"
+            ],
+            "idPrefixes": [
+              "android.",
+              "apple.",
+              "ios.",
+              "ipados.",
+              "mobile."
+            ],
+            "titleIncludes": [
+              "android",
+              "ios",
+              "ipados",
+              "mobile"
+            ]
           }
         },
         {
@@ -96,18 +149,30 @@
             "Contrast Windows, Linux, and macOS file system examples.",
             "Recognize file system names in exam scenarios."
           ],
-          "knowledge": [
-            "filesystems.ntfs",
-            "filesystems.ext4",
-            "filesystems.apfs",
-            "linux.ext4",
-            "macos.apfs"
-          ],
+          "knowledge": [],
           "autoMap": {
-            "domains": ["operating-systems", "filesystems", "storage"],
-            "types": ["file-system"],
-            "idPrefixes": ["filesystems.", "linux.ext", "macos.apfs", "windows.ntfs"],
-            "titleIncludes": ["file system", "ntfs", "ext4", "apfs", "fat32", "exfat"]
+            "domains": [
+              "operating-systems",
+              "filesystems",
+              "storage"
+            ],
+            "types": [
+              "file-system"
+            ],
+            "idPrefixes": [
+              "filesystems.",
+              "linux.ext",
+              "macos.apfs",
+              "windows.ntfs"
+            ],
+            "titleIncludes": [
+              "file system",
+              "ntfs",
+              "ext4",
+              "apfs",
+              "fat32",
+              "exfat"
+            ]
           }
         },
         {
@@ -122,13 +187,24 @@
             "Connect OS maintenance to stability and security."
           ],
           "knowledge": [
-            "os.updates",
-            "operating-systems.operating-system-updates",
-            "operating.operating-system-end-of-life"
+            "os.clean-install",
+            "os.end-of-life",
+            "os.hardware-compatibility-check",
+            "os.in-place-upgrade",
+            "os.patch-management",
+            "windows.product-lifecycle"
           ],
           "autoMap": {
-            "domains": ["operating-systems"],
-            "titleIncludes": ["update", "lifecycle", "end of life", "support", "compatibility"]
+            "domains": [
+              "operating-systems"
+            ],
+            "titleIncludes": [
+              "update",
+              "lifecycle",
+              "end of life",
+              "support",
+              "compatibility"
+            ]
           }
         }
       ]
@@ -138,7 +214,9 @@
       "title": "Security",
       "description": "Security concepts and administrative practices for Core 2.",
       "order": 2,
-      "objectiveIds": ["2.0"],
+      "objectiveIds": [
+        "2.0"
+      ],
       "modules": [
         {
           "id": "security-foundations",
@@ -150,10 +228,18 @@
             "Recognize security concepts mapped to A+ Core 2.",
             "Connect security Knowledge Objects to troubleshooting and operational practice."
           ],
-          "knowledge": [],
+          "knowledge": [
+            "security.secure-boot",
+            "security.tpm-2-0",
+            "windows.tpm-msc"
+          ],
           "autoMap": {
-            "domains": ["security"],
-            "idPrefixes": ["security."]
+            "domains": [
+              "security"
+            ],
+            "idPrefixes": [
+              "security."
+            ]
           }
         }
       ]
@@ -163,7 +249,9 @@
       "title": "Software Troubleshooting",
       "description": "Troubleshooting symptoms, tools, and workflows.",
       "order": 3,
-      "objectiveIds": ["3.0"],
+      "objectiveIds": [
+        "3.0"
+      ],
       "modules": [
         {
           "id": "software-troubleshooting-foundations",
@@ -175,10 +263,17 @@
             "Recognize software troubleshooting Knowledge Objects.",
             "Connect symptoms to likely causes and next actions."
           ],
-          "knowledge": [],
+          "knowledge": [
+            "windows.application-driver-compatibility"
+          ],
           "autoMap": {
-            "domains": ["software-troubleshooting", "troubleshooting"],
-            "types": ["troubleshooting-step"]
+            "domains": [
+              "software-troubleshooting",
+              "troubleshooting"
+            ],
+            "types": [
+              "troubleshooting-step"
+            ]
           }
         }
       ]
@@ -188,7 +283,9 @@
       "title": "Operational Procedures",
       "description": "Documentation, change management, safety, professionalism, and operational workflows.",
       "order": 4,
-      "objectiveIds": ["4.0"],
+      "objectiveIds": [
+        "4.0"
+      ],
       "modules": [
         {
           "id": "operational-procedures-foundations",
@@ -200,10 +297,18 @@
             "Recognize operational procedure Knowledge Objects.",
             "Connect documentation and process knowledge to technician workflows."
           ],
-          "knowledge": [],
+          "knowledge": [
+            "os.installation-planning"
+          ],
           "autoMap": {
-            "domains": ["operational-procedures"],
-            "idPrefixes": ["operations.", "documentation.", "change-management."]
+            "domains": [
+              "operational-procedures"
+            ],
+            "idPrefixes": [
+              "operations.",
+              "documentation.",
+              "change-management."
+            ]
           }
         }
       ]

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "firmware.bios-compatibility-mode",
+  "slug": "bios-compatibility-mode",
+  "title": "BIOS compatibility mode",
+  "aliases": [
+    "CSM",
+    "Compatibility Support Module",
+    "Legacy BIOS mode"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "firmware",
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "03",
+          "title": "Installing Operating Systems",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "BIOS compatibility mode allows many UEFI systems to emulate legacy BIOS behavior so older operating systems and boot media can start. Using compatibility mode trades modern UEFI features for legacy support.",
+    "explanation": "BIOS compatibility mode, commonly called Compatibility Support Module (CSM), is a feature provided by many UEFI firmware implementations. It exists to help boot operating systems and installation media designed for traditional BIOS systems.\n\nWhen compatibility mode is enabled, some UEFI capabilities may be unavailable because the system behaves more like a legacy BIOS. Modern operating systems are typically installed using native UEFI mode to take advantage of features such as GPT partitioning and Secure Boot. Legacy mode is mainly used for older operating systems or hardware that cannot boot in native UEFI mode.",
+    "facts": [
+      {
+        "text": "BIOS compatibility mode allows a UEFI system to emulate legacy BIOS behavior.",
+        "importance": "high",
+        "tags": [
+          "firmware",
+          "boot"
+        ]
+      },
+      {
+        "text": "Compatibility mode is commonly referred to as CSM (Compatibility Support Module).",
+        "importance": "medium",
+        "tags": [
+          "terminology"
+        ]
+      },
+      {
+        "text": "Enabling BIOS compatibility mode disables Secure Boot support on systems that implement CSM.",
+        "importance": "exam-critical",
+        "tags": [
+          "secure-boot",
+          "firmware"
+        ]
+      },
+      {
+        "text": "Modern operating systems generally recommend native UEFI mode instead of compatibility mode.",
+        "importance": "high",
+        "tags": [
+          "uefi",
+          "installation"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician must install an older operating system that only supports legacy BIOS boot. They enable BIOS compatibility mode (CSM), complete the installation, and understand Secure Boot will not be available while using legacy boot.",
+        "context": "OS installation",
+        "tags": [
+          "legacy",
+          "installation"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know that CSM provides legacy BIOS compatibility on UEFI systems.",
+        "difficulty": "easy",
+        "tags": []
+      },
+      {
+        "text": "Remember that enabling compatibility mode prevents Secure Boot from being used.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming UEFI mode and BIOS compatibility mode provide the same security features.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Choose whether a legacy operating system should be installed using CSM or native UEFI.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Configure firmware settings for a system that must boot either a legacy or modern operating system.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Purpose of CSM",
+      "Relationship between CSM and Secure Boot",
+      "When to use legacy compatibility mode"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "firmware.uefi",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "security.secure-boot",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Source-supported: enabling BIOS compatibility mode disables Secure Boot.",
+      "Enriched: added CSM terminology, native UEFI recommendations, and legacy boot context based on standard UEFI behavior; verify during review."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

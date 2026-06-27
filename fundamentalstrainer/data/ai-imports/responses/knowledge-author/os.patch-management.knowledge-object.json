@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.patch-management",
+  "slug": "patch-management",
+  "title": "Operating System Updates and Security Patches",
+  "aliases": [
+    "OS Patch Management",
+    "Operating System Updates"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "security",
+    "operations"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Operating system updates keep systems secure, stable, and reliable. Security patches fix known vulnerabilities, while other updates improve performance, compatibility, and functionality.",
+    "explanation": "Operating system vendors regularly release updates that address security vulnerabilities, improve stability, fix software defects, and enhance compatibility. Keeping systems updated is a fundamental administrative responsibility across all operating systems.\n\nSecurity patches reduce the risk of successful attacks by correcting known vulnerabilities before they can be widely exploited. Delaying updates can leave systems exposed to preventable security risks.\n\nPatch management should be an ongoing process that includes monitoring for updates, evaluating their impact, and deploying them in a timely manner. Update availability depends on vendor support, making lifecycle planning and end-of-life awareness important.",
+    "facts": [
+      {
+        "text": "Operating systems should be kept up to date with vendor-released updates.",
+        "importance": "high",
+        "tags": [
+          "updates"
+        ]
+      },
+      {
+        "text": "Security patches correct known vulnerabilities.",
+        "importance": "high",
+        "tags": [
+          "security",
+          "vulnerabilities"
+        ]
+      },
+      {
+        "text": "Operating system updates can improve stability and performance.",
+        "importance": "medium",
+        "tags": [
+          "stability"
+        ]
+      },
+      {
+        "text": "Unsupported operating systems may no longer receive security patches.",
+        "importance": "high",
+        "tags": [
+          "eol"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "An administrator deploys monthly operating system updates to protect company computers from newly disclosed vulnerabilities.",
+        "context": "Enterprise maintenance",
+        "tags": [
+          "patching"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Understand that updates improve both security and system reliability."
+    ],
+    "commonMistakes": [
+      "Ignoring updates because the system appears to be functioning normally."
+    ],
+    "scenarios": [
+      "Recommend a patching strategy for systems with outstanding security updates."
+    ],
+    "pbqIdeas": [
+      "Prioritize updates based on security and operational risk."
+    ],
+    "questionTargets": [
+      "Security patches",
+      "Vulnerabilities",
+      "Updates",
+      "End of life"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "security.vulnerability"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "security.patch-management",
+      "os.end-of-life"
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Added vulnerability and exploit context per gap guidance.",
+      "Version-specific vendor lifecycle details intentionally omitted pending authoritative vendor documentation."
+    ]
+  }
+}

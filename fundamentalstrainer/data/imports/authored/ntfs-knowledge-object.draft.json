@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "filesystems.ntfs",
+  "slug": "ntfs",
+  "title": "NTFS",
+  "aliases": [
+    "New Technology File System"
+  ],
+  "type": "file-system",
+  "status": "needs-review",
+  "domains": [
+    "filesystems",
+    "windows"
+  ],
+  "difficulty": "foundational",
+  "importance": "exam-critical",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "02",
+          "title": "File Systems",
+          "order": 2
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "NTFS is the primary file system used by modern Windows operating systems. It provides advanced management and security features beyond older file systems.",
+    "explanation": "NTFS (New Technology File System) is the default file system for most modern Windows installations. It organizes data on storage devices while supporting advanced features designed for reliability, security, and administration.\n\nCompared with older file systems such as FAT32, NTFS supports features including file compression, file encryption, disk quotas, and additional management capabilities. These features make it well suited for personal and enterprise Windows systems.\n\nSelecting NTFS allows Windows to take advantage of built-in security and storage management capabilities that are unavailable in simpler file systems.",
+    "facts": [
+      {
+        "text": "NTFS is the primary file system used by modern Windows operating systems.",
+        "importance": "high",
+        "tags": [
+          "windows"
+        ]
+      },
+      {
+        "text": "NTFS supports file compression.",
+        "importance": "high",
+        "tags": [
+          "compression"
+        ]
+      },
+      {
+        "text": "NTFS supports file encryption.",
+        "importance": "high",
+        "tags": [
+          "encryption"
+        ]
+      },
+      {
+        "text": "NTFS supports disk quotas and management features.",
+        "importance": "high",
+        "tags": [
+          "quotas"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A Windows administrator formats a drive as NTFS to use encryption and disk quotas.",
+        "context": "Windows storage",
+        "tags": [
+          "ntfs"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know the major NTFS features and how they differ from FAT32.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming FAT32 supports the same security and management features as NTFS.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Choose the appropriate file system for a Windows workstation requiring encryption.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Match storage requirements to NTFS capabilities.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Compression",
+      "Encryption",
+      "Disk quotas",
+      "Windows file systems"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "filesystems.file-system",
+      "operatingsystems.windows"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "filesystems.file-encryption",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "filesystems.disk-quotas",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "filesystems.fat32",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "General comparison with FAT32 is based on discovery guidance and summarized without adding unsupported implementation details."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

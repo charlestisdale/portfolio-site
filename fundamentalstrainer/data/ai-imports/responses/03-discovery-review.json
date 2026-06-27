@@ -1,0 +1,1116 @@
+{
+  "schemaVersion": "discovery-review.v1",
+  "lessonId": "03",
+  "lessonTitle": "Installing Operating Systems",
+  "sourceReviewInput": "data/imports/manifests/03-installing-operating-systems-discovery-manifest.md",
+  "reviewSummary": {
+    "acceptedForAuthoring": 13,
+    "merge": 9,
+    "rejected": 1,
+    "deferred": 1,
+    "needsEnrichment": 1,
+    "reviewNotes": [
+      "Preferred fewer stronger authoring targets over duplicating storage concepts likely covered in lesson 02.",
+      "Storage partitioning, GPT/MBR, and quick/full format should be merged or reconciled against existing storage/file-system curriculum.",
+      "Secure Boot and DiskPart are not strong standalone authoring targets from this transcript alone.",
+      "Normalize transcript typos and terminology before authoring: PXE, multiboot, zero-touch, reimaging, GUID."
+    ]
+  },
+  "conceptDecisions": [
+    {
+      "conceptId": "DISC-001",
+      "title": "Bootable USB operating system installation",
+      "proposedKnowledgeId": "os-installation.bootable-usb",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Bootable USB media is a practical OS installation method with enough source support to author as a focused install-media concept.",
+      "mustCover": [
+        "purpose of bootable USB media",
+        "need for firmware/boot-order support",
+        "common use during OS installation"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "none",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-002",
+      "title": "PXE network boot",
+      "proposedKnowledgeId": "networking.pxe-boot",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "PXE is defined and tied directly to network-based OS installation; it deserves authoring with light enrichment for DHCP/TFTP dependencies.",
+      "mustCover": [
+        "PXE purpose",
+        "firmware support requirement",
+        "PXE server role",
+        "network boot use cases",
+        "A+ appropriate DHCP/TFTP relationship"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "os-installation.remote-network-installation",
+            "type": "used_for",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "normalize-transcript-terminology"
+      ]
+    },
+    {
+      "conceptId": "DISC-003",
+      "title": "ISO image",
+      "proposedKnowledgeId": "storage.iso-image",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "ISO images are clearly defined as disc images and connected to bootable installation and virtualization use.",
+      "mustCover": [
+        "ISO as disc image",
+        "bootable installation media use",
+        "virtualization use",
+        "mounting ISO files"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "virtualization.virtual-machine-installation-media",
+            "type": "used_for",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-004",
+      "title": "Internet-based operating system installation",
+      "proposedKnowledgeId": "os-installation.internet-based-install",
+      "decision": "needs-enrichment",
+      "authoringPriority": "low",
+      "recommendedDepth": "brief",
+      "reason": "The lesson mentions internet-based installs across several OS families, but exact mechanisms vary and should be verified before standalone authoring.",
+      "mustCover": [
+        "internet install as an installation source",
+        "OS-family examples after verification",
+        "network requirements"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-005",
+      "title": "Multiboot systems",
+      "proposedKnowledgeId": "os-installation.multiboot",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Multiboot has enough evidence and exam relevance, especially with partition planning and OS selection during boot.",
+      "mustCover": [
+        "what multiboot means",
+        "choosing an OS during startup",
+        "partition planning",
+        "bootloader considerations"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "normalize-transcript-terminology"
+      ]
+    },
+    {
+      "conceptId": "DISC-006",
+      "title": "Clean install",
+      "proposedKnowledgeId": "os-installation.clean-install",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Clean install is a core installation type with clear destructive impact and strong relationship to backup practices.",
+      "mustCover": [
+        "clean install definition",
+        "data loss risk",
+        "when it is used",
+        "backup before install"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "none",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "backup.data-backup",
+            "type": "depends_on",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-007",
+      "title": "In-place upgrade",
+      "proposedKnowledgeId": "os-installation.in-place-upgrade",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "The transcript clearly contrasts in-place upgrade with clean install and explains what is preserved.",
+      "mustCover": [
+        "purpose",
+        "what is preserved",
+        "contrast with clean install",
+        "compatibility checks"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "none",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "os-installation.clean-install",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-008",
+      "title": "Image deployment",
+      "proposedKnowledgeId": "os-deployment.image-deployment",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Image deployment is well supported as an enterprise-scale deployment method and should move forward as a deployment concept.",
+      "mustCover": [
+        "golden/reference image concept",
+        "standard apps and configurations",
+        "organizational deployment use",
+        "basic imaging tool examples as enrichment"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "os-deployment.zero-touch-deployment",
+            "type": "related_to",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-009",
+      "title": "Zero-touch deployment",
+      "proposedKnowledgeId": "os-deployment.zero-touch-deployment",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Zero-touch deployment is sufficiently described and valuable, but should be linked carefully to unattended installation rather than duplicated.",
+      "mustCover": [
+        "automation goal",
+        "little/no user prompts",
+        "corporate configuration",
+        "domain/email settings as examples",
+        "relationship to unattended installation"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "automation.unattended-installation",
+            "type": "related_to",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "normalize-transcript-terminology"
+      ]
+    },
+    {
+      "conceptId": "DISC-010",
+      "title": "Remote network installation from local share",
+      "proposedKnowledgeId": "os-installation.remote-network-installation",
+      "decision": "merge",
+      "targetKnowledgeId": "networking.pxe-boot",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "This is better handled as part of network-based OS installation/PXE coverage unless the curriculum later needs a separate share-based install concept.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-011",
+      "title": "Recovery partition",
+      "proposedKnowledgeId": "os-installation.recovery-partition",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Recovery partitions are clearly defined, tied to hidden partitions, and useful for troubleshooting/reinstallation.",
+      "mustCover": [
+        "hidden partition purpose",
+        "contains recovery/install files",
+        "troubleshooting use",
+        "vendor recovery environments"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "storage.disk-partition",
+            "type": "part_of",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-012",
+      "title": "Repair installation",
+      "proposedKnowledgeId": "os-installation.repair-installation",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Repair installation is a distinct troubleshooting recovery method and belongs in software troubleshooting foundations.",
+      "mustCover": [
+        "what it overwrites",
+        "what user data it preserves",
+        "when to use",
+        "backup caution"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "3.0",
+        "moduleId": "software-troubleshooting-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "troubleshooting.os-corruption",
+            "type": "used_for",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-013",
+      "title": "Third-party driver loading during OS installation",
+      "proposedKnowledgeId": "os-installation.third-party-driver-loading",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "The lesson provides a clear use case: installer lacks storage or network drivers, requiring third-party driver loading.",
+      "mustCover": [
+        "installer may not recognize hardware",
+        "storage/network driver examples",
+        "driver prompt during installation"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "low",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "hardware.device-driver",
+            "type": "depends_on",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-014",
+      "title": "Disk partition",
+      "proposedKnowledgeId": "storage.disk-partition",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "This likely duplicates the lesson 02 storage/partitioning foundation; preserve guidance but merge into the existing partition/formatting concept if present.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-015",
+      "title": "Windows volume",
+      "proposedKnowledgeId": "storage.windows-volume",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.disk-partition",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "Windows volume terminology is best handled as a subtopic of disk partitions/formatting rather than a standalone object from this lesson.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-016",
+      "title": "GPT partition style",
+      "proposedKnowledgeId": "storage.gpt-partition-style",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.gpt",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "GPT likely already exists from storage/file-system work and should not be duplicated; normalize GUID terminology during merge.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "storage.mbr-partition-style",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "normalize-transcript-terminology",
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-017",
+      "title": "UEFI firmware",
+      "proposedKnowledgeId": "firmware.uefi",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "UEFI is a foundational firmware concept for modern installs, GPT, Secure Boot, and compatibility mode.",
+      "mustCover": [
+        "UEFI role in modern installs",
+        "relationship to GPT",
+        "relationship to Secure Boot/compatibility mode",
+        "firmware terminology"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "security.secure-boot",
+            "type": "related_to",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-018",
+      "title": "MBR partition style",
+      "proposedKnowledgeId": "storage.mbr-partition-style",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.mbr",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "MBR likely belongs with existing storage partitioning coverage; merge and preserve limits/partition-type guidance.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "storage.gpt-partition-style",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-019",
+      "title": "Primary, extended, and logical partitions",
+      "proposedKnowledgeId": "storage.mbr-partition-types",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "These are MBR subtopics and should not become a separate Knowledge Object unless the curriculum intentionally separates MBR internals.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-020",
+      "title": "Active bootable partition",
+      "proposedKnowledgeId": "storage.active-partition",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "Active partition is a narrow MBR boot behavior detail and should be authored inside MBR coverage.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-021",
+      "title": "BIOS compatibility mode",
+      "proposedKnowledgeId": "firmware.bios-compatibility-mode",
+      "decision": "accept-for-authoring",
+      "authoringPriority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Compatibility mode/CSM is important to installation behavior and Secure Boot constraints, with enough source support for focused authoring.",
+      "mustCover": [
+        "legacy BIOS compatibility purpose",
+        "transition from BIOS to UEFI",
+        "Secure Boot limitation",
+        "CSM terminology"
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "accept",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "security.secure-boot",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-022",
+      "title": "Secure Boot",
+      "proposedKnowledgeId": "security.secure-boot",
+      "decision": "defer",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "Secure Boot is important, but this transcript only mentions it as a constraint. Link to an existing concept or defer to a security-focused lesson.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "2.0",
+        "moduleId": "security-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "insufficient-source-evidence-for-standalone-authoring"
+      ]
+    },
+    {
+      "conceptId": "DISC-023",
+      "title": "Quick format",
+      "proposedKnowledgeId": "storage.quick-format",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "Quick format likely belongs inside a broader partition formatting concept rather than a standalone object from this lesson.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "storage.full-format",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-024",
+      "title": "Full format",
+      "proposedKnowledgeId": "storage.full-format",
+      "decision": "merge",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "Full format should merge with partition formatting/quick-vs-full coverage and include reviewed modern caveats.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "high",
+      "curriculumDecision": {
+        "status": "change",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "file-systems",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "accept-some",
+        "accepted": [
+          {
+            "targetKnowledgeId": "storage.quick-format",
+            "type": "contrasts_with",
+            "reason": "Accepted as a useful review-level relationship from the manifest."
+          }
+        ],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "possible-duplicate-existing-storage-content"
+      ]
+    },
+    {
+      "conceptId": "DISC-025",
+      "title": "DiskPart utility",
+      "proposedKnowledgeId": "windows.diskpart",
+      "decision": "reject",
+      "authoringPriority": "none",
+      "recommendedDepth": "none",
+      "reason": "DiskPart is only mentioned as a utility name and lacks enough evidence here for authoring. It can be linked later from command-line storage tooling.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "reject",
+        "curriculumId": "a-plus-220-1202",
+        "sectionId": "1.0",
+        "moduleId": "operating-system-foundations",
+        "reason": "Placement accepted or adjusted based on whether the concept belongs with OS installation, troubleshooting, security, or existing storage/file-system coverage."
+      },
+      "relationshipDecision": {
+        "status": "reject-all",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": [
+        "insufficient-source-evidence-for-standalone-authoring"
+      ]
+    }
+  ],
+  "mergePlan": [
+    {
+      "sourceConceptId": "DISC-010",
+      "sourceKnowledgeId": "os-installation.remote-network-installation",
+      "targetKnowledgeId": "networking.pxe-boot",
+      "reason": "This is better handled as part of network-based OS installation/PXE coverage unless the curriculum later needs a separate share-based install concept.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-014",
+      "sourceKnowledgeId": "storage.disk-partition",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "reason": "This likely duplicates the lesson 02 storage/partitioning foundation; preserve guidance but merge into the existing partition/formatting concept if present.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-015",
+      "sourceKnowledgeId": "storage.windows-volume",
+      "targetKnowledgeId": "storage.disk-partition",
+      "reason": "Windows volume terminology is best handled as a subtopic of disk partitions/formatting rather than a standalone object from this lesson.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-016",
+      "sourceKnowledgeId": "storage.gpt-partition-style",
+      "targetKnowledgeId": "storage.gpt",
+      "reason": "GPT likely already exists from storage/file-system work and should not be duplicated; normalize GUID terminology during merge.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-018",
+      "sourceKnowledgeId": "storage.mbr-partition-style",
+      "targetKnowledgeId": "storage.mbr",
+      "reason": "MBR likely belongs with existing storage partitioning coverage; merge and preserve limits/partition-type guidance.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-019",
+      "sourceKnowledgeId": "storage.mbr-partition-types",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "reason": "These are MBR subtopics and should not become a separate Knowledge Object unless the curriculum intentionally separates MBR internals.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-020",
+      "sourceKnowledgeId": "storage.active-partition",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "reason": "Active partition is a narrow MBR boot behavior detail and should be authored inside MBR coverage.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-023",
+      "sourceKnowledgeId": "storage.quick-format",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "reason": "Quick format likely belongs inside a broader partition formatting concept rather than a standalone object from this lesson.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-024",
+      "sourceKnowledgeId": "storage.full-format",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "reason": "Full format should merge with partition formatting/quick-vs-full coverage and include reviewed modern caveats.",
+      "preserveAuthoringGuidance": true
+    }
+  ],
+  "authoringQueue": [
+    {
+      "conceptId": "DISC-001",
+      "proposedKnowledgeId": "os-installation.bootable-usb",
+      "title": "Bootable USB operating system installation",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Bootable USB media is a practical OS installation method with enough source support to author as a focused install-media concept."
+    },
+    {
+      "conceptId": "DISC-002",
+      "proposedKnowledgeId": "networking.pxe-boot",
+      "title": "PXE network boot",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "PXE is defined and tied directly to network-based OS installation; it deserves authoring with light enrichment for DHCP/TFTP dependencies."
+    },
+    {
+      "conceptId": "DISC-003",
+      "proposedKnowledgeId": "storage.iso-image",
+      "title": "ISO image",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "ISO images are clearly defined as disc images and connected to bootable installation and virtualization use."
+    },
+    {
+      "conceptId": "DISC-005",
+      "proposedKnowledgeId": "os-installation.multiboot",
+      "title": "Multiboot systems",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Multiboot has enough evidence and exam relevance, especially with partition planning and OS selection during boot."
+    },
+    {
+      "conceptId": "DISC-006",
+      "proposedKnowledgeId": "os-installation.clean-install",
+      "title": "Clean install",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Clean install is a core installation type with clear destructive impact and strong relationship to backup practices."
+    },
+    {
+      "conceptId": "DISC-007",
+      "proposedKnowledgeId": "os-installation.in-place-upgrade",
+      "title": "In-place upgrade",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "The transcript clearly contrasts in-place upgrade with clean install and explains what is preserved."
+    },
+    {
+      "conceptId": "DISC-008",
+      "proposedKnowledgeId": "os-deployment.image-deployment",
+      "title": "Image deployment",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Image deployment is well supported as an enterprise-scale deployment method and should move forward as a deployment concept."
+    },
+    {
+      "conceptId": "DISC-009",
+      "proposedKnowledgeId": "os-deployment.zero-touch-deployment",
+      "title": "Zero-touch deployment",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Zero-touch deployment is sufficiently described and valuable, but should be linked carefully to unattended installation rather than duplicated."
+    },
+    {
+      "conceptId": "DISC-011",
+      "proposedKnowledgeId": "os-installation.recovery-partition",
+      "title": "Recovery partition",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Recovery partitions are clearly defined, tied to hidden partitions, and useful for troubleshooting/reinstallation."
+    },
+    {
+      "conceptId": "DISC-012",
+      "proposedKnowledgeId": "os-installation.repair-installation",
+      "title": "Repair installation",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Repair installation is a distinct troubleshooting recovery method and belongs in software troubleshooting foundations."
+    },
+    {
+      "conceptId": "DISC-013",
+      "proposedKnowledgeId": "os-installation.third-party-driver-loading",
+      "title": "Third-party driver loading during OS installation",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "The lesson provides a clear use case: installer lacks storage or network drivers, requiring third-party driver loading."
+    },
+    {
+      "conceptId": "DISC-017",
+      "proposedKnowledgeId": "firmware.uefi",
+      "title": "UEFI firmware",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "UEFI is a foundational firmware concept for modern installs, GPT, Secure Boot, and compatibility mode."
+    },
+    {
+      "conceptId": "DISC-021",
+      "proposedKnowledgeId": "firmware.bios-compatibility-mode",
+      "title": "BIOS compatibility mode",
+      "priority": "normal",
+      "recommendedDepth": "brief",
+      "reason": "Compatibility mode/CSM is important to installation behavior and Secure Boot constraints, with enough source support for focused authoring."
+    }
+  ],
+  "enrichmentQueue": [
+    {
+      "conceptId": "DISC-004",
+      "proposedKnowledgeId": "os-installation.internet-based-install",
+      "title": "Internet-based operating system installation",
+      "neededEvidenceOrContext": [
+        "Verify Linux minimal installer behavior at A+ depth",
+        "Clarify macOS Internet Recovery wording",
+        "Clarify Windows reset/update/install mechanisms"
+      ],
+      "reason": "The concept is valid, but the examples vary by OS family and need verified wording before authoring."
+    }
+  ],
+  "rejectedConcepts": [
+    {
+      "conceptId": "DISC-025",
+      "proposedKnowledgeId": "windows.diskpart",
+      "title": "DiskPart utility",
+      "reason": "Only a weak mention in this lesson; better handled in a command-line storage tools lesson."
+    }
+  ],
+  "gapReview": [
+    {
+      "gapId": "GAP-001",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "os-installation.bootable-usb",
+        "networking.pxe-boot",
+        "firmware.uefi"
+      ],
+      "reason": "The installation lesson assumes boot process and firmware boot-order basics.",
+      "recommendedAction": "Create or link a boot process/boot order prerequisite concept."
+    },
+    {
+      "gapId": "GAP-002",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "networking.pxe-boot"
+      ],
+      "reason": "PXE needs A+ appropriate DHCP/TFTP/service dependency context.",
+      "recommendedAction": "Enrich PXE authoring with basic dependency notes."
+    },
+    {
+      "gapId": "GAP-003",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "os-installation.clean-install",
+        "storage.disk-partition",
+        "storage.quick-format",
+        "storage.full-format"
+      ],
+      "reason": "Destructive install and formatting tasks require backup awareness.",
+      "recommendedAction": "Link destructive installation topics to backup/data preservation concepts."
+    },
+    {
+      "gapId": "GAP-004",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "storage.gpt-partition-style"
+      ],
+      "reason": "The transcript uses GID wording; authoring must normalize to GUID/GPT.",
+      "recommendedAction": "Correct terminology during merge/authoring review."
+    },
+    {
+      "gapId": "GAP-005",
+      "decision": "accept",
+      "relatedConceptIds": [
+        "storage.quick-format",
+        "storage.full-format"
+      ],
+      "reason": "Format behavior has storage-type and OS-version caveats.",
+      "recommendedAction": "Keep A+ baseline simple and add reviewed caveats where appropriate."
+    }
+  ],
+  "globalReviewNotes": [
+    "Accepted most OS installation method concepts for authoring because they are directly supported and curriculum-relevant.",
+    "Merged most storage partition/formatting concepts to reduce duplicate Knowledge Objects and preserve the knowledge-first architecture.",
+    "The review output is not a Knowledge Object export and does not create learner-facing explanations, quizzes, or flashcards."
+  ]
+}

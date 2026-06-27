@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/tpm-2-0-knowledge-object.draft.json",
+  "promoted": {
+    "id": "security.tpm-2-0",
+    "title": "Trusted Platform Module 2.0",
+    "status": "needs-review",
+    "path": "content/knowledge/security/tpm-2-0.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 5,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 47
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 165
+  },
+  "validation": "passed"
+}

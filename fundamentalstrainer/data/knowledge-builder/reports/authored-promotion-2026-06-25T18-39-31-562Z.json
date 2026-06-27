@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/fat32-knowledge-object.draft.json",
+  "promoted": {
+    "id": "filesystems.fat32",
+    "title": "FAT32",
+    "status": "needs-review",
+    "path": "content/knowledge/filesystems/fat32.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 3,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 25
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 97
+  },
+  "validation": "passed"
+}

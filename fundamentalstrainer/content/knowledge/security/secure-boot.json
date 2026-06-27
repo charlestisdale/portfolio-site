@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "security.secure-boot",
+  "slug": "secure-boot",
+  "title": "Secure Boot",
+  "aliases": [],
+  "type": "security-control",
+  "status": "needs-review",
+  "domains": [
+    "security",
+    "firmware",
+    "windows"
+  ],
+  "difficulty": "foundational",
+  "importance": "exam-critical",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Secure Boot is a UEFI security feature that helps ensure only trusted software loads during system startup. In this lesson, it is a Windows 11 requirement and should be enabled before upgrading.",
+    "explanation": "Secure Boot is a firmware-based security feature available on systems that use UEFI firmware. During startup, it verifies that boot components are trusted before allowing the operating system to load, helping protect against certain boot-time threats.\n\nFor Windows 11, Secure Boot is one of the required platform features. Before upgrading, verify that Secure Boot is supported and enabled. In Windows, its status can be checked using the System Information utility under the System Summary section.",
+    "facts": [
+      {
+        "text": "Secure Boot is a security feature provided by UEFI firmware.",
+        "importance": "exam-critical",
+        "tags": [
+          "uefi",
+          "firmware"
+        ]
+      },
+      {
+        "text": "Secure Boot is a Windows 11 requirement in this lesson context.",
+        "importance": "exam-critical",
+        "tags": [
+          "windows-11"
+        ]
+      },
+      {
+        "text": "The desired readiness state is Secure Boot enabled.",
+        "importance": "high",
+        "tags": [
+          "configuration"
+        ]
+      },
+      {
+        "text": "Secure Boot status can be checked in the Windows System Information utility.",
+        "importance": "high",
+        "tags": [
+          "verification"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician confirms that Secure Boot is enabled before upgrading a Windows 10 computer to Windows 11.",
+        "context": "Upgrade readiness",
+        "tags": [
+          "windows",
+          "upgrade"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know that Secure Boot depends on UEFI firmware and is required for Windows 11 in this lesson.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing Secure Boot with TPM or assuming it is enabled by default.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Determine why a Windows 11 compatibility check fails because Secure Boot is disabled.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Interpret System Information output to determine Secure Boot readiness.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Secure Boot purpose",
+      "UEFI relationship",
+      "Windows 11 readiness",
+      "System Information"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "firmware.uefi"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "windows.system-information",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "windows.windows-11-requirements",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Expanded explanation of Secure Boot beyond the transcript should be validated during review.",
+      "Check for an existing Secure Boot knowledge object before final publication to avoid duplication.",
+      "Promoted from authored draft as needs-review canonical content."
+    ]
+  }
+}

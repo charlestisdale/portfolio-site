@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.desktop-user-interface",
+  "slug": "desktop-user-interface",
+  "title": "Desktop User Interface Common Elements",
+  "aliases": [
+    "Desktop UI",
+    "Desktop Environment Basics"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Most desktop operating systems share common interface elements even though they use different names and layouts. Understanding these similarities makes it easier to move between Windows, macOS, and Linux.",
+    "explanation": "Desktop operating systems provide a graphical workspace where users launch applications, manage files, and interact with the system. Although each operating system has its own appearance, many core interface concepts are shared.\n\nMost desktop environments include a primary workspace, a launcher or application menu, icons representing files or applications, an area that displays running applications, and status indicators such as the clock, network, battery, and notifications. Search features are also commonly integrated.\n\nWindows commonly uses a taskbar, Linux desktop environments often use panels, and macOS uses the Dock and menu bar. While the names differ, these components perform similar functions and help users navigate the operating system.",
+    "facts": [
+      {
+        "text": "Desktop operating systems provide a graphical workspace for user interaction.",
+        "importance": "high",
+        "tags": [
+          "desktop",
+          "gui"
+        ]
+      },
+      {
+        "text": "Most desktop operating systems include icons, application launchers, and status indicators.",
+        "importance": "high",
+        "tags": [
+          "ui"
+        ]
+      },
+      {
+        "text": "Windows taskbars, Linux panels, and the macOS Dock all provide access to running and pinned applications.",
+        "importance": "medium",
+        "tags": [
+          "comparison"
+        ]
+      },
+      {
+        "text": "Search functionality is a common feature across modern desktop operating systems.",
+        "importance": "medium",
+        "tags": [
+          "search"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A user moving from Windows to Linux can quickly recognize familiar interface concepts such as desktop icons, a launcher, and a taskbar-like panel.",
+        "context": "Cross-platform orientation",
+        "tags": [
+          "comparison"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Focus on recognizing equivalent UI components across operating systems rather than memorizing names alone."
+    ],
+    "commonMistakes": [
+      "Assuming different interface names indicate completely different functionality."
+    ],
+    "scenarios": [
+      "Identify equivalent desktop interface elements when switching from Windows to macOS or Linux."
+    ],
+    "pbqIdeas": [
+      "Match desktop UI components between Windows, macOS, and Linux."
+    ],
+    "questionTargets": [
+      "Desktop",
+      "Taskbar",
+      "Dock",
+      "Panels",
+      "Icons",
+      "Status area",
+      "Search"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "windows.microsoft-windows",
+      "macos.apple-macos",
+      "linux.linux"
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Descriptions of common UI elements were generalized from source-supported cross-platform comparisons.",
+      "Specific desktop environment implementations are intentionally deferred to platform-specific knowledge objects."
+    ]
+  }
+}

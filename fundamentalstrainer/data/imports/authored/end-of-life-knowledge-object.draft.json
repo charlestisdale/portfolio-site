@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.end-of-life",
+  "slug": "end-of-life",
+  "title": "Operating System End of Life",
+  "aliases": [
+    "OS EOL",
+    "Operating System Lifecycle End"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "operations",
+    "security"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "An operating system reaches end of life (EOL) when its vendor ends regular support. After EOL, updates and security patches may no longer be provided, increasing operational and security risk.",
+    "explanation": "End of life is a lifecycle stage where an operating system is no longer supported according to the vendor's policy. Vendors define their own support timelines, so EOL dates and support models vary.\n\nAdministrators should monitor operating system lifecycle status because unsupported systems may stop receiving security updates, bug fixes, and technical support. Continuing to run unsupported operating systems can increase security risks and complicate maintenance.\n\nPlanning upgrades before an operating system reaches end of life helps maintain security, compatibility, and vendor support. Exact lifecycle dates should always be verified with the operating system vendor.",
+    "facts": [
+      {
+        "text": "End of life means an operating system has reached the end of its vendor-supported lifecycle.",
+        "importance": "high",
+        "tags": [
+          "lifecycle"
+        ]
+      },
+      {
+        "text": "Different vendors define different support lifecycles.",
+        "importance": "medium",
+        "tags": [
+          "vendor"
+        ]
+      },
+      {
+        "text": "Unsupported operating systems may stop receiving security updates.",
+        "importance": "high",
+        "tags": [
+          "security",
+          "patching"
+        ]
+      },
+      {
+        "text": "Administrators should track EOL status when planning upgrades.",
+        "importance": "high",
+        "tags": [
+          "operations"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "An organization upgrades workstations before the current operating system reaches end of life to continue receiving security patches.",
+        "context": "Lifecycle management",
+        "tags": [
+          "upgrade",
+          "maintenance"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know the definition of end of life and why unsupported operating systems present security risks.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming all operating system vendors follow the same support schedule.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Recommend an action plan for systems approaching end of life.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Prioritize operating systems for upgrade based on lifecycle status.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Vendor support",
+      "Security updates",
+      "Lifecycle",
+      "Upgrade planning"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "security.patch-management"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "os.patch-management",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "operational.vendor-support-lifecycle",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Deployment support guidance merged into this object per discovery review.",
+      "Version-specific EOL dates intentionally omitted; verify with vendor documentation."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

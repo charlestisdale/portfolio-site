@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/device-drivers-knowledge-object.draft.json",
+  "promoted": {
+    "id": "hardware.device-drivers",
+    "title": "Device Drivers",
+    "status": "needs-review",
+    "path": "content/knowledge/hardware/device-drivers.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 4,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 5
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 20
+  },
+  "validation": "passed"
+}

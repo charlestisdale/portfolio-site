@@ -1,0 +1,2645 @@
+{
+  "schemaVersion": "transcript-intelligence.v1",
+  "certificationId": "a-plus-220-1202",
+  "lessonId": "04",
+  "lessonTitle": "Upgrading Windows",
+  "sourceTranscript": "data/transcripts/cleaned/a-plus-220-1202/04-Upgrading Windows.txt",
+  "transcriptInputMode": "provided-clean-text",
+  "analysisQuality": {
+    "isStarterAnalysis": false,
+    "fixedCandidateTargetUsed": false,
+    "conceptCountPolicy": "Return every concept above the minimum teaching threshold. Do not invent concepts to hit a number.",
+    "gapsIncluded": true,
+    "mergeDetectionIncluded": true,
+    "curriculumPlacementIncluded": true,
+    "relationshipDiscoveryIncluded": true,
+    "richnessNotes": "The source is a focused upgrade-planning lesson with strong evidence for in-place upgrade, clean install, backup, hardware compatibility, Windows lifecycle, TPM, UEFI, Secure Boot, and PC Health Check. Some supporting topics are only briefly mentioned and should be enriched during authoring rather than expanded from transcript evidence alone."
+  },
+  "conceptsDiscovered": [
+    {
+      "conceptId": "DISC-001",
+      "title": "Operating System Upgrade",
+      "proposedKnowledgeId": "os.upgrade",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "os-maintenance"
+      ],
+      "aliases": [
+        "OS upgrade",
+        "upgrade installation"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "high",
+      "topicConfidence": 0.96,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-001",
+          "quote": "Upgrade means that you already have an operating system in place and you'd like to keep all of your applications and all of your files exactly where they are",
+          "reason": "Defines upgrade as preserving existing apps and files while updating the OS.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-002",
+          "quote": "By simply upgrading, you're leaving your configurations in place and all of your user accounts",
+          "reason": "Shows the purpose and value of upgrades for systems with users and configurations.",
+          "evidenceType": "example",
+          "supports": "curriculum-placement"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.operating-system",
+          "reason": "Learners should understand what an operating system is before comparing upgrade and installation methods.",
+          "basis": "ai-inference",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.in-place-upgrade",
+          "type": "related_to",
+          "reason": "An in-place upgrade is the specific upgrade method described in the lesson.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-001",
+            "EVID-002"
+          ]
+        },
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "contrasts_with",
+          "reason": "The lesson contrasts upgrading with starting over through a clean install.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-001"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Upgrade planning belongs with OS maintenance and lifecycle decisions.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-001",
+            "EVID-002"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "os.in-place-upgrade",
+        "reason": "The source uses upgrade primarily as the broader lead-in to in-place upgrade; avoid creating a duplicate separate object unless the curriculum needs an umbrella concept.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Upgrade preserves applications, files, user accounts, and settings.",
+          "Use upgrades when preserving existing configuration is important."
+        ],
+        "niceToCover": [
+          "Risks still require compatibility checking and backups."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.in-place-upgrade"
+        ],
+        "notes": [
+          "Consider using this as a parent concept only if the graph supports broad umbrella nodes."
+        ]
+      },
+      "reviewNotes": "Likely duplicate of in-place upgrade in this curriculum."
+    },
+    {
+      "conceptId": "DISC-002",
+      "title": "In-Place Upgrade",
+      "proposedKnowledgeId": "os.in-place-upgrade",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "windows"
+      ],
+      "aliases": [
+        "in place upgrade",
+        "Windows upgrade"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.98,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-003",
+          "quote": "An in place upgrade will upgrade the existing operating system, but keep everything in place on your system.",
+          "reason": "Directly defines the concept.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-004",
+          "quote": "It's common to start an in place upgrade by launching the installation process from inside of the existing OS.",
+          "reason": "Adds procedure-level evidence for how an in-place upgrade commonly begins.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.clean-install",
+          "reason": "Learners compare in-place upgrades against clean installs to choose the right method.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "storage.backup",
+          "reason": "Even preservation-style upgrades should be preceded by backup planning.",
+          "basis": "common-practice",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "contrasts_with",
+          "reason": "The source explicitly compares in-place upgrade and clean install.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-003"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.pc-health-check",
+          "type": "depends_on",
+          "reason": "Compatibility checking should occur before upgrading Windows.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-004"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "This is a core OS maintenance procedure for moving to a newer Windows version while preserving data.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-003",
+            "EVID-004"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "This deserves its own Knowledge Object because the lesson gives definition, procedure, comparison, and exam-relevant selection guidance.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Preserves applications, documents, settings, local user accounts, and OS context.",
+          "Usually launched from inside the existing operating system.",
+          "Best when user data, applications, or specialized configuration should remain in place.",
+          "Still requires compatibility checks and backup planning."
+        ],
+        "niceToCover": [
+          "Common Windows upgrade workflow.",
+          "Risk of incompatible apps or drivers."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.upgrade"
+        ],
+        "notes": [
+          "Keep distinct from clean install and repair install."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-003",
+      "title": "Clean Install",
+      "proposedKnowledgeId": "os.clean-install",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "windows"
+      ],
+      "aliases": [
+        "fresh installation",
+        "new installation"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.98,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-005",
+          "quote": "Installing means you're effectively starting over completely fresh.",
+          "reason": "Introduces clean installation as a fresh-start installation method.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-006",
+          "quote": "This is compared to a clean install which wipes everything on that system.",
+          "reason": "Shows the major consequence of a clean install.",
+          "evidenceType": "comparison",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-007",
+          "quote": "You would normally begin a clean install from the boot process of your computer by booting from the installation media.",
+          "reason": "Provides a procedure-level distinction from in-place upgrades.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.partition-formatting",
+          "reason": "Clean installs commonly involve partition deletion and formatting decisions.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "storage.backup",
+          "reason": "Clean installs erase user data, so backup knowledge is critical before proceeding.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.in-place-upgrade",
+          "type": "contrasts_with",
+          "reason": "Clean install removes existing content while in-place upgrade preserves it.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-006"
+          ]
+        },
+        {
+          "targetKnowledgeId": "boot.installation-media",
+          "type": "used_for",
+          "reason": "The source says clean installs normally begin by booting from installation media.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-007"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Clean installation is a core Windows deployment and maintenance decision.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-005",
+            "EVID-006",
+            "EVID-007"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "This has enough source evidence for a separate Knowledge Object.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Removes existing OS files, applications, user data, and settings.",
+          "Usually starts by booting from installation media.",
+          "Requires backup and drive/partition review before proceeding.",
+          "Use when a fresh system state is desired."
+        ],
+        "niceToCover": [
+          "Recovery limits after repartitioning and reformatting.",
+          "When clean installs are preferred over upgrades."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.installation",
+          "os.repair-installation"
+        ],
+        "notes": [
+          "Do not turn this into a full Windows install walkthrough unless a separate procedure object exists."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-004",
+      "title": "Backup Before OS Installation",
+      "proposedKnowledgeId": "storage.backup-before-os-installation",
+      "type": "troubleshooting-step",
+      "domains": [
+        "storage",
+        "operating-systems",
+        "operational-procedures"
+      ],
+      "aliases": [
+        "pre-install backup",
+        "backup before clean install"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "high",
+      "topicConfidence": 0.95,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-008",
+          "quote": "If you're planning this route, it's always a good idea to back up everything that's on the system already.",
+          "reason": "Establishes backup as a required preparation step for clean installs.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-009",
+          "quote": "If you have a backup, you can recover that information relatively easy, even though you did a clean install.",
+          "reason": "Explains the recovery purpose of backups.",
+          "evidenceType": "purpose",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.user-data",
+          "reason": "Learners need to understand what data must be protected before wiping a system.",
+          "basis": "ai-inference",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "used_for",
+          "reason": "Backups are emphasized as preparation for clean installation.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-008",
+            "EVID-009"
+          ]
+        },
+        {
+          "targetKnowledgeId": "operational-procedures.change-management",
+          "type": "related_to",
+          "reason": "Backing up before destructive work is a safe operational practice.",
+          "basis": "common-practice",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-008"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "4.0",
+          "moduleId": "operational-procedures-foundations",
+          "reason": "Backup before destructive changes is an operational procedure and risk-control practice.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-008",
+            "EVID-009"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "storage.backup",
+        "reason": "This is a contextual use of backup rather than a fundamentally separate concept.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Back up data before clean installation or destructive partition changes.",
+          "Backups provide recovery if the user later remembers needed files."
+        ],
+        "niceToCover": [
+          "Preference capture and application settings export."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "storage.backup"
+        ],
+        "notes": [
+          "Could be added as an OS-installation use case under a general backup object."
+        ]
+      },
+      "reviewNotes": "Merge into the existing backup concept if one exists."
+    },
+    {
+      "conceptId": "DISC-005",
+      "title": "Partitioning and Formatting During Installation",
+      "proposedKnowledgeId": "storage.partition-formatting-during-installation",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "operating-systems"
+      ],
+      "aliases": [
+        "partition setup",
+        "drive formatting during install"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "medium",
+      "topicConfidence": 0.91,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-010",
+          "quote": "check to see if there's any other partitions on this drive that maybe the user is not currently aware of",
+          "reason": "Highlights partition review as an installation planning task.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-011",
+          "quote": "once you repartition and reformat that drive, it's very difficult, if not impossible, to recover that data",
+          "reason": "Shows the risk associated with partitioning and formatting.",
+          "evidenceType": "common mistake",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-012",
+          "quote": "those features are usually built into the installation process itself",
+          "reason": "Explains that partitioning and formatting tools are usually included in the OS installer.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.partition",
+          "reason": "Partitioning cannot be understood without understanding what a partition is.",
+          "basis": "general-it-knowledge",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "filesystems.formatting",
+          "reason": "Formatting creates or prepares file system structures used by the installed OS.",
+          "basis": "general-it-knowledge",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "part_of",
+          "reason": "Partition clearing and formatting are commonly part of a clean install workflow.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-010",
+            "EVID-012"
+          ]
+        },
+        {
+          "targetKnowledgeId": "storage.data-recovery",
+          "type": "contrasts_with",
+          "reason": "The source warns recovery after repartitioning/reformatting may be difficult or impossible.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-011"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "file-systems",
+          "reason": "Partitioning and formatting bridge storage preparation and OS installation.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-010",
+            "EVID-011",
+            "EVID-012"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "storage.partition-formatting",
+        "reason": "A prior or general partition/formatting object likely already covers this; this lesson adds installation-specific context.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Inspect existing data and partitions before deleting or formatting.",
+          "OS installers usually include partitioning and formatting options.",
+          "Data recovery after repartitioning/reformatting may be very difficult."
+        ],
+        "niceToCover": [
+          "Difference between deleting a partition and formatting a partition."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "storage.partition-formatting",
+          "filesystems.formatting"
+        ],
+        "notes": [
+          "Use as enrichment for existing storage install-prep content."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-006",
+      "title": "OS Hardware Compatibility Check",
+      "proposedKnowledgeId": "os.hardware-compatibility-check",
+      "type": "troubleshooting-step",
+      "domains": [
+        "operating-systems",
+        "hardware",
+        "windows"
+      ],
+      "aliases": [
+        "hardware compatibility check",
+        "upgrade readiness check"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.97,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-013",
+          "quote": "check the requirements for that OS. Check to see that your system has enough memory, has enough spare drive space",
+          "reason": "Identifies the compatibility checks that should occur before upgrade or install.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-014",
+          "quote": "Microsoft includes a nice hardware compatibility check that you can run",
+          "reason": "Shows that vendor tools can validate readiness for Windows upgrades.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "hardware.system-requirements",
+          "reason": "Compatibility checks compare a device against operating system requirements.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "windows.pc-health-check",
+          "type": "used_for",
+          "reason": "PC Health Check is the Windows 11 compatibility tool discussed in the source.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-014"
+          ]
+        },
+        {
+          "targetKnowledgeId": "os.in-place-upgrade",
+          "type": "depends_on",
+          "reason": "Upgrade decisions depend on whether the hardware can run the target OS.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-013"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Hardware compatibility checks are a planning requirement before OS upgrade.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-013",
+            "EVID-014"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "This is a repeatable pre-upgrade procedure with multiple evidence points.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Check memory, drive space, processor support, and feature support.",
+          "Use vendor documentation and compatibility tools.",
+          "Run checks before upgrade or installation.",
+          "Incompatibility may require resource upgrades or hardware replacement."
+        ],
+        "niceToCover": [
+          "Compatibility planning for applications and device drivers."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "hardware.system-requirements"
+        ],
+        "notes": [
+          "Keep OS requirement checking separate from PC Health Check as a specific Windows tool."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-007",
+      "title": "Windows PC Health Check",
+      "proposedKnowledgeId": "windows.pc-health-check",
+      "type": "tool",
+      "domains": [
+        "windows",
+        "operating-systems",
+        "hardware"
+      ],
+      "aliases": [
+        "PC Health Check for Windows 11",
+        "Windows 11 PC Health Check"
+      ],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.96,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-015",
+          "quote": "For Windows 11, Microsoft refers to this application as the PC health check for Windows 11.",
+          "reason": "Names the tool used for Windows 11 upgrade readiness.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-016",
+          "quote": "PC health check tells us this PC doesn't currently meet the Windows 11 system requirements.",
+          "reason": "Shows how the tool reports pass/fail readiness information.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.hardware-compatibility-check",
+          "reason": "PC Health Check is an example of a hardware compatibility check.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "used_for",
+          "reason": "The tool evaluates whether a PC meets Windows 11 system requirements.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-015",
+            "EVID-016"
+          ]
+        },
+        {
+          "targetKnowledgeId": "security.tpm-2-0",
+          "type": "related_to",
+          "reason": "The example output flags TPM 2.0 as a Windows 11 requirement.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-016"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "desktop-operating-systems",
+          "reason": "This is a Windows-specific readiness tool used during Windows upgrade planning.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-015",
+            "EVID-016"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "Tool-specific Knowledge Object is justified if the curriculum includes Windows 11 upgrade readiness utilities.",
+        "basis": "source-supported",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Purpose: checks Windows 11 readiness.",
+          "Reports which requirements are met or not met.",
+          "Can identify missing Secure Boot or TPM 2.0 support/enablement."
+        ],
+        "niceToCover": [
+          "Where to obtain the tool should be verified from current Microsoft documentation before publishing."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.hardware-compatibility-check"
+        ],
+        "notes": [
+          "Avoid hardcoding current download steps without checking Microsoft documentation."
+        ]
+      },
+      "reviewNotes": "Because vendor tools change over time, authoring should verify current Microsoft naming and availability."
+    },
+    {
+      "conceptId": "DISC-008",
+      "title": "Application and Driver Compatibility",
+      "proposedKnowledgeId": "windows.application-driver-compatibility",
+      "type": "concept",
+      "domains": [
+        "windows",
+        "software",
+        "hardware"
+      ],
+      "aliases": [
+        "app compatibility",
+        "device driver compatibility"
+      ],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-017",
+          "quote": "certain applications or certain device drivers will not be compatible in the newer version of the operating system",
+          "reason": "Identifies compatibility risk when upgrading OS versions.",
+          "evidenceType": "exam-note",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-018",
+          "quote": "check the documentation from all of your app developers and check the details of all of your device drivers",
+          "reason": "Provides planning guidance for verifying compatibility.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "software.application",
+          "reason": "Learners should know what applications are before evaluating compatibility.",
+          "basis": "general-it-knowledge",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "hardware.device-driver",
+          "reason": "Driver compatibility depends on understanding the role of device drivers.",
+          "basis": "general-it-knowledge",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.in-place-upgrade",
+          "type": "depends_on",
+          "reason": "Application and driver compatibility can determine whether an upgrade is safe.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-017",
+            "EVID-018"
+          ]
+        },
+        {
+          "targetKnowledgeId": "hardware.device-driver",
+          "type": "related_to",
+          "reason": "The source specifically calls out device drivers as a compatibility concern.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-017"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "3.0",
+          "moduleId": "software-troubleshooting-foundations",
+          "reason": "Incompatible apps or drivers are common upgrade-related troubleshooting issues.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-017",
+            "EVID-018"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "The concept may justify authoring as an upgrade planning and troubleshooting topic.",
+        "basis": "source-supported",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Apps and device drivers may not support a newer OS version.",
+          "Check vendor/developer documentation before upgrading.",
+          "Compatibility problems can block or complicate upgrades."
+        ],
+        "niceToCover": [
+          "Rollback planning and driver updates."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "hardware.device-driver"
+        ],
+        "notes": [
+          "Needs some enrichment beyond the transcript for practical troubleshooting examples."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-009",
+      "title": "Windows Product Lifecycle",
+      "proposedKnowledgeId": "windows.product-lifecycle",
+      "type": "concept",
+      "domains": [
+        "windows",
+        "os-maintenance"
+      ],
+      "aliases": [
+        "Windows lifecycle",
+        "modern lifecycle policy",
+        "support lifecycle"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.94,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-019",
+          "quote": "Most operating system manufacturers will give you a life cycle calendar.",
+          "reason": "Introduces lifecycle calendars as planning tools.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-020",
+          "quote": "This will tell you when this operating system is in support and when this operating system will be retired from support.",
+          "reason": "Explains the lifecycle calendar's purpose.",
+          "evidenceType": "purpose",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-021",
+          "quote": "Microsoft refers to this as the modern life cycle policy.",
+          "reason": "Names the Microsoft-specific lifecycle policy context.",
+          "evidenceType": "mention",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.patch-management",
+          "reason": "Lifecycle status determines whether updates and support continue.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.end-of-life",
+          "type": "related_to",
+          "reason": "Lifecycle calendars identify retirement from support/end-of-life timing.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-020"
+          ]
+        },
+        {
+          "targetKnowledgeId": "os.patch-management",
+          "type": "related_to",
+          "reason": "The source connects lifecycle with quality updates, security updates, and bug fixes.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-019",
+            "EVID-020"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Lifecycle planning determines when operating systems should be upgraded or retired.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-019",
+            "EVID-020",
+            "EVID-021"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "The source provides enough purpose and relationship evidence for authoring.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Lifecycle calendars show support and retirement dates.",
+          "Lifecycle status affects upgrade planning.",
+          "Microsoft's Windows lifecycle information is published by Microsoft.",
+          "Quality and feature updates are tied to lifecycle support."
+        ],
+        "niceToCover": [
+          "Terminology such as end of support and end of life.",
+          "Need to verify current support dates from Microsoft when publishing."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.end-of-life",
+          "os.patch-management"
+        ],
+        "notes": [
+          "Do not hardcode current support windows without live vendor verification."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-010",
+      "title": "Quality Updates",
+      "proposedKnowledgeId": "windows.quality-updates",
+      "type": "concept",
+      "domains": [
+        "windows",
+        "os-maintenance"
+      ],
+      "aliases": [
+        "monthly updates",
+        "security updates",
+        "bug fixes"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "medium",
+      "topicConfidence": 0.88,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-022",
+          "quote": "This life cycle usually starts with quality updates where you get monthly security updates, monthly bug fixes",
+          "reason": "Defines quality updates in the context of lifecycle maintenance.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.patch-management",
+          "reason": "Quality updates are part of OS patch management.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.patch-management",
+          "type": "part_of",
+          "reason": "Monthly security and bug-fix updates are patches.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-022"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.product-lifecycle",
+          "type": "part_of",
+          "reason": "The source discusses quality updates as a phase within lifecycle support.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-022"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Quality updates are part of maintaining supported Windows versions.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-022"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "os.patch-management",
+        "reason": "The lesson mentions quality updates mainly as part of patch management/lifecycle, not as a deep standalone topic.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Quality updates include regular security and bug-fix updates."
+        ],
+        "niceToCover": [
+          "Difference from feature updates."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.patch-management"
+        ],
+        "notes": [
+          "Better as enrichment under patch management unless Windows update taxonomy is a dedicated module."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-011",
+      "title": "Feature Updates",
+      "proposedKnowledgeId": "windows.feature-updates",
+      "type": "concept",
+      "domains": [
+        "windows",
+        "os-maintenance"
+      ],
+      "aliases": [
+        "Windows feature update",
+        "OS feature update"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "medium",
+      "topicConfidence": 0.86,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-023",
+          "quote": "You might also get feature updates. These are usually released with new capabilities in the operating system",
+          "reason": "Defines feature updates as updates that introduce new OS capabilities.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "os.patch-management",
+          "reason": "Feature updates are managed as part of OS update strategy.",
+          "basis": "exam-knowledge",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "windows.quality-updates",
+          "type": "contrasts_with",
+          "reason": "Quality updates fix/security-update the OS, while feature updates add capabilities.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-023"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.product-lifecycle",
+          "type": "related_to",
+          "reason": "Feature updates are discussed in the context of lifecycle support timing.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-023"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "os-maintenance-and-lifecycle",
+          "reason": "Feature updates are part of OS version maintenance and upgrade planning.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-023"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "os.patch-management",
+        "reason": "Feature updates may fit under a broader patch/update management object unless detailed Windows update taxonomy is planned.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Feature updates introduce new operating system capabilities.",
+          "They differ from quality updates."
+        ],
+        "niceToCover": [
+          "Cadence varies by OS/version and should be verified before publishing."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.patch-management",
+          "windows.quality-updates"
+        ],
+        "notes": [
+          "Use lifecycle content as context."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-012",
+      "title": "Windows 11 System Requirements",
+      "proposedKnowledgeId": "windows.windows-11-requirements",
+      "type": "concept",
+      "domains": [
+        "windows",
+        "hardware",
+        "security"
+      ],
+      "aliases": [
+        "Windows 11 requirements",
+        "Windows 11 minimum requirements"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.97,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "high",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-024",
+          "quote": "this PC must support secure boot. TPM2.0 must be supported and enabled",
+          "reason": "Lists specific Windows 11 requirements from the PC Health Check example.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-025",
+          "quote": "This system does meet the requirements for the processor... and there is enough memory",
+          "reason": "Shows processor and memory as evaluated requirement categories.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "firmware.uefi",
+          "reason": "Secure Boot depends on UEFI firmware support.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "security.tpm-2-0",
+          "reason": "TPM 2.0 support and enablement are named as Windows 11 requirements.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "security.secure-boot",
+          "reason": "Secure Boot support is named as a Windows 11 requirement.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "windows.pc-health-check",
+          "type": "related_to",
+          "reason": "PC Health Check evaluates Windows 11 requirements.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024",
+            "EVID-025"
+          ]
+        },
+        {
+          "targetKnowledgeId": "security.tpm-2-0",
+          "type": "depends_on",
+          "reason": "The source states Windows 11 requires TPM 2.0 support and enablement.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024"
+          ]
+        },
+        {
+          "targetKnowledgeId": "security.secure-boot",
+          "type": "depends_on",
+          "reason": "The source states Windows 11 requires Secure Boot.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "desktop-operating-systems",
+          "reason": "Windows 11 requirements are Windows-specific OS installation and upgrade knowledge.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024",
+            "EVID-025"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "The concept has multiple requirement categories and should guide Windows upgrade readiness decisions.",
+        "basis": "source-supported",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Secure Boot requirement.",
+          "TPM 2.0 supported and enabled.",
+          "Processor and memory compatibility checks.",
+          "Drive space and feature support checks from OS documentation."
+        ],
+        "niceToCover": [
+          "Current full Windows 11 requirements should be verified from Microsoft before final publication."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "windows.pc-health-check",
+          "os.hardware-compatibility-check"
+        ],
+        "notes": [
+          "High review priority because exact Windows 11 requirements can change or have edition/version nuance."
+        ]
+      },
+      "reviewNotes": "Verify current Microsoft requirements during authoring."
+    },
+    {
+      "conceptId": "DISC-013",
+      "title": "Trusted Platform Module 2.0",
+      "proposedKnowledgeId": "security.tpm-2-0",
+      "type": "security-control",
+      "domains": [
+        "security",
+        "hardware",
+        "windows"
+      ],
+      "aliases": [
+        "TPM",
+        "TPM 2.0",
+        "Trusted Platform Module"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.98,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-026",
+          "quote": "One of the big requirements for Windows 11 is that you have a TPM, a trusted platform module.",
+          "reason": "Defines TPM as a major Windows 11 requirement.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-027",
+          "quote": "This is usually hardware on the motherboard of this system",
+          "reason": "Identifies TPM as motherboard-related hardware.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-028",
+          "quote": "This is cryptographic hardware, and it's important to use this for Bit Locker, Windows Hello",
+          "reason": "Explains TPM purpose and related Windows features.",
+          "evidenceType": "relationship",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "security.cryptography-basics",
+          "reason": "TPM is cryptographic hardware, so basic cryptography context helps.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "part_of",
+          "reason": "TPM 2.0 is a Windows 11 requirement in the lesson.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-026"
+          ]
+        },
+        {
+          "targetKnowledgeId": "security.bitlocker",
+          "type": "used_for",
+          "reason": "The source says TPM is important for BitLocker.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-028"
+          ]
+        },
+        {
+          "targetKnowledgeId": "identity.windows-hello",
+          "type": "used_for",
+          "reason": "The source says TPM is important for Windows Hello.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-028"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.tpm-msc",
+          "type": "related_to",
+          "reason": "TPM.MSC is used to check TPM details.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-028"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "2.0",
+          "moduleId": "security-foundations",
+          "reason": "TPM is a hardware-backed security control used by Windows security features.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-026",
+            "EVID-027",
+            "EVID-028"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "TPM 2.0 has security, hardware, and Windows upgrade relevance and warrants its own object.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "TPM is hardware-backed cryptographic capability.",
+          "TPM 2.0 or later is required for Windows 11 in this lesson context.",
+          "TPM can be used by BitLocker and Windows Hello.",
+          "TPM may need to be supported and enabled."
+        ],
+        "niceToCover": [
+          "Firmware TPM vs discrete TPM if covered later.",
+          "Where TPM settings may appear in UEFI setup."
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Keep current OS requirement wording verified during authoring."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-014",
+      "title": "TPM Management Console Snap-in",
+      "proposedKnowledgeId": "windows.tpm-msc",
+      "type": "command",
+      "domains": [
+        "windows",
+        "security"
+      ],
+      "aliases": [
+        "TPM.MSC",
+        "tpm.msc"
+      ],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.95,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-029",
+          "quote": "you can run the TPM. MSC. This is the Microsoft snap-in for the Microsoft management console",
+          "reason": "Identifies TPM.MSC as a Windows management console snap-in.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-030",
+          "quote": "gives you all of the details about the TPM that's in your system",
+          "reason": "Explains the purpose of the command/tool.",
+          "evidenceType": "purpose",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "security.tpm-2-0",
+          "reason": "The tool is used to inspect TPM status and details.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "windows.microsoft-management-console",
+          "reason": "TPM.MSC is described as an MMC snap-in.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "security.tpm-2-0",
+          "type": "used_for",
+          "reason": "TPM.MSC checks the TPM present in the system.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-029",
+            "EVID-030"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "used_for",
+          "reason": "TPM status matters for Windows 11 upgrade readiness.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-029"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "2.0",
+          "moduleId": "security-foundations",
+          "reason": "The tool verifies a hardware-backed security feature required by Windows 11.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-029",
+            "EVID-030"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "This is a distinct Windows command/tool useful for exam and troubleshooting workflows.",
+        "basis": "source-supported",
+        "requiresReview": false
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "tpm.msc opens TPM management details.",
+          "It is an MMC snap-in.",
+          "Use it to verify TPM status and version/readiness."
+        ],
+        "niceToCover": [
+          "Common output fields should be verified when authoring with screenshots or current Windows behavior."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "security.tpm-2-0"
+        ],
+        "notes": [
+          "Command object should link to TPM concept, not duplicate TPM explanation."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-015",
+      "title": "UEFI Firmware",
+      "proposedKnowledgeId": "firmware.uefi",
+      "type": "operating-system",
+      "domains": [
+        "firmware",
+        "hardware",
+        "windows"
+      ],
+      "aliases": [
+        "UEFI BIOS",
+        "modern BIOS"
+      ],
+      "classification": "merge-existing",
+      "teachingValue": "high",
+      "topicConfidence": 0.94,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-031",
+          "quote": "Windows 11 also requires a modern version of a BIOS, specifically the UEFI BIOS.",
+          "reason": "Connects UEFI firmware to Windows 11 support.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-032",
+          "quote": "It's one that provides capabilities for secure boot",
+          "reason": "Identifies Secure Boot capability as a UEFI-related feature.",
+          "evidenceType": "relationship",
+          "supports": "relationship"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "firmware.bios",
+          "reason": "Learners benefit from knowing traditional BIOS before understanding UEFI differences.",
+          "basis": "general-it-knowledge",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "security.secure-boot",
+          "type": "used_for",
+          "reason": "The source says UEFI provides capabilities for Secure Boot.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-032"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "part_of",
+          "reason": "The source frames UEFI as a Windows 11 requirement.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-031"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "UEFI is firmware support required for modern Windows startup and security features.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-031",
+            "EVID-032"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "firmware.uefi",
+        "reason": "A UEFI Knowledge Object likely already exists from firmware lessons; this source adds Windows 11 upgrade context.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "UEFI is required for Windows 11 in the lesson context.",
+          "UEFI enables Secure Boot capability.",
+          "Older systems without UEFI may need replacement."
+        ],
+        "niceToCover": [
+          "Difference from legacy BIOS should remain in the firmware object."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "firmware.uefi",
+          "firmware.bios-compatibility-mode"
+        ],
+        "notes": [
+          "Use this lesson to enrich UEFI with Windows 11 requirement relationships."
+        ]
+      },
+      "reviewNotes": "The type may be better normalized as firmware if the schema enum is extended; current schema lacks a firmware type."
+    },
+    {
+      "conceptId": "DISC-016",
+      "title": "Secure Boot",
+      "proposedKnowledgeId": "security.secure-boot",
+      "type": "security-control",
+      "domains": [
+        "security",
+        "firmware",
+        "windows"
+      ],
+      "aliases": [
+        "Secure Boot State"
+      ],
+      "classification": "teachable",
+      "teachingValue": "high",
+      "topicConfidence": 0.96,
+      "evidenceStrength": "strong",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-033",
+          "quote": "this PC must support secure boot",
+          "reason": "Identifies Secure Boot as a Windows 11 requirement.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-034",
+          "quote": "Windows 11 requires secure boot to operate.",
+          "reason": "Directly states Secure Boot requirement for Windows 11.",
+          "evidenceType": "exam-note",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-035",
+          "quote": "You can check the status of secure boot on your system by running the system information utility",
+          "reason": "Adds a verification procedure for Secure Boot status.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "firmware.uefi",
+          "reason": "Secure Boot capability is provided by UEFI in the source.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "firmware.uefi",
+          "type": "depends_on",
+          "reason": "The lesson says UEFI provides Secure Boot capability.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-034"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.system-information",
+          "type": "used_for",
+          "reason": "System Information can be used to check Secure Boot State.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-035"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "part_of",
+          "reason": "Secure Boot is listed as a Windows 11 requirement.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-033",
+            "EVID-034"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "2.0",
+          "moduleId": "security-foundations",
+          "reason": "Secure Boot is a firmware-backed security control and Windows 11 requirement.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-033",
+            "EVID-034",
+            "EVID-035"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "Secure Boot has enough security, firmware, and verification evidence for a standalone object if not already present.",
+        "basis": "source-supported",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "Secure Boot is required for Windows 11 in this lesson context.",
+          "Secure Boot is tied to UEFI firmware.",
+          "Status can be checked in System Information under System Summary.",
+          "Enabled/on status is the desired state for Windows 11 readiness."
+        ],
+        "niceToCover": [
+          "Why Secure Boot matters should be added from security curriculum context."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "firmware.uefi"
+        ],
+        "notes": [
+          "If a Secure Boot object already exists, merge or enrich instead of duplicating."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-017",
+      "title": "Windows System Information Utility",
+      "proposedKnowledgeId": "windows.system-information",
+      "type": "tool",
+      "domains": [
+        "windows",
+        "hardware",
+        "security"
+      ],
+      "aliases": [
+        "System Information",
+        "msinfo32",
+        "System Summary"
+      ],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.91,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-036",
+          "quote": "You can check the status of secure boot on your system by running the system information utility",
+          "reason": "Identifies the utility as the method for checking Secure Boot status.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-037",
+          "quote": "under the system summary section... the one you're looking for is the one that says secure boot state",
+          "reason": "Provides exact location of the relevant field.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "security.secure-boot",
+          "reason": "The source uses System Information specifically to check Secure Boot state.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "security.secure-boot",
+          "type": "used_for",
+          "reason": "System Information is used to check Secure Boot State.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-036",
+            "EVID-037"
+          ]
+        },
+        {
+          "targetKnowledgeId": "windows.windows-11-requirements",
+          "type": "used_for",
+          "reason": "Secure Boot status helps determine Windows 11 readiness.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-036"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "desktop-operating-systems",
+          "reason": "System Information is a Windows utility used for hardware/security readiness checks.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-036",
+            "EVID-037"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "This Windows utility supports troubleshooting and readiness verification.",
+        "basis": "source-supported",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "System Information can be used to inspect System Summary details.",
+          "Secure Boot State is checked there.",
+          "Secure Boot should be on for Windows 11 readiness."
+        ],
+        "niceToCover": [
+          "The command name msinfo32 may be useful enrichment."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "security.secure-boot"
+        ],
+        "notes": [
+          "The transcript does not name msinfo32 directly; include only if allowed as general Windows knowledge."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-018",
+      "title": "Installation Planning Questions",
+      "proposedKnowledgeId": "os.installation-planning",
+      "type": "troubleshooting-step",
+      "domains": [
+        "operating-systems",
+        "operational-procedures"
+      ],
+      "aliases": [
+        "pre-installation planning",
+        "Windows installation checklist"
+      ],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.89,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-038",
+          "quote": "you need to know what drive you're going to install this operating system on",
+          "reason": "Identifies drive selection as a pre-install planning question.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-039",
+          "quote": "what type of configuration you're going to use for the partitions",
+          "reason": "Identifies partition configuration as a planning question.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        },
+        {
+          "evidenceId": "EVID-040",
+          "quote": "you might also want to have any necessary license keys available",
+          "reason": "Identifies licensing information as a preparation item.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.partition-formatting",
+          "reason": "Partition configuration is part of the planning checklist.",
+          "basis": "source-supported",
+          "requiresReview": true
+        },
+        {
+          "proposedKnowledgeId": "software.licensing",
+          "reason": "License keys are mentioned as installation information to prepare.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "used_for",
+          "reason": "Drive, partition, and licensing decisions are needed before installation.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-038",
+            "EVID-039",
+            "EVID-040"
+          ]
+        },
+        {
+          "targetKnowledgeId": "os.in-place-upgrade",
+          "type": "used_for",
+          "reason": "Upgrade preparation also requires requirements and compatibility planning.",
+          "basis": "ai-inference",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-038",
+            "EVID-040"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "4.0",
+          "moduleId": "operational-procedures-foundations",
+          "reason": "This is a checklist-style procedure for reducing risk before OS installation or upgrade.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-038",
+            "EVID-039",
+            "EVID-040"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "A checklist/planning object can connect storage, licensing, compatibility, and backup topics without duplicating them.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Confirm target drive.",
+          "Plan partition configuration.",
+          "Have license keys available.",
+          "Check data, partitions, backups, requirements, apps, and drivers before proceeding."
+        ],
+        "niceToCover": [
+          "Use as a procedural checklist rather than a conceptual lesson."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os.clean-install",
+          "os.in-place-upgrade"
+        ],
+        "notes": [
+          "Good candidate for a study guide/checklist artifact later."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-019",
+      "title": "User Preferences Preservation",
+      "proposedKnowledgeId": "os.user-preferences-preservation",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "operational-procedures"
+      ],
+      "aliases": [
+        "user settings preservation",
+        "save user preferences"
+      ],
+      "classification": "mentioned-only",
+      "teachingValue": "low",
+      "topicConfidence": 0.78,
+      "evidenceStrength": "weak",
+      "enrichmentLevel": "high",
+      "reviewPriority": "low",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-041",
+          "quote": "It might also be a good idea to save any user preferences",
+          "reason": "Mentions preserving user preferences before installation.",
+          "evidenceType": "mention",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.backup",
+          "reason": "Preference preservation is a specialized form of protecting user state.",
+          "basis": "ai-inference",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os.clean-install",
+          "type": "related_to",
+          "reason": "Preferences may need to be restored after a clean install.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-041"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "4.0",
+          "moduleId": "operational-procedures-foundations",
+          "reason": "Saving preferences is a preparation step before disruptive system work.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-041"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "storage.backup",
+        "reason": "Mention is too thin for standalone authoring; merge as a note into backup or installation planning.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [],
+        "niceToCover": [
+          "Export or document application settings before reinstalling when possible."
+        ],
+        "avoidCreatingDuplicateOf": [
+          "storage.backup",
+          "os.installation-planning"
+        ],
+        "notes": [
+          "Only one weak source mention."
+        ]
+      },
+      "reviewNotes": "Keep as mentioned-only unless later transcripts provide more detail."
+    }
+  ],
+  "mergeRecommendations": [
+    {
+      "sourceConceptId": "DISC-001",
+      "targetKnowledgeId": "os.in-place-upgrade",
+      "reason": "General upgrade is mainly used to introduce in-place upgrade in this source.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-004",
+      "targetKnowledgeId": "storage.backup",
+      "reason": "Backup before OS installation is a contextual application of general backup knowledge.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-005",
+      "targetKnowledgeId": "storage.partition-formatting",
+      "reason": "Installation partitioning/formatting should enrich the existing partition-formatting object if present.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-010",
+      "targetKnowledgeId": "os.patch-management",
+      "reason": "Quality updates fit under patch/update management unless the curriculum models Windows update types separately.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-011",
+      "targetKnowledgeId": "os.patch-management",
+      "reason": "Feature updates are an OS update type and may belong under broader patch/update management.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-015",
+      "targetKnowledgeId": "firmware.uefi",
+      "reason": "UEFI was likely already authored from firmware lessons; this transcript adds Windows 11 requirement context.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    },
+    {
+      "sourceConceptId": "DISC-019",
+      "targetKnowledgeId": "storage.backup",
+      "reason": "User preference preservation is a weak mention best handled as backup/install-planning enrichment.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    }
+  ],
+  "relationshipSuggestions": [
+    {
+      "sourceConceptId": "DISC-002",
+      "sourceKnowledgeId": "os.in-place-upgrade",
+      "targetKnowledgeId": "os.clean-install",
+      "type": "contrasts_with",
+      "reason": "In-place upgrade preserves existing apps/data/settings; clean install wipes and starts fresh.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-003",
+        "EVID-006"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-003",
+      "sourceKnowledgeId": "os.clean-install",
+      "targetKnowledgeId": "boot.installation-media",
+      "type": "used_for",
+      "reason": "Clean installs normally begin by booting from installation media.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-007"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-006",
+      "sourceKnowledgeId": "os.hardware-compatibility-check",
+      "targetKnowledgeId": "windows.pc-health-check",
+      "type": "used_for",
+      "reason": "The Microsoft compatibility tool checks Windows upgrade readiness.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-014",
+        "EVID-015"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-012",
+      "sourceKnowledgeId": "windows.windows-11-requirements",
+      "targetKnowledgeId": "security.tpm-2-0",
+      "type": "depends_on",
+      "reason": "Windows 11 requires TPM 2.0 support and enablement in this lesson.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024",
+        "EVID-026"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-012",
+      "sourceKnowledgeId": "windows.windows-11-requirements",
+      "targetKnowledgeId": "security.secure-boot",
+      "type": "depends_on",
+      "reason": "Windows 11 requires Secure Boot in this lesson.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024",
+        "EVID-034"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-013",
+      "sourceKnowledgeId": "security.tpm-2-0",
+      "targetKnowledgeId": "security.bitlocker",
+      "type": "used_for",
+      "reason": "The source states TPM is important for BitLocker.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-028"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-013",
+      "sourceKnowledgeId": "security.tpm-2-0",
+      "targetKnowledgeId": "identity.windows-hello",
+      "type": "used_for",
+      "reason": "The source states TPM is important for Windows Hello.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-028"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-016",
+      "sourceKnowledgeId": "security.secure-boot",
+      "targetKnowledgeId": "firmware.uefi",
+      "type": "depends_on",
+      "reason": "UEFI provides Secure Boot capability.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-032",
+        "EVID-034"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-017",
+      "sourceKnowledgeId": "windows.system-information",
+      "targetKnowledgeId": "security.secure-boot",
+      "type": "used_for",
+      "reason": "System Information is used to check Secure Boot State.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-036",
+        "EVID-037"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-009",
+      "sourceKnowledgeId": "windows.product-lifecycle",
+      "targetKnowledgeId": "os.end-of-life",
+      "type": "related_to",
+      "reason": "Lifecycle calendars show when an OS leaves support.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-020"
+      ]
+    }
+  ],
+  "curriculumPlacementSuggestions": [
+    {
+      "conceptId": "DISC-002",
+      "proposedKnowledgeId": "os.in-place-upgrade",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "os-maintenance-and-lifecycle",
+      "reason": "Core OS upgrade method and decision point.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-003",
+        "EVID-004"
+      ]
+    },
+    {
+      "conceptId": "DISC-003",
+      "proposedKnowledgeId": "os.clean-install",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "os-maintenance-and-lifecycle",
+      "reason": "Core OS installation method contrasted with upgrade.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-005",
+        "EVID-006",
+        "EVID-007"
+      ]
+    },
+    {
+      "conceptId": "DISC-006",
+      "proposedKnowledgeId": "os.hardware-compatibility-check",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "os-maintenance-and-lifecycle",
+      "reason": "Upgrade readiness checks belong in OS maintenance planning.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-013",
+        "EVID-014"
+      ]
+    },
+    {
+      "conceptId": "DISC-007",
+      "proposedKnowledgeId": "windows.pc-health-check",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "desktop-operating-systems",
+      "reason": "Windows-specific tool for upgrade readiness.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-015",
+        "EVID-016"
+      ]
+    },
+    {
+      "conceptId": "DISC-009",
+      "proposedKnowledgeId": "windows.product-lifecycle",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "os-maintenance-and-lifecycle",
+      "reason": "Lifecycle support drives upgrade timing and maintenance decisions.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-019",
+        "EVID-020",
+        "EVID-021"
+      ]
+    },
+    {
+      "conceptId": "DISC-012",
+      "proposedKnowledgeId": "windows.windows-11-requirements",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "desktop-operating-systems",
+      "reason": "Windows 11-specific requirement knowledge is needed for upgrade decisions.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024",
+        "EVID-025"
+      ]
+    },
+    {
+      "conceptId": "DISC-013",
+      "proposedKnowledgeId": "security.tpm-2-0",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "2.0",
+      "moduleId": "security-foundations",
+      "reason": "TPM is a security-control requirement and supports BitLocker/Windows Hello.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-026",
+        "EVID-027",
+        "EVID-028"
+      ]
+    },
+    {
+      "conceptId": "DISC-016",
+      "proposedKnowledgeId": "security.secure-boot",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "2.0",
+      "moduleId": "security-foundations",
+      "reason": "Secure Boot is a firmware-backed security requirement for Windows 11.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-033",
+        "EVID-034",
+        "EVID-035"
+      ]
+    },
+    {
+      "conceptId": "DISC-018",
+      "proposedKnowledgeId": "os.installation-planning",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "4.0",
+      "moduleId": "operational-procedures-foundations",
+      "reason": "Pre-installation checklisting is risk reduction and operational procedure.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-038",
+        "EVID-039",
+        "EVID-040"
+      ]
+    }
+  ],
+  "knowledgeGaps": [
+    {
+      "gapId": "GAP-001",
+      "title": "Installation Media Details Are Assumed",
+      "description": "The lesson says clean installs normally begin by booting from installation media, but does not explain how installation media is created, selected, or booted.",
+      "relatedConceptIds": [
+        "os.clean-install",
+        "boot.installation-media"
+      ],
+      "recommendation": "Link to or create a supporting installation media concept/procedure.",
+      "severity": "medium",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-007"
+      ]
+    },
+    {
+      "gapId": "GAP-002",
+      "title": "Backup Scope and Verification Are Not Explained",
+      "description": "The source strongly recommends backup but does not explain what should be backed up, how to verify recoverability, or how to handle user profiles and application settings.",
+      "relatedConceptIds": [
+        "storage.backup",
+        "storage.backup-before-os-installation",
+        "os.user-preferences-preservation"
+      ],
+      "recommendation": "Enrich the backup concept with OS installation scenarios, verification, user data scope, and preference capture.",
+      "severity": "medium",
+      "basis": "ai-inference",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-008",
+        "EVID-009",
+        "EVID-041"
+      ]
+    },
+    {
+      "gapId": "GAP-003",
+      "title": "Current Windows 11 Requirements Require Vendor Verification",
+      "description": "The transcript provides examples of Secure Boot, TPM 2.0, processor, and memory checks, but exact Windows 11 requirements are vendor-maintained and may change or contain edition/version nuance.",
+      "relatedConceptIds": [
+        "windows.windows-11-requirements",
+        "windows.pc-health-check"
+      ],
+      "recommendation": "During Knowledge Authoring, verify exact Windows 11 requirements against current Microsoft documentation.",
+      "severity": "high",
+      "basis": "common-practice",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024",
+        "EVID-025"
+      ]
+    },
+    {
+      "gapId": "GAP-004",
+      "title": "TPM Purpose Is Brief",
+      "description": "The source identifies TPM as cryptographic hardware and links it to BitLocker and Windows Hello, but does not explain hardware root of trust, key protection, or enablement locations.",
+      "relatedConceptIds": [
+        "security.tpm-2-0",
+        "security.bitlocker",
+        "identity.windows-hello"
+      ],
+      "recommendation": "Author TPM as a normal-depth security concept and link to BitLocker and Windows Hello rather than expanding those features here.",
+      "severity": "medium",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-026",
+        "EVID-027",
+        "EVID-028"
+      ]
+    },
+    {
+      "gapId": "GAP-005",
+      "title": "Lifecycle Policy Timing Should Not Be Hardcoded From Transcript",
+      "description": "The transcript gives general support-duration ranges, but current support dates and lifecycle policy details should be confirmed with Microsoft.",
+      "relatedConceptIds": [
+        "windows.product-lifecycle",
+        "os.end-of-life"
+      ],
+      "recommendation": "Use the transcript for concept discovery, but verify exact lifecycle dates and policy terminology before final authoring.",
+      "severity": "medium",
+      "basis": "common-practice",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-019",
+        "EVID-020",
+        "EVID-021"
+      ]
+    }
+  ],
+  "rejectedMentions": [
+    {
+      "title": "Local User Accounts",
+      "classification": "mentioned-only",
+      "reason": "Mentioned as a reason to prefer an upgrade, but not explained enough to become a Knowledge Object here.",
+      "basis": "source-supported",
+      "sourceEvidence": "many different local user accounts"
+    },
+    {
+      "title": "License Keys",
+      "classification": "mentioned-only",
+      "reason": "Mentioned as an installation preparation item but not explained technically.",
+      "basis": "source-supported",
+      "sourceEvidence": "have any necessary license keys available"
+    },
+    {
+      "title": "Processor Requirement",
+      "classification": "mentioned-only",
+      "reason": "Processor compatibility is listed as one PC Health Check result but lacks enough detail for a standalone object.",
+      "basis": "source-supported",
+      "sourceEvidence": "the processor is supported for Windows 11"
+    },
+    {
+      "title": "Memory Requirement",
+      "classification": "mentioned-only",
+      "reason": "Memory is listed as a requirement check but the lesson does not teach memory concepts.",
+      "basis": "source-supported",
+      "sourceEvidence": "there is enough memory in the system"
+    },
+    {
+      "title": "Drive Space Requirement",
+      "classification": "mentioned-only",
+      "reason": "Spare drive space is mentioned as part of OS requirement checking without enough detail for standalone authoring.",
+      "basis": "source-supported",
+      "sourceEvidence": "has enough spare drive space"
+    },
+    {
+      "title": "BitLocker",
+      "classification": "mentioned-only",
+      "reason": "Referenced as a TPM use case, but not explained in this lesson.",
+      "basis": "source-supported",
+      "sourceEvidence": "important to use this for Bit Locker"
+    },
+    {
+      "title": "Windows Hello",
+      "classification": "mentioned-only",
+      "reason": "Referenced as a TPM use case, but not explained in this lesson.",
+      "basis": "source-supported",
+      "sourceEvidence": "Windows Hello"
+    },
+    {
+      "title": "Microsoft Website",
+      "classification": "not-technical",
+      "reason": "Referenced as a location for lifecycle information, but not a curriculum concept.",
+      "basis": "source-supported",
+      "sourceEvidence": "available on the Microsoft website"
+    },
+    {
+      "title": "Application Developers",
+      "classification": "not-technical",
+      "reason": "Mentioned as documentation sources for compatibility checks, not as a technical concept.",
+      "basis": "source-supported",
+      "sourceEvidence": "check the documentation from all of your app developers"
+    }
+  ],
+  "importNotes": [
+    "This lesson primarily supports upgrade-versus-clean-install decision-making and Windows 11 readiness checks.",
+    "Several topics should merge into existing concepts if already authored: backup, partition/formatting, UEFI, patch management, and end-of-life/lifecycle.",
+    "Windows 11 requirements and Microsoft lifecycle policy should be verified against current Microsoft documentation during Knowledge Authoring.",
+    "The source gives procedure-level clues but not a full installation walkthrough; avoid over-authoring step-by-step install content from this transcript alone.",
+    "The lesson uses 'UEFI BIOS' wording; normalize carefully to the platform's firmware terminology."
+  ]
+}

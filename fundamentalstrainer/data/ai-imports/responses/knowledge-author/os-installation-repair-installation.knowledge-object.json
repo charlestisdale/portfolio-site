@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os-installation.repair-installation",
+  "slug": "repair-installation",
+  "title": "Repair installation",
+  "aliases": [
+    "Repair install",
+    "In-place repair"
+  ],
+  "type": "procedure",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "troubleshooting"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "3.0",
+          "name": "Software Troubleshooting",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "03",
+          "title": "Installing Operating Systems",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "A repair installation replaces damaged operating system files while preserving user data and documents. It is commonly used to recover from operating system corruption without performing a full clean installation.",
+    "explanation": "A repair installation reinstalls core operating system files over the existing installation while attempting to preserve user files, installed applications, and configuration settings. It is useful when system files have become damaged but a complete reinstall is unnecessary.\n\nAlthough user data is intended to remain intact, a backup should still be performed before starting the repair. Unexpected failures or storage issues can still result in data loss.",
+    "facts": [
+      {
+        "text": "A repair installation replaces operating system files while preserving user data.",
+        "importance": "exam-critical",
+        "tags": [
+          "repair"
+        ]
+      },
+      {
+        "text": "Repair installations are used to resolve operating system corruption.",
+        "importance": "high",
+        "tags": [
+          "troubleshooting"
+        ]
+      },
+      {
+        "text": "Backing up important files is recommended before a repair installation.",
+        "importance": "high",
+        "tags": [
+          "backup"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A Windows computer fails after corrupted system files, so the technician performs a repair installation instead of a clean install.",
+        "context": "OS recovery",
+        "tags": [
+          "windows",
+          "recovery"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know the difference between a repair installation and a clean install."
+    ],
+    "commonMistakes": [
+      "Assuming a repair installation is a substitute for backups."
+    ],
+    "scenarios": [
+      "Choose a repair installation when system files are damaged but user data should be preserved."
+    ],
+    "pbqIdeas": [
+      "Select the appropriate recovery method for a corrupted operating system."
+    ],
+    "questionTargets": [
+      "Repair installation",
+      "OS corruption",
+      "Data preservation"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [
+      "troubleshooting.os-corruption"
+    ],
+    "contrastsWith": [
+      "os-installation.clean-install"
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "medium",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Backup recommendation and preservation of applications/settings are curriculum enrichment beyond the explicit transcript evidence."
+    ]
+  }
+}

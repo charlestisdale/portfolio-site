@@ -1,0 +1,218 @@
+{
+  "generatedBy": "knowledge-builder-compiler",
+  "dryRun": false,
+  "cleanBuild": false,
+  "createStubs": true,
+  "source": "approved-knowledge-objects.json",
+  "inputCount": 32,
+  "promotedCount": 32,
+  "stubCount": 0,
+  "duplicateInputCount": 0,
+  "relationshipEdges": 68,
+  "removedDuringClean": [],
+  "duplicateInputs": [],
+  "promoted": [
+    {
+      "id": "os.operating-system",
+      "title": "Operating System",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system.json"
+    },
+    {
+      "id": "os.hardware-abstraction",
+      "title": "Hardware Abstraction",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/hardware-abstraction.json"
+    },
+    {
+      "id": "software.application-platform-compatibility",
+      "title": "Application Platform Compatibility",
+      "status": "draft",
+      "path": "content/knowledge/software/application-platform-compatibility.json"
+    },
+    {
+      "id": "os.file-management",
+      "title": "File Management",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/file-management.json"
+    },
+    {
+      "id": "os.memory-management",
+      "title": "Memory Management",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/memory-management.json"
+    },
+    {
+      "id": "os.virtual-memory-swap",
+      "title": "Swap File / Virtual Memory",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/swap-file-virtual-memory.json"
+    },
+    {
+      "id": "os.input-output",
+      "title": "Input and Output",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/input-and-output.json"
+    },
+    {
+      "id": "os.system-utilities",
+      "title": "Operating System Utilities",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system-utilities.json"
+    },
+    {
+      "id": "windows.microsoft-windows",
+      "title": "Microsoft Windows",
+      "status": "draft",
+      "path": "content/knowledge/windows/microsoft-windows.json"
+    },
+    {
+      "id": "windows.versions",
+      "title": "Windows Versions",
+      "status": "draft",
+      "path": "content/knowledge/windows/windows-versions.json"
+    },
+    {
+      "id": "windows.driver-support",
+      "title": "Windows Driver Support",
+      "status": "draft",
+      "path": "content/knowledge/windows/windows-driver-support.json"
+    },
+    {
+      "id": "windows.security-targeting",
+      "title": "Windows Security Targeting",
+      "status": "draft",
+      "path": "content/knowledge/windows/windows-security-targeting.json"
+    },
+    {
+      "id": "linux.operating-system",
+      "title": "Linux",
+      "status": "draft",
+      "path": "content/knowledge/linux/linux.json"
+    },
+    {
+      "id": "software.open-source",
+      "title": "Open Source Software",
+      "status": "draft",
+      "path": "content/knowledge/software/open-source-software.json"
+    },
+    {
+      "id": "linux.distribution",
+      "title": "Linux Distribution",
+      "status": "draft",
+      "path": "content/knowledge/linux/linux-distribution.json"
+    },
+    {
+      "id": "apple.macos",
+      "title": "macOS",
+      "status": "draft",
+      "path": "content/knowledge/apple/macos.json"
+    },
+    {
+      "id": "apple.hardware-ecosystem",
+      "title": "Apple Hardware Ecosystem",
+      "status": "draft",
+      "path": "content/knowledge/apple/apple-hardware-ecosystem.json"
+    },
+    {
+      "id": "software.closed-source",
+      "title": "Closed Source Software",
+      "status": "draft",
+      "path": "content/knowledge/software/closed-source-software.json"
+    },
+    {
+      "id": "google.chromeos",
+      "title": "ChromeOS",
+      "status": "draft",
+      "path": "content/knowledge/google/chromeos.json"
+    },
+    {
+      "id": "cloud.web-applications",
+      "title": "Cloud-Based Applications",
+      "status": "draft",
+      "path": "content/knowledge/cloud/cloud-based-applications.json"
+    },
+    {
+      "id": "apple.ios",
+      "title": "iOS",
+      "status": "draft",
+      "path": "content/knowledge/apple/ios.json"
+    },
+    {
+      "id": "android.operating-system",
+      "title": "Android",
+      "status": "draft",
+      "path": "content/knowledge/android/android.json"
+    },
+    {
+      "id": "os.end-of-life",
+      "title": "Operating System End of Life",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system-end-of-life.json"
+    },
+    {
+      "id": "os.updates",
+      "title": "Operating System Updates",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/operating-system-updates.json"
+    },
+    {
+      "id": "software.cross-platform-file-formats",
+      "title": "Cross-Platform File Formats",
+      "status": "draft",
+      "path": "content/knowledge/software/cross-platform-file-formats.json"
+    },
+    {
+      "id": "software.executable-compatibility",
+      "title": "Executable Compatibility",
+      "status": "draft",
+      "path": "content/knowledge/software/executable-compatibility.json"
+    },
+    {
+      "id": "os.desktop-environment",
+      "title": "Desktop Environment",
+      "status": "draft",
+      "path": "content/knowledge/operating-systems/desktop-environment.json"
+    },
+    {
+      "id": "linux.community-support",
+      "title": "Linux Community Support",
+      "status": "draft",
+      "path": "content/knowledge/linux/linux-community-support.json"
+    },
+    {
+      "id": "apple.ipados",
+      "title": "iPadOS",
+      "status": "draft",
+      "path": "content/knowledge/apple/ipados.json"
+    },
+    {
+      "id": "apple.app-store-review",
+      "title": "Apple App Store Review",
+      "status": "draft",
+      "path": "content/knowledge/apple/apple-app-store-review.json"
+    },
+    {
+      "id": "android.open-handset-alliance",
+      "title": "Open Handset Alliance",
+      "status": "draft",
+      "path": "content/knowledge/android/open-handset-alliance.json"
+    },
+    {
+      "id": "android.app-distribution",
+      "title": "Android App Distribution",
+      "status": "draft",
+      "path": "content/knowledge/android/android-app-distribution.json"
+    }
+  ],
+  "stubs": [],
+  "skipped": [],
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 33
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 68
+  }
+}

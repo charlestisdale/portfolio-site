@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "windows.application-driver-compatibility",
+  "slug": "application-driver-compatibility",
+  "title": "Application and Driver Compatibility",
+  "aliases": [],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "windows",
+    "software",
+    "hardware"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Application and driver compatibility should be verified before upgrading an operating system. Unsupported software or device drivers can prevent a successful upgrade or cause problems after installation.",
+    "explanation": "When upgrading to a newer operating system, not every application or hardware device is guaranteed to work correctly. Older software or outdated device drivers may be incompatible with the new operating system, resulting in installation failures, missing functionality, or system instability.\n\nBefore upgrading, review vendor or developer documentation to confirm compatibility. Check for updated drivers and newer application versions when available. Verifying compatibility before the upgrade reduces downtime and minimizes unexpected issues after installation.",
+    "facts": [
+      {
+        "text": "Applications and device drivers may not be compatible with a newer operating system.",
+        "importance": "exam-critical",
+        "tags": [
+          "compatibility",
+          "upgrade"
+        ]
+      },
+      {
+        "text": "Review vendor documentation before performing an operating system upgrade.",
+        "importance": "high",
+        "tags": [
+          "planning"
+        ]
+      },
+      {
+        "text": "Compatibility issues can block or complicate an operating system upgrade.",
+        "importance": "high",
+        "tags": [
+          "troubleshooting"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician checks the printer manufacturer's website for a Windows 11 driver before upgrading an office computer.",
+        "context": "Upgrade planning",
+        "tags": [
+          "drivers",
+          "windows"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Always verify application and driver compatibility before upgrading an operating system."
+    ],
+    "commonMistakes": [
+      "Assuming older hardware or software will automatically work after an upgrade."
+    ],
+    "scenarios": [
+      "Determine why a device stops functioning after an operating system upgrade."
+    ],
+    "pbqIdeas": [
+      "Review a list of applications and drivers to identify upgrade risks."
+    ],
+    "questionTargets": [
+      "Driver compatibility",
+      "Application compatibility",
+      "Upgrade planning"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "software.application",
+      "hardware.device-driver"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "os.in-place-upgrade",
+      "hardware.device-driver"
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Practical troubleshooting guidance extends beyond the transcript and should be validated during review."
+    ]
+  }
+}

@@ -1,0 +1,519 @@
+{
+  "id": "DISCOVERY-REVIEW-02",
+  "schemaVersion": "normalized-discovery-review.v1",
+  "sourceSchemaVersion": "discovery-review.v1",
+  "lessonId": "02",
+  "lessonTitle": "File Systems",
+  "sourceReviewInput": "02-file-systems-discovery-manifest.md",
+  "sourceAiResponse": "data/ai-imports/responses/02-file-systems-discovery-review.json",
+  "status": "reviewed-for-authoring",
+  "createdAt": "2026-06-25T18:19:56.500Z",
+  "reviewSummary": {
+    "acceptedForAuthoring": 9,
+    "merge": 1,
+    "rejected": 0,
+    "deferred": 2,
+    "needsEnrichment": 0,
+    "reviewNotes": [
+      "The manifest is suitable for discovery review and does not contain draft Knowledge Objects.",
+      "Most core file-system concepts have enough evidence for authoring.",
+      "Feature-level discoveries are valid but should not become shallow standalone objects without enrichment.",
+      "Speech-to-text errors must be normalized during authoring: XFAT→exFAT, TFS→NTFS, RFS/RIFFS→ReFS, terb→TB."
+    ]
+  },
+  "conceptDecisions": [
+    {
+      "conceptId": "DISC-001",
+      "title": "File System",
+      "proposedKnowledgeId": "filesystems.file-system",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Central concept; strong evidence and direct curriculum fit.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-002",
+      "title": "Partition Formatting",
+      "proposedKnowledgeId": "storage.partition-formatting",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strong procedural/prerequisite concept; keep separate from partition creation.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-003",
+      "title": "Cross-Platform File-System Compatibility",
+      "proposedKnowledgeId": "filesystems.cross-platform-compatibility",
+      "decision": "merge",
+      "targetKnowledgeId": "filesystems.file-system-compatibility",
+      "authoringPriority": "high",
+      "recommendedDepth": "none",
+      "reason": "Avoid duplicate compatibility object; incorporate read/write support and removable-media examples.",
+      "mustCover": [
+        "Normalize XFAT to exFAT in authoring notes.",
+        "Verify current read/write support wording for Linux and macOS before publishing."
+      ],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-004",
+      "title": "NTFS",
+      "proposedKnowledgeId": "filesystems.ntfs",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Core Windows file-system concept with features and contrasts.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-005",
+      "title": "ReFS",
+      "proposedKnowledgeId": "filesystems.refs",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Valid Windows/server file-system concept; author with verification of current support limits.",
+      "mustCover": [
+        "Verify exact ReFS desktop/server support during authoring.",
+        "Preserve source correction that RFS/RIFFS refers to ReFS."
+      ],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-006",
+      "title": "FAT32",
+      "proposedKnowledgeId": "filesystems.fat32",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Exam-relevant limits and compatibility justify authoring.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-007",
+      "title": "exFAT",
+      "proposedKnowledgeId": "filesystems.exfat",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strong removable-storage and cross-platform concept.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-008",
+      "title": "ext4",
+      "proposedKnowledgeId": "filesystems.ext4",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Valid Linux/Android file-system concept; needs moderate enrichment.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-009",
+      "title": "XFS",
+      "proposedKnowledgeId": "filesystems.xfs",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Valid Linux high-performance/data-center file-system concept.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-010",
+      "title": "APFS",
+      "proposedKnowledgeId": "filesystems.apfs",
+      "decision": "accept-for-authoring",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Core Apple file-system concept with SSD, encryption, snapshots, and integrity features.",
+      "mustCover": [],
+      "avoidAuthoringAsStandalone": false,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-011",
+      "title": "File-System Journaling",
+      "proposedKnowledgeId": "filesystems.journaling",
+      "decision": "defer",
+      "targetKnowledgeId": "storage.data-integrity",
+      "authoringPriority": "high",
+      "recommendedDepth": "none",
+      "reason": "Important feature concept, but source coverage is brief and may fit under data integrity.",
+      "mustCover": [
+        "Consider merging into storage.data-integrity if that concept already exists.",
+        "Do not over-expand beyond file-system reliability unless curriculum needs it."
+      ],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    },
+    {
+      "conceptId": "DISC-012",
+      "title": "File-System Snapshots",
+      "proposedKnowledgeId": "filesystems.snapshots",
+      "decision": "defer",
+      "targetKnowledgeId": "",
+      "authoringPriority": "high",
+      "recommendedDepth": "none",
+      "reason": "Valid feature-level discovery but only weakly mentioned; author only after enrichment.",
+      "mustCover": [
+        "Keep tied to APFS unless a broader snapshot concept is intentionally introduced."
+      ],
+      "avoidAuthoringAsStandalone": true,
+      "duplicateRisk": "medium",
+      "curriculumDecision": {
+        "status": "defer",
+        "curriculumId": "",
+        "sectionId": "",
+        "moduleId": "",
+        "reason": ""
+      },
+      "relationshipDecision": {
+        "status": "defer",
+        "accepted": [],
+        "rejected": [],
+        "notes": []
+      },
+      "reviewFlags": []
+    }
+  ],
+  "mergePlan": [
+    {
+      "sourceConceptId": "DISC-003",
+      "sourceKnowledgeId": "filesystems.cross-platform-compatibility",
+      "targetKnowledgeId": "filesystems.file-system-compatibility",
+      "reason": "The manifest explicitly identifies duplicate risk with a general file-system compatibility object.",
+      "preserveAuthoringGuidance": true
+    },
+    {
+      "sourceConceptId": "DISC-011",
+      "sourceKnowledgeId": "filesystems.journaling",
+      "targetKnowledgeId": "storage.data-integrity",
+      "reason": "Journaling may be better represented as a file-system reliability/data-integrity feature rather than a separate beginner-level object.",
+      "preserveAuthoringGuidance": true
+    }
+  ],
+  "authoringQueue": [
+    {
+      "conceptId": "DISC-001",
+      "proposedKnowledgeId": "filesystems.file-system",
+      "title": "File System",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Central concept; strong evidence and direct curriculum fit.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-002",
+      "proposedKnowledgeId": "storage.partition-formatting",
+      "title": "Partition Formatting",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strong procedural/prerequisite concept; keep separate from partition creation.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-004",
+      "proposedKnowledgeId": "filesystems.ntfs",
+      "title": "NTFS",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Core Windows file-system concept with features and contrasts.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-005",
+      "proposedKnowledgeId": "filesystems.refs",
+      "title": "ReFS",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Valid Windows/server file-system concept; author with verification of current support limits.",
+      "mustCover": [
+        "Verify exact ReFS desktop/server support during authoring.",
+        "Preserve source correction that RFS/RIFFS refers to ReFS."
+      ]
+    },
+    {
+      "conceptId": "DISC-006",
+      "proposedKnowledgeId": "filesystems.fat32",
+      "title": "FAT32",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Exam-relevant limits and compatibility justify authoring.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-007",
+      "proposedKnowledgeId": "filesystems.exfat",
+      "title": "exFAT",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Strong removable-storage and cross-platform concept.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-008",
+      "proposedKnowledgeId": "filesystems.ext4",
+      "title": "ext4",
+      "priority": "normal",
+      "recommendedDepth": "normal",
+      "reason": "Valid Linux/Android file-system concept; needs moderate enrichment.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-009",
+      "proposedKnowledgeId": "filesystems.xfs",
+      "title": "XFS",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Valid Linux high-performance/data-center file-system concept.",
+      "mustCover": []
+    },
+    {
+      "conceptId": "DISC-010",
+      "proposedKnowledgeId": "filesystems.apfs",
+      "title": "APFS",
+      "priority": "high",
+      "recommendedDepth": "normal",
+      "reason": "Core Apple file-system concept with SSD, encryption, snapshots, and integrity features.",
+      "mustCover": []
+    }
+  ],
+  "enrichmentQueue": [
+    {
+      "conceptId": "DISC-011",
+      "proposedKnowledgeId": "filesystems.journaling",
+      "title": "File-System Journaling",
+      "neededEvidenceOrContext": [],
+      "reason": "Important feature concept, but source coverage is brief and may fit under data integrity."
+    },
+    {
+      "conceptId": "DISC-012",
+      "proposedKnowledgeId": "filesystems.snapshots",
+      "title": "File-System Snapshots",
+      "neededEvidenceOrContext": [],
+      "reason": "Valid feature-level discovery but only weakly mentioned; author only after enrichment."
+    }
+  ],
+  "rejectedConcepts": [],
+  "gapReview": [
+    {
+      "gapId": "GAP-001",
+      "decision": "accept",
+      "relatedConceptIds": [],
+      "reason": "Partitioning vs formatting distinction",
+      "recommendedAction": "Create or link prerequisite coverage distinguishing partition creation, formatting, and file-system selection."
+    },
+    {
+      "gapId": "GAP-002",
+      "decision": "accept",
+      "relatedConceptIds": [],
+      "reason": "Read support vs write support for file systems",
+      "recommendedAction": "Add authoring guidance for read-only versus read-write compatibility across operating systems."
+    },
+    {
+      "gapId": "GAP-003",
+      "decision": "accept",
+      "relatedConceptIds": [],
+      "reason": "File-system feature vocabulary",
+      "recommendedAction": "Create or link concise supporting concepts for compression, encryption, quotas, resiliency, integrity checking, snapshots, journaling, and fragmentation."
+    },
+    {
+      "gapId": "GAP-004",
+      "decision": "accept",
+      "relatedConceptIds": [],
+      "reason": "Current operating-system support needs verification",
+      "recommendedAction": "Verify OS/version support before publishing exact compatibility claims."
+    }
+  ],
+  "globalReviewNotes": [
+    "Do not generate quiz questions, flashcards, or learner-facing explanations from this review artifact.",
+    "Use this review output as the gate between Transcript Intelligence discovery and Knowledge Authoring.",
+    "Accepted concepts still require canonical Knowledge Object authoring before becoming learner-facing content."
+  ],
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

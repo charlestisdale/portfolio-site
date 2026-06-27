@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/file-system-knowledge-object.draft.json",
+  "promoted": {
+    "id": "filesystems.file-system",
+    "title": "File System",
+    "status": "needs-review",
+    "path": "content/knowledge/filesystems/file-system.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 9,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 21
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 82
+  },
+  "validation": "passed"
+}

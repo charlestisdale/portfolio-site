@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.hardware-platform-compatibility",
+  "slug": "hardware-platform-compatibility",
+  "title": "Hardware Platform Differences Across Operating Systems",
+  "aliases": [
+    "OS Hardware Compatibility"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "hardware"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Operating systems differ in the hardware platforms they support. Vendor design choices, hardware compatibility, and driver availability all influence where an operating system can run.",
+    "explanation": "Operating systems are developed by different organizations and target different hardware platforms. Some operating systems are designed to run on hardware from many manufacturers, while others officially support only a specific vendor's devices.\n\nFor example, macOS is designed to run only on Apple hardware, whereas Windows, Linux, and Android support hardware from multiple manufacturers. The range of supported devices depends on vendor policies, hardware compatibility, and driver availability.\n\nUnderstanding hardware platform compatibility helps administrators select an operating system that matches the intended hardware and support requirements.",
+    "facts": [
+      {
+        "text": "Operating systems vary in the hardware they officially support.",
+        "importance": "high",
+        "tags": [
+          "compatibility"
+        ]
+      },
+      {
+        "text": "Vendor control influences operating system hardware compatibility.",
+        "importance": "high",
+        "tags": [
+          "vendor"
+        ]
+      },
+      {
+        "text": "macOS is officially limited to Apple hardware.",
+        "importance": "high",
+        "tags": [
+          "macos"
+        ]
+      },
+      {
+        "text": "Android supports hardware from many manufacturers.",
+        "importance": "medium",
+        "tags": [
+          "android"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "An organization selects Windows for a mixed fleet of PC hardware but deploys macOS only on Apple computers.",
+        "context": "Operating system selection",
+        "tags": [
+          "deployment",
+          "hardware"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Compare hardware support models across major operating systems."
+    ],
+    "commonMistakes": [
+      "Assuming every operating system runs on every hardware platform."
+    ],
+    "scenarios": [
+      "Recommend an operating system based on available hardware."
+    ],
+    "pbqIdeas": [
+      "Match operating systems to supported hardware platforms."
+    ],
+    "questionTargets": [
+      "Hardware compatibility",
+      "Vendor control",
+      "Driver support"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "hardware.computing-device"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "macos.apple-macos",
+      "hardware.device-drivers"
+    ],
+    "contrastsWith": [
+      "android.google-android"
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Examples comparing macOS with Windows, Linux, and Android were generalized from the source-supported concepts."
+    ]
+  }
+}

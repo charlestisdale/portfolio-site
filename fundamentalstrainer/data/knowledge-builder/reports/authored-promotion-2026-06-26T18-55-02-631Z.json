@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/application-driver-compatibility-knowledge-object.draft.json",
+  "promoted": {
+    "id": "windows.application-driver-compatibility",
+    "title": "Application and Driver Compatibility",
+    "status": "needs-review",
+    "path": "content/knowledge/windows/application-driver-compatibility.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 4,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 45
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 157
+  },
+  "validation": "passed"
+}

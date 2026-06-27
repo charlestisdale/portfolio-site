@@ -1,0 +1,2488 @@
+{
+  "schemaVersion": "transcript-intelligence.v1",
+  "certificationId": "a-plus-220-1202",
+  "lessonId": "03",
+  "lessonTitle": "Installing Operating Systems",
+  "sourceTranscript": "data/transcripts/cleaned/a-plus-220-1202/03-Installing Operating Systems.txt",
+  "transcriptInputMode": "provided-clean-text",
+  "analysisQuality": {
+    "isStarterAnalysis": false,
+    "fixedCandidateTargetUsed": false,
+    "conceptCountPolicy": "Return every concept above the minimum teaching threshold. Do not invent concepts to hit a number.",
+    "gapsIncluded": true,
+    "mergeDetectionIncluded": true,
+    "curriculumPlacementIncluded": true,
+    "relationshipDiscoveryIncluded": true,
+    "richnessNotes": "The transcript is concept-rich and procedure-heavy. Several items are source-supported but require enrichment or taxonomy review, especially Secure Boot, DiskPart, internet-based installation paths, and modern full-format behavior."
+  },
+  "conceptsDiscovered": [
+    {
+      "conceptId": "DISC-001",
+      "title": "Bootable USB operating system installation",
+      "proposedKnowledgeId": "os-installation.bootable-usb",
+      "type": "tool",
+      "domains": [
+        "operating-systems",
+        "storage"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-001",
+          "quote": "One common method is to use a bootable USB drive.",
+          "reason": "Introduces bootable USB media as an OS installation method.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Bootable USB operating system installation is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-001"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "purpose of bootable USB media",
+          "need for boot support in firmware",
+          "common use during OS installation"
+        ],
+        "niceToCover": [
+          "USB creation tools",
+          "boot order selection"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-002",
+      "title": "PXE network boot",
+      "proposedKnowledgeId": "networking.pxe-boot",
+      "type": "protocol",
+      "domains": [
+        "networking",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-002",
+          "quote": "This is a network boot that's commonly referred to as Pixie or PXE. This stands for preboot execution environment.",
+          "reason": "Defines PXE and connects it to network boot installation.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "networking.local-area-network",
+          "reason": "PXE discovers boot services across the local network.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os-installation.remote-network-installation",
+          "type": "used_for",
+          "reason": "PXE is used to boot an installer from the network.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-002"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "PXE network boot is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-002"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "PXE purpose",
+          "firmware support requirement",
+          "PXE server role",
+          "network boot use cases"
+        ],
+        "niceToCover": [
+          "DHCP/TFTP relationship as enrichment"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Source says 'Pixie'; canonical title should use PXE."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-003",
+      "title": "ISO image",
+      "proposedKnowledgeId": "storage.iso-image",
+      "type": "file-system",
+      "domains": [
+        "storage",
+        "operating-systems",
+        "virtualization"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-003",
+          "quote": "This ISO image contains everything that would normally be found on that optical disc.",
+          "reason": "Defines ISO as an optical-disc image used for installation.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "virtualization.virtual-machine-installation-media",
+          "type": "used_for",
+          "reason": "The transcript says ISO booting is common in virtualization software.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-003"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "ISO image is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-003"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "ISO as disc image",
+          "bootable installation media use",
+          "virtualization use"
+        ],
+        "niceToCover": [
+          "mounting ISO files"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-004",
+      "title": "Internet-based operating system installation",
+      "proposedKnowledgeId": "os-installation.internet-based-install",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "networking"
+      ],
+      "aliases": [],
+      "classification": "needs-enrichment",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "medium",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-004",
+          "quote": "Some systems can also boot and install the operating system across the internet.",
+          "reason": "Introduces internet-based installation and recovery as an installation source.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Internet-based operating system installation is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-004"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "internet install as installation source",
+          "examples: Linux minimal installers, macOS recovery, Windows update/reset paths"
+        ],
+        "niceToCover": [
+          "network requirements"
+        ],
+        "avoidCreatingDuplicateOf": [
+          "os-installation.recovery-partition"
+        ],
+        "notes": [
+          "Needs verification/enrichment by OS family before authoring."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-005",
+      "title": "Multiboot systems",
+      "proposedKnowledgeId": "os-installation.multiboot",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "storage"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-005",
+          "quote": "You could have Windows and Linux on the same physical device... This is often referred to as a multioot system.",
+          "reason": "Shows the concept of multiple operating systems on one device.",
+          "evidenceType": "example",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.disk-partition",
+          "reason": "Multiple OS installs usually require separate partitions.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Multiboot systems is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-005"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "what multiboot means",
+          "choosing an OS during startup",
+          "partition planning"
+        ],
+        "niceToCover": [
+          "bootloader considerations"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Source typo 'multioot' should be normalized to multiboot."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-006",
+      "title": "Clean install",
+      "proposedKnowledgeId": "os-installation.clean-install",
+      "type": "procedure",
+      "domains": [
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-006",
+          "quote": "This means we're going to wipe everything in that partition and we're going to completely reinstall the operating system.",
+          "reason": "Defines clean install and its destructive effect on existing data.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "backup.data-backup",
+          "type": "depends_on",
+          "reason": "Clean installs delete previous files, so backup awareness is prerequisite.",
+          "basis": "ai-inference",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-006"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Clean install is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-006"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "clean install definition",
+          "data loss risk",
+          "when it is used"
+        ],
+        "niceToCover": [
+          "backup before install"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-007",
+      "title": "In-place upgrade",
+      "proposedKnowledgeId": "os-installation.in-place-upgrade",
+      "type": "procedure",
+      "domains": [
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-007",
+          "quote": "install a newer version of the operating system and keep all of your applications and all of your data in place",
+          "reason": "Defines in-place upgrade by contrast with clean install.",
+          "evidenceType": "comparison",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os-installation.clean-install",
+          "type": "contrasts_with",
+          "reason": "The transcript contrasts preserving apps/data with wiping a partition.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-007"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "In-place upgrade is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-007"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "purpose",
+          "what is preserved",
+          "contrast with clean install"
+        ],
+        "niceToCover": [
+          "compatibility checks"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-008",
+      "title": "Image deployment",
+      "proposedKnowledgeId": "os-deployment.image-deployment",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "enterprise-it"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-008",
+          "quote": "create an image of that system and simply install the image on all of the other computers",
+          "reason": "Explains image deployment as standardized OS/app/config rollout.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "os-deployment.zero-touch-deployment",
+          "type": "related_to",
+          "reason": "Both are organization-scale deployment methods.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-008"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Image deployment is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-008"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "golden/reference image concept",
+          "standard apps and configurations",
+          "organizational deployment use"
+        ],
+        "niceToCover": [
+          "sysprep or imaging tools as enrichment"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-009",
+      "title": "Zero-touch deployment",
+      "proposedKnowledgeId": "os-deployment.zero-touch-deployment",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "enterprise-it"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-009",
+          "quote": "Generally, we would perform a zeroouch deployment... with little or no prompts",
+          "reason": "Defines zero-touch deployment as highly automated installation and configuration.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "automation.unattended-installation",
+          "type": "related_to",
+          "reason": "Zero-touch is a form of unattended or minimally attended deployment.",
+          "basis": "ai-inference",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-009"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Zero-touch deployment is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-009"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "automation goal",
+          "little/no user prompts",
+          "corporate configuration",
+          "domain/email settings"
+        ],
+        "niceToCover": [
+          "Autopilot/MDT/SCCM examples if appropriate"
+        ],
+        "avoidCreatingDuplicateOf": [
+          "automation.unattended-installation"
+        ],
+        "notes": [
+          "Potential duplicate with unattended installation; review taxonomy."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-010",
+      "title": "Remote network installation from local share",
+      "proposedKnowledgeId": "os-installation.remote-network-installation",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "networking"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-010",
+          "quote": "put all of your install files on a separate network drive... begin a remote network installation from that local server or that local share drive",
+          "reason": "Introduces installation files hosted on a local server/share.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "networking.file-share",
+          "reason": "The install files are provided by a network share or server.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Remote network installation from local share is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-010"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "installing from local server/share",
+          "benefit of avoiding local media",
+          "relationship to PXE/network boot"
+        ],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [
+          "networking.pxe-boot"
+        ],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-011",
+      "title": "Recovery partition",
+      "proposedKnowledgeId": "os-installation.recovery-partition",
+      "type": "concept",
+      "domains": [
+        "operating-systems",
+        "storage"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-011",
+          "quote": "Most modern operating systems will also install a recovery partition. This is commonly installed as a hidden partition.",
+          "reason": "Defines recovery partition and its hidden nature.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.disk-partition",
+          "type": "part_of",
+          "reason": "A recovery partition is a logical partition on the storage drive.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-011"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Recovery partition is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-011"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "hidden partition",
+          "contains recovery/install files",
+          "troubleshooting use"
+        ],
+        "niceToCover": [
+          "vendor recovery environments"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-012",
+      "title": "Repair installation",
+      "proposedKnowledgeId": "os-installation.repair-installation",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "troubleshooting"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-012",
+          "quote": "This is referred to as a repair installation... overwrite all of your operating system files, but it will leave all of your user files and documents in place.",
+          "reason": "Defines repair installation and what it preserves.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "troubleshooting.os-corruption",
+          "type": "used_for",
+          "reason": "The source frames repair installation as a fix for major OS problems.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-012"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "3.0",
+          "moduleId": "software-troubleshooting-foundations",
+          "reason": "Repair installation is an OS troubleshooting recovery method.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-012"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "what it overwrites",
+          "what user data it preserves",
+          "when to use"
+        ],
+        "niceToCover": [
+          "backup caution"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-013",
+      "title": "Third-party driver loading during OS installation",
+      "proposedKnowledgeId": "os-installation.third-party-driver-loading",
+      "type": "procedure",
+      "domains": [
+        "operating-systems",
+        "hardware"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-013",
+          "quote": "you may have to load third-party drivers to connect to a storage device or to a network connection",
+          "reason": "Explains why installer drivers may be required.",
+          "evidenceType": "procedure",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "hardware.device-driver",
+          "type": "depends_on",
+          "reason": "This concept depends on understanding device drivers.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-013"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Third-party driver loading during OS installation is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-013"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "installer may not recognize hardware",
+          "storage/network driver examples",
+          "driver prompt during installation"
+        ],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [
+          "hardware.device-driver"
+        ],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-014",
+      "title": "Disk partition",
+      "proposedKnowledgeId": "storage.disk-partition",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-014",
+          "quote": "we need to create a logical section of your storage drive... referred to as a disk partition",
+          "reason": "Defines partition as logical section of storage.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Disk partition is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-014"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "partition definition",
+          "role before formatting/installing",
+          "separating OS/data/recovery/multiboot"
+        ],
+        "niceToCover": [
+          "partition deletion risk"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-015",
+      "title": "Windows volume",
+      "proposedKnowledgeId": "storage.windows-volume",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "windows"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-015",
+          "quote": "Microsoft refers to these as volumes... a volume is simply a formatted partition.",
+          "reason": "Defines Windows volume terminology.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.disk-partition",
+          "type": "related_to",
+          "reason": "A Windows volume is a formatted partition in this lesson context.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-015"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Windows volume is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-015"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "brief",
+        "mustCover": [
+          "Windows terminology",
+          "formatted partition meaning"
+        ],
+        "niceToCover": [
+          "volume vs partition nuance"
+        ],
+        "avoidCreatingDuplicateOf": [
+          "storage.disk-partition"
+        ],
+        "notes": [
+          "Likely merge or link with broader partition/formatting content."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-016",
+      "title": "GPT partition style",
+      "proposedKnowledgeId": "storage.gpt-partition-style",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "firmware"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-016",
+          "quote": "One of these styles is a GPT partition style... globally unique identifier... configure up to 128 partitions",
+          "reason": "Defines GPT and gives key capabilities.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "firmware.uefi",
+          "reason": "The lesson says GPT requires UEFI BIOS for this context.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.mbr-partition-style",
+          "type": "contrasts_with",
+          "reason": "The transcript compares GPT with MBR capacity and partition limits.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-016"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "GPT partition style is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-016"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "GPT meaning",
+          "UEFI relationship",
+          "128 partition support",
+          "large drive support",
+          "contrast with MBR"
+        ],
+        "niceToCover": [
+          "GUID terminology correction"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Source says 'GID'; should be reviewed/corrected to GUID."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-017",
+      "title": "UEFI firmware",
+      "proposedKnowledgeId": "firmware.uefi",
+      "type": "concept",
+      "domains": [
+        "firmware",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-017",
+          "quote": "To be able to use this GID partition table style, you will need a BIOS that is a UEFI BIOS.",
+          "reason": "Shows UEFI as firmware prerequisite for GPT in the lesson.",
+          "evidenceType": "relationship",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "security.secure-boot",
+          "type": "related_to",
+          "reason": "The lesson discusses compatibility mode disabling Secure Boot.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-017"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "UEFI firmware is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-017"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "UEFI role in modern installs",
+          "relationship to GPT",
+          "relationship to Secure Boot/compatibility mode"
+        ],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Use firmware terminology carefully; avoid saying UEFI is literally BIOS except as exam wording."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-018",
+      "title": "MBR partition style",
+      "proposedKnowledgeId": "storage.mbr-partition-style",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "firmware"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-018",
+          "quote": "Before there was the GPT partition style... we were using the MBR partition style or master boot record.",
+          "reason": "Defines MBR as legacy partition style.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.gpt-partition-style",
+          "type": "contrasts_with",
+          "reason": "Source contrasts MBR with GPT limits and partition types.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-018"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "MBR partition style is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-018"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "deep",
+        "mustCover": [
+          "MBR legacy role",
+          "2 TB limit",
+          "primary/extended/logical partitions",
+          "four primary partition limit",
+          "active partition"
+        ],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-019",
+      "title": "Primary, extended, and logical partitions",
+      "proposedKnowledgeId": "storage.mbr-partition-types",
+      "type": "concept",
+      "domains": [
+        "storage"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-019",
+          "quote": "With the MBR partition style, you have two types of partitions. There's a primary partition and an extended partition... logical partitions are not bootable.",
+          "reason": "Explains MBR partition types and bootability.",
+          "evidenceType": "comparison",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [
+        {
+          "proposedKnowledgeId": "storage.mbr-partition-style",
+          "reason": "These partition types are specific to MBR in the transcript.",
+          "basis": "source-supported",
+          "requiresReview": true
+        }
+      ],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Primary, extended, and logical partitions is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-019"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "primary partitions",
+          "extended partition",
+          "logical partitions",
+          "bootability limits"
+        ],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [
+          "storage.mbr-partition-style"
+        ],
+        "notes": [
+          "May merge into MBR if curriculum prefers fewer objects."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-020",
+      "title": "Active bootable partition",
+      "proposedKnowledgeId": "storage.active-partition",
+      "type": "concept",
+      "domains": [
+        "storage",
+        "firmware"
+      ],
+      "aliases": [],
+      "classification": "merge-existing",
+      "teachingValue": "low",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-020",
+          "quote": "only one of those partitions can be marked as the active bootable partition on that drive",
+          "reason": "Identifies active partition selection in MBR booting.",
+          "evidenceType": "relationship",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Active bootable partition is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-020"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": true,
+        "targetKnowledgeId": "storage.mbr-partition-style",
+        "reason": "Active partition is best authored as part of MBR boot behavior unless deeper bootloader coverage exists.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [],
+        "niceToCover": [
+          "active partition boot selection"
+        ],
+        "avoidCreatingDuplicateOf": [
+          "storage.mbr-partition-style"
+        ],
+        "notes": [
+          "Treat as subtopic of MBR."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-021",
+      "title": "BIOS compatibility mode",
+      "proposedKnowledgeId": "firmware.bios-compatibility-mode",
+      "type": "concept",
+      "domains": [
+        "firmware",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-021",
+          "quote": "If you enable the BIOS compatibility mode, it disables the ability to secure boot",
+          "reason": "Connects compatibility mode with loss of Secure Boot support.",
+          "evidenceType": "relationship",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "security.secure-boot",
+          "type": "contrasts_with",
+          "reason": "Compatibility mode disables Secure Boot according to the transcript.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-021"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "BIOS compatibility mode is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-021"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "legacy BIOS compatibility purpose",
+          "transition from BIOS to UEFI",
+          "Secure Boot limitation"
+        ],
+        "niceToCover": [
+          "CSM terminology"
+        ],
+        "avoidCreatingDuplicateOf": [
+          "firmware.uefi"
+        ],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-022",
+      "title": "Secure Boot",
+      "proposedKnowledgeId": "security.secure-boot",
+      "type": "security-control",
+      "domains": [
+        "security",
+        "firmware"
+      ],
+      "aliases": [],
+      "classification": "mentioned-only",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "weak",
+      "enrichmentLevel": "high",
+      "reviewPriority": "high",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-022",
+          "quote": "it disables the ability to secure boot, which means that many of your newer operating systems will not work",
+          "reason": "Mentions Secure Boot as a modern OS install requirement/constraint.",
+          "evidenceType": "relationship",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "2.0",
+          "moduleId": "security-foundations",
+          "reason": "Secure Boot is a firmware security control only briefly referenced here.",
+          "basis": "ai-inference",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-022"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "normal",
+        "mustCover": [],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Mention is not enough here for full authoring, but it should link to an existing Secure Boot concept."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-023",
+      "title": "Quick format",
+      "proposedKnowledgeId": "storage.quick-format",
+      "type": "procedure",
+      "domains": [
+        "storage",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-023",
+          "quote": "The quick format... is creating a file table... not performing any physical checks",
+          "reason": "Defines quick format behavior and limitations.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.full-format",
+          "type": "contrasts_with",
+          "reason": "The lesson contrasts quick format with full format for speed and security.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-023"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Quick format is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-023"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "creates/erases file table",
+          "does not physically check drive",
+          "data recoverability risk",
+          "Windows install default"
+        ],
+        "niceToCover": [
+          "security implications"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": []
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-024",
+      "title": "Full format",
+      "proposedKnowledgeId": "storage.full-format",
+      "type": "procedure",
+      "domains": [
+        "storage",
+        "operating-systems"
+      ],
+      "aliases": [],
+      "classification": "teachable",
+      "teachingValue": "medium",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "medium",
+      "enrichmentLevel": "low",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-024",
+          "quote": "A full format... is going to write zeros across the entire disc",
+          "reason": "Defines full format behavior and security tradeoff.",
+          "evidenceType": "definition",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [
+        {
+          "targetKnowledgeId": "storage.quick-format",
+          "type": "contrasts_with",
+          "reason": "The transcript compares full format against quick format.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024"
+          ]
+        }
+      ],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "Full format is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-024"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": true,
+        "recommendedDepth": "normal",
+        "mustCover": [
+          "writes zeros across disk",
+          "more secure than quick format",
+          "time cost",
+          "use case"
+        ],
+        "niceToCover": [
+          "SSD caveats as enrichment"
+        ],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Review modern Windows/SSD behavior before deep authoring."
+        ]
+      },
+      "reviewNotes": ""
+    },
+    {
+      "conceptId": "DISC-025",
+      "title": "DiskPart utility",
+      "proposedKnowledgeId": "windows.diskpart",
+      "type": "command",
+      "domains": [
+        "windows",
+        "storage"
+      ],
+      "aliases": [],
+      "classification": "mentioned-only",
+      "teachingValue": "low",
+      "topicConfidence": 0.9,
+      "evidenceStrength": "weak",
+      "enrichmentLevel": "high",
+      "reviewPriority": "normal",
+      "sourceEvidence": [
+        {
+          "evidenceId": "EVID-025",
+          "quote": "If you wanted to perform a full format, you could change that in the disk part utility.",
+          "reason": "Mentions DiskPart as the tool for changing format behavior.",
+          "evidenceType": "mention",
+          "supports": "topic-trigger"
+        }
+      ],
+      "prerequisites": [],
+      "relationshipSuggestions": [],
+      "curriculumPlacementSuggestions": [
+        {
+          "curriculumId": "a-plus-220-1202",
+          "sectionId": "1.0",
+          "moduleId": "operating-system-foundations",
+          "reason": "DiskPart utility is part of operating system installation foundations.",
+          "basis": "source-supported",
+          "requiresReview": true,
+          "evidenceIds": [
+            "EVID-025"
+          ]
+        }
+      ],
+      "mergeRecommendation": {
+        "shouldMerge": false,
+        "targetKnowledgeId": "",
+        "reason": "No specific existing Knowledge Object is known from the source prompt.",
+        "basis": "ai-inference",
+        "requiresReview": true
+      },
+      "authoringGuidance": {
+        "shouldAuthor": false,
+        "recommendedDepth": "brief",
+        "mustCover": [],
+        "niceToCover": [],
+        "avoidCreatingDuplicateOf": [],
+        "notes": [
+          "Only mentioned as a utility; author separately only if command-line storage tools are in scope."
+        ]
+      },
+      "reviewNotes": ""
+    }
+  ],
+  "mergeRecommendations": [
+    {
+      "sourceConceptId": "DISC-020",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "reason": "Active partition is best authored as part of MBR boot behavior unless deeper bootloader coverage exists.",
+      "basis": "ai-inference",
+      "requiresReview": true
+    }
+  ],
+  "relationshipSuggestions": [
+    {
+      "sourceConceptId": "DISC-002",
+      "sourceKnowledgeId": "networking.pxe-boot",
+      "targetKnowledgeId": "os-installation.remote-network-installation",
+      "type": "used_for",
+      "reason": "PXE is used to boot an installer from the network.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-002"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-003",
+      "sourceKnowledgeId": "storage.iso-image",
+      "targetKnowledgeId": "virtualization.virtual-machine-installation-media",
+      "type": "used_for",
+      "reason": "The transcript says ISO booting is common in virtualization software.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-003"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-006",
+      "sourceKnowledgeId": "os-installation.clean-install",
+      "targetKnowledgeId": "backup.data-backup",
+      "type": "depends_on",
+      "reason": "Clean installs delete previous files, so backup awareness is prerequisite.",
+      "basis": "ai-inference",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-006"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-007",
+      "sourceKnowledgeId": "os-installation.in-place-upgrade",
+      "targetKnowledgeId": "os-installation.clean-install",
+      "type": "contrasts_with",
+      "reason": "The transcript contrasts preserving apps/data with wiping a partition.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-007"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-008",
+      "sourceKnowledgeId": "os-deployment.image-deployment",
+      "targetKnowledgeId": "os-deployment.zero-touch-deployment",
+      "type": "related_to",
+      "reason": "Both are organization-scale deployment methods.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-008"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-009",
+      "sourceKnowledgeId": "os-deployment.zero-touch-deployment",
+      "targetKnowledgeId": "automation.unattended-installation",
+      "type": "related_to",
+      "reason": "Zero-touch is a form of unattended or minimally attended deployment.",
+      "basis": "ai-inference",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-009"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-011",
+      "sourceKnowledgeId": "os-installation.recovery-partition",
+      "targetKnowledgeId": "storage.disk-partition",
+      "type": "part_of",
+      "reason": "A recovery partition is a logical partition on the storage drive.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-011"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-012",
+      "sourceKnowledgeId": "os-installation.repair-installation",
+      "targetKnowledgeId": "troubleshooting.os-corruption",
+      "type": "used_for",
+      "reason": "The source frames repair installation as a fix for major OS problems.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-012"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-013",
+      "sourceKnowledgeId": "os-installation.third-party-driver-loading",
+      "targetKnowledgeId": "hardware.device-driver",
+      "type": "depends_on",
+      "reason": "This concept depends on understanding device drivers.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-013"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-015",
+      "sourceKnowledgeId": "storage.windows-volume",
+      "targetKnowledgeId": "storage.disk-partition",
+      "type": "related_to",
+      "reason": "A Windows volume is a formatted partition in this lesson context.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-015"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-016",
+      "sourceKnowledgeId": "storage.gpt-partition-style",
+      "targetKnowledgeId": "storage.mbr-partition-style",
+      "type": "contrasts_with",
+      "reason": "The transcript compares GPT with MBR capacity and partition limits.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-016"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-017",
+      "sourceKnowledgeId": "firmware.uefi",
+      "targetKnowledgeId": "security.secure-boot",
+      "type": "related_to",
+      "reason": "The lesson discusses compatibility mode disabling Secure Boot.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-017"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-018",
+      "sourceKnowledgeId": "storage.mbr-partition-style",
+      "targetKnowledgeId": "storage.gpt-partition-style",
+      "type": "contrasts_with",
+      "reason": "Source contrasts MBR with GPT limits and partition types.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-018"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-021",
+      "sourceKnowledgeId": "firmware.bios-compatibility-mode",
+      "targetKnowledgeId": "security.secure-boot",
+      "type": "contrasts_with",
+      "reason": "Compatibility mode disables Secure Boot according to the transcript.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-021"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-023",
+      "sourceKnowledgeId": "storage.quick-format",
+      "targetKnowledgeId": "storage.full-format",
+      "type": "contrasts_with",
+      "reason": "The lesson contrasts quick format with full format for speed and security.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-023"
+      ]
+    },
+    {
+      "sourceConceptId": "DISC-024",
+      "sourceKnowledgeId": "storage.full-format",
+      "targetKnowledgeId": "storage.quick-format",
+      "type": "contrasts_with",
+      "reason": "The transcript compares full format against quick format.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024"
+      ]
+    }
+  ],
+  "curriculumPlacementSuggestions": [
+    {
+      "conceptId": "DISC-001",
+      "proposedKnowledgeId": "os-installation.bootable-usb",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Bootable USB operating system installation is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-001"
+      ]
+    },
+    {
+      "conceptId": "DISC-002",
+      "proposedKnowledgeId": "networking.pxe-boot",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "PXE network boot is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-002"
+      ]
+    },
+    {
+      "conceptId": "DISC-003",
+      "proposedKnowledgeId": "storage.iso-image",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "ISO image is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-003"
+      ]
+    },
+    {
+      "conceptId": "DISC-004",
+      "proposedKnowledgeId": "os-installation.internet-based-install",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Internet-based operating system installation is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-004"
+      ]
+    },
+    {
+      "conceptId": "DISC-005",
+      "proposedKnowledgeId": "os-installation.multiboot",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Multiboot systems is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-005"
+      ]
+    },
+    {
+      "conceptId": "DISC-006",
+      "proposedKnowledgeId": "os-installation.clean-install",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Clean install is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-006"
+      ]
+    },
+    {
+      "conceptId": "DISC-007",
+      "proposedKnowledgeId": "os-installation.in-place-upgrade",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "In-place upgrade is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-007"
+      ]
+    },
+    {
+      "conceptId": "DISC-008",
+      "proposedKnowledgeId": "os-deployment.image-deployment",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Image deployment is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-008"
+      ]
+    },
+    {
+      "conceptId": "DISC-009",
+      "proposedKnowledgeId": "os-deployment.zero-touch-deployment",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Zero-touch deployment is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-009"
+      ]
+    },
+    {
+      "conceptId": "DISC-010",
+      "proposedKnowledgeId": "os-installation.remote-network-installation",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Remote network installation from local share is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-010"
+      ]
+    },
+    {
+      "conceptId": "DISC-011",
+      "proposedKnowledgeId": "os-installation.recovery-partition",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Recovery partition is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-011"
+      ]
+    },
+    {
+      "conceptId": "DISC-012",
+      "proposedKnowledgeId": "os-installation.repair-installation",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "3.0",
+      "moduleId": "software-troubleshooting-foundations",
+      "reason": "Repair installation is an OS troubleshooting recovery method.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-012"
+      ]
+    },
+    {
+      "conceptId": "DISC-013",
+      "proposedKnowledgeId": "os-installation.third-party-driver-loading",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Third-party driver loading during OS installation is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-013"
+      ]
+    },
+    {
+      "conceptId": "DISC-014",
+      "proposedKnowledgeId": "storage.disk-partition",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Disk partition is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-014"
+      ]
+    },
+    {
+      "conceptId": "DISC-015",
+      "proposedKnowledgeId": "storage.windows-volume",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Windows volume is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-015"
+      ]
+    },
+    {
+      "conceptId": "DISC-016",
+      "proposedKnowledgeId": "storage.gpt-partition-style",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "GPT partition style is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-016"
+      ]
+    },
+    {
+      "conceptId": "DISC-017",
+      "proposedKnowledgeId": "firmware.uefi",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "UEFI firmware is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-017"
+      ]
+    },
+    {
+      "conceptId": "DISC-018",
+      "proposedKnowledgeId": "storage.mbr-partition-style",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "MBR partition style is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-018"
+      ]
+    },
+    {
+      "conceptId": "DISC-019",
+      "proposedKnowledgeId": "storage.mbr-partition-types",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Primary, extended, and logical partitions is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-019"
+      ]
+    },
+    {
+      "conceptId": "DISC-020",
+      "proposedKnowledgeId": "storage.active-partition",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Active bootable partition is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-020"
+      ]
+    },
+    {
+      "conceptId": "DISC-021",
+      "proposedKnowledgeId": "firmware.bios-compatibility-mode",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "BIOS compatibility mode is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-021"
+      ]
+    },
+    {
+      "conceptId": "DISC-022",
+      "proposedKnowledgeId": "security.secure-boot",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "2.0",
+      "moduleId": "security-foundations",
+      "reason": "Secure Boot is a firmware security control only briefly referenced here.",
+      "basis": "ai-inference",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-022"
+      ]
+    },
+    {
+      "conceptId": "DISC-023",
+      "proposedKnowledgeId": "storage.quick-format",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Quick format is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-023"
+      ]
+    },
+    {
+      "conceptId": "DISC-024",
+      "proposedKnowledgeId": "storage.full-format",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "Full format is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-024"
+      ]
+    },
+    {
+      "conceptId": "DISC-025",
+      "proposedKnowledgeId": "windows.diskpart",
+      "curriculumId": "a-plus-220-1202",
+      "sectionId": "1.0",
+      "moduleId": "operating-system-foundations",
+      "reason": "DiskPart utility is part of operating system installation foundations.",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-025"
+      ]
+    }
+  ],
+  "knowledgeGaps": [
+    {
+      "gapId": "GAP-001",
+      "title": "Boot process prerequisites are assumed",
+      "description": "The lesson references booting from USB, PXE, local partitions, ISO images, and firmware settings without fully teaching boot order, firmware setup access, or bootloader behavior.",
+      "relatedConceptIds": [
+        "os-installation.bootable-usb",
+        "networking.pxe-boot",
+        "firmware.uefi"
+      ],
+      "recommendation": "Create or link a supporting boot process/firmware boot order concept before installation media topics.",
+      "severity": "medium",
+      "basis": "ai-inference",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-001",
+        "EVID-002",
+        "EVID-017"
+      ]
+    },
+    {
+      "gapId": "GAP-002",
+      "title": "PXE dependencies are not explained",
+      "description": "PXE is introduced, but DHCP/TFTP or boot image/service dependencies are not explained.",
+      "relatedConceptIds": [
+        "networking.pxe-boot"
+      ],
+      "recommendation": "Enrich PXE authoring with network service dependencies at an A+ appropriate depth.",
+      "severity": "medium",
+      "basis": "general-it-knowledge",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-002"
+      ]
+    },
+    {
+      "gapId": "GAP-003",
+      "title": "Data backup risk before destructive installation is implicit",
+      "description": "Clean installs, repartitioning, and formatting can delete data, but backup procedure and verification are not taught as separate prerequisites.",
+      "relatedConceptIds": [
+        "os-installation.clean-install",
+        "storage.disk-partition",
+        "storage.quick-format",
+        "storage.full-format"
+      ],
+      "recommendation": "Link to backup and data preservation concepts before destructive install operations.",
+      "severity": "high",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-006",
+        "EVID-014",
+        "EVID-023",
+        "EVID-024"
+      ]
+    },
+    {
+      "gapId": "GAP-004",
+      "title": "Modern partition terminology needs review",
+      "description": "The transcript uses 'GID partition table' wording where GUID/GPT terminology should be normalized before authoring.",
+      "relatedConceptIds": [
+        "storage.gpt-partition-style"
+      ],
+      "recommendation": "Review and normalize GPT/GUID terminology in authoring output.",
+      "severity": "medium",
+      "basis": "source-supported",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-016"
+      ]
+    },
+    {
+      "gapId": "GAP-005",
+      "title": "Format behavior varies by storage type and OS version",
+      "description": "The quick/full format comparison is exam-relevant, but modern SSD behavior, TRIM, and OS-version differences may need careful enrichment to avoid overgeneralization.",
+      "relatedConceptIds": [
+        "storage.quick-format",
+        "storage.full-format"
+      ],
+      "recommendation": "Keep A+ baseline clear while adding reviewed caveats if the platform supports deeper notes.",
+      "severity": "medium",
+      "basis": "general-it-knowledge",
+      "requiresReview": true,
+      "evidenceIds": [
+        "EVID-023",
+        "EVID-024"
+      ]
+    }
+  ],
+  "rejectedMentions": [
+    {
+      "title": "CD-ROM and DVD-ROM media",
+      "classification": "mentioned-only",
+      "reason": "Optical media is only used as historical context for ISO images and does not exceed the teaching threshold in this lesson.",
+      "basis": "source-supported",
+      "sourceEvidence": "Older operating systems used to distribute their code on optical discs."
+    },
+    {
+      "title": "External hot-swappable drives",
+      "classification": "mentioned-only",
+      "reason": "Mentioned as possible installation media, but not enough detail is provided beyond media portability.",
+      "basis": "source-supported",
+      "sourceEvidence": "external or hot swappable drive"
+    },
+    {
+      "title": "Email server settings",
+      "classification": "out-of-scope",
+      "reason": "Used only as an example of corporate configuration in zero-touch deployment, not as an email concept lesson.",
+      "basis": "source-supported",
+      "sourceEvidence": "company specific such as email server settings"
+    },
+    {
+      "title": "Domain connections",
+      "classification": "mentioned-only",
+      "reason": "Mentioned as part of deployment automation, but domain join/identity is not taught here.",
+      "basis": "source-supported",
+      "sourceEvidence": "set up the domain connections"
+    },
+    {
+      "title": "Windows Updates OS installation",
+      "classification": "too-vague",
+      "reason": "The source mentions Windows Updates as an internet source without enough detail to classify the exact Windows installation/reset/update mechanism.",
+      "basis": "source-supported",
+      "sourceEvidence": "Windows Updates also provides a way to install operating systems directly from an internet source."
+    }
+  ],
+  "importNotes": [
+    "This output intentionally stays at transcript-intelligence/discovery level and does not create Knowledge Objects.",
+    "Several concepts likely already exist from lesson 02 file-system/storage work, especially partition, volume, GPT, MBR, quick format, and full format; review for merge before authoring.",
+    "Normalize transcript typos before authoring: PXE not Pixie, multiboot not multioot, zero-touch not zeroouch, reimaging not reiming, GUID not GID.",
+    "Secure Boot and DiskPart should probably link to existing concepts rather than be authored from this transcript alone."
+  ]
+}

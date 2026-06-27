@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/product-lifecycle-knowledge-object.draft.json",
+  "promoted": {
+    "id": "windows.product-lifecycle",
+    "title": "Windows Product Lifecycle",
+    "status": "needs-review",
+    "path": "content/knowledge/windows/product-lifecycle.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 3,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 46
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 160
+  },
+  "validation": "passed"
+}

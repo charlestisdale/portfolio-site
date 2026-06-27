@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/closed-source-software-knowledge-object.draft.json",
+  "promoted": {
+    "id": "software.closed-source-software",
+    "title": "Closed-Source Software",
+    "status": "needs-review",
+    "path": "content/knowledge/software/closed-source-software.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 3,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 15
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 51
+  },
+  "validation": "passed"
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "filesystems.apfs",
+  "slug": "apfs",
+  "title": "APFS",
+  "aliases": [
+    "Apple File System"
+  ],
+  "type": "file-system",
+  "status": "needs-review",
+  "domains": [
+    "filesystems",
+    "macos",
+    "ios"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "02",
+          "title": "File Systems",
+          "order": 2
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "APFS (Apple File System) is Apple's modern file system used across macOS, iOS, and related Apple platforms. It is optimized for solid-state storage while providing built-in encryption, snapshots, and enhanced data integrity.",
+    "explanation": "APFS is Apple's file system designed for modern Apple devices. It is used on macOS and is also found on iOS and iPadOS devices, providing a consistent storage format across the Apple ecosystem.\n\nAPFS was designed to optimize performance on solid-state drives (SSDs). It includes built-in encryption capabilities, supports snapshots for quickly saving and restoring file-system states, and incorporates features intended to improve data integrity.\n\nThese capabilities make APFS well suited for modern Apple hardware where performance, security, and reliability are important.",
+    "facts": [
+      {
+        "text": "APFS stands for Apple File System.",
+        "importance": "high",
+        "tags": [
+          "apple",
+          "apfs"
+        ]
+      },
+      {
+        "text": "APFS is used on macOS, iOS, and iPadOS devices.",
+        "importance": "high",
+        "tags": [
+          "apple",
+          "platforms"
+        ]
+      },
+      {
+        "text": "APFS is optimized for solid-state drives (SSDs).",
+        "importance": "high",
+        "tags": [
+          "ssd"
+        ]
+      },
+      {
+        "text": "APFS supports encryption, snapshots, and enhanced data integrity.",
+        "importance": "high",
+        "tags": [
+          "encryption",
+          "snapshots",
+          "integrity"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A MacBook with an SSD uses APFS to provide fast storage, encryption, and snapshot support.",
+        "context": "Apple desktop storage",
+        "tags": [
+          "macos",
+          "ssd"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Associate APFS with Apple devices, SSD optimization, encryption, and snapshots.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing APFS with HFS+ or assuming it is used on Windows systems.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Select an appropriate file system for a modern Apple device with an SSD.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Match file systems to operating systems and storage features.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "APFS",
+      "SSD optimization",
+      "Snapshots",
+      "Encryption",
+      "Apple ecosystem"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "operatingsystems.macos",
+      "hardware.ssd"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "filesystems.snapshots",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "security.encryption",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "General MacBook SSD deployment example added as illustrative enrichment beyond the transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

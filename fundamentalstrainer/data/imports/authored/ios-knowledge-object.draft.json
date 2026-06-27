@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "apple.ios",
+  "slug": "ios",
+  "title": "Apple iOS",
+  "aliases": [
+    "iPhone OS"
+  ],
+  "type": "operating-system",
+  "status": "needs-review",
+  "domains": [
+    "mobile-operating-systems",
+    "apple"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Apple iOS is Apple's mobile operating system for iPhone devices. It is a closed-source operating system designed to work exclusively on Apple hardware.",
+    "explanation": "iOS is the operating system used on Apple's iPhone product line. Apple develops both the hardware and the operating system, allowing the software to be optimized for the devices it supports.\n\nAs a closed-source operating system, iOS source code is not publicly available for modification or redistribution. Apple controls updates, hardware compatibility, and the software ecosystem.\n\nAlthough iOS and iPadOS share many technologies, iPadOS has evolved into a separate operating system focused on the larger iPad form factor and tablet productivity features.",
+    "facts": [
+      {
+        "text": "iOS is Apple's operating system for iPhone devices.",
+        "importance": "high",
+        "tags": [
+          "iphone"
+        ]
+      },
+      {
+        "text": "iOS is a closed-source operating system.",
+        "importance": "high",
+        "tags": [
+          "closed-source"
+        ]
+      },
+      {
+        "text": "iOS officially runs only on Apple hardware.",
+        "importance": "high",
+        "tags": [
+          "hardware"
+        ]
+      },
+      {
+        "text": "iPadOS is related to iOS but is a distinct operating system for iPads.",
+        "importance": "medium",
+        "tags": [
+          "ipados"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A company issues iPhones to employees, relying on iOS for a consistent and secure mobile platform.",
+        "context": "Enterprise mobile deployment",
+        "tags": [
+          "iphone",
+          "enterprise"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know that iOS is Apple's closed-source operating system for iPhones.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing iOS with iPadOS or assuming iOS runs on non-Apple hardware.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Recommend iOS for users who require the Apple mobile ecosystem.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Differentiate iOS, iPadOS, Android, and desktop operating systems.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "iPhone",
+      "Closed source",
+      "Apple hardware",
+      "iPadOS relationship"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system",
+      "software.closed-source-software"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "software.closed-source-software",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "ios.ipados",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Relationship to iPadOS summarized as supported contextual distinction.",
+      "Enterprise deployment example added as illustrative enrichment beyond transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os.hardware-compatibility-check",
+  "slug": "hardware-compatibility-check",
+  "title": "OS Hardware Compatibility Check",
+  "aliases": [],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems",
+    "hardware",
+    "windows"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "An OS hardware compatibility check verifies that a computer meets the requirements for installing or upgrading an operating system. Performing compatibility checks before installation reduces failures and identifies hardware that may need to be upgraded or replaced.",
+    "explanation": "Before installing or upgrading an operating system, compare the computer's hardware against the operating system's published requirements. Common checks include processor compatibility, available memory, free storage space, and support for required platform features.\n\nOperating system vendors often provide documentation and compatibility utilities that automate this process. If the system does not meet the requirements, the installation may fail or some features may not function correctly, making hardware upgrades or system replacement necessary before proceeding.",
+    "facts": [
+      {
+        "text": "Verify processor, memory, storage space, and required platform features before upgrading an operating system.",
+        "importance": "exam-critical",
+        "tags": [
+          "requirements"
+        ]
+      },
+      {
+        "text": "Use vendor documentation and compatibility tools to validate upgrade readiness.",
+        "importance": "high",
+        "tags": [
+          "planning"
+        ]
+      },
+      {
+        "text": "Run compatibility checks before beginning an operating system installation or upgrade.",
+        "importance": "high",
+        "tags": [
+          "best-practice"
+        ]
+      },
+      {
+        "text": "Systems that fail compatibility checks may require hardware upgrades or replacement.",
+        "importance": "high",
+        "tags": [
+          "hardware"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician runs Microsoft's PC Health Check before upgrading a Windows 10 computer to Windows 11 to verify hardware compatibility.",
+        "context": "Upgrade planning",
+        "tags": [
+          "windows-11"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Always verify system requirements before starting an OS upgrade.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Assuming an existing operating system can always be upgraded.",
+        "difficulty": "medium",
+        "tags": []
+      },
+      {
+        "text": "Ignoring compatibility tool results.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Determine whether a computer should be upgraded or have hardware replaced.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Review a system specification sheet and determine upgrade readiness.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "System requirements",
+      "Compatibility tools",
+      "Upgrade planning"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "hardware.system-requirements"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "windows.pc-health-check",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      },
+      {
+        "id": "os.in-place-upgrade",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Practical guidance beyond transcript should be validated during review.",
+      "Promoted from authored draft as needs-review canonical content."
+    ]
+  }
+}

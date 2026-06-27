@@ -1,0 +1,145 @@
+# Knowledge Author Prompt
+
+You are writing one draft Knowledge Object for a knowledge-first IT learning platform.
+
+You are not doing Transcript Intelligence. You are not doing Discovery Review. Those stages are already complete. Your job is to author one reviewable draft Knowledge Object from the approved concept below.
+
+## Source Files
+- normalizedDiscoveryReview: data/imports/reviewed/04-upgrading-windows-discovery-review.json
+- transcriptIntelligence: data/imports/pending/04-transcript-intelligence.json
+
+## Approved Concept
+- conceptId: DISC-017
+- proposedKnowledgeId: windows.system-information
+- title: Windows System Information Utility
+- type: tool
+- domains: windows, hardware, security
+- priority: normal
+- recommendedDepth: brief
+- reason: A useful Windows tool object for checking Secure Boot State and system summary details.
+
+## Discovery Review Requirements
+Must cover:
+- System Information can inspect System Summary details.
+- Secure Boot State is checked there.
+- Secure Boot should be on for Windows 11 readiness.
+
+Merge guidance to preserve:
+- No merge guidance targets this object.
+
+Relevant gap review:
+- No specific gap review targets this object.
+
+## Source Evidence From Transcript Intelligence
+- EVID-036: "You can check the status of secure boot on your system by running the system information utility" — Identifies the utility as the method for checking Secure Boot status.
+- EVID-037: "under the system summary section... the one you're looking for is the one that says secure boot state" — Provides exact location of the relevant field.
+
+## Suggested Relationships From Discovery
+Prerequisites:
+- security.secure-boot: The source uses System Information specifically to check Secure Boot state.
+
+Relationships:
+- used_for: security.secure-boot — System Information is used to check Secure Boot State.
+- used_for: windows.windows-11-requirements — Secure Boot status helps determine Windows 11 readiness.
+
+Curriculum placement:
+- a-plus-220-1202 → 1.0 → desktop-operating-systems: System Information is a Windows utility used for hardware/security readiness checks.
+
+## Required Output
+Return JSON only. No markdown around the JSON.
+
+Return exactly one draft Knowledge Object using this schema shape:
+
+{
+  "schemaVersion": "1.0.0",
+  "id": "windows.system-information",
+  "slug": "system-information",
+  "title": "Windows System Information Utility",
+  "aliases": [],
+  "type": "tool",
+  "status": "needs-review",
+  "domains": ["windows","hardware","security"],
+  "difficulty": "foundational | intermediate | advanced",
+  "importance": "low | medium | high | exam-critical",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "2-3 sentence learner-ready summary.",
+    "explanation": "2-4 paragraph explanation. Teach the concept clearly without copying the transcript.",
+    "facts": [
+      {
+        "text": "Atomic fact that can generate questions or flashcards.",
+        "importance": "low | medium | high | exam-critical",
+        "tags": []
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "Concrete example or use case.",
+        "context": "",
+        "tags": []
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [],
+    "commonMistakes": [],
+    "scenarios": [],
+    "pbqIdeas": [],
+    "questionTargets": []
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "low | medium | high",
+    "needsHumanReview": true,
+    "reviewNotes": []
+  }
+}
+
+## Authoring Rules
+- Use the approved concept ID exactly: windows.system-information
+- Keep status as needs-review.
+- Do not include private transcript or video provenance in sources. Public JSON allows sources.references only.
+- Do not invent exact exam objective numbers beyond the supplied section unless clearly supported.
+- Preserve source-supported facts separately in reviewNotes when needed.
+- Add reviewNotes for any enriched content that was not directly supported by source evidence.
+- Do not create quiz questions. Add examTips, commonMistakes, scenarios, pbqIdeas, and questionTargets only as seeds.
+- Keep the object reusable and certification-agnostic even though it is mapped to A+.
+- Avoid duplicating concepts that Discovery Review marked for merge.

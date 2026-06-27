@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/application-os-compatibility-knowledge-object.draft.json",
+  "promoted": {
+    "id": "software.application-os-compatibility",
+    "title": "Application OS Compatibility",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/application-os-compatibility.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 4,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 2
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 7
+  },
+  "validation": "passed"
+}

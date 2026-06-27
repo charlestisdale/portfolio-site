@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/in-place-upgrade-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os.in-place-upgrade",
+    "title": "In-Place Upgrade",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/in-place-upgrade.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 4,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 42
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 143
+  },
+  "validation": "passed"
+}

@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/hardware-compatibility-check-knowledge-object.draft.json",
+  "promoted": {
+    "id": "os.hardware-compatibility-check",
+    "title": "OS Hardware Compatibility Check",
+    "status": "needs-review",
+    "path": "content/knowledge/operating-systems/hardware-compatibility-check.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 3,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 43
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 150
+  },
+  "validation": "passed"
+}

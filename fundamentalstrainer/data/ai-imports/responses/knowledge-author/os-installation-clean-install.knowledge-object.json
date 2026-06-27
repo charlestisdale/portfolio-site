@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "os-installation.clean-install",
+  "slug": "clean-install",
+  "title": "Clean install",
+  "aliases": [
+    "Fresh installation"
+  ],
+  "type": "procedure",
+  "status": "needs-review",
+  "domains": [
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "03",
+          "title": "Installing Operating Systems",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "A clean install removes the existing operating system and data from the target partition before installing a new operating system. It is commonly used to resolve major software problems or start with a fresh system.",
+    "explanation": "A clean install erases the contents of the selected partition and installs a new copy of the operating system. Because existing files, applications, and settings are removed, it is considered a destructive installation method.\n\nBefore performing a clean install, important data should be backed up so it can be restored afterward. Clean installs are often used when replacing an operating system, removing persistent software issues, or preparing a computer for a new user.",
+    "facts": [
+      {
+        "text": "A clean install deletes the existing operating system and data on the target partition.",
+        "importance": "exam-critical",
+        "tags": [
+          "installation"
+        ]
+      },
+      {
+        "text": "Important data should be backed up before performing a clean install.",
+        "importance": "exam-critical",
+        "tags": [
+          "backup"
+        ]
+      },
+      {
+        "text": "A clean install provides a fresh operating system installation.",
+        "importance": "high",
+        "tags": [
+          "os"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician backs up user documents, formats the Windows partition, and installs a fresh copy of Windows.",
+        "context": "Repairing a system",
+        "tags": [
+          "deployment"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know that a clean install is destructive and requires backups."
+    ],
+    "commonMistakes": [
+      "Performing a clean install without backing up user data."
+    ],
+    "scenarios": [
+      "Recommend a clean install for a malware-infected system that cannot be reliably repaired."
+    ],
+    "pbqIdeas": [
+      "Choose the appropriate installation type and backup steps."
+    ],
+    "questionTargets": [
+      "Clean install",
+      "Backup",
+      "Data loss"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [],
+    "parents": [],
+    "children": [],
+    "related": [
+      "backup.data-backup"
+    ],
+    "contrastsWith": [
+      "os-installation.in-place-upgrade"
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "medium",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Backup guidance was enriched beyond the explicit transcript evidence per Discovery Review GAP-003."
+    ]
+  }
+}

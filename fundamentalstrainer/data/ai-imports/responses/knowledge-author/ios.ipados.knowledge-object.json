@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ios.ipados",
+  "slug": "ipados",
+  "title": "Apple iPadOS",
+  "aliases": [
+    "iPadOS"
+  ],
+  "type": "operating-system",
+  "status": "needs-review",
+  "domains": [
+    "mobile-operating-systems",
+    "apple"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Apple iPadOS is the operating system designed specifically for iPad tablets. It extends the tablet experience with desktop-class browsing, multitasking, keyboard support, and external display capabilities.",
+    "explanation": "iPadOS is Apple's operating system for iPad devices. While it shares many technologies with iOS, it includes features that are tailored for larger tablet displays and productivity workflows.\n\niPadOS includes a desktop-class version of the Safari web browser, allowing websites to behave more like they do on desktop computers. It also supports multitasking features, external keyboards, and enhanced window management to improve productivity.\n\nCertain iPad models support external displays and features such as Sidecar, allowing an iPad to work alongside compatible Apple devices. These capabilities distinguish iPadOS from the more phone-focused iOS experience.",
+    "facts": [
+      {
+        "text": "iPadOS is Apple's operating system for iPad tablets.",
+        "importance": "high",
+        "tags": [
+          "ipad"
+        ]
+      },
+      {
+        "text": "iPadOS includes a desktop-class Safari web browser.",
+        "importance": "high",
+        "tags": [
+          "safari"
+        ]
+      },
+      {
+        "text": "iPadOS supports keyboard input and multitasking features.",
+        "importance": "high",
+        "tags": [
+          "productivity"
+        ]
+      },
+      {
+        "text": "Some iPad models support external displays and Sidecar.",
+        "importance": "medium",
+        "tags": [
+          "sidecar",
+          "display"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A student connects a keyboard to an iPad and uses Split View while browsing the web with Safari to complete coursework.",
+        "context": "Tablet productivity",
+        "tags": [
+          "multitasking",
+          "keyboard"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know how iPadOS differs from iOS by emphasizing tablet productivity features."
+    ],
+    "commonMistakes": [
+      "Assuming iPadOS offers exactly the same interface and capabilities as iOS."
+    ],
+    "scenarios": [
+      "Recommend iPadOS for users who want tablet productivity with keyboard support."
+    ],
+    "pbqIdeas": [
+      "Identify iPadOS-specific features from a list of Apple operating system capabilities."
+    ],
+    "questionTargets": [
+      "Desktop Safari",
+      "Sidecar",
+      "Keyboard support",
+      "Multitasking"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "apple.sidecar"
+    ],
+    "contrastsWith": [
+      "apple.ios"
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Sidecar mentioned briefly per discovery guidance without creating a standalone concept.",
+      "Productivity workflow example is illustrative enrichment beyond the transcript evidence."
+    ]
+  }
+}

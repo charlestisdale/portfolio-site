@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "filesystems.exfat",
+  "slug": "exfat",
+  "title": "exFAT",
+  "aliases": [
+    "Extended File Allocation Table"
+  ],
+  "type": "file-system",
+  "status": "needs-review",
+  "domains": [
+    "filesystems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "02",
+          "title": "File Systems",
+          "order": 2
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "exFAT is a Microsoft file system designed primarily for flash storage and removable media. It supports much larger files than FAT32 while maintaining broad compatibility across modern operating systems.",
+    "explanation": "exFAT (Extended File Allocation Table) was created by Microsoft for flash drives and other removable storage devices. It is commonly used where compatibility between different operating systems is important.\n\nCompared with FAT32, exFAT removes the 4 GB maximum file size limitation, making it suitable for storing large files such as high-resolution videos and disk images.\n\nBecause exFAT is supported by Windows, macOS, and many Linux systems, it is a common choice when removable storage must be shared across multiple platforms.",
+    "facts": [
+      {
+        "text": "exFAT stands for Extended File Allocation Table.",
+        "importance": "medium",
+        "tags": [
+          "name"
+        ]
+      },
+      {
+        "text": "exFAT was designed for flash drives and removable storage.",
+        "importance": "high",
+        "tags": [
+          "flash-storage"
+        ]
+      },
+      {
+        "text": "exFAT supports files larger than FAT32's 4 GB limit.",
+        "importance": "exam-critical",
+        "tags": [
+          "file-size"
+        ]
+      },
+      {
+        "text": "exFAT is commonly used for cross-platform removable storage.",
+        "importance": "high",
+        "tags": [
+          "compatibility"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A photographer formats a USB flash drive as exFAT so large video files can be transferred between Windows and macOS computers.",
+        "context": "Cross-platform removable storage",
+        "tags": [
+          "usb",
+          "cross-platform"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Remember exFAT is optimized for removable storage and supports files larger than 4 GB.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing exFAT with FAT32 when storing large files.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Choose a file system for a USB drive shared between Windows and macOS containing large files.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Select the correct file system based on storage and compatibility requirements.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Flash storage",
+      "4 GB limitation",
+      "Cross-platform",
+      "Removable media"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "filesystems.fat32",
+      "hardware.usb-flash-drive"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "filesystems.cross-platform-compatibility",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [
+      {
+        "id": "filesystems.fat32",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Large-file and removable-media examples were generalized from transcript-supported concepts."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

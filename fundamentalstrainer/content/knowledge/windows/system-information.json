@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "windows.system-information",
+  "slug": "system-information",
+  "title": "Windows System Information Utility",
+  "aliases": [
+    "msinfo32",
+    "System Information"
+  ],
+  "type": "tool",
+  "status": "needs-review",
+  "domains": [
+    "windows",
+    "hardware",
+    "security"
+  ],
+  "difficulty": "foundational",
+  "importance": "medium",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "04",
+          "title": "Upgrading Windows",
+          "order": 4
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Windows System Information is a built-in utility that displays hardware, firmware, and operating system details. It can be used to verify Secure Boot State and other system summary information before upgrading Windows.",
+    "explanation": "The Windows System Information utility provides a centralized view of important system details, including hardware resources, firmware information, and operating system configuration. Administrators commonly use it when troubleshooting or confirming system readiness.\n\nFor Windows 11 upgrade planning, the System Summary section includes the Secure Boot State field. A status of enabled indicates the system meets this particular readiness requirement, while a disabled state may require configuration changes before upgrading.",
+    "facts": [
+      {
+        "text": "System Information displays hardware and operating system configuration details.",
+        "importance": "high",
+        "tags": [
+          "windows",
+          "tool"
+        ]
+      },
+      {
+        "text": "The Secure Boot State is located in the System Summary section.",
+        "importance": "exam-critical",
+        "tags": [
+          "secure-boot"
+        ]
+      },
+      {
+        "text": "Secure Boot should be enabled for Windows 11 readiness in this lesson context.",
+        "importance": "high",
+        "tags": [
+          "windows-11"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "msinfo32",
+        "description": "Open the Windows System Information utility."
+      }
+    ],
+    "examples": [
+      {
+        "text": "A technician opens System Information and checks the Secure Boot State before upgrading a Windows 10 computer to Windows 11.",
+        "context": "Upgrade planning",
+        "tags": [
+          "windows",
+          "secure-boot"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": [
+      "The transcript refers to the System Information utility but does not explicitly mention the msinfo32 command."
+    ]
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Know where to find Secure Boot State in the System Information utility.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Looking for Secure Boot status in unrelated Windows utilities.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Verify whether a computer satisfies the Secure Boot requirement before a Windows upgrade.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Interpret information from the System Summary section to determine upgrade readiness.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "System Information",
+      "System Summary",
+      "Secure Boot State",
+      "Windows readiness"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "security.secure-boot"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "windows.windows-11-requirements",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-26",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "The transcript does not explicitly mention the msinfo32 command; this alias is general Windows knowledge and should be reviewed.",
+      "Promoted from authored draft as needs-review canonical content."
+    ]
+  }
+}

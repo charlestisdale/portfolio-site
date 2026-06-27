@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "storage.partition-formatting",
+  "slug": "partition-formatting",
+  "title": "Partition Formatting",
+  "aliases": [
+    "Format a Partition"
+  ],
+  "type": "concept",
+  "status": "needs-review",
+  "domains": [
+    "storage",
+    "filesystems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "02",
+          "title": "File Systems",
+          "order": 2
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Partition formatting prepares a partition to store data by creating a file system. Until a partition is formatted with a supported file system, it cannot normally be used to store files.",
+    "explanation": "Formatting is performed after a storage device has been partitioned. During formatting, the operating system creates the structures required by a chosen file system so that files and folders can be stored and managed.\n\nThe selected file system determines how data is organized on the partition, including how files, directories, permissions, and metadata are handled. Different file systems provide different capabilities and compatibility characteristics.\n\nPartition creation and partition formatting are separate tasks. A partition defines a storage region, while formatting prepares that region for data storage by applying a file system.",
+    "facts": [
+      {
+        "text": "A partition must be formatted before it can normally store data.",
+        "importance": "high",
+        "tags": [
+          "formatting"
+        ]
+      },
+      {
+        "text": "Formatting applies a file system to a partition.",
+        "importance": "high",
+        "tags": [
+          "file-system"
+        ]
+      },
+      {
+        "text": "The selected file system determines how data is organized.",
+        "importance": "high",
+        "tags": [
+          "storage"
+        ]
+      },
+      {
+        "text": "Partitioning and formatting are separate processes.",
+        "importance": "medium",
+        "tags": [
+          "partitions"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A technician creates a new partition on a hard drive and formats it with NTFS before saving files to it.",
+        "context": "New storage deployment",
+        "tags": [
+          "ntfs",
+          "partition"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      {
+        "text": "Remember that formatting follows partition creation and applies the file system.",
+        "difficulty": "easy",
+        "tags": []
+      }
+    ],
+    "commonMistakes": [
+      {
+        "text": "Confusing partition creation with partition formatting.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "scenarios": [
+      {
+        "situation": "Determine the next step after creating a new partition on a storage device.",
+        "expectedAction": "Identify the correct concept or response.",
+        "difficulty": "medium",
+        "tags": []
+      }
+    ],
+    "pbqIdeas": [
+      {
+        "task": "Sequence storage preparation tasks from partitioning through formatting.",
+        "skillsTested": [],
+        "difficulty": "medium",
+        "assetsNeeded": []
+      }
+    ],
+    "questionTargets": [
+      "Formatting",
+      "File systems",
+      "Partitions"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "storage.partitions"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      {
+        "id": "filesystems.file-system",
+        "relationship": "related_to",
+        "reason": "Suggested relationship."
+      }
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Example file system (NTFS) included as illustrative enrichment beyond the transcript evidence."
+    ]
+  },
+  "audit": {
+    "status": "passed",
+    "flags": []
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/xfs-knowledge-object.draft.json",
+  "promoted": {
+    "id": "filesystems.xfs",
+    "title": "XFS",
+    "status": "needs-review",
+    "path": "content/knowledge/filesystems/xfs.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 5,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 28
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 110
+  },
+  "validation": "passed"
+}

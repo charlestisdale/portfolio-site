@@ -1,8 +1,0 @@
-{
-  "id": "IMPORT-A-PLUS-220-1202-01-DUPLICATE-REPORT",
-  "createdAt": "2026-06-24T12:29:23.032Z",
-  "source": "data/imports/pending/01-candidates.json",
-  "totalCandidates": 13,
-  "candidatesWithPossibleDuplicates": 0,
-  "duplicates": []
-}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "macos.apple-macos",
+  "slug": "apple-macos",
+  "title": "Apple macOS",
+  "aliases": [
+    "macOS"
+  ],
+  "type": "operating-system",
+  "status": "needs-review",
+  "domains": [
+    "macos",
+    "operating-systems"
+  ],
+  "difficulty": "foundational",
+  "importance": "high",
+  "certificationMappings": [
+    {
+      "certification": "a-plus-220-1202",
+      "examCode": "220-1202",
+      "objectives": [
+        {
+          "id": "1.0",
+          "name": "Operating Systems",
+          "weight": null,
+          "subtopics": []
+        }
+      ],
+      "lessons": [
+        {
+          "lessonId": "01",
+          "title": "Operating Systems Overview",
+          "order": 1
+        }
+      ]
+    }
+  ],
+  "learning": {
+    "summary": "Apple macOS is Apple's desktop operating system designed exclusively for Apple computers. It is known for its integrated hardware and software design, usability, and consistent user experience.",
+    "explanation": "macOS is the operating system used on Apple desktop and laptop computers. Because Apple develops both the hardware and the operating system, macOS is optimized specifically for Apple devices.\n\nThis hardware and software integration helps provide consistent performance, driver compatibility, and a unified user experience. macOS is widely recognized for its graphical interface and ease of use.\n\nUnlike operating systems designed for a wide variety of hardware vendors, macOS officially runs only on Apple hardware. While this integration offers reliability and simplified support, it also limits hardware choice and generally results in higher acquisition costs compared to many alternatives.",
+    "facts": [
+      {
+        "text": "macOS is Apple's desktop operating system.",
+        "importance": "high",
+        "tags": [
+          "macos"
+        ]
+      },
+      {
+        "text": "macOS officially runs only on Apple hardware.",
+        "importance": "high",
+        "tags": [
+          "hardware"
+        ]
+      },
+      {
+        "text": "Apple develops both the hardware and macOS, enabling tight integration.",
+        "importance": "high",
+        "tags": [
+          "integration"
+        ]
+      },
+      {
+        "text": "macOS is well known for its usability and graphical interface.",
+        "importance": "medium",
+        "tags": [
+          "ui"
+        ]
+      }
+    ],
+    "commands": [],
+    "examples": [
+      {
+        "text": "A graphic designer selects a MacBook because macOS is optimized for Apple hardware and provides a consistent desktop experience.",
+        "context": "Desktop OS selection",
+        "tags": [
+          "apple"
+        ]
+      }
+    ],
+    "tables": [],
+    "media": [],
+    "notes": []
+  },
+  "assessmentSeeds": {
+    "examTips": [
+      "Know that macOS is exclusive to Apple hardware and emphasizes hardware/software integration."
+    ],
+    "commonMistakes": [
+      "Assuming macOS is officially supported on generic PC hardware."
+    ],
+    "scenarios": [
+      "Recommend an operating system for a user who prefers Apple's integrated ecosystem."
+    ],
+    "pbqIdeas": [
+      "Compare Windows, Linux, and macOS characteristics for deployment scenarios."
+    ],
+    "questionTargets": [
+      "Apple hardware",
+      "Integration",
+      "Usability",
+      "Support tradeoffs"
+    ]
+  },
+  "relationships": {
+    "prerequisites": [
+      "os.operating-system"
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "software.closed-source-software"
+    ],
+    "contrastsWith": [],
+    "replacedBy": []
+  },
+  "sources": {
+    "references": []
+  },
+  "quality": {
+    "createdAt": "2026-06-25",
+    "updatedAt": "2026-06-25",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "high",
+    "needsHumanReview": true,
+    "reviewNotes": [
+      "Integrated Apple hardware/OS discussion includes merged hardware-os-integration concept.",
+      "Cost and support tradeoffs were summarized as contextual enrichment beyond the cited evidence."
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "generatedBy": "authored-draft-promotion",
+  "dryRun": false,
+  "allowOverwrite": false,
+  "markReviewed": false,
+  "source": "data/imports/authored/uefi-knowledge-object.draft.json",
+  "promoted": {
+    "id": "firmware.uefi",
+    "title": "UEFI firmware",
+    "status": "needs-review",
+    "path": "content/knowledge/firmware/uefi.json"
+  },
+  "duplicateOverwriteCount": 0,
+  "relationshipEdges": 2,
+  "index": {
+    "path": "content/indexes/knowledge-index.json",
+    "count": 41
+  },
+  "graph": {
+    "path": "content/relationships/a-plus-220-1202.graph.json",
+    "count": 137
+  },
+  "validation": "passed"
+}
