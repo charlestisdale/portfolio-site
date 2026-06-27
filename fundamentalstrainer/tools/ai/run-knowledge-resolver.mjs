@@ -417,7 +417,8 @@ function buildResolverResult({ review, decision, objects, expectations, graphRel
 function outputFileFor(review, decision) {
   const lessonId = review.lessonId || lesson || "00";
   const conceptSlug = slugify(decision.proposedKnowledgeId || decision.title || decision.conceptId);
-  return path.join(outputDir, `${lessonId}-${conceptSlug}-resolver-result.json`);
+  const conceptId = slugify(decision.conceptId || "concept");
+  return path.join(outputDir, `${lessonId}-${conceptId}-${conceptSlug}-resolver-result.json`);
 }
 
 function runValidateResolver() {
