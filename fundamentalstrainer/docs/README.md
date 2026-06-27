@@ -1,11 +1,12 @@
 # Documentation Index
 
-This documentation describes the current AI curriculum compiler architecture.
+This documentation describes the current AI curriculum compiler architecture for the IT Learning Platform.
 
 ## Start here
 
 - `project-vision.md` — project mission and permanent design principles.
 - `architecture/overview.md` — current system architecture.
+- `architecture/curriculum-engine.md` — long-term curriculum, expectation, and resolver architecture.
 - `architecture/project-philosophy.md` — design philosophy and guardrails.
 - `graph-visualizer.md` — graph architecture and UI behavior.
 
@@ -46,6 +47,7 @@ It uses `ai-staging/` as the temporary prompt/response folder and pauses only wh
 - `architecture/architecture-decisions/ADR-003-discovery-before-authoring.md`
 - `architecture/architecture-decisions/ADR-004-deterministic-ai-pipeline.md`
 - `architecture/architecture-decisions/ADR-005-engine-content-separation.md`
+- `architecture/architecture-decisions/ADR-006-curriculum-engine-and-expectations.md`
 
 ## Roadmap
 
@@ -62,13 +64,21 @@ Transcript Intelligence
     ↓
 Discovery Review
     ↓
-Knowledge Author
+Knowledge Resolver
+    ↓
+Knowledge Author / Knowledge Maintainer
     ↓
 Canonical Knowledge Objects
     ↓
-Knowledge Graph + Curriculum
+Knowledge Graph
+    ↓
+Curriculum Engine
+    ├── Curriculum Plans
+    └── Curriculum Expectations
     ↓
 Learning Engine
 ```
 
-Do not treat this project as a quiz application, transcript summarizer, or one-step AI importer.
+Do not treat this project as a quiz application, transcript summarizer, one-step AI importer, or certification-specific content silo.
+
+The long-term goal is a reusable learning platform where one canonical knowledge base can support multiple certifications and curricula. A concept such as DNS, VLANs, TCP, UEFI, TPM, or OSPF should exist once as canonical knowledge, then appear in different curricula with different expectations, depth, skills, and assessment styles.
