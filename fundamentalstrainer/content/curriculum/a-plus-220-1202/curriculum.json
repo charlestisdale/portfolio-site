@@ -11,7 +11,7 @@
     {
       "id": "1.0",
       "title": "Operating Systems",
-      "description": "Operating system concepts, supported OS families, file systems, tools, and administrative workflows.",
+      "description": "Operating system concepts, supported OS families, file systems, installation methods, tools, and administrative workflows.",
       "order": 1,
       "objectiveIds": [
         "1.0"
@@ -149,7 +149,16 @@
             "Contrast Windows, Linux, and macOS file system examples.",
             "Recognize file system names in exam scenarios."
           ],
-          "knowledge": [],
+          "knowledge": [
+            "filesystems.apfs",
+            "filesystems.exfat",
+            "filesystems.ext4",
+            "filesystems.fat32",
+            "filesystems.file-system",
+            "filesystems.ntfs",
+            "filesystems.refs",
+            "filesystems.xfs"
+          ],
           "autoMap": {
             "domains": [
               "operating-systems",
@@ -168,6 +177,8 @@
             "titleIncludes": [
               "file system",
               "ntfs",
+              "refs",
+              "xfs",
               "ext4",
               "apfs",
               "fat32",
@@ -176,10 +187,177 @@
           }
         },
         {
+          "id": "firmware-and-boot-methods",
+          "title": "Firmware and Boot Methods",
+          "description": "Firmware interfaces, boot modes, installation media, and network boot concepts used during OS installation.",
+          "order": 5,
+          "estimatedMinutes": 30,
+          "outcomes": [
+            "Distinguish UEFI and BIOS compatibility behavior.",
+            "Recognize bootable installation media and PXE network boot scenarios.",
+            "Connect firmware settings to OS installation readiness."
+          ],
+          "knowledge": [
+            "firmware.bios-compatibility-mode",
+            "firmware.uefi",
+            "networking.pxe-boot",
+            "os-installation.bootable-usb",
+            "storage.iso-image"
+          ],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "firmware",
+              "boot"
+            ],
+            "idPrefixes": [
+              "firmware.",
+              "bios.",
+              "uefi.",
+              "boot.",
+              "pxe.",
+              "storage.iso"
+            ],
+            "titleIncludes": [
+              "firmware",
+              "uefi",
+              "bios",
+              "compatibility mode",
+              "pxe",
+              "network boot",
+              "bootable usb",
+              "iso image"
+            ]
+          }
+        },
+        {
+          "id": "os-installation-methods",
+          "title": "OS Installation Methods",
+          "description": "Common operating system installation approaches and when each method is appropriate.",
+          "order": 6,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Compare clean installs, in-place upgrades, and multiboot installations.",
+            "Explain how installation planning changes risk and outcome.",
+            "Choose an installation method for a given technician scenario."
+          ],
+          "knowledge": [
+            "os.clean-install",
+            "os.in-place-upgrade",
+            "os.installation-planning",
+            "os-installation.multiboot"
+          ],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "installation"
+            ],
+            "idPrefixes": [
+              "os.installation",
+              "os.clean-install",
+              "os.in-place-upgrade"
+            ],
+            "titleIncludes": [
+              "clean install",
+              "in-place upgrade",
+              "installation planning",
+              "multiboot",
+              "multi boot"
+            ]
+          }
+        },
+        {
+          "id": "os-deployment-and-recovery",
+          "title": "OS Deployment and Recovery",
+          "description": "Image-based deployment, recovery partitions, repair installations, and driver loading workflows.",
+          "order": 7,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Explain how image deployment differs from manual installation.",
+            "Recognize recovery and repair installation options.",
+            "Identify when third-party driver loading is needed during installation."
+          ],
+          "knowledge": [
+            "os-deployment.image-deployment",
+            "os-deployment.zero-touch-deployment",
+            "os-installation.recovery-partition",
+            "os-installation.repair-installation",
+            "os-installation.third-party-driver-loading"
+          ],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "deployment",
+              "recovery"
+            ],
+            "idPrefixes": [
+              "os.deployment",
+              "os.recovery",
+              "os.repair",
+              "os.driver-loading"
+            ],
+            "titleIncludes": [
+              "image deployment",
+              "zero touch",
+              "recovery partition",
+              "repair installation",
+              "third-party driver",
+              "driver loading"
+            ]
+          }
+        },
+        {
+          "id": "os-compatibility-and-readiness",
+          "title": "OS Compatibility and Readiness",
+          "description": "Hardware, firmware, application, driver, and security readiness checks before installation or upgrade.",
+          "order": 8,
+          "estimatedMinutes": 35,
+          "outcomes": [
+            "Check hardware and firmware requirements before an OS upgrade.",
+            "Identify application and driver compatibility risks.",
+            "Recognize readiness tools such as System Information, PC Health Check, TPM, and Secure Boot."
+          ],
+          "knowledge": [
+            "os.hardware-compatibility-check",
+            "windows.pc-health-check",
+            "windows.system-information",
+            "windows.application-driver-compatibility",
+            "security.tpm-2-0",
+            "windows.tpm-msc",
+            "security.secure-boot"
+          ],
+          "autoMap": {
+            "domains": [
+              "operating-systems",
+              "security",
+              "windows"
+            ],
+            "idPrefixes": [
+              "os.hardware-compatibility",
+              "windows.pc-health-check",
+              "windows.system-information",
+              "windows.application-driver-compatibility",
+              "security.tpm",
+              "windows.tpm",
+              "security.secure-boot"
+            ],
+            "titleIncludes": [
+              "compatibility",
+              "readiness",
+              "pc health check",
+              "system information",
+              "tpm",
+              "secure boot",
+              "hardware requirement",
+              "driver compatibility"
+            ]
+          }
+        },
+        {
           "id": "os-maintenance-and-lifecycle",
           "title": "OS Maintenance and Lifecycle",
           "description": "Updates, support lifecycle, compatibility, and maintenance responsibilities.",
-          "order": 5,
+          "order": 9,
           "estimatedMinutes": 25,
           "outcomes": [
             "Explain why operating system updates matter.",
@@ -203,7 +381,8 @@
               "lifecycle",
               "end of life",
               "support",
-              "compatibility"
+              "compatibility",
+              "patch"
             ]
           }
         }

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceLessonId": "00",
+  "curriculumId": "a-plus-220-1202",
+  "conceptId": "DISC-000",
+  "discoveredTitle": "Discovered Concept Title",
+  "proposedKnowledgeId": "domain.concept-slug",
+  "decision": "new-object",
+  "confidence": "low",
+  "candidateMatches": [
+    {
+      "knowledgeId": "domain.existing-concept",
+      "title": "Existing Concept Title",
+      "matchScore": 0,
+      "matchReasons": [
+        "shared-keyword"
+      ],
+      "existingExpectationIds": []
+    }
+  ],
+  "recommendedActions": [
+    {
+      "type": "create-new-object",
+      "knowledgeId": "domain.concept-slug",
+      "curriculumId": "a-plus-220-1202",
+      "notes": "Recommended action produced by resolver; must be reviewed before authoring or promotion."
+    }
+  ],
+  "resolverContext": {
+    "searchedFields": [
+      "id",
+      "title",
+      "aliases",
+      "domains",
+      "tags",
+      "relationships",
+      "expectations"
+    ],
+    "searchTerms": [],
+    "relationshipHints": [],
+    "expectationHints": []
+  },
+  "humanReviewRequired": true,
+  "reviewNotes": []
+}
