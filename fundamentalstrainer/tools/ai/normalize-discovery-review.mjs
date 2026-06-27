@@ -6,6 +6,8 @@ import { parseImportArgs, toProjectPath } from "../ingestion/import-transcript.m
 const args = parseImportArgs();
 const root = process.cwd();
 const inputFile = args.file;
+const reservedPlaceholderIdPattern = /^(concept|topic|object|knowledge|placeholder|draft)\.\d+$/;
+const placeholderTitlePattern = /^(concept|topic|object|knowledge|placeholder|draft)\s+\d+$/i;
 
 function fail(message) {
   console.error(message);
@@ -23,6 +25,14 @@ function slugify(value) {
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "") || "discovery-review";
+}
+
+function isPlaceholderKnowledgeId(value) {
+  return reservedPlaceholderIdPattern.test(String(value || "").trim());
+}
+
+function isPlaceholderTitle(value) {
+  return placeholderTitlePattern.test(String(value || "").trim());
 }
 
 function normalizeEnum(value, allowed, fallback) {
@@ -201,6 +211,15 @@ function auditReview(output) {
     if (!decision.conceptId || !decision.proposedKnowledgeId || !decision.title) {
       flags.push({ code: "incomplete-concept-decision", conceptId: decision.conceptId, message: "Concept decision is missing conceptId, proposedKnowledgeId, or title." });
     }
+    if (isPlaceholderKnowledgeId(decision.proposedKnowledgeId)) {
+      flags.push({ code: "placeholder-knowledge-id", conceptId: decision.conceptId, message: `proposedKnowledgeId ${decision.proposedKnowledgeId} is a reserved placeholder. Use a semantic canonical id.` });
+    }
+    if (isPlaceholderTitle(decision.title)) {
+      flags.push({ code: "placeholder-title", conceptId: decision.conceptId, message: `title ${decision.title} is a placeholder. Use the actual discovered concept title.` });
+    }
+    if (decision.targetKnowledgeId && isPlaceholderKnowledgeId(decision.targetKnowledgeId)) {
+      flags.push({ code: "placeholder-merge-target", conceptId: decision.conceptId, message: `targetKnowledgeId ${decision.targetKnowledgeId} is a reserved placeholder. Use a real canonical target id.` });
+    }
     if (decision.decision === "merge" && !decision.targetKnowledgeId) {
       flags.push({ code: "merge-missing-target", conceptId: decision.conceptId, message: "Merge decision has no targetKnowledgeId." });
     }
@@ -216,6 +235,12 @@ function auditReview(output) {
   for (const item of output.authoringQueue) {
     if (!acceptedIds.has(item.conceptId)) {
       flags.push({ code: "authoring-queue-id-not-accepted", conceptId: item.conceptId, message: "Authoring queue item was not accepted for authoring." });
+    }
+    if (isPlaceholderKnowledgeId(item.proposedKnowledgeId)) {
+      flags.push({ code: "authoring-queue-placeholder-id", conceptId: item.conceptId, message: `authoringQueue proposedKnowledgeId ${item.proposedKnowledgeId} is a reserved placeholder.` });
+    }
+    if (isPlaceholderTitle(item.title)) {
+      flags.push({ code: "authoring-queue-placeholder-title", conceptId: item.conceptId, message: `authoringQueue title ${item.title} is a placeholder.` });
     }
   }
 
@@ -279,7 +304,7 @@ output.audit = auditReview(output);
 
 fs.writeFileSync(outFile, JSON.stringify(output, null, 2));
 
-console.log(JSON.stringify({
+const result = {
   output: toProjectPath(outFile, root),
   acceptedForAuthoring: output.reviewSummary.acceptedForAuthoring,
   merge: output.reviewSummary.merge,
@@ -292,8 +317,20 @@ console.log(JSON.stringify({
   gapReview: output.gapReview.length,
   auditStatus: output.audit.status,
   auditFlags: output.audit.flags.length,
-  next: [
-    "Use the normalized discovery review file as the source for Knowledge Authoring prompts.",
-    "Only concepts in authoringQueue should be sent to Knowledge Authoring."
-  ]
-}, null, 2));
+  next: output.audit.status === "passed"
+    ? [
+        "Use the normalized discovery review file as the source for Knowledge Authoring prompts.",
+        "Only concepts in authoringQueue should be sent to Knowledge Authoring."
+      ]
+    : [
+        "Fix the Discovery Review AI response and rerun normalization.",
+        "Do not send this file to Knowledge Authoring while auditStatus is needs-review."
+      ]
+};
+
+console.log(JSON.stringify(result, null, 2));
+
+if (output.audit.status !== "passed") {
+  console.error(`Discovery Review normalization audit failed with ${output.audit.flags.length} flag(s).`);
+  process.exit(1);
+}
