@@ -65,19 +65,23 @@ function conceptLine(item) {
   };
 }
 
-function updatePackageItems(results) {
+function updateItems(results) {
   return [...groupBy(results.filter(item => item.decision === "expand-existing-object"), item => item.knowledgeId).entries()]
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([knowledgeId, items]) => ({
-      action: "create-update-package",
-      knowledgeId,
-      workItemId: `${lesson || "all"}.update.${knowledgeId}`,
-      conceptCount: items.length,
-      concepts: items.sort(byConceptId).map(conceptLine),
-      reason: items.length > 1
-        ? "Multiple discoveries target the same canonical object. Review together as one update package."
-        : "Discovery enriches an existing canonical object."
-    }));
+    .map(([knowledgeId, items]) => {
+      const sorted = items.sort(byConceptId);
+      const isPackage = sorted.length > 1;
+      return {
+        action: isPackage ? "create-update-package" : "create-knowledge-update",
+        knowledgeId,
+        workItemId: `${lesson || "all"}.${isPackage ? "package" : "update"}.${knowledgeId}`,
+        conceptCount: sorted.length,
+        concepts: sorted.map(conceptLine),
+        reason: isPackage
+          ? "Multiple discoveries target the same canonical object. Review together as one update package."
+          : "One discovery enriches an existing canonical object. Review as a single knowledge update."
+      };
+    });
 }
 
 function expectationItems(results) {
@@ -144,20 +148,21 @@ const results = files.map(resultFromFile);
 const workItems = [
   ...deferredItems(results),
   ...newObjectItems(results),
-  ...updatePackageItems(results),
+  ...updateItems(results),
   ...expectationItems(results),
   ...otherItems(results)
 ];
 
 const report = {
   generatedBy: "resolver-work-plan",
-  schemaVersion: "1.0.0",
+  schemaVersion: "1.1.0",
   lesson,
   generatedAt: new Date().toISOString(),
   resolverFileCount: files.length,
   counts: {
     workItems: workItems.length,
     updatePackages: workItems.filter(item => item.action === "create-update-package").length,
+    knowledgeUpdates: workItems.filter(item => item.action === "create-knowledge-update").length,
     expectations: workItems.filter(item => item.action === "create-or-update-expectation").length,
     newObjects: workItems.filter(item => item.action === "create-new-object").length,
     deferred: workItems.filter(item => item.action === "defer-human-review").length
