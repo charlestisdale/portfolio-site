@@ -50,6 +50,14 @@ npm run ai:guided -- --04
 
 It uses `ai-staging/` as the temporary prompt/response folder and pauses only when an AI JSON response is needed.
 
+## Manual resolver test command
+
+```bash
+npm run ai:resolver -- --lesson=04
+```
+
+This writes resolver result files to `data/imports/resolver/` for review before the resolver is added to the guided workflow.
+
 ## Architecture decisions
 
 - `architecture/architecture-decisions/ADR-001-ai-curriculum-compiler.md`
@@ -88,7 +96,5 @@ Curriculum Engine
     ↓
 Learning Engine
 ```
-
-Do not treat this project as a quiz application, transcript summarizer, one-step AI importer, or certification-specific content silo.
 
 The long-term goal is a reusable learning platform where one canonical knowledge base can support multiple certifications and curricula. A concept such as DNS, VLANs, TCP, UEFI, TPM, or OSPF should exist once as canonical knowledge, then appear in different curricula with different expectations, depth, skills, and assessment styles.
