@@ -35,6 +35,7 @@ npm run ai:guided -- --lesson04 --force-clean=true
 npm run validate:knowledge
 npm run validate:expectations
 npm run validate:resolver
+npm run validate:updates
 npm run validate:architecture
 npm run validate:all
 ```
@@ -42,6 +43,7 @@ npm run validate:all
 - `validate:knowledge` checks canonical Knowledge Objects.
 - `validate:expectations` checks Curriculum Expectation files.
 - `validate:resolver` checks Knowledge Resolver result files.
+- `validate:updates` checks Knowledge Maintainer update/package files.
 - `validate:architecture` checks objectives, lessons, curriculum, graph relationships, and architecture references.
 - `validate:all` runs all validators.
 
@@ -91,6 +93,7 @@ npm run ai:resolver -- --lesson=04
 npm run ai:resolver:summary -- --lesson=04
 npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
 npm run ai:knowledge:author-prompt -- --file="data/imports/reviewed/04-upgrading-windows-discovery-review.json" --intelligence="data/imports/pending/04-transcript-intelligence.json" --concept=DISC-002
 npm run ai:knowledge:author-normalize -- --file="data/ai-imports/responses/knowledge-author/example.knowledge-object.json"
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/example-knowledge-object.draft.json"
@@ -107,6 +110,7 @@ npm run ai:resolver -- --lesson=04 --minimum-score=20 --strong-score=85
 npm run ai:resolver:summary -- --lesson=04
 npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
 ```
 
 The resolver reads normalized Discovery Review output from `data/imports/reviewed/`, searches canonical Knowledge Objects, graph relationship hints, and existing Curriculum Expectations, then writes one resolver result per discovered concept into `data/imports/resolver/`.
@@ -116,6 +120,8 @@ The summary command groups resolver results by decision, target Knowledge Object
 The work plan command groups resolver results into next-action work items. Single-fragment expansions become `create-knowledge-update`; multi-fragment clusters become `create-update-package`.
 
 The maintainer prompt command reads one work item and its target canonical Knowledge Object, then creates a reviewable Knowledge Maintainer prompt under `data/ai-imports/prompts/knowledge-maintainer/`.
+
+The update validator checks Knowledge Maintainer response JSON before any canonical object can be changed.
 
 These first implementations are deterministic. They do not author final content and do not change the guided import flow yet.
 
