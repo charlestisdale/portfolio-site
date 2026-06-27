@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const knowledgeRoot = path.join(root, "content", "knowledge");
 const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
+const reservedPlaceholderIdPattern = /^(concept|topic|object|knowledge|placeholder|draft)\.\d+$/;
 const requiredTopLevel = [
   "schemaVersion",
   "id",
@@ -37,6 +38,7 @@ const allowedTypes = new Set([
 const allowedStatuses = new Set(["stub", "draft", "needs-review", "reviewed", "deprecated"]);
 const privateSourceFields = ["transcripts", "videos"];
 const publicSourceKeys = new Set(["references"]);
+const missingRelationshipRefs = new Map();
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -67,6 +69,24 @@ function isArray(value) {
   return Array.isArray(value);
 }
 
+function addMissingRelationshipRef(missingId, sourceId) {
+  if (!missingRelationshipRefs.has(missingId)) missingRelationshipRefs.set(missingId, new Set());
+  missingRelationshipRefs.get(missingId).add(sourceId);
+}
+
+function printMissingRelationshipSummary() {
+  if (!missingRelationshipRefs.size) return;
+
+  console.warn(`Warning: ${missingRelationshipRefs.size} missing/planned relationship target(s) referenced by Knowledge Objects.`);
+
+  for (const [missingId, sourceIds] of [...missingRelationshipRefs.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    const sources = [...sourceIds].sort();
+    const preview = sources.slice(0, 5).join(", ");
+    const suffix = sources.length > 5 ? `, and ${sources.length - 5} more` : "";
+    console.warn(`  - ${missingId} <- ${preview}${suffix}`);
+  }
+}
+
 function validatePublicSources(obj, file, errors) {
   if (!obj.sources || typeof obj.sources !== "object" || Array.isArray(obj.sources)) return;
 
@@ -94,6 +114,9 @@ function validateObject(obj, file, allIds, errors) {
 
   if (obj.schemaVersion !== "1.0.0") fail(errors, file, "schemaVersion must be 1.0.0");
   if (!knowledgeIdPattern.test(obj.id || "")) fail(errors, file, "id must look like domain.slug and may use hyphens inside segments");
+  if (reservedPlaceholderIdPattern.test(obj.id || "")) {
+    fail(errors, file, `id "${obj.id}" is a reserved placeholder pattern; use a semantic canonical id such as windows.windows-n-edition`);
+  }
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(obj.slug || "")) fail(errors, file, "slug must be lowercase kebab-case");
   if (!allowedTypes.has(obj.type)) fail(errors, file, `invalid type "${obj.type}"`);
   if (!allowedStatuses.has(obj.status)) fail(errors, file, `invalid status "${obj.status}"`);
@@ -121,7 +144,7 @@ function validateObject(obj, file, allIds, errors) {
   for (const id of relatedIds) {
     if (!allIds.has(id)) {
       // Relationship targets may be planned but not written yet. This is a warning, not a hard failure.
-      console.warn(`Warning: ${obj.id} references missing concept ${id}`);
+      addMissingRelationshipRef(id, obj.id || relativeFile(file));
     }
   }
 }
@@ -152,6 +175,8 @@ for (const file of files) {
 for (const { file, obj } of parsed) {
   validateObject(obj, file, ids, errors);
 }
+
+printMissingRelationshipSummary();
 
 if (errors.length) {
   console.error("Knowledge validation failed:\n" + errors.map(error => `- ${error}`).join("\n"));

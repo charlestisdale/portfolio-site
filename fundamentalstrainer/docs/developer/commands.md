@@ -33,13 +33,19 @@ npm run ai:guided -- --lesson04 --force-clean=true
 
 ```bash
 npm run validate:knowledge
+npm run validate:expectations
+npm run validate:resolver
+npm run validate:updates
 npm run validate:architecture
 npm run validate:all
 ```
 
 - `validate:knowledge` checks canonical Knowledge Objects.
+- `validate:expectations` checks Curriculum Expectation files.
+- `validate:resolver` checks Knowledge Resolver result files.
+- `validate:updates` checks Knowledge Maintainer update/package files.
 - `validate:architecture` checks objectives, lessons, curriculum, graph relationships, and architecture references.
-- `validate:all` runs both.
+- `validate:all` runs all validators.
 
 Warnings about missing/planned graph targets are acceptable during active import. Validation errors must be fixed.
 
@@ -83,12 +89,49 @@ npm run ai:import:normalize -- --file="data/ai-imports/responses/04-transcript-i
 npm run ai:discovery:manifest -- --file="data/imports/pending/04-transcript-intelligence.json"
 npm run ai:discovery:review-prompt -- --file="data/imports/manifests/04-upgrading-windows-discovery-manifest.md"
 npm run ai:discovery:review-normalize -- --file="data/ai-imports/responses/04-discovery-review.json"
+npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
 npm run ai:knowledge:author-prompt -- --file="data/imports/reviewed/04-upgrading-windows-discovery-review.json" --intelligence="data/imports/pending/04-transcript-intelligence.json" --concept=DISC-002
 npm run ai:knowledge:author-normalize -- --file="data/ai-imports/responses/knowledge-author/example.knowledge-object.json"
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/example-knowledge-object.draft.json"
 ```
 
 These are useful for debugging individual pipeline stages.
+
+## Knowledge Resolver and Maintainer
+
+```bash
+npm run ai:resolver -- --lesson=04
+npm run ai:resolver -- --lesson=04 --dry-run=true
+npm run ai:resolver -- --lesson=04 --minimum-score=20 --strong-score=85
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
+```
+
+The resolver reads normalized Discovery Review output from `data/imports/reviewed/`, searches canonical Knowledge Objects, graph relationship hints, and existing Curriculum Expectations, then writes one resolver result per discovered concept into `data/imports/resolver/`.
+
+The summary command groups resolver results by decision, target Knowledge Object, confidence, and review queue. It writes a report to `data/imports/reports/`.
+
+The work plan command groups resolver results into next-action work items. Single-fragment expansions become `create-knowledge-update`; multi-fragment clusters become `create-update-package`.
+
+The maintainer prompt command reads one work item and its target canonical Knowledge Object, then creates a reviewable Knowledge Maintainer prompt under `data/ai-imports/prompts/knowledge-maintainer/`.
+
+The update validator checks Knowledge Maintainer response JSON before any canonical object can be changed.
+
+The update preview command validates the update, loads the target canonical Knowledge Object, and writes JSON and Markdown preview reports without modifying canonical knowledge.
+
+The update apply command requires `--approve=true`, creates a backup, applies additive changes only, validates canonical knowledge, and writes an apply report.
+
+These first implementations are deterministic. They do not author final content and do not change the guided import flow yet.
 
 ## Curriculum mapping
 

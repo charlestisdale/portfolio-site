@@ -11,6 +11,7 @@ const dryRun = args["dry-run"] === "true";
 const allowOverwrite = args["allow-overwrite"] === "true";
 const markReviewed = args.reviewed === "true";
 const knowledgeIdPattern = /^[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+$/;
+const reservedPlaceholderIdPattern = /^(concept|topic|object|knowledge|placeholder|draft)\.\d+$/;
 
 const allowedTypes = new Set([
   "concept",
@@ -95,6 +96,9 @@ function validateDraftObject(object) {
 
   if (object.schemaVersion !== "1.0.0") errors.push("schemaVersion must be 1.0.0");
   if (!knowledgeIdPattern.test(object.id || "")) errors.push("id must look like domain.slug and may use hyphens inside segments");
+  if (reservedPlaceholderIdPattern.test(object.id || "")) {
+    errors.push(`id ${object.id} is a reserved placeholder pattern; use a semantic canonical id such as windows.windows-n-edition`);
+  }
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(object.slug || "")) errors.push("slug must be lowercase kebab-case");
   if (!allowedTypes.has(object.type)) errors.push(`invalid type ${object.type}`);
   if (!asArray(object.domains).length) errors.push("domains must be a non-empty array");

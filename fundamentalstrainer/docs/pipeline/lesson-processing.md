@@ -6,6 +6,8 @@ A lesson is complete only when every approved concept in its Discovery Review ha
 
 ## Current implemented flow
 
+The original authoring path still exists for new Knowledge Objects, but Lesson 04 now proves the resolver-aware maintenance path for existing Knowledge Objects.
+
 ```text
 Clean transcript
     ↓
@@ -23,72 +25,147 @@ Discovery Review AI response
     ↓
 Normalize reviewed package
     ↓
-Knowledge Author prompt per approved concept
-    ↓
-Knowledge Author AI response
-    ↓
-Normalize authored draft
-    ↓
-Promotion
-    ↓
-Validation
-    ↓
-Curriculum mapping
-```
-
-## Long-term target flow
-
-The current flow works for early import testing, but the long-term platform needs a resolver stage before authoring so the AI does not create duplicate concepts.
-
-```text
-Clean transcript
-    ↓
-Transcript Intelligence
-    ↓
-Discovery Review
-    ↓
 Knowledge Resolver
     ↓
-Decision per concept
-    ├── new-object
-    ├── expand-existing-object
-    ├── expectation-only
+Resolver Summary
+    ↓
+Resolver Work Plan
+    ↓
+Decision per work item
+    ├── create-new-object
+    │       ↓
+    │   Knowledge Author prompt
+    │       ↓
+    │   Knowledge Author response
+    │       ↓
+    │   Normalize authored draft
+    │       ↓
+    │   Safe promotion
+    │
+    ├── create-knowledge-update
+    │       ↓
+    │   Knowledge Maintainer prompt
+    │       ↓
+    │   Knowledge Update JSON
+    │       ↓
+    │   Validate Update
+    │       ↓
+    │   Preview Update
+    │       ↓
+    │   Apply Update with explicit approval
+    │
+    ├── create-update-package
+    │       ↓
+    │   Knowledge Maintainer prompt
+    │       ↓
+    │   Knowledge Update Package JSON
+    │       ↓
+    │   Validate Update
+    │       ↓
+    │   Preview Update
+    │       ↓
+    │   Apply Update with explicit approval
+    │
+    ├── create-or-update-expectation
     ├── relationship-only
     ├── duplicate-no-change
-    ├── reject
-    └── defer
+    └── defer-human-review
+        ↓
+Validation
     ↓
-Knowledge Author / Knowledge Maintainer
-    ↓
-Promotion + Validation
-    ↓
-Canonical Knowledge Objects
-    ↓
-Knowledge Graph
-    ↓
-Curriculum Engine
-    ├── Curriculum Plan
-    └── Curriculum Expectations
+Curriculum mapping / expectation work
 ```
+
+## Guided workflow status
+
+`ai:guided` remains the preferred operator workflow for normal lesson processing, but the resolver and maintainer path is still manual until more lessons are tested.
+
+The current safe sequence for maintenance testing is:
+
+```bash
+npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
+npm run validate:all
+```
+
+## Resolver command
+
+Manual resolver testing is available with:
+
+```bash
+npm run ai:resolver -- --lesson=04
+```
+
+The command reads reviewed discovery files and writes resolver result files to `data/imports/resolver/`.
+
+Resolver result decisions include:
+
+```text
+new-object
+expand-existing-object
+expectation-only
+relationship-only
+duplicate-no-change
+reject
+defer
+```
+
+## Work plan command
+
+The work plan converts individual resolver results into next-action work items:
+
+```bash
+npm run ai:resolver:plan -- --lesson=04
+```
+
+Work item actions include:
+
+```text
+create-new-object
+create-knowledge-update
+create-update-package
+create-or-update-expectation
+defer-human-review
+```
+
+Single-fragment expansions become `create-knowledge-update`. Multi-fragment clusters targeting the same Knowledge Object become `create-update-package`.
+
+## Knowledge Maintainer path
+
+The maintainer path is used when the resolver determines that source material expands an existing canonical Knowledge Object.
+
+```text
+Work Plan Item
+    ↓
+Knowledge Maintainer Prompt
+    ↓
+AI returns structured Knowledge Update / Package
+    ↓
+validate:updates
+    ↓
+knowledge:update:preview
+    ↓
+Human review
+    ↓
+knowledge:update:apply -- --approve=true
+    ↓
+validate:all
+```
+
+The AI does not directly modify canonical knowledge. It returns structured proposed changes only.
 
 ## Why the resolver matters
 
 The AI does not know the current platform state unless the system gives it that context.
 
-Before any Knowledge Author prompt is generated, the system should search existing knowledge using:
+Before any Knowledge Author or Knowledge Maintainer prompt is generated, the system should search existing knowledge using canonical IDs, aliases, keywords, tags, graph relationships, existing curriculum expectations, objective mappings, and lesson mappings.
 
-```text
-canonical IDs
-aliases
-keywords
-tags
-graph relationships
-existing curriculum expectations
-objective mappings
-lesson mappings
-```
-
-The AI should then receive relevant existing matches and decide whether the source material requires a new object, an expansion of an existing object, a curriculum expectation update, a relationship update, or no change.
+The resolver determines whether source material requires a new object, an expansion of an existing object, a curriculum expectation update, a relationship update, or no change.
 
 ## Preferred operating command
 
@@ -106,7 +183,7 @@ npm run ai:guided -- --lesson04
 npm run ai:guided -- --04
 ```
 
-This command is intended for processing lessons through the current implemented pipeline. The architecture is evolving toward the resolver and expectation model before scaling large imports.
+This command is intended for processing lessons through the current guided pipeline. The resolver and maintainer path is manual until the output is stable across more lessons.
 
 ## What the guided command handles
 
@@ -143,15 +220,19 @@ repeat until complete
 
 ## AI stage boundaries
 
-The current pipeline pauses when it needs one of these AI responses:
+The current guided pipeline pauses when it needs one of these AI responses:
 
 - Transcript Intelligence JSON
 - Discovery Review JSON
 - Knowledge Author JSON
 
-The user saves those responses into `ai-staging/`. The guided command moves them into the correct permanent location.
+The manual resolver-aware path can also produce:
 
-Long-term, the pipeline should also support resolver-aware prompts that include existing Knowledge Object, graph, and expectation context.
+- Knowledge Maintainer JSON
+- Knowledge Update JSON
+- Knowledge Update Package JSON
+
+The user saves those responses into the appropriate response folder. The guided command will later be extended to stage and route maintainer prompts automatically.
 
 ## Manual fallback commands
 
@@ -163,23 +244,36 @@ npm run ai:expand -- --lesson=04 --promote=true
 npm run ai:stage:build -- --lesson=04
 npm run ai:stage:next
 npm run ai:stage:complete
+npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
 npm run curriculum:map-reviewed -- --lesson=04
 npm run validate:all
 ```
 
 Use these only when debugging a specific failure or inspecting an individual stage.
 
-## Promotion rule
+## Promotion and apply rules
 
 Do not use older unsafe bulk promotion paths for authored drafts unless intentionally testing legacy compiler behavior.
 
-The normal safe promotion path is authored draft promotion:
+The normal safe promotion path for new authored drafts is:
 
 ```bash
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/<draft>.draft.json"
 ```
 
-In the preferred workflow, `ai:guided` calls the safe promotion path through `ai:expand -- --promote=true` at the correct time.
+The normal safe apply path for existing Knowledge Object updates is:
+
+```bash
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/<update>.json" --approve=true
+```
+
+The apply command refuses to write canonical knowledge unless `--approve=true` is present. It validates the update, creates a backup, applies additive changes only, validates canonical knowledge, and writes an apply report.
 
 ## Curriculum mapping and Curriculum Engine direction
 
@@ -206,10 +300,20 @@ Curriculum mapping becomes one capability of the Curriculum Engine rather than t
 
 ## Validation
 
-Run validation after promotion and mapping:
+Run validation after promotion, update apply, and mapping:
 
 ```bash
 npm run validate:all
+```
+
+`validate:all` currently runs:
+
+```text
+validate:knowledge
+validate:expectations
+validate:resolver
+validate:updates
+validate:architecture
 ```
 
 Warnings about missing/planned graph targets are acceptable during import. Validation errors must be fixed.
