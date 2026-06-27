@@ -23,6 +23,10 @@
 - Curriculum Engine architecture direction.
 - Initial schema contracts for fragments, Curriculum Expectations, resolver results, and knowledge update packages.
 - Initial templates for Curriculum Plans, Curriculum Expectations, resolver results, knowledge update packages, and fragment-aware Knowledge Objects.
+- Curriculum Expectation validator.
+- Resolver Result validator.
+- Deterministic Knowledge Resolver framework.
+- Missing/planned reference warning summaries for knowledge and architecture validation.
 
 ## Current active work
 
@@ -35,12 +39,12 @@
 
 ## Near-term structural work
 
-1. Review and refine the schema contracts in `docs/architecture/schema-contracts.md`.
-2. Decide which template fields become enforced validation rules first.
-3. Implement Curriculum Expectation validation.
-4. Implement resolver result validation.
-5. Add duplicate-risk reporting for existing Knowledge Objects.
-6. Decide how existing imported A+ objects should migrate into the resolver/expectation model.
+1. Test the deterministic resolver against the first imported lessons.
+2. Review resolver results for false positives and false negatives.
+3. Decide when a resolver result should route to Knowledge Author versus Knowledge Maintainer.
+4. Add duplicate-risk reporting from resolver results into pipeline status output.
+5. Decide how existing imported A+ objects should migrate into the resolver/expectation model.
+6. Insert the resolver stage into the guided import workflow only after manual resolver output is stable.
 7. Resume large-scale A+ Core 2 import only after the structure is clear.
 
 ## Near-term workflow improvements
