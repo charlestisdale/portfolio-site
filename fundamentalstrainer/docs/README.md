@@ -7,6 +7,7 @@ This documentation describes the current AI curriculum compiler architecture for
 - `project-vision.md` — project mission and permanent design principles.
 - `architecture/overview.md` — current system architecture.
 - `architecture/curriculum-engine.md` — long-term curriculum, expectation, and resolver architecture.
+- `architecture/schema-contracts.md` — first schema contracts for fragments, expectations, resolver results, and update packages.
 - `architecture/project-philosophy.md` — design philosophy and guardrails.
 - `graph-visualizer.md` — graph architecture and UI behavior.
 
@@ -21,6 +22,15 @@ This documentation describes the current AI curriculum compiler architecture for
 
 - `pipeline/lesson-processing.md` — end-to-end lesson processing flow.
 - `developer/commands.md` — command reference.
+
+## Data templates
+
+- `content/knowledge/_templates/knowledge-object.template.json` — current canonical Knowledge Object template.
+- `content/knowledge/_templates/knowledge-object-fragmented.template.json` — future fragment-aware Knowledge Object template.
+- `content/curriculum/_templates/curriculum-plan.template.json` — Curriculum Plan template.
+- `content/expectations/_templates/curriculum-expectation.template.json` — Curriculum Expectation template.
+- `data/imports/resolver/_templates/resolver-result.template.json` — Knowledge Resolver output template.
+- `data/imports/updates/_templates/knowledge-update.template.json` — Knowledge Maintainer update package template.
 
 ## Normal import command
 
