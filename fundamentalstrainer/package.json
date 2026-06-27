@@ -24,6 +24,7 @@
     "ai:lesson": "node tools/ai/run-ai-lesson.mjs",
     "ai:expand": "node tools/ai/run-ai-expansion.mjs",
     "ai:guided": "node tools/ai/run-guided-ai-import.mjs",
+    "ai:resolver": "node tools/ai/run-knowledge-resolver.mjs",
     "ai:status": "node tools/ai/run-ai-pipeline-status.mjs",
     "ai:stage:build": "node tools/ai/build-ai-staging-queue.mjs",
     "ai:stage:next": "node tools/ai/stage-ai-file.mjs --mode=next",
