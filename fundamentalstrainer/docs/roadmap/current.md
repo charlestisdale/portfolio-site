@@ -20,6 +20,9 @@
 - AI expansion runner.
 - AI staging helper.
 - Guided import workflow.
+- Curriculum Engine architecture direction.
+- Initial schema contracts for fragments, Curriculum Expectations, resolver results, and knowledge update packages.
+- Initial templates for Curriculum Plans, Curriculum Expectations, resolver results, knowledge update packages, and fragment-aware Knowledge Objects.
 
 ## Current active work
 
@@ -32,11 +35,11 @@
 
 ## Near-term structural work
 
-1. Finalize the Curriculum Engine data model.
-2. Define the Curriculum Expectation schema.
-3. Define the Knowledge Resolver inputs, outputs, and decision types.
-4. Update Knowledge Object schema guidance so content can be filtered by tagged fragments.
-5. Add validation rules for expectation references and duplicate concept risks.
+1. Review and refine the schema contracts in `docs/architecture/schema-contracts.md`.
+2. Decide which template fields become enforced validation rules first.
+3. Implement Curriculum Expectation validation.
+4. Implement resolver result validation.
+5. Add duplicate-risk reporting for existing Knowledge Objects.
 6. Decide how existing imported A+ objects should migrate into the resolver/expectation model.
 7. Resume large-scale A+ Core 2 import only after the structure is clear.
 
