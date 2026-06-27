@@ -80,7 +80,11 @@ You should also review knowledge gaps, curriculum placement, relationship sugges
 - Do not write Knowledge Objects.
 - Do not invent missing source evidence.
 - Use the manifest/package as the review input.
-- Preserve concept IDs and proposedKnowledgeIds when making decisions.
+- Preserve real concept IDs such as DISC-001.
+- Use real concept titles from the input, not generic labels.
+- Use semantic Knowledge IDs in the format domain.slug.
+- Placeholder IDs such as concept.1 are invalid. Replace them with semantic IDs from the evidence, or defer the concept if the evidence is unclear.
+- Merge decisions must target a real canonical or proposed semantic Knowledge ID.
 - Be willing to reject or merge concepts that are too broad, too thin, duplicative, or better handled as part of another concept.
 - Prefer fewer, stronger Knowledge Authoring targets over many weak objects.
 - Mark uncertainty clearly.
@@ -111,8 +115,8 @@ Use one of these values for each concept:
   "conceptDecisions": [
     {
       "conceptId": "DISC-001",
-      "title": "Concept title from input",
-      "proposedKnowledgeId": "domain.stable-id",
+      "title": "Actual concept title from input",
+      "proposedKnowledgeId": "domain.semantic-id",
       "decision": "accept-for-authoring | merge | reject | defer | needs-enrichment",
       "targetKnowledgeId": "required when decision is merge, otherwise optional",
       "authoringPriority": "high | normal | low | none",
@@ -149,8 +153,8 @@ Use one of these values for each concept:
   "authoringQueue": [
     {
       "conceptId": "DISC-000",
-      "proposedKnowledgeId": "domain.stable-id",
-      "title": "Concept title",
+      "proposedKnowledgeId": "domain.semantic-id",
+      "title": "Actual concept title",
       "priority": "high | normal | low",
       "recommendedDepth": "brief | normal | deep",
       "reason": "Why this should go to Knowledge Author next."
@@ -159,8 +163,8 @@ Use one of these values for each concept:
   "enrichmentQueue": [
     {
       "conceptId": "DISC-000",
-      "proposedKnowledgeId": "domain.stable-id",
-      "title": "Concept title",
+      "proposedKnowledgeId": "domain.semantic-id",
+      "title": "Actual concept title",
       "neededEvidenceOrContext": [],
       "reason": "Why enrichment is needed before authoring."
     }
@@ -168,8 +172,8 @@ Use one of these values for each concept:
   "rejectedConcepts": [
     {
       "conceptId": "DISC-000",
-      "proposedKnowledgeId": "domain.stable-id",
-      "title": "Concept title",
+      "proposedKnowledgeId": "domain.semantic-id",
+      "title": "Actual concept title",
       "reason": "Why this should not move forward."
     }
   ],
