@@ -5,10 +5,12 @@
   "private": true,
   "scripts": {
     "validate:knowledge": "node tools/validate-knowledge.mjs",
+    "validate:expectations": "node tools/validate-curriculum-expectations.mjs",
+    "validate:resolver": "node tools/validate-resolver-results.mjs",
     "clean:srt": "node tools/ingestion/clean-srt.mjs",
     "create:import": "node tools/ingestion/create-import-record.mjs",
     "validate:architecture": "node tools/validate-architecture.mjs",
-    "validate:all": "npm run validate:knowledge && npm run validate:architecture",
+    "validate:all": "npm run validate:knowledge && npm run validate:expectations && npm run validate:resolver && npm run validate:architecture",
     "ingest:transcript": "node tools/ingestion/import-transcript.mjs",
     "ingest:folder": "node tools/ingestion/import-folder.mjs",
     "ingest:evidence": "node tools/ingestion/build-evidence.mjs",
