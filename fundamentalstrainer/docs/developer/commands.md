@@ -94,6 +94,7 @@ npm run ai:resolver:summary -- --lesson=04
 npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
 npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
 npm run ai:knowledge:author-prompt -- --file="data/imports/reviewed/04-upgrading-windows-discovery-review.json" --intelligence="data/imports/pending/04-transcript-intelligence.json" --concept=DISC-002
 npm run ai:knowledge:author-normalize -- --file="data/ai-imports/responses/knowledge-author/example.knowledge-object.json"
 npm run ai:knowledge:promote-authored -- --file="data/imports/authored/example-knowledge-object.draft.json"
@@ -111,6 +112,7 @@ npm run ai:resolver:summary -- --lesson=04
 npm run ai:resolver:plan -- --lesson=04
 npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
 npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
 ```
 
 The resolver reads normalized Discovery Review output from `data/imports/reviewed/`, searches canonical Knowledge Objects, graph relationship hints, and existing Curriculum Expectations, then writes one resolver result per discovered concept into `data/imports/resolver/`.
@@ -122,6 +124,8 @@ The work plan command groups resolver results into next-action work items. Singl
 The maintainer prompt command reads one work item and its target canonical Knowledge Object, then creates a reviewable Knowledge Maintainer prompt under `data/ai-imports/prompts/knowledge-maintainer/`.
 
 The update validator checks Knowledge Maintainer response JSON before any canonical object can be changed.
+
+The update preview command validates the update, loads the target canonical Knowledge Object, and writes JSON and Markdown preview reports without modifying canonical knowledge.
 
 These first implementations are deterministic. They do not author final content and do not change the guided import flow yet.
 
