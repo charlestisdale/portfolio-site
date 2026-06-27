@@ -111,7 +111,7 @@ The resolver reads normalized Discovery Review output from `data/imports/reviewe
 
 The summary command groups resolver results by decision, target Knowledge Object, confidence, and review queue. It writes a report to `data/imports/reports/`.
 
-The work plan command groups resolver results into next-action work items, including one update package per target Knowledge Object when multiple discoveries enrich the same object.
+The work plan command groups resolver results into next-action work items. Single-fragment expansions become `create-knowledge-update`; multi-fragment clusters become `create-update-package`.
 
 The first implementation is deterministic. It does not author final content and does not change the guided import flow yet.
 
