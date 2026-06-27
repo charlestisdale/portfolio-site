@@ -162,6 +162,7 @@ npm run ai:expand -- --lesson=04 --promote=true
 npm run ai:stage:build -- --lesson=04
 npm run ai:stage:next
 npm run ai:stage:complete
+npm run ai:resolver -- --lesson=04
 npm run curriculum:map-reviewed -- --lesson=04
 npm run validate:all
 ```
