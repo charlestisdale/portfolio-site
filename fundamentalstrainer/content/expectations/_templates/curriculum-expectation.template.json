@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "curriculum-id.domain.concept-slug",
+  "curriculumId": "a-plus-220-1202",
+  "knowledgeId": "domain.concept-slug",
+  "status": "draft",
+  "expectedDepth": "recognize-and-explain",
+  "objectiveIds": [],
+  "moduleIds": [],
+  "includeTags": [
+    "fundamental"
+  ],
+  "excludeTags": [],
+  "requiredSkills": [
+    {
+      "id": "skill-slug",
+      "description": "Skill the learner must demonstrate for this curriculum.",
+      "depth": "recognize"
+    }
+  ],
+  "assessmentStyles": [
+    "multiple-choice",
+    "basic-scenario-recognition"
+  ],
+  "labRequired": false,
+  "pbqRelevance": "medium",
+  "notes": [
+    "Expectation controls curriculum-specific depth. Do not duplicate the full Knowledge Object explanation here."
+  ],
+  "quality": {
+    "createdAt": "2026-06-27",
+    "updatedAt": "2026-06-27",
+    "lastReviewedAt": null,
+    "reviewedBy": null,
+    "confidence": "low",
+    "needsHumanReview": true,
+    "reviewNotes": []
+  }
+}
