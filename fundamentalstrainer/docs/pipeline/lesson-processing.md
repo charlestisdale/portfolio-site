@@ -71,22 +71,21 @@ Curriculum Engine
     └── Curriculum Expectations
 ```
 
+## Resolver command
+
+Manual resolver testing is available with:
+
+```bash
+npm run ai:resolver -- --lesson=04
+```
+
+The command reads reviewed discovery files and writes resolver result files to `data/imports/resolver/`.
+
 ## Why the resolver matters
 
 The AI does not know the current platform state unless the system gives it that context.
 
-Before any Knowledge Author prompt is generated, the system should search existing knowledge using:
-
-```text
-canonical IDs
-aliases
-keywords
-tags
-graph relationships
-existing curriculum expectations
-objective mappings
-lesson mappings
-```
+Before any Knowledge Author prompt is generated, the system should search existing knowledge using canonical IDs, aliases, keywords, tags, graph relationships, existing curriculum expectations, objective mappings, and lesson mappings.
 
 The AI should then receive relevant existing matches and decide whether the source material requires a new object, an expansion of an existing object, a curriculum expectation update, a relationship update, or no change.
 
