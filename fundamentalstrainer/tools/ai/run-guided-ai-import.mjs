@@ -294,6 +294,12 @@ function runExpectationWriter() {
   if (validation.status !== 0) process.exit(validation.status || 1);
 }
 
+function runDeferredReviewQueue() {
+  printHeader("WRITE DEFERRED REVIEW QUEUE");
+  const result = runNode("tools/review/write-deferred-review-queue.mjs", [`--lesson=${lesson}`]);
+  if (result.status !== 0) process.exit(result.status || 1);
+}
+
 function runKnowledgeUpdatePreview(file) {
   printHeader("PREVIEW KNOWLEDGE UPDATE");
   const result = runNpmScript("knowledge:update:preview", [`--file=${file}`]);
@@ -366,6 +372,7 @@ function shouldRunCommand(command, type) {
   if (type === "manual-review-required") return false;
   if (type === "knowledge-update-review-required") return false;
   if (type === "write-expectations") return false;
+  if (type === "write-deferred-review") return false;
   return command.includes("ai:lesson") || command.includes("ai:expand");
 }
 
@@ -374,6 +381,11 @@ function runNextAction(action) {
 
   if (action.type === "write-expectations") {
     runExpectationWriter();
+    return true;
+  }
+
+  if (action.type === "write-deferred-review") {
+    runDeferredReviewQueue();
     return true;
   }
 
