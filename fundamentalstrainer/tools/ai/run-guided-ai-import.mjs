@@ -41,6 +41,7 @@ const lesson = resolveLessonArg();
 const maxCycles = args["max-cycles"] ? Number.parseInt(args["max-cycles"], 10) : 200;
 const autoValidate = args.validate === "true";
 const autoMap = args.map !== "false";
+const resolverAware = args.resolver !== "false";
 const stagingDir = path.resolve(root, args.dir || "ai-staging");
 const queueFile = path.resolve(root, args.queue || "data/ai-imports/staging-queue.json");
 
@@ -102,14 +103,18 @@ function listStagingJsonFiles() {
   return listStagingFiles().filter(file => path.extname(file).toLowerCase() === ".json");
 }
 
-function loadQueue() {
-  if (!fs.existsSync(queueFile)) return [];
+function loadQueueData() {
+  if (!fs.existsSync(queueFile)) return {};
   try {
-    const data = JSON.parse(fs.readFileSync(queueFile, "utf8"));
-    return Array.isArray(data.queue) ? data.queue : [];
+    return JSON.parse(fs.readFileSync(queueFile, "utf8"));
   } catch {
-    return [];
+    return {};
   }
+}
+
+function loadQueue() {
+  const data = loadQueueData();
+  return Array.isArray(data.queue) ? data.queue : [];
 }
 
 function printHeader(title) {
@@ -224,7 +229,10 @@ async function waitForAiResponse(rl) {
 
 function runBuild() {
   printHeader(`BUILD / CONTINUE LESSON ${lesson}`);
-  const result = runNode("tools/ai/build-ai-staging-queue.mjs", [`--lesson=${lesson}`]);
+  const script = resolverAware ? "tools/ai/build-guided-routing-queue.mjs" : "tools/ai/build-ai-staging-queue.mjs";
+  const buildArgs = [`--lesson=${lesson}`];
+  if (!resolverAware) buildArgs.push("--resolver=false");
+  const result = runNode(script, buildArgs);
   if (result.status !== 0) process.exit(result.status || 1);
   return parseJsonFromStdout(result.stdout) || {};
 }
@@ -258,7 +266,6 @@ function runLessonBootstrap() {
 }
 
 function runCurriculumMap() {
-  printHeader("CURRICULUM MAPPING");
   const result = runNpmScript("curriculum:map-reviewed", [`--lesson=${lesson}`]);
   if (result.status !== 0) process.exit(result.status || 1);
 }
@@ -269,15 +276,118 @@ function runValidateAll() {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
+function runValidateUpdates() {
+  printHeader("VALIDATE KNOWLEDGE UPDATES");
+  return runNpmScript("validate:updates");
+}
+
+function runValidateExpectations() {
+  printHeader("VALIDATE CURRICULUM EXPECTATIONS");
+  return runNpmScript("validate:expectations");
+}
+
+function runExpectationWriter() {
+  printHeader("WRITE CURRICULUM EXPECTATIONS");
+  const result = runNode("tools/curriculum/write-expectation-drafts.mjs", [`--lesson=${lesson}`]);
+  if (result.status !== 0) process.exit(result.status || 1);
+  const validation = runValidateExpectations();
+  if (validation.status !== 0) process.exit(validation.status || 1);
+}
+
+function runDeferredReviewQueue() {
+  printHeader("WRITE DEFERRED REVIEW QUEUE");
+  const result = runNode("tools/review/write-deferred-review-queue.mjs", [`--lesson=${lesson}`]);
+  if (result.status !== 0) process.exit(result.status || 1);
+}
+
+function runKnowledgeUpdatePreview(file) {
+  printHeader("PREVIEW KNOWLEDGE UPDATE");
+  const result = runNpmScript("knowledge:update:preview", [`--file=${file}`]);
+  if (result.status !== 0) process.exit(result.status || 1);
+}
+
+function wrapTextItems(items, reason) {
+  if (!Array.isArray(items)) return [];
+  return items.map(item => (typeof item === "string" ? { text: item, reason } : item));
+}
+
+function normalizeMaintainerResponse(updateFile) {
+  if (!updateFile) return false;
+  const full = path.resolve(root, updateFile);
+  if (!fs.existsSync(full)) return false;
+
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(full, "utf8"));
+  } catch {
+    return false;
+  }
+
+  if (!data.proposedChanges) return false;
+  const before = JSON.stringify(data);
+  const reason = `Added from Lesson ${lesson} maintainer update.`;
+
+  data.proposedChanges.summaryUpdates = wrapTextItems(data.proposedChanges.summaryUpdates, reason);
+  data.proposedChanges.explanationUpdates = wrapTextItems(data.proposedChanges.explanationUpdates, reason);
+
+  for (const key of ["factsToAdd", "examplesToAdd"]) {
+    if (!Array.isArray(data.proposedChanges[key])) continue;
+    data.proposedChanges[key] = data.proposedChanges[key].map(item => {
+      if (item && typeof item === "object" && typeof item.importance === "string" && item.importance.includes("|")) {
+        return { ...item, importance: "medium" };
+      }
+      return item;
+    });
+  }
+
+  if (data.quality && typeof data.quality.confidence === "string" && data.quality.confidence.includes("|")) {
+    data.quality.confidence = "medium";
+  }
+
+  const after = JSON.stringify(data);
+  if (after === before) return false;
+
+  fs.writeFileSync(full, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  console.log(`\nNormalized maintainer response before validation: ${updateFile}`);
+  return true;
+}
+
+function printKnowledgeUpdateValidationPause(updateFile) {
+  printHeader("KNOWLEDGE UPDATE NEEDS FIXES");
+  console.log("The maintainer response was saved, but validate:updates failed.");
+  if (updateFile) console.log(`\nSaved update file:\n  ${updateFile}`);
+  console.log("\nFix that JSON file, then run:");
+  console.log("  npm run validate:updates");
+  if (updateFile) {
+    console.log(`  npm run knowledge:update:preview -- --file=\"${updateFile}\"`);
+  }
+  console.log("\nWhen validation passes, continue with:");
+  console.log(`  npm run ai:guided -- --lesson=${lesson}`);
+}
+
 function shouldRunCommand(command, type) {
   if (!command) return false;
   if (type === "send-prompt-to-ai") return false;
   if (type === "lesson-authoring-complete") return false;
+  if (type === "manual-review-required") return false;
+  if (type === "knowledge-update-review-required") return false;
+  if (type === "write-expectations") return false;
+  if (type === "write-deferred-review") return false;
   return command.includes("ai:lesson") || command.includes("ai:expand");
 }
 
 function runNextAction(action) {
   if (!action?.type) return false;
+
+  if (action.type === "write-expectations") {
+    runExpectationWriter();
+    return true;
+  }
+
+  if (action.type === "write-deferred-review") {
+    runDeferredReviewQueue();
+    return true;
+  }
 
   if (action.type === "normalize-ai-response" || action.type === "promote-ready-draft") {
     runExpansion({ promote: action.command?.includes("--promote=true") ?? true });
@@ -305,6 +415,22 @@ function runNextAction(action) {
   return false;
 }
 
+function printResolverManualReview(build, action) {
+  printHeader("RESOLVER MANUAL REVIEW REQUIRED");
+  console.log(action?.command || "Resolver routing found work that does not have deterministic guided automation yet.");
+  if (build.resolverWorkPlan) console.log(`\nResolver work plan: ${build.resolverWorkPlan}`);
+  if (build.resolverCounts) console.log(`\nResolver counts:\n${JSON.stringify(build.resolverCounts, null, 2)}`);
+
+  const queueData = loadQueueData();
+  if (Array.isArray(queueData.manualItems) && queueData.manualItems.length) {
+    console.log("\nManual items:");
+    for (const item of queueData.manualItems) {
+      console.log(`  - ${item.workItemId}: ${item.action} → ${item.knowledgeId || "none"}`);
+      if (item.reason) console.log(`    ${item.reason}`);
+    }
+  }
+}
+
 async function main() {
   if (!lesson) {
     fail([
@@ -319,7 +445,7 @@ async function main() {
 
   try {
     console.log(`Guided AI import started for lesson ${lesson}.`);
-    console.log("This is the normal one-command workflow. It prepares the transcript, then pauses only when an AI JSON response is needed.");
+    console.log("This is the normal one-command workflow. It prepares the transcript, routes reviewed concepts through the resolver, and pauses only when an AI JSON response is needed.");
 
     prepareTranscript();
 
@@ -342,19 +468,46 @@ async function main() {
           continue;
         }
 
+        if (completed.completedType === "knowledge-maintainer") {
+          const updateFile = completed.outputMovedTo;
+          normalizeMaintainerResponse(updateFile);
+          const validation = runValidateUpdates();
+          if (validation.status !== 0) {
+            printKnowledgeUpdateValidationPause(updateFile);
+            return;
+          }
+          if (updateFile) runKnowledgeUpdatePreview(updateFile);
+          console.log("\nKnowledge update preview generated. Review it before applying with --approve=true.");
+          continue;
+        }
+
         continue;
       }
 
-      const action = build.expansionNextAction;
+      const action = build.expansionNextAction || build.nextAction;
       if (runNextAction(action)) continue;
 
       if (action?.type === "send-prompt-to-ai") {
-        fail("Expansion found a prompt that needs AI, but staging queue was empty. Run npm run ai:stage:build -- --lesson=<lesson> and share the output.");
+        fail("A prompt needs AI, but staging queue was empty. Run npm run ai:stage:build -- --lesson=<lesson> and share the output.");
+      }
+
+      if (action?.type === "manual-review-required") {
+        printResolverManualReview(build, action);
+        return;
+      }
+
+      if (action?.type === "knowledge-update-review-required") {
+        printHeader("KNOWLEDGE UPDATE REVIEW REQUIRED");
+        console.log("One or more Knowledge Maintainer responses exist. Review preview reports, then apply approved updates explicitly.");
+        console.log("\nApply example:");
+        console.log("  npm run knowledge:update:apply -- --file=\"data/ai-imports/responses/knowledge-maintainer/<update>.json\" --approve=true");
+        if (autoValidate) runValidateAll();
+        return;
       }
 
       if (action?.type === "lesson-authoring-complete") {
         printHeader("LESSON AUTHORING COMPLETE");
-        console.log(`Lesson ${lesson} authoring appears complete.`);
+        console.log(`Lesson ${lesson} resolver-aware authoring appears complete.`);
         if (autoMap) runCurriculumMap();
         if (autoValidate) runValidateAll();
         console.log("\nGuided import complete.");

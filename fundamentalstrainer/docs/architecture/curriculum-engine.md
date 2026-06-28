@@ -129,6 +129,52 @@ A+ might reference the same Knowledge Object with a shallower expectation:
 }
 ```
 
+## Expectation Writer
+
+The Expectation Writer is the next required import-engine component.
+
+The resolver already emits `expectation-only` decisions when a canonical Knowledge Object exists but the current curriculum needs depth, skills, objective mapping, or assessment guidance. The Resolver Work Plan converts those decisions into `create-or-update-expectation` work items.
+
+These items must not become duplicate Knowledge Objects and should not be merged into canonical Knowledge Objects unless they add reusable knowledge. They should become Curriculum Expectation records.
+
+Expected future flow:
+
+```text
+Resolver Work Plan
+    ↓
+create-or-update-expectation
+    ↓
+Expectation Writer
+    ↓
+Curriculum Expectation JSON
+    ↓
+validate:expectations
+    ↓
+Expectation preview / human review
+```
+
+Lesson 05 proved this gap clearly: the resolver produced twelve expectation items and zero new objects for existing Windows concepts. That was architecturally correct, but there is not yet deterministic tooling to write the expectation files.
+
+## Deferred Review Queue
+
+Deferred and rejected resolver outcomes should become explicit review artifacts instead of making the guided import feel failed.
+
+Expected future flow:
+
+```text
+Resolver Work Plan
+    ↓
+defer-human-review / reject
+    ↓
+Deferred Review Queue
+    ↓
+Human decision later
+```
+
+A deferred review item should preserve the concept ID, title, proposed Knowledge ID, resolver decision, reason, candidate matches, and recommended next human action.
+
+This keeps the import engine deterministic while allowing uncertain items to be handled later without blocking all finished AI-routable work.
+
 ## Live app behavior
 
 The public app should not need live AI to decide what is relevant.
@@ -153,11 +199,11 @@ For CCNA, the renderer may include commands, labs, troubleshooting scenarios, PB
 
 ## Knowledge Resolver
 
-The Knowledge Resolver is the missing structural component between Discovery Review and Knowledge Authoring.
+The Knowledge Resolver is the structural component between Discovery Review and Knowledge Authoring / Knowledge Maintenance.
 
 It prevents the AI from authoring blindly.
 
-Current problem:
+Problem without a resolver:
 
 ```text
 Transcript
@@ -165,16 +211,20 @@ Transcript
 AI authors as if the system is empty
 ```
 
-Long-term model:
+Implemented resolver-aware model:
 
 ```text
 Transcript
     ↓
-Concept Discovery
+Transcript Intelligence
+    ↓
+Discovery Review
     ↓
 Knowledge Resolver
     ↓
-AI receives existing context
+Resolver Summary
+    ↓
+Resolver Work Plan
     ↓
 Decision
 ```
@@ -192,11 +242,11 @@ objective mappings
 lesson mappings
 ```
 
-It returns candidate matches to the AI and review process.
+It writes resolver results to `data/imports/resolver/` and can generate summaries and work plans for human review.
 
 ## Import decision outcomes
 
-For every discovered concept, the system should produce one of these outcomes:
+For every discovered concept, the resolver should produce one of these outcomes:
 
 ```text
 new-object
@@ -231,6 +281,96 @@ Use when the source repeats known material and does not add meaningful curriculu
 ### reject / defer
 
 Use when the concept is out of scope, too weakly supported, unclear, or needs future enrichment.
+
+## Knowledge Maintenance Pipeline
+
+The Knowledge Maintenance Pipeline handles discoveries that enrich existing canonical Knowledge Objects.
+
+```text
+Resolver
+    decides what existing knowledge a discovery belongs to
+
+Work Plan
+    groups resolver results into next-action work items
+
+Maintainer Prompt
+    asks AI to propose structured updates only
+
+Update Validator
+    checks the maintainer response before canonical knowledge changes
+
+Preview Engine
+    simulates the merge and produces JSON/Markdown review output
+
+Apply Engine
+    performs additive deterministic merges only after explicit approval
+```
+
+Full maintenance path:
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Maintainer Prompt
+    ↓
+Knowledge Update / Knowledge Update Package
+    ↓
+validate:updates
+    ↓
+knowledge:update:preview
+    ↓
+Human review
+    ↓
+knowledge:update:apply -- --approve=true
+    ↓
+validate:all
+```
+
+Canonical Knowledge Objects are never modified directly by AI. AI proposes structured changes. Deterministic tooling validates, previews, backs up, and applies those changes only after explicit human approval.
+
+## Work item types
+
+Resolver work plans convert resolver decisions into next actions:
+
+```text
+create-new-object              -> Knowledge Author
+create-knowledge-update        -> Knowledge Maintainer single update
+create-update-package          -> Knowledge Maintainer grouped update package
+create-or-update-expectation   -> Curriculum Expectation work
+relationship-only              -> Relationship queue
+duplicate-no-change            -> No canonical change
+reject / defer-human-review    -> Human review
+```
+
+Single-fragment expansions become `create-knowledge-update`. Multiple discoveries that target the same canonical object become one `create-update-package`.
+
+## Preview and apply safety
+
+The preview command is read-only. It validates the update, loads the target Knowledge Object, simulates the merge in memory, detects simple duplicate risks, and writes review reports.
+
+The apply command is write-capable and therefore guarded:
+
+```bash
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/<update>.json" --approve=true
+```
+
+The apply command refuses to run without `--approve=true`.
+
+When approved, it:
+
+```text
+1. validates the update package
+2. loads the target Knowledge Object
+3. creates a timestamped backup
+4. applies additive changes only
+5. updates quality metadata
+6. validates canonical knowledge
+7. writes an apply report
+```
 
 ## Curriculum Plan vs Curriculum Expectation
 
@@ -283,9 +423,19 @@ security-plus/networking.vlan
 
 ## Implementation priority
 
-Before importing the remaining large video set, the project should stabilize this structure.
+Before importing the remaining large video set, the project should stabilize the complete import engine.
 
 A+ Core 2 remains the immediate study target, but the import pipeline should be shaped around the future multi-certification model before the content volume becomes difficult to restructure.
+
+Near-term priority is no longer broad import volume. It is completing the missing resolver-aware branches:
+
+1. Curriculum Expectation Writer.
+2. Deferred Review Queue.
+3. Relationship Queue.
+4. Clear lesson completion reports.
+5. Re-import or revalidate Lessons 01-05 through the finalized engine.
+
+Only after those are complete should large-scale A+ Core 2 import resume.
 
 ## Non-goals
 
@@ -297,11 +447,13 @@ The Curriculum Engine should not:
 - use graph edges as a replacement for curriculum placement
 - use curriculum placement as a replacement for concept relationships
 - treat transcript lesson order as the final learning path
+- allow AI to directly rewrite canonical Knowledge Objects without deterministic preview, validation, and approval
 
 ## Design principle
 
 ```text
 The system remembers itself.
 AI receives retrieved context.
+AI proposes structured changes.
 Human review and deterministic tooling decide what becomes canonical.
 ```

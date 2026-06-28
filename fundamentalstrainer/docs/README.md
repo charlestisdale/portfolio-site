@@ -6,7 +6,7 @@ This documentation describes the current AI curriculum compiler architecture for
 
 - `project-vision.md` — project mission and permanent design principles.
 - `architecture/overview.md` — current system architecture.
-- `architecture/curriculum-engine.md` — long-term curriculum, expectation, and resolver architecture.
+- `architecture/curriculum-engine.md` — curriculum, expectation, resolver, and maintenance architecture.
 - `architecture/schema-contracts.md` — first schema contracts for fragments, expectations, resolver results, and update packages.
 - `architecture/project-philosophy.md` — design philosophy and guardrails.
 - `graph-visualizer.md` — graph architecture and UI behavior.
@@ -50,6 +50,79 @@ npm run ai:guided -- --04
 
 It uses `ai-staging/` as the temporary prompt/response folder and pauses only when an AI JSON response is needed.
 
+## Current import engine status
+
+The resolver-aware guided import path has now been validated through Lesson 05 for:
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Author / Knowledge Maintainer routing
+    ↓
+Knowledge Update validation
+    ↓
+Knowledge Update preview
+    ↓
+validate:all
+```
+
+Lesson 05 proved that the import engine can avoid duplicate canonical Knowledge Objects by routing existing concepts into Knowledge Maintainer updates and expectation-only work items.
+
+The import engine is not yet considered complete. The remaining missing pieces are:
+
+- Curriculum Expectation Writer for `create-or-update-expectation` work items.
+- Deferred Review Queue for `defer-human-review` items.
+- Relationship Queue for future `relationship-only` items.
+- Clear lesson completion summaries that distinguish completed AI work from remaining review queues.
+- Full re-import validation of Lessons 01-05 after the import engine is complete.
+
+Do not resume large-scale lesson importing until those missing pieces are implemented and Lessons 01-05 have been re-imported or revalidated through the finalized pipeline.
+
+## Knowledge maintenance workflow
+
+The resolver and maintainer workflow is deterministic, review-first, and now integrated into `ai:guided` for maintainer prompt staging.
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Summary
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Maintainer Prompt
+    ↓
+Knowledge Update Package
+    ↓
+Validate Update
+    ↓
+Preview Update
+    ↓
+Apply Update with explicit approval
+    ↓
+Validate Canonical Knowledge
+```
+
+Useful commands:
+
+```bash
+npm run ai:resolver -- --lesson=04
+npm run ai:resolver:summary -- --lesson=04
+npm run ai:resolver:plan -- --lesson=04
+npm run ai:maintainer:prompt -- --file="data/imports/reports/04-resolver-work-plan.json" --workItem="04.package.os.patch-management"
+npm run validate:updates
+npm run knowledge:update:preview -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json"
+npm run knowledge:update:apply -- --file="data/ai-imports/responses/knowledge-maintainer/04-04-package-os-patch-management-knowledge-update-package.json" --approve=true
+npm run validate:all
+```
+
+Core rule: AI may propose structured updates, but deterministic tooling validates, previews, backs up, and applies those updates only after explicit human approval.
+
 ## Architecture decisions
 
 - `architecture/architecture-decisions/ADR-001-ai-curriculum-compiler.md`
@@ -58,6 +131,7 @@ It uses `ai-staging/` as the temporary prompt/response folder and pauses only wh
 - `architecture/architecture-decisions/ADR-004-deterministic-ai-pipeline.md`
 - `architecture/architecture-decisions/ADR-005-engine-content-separation.md`
 - `architecture/architecture-decisions/ADR-006-curriculum-engine-and-expectations.md`
+- `architecture/architecture-decisions/ADR-007-deterministic-knowledge-maintenance.md`
 
 ## Roadmap
 
@@ -76,7 +150,11 @@ Discovery Review
     ↓
 Knowledge Resolver
     ↓
-Knowledge Author / Knowledge Maintainer
+Resolver Work Plan
+    ↓
+Knowledge Author / Knowledge Maintainer / Expectation Writer / Deferred Review Queue
+    ↓
+Knowledge Update Preview / Apply when needed
     ↓
 Canonical Knowledge Objects
     ↓
@@ -88,7 +166,5 @@ Curriculum Engine
     ↓
 Learning Engine
 ```
-
-Do not treat this project as a quiz application, transcript summarizer, one-step AI importer, or certification-specific content silo.
 
 The long-term goal is a reusable learning platform where one canonical knowledge base can support multiple certifications and curricula. A concept such as DNS, VLANs, TCP, UEFI, TPM, or OSPF should exist once as canonical knowledge, then appear in different curricula with different expectations, depth, skills, and assessment styles.

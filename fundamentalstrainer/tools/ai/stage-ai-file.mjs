@@ -40,7 +40,7 @@ function ensureQueue() {
       queue: [],
       notes: [
         "Add items with promptPath, outputPath, and expectedOutputName.",
-        "Use npm run ai:stage:build -- --lesson=02 to generate queue items from existing Knowledge Author prompts."
+        "Use npm run ai:stage:build -- --lesson=02 to generate queue items from existing prompts."
       ]
     });
   }
@@ -107,7 +107,7 @@ function stagePrompt(item) {
 }
 
 function expectedKnowledgeId(item) {
-  return item.proposedKnowledgeId || item.expectedKnowledgeId || "";
+  return item.proposedKnowledgeId || item.expectedKnowledgeId || item.targetKnowledgeId || "";
 }
 
 function expectedSchemaVersion(item) {
@@ -120,10 +120,12 @@ function fileNameLooksRelated(file, item) {
   const base = path.basename(file).toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const expected = String(item.expectedOutputName || "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
   const knowledge = expectedKnowledgeId(item).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const workItem = String(item.workItemId || "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
   return Boolean(
     (expected && base.includes(expected.replace(/-json$/, ""))) ||
     (knowledge && base.includes(knowledge)) ||
-    (knowledge && base.includes(knowledge.replace(/-knowledge-object$/, "")))
+    (knowledge && base.includes(knowledge.replace(/-knowledge-object$/, ""))) ||
+    (workItem && base.includes(workItem))
   );
 }
 
@@ -142,6 +144,20 @@ function findStagedOutput(item) {
     if (idMatches.length === 1) return idMatches[0];
     if (idMatches.length > 1) {
       fail(`Multiple JSON outputs match id ${expectedId}:\n${idMatches.map(file => `- ${path.basename(file)}`).join("\n")}`);
+    }
+
+    const targetMatches = outputs.filter(file => tryReadJson(file)?.targetKnowledgeId === expectedId);
+    if (targetMatches.length === 1) return targetMatches[0];
+    if (targetMatches.length > 1) {
+      fail(`Multiple JSON outputs match targetKnowledgeId ${expectedId}:\n${targetMatches.map(file => `- ${path.basename(file)}`).join("\n")}`);
+    }
+  }
+
+  if (item.workItemId) {
+    const workItemMatches = outputs.filter(file => tryReadJson(file)?.workItemId === item.workItemId);
+    if (workItemMatches.length === 1) return workItemMatches[0];
+    if (workItemMatches.length > 1) {
+      fail(`Multiple JSON outputs match workItemId ${item.workItemId}:\n${workItemMatches.map(file => `- ${path.basename(file)}`).join("\n")}`);
     }
   }
 
@@ -190,6 +206,9 @@ function nextCommandForCompletedItem(item, remaining, queueData) {
   }
   if (item.type === "knowledge-author") {
     return `npm run ai:expand -- --lesson=${lesson} --promote=true`;
+  }
+  if (item.type === "knowledge-maintainer") {
+    return `npm run validate:updates && npm run knowledge:update:preview -- --file="${item.outputPath}"`;
   }
   return `npm run ai:lesson -- --lesson=${lesson}`;
 }
