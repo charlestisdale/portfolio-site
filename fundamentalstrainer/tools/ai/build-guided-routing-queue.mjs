@@ -154,6 +154,13 @@ function hasExpectation(knowledgeId) {
   });
 }
 
+function hasDeferredReviewQueue() {
+  if (!lesson) return false;
+  const file = path.resolve(root, "data", "imports", "review-queues", `${lesson}-deferred-review-queue.json`);
+  const data = fs.existsSync(file) ? tryReadJson(file) : null;
+  return data?.generatedBy === "deferred-review-queue-writer" && String(data.lesson || "").padStart(2, "0") === lesson;
+}
+
 function hasAuthorResponse(knowledgeId) {
   if (isPlaceholderKnowledgeId(knowledgeId)) return false;
   return listFiles("data/ai-imports/responses/knowledge-author", file => {
@@ -277,6 +284,7 @@ function buildResolverAwareQueue({ reviewedFile, workPlan }) {
   const queue = [];
   const manualItems = [];
   const completedItems = [];
+  const reviewQueueExists = hasDeferredReviewQueue();
 
   for (const workItem of workPlan.workItems || []) {
     if (isPlaceholderKnowledgeId(workItem.knowledgeId)) {
@@ -322,6 +330,20 @@ function buildResolverAwareQueue({ reviewedFile, workPlan }) {
         ...workItem,
         reason: "Curriculum Expectation is missing. Run deterministic expectation writer for this lesson."
       });
+      continue;
+    }
+
+    if (["defer-human-review", "reject"].includes(workItem.action)) {
+      if (reviewQueueExists) {
+        completedItems.push(workItem);
+      } else {
+        manualItems.push({
+          ...workItem,
+          reason: workItem.action === "reject"
+            ? "Rejected item needs to be written to the deferred review queue."
+            : "Deferred item needs to be written to the deferred review queue."
+        });
+      }
       continue;
     }
 
@@ -447,17 +469,20 @@ if (!resolverArtifacts.ok) {
 const workPlan = resolverArtifacts.parsedPlan || readJson(path.resolve(root, "data", "imports", "reports", `${lesson}-resolver-work-plan.json`));
 const routed = buildResolverAwareQueue({ reviewedFile, workPlan });
 const pendingExpectationItems = routed.manualItems.filter(item => item.action === "create-or-update-expectation");
-const pendingReviewItems = routed.manualItems.filter(item => !["duplicate-no-change", "reject", "create-or-update-expectation"].includes(item.action));
+const pendingReviewItems = routed.manualItems.filter(item => ["defer-human-review", "reject"].includes(item.action));
+const otherManualItems = routed.manualItems.filter(item => !["duplicate-no-change", "reject", "defer-human-review", "create-or-update-expectation"].includes(item.action));
 
 const nextAction = routed.queue.length
   ? { type: "send-prompt-to-ai", command: "npm run ai:stage:next", prompt: routed.queue[0].promptPath, expectedKnowledgeId: routed.queue[0].expectedKnowledgeId }
   : pendingExpectationItems.length
     ? { type: "write-expectations", command: `node tools/curriculum/write-expectation-drafts.mjs --lesson=${lesson}` }
     : pendingReviewItems.length
-      ? { type: "manual-review-required", command: "Review resolver work plan items that do not have deterministic tooling yet." }
-      : routed.completedItems.some(item => ["create-knowledge-update", "create-update-package"].includes(item.action))
-        ? { type: "knowledge-update-review-required", command: "Review update previews, then apply approved updates explicitly." }
-        : { type: "lesson-authoring-complete", command: "Resolver-aware routing has no pending AI prompts." };
+      ? { type: "write-deferred-review", command: `node tools/review/write-deferred-review-queue.mjs --lesson=${lesson}` }
+      : otherManualItems.length
+        ? { type: "manual-review-required", command: "Review resolver work plan items that do not have deterministic tooling yet." }
+        : routed.completedItems.some(item => ["create-knowledge-update", "create-update-package"].includes(item.action))
+          ? { type: "knowledge-update-review-required", command: "Review update previews, then apply approved updates explicitly." }
+          : { type: "lesson-authoring-complete", command: "Resolver-aware routing has no pending AI prompts." };
 
 writeQueue(routed.queue, {
   status: "resolver-aware-routing-queue",
@@ -471,6 +496,7 @@ writeQueue(routed.queue, {
   completedItems: routed.completedItems.map(item => ({ workItemId: item.workItemId, action: item.action, knowledgeId: item.knowledgeId })),
   expectationItemCount: pendingExpectationItems.length,
   reviewItemCount: pendingReviewItems.length,
+  otherManualItemCount: otherManualItems.length,
   expansionNextAction: nextAction
 });
 
@@ -486,6 +512,7 @@ console.log(JSON.stringify({
   completedItemCount: routed.completedItems.length,
   expectationItemCount: pendingExpectationItems.length,
   reviewItemCount: pendingReviewItems.length,
+  otherManualItemCount: otherManualItems.length,
   expansionNextAction: nextAction,
   nextCommand: routed.queue.length ? "npm run ai:stage:next" : nextAction.command
 }, null, 2));
