@@ -50,9 +50,41 @@ npm run ai:guided -- --04
 
 It uses `ai-staging/` as the temporary prompt/response folder and pauses only when an AI JSON response is needed.
 
+## Current import engine status
+
+The resolver-aware guided import path has now been validated through Lesson 05 for:
+
+```text
+Discovery Review
+    ↓
+Knowledge Resolver
+    ↓
+Resolver Work Plan
+    ↓
+Knowledge Author / Knowledge Maintainer routing
+    ↓
+Knowledge Update validation
+    ↓
+Knowledge Update preview
+    ↓
+validate:all
+```
+
+Lesson 05 proved that the import engine can avoid duplicate canonical Knowledge Objects by routing existing concepts into Knowledge Maintainer updates and expectation-only work items.
+
+The import engine is not yet considered complete. The remaining missing pieces are:
+
+- Curriculum Expectation Writer for `create-or-update-expectation` work items.
+- Deferred Review Queue for `defer-human-review` items.
+- Relationship Queue for future `relationship-only` items.
+- Clear lesson completion summaries that distinguish completed AI work from remaining review queues.
+- Full re-import validation of Lessons 01-05 after the import engine is complete.
+
+Do not resume large-scale lesson importing until those missing pieces are implemented and Lessons 01-05 have been re-imported or revalidated through the finalized pipeline.
+
 ## Knowledge maintenance workflow
 
-The resolver and maintainer workflow is currently manual, deterministic, and review-first. It is not yet inserted into `ai:guided`.
+The resolver and maintainer workflow is deterministic, review-first, and now integrated into `ai:guided` for maintainer prompt staging.
 
 ```text
 Discovery Review
@@ -120,7 +152,7 @@ Knowledge Resolver
     ↓
 Resolver Work Plan
     ↓
-Knowledge Author / Knowledge Maintainer
+Knowledge Author / Knowledge Maintainer / Expectation Writer / Deferred Review Queue
     ↓
 Knowledge Update Preview / Apply when needed
     ↓
