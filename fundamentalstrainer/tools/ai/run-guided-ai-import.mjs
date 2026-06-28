@@ -278,14 +278,26 @@ function runValidateAll() {
 
 function runValidateUpdates() {
   printHeader("VALIDATE KNOWLEDGE UPDATES");
-  const result = runNpmScript("validate:updates");
-  if (result.status !== 0) process.exit(result.status || 1);
+  return runNpmScript("validate:updates");
 }
 
 function runKnowledgeUpdatePreview(file) {
   printHeader("PREVIEW KNOWLEDGE UPDATE");
   const result = runNpmScript("knowledge:update:preview", [`--file=${file}`]);
   if (result.status !== 0) process.exit(result.status || 1);
+}
+
+function printKnowledgeUpdateValidationPause(updateFile) {
+  printHeader("KNOWLEDGE UPDATE NEEDS FIXES");
+  console.log("The maintainer response was saved, but validate:updates failed.");
+  if (updateFile) console.log(`\nSaved update file:\n  ${updateFile}`);
+  console.log("\nFix that JSON file, then run:");
+  console.log("  npm run validate:updates");
+  if (updateFile) {
+    console.log(`  npm run knowledge:update:preview -- --file=\"${updateFile}\"`);
+  }
+  console.log("\nWhen validation passes, continue with:");
+  console.log(`  npm run ai:guided -- --lesson=${lesson}`);
 }
 
 function shouldRunCommand(command, type) {
@@ -381,7 +393,11 @@ async function main() {
 
         if (completed.completedType === "knowledge-maintainer") {
           const updateFile = completed.outputMovedTo;
-          runValidateUpdates();
+          const validation = runValidateUpdates();
+          if (validation.status !== 0) {
+            printKnowledgeUpdateValidationPause(updateFile);
+            return;
+          }
           if (updateFile) runKnowledgeUpdatePreview(updateFile);
           console.log("\nKnowledge update preview generated. Review it before applying with --approve=true.");
           continue;

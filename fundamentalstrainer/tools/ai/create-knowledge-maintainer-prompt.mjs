@@ -81,10 +81,32 @@ function promptForWorkItem({ workPlan, workPlanPath, workItem, knowledge }) {
     status: "needs-review",
     sourceLessonId: workPlan.lesson || null,
     proposedChanges: {
-      summaryUpdates: [],
-      explanationUpdates: [],
-      factsToAdd: [],
-      examplesToAdd: [],
+      summaryUpdates: [
+        {
+          text: "Replacement or supplemental summary text to add/review.",
+          reason: "Why this summary update is needed based on the work item."
+        }
+      ],
+      explanationUpdates: [
+        {
+          text: "Paragraph-level explanation text to add/review.",
+          reason: "Why this explanation update is needed based on the work item."
+        }
+      ],
+      factsToAdd: [
+        {
+          text: "Atomic fact to add if not already covered.",
+          importance: "low | medium | high | exam-critical",
+          tags: []
+        }
+      ],
+      examplesToAdd: [
+        {
+          text: "Concrete example to add if useful.",
+          importance: "low | medium | high | exam-critical",
+          tags: []
+        }
+      ],
       commandsToAdd: [],
       assessmentSeedsToAdd: {
         examTips: [],
@@ -141,6 +163,12 @@ Return one ${isPackage ? "Knowledge Update Package" : "Knowledge Update"} using 
 \`\`\`json
 ${JSON.stringify(outputSchema, null, 2)}
 \`\`\`
+
+## Required Item Shapes
+- proposedChanges.summaryUpdates must be an array of objects, never strings. Each object must include text and reason.
+- proposedChanges.explanationUpdates must be an array of objects, never strings. Each object must include text and reason.
+- proposedChanges.factsToAdd and proposedChanges.examplesToAdd must be arrays of objects with text, optional importance, and optional tags.
+- Use empty arrays when no update is needed. Do not put placeholder sample text in the final JSON.
 
 ## Maintainer Rules
 - Preserve the existing Knowledge Object ID exactly: ${workItem.knowledgeId}
