@@ -176,11 +176,10 @@ function hasMaintainerResponse(workItem) {
 }
 
 function authorPromptFor(workItem) {
+  const expectedBase = `${lesson}-${slugify(workItem.knowledgeId)}-knowledge-author-prompt.md`;
   return listFiles("data/ai-imports/prompts/knowledge-author", file => {
     const base = path.basename(file);
-    return file.endsWith("knowledge-author-prompt.md")
-      && lessonMatch(file)
-      && (base.includes(slugify(workItem.knowledgeId)) || base.includes(slugify(workItem.concepts?.[0]?.title)));
+    return base === expectedBase;
   })[0] || null;
 }
 
