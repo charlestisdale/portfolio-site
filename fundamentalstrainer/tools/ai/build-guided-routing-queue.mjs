@@ -7,6 +7,7 @@ import { parseImportArgs, toProjectPath } from "../ingestion/import-transcript.m
 const args = parseImportArgs();
 const root = process.cwd();
 const lesson = args.lesson ? String(args.lesson).padStart(2, "0") : null;
+const curriculumId = args.curriculum || args.curriculumId || "a-plus-220-1202";
 const queueFile = path.resolve(root, args.queue || "data/ai-imports/staging-queue.json");
 const bootstrap = args.bootstrap !== "false";
 const promote = args.promote !== "false";
@@ -142,6 +143,15 @@ function findKnowledgeObjectById(knowledgeId) {
 
 function hasCanonical(knowledgeId) {
   return Boolean(findKnowledgeObjectById(knowledgeId));
+}
+
+function hasExpectation(knowledgeId) {
+  if (isPlaceholderKnowledgeId(knowledgeId)) return false;
+  const expectationId = `${curriculumId}.${knowledgeId}`;
+  return walkJsonFiles("content/expectations").some(file => {
+    const data = tryReadJson(file);
+    return data?.id === expectationId && data?.curriculumId === curriculumId && data?.knowledgeId === knowledgeId;
+  });
 }
 
 function hasAuthorResponse(knowledgeId) {
@@ -303,6 +313,18 @@ function buildResolverAwareQueue({ reviewedFile, workPlan }) {
       continue;
     }
 
+    if (workItem.action === "create-or-update-expectation") {
+      if (hasExpectation(workItem.knowledgeId)) {
+        completedItems.push(workItem);
+        continue;
+      }
+      manualItems.push({
+        ...workItem,
+        reason: "Curriculum Expectation is missing. Run deterministic expectation writer for this lesson."
+      });
+      continue;
+    }
+
     manualItems.push(workItem);
   }
 
@@ -424,15 +446,18 @@ if (!resolverArtifacts.ok) {
 
 const workPlan = resolverArtifacts.parsedPlan || readJson(path.resolve(root, "data", "imports", "reports", `${lesson}-resolver-work-plan.json`));
 const routed = buildResolverAwareQueue({ reviewedFile, workPlan });
-const pendingReviewItems = routed.manualItems.filter(item => !["duplicate-no-change", "reject"].includes(item.action));
+const pendingExpectationItems = routed.manualItems.filter(item => item.action === "create-or-update-expectation");
+const pendingReviewItems = routed.manualItems.filter(item => !["duplicate-no-change", "reject", "create-or-update-expectation"].includes(item.action));
 
 const nextAction = routed.queue.length
   ? { type: "send-prompt-to-ai", command: "npm run ai:stage:next", prompt: routed.queue[0].promptPath, expectedKnowledgeId: routed.queue[0].expectedKnowledgeId }
-  : pendingReviewItems.length
-    ? { type: "manual-review-required", command: "Review resolver work plan items that do not have deterministic tooling yet." }
-    : routed.completedItems.some(item => ["create-knowledge-update", "create-update-package"].includes(item.action))
-      ? { type: "knowledge-update-review-required", command: "Review update previews, then apply approved updates explicitly." }
-      : { type: "lesson-authoring-complete", command: "Resolver-aware routing has no pending AI prompts." };
+  : pendingExpectationItems.length
+    ? { type: "write-expectations", command: `node tools/curriculum/write-expectation-drafts.mjs --lesson=${lesson}` }
+    : pendingReviewItems.length
+      ? { type: "manual-review-required", command: "Review resolver work plan items that do not have deterministic tooling yet." }
+      : routed.completedItems.some(item => ["create-knowledge-update", "create-update-package"].includes(item.action))
+        ? { type: "knowledge-update-review-required", command: "Review update previews, then apply approved updates explicitly." }
+        : { type: "lesson-authoring-complete", command: "Resolver-aware routing has no pending AI prompts." };
 
 writeQueue(routed.queue, {
   status: "resolver-aware-routing-queue",
@@ -444,6 +469,8 @@ writeQueue(routed.queue, {
   resolverCounts: workPlan.counts || null,
   manualItems: routed.manualItems.map(item => ({ workItemId: item.workItemId, action: item.action, knowledgeId: item.knowledgeId, reason: item.reason })),
   completedItems: routed.completedItems.map(item => ({ workItemId: item.workItemId, action: item.action, knowledgeId: item.knowledgeId })),
+  expectationItemCount: pendingExpectationItems.length,
+  reviewItemCount: pendingReviewItems.length,
   expansionNextAction: nextAction
 });
 
@@ -457,6 +484,8 @@ console.log(JSON.stringify({
   queuedTypes: routed.queue.map(item => item.type),
   manualItemCount: routed.manualItems.length,
   completedItemCount: routed.completedItems.length,
+  expectationItemCount: pendingExpectationItems.length,
+  reviewItemCount: pendingReviewItems.length,
   expansionNextAction: nextAction,
   nextCommand: routed.queue.length ? "npm run ai:stage:next" : nextAction.command
 }, null, 2));
