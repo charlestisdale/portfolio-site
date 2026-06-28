@@ -27,6 +27,14 @@ function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+function tryReadJson(file) {
+  try {
+    return readJson(file);
+  } catch {
+    return null;
+  }
+}
+
 function writeJson(file, value) {
   if (dryRun) return;
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -188,6 +196,33 @@ function graphIndex() {
   return relationshipHints;
 }
 
+function feedbackFileForLesson() {
+  if (args.feedback) return path.resolve(root, args.feedback);
+  if (!lesson) return null;
+  return path.resolve(root, "data", "imports", "resolver-feedback", `${lesson}-resolver-feedback.json`);
+}
+
+function resolverFeedbackIndex() {
+  const file = feedbackFileForLesson();
+  const feedback = file && fs.existsSync(file) ? tryReadJson(file) : null;
+  const byConceptId = new Map();
+  if (!feedback || feedback.generatedBy !== "resolver-feedback-writer") {
+    return { file, byConceptId, count: 0 };
+  }
+
+  for (const entry of asArray(feedback.entries)) {
+    if (!entry.conceptId) continue;
+    byConceptId.set(String(entry.conceptId).toUpperCase(), entry);
+  }
+
+  return { file, byConceptId, count: byConceptId.size };
+}
+
+function feedbackForDecision(decision, feedback) {
+  if (!decision?.conceptId) return null;
+  return feedback.byConceptId.get(String(decision.conceptId).toUpperCase()) || null;
+}
+
 function findReviewedFiles() {
   return listFiles("data/imports/reviewed", file => file.includes("discovery-review") && file.endsWith(".json") && lessonMatch(file));
 }
@@ -255,8 +290,8 @@ function candidateScore(decision, object) {
   };
 }
 
-function candidateMatches(decision, objects, expectations) {
-  return [...objects.values()]
+function candidateMatches(decision, objects, expectations, feedbackEntry = null) {
+  const matches = [...objects.values()]
     .map(object => {
       const match = candidateScore(decision, object);
       return {
@@ -270,13 +305,36 @@ function candidateMatches(decision, objects, expectations) {
     .filter(match => match.matchScore >= minimumCandidateScore)
     .sort((a, b) => b.matchScore - a.matchScore || a.knowledgeId.localeCompare(b.knowledgeId))
     .slice(0, 5);
+
+  const feedbackTarget = feedbackEntry?.targetKnowledgeId;
+  if (feedbackTarget && objects.has(feedbackTarget)) {
+    const object = objects.get(feedbackTarget);
+    const existingIndex = matches.findIndex(match => match.knowledgeId === feedbackTarget);
+    const feedbackMatch = {
+      knowledgeId: object.id,
+      title: object.title || object.id,
+      matchScore: 100,
+      matchReasons: ["resolver-feedback"],
+      existingExpectationIds: expectations.byKnowledgeId.get(object.id) || []
+    };
+    if (existingIndex >= 0) matches.splice(existingIndex, 1);
+    matches.unshift(feedbackMatch);
+  }
+
+  return matches.slice(0, 5);
 }
 
-function resolverDecision(reviewDecision, matches, objects) {
+function resolverDecision(reviewDecision, matches, objects, feedbackEntry = null) {
   const exactProposedExists = reviewDecision.proposedKnowledgeId && objects.has(reviewDecision.proposedKnowledgeId);
   const targetExists = reviewDecision.targetKnowledgeId && objects.has(reviewDecision.targetKnowledgeId);
+  const feedbackTargetExists = feedbackEntry?.targetKnowledgeId && objects.has(feedbackEntry.targetKnowledgeId);
   const best = matches[0];
   const hasStrongMatch = best && best.matchScore >= strongMatchScore;
+
+  if (feedbackEntry?.feedbackAction === "reject") return "reject";
+  if (feedbackEntry?.feedbackAction === "defer") return "defer";
+  if (feedbackEntry?.feedbackAction === "expand-existing-object") return feedbackTargetExists ? "expand-existing-object" : "defer";
+  if (feedbackEntry?.feedbackAction === "expectation-or-update") return feedbackTargetExists ? "expectation-only" : "defer";
 
   if (reviewDecision.decision === "reject") return "reject";
   if (reviewDecision.decision === "defer" || reviewDecision.decision === "needs-enrichment") return "defer";
@@ -287,7 +345,9 @@ function resolverDecision(reviewDecision, matches, objects) {
   return "new-object";
 }
 
-function confidenceFor(decision, matches) {
+function confidenceFor(decision, matches, feedbackEntry = null) {
+  if (feedbackEntry?.feedbackAction === "expand-existing-object" && matches[0]?.matchReasons?.includes("resolver-feedback")) return "high";
+  if (feedbackEntry?.feedbackAction) return "medium";
   const bestScore = matches[0]?.matchScore || 0;
   if (["reject", "defer"].includes(decision)) return "medium";
   if (bestScore >= 90) return "high";
@@ -295,8 +355,8 @@ function confidenceFor(decision, matches) {
   return "low";
 }
 
-function recommendedActions(decision, resolverDecisionValue, matches) {
-  const bestKnowledgeId = matches[0]?.knowledgeId || decision.targetKnowledgeId || decision.proposedKnowledgeId;
+function recommendedActions(decision, resolverDecisionValue, matches, feedbackEntry = null) {
+  const bestKnowledgeId = matches[0]?.knowledgeId || feedbackEntry?.targetKnowledgeId || decision.targetKnowledgeId || decision.proposedKnowledgeId;
 
   if (resolverDecisionValue === "new-object") {
     return [
@@ -315,7 +375,9 @@ function recommendedActions(decision, resolverDecisionValue, matches) {
         type: "create-update-package",
         knowledgeId: bestKnowledgeId,
         curriculumId: cert,
-        notes: "Existing canonical knowledge appears related. Use a Knowledge Update Package instead of creating a duplicate object."
+        notes: feedbackEntry
+          ? `Resolver feedback routed this concept to ${bestKnowledgeId}. Use a Knowledge Update Package instead of creating a duplicate object.`
+          : "Existing canonical knowledge appears related. Use a Knowledge Update Package instead of creating a duplicate object."
       }
     ];
   }
@@ -326,7 +388,9 @@ function recommendedActions(decision, resolverDecisionValue, matches) {
         type: "create-expectation",
         knowledgeId: bestKnowledgeId,
         curriculumId: cert,
-        notes: "The canonical object already exists. Create or update curriculum depth expectations instead of authoring duplicate knowledge."
+        notes: feedbackEntry
+          ? `Resolver feedback routed this concept to ${bestKnowledgeId}. Create or update curriculum depth expectations unless reusable canonical knowledge is missing.`
+          : "The canonical object already exists. Create or update curriculum depth expectations instead of authoring duplicate knowledge."
       }
     ];
   }
@@ -354,13 +418,18 @@ function recommendedActions(decision, resolverDecisionValue, matches) {
   }
 
   if (resolverDecisionValue === "reject") {
-    return [{ type: "reject", notes: decision.reason || "Rejected during Discovery Review." }];
+    return [{ type: "reject", notes: feedbackEntry?.rationale || decision.reason || "Rejected during Discovery Review." }];
   }
 
-  return [{ type: "defer", notes: decision.reason || "Deferred until more evidence or review context is available." }];
+  return [{
+    type: "defer",
+    notes: feedbackEntry?.targetKnowledgeId && !matches[0]?.matchReasons?.includes("resolver-feedback")
+      ? `Resolver feedback suggested ${feedbackEntry.targetKnowledgeId}, but that target does not exist yet.`
+      : decision.reason || "Deferred until more evidence or review context is available."
+  }];
 }
 
-function resolverContext(decision, matches, graphRelationships, expectations) {
+function resolverContext(decision, matches, graphRelationships, expectations, feedbackEntry = null) {
   const matchedIds = matches.map(match => match.knowledgeId);
   return {
     searchedFields: [
@@ -373,7 +442,8 @@ function resolverContext(decision, matches, graphRelationships, expectations) {
       "learning.summary",
       "learning.facts",
       "relationships",
-      "expectations"
+      "expectations",
+      "resolver-feedback"
     ],
     searchTerms: [
       decision.proposedKnowledgeId,
@@ -383,16 +453,24 @@ function resolverContext(decision, matches, graphRelationships, expectations) {
       ...asArray(decision.reviewFlags)
     ].filter(Boolean),
     relationshipHints: matchedIds.flatMap(id => graphRelationships.get(id) || []).slice(0, 20),
-    expectationHints: matchedIds.flatMap(id => expectations.byKnowledgeId.get(id) || []).slice(0, 20)
+    expectationHints: matchedIds.flatMap(id => expectations.byKnowledgeId.get(id) || []).slice(0, 20),
+    resolverFeedback: feedbackEntry ? {
+      feedbackAction: feedbackEntry.feedbackAction,
+      targetKnowledgeId: feedbackEntry.targetKnowledgeId,
+      recommendedRoute: feedbackEntry.recommendedRoute,
+      triageCategory: feedbackEntry.triageCategory,
+      rationale: feedbackEntry.rationale
+    } : null
   };
 }
 
-function buildResolverResult({ review, decision, objects, expectations, graphRelationships }) {
-  const matches = candidateMatches(decision, objects, expectations);
-  const resolvedDecision = resolverDecision(decision, matches, objects);
+function buildResolverResult({ review, decision, objects, expectations, graphRelationships, feedback }) {
+  const feedbackEntry = feedbackForDecision(decision, feedback);
+  const matches = candidateMatches(decision, objects, expectations, feedbackEntry);
+  const resolvedDecision = resolverDecision(decision, matches, objects, feedbackEntry);
   const proposedKnowledgeId = resolvedDecision === "new-object"
     ? decision.proposedKnowledgeId
-    : matches[0]?.knowledgeId || decision.targetKnowledgeId || decision.proposedKnowledgeId;
+    : matches[0]?.knowledgeId || feedbackEntry?.targetKnowledgeId || decision.targetKnowledgeId || decision.proposedKnowledgeId;
 
   return {
     schemaVersion: "1.0.0",
@@ -402,14 +480,16 @@ function buildResolverResult({ review, decision, objects, expectations, graphRel
     discoveredTitle: decision.title,
     proposedKnowledgeId,
     decision: resolvedDecision,
-    confidence: confidenceFor(resolvedDecision, matches),
+    confidence: confidenceFor(resolvedDecision, matches, feedbackEntry),
     candidateMatches: matches,
-    recommendedActions: recommendedActions(decision, resolvedDecision, matches),
-    resolverContext: resolverContext(decision, matches, graphRelationships, expectations),
-    humanReviewRequired: true,
+    recommendedActions: recommendedActions(decision, resolvedDecision, matches, feedbackEntry),
+    resolverContext: resolverContext(decision, matches, graphRelationships, expectations, feedbackEntry),
+    humanReviewRequired: Boolean(feedbackEntry?.humanReviewRequired) || ["defer", "reject"].includes(resolvedDecision),
     reviewNotes: [
       `Discovery Review decision: ${decision.decision}`,
-      decision.reason || "No Discovery Review reason provided."
+      decision.reason || "No Discovery Review reason provided.",
+      feedbackEntry ? `Resolver feedback applied: ${feedbackEntry.feedbackAction} → ${feedbackEntry.targetKnowledgeId || "none"}` : null,
+      feedbackEntry?.rationale || null
     ].filter(Boolean)
   };
 }
@@ -436,9 +516,11 @@ if (!reviewedFiles.length) fail(`No reviewed discovery packages found for lesson
 const objects = canonicalKnowledgeObjects();
 const expectations = expectationIndex();
 const graphRelationships = graphIndex();
+const feedback = resolverFeedbackIndex();
 const written = [];
 const skipped = [];
 const decisions = [];
+const feedbackApplied = [];
 
 for (const file of reviewedFiles) {
   const review = readJson(file);
@@ -448,10 +530,19 @@ for (const file of reviewedFiles) {
       continue;
     }
 
-    const result = buildResolverResult({ review, decision, objects, expectations, graphRelationships });
+    const result = buildResolverResult({ review, decision, objects, expectations, graphRelationships, feedback });
     const outFile = outputFileFor(review, decision);
     writeJson(outFile, result);
     written.push(toProjectPath(outFile, root));
+    if (result.resolverContext.resolverFeedback) {
+      feedbackApplied.push({
+        conceptId: result.conceptId,
+        decision: result.decision,
+        proposedKnowledgeId: result.proposedKnowledgeId,
+        feedbackAction: result.resolverContext.resolverFeedback.feedbackAction,
+        targetKnowledgeId: result.resolverContext.resolverFeedback.targetKnowledgeId
+      });
+    }
     decisions.push({
       conceptId: result.conceptId,
       discoveredTitle: result.discoveredTitle,
@@ -481,6 +572,12 @@ console.log(JSON.stringify({
   reviewedFiles: reviewedFiles.map(file => toProjectPath(file, root)),
   canonicalKnowledgeObjects: objects.size,
   expectationCount: expectations.ids.size,
+  resolverFeedback: feedback.file ? {
+    file: toProjectPath(feedback.file, root),
+    count: feedback.count,
+    appliedCount: feedbackApplied.length,
+    applied: feedbackApplied
+  } : null,
   outputDir: toProjectPath(outputDir, root),
   writtenCount: written.length,
   skippedCount: skipped.length,
