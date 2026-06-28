@@ -281,6 +281,19 @@ function runValidateUpdates() {
   return runNpmScript("validate:updates");
 }
 
+function runValidateExpectations() {
+  printHeader("VALIDATE CURRICULUM EXPECTATIONS");
+  return runNpmScript("validate:expectations");
+}
+
+function runExpectationWriter() {
+  printHeader("WRITE CURRICULUM EXPECTATIONS");
+  const result = runNode("tools/curriculum/write-expectation-drafts.mjs", [`--lesson=${lesson}`]);
+  if (result.status !== 0) process.exit(result.status || 1);
+  const validation = runValidateExpectations();
+  if (validation.status !== 0) process.exit(validation.status || 1);
+}
+
 function runKnowledgeUpdatePreview(file) {
   printHeader("PREVIEW KNOWLEDGE UPDATE");
   const result = runNpmScript("knowledge:update:preview", [`--file=${file}`]);
@@ -352,11 +365,17 @@ function shouldRunCommand(command, type) {
   if (type === "lesson-authoring-complete") return false;
   if (type === "manual-review-required") return false;
   if (type === "knowledge-update-review-required") return false;
+  if (type === "write-expectations") return false;
   return command.includes("ai:lesson") || command.includes("ai:expand");
 }
 
 function runNextAction(action) {
   if (!action?.type) return false;
+
+  if (action.type === "write-expectations") {
+    runExpectationWriter();
+    return true;
+  }
 
   if (action.type === "normalize-ai-response" || action.type === "promote-ready-draft") {
     runExpansion({ promote: action.command?.includes("--promote=true") ?? true });
