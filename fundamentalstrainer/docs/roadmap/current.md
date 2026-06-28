@@ -34,16 +34,18 @@
 - Guarded Knowledge Update Apply command with explicit approval.
 - Missing/planned reference warning summaries for knowledge and architecture validation.
 - `validate:all` now validates Knowledge Objects, Curriculum Expectations, Resolver Results, Knowledge Updates, and Architecture.
+- Resolver-aware `ai:guided` routing now stages Knowledge Author and Knowledge Maintainer prompts.
+- Knowledge Maintainer responses are validated, previewed, and normalized for common AI formatting errors before validation.
 
 ## Current active work
 
-- Pausing broad import expansion to stabilize curriculum architecture before processing the remaining video set.
-- Testing the resolver and maintainer path against Lesson 04 and the next imported lessons.
+- Pausing broad import expansion to finish the import engine before processing the remaining video set.
+- Treating Lesson 05 as the integration test for the resolver-aware import engine.
 - Preserving A+ Core 2 as the immediate learning target while keeping the system certification-agnostic.
 - Preventing duplicate canonical concepts across future certifications such as Network+, Security+, CCNA, Linux+, and cloud curricula.
 - Keeping AI out of direct canonical writes: AI proposes structured updates; deterministic tools validate, preview, back up, and apply only after explicit human approval.
 
-## Current implemented maintenance pipeline
+## Current implemented import pipeline
 
 ```text
 Transcript Intelligence
@@ -56,31 +58,59 @@ Resolver Summary
     ↓
 Resolver Work Plan
     ↓
-Knowledge Maintainer Prompt
-    ↓
-Knowledge Update / Update Package
-    ↓
-validate:updates
-    ↓
-knowledge:update:preview
-    ↓
-Human review
-    ↓
-knowledge:update:apply -- --approve=true
-    ↓
-validate:all
+Decision
+    ├── create-new-object → Knowledge Author
+    ├── create-knowledge-update → Knowledge Maintainer
+    ├── create-update-package → Knowledge Maintainer
+    ├── create-or-update-expectation → Pending Expectation Writer
+    ├── relationship-only → Pending Relationship Queue
+    ├── duplicate-no-change → No change / report
+    └── defer / reject → Pending Deferred Review Queue
 ```
+
+## Lesson 05 integration-test result
+
+Lesson 05 validated that the resolver-aware guided path can process existing concepts without creating duplicate canonical Knowledge Objects.
+
+Final verified shape:
+
+```text
+workItems: 28
+knowledgeUpdates: 4
+expectations: 12
+newObjects: 0
+deferred: 11
+queued: 0
+completedItemCount: 4
+manualItemCount: 24
+```
+
+Validation status after maintainer updates and previews:
+
+```text
+validate:knowledge      passed
+validate:expectations   passed for 0 expectation files
+validate:resolver       passed
+validate:updates        passed
+validate:architecture   passed with planned-reference warnings
+```
+
+Interpretation:
+
+- Knowledge Author / Knowledge Maintainer routing is functioning.
+- Knowledge Update validation and preview are functioning.
+- The resolver correctly avoided duplicate canonical objects.
+- The missing stages are now clearly Expectation Writer, Deferred Review Queue, Relationship Queue, and final lesson completion reporting.
 
 ## Near-term structural work
 
-1. Test the deterministic resolver and maintainer workflow against Lessons 01-04 and then the next imported lessons.
-2. Review resolver results for false positives and false negatives.
-3. Review maintainer output for over-broad updates, weak relationships, duplicate facts, or curriculum-specific language leaking into canonical knowledge.
-4. Decide how `expectation-only` work items should generate Curriculum Expectation files.
-5. Decide how `relationship-only` work items should enter a relationship review queue.
-6. Add batch/queue support for generating all maintainer prompts from a Resolver Work Plan.
-7. Insert the resolver stage into the guided import workflow only after manual resolver output is stable.
-8. Resume large-scale A+ Core 2 import only after the structure is clear.
+1. Implement Curriculum Expectation Writer for `create-or-update-expectation` work items.
+2. Implement Deferred Review Queue for `defer-human-review` and `reject` items.
+3. Implement Relationship Queue for future `relationship-only` work items.
+4. Improve `ai:guided` ending output so completed AI work is reported separately from pending review queues.
+5. Add lesson completion reports that summarize new objects, updates, expectations, deferred items, rejected items, validations, previews, and next steps.
+6. Re-import or revalidate Lessons 01-05 through the finalized import engine.
+7. Resume large-scale A+ Core 2 import only after the finalized pipeline is validated.
 
 ## Near-term workflow improvements
 
@@ -89,23 +119,29 @@ validate:all
 3. Add richer curriculum/expectation reports.
 4. Add graph stub reports.
 5. Improve relationship type normalization.
-6. Add lesson completion reports.
-7. Add apply preview summaries to pipeline status output.
-8. Remove or archive obsolete old docs.
+6. Add apply preview summaries to pipeline status output.
+7. Remove or archive obsolete old docs.
+8. Add stale-artifact cleanup or archive behavior for reruns so old resolver/prompt/response files cannot create duplicate-state loops.
 
 ## Next major milestone
 
-Integrate resolver-aware routing into guided import.
+Complete resolver-aware guided import, not just Knowledge Author / Knowledge Maintainer routing.
 
-Current guided path:
+Current validated guided path:
 
 ```text
 Discovery Review
     ↓
-Knowledge Author
+Knowledge Resolver
+    ↓
+Resolver Work Plan
+    ↓
+Decision
+    ├── new-object → Knowledge Author
+    └── expand-existing-object → Knowledge Maintainer
 ```
 
-Target guided path:
+Target finalized guided path:
 
 ```text
 Discovery Review
@@ -120,8 +156,32 @@ Decision
     ├── expectation-only → Curriculum Expectation Writer
     ├── relationship-only → Relationship Queue
     ├── duplicate-no-change → No canonical change
-    └── defer / reject → Human review
+    └── defer / reject → Human review queue
 ```
+
+## Re-import validation milestone
+
+After the import engine is complete, re-import or revalidate Lessons 01-05 using the finalized workflow.
+
+The goal is to verify the entire import engine before continuing with the remaining lessons:
+
+```text
+Source material
+    ↓
+Transcript Intelligence
+    ↓
+Discovery Review
+    ↓
+Resolver
+    ↓
+Author / Maintainer / Expectation / Relationship / Deferred queues
+    ↓
+Validation
+    ↓
+Review reports
+```
+
+The first five lessons should become the regression suite for the import engine.
 
 ## Future learning features
 
