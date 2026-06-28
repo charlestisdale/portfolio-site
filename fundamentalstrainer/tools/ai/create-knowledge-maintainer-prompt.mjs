@@ -96,14 +96,14 @@ function promptForWorkItem({ workPlan, workPlanPath, workItem, knowledge }) {
       factsToAdd: [
         {
           text: "Atomic fact to add if not already covered.",
-          importance: "low | medium | high | exam-critical",
+          importance: "medium",
           tags: []
         }
       ],
       examplesToAdd: [
         {
           text: "Concrete example to add if useful.",
-          importance: "low | medium | high | exam-critical",
+          importance: "medium",
           tags: []
         }
       ],
@@ -120,7 +120,7 @@ function promptForWorkItem({ workPlan, workPlanPath, workItem, knowledge }) {
     preservationNotes: [],
     duplicateChecks: [],
     quality: {
-      confidence: "low | medium | high",
+      confidence: "medium",
       needsHumanReview: true,
       reviewNotes: []
     }
@@ -168,6 +168,8 @@ ${JSON.stringify(outputSchema, null, 2)}
 - proposedChanges.summaryUpdates must be an array of objects, never strings. Each object must include text and reason.
 - proposedChanges.explanationUpdates must be an array of objects, never strings. Each object must include text and reason.
 - proposedChanges.factsToAdd and proposedChanges.examplesToAdd must be arrays of objects with text, optional importance, and optional tags.
+- importance must be exactly one of: low, medium, high, exam-critical. Do not output a pipe-separated placeholder.
+- quality.confidence must be exactly one of: low, medium, high. Do not output a pipe-separated placeholder.
 - Use empty arrays when no update is needed. Do not put placeholder sample text in the final JSON.
 
 ## Maintainer Rules
