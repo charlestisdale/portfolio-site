@@ -287,6 +287,52 @@ function runKnowledgeUpdatePreview(file) {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
+function wrapTextItems(items, reason) {
+  if (!Array.isArray(items)) return [];
+  return items.map(item => (typeof item === "string" ? { text: item, reason } : item));
+}
+
+function normalizeMaintainerResponse(updateFile) {
+  if (!updateFile) return false;
+  const full = path.resolve(root, updateFile);
+  if (!fs.existsSync(full)) return false;
+
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(full, "utf8"));
+  } catch {
+    return false;
+  }
+
+  if (!data.proposedChanges) return false;
+  const before = JSON.stringify(data);
+  const reason = `Added from Lesson ${lesson} maintainer update.`;
+
+  data.proposedChanges.summaryUpdates = wrapTextItems(data.proposedChanges.summaryUpdates, reason);
+  data.proposedChanges.explanationUpdates = wrapTextItems(data.proposedChanges.explanationUpdates, reason);
+
+  for (const key of ["factsToAdd", "examplesToAdd"]) {
+    if (!Array.isArray(data.proposedChanges[key])) continue;
+    data.proposedChanges[key] = data.proposedChanges[key].map(item => {
+      if (item && typeof item === "object" && typeof item.importance === "string" && item.importance.includes("|")) {
+        return { ...item, importance: "medium" };
+      }
+      return item;
+    });
+  }
+
+  if (data.quality && typeof data.quality.confidence === "string" && data.quality.confidence.includes("|")) {
+    data.quality.confidence = "medium";
+  }
+
+  const after = JSON.stringify(data);
+  if (after === before) return false;
+
+  fs.writeFileSync(full, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  console.log(`\nNormalized maintainer response before validation: ${updateFile}`);
+  return true;
+}
+
 function printKnowledgeUpdateValidationPause(updateFile) {
   printHeader("KNOWLEDGE UPDATE NEEDS FIXES");
   console.log("The maintainer response was saved, but validate:updates failed.");
@@ -393,6 +439,7 @@ async function main() {
 
         if (completed.completedType === "knowledge-maintainer") {
           const updateFile = completed.outputMovedTo;
+          normalizeMaintainerResponse(updateFile);
           const validation = runValidateUpdates();
           if (validation.status !== 0) {
             printKnowledgeUpdateValidationPause(updateFile);
