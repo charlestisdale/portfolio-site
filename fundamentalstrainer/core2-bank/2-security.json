@@ -1,0 +1,52 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "Which authentication factor is a fingerprint?",
+    "answer": "Something you are",
+    "options": ["Something you know", "Something you have", "Something you are", "Somewhere you are"],
+    "note": "Biometrics are something you are."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which security control requires two or more different authentication factors?",
+    "answer": "MFA",
+    "options": ["MFA", "SSO", "NTFS", "UAC"],
+    "note": "Multi-factor authentication combines different factor types."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "permissions",
+    "difficulty": "medium",
+    "question": "Which Windows file system supports file permissions and EFS?",
+    "answer": "NTFS",
+    "options": ["FAT32", "exFAT", "NTFS", "ISO 9660"],
+    "note": "NTFS supports permissions, auditing, compression, and EFS."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "easy",
+    "question": "Which Windows feature provides full-volume encryption?",
+    "answer": "BitLocker",
+    "options": ["BitLocker", "EFS", "UAC", "NTFS"],
+    "note": "BitLocker encrypts full volumes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "easy",
+    "question": "Which Wi-Fi security standard is stronger than WPA2 and uses SAE for personal networks?",
+    "answer": "WPA3",
+    "options": ["WEP", "WPA", "WPA2", "WPA3"],
+    "note": "WPA3-Personal uses SAE and is stronger than WPA2-Personal."
+  }
+]
