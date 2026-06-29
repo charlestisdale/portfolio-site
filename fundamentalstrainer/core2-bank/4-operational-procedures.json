@@ -1,0 +1,32 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "Before making a major production change, what should be obtained first?",
+    "answer": "Approval through change management",
+    "options": ["Approval through change management", "A faster keyboard", "A new wallpaper", "A public IP address"],
+    "note": "Change management reduces risk by requiring planning, approval, and rollback steps."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "What should be used to reduce electrostatic discharge risk when working inside a PC?",
+    "answer": "ESD strap or mat",
+    "options": ["ESD strap or mat", "Wet towel", "Magnetized screwdriver", "Printer toner"],
+    "note": "ESD protection helps prevent component damage."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-recovery",
+    "difficulty": "medium",
+    "question": "Which backup type copies all selected data regardless of previous backups?",
+    "answer": "Full backup",
+    "options": ["Full backup", "Incremental backup", "Differential backup", "Snapshot only"],
+    "note": "A full backup copies all selected data."
+  }
+]
