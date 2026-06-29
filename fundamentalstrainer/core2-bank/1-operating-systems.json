@@ -4,79 +4,1994 @@
     "objective": "1.0 Operating Systems",
     "category": "windows-editions",
     "difficulty": "easy",
-    "question": "Which Windows edition is the BEST choice for joining an Active Directory domain?",
+    "question": "Which Windows edition is designed primarily for home users?",
+    "answer": "Windows Home",
+    "options": [
+      "Windows Home",
+      "Windows Pro",
+      "Windows Enterprise",
+      "Windows Education"
+    ],
+    "note": "Windows Home is intended for personal and family use."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "Which Windows edition includes business features such as BitLocker, Group Policy, and Remote Desktop host?",
     "answer": "Windows Pro",
-    "options": ["Windows Home", "Windows Pro", "Windows S Mode", "Windows SE"],
-    "note": "Windows Pro, Enterprise, and Education support domain join. Windows Home does not."
+    "options": [
+      "Windows Pro",
+      "Windows Home",
+      "Windows Education",
+      "Windows S Mode"
+    ],
+    "note": "Windows Pro adds business and management features not included in Home."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "Which Windows edition is intended for large organizations that require advanced security and centralized management?",
+    "answer": "Windows Enterprise",
+    "options": [
+      "Windows Enterprise",
+      "Windows Home",
+      "Windows Education",
+      "Windows Pro for Workstations"
+    ],
+    "note": "Enterprise is designed for large businesses with advanced deployment and security needs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "Which Windows edition is commonly licensed for schools and educational institutions?",
+    "answer": "Windows Education",
+    "options": [
+      "Windows Education",
+      "Windows Home",
+      "Windows Pro",
+      "Windows Enterprise"
+    ],
+    "note": "Windows Education provides features tailored for academic environments."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "Which Windows edition is optimized for high-performance hardware such as multiple CPUs and large amounts of RAM?",
+    "answer": "Windows Pro for Workstations",
+    "options": [
+      "Windows Pro for Workstations",
+      "Windows Enterprise",
+      "Windows Home",
+      "Windows Education"
+    ],
+    "note": "Pro for Workstations is intended for powerful workstations handling demanding workloads."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "What is the primary limitation of Windows S Mode?",
+    "answer": "Only apps from the Microsoft Store can be installed",
+    "options": [
+      "Only apps from the Microsoft Store can be installed",
+      "It cannot connect to the internet",
+      "It does not support USB devices",
+      "It cannot run 64-bit applications"
+    ],
+    "note": "S Mode improves security by restricting application installation to Microsoft Store apps."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "What distinguishes Windows N editions from standard Windows editions?",
+    "answer": "Media features such as Windows Media Player are not included",
+    "options": [
+      "Media features such as Windows Media Player are not included",
+      "Networking features are removed",
+      "They only support 32-bit processors",
+      "They do not include File Explorer"
+    ],
+    "note": "N editions omit multimedia components to comply with European regulatory requirements."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "medium",
+    "question": "A company needs BitLocker encryption and Group Policy management on employee laptops. Which Windows edition should they choose?",
+    "answer": "Windows Pro",
+    "options": [
+      "Windows Pro",
+      "Windows Home",
+      "Windows S Mode",
+      "Windows Education"
+    ],
+    "note": "Windows Pro includes both BitLocker and Group Policy support."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "medium",
+    "question": "A university is purchasing Windows licenses for student computers. Which edition is specifically intended for this environment?",
+    "answer": "Windows Education",
+    "options": [
+      "Windows Education",
+      "Windows Enterprise",
+      "Windows Home",
+      "Windows Pro for Workstations"
+    ],
+    "note": "Windows Education is licensed and configured for educational institutions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "medium",
+    "question": "A video editing workstation with multiple processors and very large amounts of memory would most appropriately use which Windows edition?",
+    "answer": "Windows Pro for Workstations",
+    "options": [
+      "Windows Pro for Workstations",
+      "Windows Home",
+      "Windows Education",
+      "Windows S Mode"
+    ],
+    "note": "Pro for Workstations supports high-end hardware and professional workloads."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "medium",
+    "question": "A user cannot install Chrome because the computer only allows Microsoft Store applications. Which Windows feature is most likely enabled?",
+    "answer": "S Mode",
+    "options": [
+      "S Mode",
+      "BitLocker",
+      "Windows Sandbox",
+      "Hyper-V"
+    ],
+    "note": "S Mode restricts software installation to apps available through the Microsoft Store."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
     "category": "windows-tools",
     "difficulty": "easy",
-    "question": "Which Windows tool is used to view hardware, driver, and device status?",
+    "question": "Which Windows tool is used to configure many legacy Windows settings such as Programs and Features and Power Options?",
+    "answer": "Control Panel",
+    "options": [
+      "Control Panel",
+      "Settings",
+      "Task Manager",
+      "Registry Editor"
+    ],
+    "note": "Control Panel contains many classic Windows configuration tools."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows application is the primary interface for configuring Windows 10 and Windows 11 settings?",
+    "answer": "Settings",
+    "options": [
+      "Settings",
+      "Control Panel",
+      "Device Manager",
+      "Services"
+    ],
+    "note": "Settings is Microsoft's modern configuration interface."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows utility provides access to Device Manager, Disk Management, Event Viewer, and other administrative tools?",
+    "answer": "Computer Management",
+    "options": [
+      "Computer Management",
+      "System Configuration",
+      "Task Scheduler",
+      "Registry Editor"
+    ],
+    "note": "Computer Management is a central console for several administrative tools."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows tool is used to install, update, disable, or troubleshoot hardware devices and drivers?",
     "answer": "Device Manager",
-    "options": ["Device Manager", "Disk Cleanup", "Task Scheduler", "Event Viewer"],
-    "note": "Device Manager is used to manage hardware devices and drivers."
+    "options": [
+      "Device Manager",
+      "Disk Management",
+      "System Information",
+      "Services"
+    ],
+    "note": "Device Manager manages hardware devices and their drivers."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
     "category": "windows-tools",
     "difficulty": "easy",
-    "question": "Which Windows tool is used to view application, security, setup, and system logs?",
+    "question": "Which Windows utility is used to create, delete, extend, shrink, and format partitions?",
+    "answer": "Disk Management",
+    "options": [
+      "Disk Management",
+      "Resource Monitor",
+      "Registry Editor",
+      "Task Scheduler"
+    ],
+    "note": "Disk Management is used to manage disks, partitions, and volumes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows tool is used to view application, system, and security logs?",
     "answer": "Event Viewer",
-    "options": ["Event Viewer", "Device Manager", "Disk Management", "Control Panel"],
-    "note": "Event Viewer is used to inspect Windows logs."
+    "options": [
+      "Event Viewer",
+      "Performance Monitor",
+      "Task Manager",
+      "Services"
+    ],
+    "note": "Event Viewer stores logs that help diagnose system problems."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
-    "category": "windows-commands",
+    "category": "windows-tools",
     "difficulty": "easy",
-    "question": "Which command displays IP address, subnet mask, gateway, and DNS configuration on Windows?",
+    "question": "Which Windows utility is used to start, stop, or configure background services?",
+    "answer": "Services",
+    "options": [
+      "Services",
+      "Task Scheduler",
+      "System Configuration",
+      "Computer Management"
+    ],
+    "note": "Services manages Windows services that run in the background."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows tool allows programs or scripts to run automatically at scheduled times?",
+    "answer": "Task Scheduler",
+    "options": [
+      "Task Scheduler",
+      "Task Manager",
+      "Performance Monitor",
+      "Resource Monitor"
+    ],
+    "note": "Task Scheduler automates tasks based on time or system events."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows utility allows you to end an unresponsive application?",
+    "answer": "Task Manager",
+    "options": [
+      "Task Manager",
+      "Resource Monitor",
+      "Performance Monitor",
+      "System Information"
+    ],
+    "note": "Task Manager can terminate applications and monitor running processes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "Which Windows tool provides detailed real-time information about CPU, memory, disk, and network usage by individual processes?",
+    "answer": "Resource Monitor",
+    "options": [
+      "Resource Monitor",
+      "Performance Monitor",
+      "Task Manager",
+      "System Information"
+    ],
+    "note": "Resource Monitor provides more detailed resource usage than Task Manager."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "Which Windows tool is primarily used to collect and graph long-term system performance statistics?",
+    "answer": "Performance Monitor",
+    "options": [
+      "Performance Monitor",
+      "Resource Monitor",
+      "Task Manager",
+      "Event Viewer"
+    ],
+    "note": "Performance Monitor tracks system performance over time using counters."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "Which Windows utility allows administrators to directly modify the Windows Registry?",
+    "answer": "Registry Editor",
+    "options": [
+      "Registry Editor",
+      "System Information",
+      "System Configuration",
+      "MMC"
+    ],
+    "note": "Registry Editor (regedit) is used to view and edit registry keys and values."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "Which Windows utility, launched with msconfig, is commonly used to troubleshoot startup problems and configure boot options?",
+    "answer": "System Configuration",
+    "options": [
+      "System Configuration",
+      "System Information",
+      "Registry Editor",
+      "Task Scheduler"
+    ],
+    "note": "System Configuration (msconfig) is used to troubleshoot startup and boot issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows utility, launched with msinfo32, displays detailed hardware and system information?",
+    "answer": "System Information",
+    "options": [
+      "System Information",
+      "Device Manager",
+      "Computer Management",
+      "Resource Monitor"
+    ],
+    "note": "System Information provides a comprehensive summary of hardware and software configuration."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "Which Windows tool allows administrators to create, modify, and manage local user and group accounts?",
+    "answer": "Local Users and Groups",
+    "options": [
+      "Local Users and Groups",
+      "Windows Security",
+      "Control Panel",
+      "Services"
+    ],
+    "note": "Local Users and Groups is available on Professional and higher editions of Windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows application provides access to antivirus, firewall, account protection, and device security settings?",
+    "answer": "Windows Security",
+    "options": [
+      "Windows Security",
+      "Windows Defender Firewall",
+      "Registry Editor",
+      "Settings"
+    ],
+    "note": "Windows Security is the central dashboard for built-in Windows security features."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows component is used to allow or block network traffic based on security rules?",
+    "answer": "Windows Defender Firewall",
+    "options": [
+      "Windows Defender Firewall",
+      "Windows Security",
+      "Device Manager",
+      "Services"
+    ],
+    "note": "Windows Defender Firewall filters inbound and outbound network traffic."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "What does MMC stand for?",
+    "answer": "Microsoft Management Console",
+    "options": [
+      "Microsoft Management Console",
+      "Microsoft Monitoring Center",
+      "Management Mode Configuration",
+      "Microsoft Machine Controller"
+    ],
+    "note": "MMC hosts administrative snap-ins such as Event Viewer and Device Manager."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of User Account Control (UAC)?",
+    "answer": "Prevent unauthorized administrative changes by prompting for permission",
+    "options": [
+      "Prevent unauthorized administrative changes by prompting for permission",
+      "Automatically install Windows updates",
+      "Manage user passwords",
+      "Encrypt the hard drive"
+    ],
+    "note": "UAC helps protect Windows by requiring confirmation before administrative actions are performed."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "question": "A user reports that Windows crashes every morning at exactly 8:00 AM. Which utility would you check first to determine if a scheduled task is causing the problem?",
+    "answer": "Task Scheduler",
+    "options": [
+      "Task Scheduler",
+      "Services",
+      "Task Manager",
+      "Registry Editor"
+    ],
+    "note": "Task Scheduler is used to automate programs and scripts at specific times or events."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command displays the files and folders in the current directory?",
+    "answer": "dir",
+    "options": [
+      "dir",
+      "cd",
+      "copy",
+      "md"
+    ],
+    "note": "The dir command lists the contents of the current directory."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command is used to change the current working directory?",
+    "answer": "cd",
+    "options": [
+      "cd",
+      "dir",
+      "md",
+      "copy"
+    ],
+    "note": "The cd command changes the current directory."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command creates a new directory?",
+    "answer": "md",
+    "options": [
+      "md",
+      "rd",
+      "copy",
+      "del"
+    ],
+    "note": "The md (or mkdir) command creates a new folder."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command removes an empty directory?",
+    "answer": "rd",
+    "options": [
+      "rd",
+      "md",
+      "copy",
+      "dir"
+    ],
+    "note": "The rd (or rmdir) command removes directories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command copies a single file from one location to another?",
+    "answer": "copy",
+    "options": [
+      "copy",
+      "xcopy",
+      "robocopy",
+      "move"
+    ],
+    "note": "The copy command copies one or more files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command is commonly used to copy folders and their contents?",
+    "answer": "xcopy",
+    "options": [
+      "xcopy",
+      "copy",
+      "del",
+      "dir"
+    ],
+    "note": "XCOPY copies directories and files, including subdirectories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command is Microsoft's recommended utility for copying large amounts of data while preserving permissions and restarting interrupted copies?",
+    "answer": "robocopy",
+    "options": [
+      "robocopy",
+      "copy",
+      "xcopy",
+      "diskpart"
+    ],
+    "note": "Robocopy is a robust file-copy utility commonly used by administrators."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command deletes one or more files?",
+    "answer": "del",
+    "options": [
+      "del",
+      "rd",
+      "copy",
+      "dir"
+    ],
+    "note": "The del command removes files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command prepares a disk or partition with a file system?",
+    "answer": "format",
+    "options": [
+      "format",
+      "diskpart",
+      "chkdsk",
+      "sfc"
+    ],
+    "note": "The format command creates a file system on a volume."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command checks a drive for file system errors and bad sectors?",
+    "answer": "chkdsk",
+    "options": [
+      "chkdsk",
+      "diskpart",
+      "format",
+      "sfc"
+    ],
+    "note": "CHKDSK scans and repairs file system errors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command-line utility is used to create, delete, and manage partitions?",
+    "answer": "diskpart",
+    "options": [
+      "diskpart",
+      "format",
+      "robocopy",
+      "gpupdate"
+    ],
+    "note": "DiskPart manages disks, partitions, and volumes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command scans and repairs protected Windows system files?",
+    "answer": "sfc",
+    "options": [
+      "sfc",
+      "dism",
+      "chkdsk",
+      "taskkill"
+    ],
+    "note": "System File Checker repairs corrupted Windows system files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command repairs the Windows image used by System File Checker?",
+    "answer": "dism",
+    "options": [
+      "dism",
+      "sfc",
+      "diskpart",
+      "gpresult"
+    ],
+    "note": "DISM repairs the Windows component store."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command immediately refreshes Group Policy settings?",
+    "answer": "gpupdate",
+    "options": [
+      "gpupdate",
+      "gpresult",
+      "hostname",
+      "net"
+    ],
+    "note": "GPUpdate forces Group Policy to refresh."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command displays the Resultant Set of Policy applied to a computer or user?",
+    "answer": "gpresult",
+    "options": [
+      "gpresult",
+      "gpupdate",
+      "hostname",
+      "netstat"
+    ],
+    "note": "GPResult shows which Group Policies are currently applied."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command displays the name of the local computer?",
+    "answer": "hostname",
+    "options": [
+      "hostname",
+      "ipconfig",
+      "ping",
+      "netstat"
+    ],
+    "note": "Hostname displays the computer's network name."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command displays IP addressing information for network adapters?",
     "answer": "ipconfig",
-    "options": ["ipconfig", "ping", "tracert", "netstat"],
-    "note": "ipconfig displays Windows IP configuration."
+    "options": [
+      "ipconfig",
+      "ping",
+      "netstat",
+      "nslookup"
+    ],
+    "note": "IPConfig displays IP configuration details."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
-    "category": "windows-commands",
-    "difficulty": "medium",
-    "question": "Which command checks protected Windows system files and repairs them when possible?",
-    "answer": "sfc /scannow",
-    "options": ["sfc /scannow", "ipconfig /release", "netstat -ano", "gpupdate /force"],
-    "note": "System File Checker scans and repairs protected system files."
-  },
-  {
-    "exam": "core-2",
-    "objective": "1.0 Operating Systems",
-    "category": "linux-macos",
+    "category": "windows-command-line",
     "difficulty": "easy",
-    "question": "Which Linux command lists files in a directory?",
+    "question": "Which command tests basic network connectivity to another host?",
+    "answer": "ping",
+    "options": [
+      "ping",
+      "tracert",
+      "pathping",
+      "netstat"
+    ],
+    "note": "Ping sends ICMP echo requests to test connectivity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command shows the path packets take to reach a destination?",
+    "answer": "tracert",
+    "options": [
+      "tracert",
+      "ping",
+      "netstat",
+      "nslookup"
+    ],
+    "note": "Tracert identifies each router along the network path."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command combines the functionality of ping and tracert to identify packet loss at each hop?",
+    "answer": "pathping",
+    "options": [
+      "pathping",
+      "tracert",
+      "ping",
+      "netstat"
+    ],
+    "note": "PathPing provides both route and packet-loss statistics."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command displays active network connections and listening ports?",
+    "answer": "netstat",
+    "options": [
+      "netstat",
+      "ipconfig",
+      "hostname",
+      "ping"
+    ],
+    "note": "Netstat displays TCP/UDP connections and listening ports."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command queries DNS servers to resolve hostnames?",
+    "answer": "nslookup",
+    "options": [
+      "nslookup",
+      "ipconfig",
+      "netstat",
+      "hostname"
+    ],
+    "note": "NSLookup is used for DNS troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command provides access to many networking and account management functions?",
+    "answer": "net",
+    "options": [
+      "net",
+      "hostname",
+      "shutdown",
+      "tasklist"
+    ],
+    "note": "The net command has many subcommands for network administration."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command is used to connect or disconnect shared network drives?",
+    "answer": "net use",
+    "options": [
+      "net use",
+      "net user",
+      "netstat",
+      "copy"
+    ],
+    "note": "Net use maps and disconnects shared folders and printers."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "question": "Which command manages local user accounts from the command line?",
+    "answer": "net user",
+    "options": [
+      "net user",
+      "net use",
+      "hostname",
+      "gpresult"
+    ],
+    "note": "Net user creates, modifies, and displays local user accounts."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command safely shuts down or restarts a Windows computer?",
+    "answer": "shutdown",
+    "options": [
+      "shutdown",
+      "taskkill",
+      "tasklist",
+      "net"
+    ],
+    "note": "Shutdown can power off, restart, or log off users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command displays the processes currently running on a Windows system?",
+    "answer": "tasklist",
+    "options": [
+      "tasklist",
+      "taskkill",
+      "netstat",
+      "hostname"
+    ],
+    "note": "Tasklist displays all running processes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "easy",
+    "question": "Which command terminates a running process from the command line?",
+    "answer": "taskkill",
+    "options": [
+      "taskkill",
+      "tasklist",
+      "shutdown",
+      "net user"
+    ],
+    "note": "Taskkill stops running processes by name or process ID."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "Which type of Windows installation removes the existing operating system and installs a fresh copy?",
+    "answer": "Clean Install",
+    "options": [
+      "Clean Install",
+      "In-place Upgrade",
+      "Repair Installation",
+      "Image Deployment"
+    ],
+    "note": "A clean install erases the existing Windows installation and starts fresh."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "Which installation method upgrades Windows while preserving applications, user files, and settings?",
+    "answer": "In-place Upgrade",
+    "options": [
+      "In-place Upgrade",
+      "Clean Install",
+      "Factory Reset",
+      "Image Deployment"
+    ],
+    "note": "An in-place upgrade installs a newer version of Windows without removing user data or applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "Which Windows installation method reinstalls Windows while attempting to keep user files, applications, and settings to repair a damaged operating system?",
+    "answer": "Repair Installation",
+    "options": [
+      "Repair Installation",
+      "Clean Install",
+      "Factory Reset",
+      "PXE Boot"
+    ],
+    "note": "A repair installation reinstalls Windows to fix system problems while preserving existing data and applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "Which deployment method uses a preconfigured operating system image to install Windows on multiple computers?",
+    "answer": "Image Deployment",
+    "options": [
+      "Image Deployment",
+      "Repair Installation",
+      "Factory Reset",
+      "In-place Upgrade"
+    ],
+    "note": "Image deployment allows administrators to deploy identical Windows installations efficiently."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a Windows recovery partition?",
+    "answer": "Store recovery tools used to restore or troubleshoot Windows",
+    "options": [
+      "Store recovery tools used to restore or troubleshoot Windows",
+      "Store user documents",
+      "Increase available RAM",
+      "Improve network performance"
+    ],
+    "note": "A recovery partition contains Windows Recovery Environment (WinRE) and recovery files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "Which Windows recovery option reinstalls Windows and can remove user files, applications, and settings?",
+    "answer": "Factory Reset",
+    "options": [
+      "Factory Reset",
+      "Repair Installation",
+      "In-place Upgrade",
+      "Image Deployment"
+    ],
+    "note": "Factory Reset returns Windows to a fresh state and offers options to keep or remove personal files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "What does PXE allow a computer to do?",
+    "answer": "Boot from a network server to install an operating system",
+    "options": [
+      "Boot from a network server to install an operating system",
+      "Encrypt the hard drive",
+      "Create disk partitions",
+      "Repair Windows registry errors"
+    ],
+    "note": "PXE (Preboot Execution Environment) enables network-based operating system deployment."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "When would a technician typically load third-party drivers during Windows installation?",
+    "answer": "When Windows cannot detect required storage or hardware controllers",
+    "options": [
+      "When Windows cannot detect required storage or hardware controllers",
+      "To activate Windows",
+      "To create user accounts",
+      "To enable Windows Update"
+    ],
+    "note": "Third-party drivers are often needed for RAID or specialized storage controllers that Windows does not include."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "A user's Windows installation is severely corrupted, but they need to keep their installed applications and personal files whenever possible. Which installation method should be tried first?",
+    "answer": "Repair Installation",
+    "options": [
+      "Repair Installation",
+      "Clean Install",
+      "Factory Reset",
+      "Image Deployment"
+    ],
+    "note": "A repair installation attempts to restore Windows while preserving applications, settings, and user data."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "An administrator needs to deploy the same Windows configuration to hundreds of identical computers. Which method is the most efficient?",
+    "answer": "Image Deployment",
+    "options": [
+      "Image Deployment",
+      "Clean Install",
+      "Repair Installation",
+      "Factory Reset"
+    ],
+    "note": "Image deployment provides a standardized installation across many systems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "medium",
+    "question": "A computer has no operating system installed and will receive Windows over the network from a deployment server. Which technology is being used?",
+    "answer": "PXE",
+    "options": [
+      "PXE",
+      "BitLocker",
+      "WinRE",
+      "UEFI Secure Boot"
+    ],
+    "note": "PXE allows computers to boot from the network and receive an operating system image."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-installation",
+    "difficulty": "easy",
+    "question": "Which installation method is most appropriate when replacing an old operating system with a completely fresh Windows installation?",
+    "answer": "Clean Install",
+    "options": [
+      "Clean Install",
+      "Repair Installation",
+      "In-place Upgrade",
+      "Factory Reset"
+    ],
+    "note": "A clean install removes the previous operating system and installs a fresh copy of Windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "Which Windows file system supports file permissions, encryption, compression, and large volumes?",
+    "answer": "NTFS",
+    "options": [
+      "NTFS",
+      "FAT32",
+      "exFAT",
+      "ReFS"
+    ],
+    "note": "NTFS is the default Windows file system and supports advanced security and storage features."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "Which file system has a maximum individual file size of 4 GB?",
+    "answer": "FAT32",
+    "options": [
+      "FAT32",
+      "NTFS",
+      "exFAT",
+      "ReFS"
+    ],
+    "note": "FAT32 cannot store files larger than 4 GB."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "Which file system is commonly used on USB flash drives because it supports large files and is compatible with multiple operating systems?",
+    "answer": "exFAT",
+    "options": [
+      "exFAT",
+      "FAT32",
+      "NTFS",
+      "ReFS"
+    ],
+    "note": "exFAT removes the 4 GB file size limit while maintaining broad compatibility."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "medium",
+    "question": "Which Microsoft file system is designed for data integrity and resiliency on large storage volumes?",
+    "answer": "ReFS",
+    "options": [
+      "ReFS",
+      "NTFS",
+      "FAT32",
+      "exFAT"
+    ],
+    "note": "ReFS (Resilient File System) focuses on data integrity and resilience rather than compatibility."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "Which file system is the default choice for installing Windows?",
+    "answer": "NTFS",
+    "options": [
+      "NTFS",
+      "FAT32",
+      "exFAT",
+      "ReFS"
+    ],
+    "note": "Windows installations require NTFS for the system partition."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "medium",
+    "question": "Which file system is the best choice for a flash drive that needs to store files larger than 4 GB while remaining compatible with Windows and macOS?",
+    "answer": "exFAT",
+    "options": [
+      "exFAT",
+      "FAT32",
+      "NTFS",
+      "ReFS"
+    ],
+    "note": "exFAT supports large files and offers excellent cross-platform compatibility."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "What do NTFS permissions control?",
+    "answer": "Who can access files and what actions they are allowed to perform",
+    "options": [
+      "Who can access files and what actions they are allowed to perform",
+      "How quickly files are copied",
+      "How much disk space is available",
+      "Whether Windows can boot"
+    ],
+    "note": "NTFS permissions allow administrators to control access to files and folders."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of NTFS file compression?",
+    "answer": "Reduce the amount of disk space used by files and folders",
+    "options": [
+      "Reduce the amount of disk space used by files and folders",
+      "Encrypt files",
+      "Improve internet download speeds",
+      "Repair damaged files"
+    ],
+    "note": "NTFS compression saves storage space by compressing data on the disk."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "easy",
+    "question": "What does Encrypting File System (EFS) provide?",
+    "answer": "File-level encryption to protect data from unauthorized access",
+    "options": [
+      "File-level encryption to protect data from unauthorized access",
+      "Disk partition management",
+      "File compression",
+      "Automatic file backups"
+    ],
+    "note": "EFS encrypts individual files and folders using NTFS."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "medium",
+    "question": "Which file system should be used if you need support for EFS and NTFS permissions?",
+    "answer": "NTFS",
+    "options": [
+      "NTFS",
+      "FAT32",
+      "exFAT",
+      "ReFS"
+    ],
+    "note": "EFS and NTFS permissions are features available only on NTFS."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "medium",
+    "question": "A technician needs to copy a 10 GB video file to a USB flash drive currently formatted as FAT32. What should they do?",
+    "answer": "Reformat the drive as exFAT or NTFS",
+    "options": [
+      "Reformat the drive as exFAT or NTFS",
+      "Compress the file using NTFS compression",
+      "Use EFS encryption",
+      "Enable NTFS permissions"
+    ],
+    "note": "FAT32 cannot store files larger than 4 GB, so another file system is required."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "file-systems",
+    "difficulty": "medium",
+    "question": "Which file system is primarily intended for servers and storage systems that require increased resilience against data corruption?",
+    "answer": "ReFS",
+    "options": [
+      "ReFS",
+      "NTFS",
+      "FAT32",
+      "exFAT"
+    ],
+    "note": "ReFS includes integrity features designed to detect and correct data corruption."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command lists the files and directories in the current directory?",
     "answer": "ls",
-    "options": ["ls", "pwd", "cd", "grep"],
-    "note": "ls lists directory contents."
+    "options": [
+      "ls",
+      "pwd",
+      "cd",
+      "grep"
+    ],
+    "note": "The ls command displays the contents of the current directory."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
-    "category": "linux-macos",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command displays the current working directory?",
+    "answer": "pwd",
+    "options": [
+      "pwd",
+      "ls",
+      "cd",
+      "df"
+    ],
+    "note": "pwd stands for 'print working directory.'"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command changes the current directory?",
+    "answer": "cd",
+    "options": [
+      "cd",
+      "pwd",
+      "ls",
+      "mkdir"
+    ],
+    "note": "The cd command changes the current working directory."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command creates a new directory?",
+    "answer": "mkdir",
+    "options": [
+      "mkdir",
+      "rm",
+      "mv",
+      "cp"
+    ],
+    "note": "mkdir creates one or more new directories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command deletes files or directories?",
+    "answer": "rm",
+    "options": [
+      "rm",
+      "cp",
+      "mv",
+      "ls"
+    ],
+    "note": "The rm command removes files and, with options, directories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command copies files or directories?",
+    "answer": "cp",
+    "options": [
+      "cp",
+      "mv",
+      "rm",
+      "grep"
+    ],
+    "note": "The cp command copies files and directories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command moves or renames files and directories?",
+    "answer": "mv",
+    "options": [
+      "mv",
+      "cp",
+      "rm",
+      "mkdir"
+    ],
+    "note": "The mv command moves files or renames them."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
     "difficulty": "medium",
-    "question": "Which Linux command changes file permissions?",
+    "question": "Which Linux command searches text for a specific pattern or keyword?",
+    "answer": "grep",
+    "options": [
+      "grep",
+      "ls",
+      "pwd",
+      "top"
+    ],
+    "note": "grep searches files or command output for matching text."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "Which Linux command changes file or directory permissions?",
     "answer": "chmod",
-    "options": ["chmod", "chown", "grep", "ps"],
-    "note": "chmod modifies file and directory permissions."
+    "options": [
+      "chmod",
+      "chown",
+      "sudo",
+      "cp"
+    ],
+    "note": "chmod modifies read, write, and execute permissions."
   },
   {
     "exam": "core-2",
     "objective": "1.0 Operating Systems",
-    "category": "install-upgrade",
+    "category": "linux",
     "difficulty": "medium",
-    "question": "Which installation method keeps user files and applications while replacing the operating system with a newer version?",
-    "answer": "In-place upgrade",
-    "options": ["Clean install", "In-place upgrade", "PXE boot only", "Factory reset"],
-    "note": "An in-place upgrade preserves supported apps, settings, and data."
+    "question": "Which Linux command changes the owner of a file or directory?",
+    "answer": "chown",
+    "options": [
+      "chown",
+      "chmod",
+      "sudo",
+      "mv"
+    ],
+    "note": "chown changes the ownership of files and directories."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command displays the currently running processes?",
+    "answer": "ps",
+    "options": [
+      "ps",
+      "top",
+      "df",
+      "grep"
+    ],
+    "note": "The ps command lists active processes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command allows a user to execute commands with administrative privileges?",
+    "answer": "sudo",
+    "options": [
+      "sudo",
+      "chmod",
+      "man",
+      "apt"
+    ],
+    "note": "sudo temporarily grants elevated privileges to authorized users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which package manager is commonly used on Debian and Ubuntu Linux distributions?",
+    "answer": "apt",
+    "options": [
+      "apt",
+      "yum",
+      "grep",
+      "sudo"
+    ],
+    "note": "APT is the default package manager for Debian-based distributions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which package manager is commonly associated with Red Hat Enterprise Linux and CentOS?",
+    "answer": "yum",
+    "options": [
+      "yum",
+      "apt",
+      "man",
+      "ps"
+    ],
+    "note": "YUM is the traditional package manager for Red Hat-based distributions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "easy",
+    "question": "Which Linux command displays the manual page for another command?",
+    "answer": "man",
+    "options": [
+      "man",
+      "grep",
+      "sudo",
+      "pwd"
+    ],
+    "note": "The man command displays built-in documentation for Linux commands."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "Which Linux command displays available and used disk space on mounted file systems?",
+    "answer": "df",
+    "options": [
+      "df",
+      "top",
+      "ps",
+      "ls"
+    ],
+    "note": "The df command reports disk space usage."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "Which Linux command provides a real-time view of running processes and system resource usage?",
+    "answer": "top",
+    "options": [
+      "top",
+      "ps",
+      "df",
+      "grep"
+    ],
+    "note": "The top command continuously updates process and resource usage information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "A user wants to search a log file for the word 'error.' Which command is the best choice?",
+    "answer": "grep",
+    "options": [
+      "grep",
+      "ls",
+      "pwd",
+      "df"
+    ],
+    "note": "grep searches text files and command output for matching strings."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "A Linux administrator needs to install software on an Ubuntu system. Which command would they most likely use?",
+    "answer": "apt",
+    "options": [
+      "apt",
+      "yum",
+      "chmod",
+      "top"
+    ],
+    "note": "APT is the package manager used by Ubuntu and other Debian-based distributions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "question": "A user receives a 'Permission denied' message when trying to run an administrative command. Which command should they use if they have administrative rights?",
+    "answer": "sudo",
+    "options": [
+      "sudo",
+      "chmod",
+      "chown",
+      "man"
+    ],
+    "note": "sudo allows authorized users to execute commands with elevated privileges."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS feature is used to browse files and folders?",
+    "answer": "Finder",
+    "options": [
+      "Finder",
+      "Dock",
+      "Terminal",
+      "Spotlight"
+    ],
+    "note": "Finder is the default file manager in macOS."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS feature provides quick access to frequently used applications and minimized windows?",
+    "answer": "Dock",
+    "options": [
+      "Dock",
+      "Finder",
+      "Mission Control",
+      "Spotlight"
+    ],
+    "note": "The Dock provides shortcuts to applications, folders, and minimized windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS feature is used to quickly search for files, applications, and settings?",
+    "answer": "Spotlight",
+    "options": [
+      "Spotlight",
+      "Finder",
+      "Dock",
+      "Keychain"
+    ],
+    "note": "Spotlight provides system-wide search capabilities."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS utility automatically backs up files and allows users to restore previous versions?",
+    "answer": "Time Machine",
+    "options": [
+      "Time Machine",
+      "Disk Utility",
+      "FileVault",
+      "Mission Control"
+    ],
+    "note": "Time Machine is Apple's built-in backup and recovery solution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS application provides a command-line interface?",
+    "answer": "Terminal",
+    "options": [
+      "Terminal",
+      "Finder",
+      "Spotlight",
+      "Keychain"
+    ],
+    "note": "Terminal provides access to the macOS command line."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS feature is used to close an unresponsive application?",
+    "answer": "Force Quit",
+    "options": [
+      "Force Quit",
+      "Mission Control",
+      "Time Machine",
+      "Disk Utility"
+    ],
+    "note": "Force Quit allows users to terminate applications that are no longer responding."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS utility is used to partition, format, repair, and manage storage devices?",
+    "answer": "Disk Utility",
+    "options": [
+      "Disk Utility",
+      "Finder",
+      "Terminal",
+      "Keychain"
+    ],
+    "note": "Disk Utility manages disks, partitions, and file systems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "Which macOS feature securely stores passwords, certificates, and encryption keys?",
+    "answer": "Keychain",
+    "options": [
+      "Keychain",
+      "FileVault",
+      "Finder",
+      "Mission Control"
+    ],
+    "note": "Keychain securely stores credentials and other sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS feature displays all open windows and virtual desktops?",
+    "answer": "Mission Control",
+    "options": [
+      "Mission Control",
+      "Dock",
+      "Finder",
+      "Spotlight"
+    ],
+    "note": "Mission Control provides an overview of open windows and Spaces."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "easy",
+    "question": "Which macOS security feature encrypts the startup disk?",
+    "answer": "FileVault",
+    "options": [
+      "FileVault",
+      "Keychain",
+      "Time Machine",
+      "Disk Utility"
+    ],
+    "note": "FileVault provides full-disk encryption to protect data if the Mac is lost or stolen."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "A user accidentally deleted an important document yesterday. Which macOS feature would most likely allow them to restore it?",
+    "answer": "Time Machine",
+    "options": [
+      "Time Machine",
+      "Disk Utility",
+      "Finder",
+      "Spotlight"
+    ],
+    "note": "Time Machine restores previous versions of files from backups."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "A user forgets the password to a website but had previously saved it on their Mac. Which feature should they use?",
+    "answer": "Keychain",
+    "options": [
+      "Keychain",
+      "FileVault",
+      "Mission Control",
+      "Terminal"
+    ],
+    "note": "Keychain stores saved passwords, certificates, and secure credentials."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "A Mac application is frozen and cannot be closed normally. Which feature should the user use?",
+    "answer": "Force Quit",
+    "options": [
+      "Force Quit",
+      "Mission Control",
+      "Finder",
+      "Spotlight"
+    ],
+    "note": "Force Quit immediately terminates an unresponsive application."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "A technician needs to erase and repartition a Mac's SSD before reinstalling macOS. Which utility should they use?",
+    "answer": "Disk Utility",
+    "options": [
+      "Disk Utility",
+      "Finder",
+      "Terminal",
+      "Time Machine"
+    ],
+    "note": "Disk Utility can erase, partition, format, and repair storage devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "macos",
+    "difficulty": "medium",
+    "question": "A user wants to quickly launch an application without browsing through folders. Which macOS feature is the fastest option?",
+    "answer": "Spotlight",
+    "options": [
+      "Spotlight",
+      "Finder",
+      "Mission Control",
+      "Disk Utility"
+    ],
+    "note": "Spotlight can instantly search for and launch applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "easy",
+    "question": "Which Windows feature allows users to run multiple operating systems simultaneously on the same computer?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "Windows Sandbox",
+      "Remote Assistance",
+      "Task Scheduler"
+    ],
+    "note": "Hyper-V is Microsoft's built-in virtualization platform."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "Which Windows editions include Hyper-V?",
+    "answer": "Windows Pro, Enterprise, and Education",
+    "options": [
+      "Windows Pro, Enterprise, and Education",
+      "Windows Home only",
+      "All Windows editions",
+      "Windows S Mode only"
+    ],
+    "note": "Hyper-V is not included with Windows Home."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "easy",
+    "question": "Which Windows feature provides a temporary isolated desktop environment for testing untrusted applications?",
+    "answer": "Windows Sandbox",
+    "options": [
+      "Windows Sandbox",
+      "Hyper-V",
+      "Remote Desktop",
+      "BitLocker"
+    ],
+    "note": "Windows Sandbox creates a disposable virtual environment."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "What happens to files created inside Windows Sandbox after it is closed?",
+    "answer": "They are permanently deleted",
+    "options": [
+      "They are permanently deleted",
+      "They are saved to Documents",
+      "They are copied to the host computer",
+      "They are moved to the Recycle Bin"
+    ],
+    "note": "Sandbox sessions are completely discarded when closed."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "A technician wants to safely test an unknown executable without affecting the host operating system. Which Windows feature should be used?",
+    "answer": "Windows Sandbox",
+    "options": [
+      "Windows Sandbox",
+      "Task Scheduler",
+      "Registry Editor",
+      "Device Manager"
+    ],
+    "note": "Windows Sandbox isolates applications from the host operating system."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "easy",
+    "question": "Which Windows feature allows a user to remotely control another Windows computer?",
+    "answer": "Remote Desktop",
+    "options": [
+      "Remote Desktop",
+      "Remote Assistance",
+      "Windows Sandbox",
+      "Quick Assist"
+    ],
+    "note": "Remote Desktop provides full remote access to another computer."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "Which Windows editions can function as a Remote Desktop host?",
+    "answer": "Windows Pro, Enterprise, and Education",
+    "options": [
+      "Windows Pro, Enterprise, and Education",
+      "Windows Home only",
+      "All editions",
+      "Windows Home and Pro"
+    ],
+    "note": "Windows Home can connect to Remote Desktop sessions but cannot host them."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "What is the primary purpose of Remote Assistance?",
+    "answer": "Allow another user to help troubleshoot a computer with the owner's permission",
+    "options": [
+      "Allow another user to help troubleshoot a computer with the owner's permission",
+      "Run virtual machines",
+      "Encrypt the hard drive",
+      "Schedule maintenance tasks"
+    ],
+    "note": "Remote Assistance is intended for interactive troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "A help desk technician needs to temporarily view and control a user's computer after receiving an invitation. Which feature should be used?",
+    "answer": "Remote Assistance",
+    "options": [
+      "Remote Assistance",
+      "Remote Desktop",
+      "Hyper-V",
+      "Windows Sandbox"
+    ],
+    "note": "Remote Assistance requires the user's permission."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of Windows Update?",
+    "answer": "Install security patches, bug fixes, and feature updates",
+    "options": [
+      "Install security patches, bug fixes, and feature updates",
+      "Defragment hard drives",
+      "Create backups",
+      "Manage local users"
+    ],
+    "note": "Windows Update keeps Windows secure and current."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "What is the difference between a feature update and a quality update?",
+    "answer": "Feature updates add new functionality while quality updates provide security and bug fixes",
+    "options": [
+      "Feature updates add new functionality while quality updates provide security and bug fixes",
+      "Feature updates only change drivers",
+      "Quality updates install applications",
+      "There is no difference"
+    ],
+    "note": "Feature updates typically occur less frequently than quality updates."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "easy",
+    "question": "Which Windows application is used to download applications from Microsoft?",
+    "answer": "Microsoft Store",
+    "options": [
+      "Microsoft Store",
+      "Control Panel",
+      "Device Manager",
+      "Registry Editor"
+    ],
+    "note": "The Microsoft Store distributes applications and games."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "Where can optional Windows features such as Hyper-V or Internet Information Services (IIS) be enabled or disabled?",
+    "answer": "Turn Windows features on or off",
+    "options": [
+      "Turn Windows features on or off",
+      "Task Manager",
+      "Device Manager",
+      "Windows Security"
+    ],
+    "note": "Optional Windows components are managed through the Windows Features dialog."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "A web developer needs to install Internet Information Services (IIS) on Windows. Where should they enable it?",
+    "answer": "Turn Windows features on or off",
+    "options": [
+      "Turn Windows features on or off",
+      "Task Scheduler",
+      "Device Manager",
+      "Disk Management"
+    ],
+    "note": "IIS is an optional Windows feature."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-features",
+    "difficulty": "medium",
+    "question": "A user needs to run multiple operating systems simultaneously for software testing. Which Windows feature is the best choice?",
+    "answer": "Hyper-V",
+    "options": [
+      "Hyper-V",
+      "Windows Sandbox",
+      "Remote Assistance",
+      "Windows Update"
+    ],
+    "note": "Hyper-V allows multiple virtual machines to run concurrently."
   }
 ]

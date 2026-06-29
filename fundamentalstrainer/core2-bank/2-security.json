@@ -2,51 +2,1756 @@
   {
     "exam": "core-2",
     "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "easy",
+    "question": "Which physical security control is used to secure doors, cabinets, or equipment from unauthorized access?",
+    "answer": "Locks",
+    "options": [
+      "Locks",
+      "Badges",
+      "Cameras",
+      "Mantraps"
+    ],
+    "note": "Locks physically prevent unauthorized access to rooms, cabinets, or devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "easy",
+    "question": "Which physical security control is commonly used to identify authorized employees?",
+    "answer": "Badges",
+    "options": [
+      "Badges",
+      "Locks",
+      "Cameras",
+      "Mantraps"
+    ],
+    "note": "Badges help verify identity and show whether a person is authorized to be in an area."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "easy",
+    "question": "Which physical security control is used to monitor and record activity in an area?",
+    "answer": "Cameras",
+    "options": [
+      "Cameras",
+      "Badges",
+      "Locks",
+      "Mantraps"
+    ],
+    "note": "Security cameras provide monitoring, recording, and deterrence."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "easy",
+    "question": "What is the purpose of access control in physical security?",
+    "answer": "To restrict entry to authorized people only",
+    "options": [
+      "To restrict entry to authorized people only",
+      "To scan for malware",
+      "To encrypt files",
+      "To update passwords automatically"
+    ],
+    "note": "Physical access control limits who can enter buildings, rooms, or secured areas."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "Which physical security control uses two doors to allow only one person through at a time?",
+    "answer": "Mantrap",
+    "options": [
+      "Mantrap",
+      "Badge",
+      "Camera",
+      "Cable lock"
+    ],
+    "note": "A mantrap uses two controlled doors to prevent tailgating and restrict unauthorized entry."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "An employee follows another employee through a secure door without scanning their own badge. What physical security issue is this?",
+    "answer": "Tailgating",
+    "options": [
+      "Tailgating",
+      "Shoulder surfing",
+      "Phishing",
+      "Dumpster diving"
+    ],
+    "note": "Tailgating occurs when an unauthorized person enters a secure area by following an authorized person."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "Which physical security control is best for reducing tailgating into a secure data center?",
+    "answer": "Mantrap",
+    "options": [
+      "Mantrap",
+      "Antivirus",
+      "FileVault",
+      "Firewall"
+    ],
+    "note": "A mantrap helps ensure only one authenticated person enters a secure area at a time."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "A company wants a visible deterrent that can also provide evidence after an incident. Which control should they install?",
+    "answer": "Cameras",
+    "options": [
+      "Cameras",
+      "EFS",
+      "Task Scheduler",
+      "Group Policy"
+    ],
+    "note": "Cameras can discourage unauthorized activity and provide recorded evidence."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "easy",
+    "question": "Which physical security device is commonly used to prevent a laptop from being easily stolen from a desk?",
+    "answer": "Cable lock",
+    "options": [
+      "Cable lock",
+      "Badge reader",
+      "Camera",
+      "Mantrap"
+    ],
+    "note": "A cable lock physically anchors a laptop or device to a desk or fixed object."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "A secure office requires employees to scan an ID card before entering. Which control is being used?",
+    "answer": "Badge access control",
+    "options": [
+      "Badge access control",
+      "Disk encryption",
+      "Software firewall",
+      "Antivirus scanning"
+    ],
+    "note": "Badge access control verifies identity before allowing physical entry."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
     "category": "authentication",
     "difficulty": "easy",
-    "question": "Which authentication factor is a fingerprint?",
-    "answer": "Something you are",
-    "options": ["Something you know", "Something you have", "Something you are", "Somewhere you are"],
-    "note": "Biometrics are something you are."
+    "question": "Which authentication method relies on a secret string of characters known only to the user?",
+    "answer": "Password",
+    "options": [
+      "Password",
+      "PIN",
+      "Biometric",
+      "Smart card"
+    ],
+    "note": "A password is a knowledge factor used to verify a user's identity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "What is a PIN primarily used for?",
+    "answer": "A short numeric code used for authentication",
+    "options": [
+      "A short numeric code used for authentication",
+      "A fingerprint scan",
+      "A hardware security token",
+      "A network protocol"
+    ],
+    "note": "A PIN is typically a short numeric authentication factor."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "Which authentication method uses a person's unique physical characteristics?",
+    "answer": "Biometrics",
+    "options": [
+      "Biometrics",
+      "Password",
+      "PIN",
+      "Token"
+    ],
+    "note": "Biometric authentication includes fingerprints, facial recognition, and iris scans."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "Which authentication method uses a physical card containing an embedded chip?",
+    "answer": "Smart card",
+    "options": [
+      "Smart card",
+      "Password",
+      "PIN",
+      "Biometric"
+    ],
+    "note": "Smart cards are possession factors commonly used in secure environments."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "Which authentication method commonly generates a one-time passcode every 30 to 60 seconds?",
+    "answer": "Token",
+    "options": [
+      "Token",
+      "Password",
+      "PIN",
+      "Smart card"
+    ],
+    "note": "Hardware and software tokens often generate time-based one-time passwords (TOTPs)."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "What does MFA stand for?",
+    "answer": "Multi-factor Authentication",
+    "options": [
+      "Multi-factor Authentication",
+      "Multiple File Access",
+      "Managed Firewall Access",
+      "Modern File Authentication"
+    ],
+    "note": "MFA requires two or more authentication factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "easy",
+    "question": "What does SSO stand for?",
+    "answer": "Single Sign-On",
+    "options": [
+      "Single Sign-On",
+      "Secure Sign-On",
+      "System Security Option",
+      "Shared System Object"
+    ],
+    "note": "SSO allows a user to authenticate once and access multiple applications."
   },
   {
     "exam": "core-2",
     "objective": "2.0 Security",
     "category": "authentication",
     "difficulty": "medium",
-    "question": "Which security control requires two or more different authentication factors?",
-    "answer": "MFA",
-    "options": ["MFA", "SSO", "NTFS", "UAC"],
-    "note": "Multi-factor authentication combines different factor types."
+    "question": "Which authentication factor does a fingerprint represent?",
+    "answer": "Something you are",
+    "options": [
+      "Something you are",
+      "Something you know",
+      "Something you have",
+      "Somewhere you are"
+    ],
+    "note": "Biometrics are categorized as 'something you are.'"
   },
   {
     "exam": "core-2",
     "objective": "2.0 Security",
-    "category": "permissions",
+    "category": "authentication",
     "difficulty": "medium",
-    "question": "Which Windows file system supports file permissions and EFS?",
-    "answer": "NTFS",
-    "options": ["FAT32", "exFAT", "NTFS", "ISO 9660"],
-    "note": "NTFS supports permissions, auditing, compression, and EFS."
+    "question": "Which authentication factor does a password represent?",
+    "answer": "Something you know",
+    "options": [
+      "Something you know",
+      "Something you have",
+      "Something you are",
+      "Somewhere you are"
+    ],
+    "note": "Passwords and PINs are knowledge-based authentication factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which authentication factor does a smart card represent?",
+    "answer": "Something you have",
+    "options": [
+      "Something you have",
+      "Something you know",
+      "Something you are",
+      "Somewhere you are"
+    ],
+    "note": "Smart cards and hardware tokens are possession factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which of the following is an example of multi-factor authentication?",
+    "answer": "Password and fingerprint",
+    "options": [
+      "Password and fingerprint",
+      "Password and PIN",
+      "Fingerprint and facial recognition",
+      "Password and security question"
+    ],
+    "note": "MFA requires two or more different authentication factors. Password + fingerprint combines knowledge and inherence."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "A company wants employees to sign in once and automatically access email, file shares, and internal web applications. Which technology should they implement?",
+    "answer": "Single Sign-On (SSO)",
+    "options": [
+      "Single Sign-On (SSO)",
+      "Multi-factor Authentication (MFA)",
+      "BitLocker",
+      "EFS"
+    ],
+    "note": "SSO reduces the number of times users must authenticate while improving convenience."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "A user enters a password and then approves a login request on their smartphone. What security feature is being used?",
+    "answer": "Multi-factor Authentication (MFA)",
+    "options": [
+      "Multi-factor Authentication (MFA)",
+      "Single Sign-On (SSO)",
+      "Biometric authentication",
+      "Password synchronization"
+    ],
+    "note": "Using both a password and a phone approval combines two different authentication factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which authentication method provides the greatest convenience by reducing the number of usernames and passwords a user must remember?",
+    "answer": "Single Sign-On (SSO)",
+    "options": [
+      "Single Sign-On (SSO)",
+      "Hardware token",
+      "PIN",
+      "Biometric authentication"
+    ],
+    "note": "SSO allows one successful authentication to provide access to multiple authorized systems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which authentication method generally provides stronger security than using only a password?",
+    "answer": "Multi-factor Authentication (MFA)",
+    "options": [
+      "Multi-factor Authentication (MFA)",
+      "Using a longer password only",
+      "Using only a PIN",
+      "Using only a security question"
+    ],
+    "note": "MFA significantly improves security by requiring multiple independent authentication factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware attaches itself to legitimate files and requires user action to spread?",
+    "answer": "Virus",
+    "options": [
+      "Virus",
+      "Worm",
+      "Trojan",
+      "Spyware"
+    ],
+    "note": "A virus infects other files and typically spreads when the infected file is executed."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware can spread across a network without user interaction?",
+    "answer": "Worm",
+    "options": [
+      "Worm",
+      "Virus",
+      "Trojan",
+      "Rootkit"
+    ],
+    "note": "A worm is self-replicating and spreads automatically across networks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware disguises itself as legitimate software?",
+    "answer": "Trojan",
+    "options": [
+      "Trojan",
+      "Virus",
+      "Spyware",
+      "Adware"
+    ],
+    "note": "A Trojan tricks users into installing malware by appearing to be legitimate software."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "Which type of malware is designed to hide itself and other malicious software from the operating system?",
+    "answer": "Rootkit",
+    "options": [
+      "Rootkit",
+      "Spyware",
+      "Virus",
+      "Ransomware"
+    ],
+    "note": "Rootkits provide attackers with hidden, privileged access to a system."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware secretly collects information about a user's activities?",
+    "answer": "Spyware",
+    "options": [
+      "Spyware",
+      "Adware",
+      "Virus",
+      "Worm"
+    ],
+    "note": "Spyware monitors user activity and sends collected information to an attacker."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware encrypts files and demands payment to restore access?",
+    "answer": "Ransomware",
+    "options": [
+      "Ransomware",
+      "Spyware",
+      "Trojan",
+      "Adware"
+    ],
+    "note": "Ransomware encrypts data and demands a ransom for the decryption key."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware primarily displays unwanted advertisements?",
+    "answer": "Adware",
+    "options": [
+      "Adware",
+      "Spyware",
+      "Virus",
+      "Rootkit"
+    ],
+    "note": "Adware generates unwanted advertisements and may track user behavior."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "Which type of malware remains inactive until a specific condition or event occurs?",
+    "answer": "Logic Bomb",
+    "options": [
+      "Logic Bomb",
+      "Trojan",
+      "Worm",
+      "Adware"
+    ],
+    "note": "A logic bomb activates only when a predefined trigger or condition is met."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "easy",
+    "question": "Which type of malware records a user's keystrokes to capture sensitive information such as passwords?",
+    "answer": "Keylogger",
+    "options": [
+      "Keylogger",
+      "Spyware",
+      "Virus",
+      "Adware"
+    ],
+    "note": "A keylogger captures keyboard input to steal credentials and other sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "A user installs a free game that appears legitimate, but it secretly installs malware. What type of malware is this?",
+    "answer": "Trojan",
+    "options": [
+      "Trojan",
+      "Virus",
+      "Worm",
+      "Rootkit"
+    ],
+    "note": "Trojans disguise themselves as legitimate software to trick users into installing them."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "A malware infection quickly spreads to every computer on a network without anyone opening an infected file. Which type of malware is responsible?",
+    "answer": "Worm",
+    "options": [
+      "Worm",
+      "Virus",
+      "Trojan",
+      "Logic Bomb"
+    ],
+    "note": "Worms spread automatically by exploiting network vulnerabilities."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "A user can no longer access their files because they have all been encrypted, and a payment demand appears on the screen. What type of malware is this?",
+    "answer": "Ransomware",
+    "options": [
+      "Ransomware",
+      "Spyware",
+      "Adware",
+      "Rootkit"
+    ],
+    "note": "Ransomware encrypts files and demands payment for the decryption key."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "A security analyst discovers malware that hides itself from antivirus software while providing attackers with administrative access. What type of malware is this?",
+    "answer": "Rootkit",
+    "options": [
+      "Rootkit",
+      "Trojan",
+      "Virus",
+      "Adware"
+    ],
+    "note": "Rootkits are specifically designed to conceal malicious activity and maintain privileged access."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "Which type of malware is most likely to steal usernames, passwords, and credit card numbers by recording keyboard input?",
+    "answer": "Keylogger",
+    "options": [
+      "Keylogger",
+      "Adware",
+      "Logic Bomb",
+      "Virus"
+    ],
+    "note": "Keyloggers record keystrokes to capture sensitive information entered by the user."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "An attacker programs malware to erase files if a specific employee account is deleted. Which type of malware is this?",
+    "answer": "Logic Bomb",
+    "options": [
+      "Logic Bomb",
+      "Virus",
+      "Spyware",
+      "Worm"
+    ],
+    "note": "A logic bomb executes only after a predefined event or condition occurs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "What is the first step in the CompTIA malware removal process?",
+    "answer": "Identify and research malware symptoms",
+    "options": [
+      "Identify and research malware symptoms",
+      "Quarantine the system",
+      "Enable System Restore",
+      "Schedule antivirus scans"
+    ],
+    "note": "Always identify and verify the symptoms before taking action."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "After identifying a malware infection, what should be done next?",
+    "answer": "Quarantine the infected system",
+    "options": [
+      "Quarantine the infected system",
+      "Enable System Restore",
+      "Educate the user",
+      "Run Windows Update"
+    ],
+    "note": "Quarantining the system helps prevent malware from spreading to other devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "Why is System Restore temporarily disabled during malware removal?",
+    "answer": "To prevent malware from being restored from restore points",
+    "options": [
+      "To prevent malware from being restored from restore points",
+      "To improve internet speed",
+      "To increase available disk space",
+      "To disable Windows Defender"
+    ],
+    "note": "Malware can be stored in restore points, so System Restore is temporarily disabled."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "Which step of the malware removal process involves removing the malicious software?",
+    "answer": "Remediate the infected system",
+    "options": [
+      "Remediate the infected system",
+      "Schedule scans",
+      "Enable System Restore",
+      "Educate the user"
+    ],
+    "note": "Remediation includes removing malware and verifying that the system is clean."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "After malware has been removed, what should be configured to help detect future infections?",
+    "answer": "Schedule antivirus scans and updates",
+    "options": [
+      "Schedule antivirus scans and updates",
+      "Disable Windows Defender",
+      "Delete System Restore",
+      "Remove user accounts"
+    ],
+    "note": "Regular scans and updates help prevent future malware infections."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "After confirming the system is clean, what should be done with System Restore?",
+    "answer": "Re-enable System Restore",
+    "options": [
+      "Re-enable System Restore",
+      "Delete all restore points permanently",
+      "Disable Windows Update",
+      "Reinstall Windows"
+    ],
+    "note": "Once the malware is removed, System Restore should be turned back on to create clean restore points."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "easy",
+    "question": "What is the final step in the CompTIA malware removal process?",
+    "answer": "Educate the user",
+    "options": [
+      "Educate the user",
+      "Quarantine the system",
+      "Disable System Restore",
+      "Run Disk Cleanup"
+    ],
+    "note": "Teaching users safe computing practices helps prevent future infections."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "medium",
+    "question": "A technician immediately begins deleting malware without first isolating the infected computer. Which malware removal step was skipped?",
+    "answer": "Quarantine the infected system",
+    "options": [
+      "Quarantine the infected system",
+      "Enable System Restore",
+      "Educate the user",
+      "Schedule scans"
+    ],
+    "note": "Quarantining helps prevent malware from spreading to other systems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "medium",
+    "question": "A technician finishes removing malware but forgets to turn System Restore back on. Which step of the process was missed?",
+    "answer": "Enable System Restore",
+    "options": [
+      "Enable System Restore",
+      "Quarantine the system",
+      "Identify symptoms",
+      "Schedule scans"
+    ],
+    "note": "System Restore should be re-enabled after the system has been successfully cleaned."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "medium",
+    "question": "A user repeatedly becomes infected by malware after downloading unknown email attachments. Which final malware removal step helps reduce the chance of this happening again?",
+    "answer": "Educate the user",
+    "options": [
+      "Educate the user",
+      "Disable System Restore",
+      "Quarantine the computer",
+      "Run CHKDSK"
+    ],
+    "note": "User education is the final step and is critical for preventing future infections."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "medium",
+    "question": "Which of the following is the correct order for the CompTIA malware removal process?",
+    "answer": "Identify symptoms → Quarantine → Disable Restore → Remediate → Schedule scans → Enable Restore → Educate user",
+    "options": [
+      "Identify symptoms → Quarantine → Disable Restore → Remediate → Schedule scans → Enable Restore → Educate user",
+      "Quarantine → Identify symptoms → Remediate → Enable Restore → Schedule scans → Educate user",
+      "Disable Restore → Quarantine → Identify symptoms → Remediate → Educate user → Enable Restore",
+      "Identify symptoms → Remediate → Quarantine → Schedule scans → Enable Restore → Educate user"
+    ],
+    "note": "Knowing the correct malware removal order is a common CompTIA A+ exam objective."
   },
   {
     "exam": "core-2",
     "objective": "2.0 Security",
     "category": "encryption",
     "difficulty": "easy",
-    "question": "Which Windows feature provides full-volume encryption?",
+    "question": "Which Windows feature provides full-disk encryption?",
     "answer": "BitLocker",
-    "options": ["BitLocker", "EFS", "UAC", "NTFS"],
-    "note": "BitLocker encrypts full volumes."
+    "options": [
+      "BitLocker",
+      "EFS",
+      "TPM",
+      "Secure Boot"
+    ],
+    "note": "BitLocker encrypts an entire drive to protect data if the device is lost or stolen."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "easy",
+    "question": "Which Windows feature encrypts individual files and folders rather than an entire drive?",
+    "answer": "EFS",
+    "options": [
+      "EFS",
+      "BitLocker",
+      "TPM",
+      "Recovery Key"
+    ],
+    "note": "Encrypting File System (EFS) provides file-level encryption on NTFS volumes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "easy",
+    "question": "What does TPM stand for?",
+    "answer": "Trusted Platform Module",
+    "options": [
+      "Trusted Platform Module",
+      "Trusted Protection Manager",
+      "Total Protection Module",
+      "Transport Platform Manager"
+    ],
+    "note": "A TPM is a hardware security chip that securely stores encryption keys and other cryptographic information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of Secure Boot?",
+    "answer": "Prevent unauthorized or malicious software from loading during startup",
+    "options": [
+      "Prevent unauthorized or malicious software from loading during startup",
+      "Encrypt the hard drive",
+      "Back up user files",
+      "Remove malware automatically"
+    ],
+    "note": "Secure Boot verifies that trusted, digitally signed boot components are loaded during startup."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "easy",
+    "question": "What is a BitLocker recovery key used for?",
+    "answer": "To unlock an encrypted drive if normal authentication fails",
+    "options": [
+      "To unlock an encrypted drive if normal authentication fails",
+      "To install Windows",
+      "To update the BIOS",
+      "To reset a user password"
+    ],
+    "note": "The BitLocker recovery key provides access to encrypted data when BitLocker cannot unlock the drive normally."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Which Windows security feature commonly works with a TPM to automatically unlock an encrypted operating system drive?",
+    "answer": "BitLocker",
+    "options": [
+      "BitLocker",
+      "EFS",
+      "Windows Defender Firewall",
+      "Secure Boot"
+    ],
+    "note": "BitLocker commonly stores encryption keys securely in the TPM."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "A user wants to encrypt only one confidential spreadsheet instead of the entire drive. Which Windows feature should they use?",
+    "answer": "EFS",
+    "options": [
+      "EFS",
+      "BitLocker",
+      "Secure Boot",
+      "TPM"
+    ],
+    "note": "EFS provides encryption at the file and folder level."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Which hardware component securely stores encryption keys and other cryptographic information?",
+    "answer": "TPM",
+    "options": [
+      "TPM",
+      "UEFI",
+      "CPU",
+      "SSD"
+    ],
+    "note": "The Trusted Platform Module is designed to securely protect encryption keys from software attacks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "A technician replaces the motherboard in a BitLocker-protected computer, and Windows now requests a recovery key during startup. Why?",
+    "answer": "The TPM detected a significant hardware change",
+    "options": [
+      "The TPM detected a significant hardware change",
+      "The hard drive was reformatted",
+      "Windows Defender was disabled",
+      "The computer was disconnected from the internet"
+    ],
+    "note": "Major hardware changes can cause the TPM to require the BitLocker recovery key before unlocking the drive."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Which security technology helps protect computers from bootkits and rootkits by verifying trusted boot components?",
+    "answer": "Secure Boot",
+    "options": [
+      "Secure Boot",
+      "BitLocker",
+      "EFS",
+      "Windows Defender Firewall"
+    ],
+    "note": "Secure Boot validates the boot process before the operating system loads."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "A laptop containing sensitive company data is stolen. Which Windows feature provides the best protection for all of the data stored on the drive?",
+    "answer": "BitLocker",
+    "options": [
+      "BitLocker",
+      "EFS",
+      "NTFS Permissions",
+      "Windows Defender Firewall"
+    ],
+    "note": "BitLocker encrypts the entire drive, protecting all stored data if the device is lost or stolen."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Why should BitLocker recovery keys be backed up and stored securely?",
+    "answer": "They may be required to regain access to encrypted data",
+    "options": [
+      "They may be required to regain access to encrypted data",
+      "They are needed to install antivirus software",
+      "They improve computer performance",
+      "They automatically update Windows"
+    ],
+    "note": "Without a recovery key, access to BitLocker-encrypted data may be permanently lost if normal unlocking methods fail."
   },
   {
     "exam": "core-2",
     "objective": "2.0 Security",
     "category": "wireless-security",
     "difficulty": "easy",
-    "question": "Which Wi-Fi security standard is stronger than WPA2 and uses SAE for personal networks?",
+    "question": "Which wireless security standard is widely used on modern Wi-Fi networks and uses AES encryption?",
+    "answer": "WPA2",
+    "options": [
+      "WPA2",
+      "WEP",
+      "Open",
+      "TKIP"
+    ],
+    "note": "WPA2 replaced WPA and WEP as the standard for secure wireless networking and uses AES encryption."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "easy",
+    "question": "Which wireless security standard provides stronger protection against password attacks than WPA2?",
     "answer": "WPA3",
-    "options": ["WEP", "WPA", "WPA2", "WPA3"],
-    "note": "WPA3-Personal uses SAE and is stronger than WPA2-Personal."
+    "options": [
+      "WPA3",
+      "WPA2",
+      "WEP",
+      "Open"
+    ],
+    "note": "WPA3 improves wireless security by using stronger authentication methods such as SAE."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "What does SAE stand for in WPA3?",
+    "answer": "Simultaneous Authentication of Equals",
+    "options": [
+      "Simultaneous Authentication of Equals",
+      "Secure Authentication Encryption",
+      "System Access Encryption",
+      "Secure Access Exchange"
+    ],
+    "note": "SAE replaces the WPA2 pre-shared key handshake and provides better resistance to offline password attacks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "easy",
+    "question": "Which encryption algorithm is used with WPA2 and WPA3 to protect wireless data?",
+    "answer": "AES",
+    "options": [
+      "AES",
+      "DES",
+      "MD5",
+      "SHA-1"
+    ],
+    "note": "AES (Advanced Encryption Standard) is the encryption algorithm used by modern Wi-Fi security standards."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "easy",
+    "question": "Which type of wireless authentication is commonly used by businesses and requires users to authenticate with a centralized server such as RADIUS?",
+    "answer": "Enterprise Authentication",
+    "options": [
+      "Enterprise Authentication",
+      "Personal Authentication",
+      "Open Authentication",
+      "Guest Authentication"
+    ],
+    "note": "Enterprise authentication uses 802.1X with a RADIUS server to authenticate individual users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which wireless security standard introduced SAE to replace the traditional pre-shared key authentication process?",
+    "answer": "WPA3",
+    "options": [
+      "WPA3",
+      "WPA2",
+      "WEP",
+      "Open"
+    ],
+    "note": "WPA3 replaces the WPA2 PSK handshake with SAE for stronger authentication."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which wireless security feature helps protect against offline password guessing attacks?",
+    "answer": "SAE",
+    "options": [
+      "SAE",
+      "AES",
+      "SSID Broadcast",
+      "MAC Filtering"
+    ],
+    "note": "SAE significantly improves resistance to offline dictionary and brute-force attacks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "A company wants each employee to authenticate with their own username and password when connecting to Wi-Fi instead of sharing one wireless password. Which solution should they implement?",
+    "answer": "Enterprise Authentication",
+    "options": [
+      "Enterprise Authentication",
+      "WPA2-Personal",
+      "Hidden SSID",
+      "MAC Filtering"
+    ],
+    "note": "Enterprise authentication provides unique user credentials through 802.1X and a RADIUS server."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "A home user purchases a new wireless router that supports WPA3. Which security mode should they choose for the strongest wireless protection?",
+    "answer": "WPA3",
+    "options": [
+      "WPA3",
+      "WPA2",
+      "WEP",
+      "Open"
+    ],
+    "note": "When all devices support it, WPA3 provides the strongest available Wi-Fi security."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which combination correctly matches a modern Wi-Fi security standard with its encryption algorithm?",
+    "answer": "WPA2/WPA3 with AES",
+    "options": [
+      "WPA2/WPA3 with AES",
+      "WPA2 with DES",
+      "WPA3 with MD5",
+      "WEP with AES"
+    ],
+    "note": "Both WPA2 and WPA3 use AES encryption to protect wireless communications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which wireless security standard is recommended by CompTIA for new Wi-Fi deployments whenever all client devices support it?",
+    "answer": "WPA3",
+    "options": [
+      "WPA3",
+      "WPA2",
+      "WPA",
+      "WEP"
+    ],
+    "note": "WPA3 is the recommended wireless security standard because it provides stronger authentication and improved protection against attacks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of AES in a wireless network?",
+    "answer": "Encrypt wireless data",
+    "options": [
+      "Encrypt wireless data",
+      "Assign IP addresses",
+      "Authenticate users",
+      "Broadcast the SSID"
+    ],
+    "note": "AES protects the confidentiality of wireless traffic by encrypting the transmitted data."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "easy",
+    "question": "What does HTTPS provide that HTTP does not?",
+    "answer": "Encrypted communication between the browser and the web server",
+    "options": [
+      "Encrypted communication between the browser and the web server",
+      "Faster website loading",
+      "Automatic malware removal",
+      "Anonymous web browsing"
+    ],
+    "note": "HTTPS uses TLS to encrypt data transmitted between the browser and the web server."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a digital certificate on a website?",
+    "answer": "Verify the identity of the website and support encrypted communication",
+    "options": [
+      "Verify the identity of the website and support encrypted communication",
+      "Block advertisements",
+      "Store user passwords",
+      "Increase internet speed"
+    ],
+    "note": "Digital certificates verify a website's identity and enable HTTPS encryption."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a browser pop-up blocker?",
+    "answer": "Prevent unwanted pop-up windows from opening",
+    "options": [
+      "Prevent unwanted pop-up windows from opening",
+      "Encrypt internet traffic",
+      "Scan files for malware",
+      "Block phishing emails"
+    ],
+    "note": "Pop-up blockers reduce unwanted advertisements and help prevent malicious pop-up windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a password manager?",
+    "answer": "Securely store and generate passwords",
+    "options": [
+      "Securely store and generate passwords",
+      "Encrypt the hard drive",
+      "Block advertisements",
+      "Delete browser history"
+    ],
+    "note": "Password managers securely store credentials and can generate strong, unique passwords."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of Privacy Mode (Incognito/InPrivate browsing)?",
+    "answer": "Prevent local browsing history, cookies, and temporary files from being saved",
+    "options": [
+      "Prevent local browsing history, cookies, and temporary files from being saved",
+      "Hide internet activity from the ISP",
+      "Encrypt internet traffic",
+      "Protect against malware"
+    ],
+    "note": "Privacy Mode limits data stored on the local device but does not make browsing anonymous."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "A user notices a padlock icon next to a website's address. What does this indicate?",
+    "answer": "The website is using HTTPS with a valid certificate",
+    "options": [
+      "The website is using HTTPS with a valid certificate",
+      "The website is free of malware",
+      "The website cannot be hacked",
+      "The website is hosted by Microsoft"
+    ],
+    "note": "The padlock indicates an encrypted HTTPS connection and that the certificate is trusted."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "A browser displays a warning that a website's certificate is invalid. What is the safest action?",
+    "answer": "Do not continue to the website until the issue is verified",
+    "options": [
+      "Do not continue to the website until the issue is verified",
+      "Ignore the warning and continue",
+      "Disable HTTPS",
+      "Clear the browser cache"
+    ],
+    "note": "An invalid certificate could indicate a misconfiguration or a potential man-in-the-middle attack."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "A user wants to create a different strong password for every website without memorizing each one. What is the best solution?",
+    "answer": "Use a password manager",
+    "options": [
+      "Use a password manager",
+      "Reuse the same password everywhere",
+      "Store passwords in a text file",
+      "Disable browser security warnings"
+    ],
+    "note": "Password managers generate and securely store unique passwords for every account."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "Which browser feature helps reduce malicious advertisements that automatically open new browser windows?",
+    "answer": "Pop-up blocker",
+    "options": [
+      "Pop-up blocker",
+      "Password manager",
+      "Privacy Mode",
+      "HTTPS"
+    ],
+    "note": "Pop-up blockers help prevent unwanted and potentially malicious pop-up windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "Which statement about Privacy Mode is true?",
+    "answer": "It prevents local browsing history from being saved but does not hide activity from websites or the ISP",
+    "options": [
+      "It prevents local browsing history from being saved but does not hide activity from websites or the ISP",
+      "It completely anonymizes internet traffic",
+      "It encrypts all internet communications",
+      "It prevents malware infections"
+    ],
+    "note": "Privacy Mode only limits information stored locally on the device; it does not provide anonymity online."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "Which browser security feature protects data transmitted between the user's browser and a website?",
+    "answer": "HTTPS",
+    "options": [
+      "HTTPS",
+      "Privacy Mode",
+      "Pop-up blocker",
+      "Password manager"
+    ],
+    "note": "HTTPS encrypts data in transit using TLS."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "Which technology verifies that you are communicating with the legitimate website rather than an impostor?",
+    "answer": "Digital certificate",
+    "options": [
+      "Digital certificate",
+      "Pop-up blocker",
+      "Privacy Mode",
+      "Browser cache"
+    ],
+    "note": "Digital certificates verify a website's identity and are used to establish trusted HTTPS connections."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which social engineering attack uses fraudulent emails to trick users into revealing sensitive information?",
+    "answer": "Phishing",
+    "options": [
+      "Phishing",
+      "Smishing",
+      "Vishing",
+      "Shoulder Surfing"
+    ],
+    "note": "Phishing uses deceptive emails to steal credentials or other sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which type of phishing attack specifically targets a particular individual or organization?",
+    "answer": "Spear Phishing",
+    "options": [
+      "Spear Phishing",
+      "Whaling",
+      "Smishing",
+      "Phishing"
+    ],
+    "note": "Spear phishing is a highly targeted phishing attack aimed at a specific victim."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which type of phishing attack specifically targets executives or other high-profile individuals?",
+    "answer": "Whaling",
+    "options": [
+      "Whaling",
+      "Phishing",
+      "Smishing",
+      "Tailgating"
+    ],
+    "note": "Whaling is a form of spear phishing directed at executives and other senior personnel."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which social engineering attack uses text messages to deceive victims?",
+    "answer": "Smishing",
+    "options": [
+      "Smishing",
+      "Phishing",
+      "Vishing",
+      "Dumpster Diving"
+    ],
+    "note": "Smishing is phishing conducted through SMS or text messages."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which social engineering attack uses phone calls to trick victims into revealing information?",
+    "answer": "Vishing",
+    "options": [
+      "Vishing",
+      "Smishing",
+      "Phishing",
+      "Impersonation"
+    ],
+    "note": "Vishing is phishing conducted through voice calls."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "What is shoulder surfing?",
+    "answer": "Watching someone enter sensitive information such as passwords or PINs",
+    "options": [
+      "Watching someone enter sensitive information such as passwords or PINs",
+      "Following someone through a secure door",
+      "Searching trash for sensitive information",
+      "Pretending to be someone else"
+    ],
+    "note": "Shoulder surfing involves observing someone to steal confidential information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "What is tailgating?",
+    "answer": "Following an authorized person into a secure area without authorization",
+    "options": [
+      "Following an authorized person into a secure area without authorization",
+      "Watching someone type a password",
+      "Sending phishing emails",
+      "Searching through trash"
+    ],
+    "note": "Tailgating occurs when an unauthorized person gains physical access by following an authorized user."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "What is dumpster diving?",
+    "answer": "Searching discarded materials for sensitive information",
+    "options": [
+      "Searching discarded materials for sensitive information",
+      "Watching someone enter a password",
+      "Pretending to be a company employee",
+      "Sending malicious text messages"
+    ],
+    "note": "Dumpster diving involves retrieving confidential information from discarded documents or devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "easy",
+    "question": "Which social engineering technique involves pretending to be someone else to gain trust or access?",
+    "answer": "Impersonation",
+    "options": [
+      "Impersonation",
+      "Tailgating",
+      "Shoulder Surfing",
+      "Whaling"
+    ],
+    "note": "Impersonation involves pretending to be a trusted person or authority."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "A company CEO receives a fraudulent email requesting an urgent wire transfer. What type of attack is this?",
+    "answer": "Whaling",
+    "options": [
+      "Whaling",
+      "Spear Phishing",
+      "Smishing",
+      "Vishing"
+    ],
+    "note": "Whaling specifically targets executives and other high-value individuals."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "A user receives a text message claiming their bank account has been locked and asking them to click a link. What type of attack is this?",
+    "answer": "Smishing",
+    "options": [
+      "Smishing",
+      "Phishing",
+      "Vishing",
+      "Impersonation"
+    ],
+    "note": "Smishing uses SMS messages to trick victims into revealing information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "A caller claims to be from the company's IT department and asks an employee to provide their password. Which social engineering technique is being used?",
+    "answer": "Impersonation",
+    "options": [
+      "Impersonation",
+      "Dumpster Diving",
+      "Tailgating",
+      "Shoulder Surfing"
+    ],
+    "note": "The attacker is pretending to be a trusted employee to obtain sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "An attacker carefully researches a company's accounting manager before sending a personalized fraudulent email. What type of attack is this?",
+    "answer": "Spear Phishing",
+    "options": [
+      "Spear Phishing",
+      "Phishing",
+      "Whaling",
+      "Smishing"
+    ],
+    "note": "Spear phishing uses information about a specific target to increase the likelihood of success."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "An attacker searches a company's trash bin and finds printed customer records containing sensitive information. Which attack was performed?",
+    "answer": "Dumpster Diving",
+    "options": [
+      "Dumpster Diving",
+      "Tailgating",
+      "Shoulder Surfing",
+      "Vishing"
+    ],
+    "note": "Dumpster diving targets improperly discarded sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "A visitor waits for an employee to unlock a secure door and quickly follows them inside without scanning a badge. What attack is this?",
+    "answer": "Tailgating",
+    "options": [
+      "Tailgating",
+      "Shoulder Surfing",
+      "Impersonation",
+      "Phishing"
+    ],
+    "note": "Tailgating is a physical security attack where an unauthorized person follows an authorized individual into a restricted area."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "physical-security",
+    "difficulty": "medium",
+    "question": "Which physical security control is designed to prevent theft of desktop computers in public areas?",
+    "answer": "Cable lock",
+    "options": [
+      "Cable lock",
+      "Badge reader",
+      "Mantrap",
+      "Biometric scanner"
+    ],
+    "note": "Cable locks secure equipment to desks or other fixed objects."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which authentication factor does a one-time password generated by an authenticator application represent?",
+    "answer": "Something you have",
+    "options": [
+      "Something you have",
+      "Something you know",
+      "Something you are",
+      "Somewhere you are"
+    ],
+    "note": "Authenticator applications running on a registered device are considered a possession factor."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "question": "Which combination does NOT qualify as multi-factor authentication?",
+    "answer": "Password and PIN",
+    "options": [
+      "Password and PIN",
+      "Password and fingerprint",
+      "Password and smart card",
+      "Fingerprint and security token"
+    ],
+    "note": "A password and PIN are both knowledge factors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "Which malware type is most likely to display unwanted advertisements but usually does not encrypt files?",
+    "answer": "Adware",
+    "options": [
+      "Adware",
+      "Ransomware",
+      "Rootkit",
+      "Keylogger"
+    ],
+    "note": "Adware primarily generates advertisements and may track browsing activity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "malware",
+    "difficulty": "medium",
+    "question": "Which malware is specifically designed to remain hidden while allowing continued unauthorized access to a system?",
+    "answer": "Rootkit",
+    "options": [
+      "Rootkit",
+      "Virus",
+      "Trojan",
+      "Logic Bomb"
+    ],
+    "note": "Rootkits conceal themselves and other malware while maintaining privileged access."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Which Windows encryption technology protects an entire drive rather than individual files?",
+    "answer": "BitLocker",
+    "options": [
+      "BitLocker",
+      "EFS",
+      "NTFS Permissions",
+      "Secure Boot"
+    ],
+    "note": "BitLocker provides full-volume encryption."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "question": "Which Windows encryption technology requires the drive to be formatted with NTFS?",
+    "answer": "EFS",
+    "options": [
+      "EFS",
+      "BitLocker",
+      "TPM",
+      "Secure Boot"
+    ],
+    "note": "Encrypting File System is only available on NTFS volumes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which wireless security standard should be avoided because it has well-known security vulnerabilities?",
+    "answer": "WEP",
+    "options": [
+      "WEP",
+      "WPA2",
+      "WPA3",
+      "Enterprise Authentication"
+    ],
+    "note": "WEP is considered insecure and should no longer be used."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "wireless-security",
+    "difficulty": "medium",
+    "question": "Which wireless authentication method is typically used in home Wi-Fi networks?",
+    "answer": "Personal Authentication",
+    "options": [
+      "Personal Authentication",
+      "Enterprise Authentication",
+      "RADIUS Authentication",
+      "802.1X Authentication"
+    ],
+    "note": "Personal mode uses a shared pre-shared key rather than individual user accounts."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "Which browser feature can automatically create strong, unique passwords for websites?",
+    "answer": "Password Manager",
+    "options": [
+      "Password Manager",
+      "HTTPS",
+      "Pop-up Blocker",
+      "Privacy Mode"
+    ],
+    "note": "Modern password managers can generate secure passwords."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "What is the primary purpose of a Certificate Authority (CA)?",
+    "answer": "Issue and validate digital certificates",
+    "options": [
+      "Issue and validate digital certificates",
+      "Encrypt hard drives",
+      "Filter network traffic",
+      "Manage passwords"
+    ],
+    "note": "Certificate Authorities verify identities before issuing digital certificates."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "An attacker sends thousands of identical fraudulent emails hoping a few recipients respond. What type of attack is this?",
+    "answer": "Phishing",
+    "options": [
+      "Phishing",
+      "Spear Phishing",
+      "Whaling",
+      "Smishing"
+    ],
+    "note": "Standard phishing targets a large number of victims with the same message."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "An attacker watches an employee enter their PIN into a secure door keypad. What attack is occurring?",
+    "answer": "Shoulder Surfing",
+    "options": [
+      "Shoulder Surfing",
+      "Tailgating",
+      "Dumpster Diving",
+      "Impersonation"
+    ],
+    "note": "Shoulder surfing involves visually observing sensitive information."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "question": "A caller claims to be from a software vendor and pressures a user to install remote access software immediately. Which social engineering tactic is primarily being used?",
+    "answer": "Impersonation",
+    "options": [
+      "Impersonation",
+      "Smishing",
+      "Whaling",
+      "Shoulder Surfing"
+    ],
+    "note": "The attacker is pretending to be a trusted representative."
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "browser-security",
+    "difficulty": "medium",
+    "question": "A website redirects users to a page that asks them to ignore a browser certificate warning. What should the user do?",
+    "answer": "Leave the website and verify its legitimacy",
+    "options": [
+      "Leave the website and verify its legitimacy",
+      "Ignore the warning",
+      "Disable HTTPS",
+      "Clear browser cookies"
+    ],
+    "note": "Certificate warnings should never be ignored without verification."
   }
 ]

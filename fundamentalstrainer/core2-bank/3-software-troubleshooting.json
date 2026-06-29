@@ -2,21 +2,1351 @@
   {
     "exam": "core-2",
     "objective": "3.0 Software Troubleshooting",
-    "category": "windows-troubleshooting",
+    "category": "windows-problems",
     "difficulty": "easy",
-    "question": "Which Windows startup mode loads minimal drivers and services for troubleshooting?",
-    "answer": "Safe Mode",
-    "options": ["Safe Mode", "Hibernate", "Sleep", "Normal startup"],
-    "note": "Safe Mode starts Windows with a minimal set of drivers and services."
+    "question": "What does a Blue Screen of Death (BSOD) usually indicate?",
+    "answer": "A critical system error that forces Windows to stop",
+    "options": [
+      "A critical system error that forces Windows to stop",
+      "A failed Windows Update",
+      "A low disk space warning",
+      "A disabled network adapter"
+    ],
+    "note": "A BSOD occurs when Windows encounters a fatal error it cannot recover from safely."
   },
   {
     "exam": "core-2",
     "objective": "3.0 Software Troubleshooting",
-    "category": "application-troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "Which component is most commonly responsible for a BSOD after new hardware is installed?",
+    "answer": "A faulty or incompatible driver",
+    "options": [
+      "A faulty or incompatible driver",
+      "A web browser",
+      "A desktop wallpaper",
+      "A printer cable"
+    ],
+    "note": "Device drivers operate in kernel mode and are a common cause of BSODs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "A computer displays 'Operating System Not Found' during startup. What type of problem is this?",
+    "answer": "Boot failure",
+    "options": [
+      "Boot failure",
+      "Profile problem",
+      "Slow performance",
+      "DLL error"
+    ],
+    "note": "This message indicates Windows cannot find a bootable operating system."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "Which Windows recovery tool can automatically repair common boot problems?",
+    "answer": "Startup Repair",
+    "options": [
+      "Startup Repair",
+      "Disk Cleanup",
+      "Task Scheduler",
+      "Performance Monitor"
+    ],
+    "note": "Startup Repair diagnoses and fixes many common boot issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "A computer takes several minutes to become usable after logging in. What is the most likely cause?",
+    "answer": "Too many startup programs",
+    "options": [
+      "Too many startup programs",
+      "A disconnected monitor",
+      "An incorrect screen resolution",
+      "A disabled firewall"
+    ],
+    "note": "Programs that launch automatically can significantly increase boot time."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "Which Windows utility allows you to disable unnecessary startup applications?",
+    "answer": "Task Manager",
+    "options": [
+      "Task Manager",
+      "Disk Management",
+      "Registry Editor",
+      "Device Manager"
+    ],
+    "note": "The Startup tab in Task Manager lets you enable or disable startup applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "A device displays a yellow warning icon in Device Manager. What does this usually indicate?",
+    "answer": "A driver problem",
+    "options": [
+      "A driver problem",
+      "A successful installation",
+      "The device is disabled by Windows Firewall",
+      "The device is operating normally"
+    ],
+    "note": "A yellow exclamation point typically indicates a driver or hardware issue."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "Which Windows tool is primarily used to update or reinstall hardware drivers?",
+    "answer": "Device Manager",
+    "options": [
+      "Device Manager",
+      "Task Scheduler",
+      "System Configuration",
+      "Disk Cleanup"
+    ],
+    "note": "Device Manager allows drivers to be updated, rolled back, disabled, or removed."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "What is a common first step when a Windows Update repeatedly fails?",
+    "answer": "Restart the computer and try the update again",
+    "options": [
+      "Restart the computer and try the update again",
+      "Format the hard drive",
+      "Replace the monitor",
+      "Disable the keyboard"
+    ],
+    "note": "Many update issues are resolved after restarting and attempting the update again."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "A message states that 'MSVCP140.dll is missing.' What type of problem is this?",
+    "answer": "Missing DLL file",
+    "options": [
+      "Missing DLL file",
+      "Network failure",
+      "Driver conflict",
+      "Profile corruption"
+    ],
+    "note": "DLL errors occur when required shared library files are missing or corrupted."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "What command can repair missing or corrupted Windows system files?",
+    "answer": "sfc /scannow",
+    "options": [
+      "sfc /scannow",
+      "ipconfig /renew",
+      "ping localhost",
+      "diskpart clean"
+    ],
+    "note": "System File Checker scans and repairs protected Windows system files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "A user logs in and receives a temporary desktop with none of their files. What is the most likely problem?",
+    "answer": "A corrupted user profile",
+    "options": [
+      "A corrupted user profile",
+      "A failed graphics card",
+      "A printer driver issue",
+      "A DNS problem"
+    ],
+    "note": "Windows may log users into a temporary profile when the normal profile cannot be loaded."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "easy",
+    "question": "What is a common solution for a corrupted user profile?",
+    "answer": "Create a new user profile and migrate the user's data",
+    "options": [
+      "Create a new user profile and migrate the user's data",
+      "Replace the motherboard",
+      "Reinstall the graphics driver",
+      "Reset the BIOS"
+    ],
+    "note": "Creating a new profile is often the quickest and most reliable solution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
     "difficulty": "medium",
-    "question": "A user cannot run an older business application on a newer Windows version. What should be tried first?",
-    "answer": "Compatibility mode",
-    "options": ["Compatibility mode", "Disk defragmentation", "Changing DNS servers", "Removing RAM"],
-    "note": "Compatibility mode can help older applications run on newer Windows versions."
+    "question": "Which troubleshooting step is most appropriate if a newly installed driver causes Windows to crash during startup?",
+    "answer": "Boot into Safe Mode and roll back the driver",
+    "options": [
+      "Boot into Safe Mode and roll back the driver",
+      "Delete the Windows folder",
+      "Disable BitLocker",
+      "Format the hard drive immediately"
+    ],
+    "note": "Safe Mode loads minimal drivers, allowing problematic drivers to be removed or rolled back."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "medium",
+    "question": "A computer is extremely slow even when no applications are open. Which tool can help identify which process is consuming CPU or memory?",
+    "answer": "Task Manager",
+    "options": [
+      "Task Manager",
+      "Disk Cleanup",
+      "Character Map",
+      "Magnifier"
+    ],
+    "note": "Task Manager displays CPU, memory, disk, and network usage for running processes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "An application closes unexpectedly while in use. What type of problem is this?",
+    "answer": "Application crash",
+    "options": [
+      "Application crash",
+      "Driver conflict",
+      "Boot failure",
+      "Profile corruption"
+    ],
+    "note": "An application crash occurs when a program unexpectedly stops running."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "What is a common first step when troubleshooting an application that frequently crashes?",
+    "answer": "Restart the application or computer",
+    "options": [
+      "Restart the application or computer",
+      "Replace the motherboard",
+      "Disable Windows Defender",
+      "Reinstall Windows immediately"
+    ],
+    "note": "Restarting often clears temporary issues before more advanced troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "An older application will not run correctly on Windows 11. Which Windows feature may help?",
+    "answer": "Compatibility Mode",
+    "options": [
+      "Compatibility Mode",
+      "Disk Cleanup",
+      "BitLocker",
+      "Storage Spaces"
+    ],
+    "note": "Compatibility Mode allows older applications to run using settings from previous Windows versions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "Where can Compatibility Mode settings be configured for an application?",
+    "answer": "The Compatibility tab in the application's Properties",
+    "options": [
+      "The Compatibility tab in the application's Properties",
+      "Task Manager",
+      "Device Manager",
+      "Control Panel > Programs"
+    ],
+    "note": "Compatibility settings are configured from the executable file's Properties window."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "A user receives an 'Access Denied' error when trying to save a file. What is the most likely cause?",
+    "answer": "Insufficient permissions",
+    "options": [
+      "Insufficient permissions",
+      "A failed Windows Update",
+      "A faulty graphics driver",
+      "The computer needs more RAM"
+    ],
+    "note": "Permission errors occur when a user lacks the required access rights."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "Which type of account is often required to install software system-wide?",
+    "answer": "Administrator account",
+    "options": [
+      "Administrator account",
+      "Guest account",
+      "Standard user account",
+      "Local service account"
+    ],
+    "note": "Many software installations require administrator privileges."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "An application installer reports that required files are missing. What type of problem is this?",
+    "answer": "Installation error",
+    "options": [
+      "Installation error",
+      "Profile problem",
+      "Network discovery issue",
+      "Boot failure"
+    ],
+    "note": "Missing installation files commonly prevent software from installing successfully."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "What is a common cause of software installation failures?",
+    "answer": "Insufficient disk space",
+    "options": [
+      "Insufficient disk space",
+      "The monitor resolution is too high",
+      "The keyboard is unplugged",
+      "The desktop background is missing"
+    ],
+    "note": "Many installers require free disk space to extract and install files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "An application reports that the license is invalid or has expired. What type of issue is this?",
+    "answer": "Licensing problem",
+    "options": [
+      "Licensing problem",
+      "Driver problem",
+      "Profile corruption",
+      "Boot failure"
+    ],
+    "note": "Software licenses must be valid and activated for many commercial applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "What is often required after reinstalling licensed software on a new computer?",
+    "answer": "Reactivation using the product key or license account",
+    "options": [
+      "Reactivation using the product key or license account",
+      "Replacing the motherboard",
+      "Formatting the hard drive",
+      "Updating the BIOS"
+    ],
+    "note": "Many licensed applications require activation after installation."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "Why are application updates important?",
+    "answer": "They fix bugs, improve security, and add features",
+    "options": [
+      "They fix bugs, improve security, and add features",
+      "They permanently increase RAM",
+      "They replace Windows updates",
+      "They disable antivirus software"
+    ],
+    "note": "Application updates commonly resolve bugs, patch vulnerabilities, and improve functionality."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "easy",
+    "question": "An application works correctly until after an update, when it begins crashing. What should be considered?",
+    "answer": "The update may have introduced a compatibility issue",
+    "options": [
+      "The update may have introduced a compatibility issue",
+      "The monitor cable is loose",
+      "The BIOS battery is dead",
+      "The printer is offline"
+    ],
+    "note": "Software updates can occasionally introduce compatibility problems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "medium",
+    "question": "An application runs successfully only when 'Run as administrator' is selected. What is the most likely cause?",
+    "answer": "The application requires elevated permissions",
+    "options": [
+      "The application requires elevated permissions",
+      "The CPU is overheating",
+      "The network adapter is disabled",
+      "The hard drive is fragmented"
+    ],
+    "note": "Some applications require administrative privileges to access protected system resources."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "medium",
+    "question": "An application installs successfully but will not launch because it requires a newer version of Windows. What is the problem?",
+    "answer": "Operating system compatibility",
+    "options": [
+      "Operating system compatibility",
+      "Licensing failure",
+      "User profile corruption",
+      "Insufficient disk space"
+    ],
+    "note": "Applications may require a minimum supported operating system version."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "medium",
+    "question": "What is one of the best troubleshooting steps if an application continues crashing after restarting the computer?",
+    "answer": "Reinstall the application",
+    "options": [
+      "Reinstall the application",
+      "Replace the power supply",
+      "Reset the BIOS",
+      "Replace the network cable"
+    ],
+    "note": "Reinstalling the application replaces missing or corrupted program files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A mobile app closes immediately after opening. What type of problem is this?",
+    "answer": "Application crash",
+    "options": [
+      "Application crash",
+      "Boot failure",
+      "Bluetooth pairing issue",
+      "Profile corruption"
+    ],
+    "note": "An application crash occurs when a mobile app unexpectedly closes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "What is a common first troubleshooting step for a mobile app that keeps crashing?",
+    "answer": "Restart the app or restart the device",
+    "options": [
+      "Restart the app or restart the device",
+      "Replace the battery",
+      "Reset the APN settings",
+      "Pair a Bluetooth device"
+    ],
+    "note": "Restarting the app or device often resolves temporary software issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A smartphone battery drains much faster than normal. What is a likely cause?",
+    "answer": "Apps running in the background",
+    "options": [
+      "Apps running in the background",
+      "A damaged SIM card",
+      "A disabled Wi-Fi adapter",
+      "An outdated wallpaper"
+    ],
+    "note": "Background apps can consume significant battery power."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "Which setting can help extend smartphone battery life?",
+    "answer": "Reduce screen brightness",
+    "options": [
+      "Reduce screen brightness",
+      "Increase speaker volume",
+      "Enable airplane mode permanently",
+      "Turn off automatic time updates"
+    ],
+    "note": "The display is one of the largest consumers of battery power."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A user's email is not appearing on their phone even though it is available on the mail server. What type of problem is this?",
+    "answer": "Synchronization issue",
+    "options": [
+      "Synchronization issue",
+      "Bluetooth issue",
+      "Driver issue",
+      "Boot failure"
+    ],
+    "note": "Synchronization problems prevent data from updating between devices and cloud services."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "What is a common first step when troubleshooting mobile synchronization problems?",
+    "answer": "Verify the device has an Internet connection",
+    "options": [
+      "Verify the device has an Internet connection",
+      "Replace the battery",
+      "Reset the BIOS",
+      "Disable Bluetooth"
+    ],
+    "note": "Most synchronization services require a working Internet connection."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "What does APN stand for?",
+    "answer": "Access Point Name",
+    "options": [
+      "Access Point Name",
+      "Automatic Private Network",
+      "Application Protocol Node",
+      "Access Provider Network"
+    ],
+    "note": "APN settings allow a mobile device to connect to a carrier's data network."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "Incorrect APN settings most commonly affect which service?",
+    "answer": "Cellular data connectivity",
+    "options": [
+      "Cellular data connectivity",
+      "Bluetooth pairing",
+      "USB charging",
+      "Fingerprint authentication"
+    ],
+    "note": "Incorrect APN settings often prevent mobile Internet access."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A smartphone cannot browse the Internet using mobile data but works on Wi-Fi. Which setting should be checked?",
+    "answer": "APN settings",
+    "options": [
+      "APN settings",
+      "Display brightness",
+      "Bluetooth visibility",
+      "Screen timeout"
+    ],
+    "note": "Carrier data connections depend on correct APN configuration."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A smartphone cannot access websites over either Wi-Fi or cellular data. What should be verified first?",
+    "answer": "That the device has network connectivity",
+    "options": [
+      "That the device has network connectivity",
+      "That Bluetooth is enabled",
+      "That the screen brightness is high",
+      "That the battery is fully charged"
+    ],
+    "note": "Always verify the device has an active network connection before troubleshooting applications."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A Bluetooth headset is not appearing in the list of available devices. What should be checked first?",
+    "answer": "Whether the headset is in pairing mode",
+    "options": [
+      "Whether the headset is in pairing mode",
+      "Whether airplane mode is enabled",
+      "Whether the battery saver is enabled",
+      "Whether the APN settings are correct"
+    ],
+    "note": "Bluetooth devices must usually be placed into pairing mode before they can be discovered."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "What is a common solution if a Bluetooth device will not reconnect?",
+    "answer": "Forget the device and pair it again",
+    "options": [
+      "Forget the device and pair it again",
+      "Replace the SIM card",
+      "Reinstall the operating system",
+      "Disable Wi-Fi permanently"
+    ],
+    "note": "Removing and re-pairing a Bluetooth device resolves many connection issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "easy",
+    "question": "A smartphone can detect a Wi-Fi network but cannot connect. What should be verified first?",
+    "answer": "The Wi-Fi password",
+    "options": [
+      "The Wi-Fi password",
+      "The APN settings",
+      "The Bluetooth pairing code",
+      "The screen timeout"
+    ],
+    "note": "An incorrect wireless password is a common cause of Wi-Fi connection failures."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "medium",
+    "question": "A smartphone automatically disconnects from Wi-Fi but cellular data works normally. What is a likely troubleshooting step?",
+    "answer": "Forget the Wi-Fi network and reconnect",
+    "options": [
+      "Forget the Wi-Fi network and reconnect",
+      "Replace the SIM card",
+      "Update the APN settings",
+      "Disable Bluetooth"
+    ],
+    "note": "Removing and reconnecting to a wireless network often resolves saved configuration problems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "medium",
+    "question": "A user reports that their phone battery lasts only a few hours after installing a new application. What is the most likely cause?",
+    "answer": "The application is consuming excessive battery power",
+    "options": [
+      "The application is consuming excessive battery power",
+      "The APN settings are incorrect",
+      "Bluetooth is disabled",
+      "The phone requires a Windows Update"
+    ],
+    "note": "Poorly optimized or constantly running applications can dramatically reduce battery life."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A computer displays frequent advertisements even when no browser is open. What is the most likely cause?",
+    "answer": "Malware infection",
+    "options": [
+      "Malware infection",
+      "A Windows Update",
+      "A faulty monitor",
+      "A printer driver problem"
+    ],
+    "note": "Unexpected pop-ups are a common symptom of adware or other malware."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "Unexpected pop-up advertisements are most commonly associated with which type of malware?",
+    "answer": "Adware",
+    "options": [
+      "Adware",
+      "Firewall software",
+      "BitLocker",
+      "Device drivers"
+    ],
+    "note": "Adware displays unwanted advertisements and pop-ups."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A web browser sends the user to unexpected websites after clicking search results. What symptom is this?",
+    "answer": "Browser redirects",
+    "options": [
+      "Browser redirects",
+      "Profile corruption",
+      "Driver failure",
+      "Boot failure"
+    ],
+    "note": "Malware often redirects users to malicious or advertising websites."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A user's homepage and default search engine change without permission. What is the most likely problem?",
+    "answer": "Browser hijacking",
+    "options": [
+      "Browser hijacking",
+      "A failed Windows Update",
+      "Low disk space",
+      "An expired software license"
+    ],
+    "note": "Browser hijackers modify browser settings without the user's consent."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "Which symptom commonly indicates browser hijacking?",
+    "answer": "The homepage changes unexpectedly",
+    "options": [
+      "The homepage changes unexpectedly",
+      "The monitor flickers",
+      "The keyboard stops working",
+      "The printer prints blank pages"
+    ],
+    "note": "Changing browser settings without user approval is a hallmark of browser hijacking."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A computer becomes unusually slow even when few applications are running. What could this indicate?",
+    "answer": "Malware running in the background",
+    "options": [
+      "Malware running in the background",
+      "The desktop wallpaper changed",
+      "The monitor resolution is incorrect",
+      "The keyboard layout changed"
+    ],
+    "note": "Malware often consumes CPU, memory, or disk resources, causing poor performance."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "Which Windows utility can be used to identify suspicious running processes?",
+    "answer": "Task Manager",
+    "options": [
+      "Task Manager",
+      "Disk Cleanup",
+      "Character Map",
+      "Disk Management"
+    ],
+    "note": "Task Manager displays currently running applications and background processes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A process with an unfamiliar name is using a large amount of CPU resources. What should be suspected?",
+    "answer": "The process may be malicious",
+    "options": [
+      "The process may be malicious",
+      "The monitor cable is loose",
+      "The battery is failing",
+      "The printer is offline"
+    ],
+    "note": "Unknown processes consuming excessive system resources may indicate malware."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "Which symptom is NOT commonly associated with malware?",
+    "answer": "A cracked monitor",
+    "options": [
+      "A cracked monitor",
+      "Unexpected pop-up advertisements",
+      "Browser redirects",
+      "Unknown background processes"
+    ],
+    "note": "A cracked monitor is a hardware issue, not a malware symptom."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "easy",
+    "question": "A browser repeatedly opens unwanted tabs without user input. What is the most likely cause?",
+    "answer": "Malware or browser hijacking",
+    "options": [
+      "Malware or browser hijacking",
+      "A missing DLL",
+      "A corrupted user profile",
+      "A Windows activation issue"
+    ],
+    "note": "Unwanted browser behavior is commonly caused by browser hijackers or adware."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "A user reports constant browser redirects after installing a free software package. What is the most likely explanation?",
+    "answer": "The installer included browser hijacking malware",
+    "options": [
+      "The installer included browser hijacking malware",
+      "Windows Update changed the browser",
+      "The graphics driver failed",
+      "The computer has insufficient RAM"
+    ],
+    "note": "Free software sometimes bundles unwanted browser extensions or hijackers."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "A system's CPU usage remains near 100% even when the user is idle. Which possibility should be investigated?",
+    "answer": "A malicious background process",
+    "options": [
+      "A malicious background process",
+      "A disconnected monitor",
+      "An incorrect Wi-Fi password",
+      "A depleted CMOS battery"
+    ],
+    "note": "Malware often runs continuously in the background, consuming system resources."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "Why should unknown processes not be ended immediately without investigation?",
+    "answer": "They may be legitimate Windows processes",
+    "options": [
+      "They may be legitimate Windows processes",
+      "Ending processes permanently deletes Windows",
+      "Task Manager cannot stop malware",
+      "Only Safe Mode can stop running processes"
+    ],
+    "note": "Some Windows system processes have unfamiliar names but are required for normal operation."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "A user notices pop-ups, browser redirects, and unusually slow performance. What is the best conclusion?",
+    "answer": "The computer is likely infected with malware",
+    "options": [
+      "The computer is likely infected with malware",
+      "The monitor needs replacement",
+      "The keyboard driver is outdated",
+      "The battery is failing"
+    ],
+    "note": "Multiple malware symptoms occurring together strongly suggest a malware infection."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "Which action should be taken after malware symptoms are discovered?",
+    "answer": "Run an updated anti-malware scan",
+    "options": [
+      "Run an updated anti-malware scan",
+      "Disable User Account Control",
+      "Replace the motherboard",
+      "Format the monitor"
+    ],
+    "note": "After recognizing malware symptoms, the next step is to scan the system using updated anti-malware software."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "What is the first step of the CompTIA troubleshooting methodology?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Test the theory",
+      "Document findings",
+      "Establish a plan"
+    ],
+    "note": "Always begin by identifying the problem and gathering information from the user."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "What should you do while identifying the problem?",
+    "answer": "Question the user and gather information",
+    "options": [
+      "Question the user and gather information",
+      "Replace hardware immediately",
+      "Reinstall Windows",
+      "Reset the BIOS"
+    ],
+    "note": "Gathering information helps determine the actual cause of the issue."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "After identifying the problem, what is the next step?",
+    "answer": "Establish a theory of probable cause",
+    "options": [
+      "Establish a theory of probable cause",
+      "Verify system functionality",
+      "Document findings",
+      "Implement the solution"
+    ],
+    "note": "Use the collected information to develop the most likely explanation for the issue."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "What should you do after developing a theory of probable cause?",
+    "answer": "Test the theory",
+    "options": [
+      "Test the theory",
+      "Document the issue",
+      "Close the ticket",
+      "Replace all hardware"
+    ],
+    "note": "Testing determines whether your suspected cause is correct."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "If your theory does not resolve the problem, what should you do?",
+    "answer": "Develop a new theory and test it",
+    "options": [
+      "Develop a new theory and test it",
+      "Replace the computer",
+      "Ignore the problem",
+      "Skip to documentation"
+    ],
+    "note": "Troubleshooting is an iterative process until the correct cause is identified."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "Once a theory has been confirmed, what is the next step?",
+    "answer": "Establish a plan of action and implement the solution",
+    "options": [
+      "Establish a plan of action and implement the solution",
+      "Document findings",
+      "Interview another user",
+      "Restart the troubleshooting process"
+    ],
+    "note": "Once the cause is known, determine the safest way to resolve it."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "Why should you consider the impact before implementing a solution?",
+    "answer": "To minimize disruption and avoid creating new problems",
+    "options": [
+      "To minimize disruption and avoid creating new problems",
+      "To increase troubleshooting time",
+      "To avoid documenting the repair",
+      "To bypass testing"
+    ],
+    "note": "Planning helps reduce risk and unintended consequences."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "After implementing a solution, what should be done next?",
+    "answer": "Verify full system functionality",
+    "options": [
+      "Verify full system functionality",
+      "Delete all logs",
+      "Replace the hard drive",
+      "Disconnect the computer"
+    ],
+    "note": "Confirm the original issue is resolved and that no new issues were introduced."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "What should be verified after a repair?",
+    "answer": "That the system works correctly and preventive measures have been implemented if appropriate",
+    "options": [
+      "That the system works correctly and preventive measures have been implemented if appropriate",
+      "That Windows has been reinstalled",
+      "That all drivers were removed",
+      "That the BIOS was reset"
+    ],
+    "note": "Verification includes ensuring the issue is resolved and preventing recurrence when possible."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "What is the final step of the troubleshooting methodology?",
+    "answer": "Document findings, actions, and outcomes",
+    "options": [
+      "Document findings, actions, and outcomes",
+      "Restart the computer",
+      "Replace the operating system",
+      "Run antivirus software"
+    ],
+    "note": "Documentation provides a record for future troubleshooting and knowledge sharing."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "easy",
+    "question": "Why is documentation important after resolving an issue?",
+    "answer": "It helps future technicians understand what was done",
+    "options": [
+      "It helps future technicians understand what was done",
+      "It speeds up the computer",
+      "It increases available memory",
+      "It prevents Windows updates"
+    ],
+    "note": "Accurate documentation improves consistency and speeds future support."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "A technician immediately replaces a hard drive without asking the user any questions. Which troubleshooting step was skipped?",
+    "answer": "Identify the problem",
+    "options": [
+      "Identify the problem",
+      "Document findings",
+      "Verify functionality",
+      "Implement the solution"
+    ],
+    "note": "Gathering information before making changes is essential to effective troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "A technician tests a possible cause, but the problem remains. What should they do next?",
+    "answer": "Develop a new theory and test it",
+    "options": [
+      "Develop a new theory and test it",
+      "Document the repair",
+      "Close the support ticket",
+      "Replace the operating system"
+    ],
+    "note": "If a theory is disproven, the troubleshooting process loops back to another probable cause."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "A repair appears successful, but the technician never checks whether the user can complete their normal tasks. Which step was missed?",
+    "answer": "Verify full system functionality",
+    "options": [
+      "Verify full system functionality",
+      "Identify the problem",
+      "Establish a theory",
+      "Document findings"
+    ],
+    "note": "Verification includes confirming that the user can successfully perform their normal work."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "Which sequence correctly follows the CompTIA troubleshooting methodology?",
+    "answer": "Identify, Theory, Test, Plan, Verify, Document",
+    "options": [
+      "Identify, Theory, Test, Plan, Verify, Document",
+      "Theory, Identify, Plan, Test, Verify, Document",
+      "Identify, Plan, Theory, Test, Document, Verify",
+      "Document, Verify, Plan, Test, Theory, Identify"
+    ],
+    "note": "Remember the six steps in order: Identify the problem, establish a Theory, Test the theory, establish a Plan and implement it, Verify functionality, and Document findings."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "medium",
+    "question": "A Windows computer repeatedly restarts before reaching the login screen after a recent driver update. What should a technician try first?",
+    "answer": "Boot into Safe Mode and remove or roll back the driver",
+    "options": [
+      "Boot into Safe Mode and remove or roll back the driver",
+      "Replace the hard drive",
+      "Reset the BIOS",
+      "Format the drive"
+    ],
+    "note": "Safe Mode loads minimal drivers, making it easier to remove problematic drivers."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "medium",
+    "question": "A Windows computer boots to a black screen with only the mouse pointer visible. What should be checked first?",
+    "answer": "Windows Explorer and graphics drivers",
+    "options": [
+      "Windows Explorer and graphics drivers",
+      "Printer drivers",
+      "Wi-Fi settings",
+      "BitLocker recovery keys"
+    ],
+    "note": "Black screens commonly result from Explorer failing to start or graphics driver issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "medium",
+    "question": "A user receives 'Boot Configuration Data is missing.' What type of issue is this?",
+    "answer": "Boot configuration problem",
+    "options": [
+      "Boot configuration problem",
+      "Driver conflict",
+      "Application crash",
+      "Profile corruption"
+    ],
+    "note": "Corrupted Boot Configuration Data (BCD) can prevent Windows from starting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "medium",
+    "question": "A program freezes but Windows continues working normally. What is the best first action?",
+    "answer": "End the application using Task Manager",
+    "options": [
+      "End the application using Task Manager",
+      "Restart the computer immediately",
+      "Reinstall Windows",
+      "Replace system memory"
+    ],
+    "note": "Task Manager allows individual applications to be terminated without restarting Windows."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "medium",
+    "question": "An application worked correctly before an update but now crashes every time it starts. What should be considered first?",
+    "answer": "Rolling back or uninstalling the update",
+    "options": [
+      "Rolling back or uninstalling the update",
+      "Replacing the hard drive",
+      "Resetting the BIOS",
+      "Disabling Windows Defender"
+    ],
+    "note": "Recent software updates can introduce compatibility issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "medium",
+    "question": "A smartphone cannot send or receive picture messages but phone calls work normally. Which setting should be checked?",
+    "answer": "APN settings",
+    "options": [
+      "APN settings",
+      "Bluetooth settings",
+      "Screen timeout",
+      "Fingerprint enrollment"
+    ],
+    "note": "Incorrect APN settings commonly affect MMS and mobile data services."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "medium",
+    "question": "A mobile device no longer receives email notifications, but manually refreshing downloads new messages. What is the most likely issue?",
+    "answer": "Synchronization settings",
+    "options": [
+      "Synchronization settings",
+      "Bluetooth pairing",
+      "Battery calibration",
+      "Display settings"
+    ],
+    "note": "Disabled or delayed synchronization often prevents automatic updates."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "A browser has multiple unknown extensions installed and the default search engine keeps changing. What is the most likely cause?",
+    "answer": "Browser hijacking malware",
+    "options": [
+      "Browser hijacking malware",
+      "Windows Update",
+      "Device driver corruption",
+      "Insufficient RAM"
+    ],
+    "note": "Browser hijackers commonly install unwanted extensions and modify browser settings."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "medium",
+    "question": "Which Windows utility should be used to review programs that automatically start with Windows when troubleshooting malware?",
+    "answer": "Task Manager Startup tab",
+    "options": [
+      "Task Manager Startup tab",
+      "Disk Cleanup",
+      "Character Map",
+      "Paint"
+    ],
+    "note": "The Startup tab helps identify suspicious applications that launch automatically."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "A technician determines the cause of an issue but implements a repair without considering possible effects on users. Which troubleshooting step was skipped?",
+    "answer": "Establish a plan of action",
+    "options": [
+      "Establish a plan of action",
+      "Identify the problem",
+      "Test the theory",
+      "Document findings"
+    ],
+    "note": "Planning helps minimize downtime and avoid unintended consequences."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "question": "Why is it important to document the solution after resolving a problem?",
+    "answer": "It creates a record that can help resolve similar issues in the future",
+    "options": [
+      "It creates a record that can help resolve similar issues in the future",
+      "It permanently fixes Windows",
+      "It increases computer performance",
+      "It updates device drivers"
+    ],
+    "note": "Documentation improves consistency and speeds future troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-problems",
+    "difficulty": "hard",
+    "question": "A computer displays a BSOD immediately after a memory upgrade. Which component should be investigated first?",
+    "answer": "The newly installed RAM",
+    "options": [
+      "The newly installed RAM",
+      "The monitor",
+      "The keyboard",
+      "The printer"
+    ],
+    "note": "Recently installed hardware is a common cause of STOP errors."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-problems",
+    "difficulty": "hard",
+    "question": "A user can open an application but cannot save files to a network folder, while other users can. What is the most likely cause?",
+    "answer": "Insufficient permissions",
+    "options": [
+      "Insufficient permissions",
+      "Corrupted graphics driver",
+      "Windows Update failure",
+      "Application compatibility issue"
+    ],
+    "note": "If only one user is affected, permissions should be verified first."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-os-problems",
+    "difficulty": "hard",
+    "question": "A smartphone connects to Wi-Fi successfully but reports 'No Internet Connection.' Which troubleshooting step should be performed first?",
+    "answer": "Verify the wireless network has Internet connectivity",
+    "options": [
+      "Verify the wireless network has Internet connectivity",
+      "Replace the battery",
+      "Reset the APN settings",
+      "Enable Bluetooth"
+    ],
+    "note": "Successful Wi-Fi association does not guarantee Internet connectivity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "malware-symptoms",
+    "difficulty": "hard",
+    "question": "A computer is slow, unknown processes are running, browser redirects occur, and pop-up advertisements appear. What is the most likely conclusion?",
+    "answer": "The computer is infected with malware",
+    "options": [
+      "The computer is infected with malware",
+      "The graphics driver is outdated",
+      "The CMOS battery is failing",
+      "The monitor cable is loose"
+    ],
+    "note": "Multiple malware symptoms occurring together strongly indicate a malware infection."
   }
 ]

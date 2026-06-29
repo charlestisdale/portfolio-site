@@ -2,31 +2,1726 @@
   {
     "exam": "core-2",
     "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a help desk ticket?",
+    "answer": "To document and track a support issue",
+    "options": [
+      "To document and track a support issue",
+      "To install software",
+      "To configure network devices",
+      "To replace hardware"
+    ],
+    "note": "Support tickets record the issue, troubleshooting steps, and final resolution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What information should always be included in a support ticket?",
+    "answer": "The problem, actions taken, and resolution",
+    "options": [
+      "The problem, actions taken, and resolution",
+      "The user's passwords",
+      "The technician's personal notes only",
+      "The computer's wallpaper"
+    ],
+    "note": "Accurate documentation helps future technicians troubleshoot similar issues."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What is a change log?",
+    "answer": "A record of modifications made to systems or configurations",
+    "options": [
+      "A record of modifications made to systems or configurations",
+      "A list of user passwords",
+      "A hardware inventory",
+      "A software license agreement"
+    ],
+    "note": "Change logs provide a history of changes for troubleshooting and auditing."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "Why are change logs important?",
+    "answer": "They help identify changes that may have caused new issues",
+    "options": [
+      "They help identify changes that may have caused new issues",
+      "They improve Internet speed",
+      "They increase storage capacity",
+      "They replace backups"
+    ],
+    "note": "Knowing what changed makes troubleshooting much easier."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What is the purpose of asset management?",
+    "answer": "To track an organization's hardware and software",
+    "options": [
+      "To track an organization's hardware and software",
+      "To manage user passwords",
+      "To troubleshoot Wi-Fi issues",
+      "To update operating systems"
+    ],
+    "note": "Asset management keeps records of devices, software, and ownership."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "Which item is commonly tracked in an asset management system?",
+    "answer": "Device serial numbers",
+    "options": [
+      "Device serial numbers",
+      "Web browser history",
+      "Desktop wallpapers",
+      "Clipboard contents"
+    ],
+    "note": "Asset records often include serial numbers, model numbers, and assigned users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What is the purpose of a network diagram?",
+    "answer": "To show how network devices are connected",
+    "options": [
+      "To show how network devices are connected",
+      "To display software licenses",
+      "To record user passwords",
+      "To track support tickets"
+    ],
+    "note": "Network diagrams illustrate the layout and relationships of network devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "Which information is commonly found on a network diagram?",
+    "answer": "Switches, routers, and device connections",
+    "options": [
+      "Switches, routers, and device connections",
+      "Employee payroll records",
+      "Software activation keys",
+      "Printer toner levels"
+    ],
+    "note": "Network diagrams document the physical or logical network topology."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "What is a knowledge base?",
+    "answer": "A collection of documented solutions and procedures",
+    "options": [
+      "A collection of documented solutions and procedures",
+      "A backup server",
+      "A hardware inventory",
+      "A database of user passwords"
+    ],
+    "note": "Knowledge bases help technicians quickly solve recurring problems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "easy",
+    "question": "Why should technicians search the knowledge base before troubleshooting?",
+    "answer": "A documented solution may already exist",
+    "options": [
+      "A documented solution may already exist",
+      "It automatically repairs the computer",
+      "It installs missing drivers",
+      "It updates Windows"
+    ],
+    "note": "Reusing proven solutions saves time and improves consistency."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "A network outage begins immediately after a switch configuration change. Which document should be reviewed first?",
+    "answer": "The change log",
+    "options": [
+      "The change log",
+      "The asset inventory",
+      "The knowledge base",
+      "The software license agreement"
+    ],
+    "note": "Recent configuration changes are often the source of new problems."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "A technician needs to identify which employee is assigned a specific laptop. Which documentation should they check?",
+    "answer": "Asset management records",
+    "options": [
+      "Asset management records",
+      "The change log",
+      "The network diagram",
+      "The knowledge base"
+    ],
+    "note": "Asset management systems track device ownership and assignments."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "A technician needs to determine which switch a server is connected to. Which documentation is most useful?",
+    "answer": "The network diagram",
+    "options": [
+      "The network diagram",
+      "The support ticket",
+      "The software inventory",
+      "The change log"
+    ],
+    "note": "Network diagrams show how devices are interconnected."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "After resolving a unique problem, what should a technician do to help future support staff?",
+    "answer": "Add the solution to the knowledge base",
+    "options": [
+      "Add the solution to the knowledge base",
+      "Delete the support ticket",
+      "Reset the user's password",
+      "Clear the event logs"
+    ],
+    "note": "Documenting new solutions improves future troubleshooting efficiency."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "Which documentation is most useful for tracking the complete lifecycle of a support issue?",
+    "answer": "A support ticket",
+    "options": [
+      "A support ticket",
+      "A network diagram",
+      "An asset inventory",
+      "A software license"
+    ],
+    "note": "Support tickets document the issue from initial report through final resolution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "What is the purpose of change management?",
+    "answer": "To control and document changes to IT systems",
+    "options": [
+      "To control and document changes to IT systems",
+      "To increase Internet speed",
+      "To manage user passwords",
+      "To replace faulty hardware"
+    ],
+    "note": "Change management reduces risk by ensuring changes are reviewed, approved, and documented."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "What is typically the first step in the change management process?",
+    "answer": "Submit a change request",
+    "options": [
+      "Submit a change request",
+      "Implement the change",
+      "Notify all users after the change",
+      "Create a rollback plan"
+    ],
+    "note": "A change request documents the proposed change before any work begins."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "Why is a change request submitted before making system changes?",
+    "answer": "To document the proposed change and its impact",
+    "options": [
+      "To document the proposed change and its impact",
+      "To increase computer performance",
+      "To reset administrator passwords",
+      "To install antivirus software"
+    ],
+    "note": "Change requests describe what will change, why it is needed, and potential risks."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "Why should significant IT changes receive approval before implementation?",
+    "answer": "To ensure the change is reviewed and authorized",
+    "options": [
+      "To ensure the change is reviewed and authorized",
+      "To make the change happen faster",
+      "To eliminate documentation requirements",
+      "To avoid creating backups"
+    ],
+    "note": "Approvals help reduce risk and ensure stakeholders agree with the planned change."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "What is a maintenance window?",
+    "answer": "A scheduled time when system changes can be safely performed",
+    "options": [
+      "A scheduled time when system changes can be safely performed",
+      "A period when users install software",
+      "A time to clean computer hardware",
+      "A scheduled antivirus scan"
+    ],
+    "note": "Maintenance windows minimize disruption by scheduling work during low-usage periods."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "Why are maintenance windows commonly scheduled after business hours?",
+    "answer": "To minimize disruption to users",
+    "options": [
+      "To minimize disruption to users",
+      "To improve network speed",
+      "To reduce software licensing costs",
+      "To prevent backups from running"
+    ],
+    "note": "Scheduling maintenance outside normal business hours reduces the impact on productivity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "What is the purpose of a rollback plan?",
+    "answer": "To restore the system if the change fails",
+    "options": [
+      "To restore the system if the change fails",
+      "To increase network bandwidth",
+      "To archive user accounts",
+      "To update antivirus signatures"
+    ],
+    "note": "A rollback plan allows administrators to return systems to their previous working state."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "When should a rollback plan be prepared?",
+    "answer": "Before implementing the change",
+    "options": [
+      "Before implementing the change",
+      "After users report problems",
+      "Only after testing fails",
+      "Only after documentation is complete"
+    ],
+    "note": "Rollback procedures should be planned before any production changes begin."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "Why should IT changes be tested before deployment?",
+    "answer": "To identify problems before affecting production systems",
+    "options": [
+      "To identify problems before affecting production systems",
+      "To reduce hardware costs",
+      "To avoid documenting the change",
+      "To eliminate user training"
+    ],
+    "note": "Testing helps verify that a change works as expected before it impacts users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "easy",
+    "question": "Where should significant changes ideally be tested?",
+    "answer": "In a test or staging environment",
+    "options": [
+      "In a test or staging environment",
+      "On a user's production computer",
+      "On every workstation simultaneously",
+      "Directly on the production server"
+    ],
+    "note": "Testing in a non-production environment reduces the risk of outages."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
     "category": "change-management",
     "difficulty": "medium",
-    "question": "Before making a major production change, what should be obtained first?",
-    "answer": "Approval through change management",
-    "options": ["Approval through change management", "A faster keyboard", "A new wallpaper", "A public IP address"],
-    "note": "Change management reduces risk by requiring planning, approval, and rollback steps."
+    "question": "A server update causes unexpected problems immediately after installation. Which part of the change management process should now be followed?",
+    "answer": "Execute the rollback plan",
+    "options": [
+      "Execute the rollback plan",
+      "Delete the change request",
+      "Ignore the issue until users report it",
+      "Create a new asset inventory"
+    ],
+    "note": "Rollback procedures restore the previous working configuration when a change fails."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "A technician wants to install software on a production server during business hours without notifying anyone. Which best practice is being ignored?",
+    "answer": "Scheduling a maintenance window",
+    "options": [
+      "Scheduling a maintenance window",
+      "Updating documentation",
+      "Managing software licenses",
+      "Creating a support ticket"
+    ],
+    "note": "Production changes should be scheduled during approved maintenance windows whenever possible."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "A technician has completed testing a planned network upgrade. What should happen before implementing it in production?",
+    "answer": "Obtain the required approval",
+    "options": [
+      "Obtain the required approval",
+      "Delete the test results",
+      "Skip the maintenance window",
+      "Immediately deploy without notifying anyone"
+    ],
+    "note": "Testing does not replace the approval process; authorized approval is still required."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "Why is documenting the expected impact of a change important?",
+    "answer": "It helps stakeholders understand the risks and potential downtime",
+    "options": [
+      "It helps stakeholders understand the risks and potential downtime",
+      "It increases processor speed",
+      "It automatically creates backups",
+      "It reduces software licensing costs"
+    ],
+    "note": "Understanding the impact allows informed approval and planning."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "Which sequence best represents a typical change management process?",
+    "answer": "Request, Approval, Testing, Maintenance Window, Rollback if Needed",
+    "options": [
+      "Request, Approval, Testing, Maintenance Window, Rollback if Needed",
+      "Testing, Request, Approval, Rollback, Maintenance Window",
+      "Maintenance Window, Request, Rollback, Approval, Testing",
+      "Approval, Rollback, Testing, Request, Maintenance Window"
+    ],
+    "note": "Changes are requested, approved, tested, implemented during a maintenance window, and rolled back if necessary."
   },
   {
     "exam": "core-2",
     "objective": "4.0 Operational Procedures",
     "category": "safety",
     "difficulty": "easy",
-    "question": "What should be used to reduce electrostatic discharge risk when working inside a PC?",
-    "answer": "ESD strap or mat",
-    "options": ["ESD strap or mat", "Wet towel", "Magnetized screwdriver", "Printer toner"],
-    "note": "ESD protection helps prevent component damage."
+    "question": "What does ESD stand for?",
+    "answer": "Electrostatic Discharge",
+    "options": [
+      "Electrostatic Discharge",
+      "Electronic Safety Device",
+      "Electrical System Diagnostics",
+      "Emergency Shutdown Device"
+    ],
+    "note": "Electrostatic discharge is the sudden release of static electricity that can damage electronic components."
   },
   {
     "exam": "core-2",
     "objective": "4.0 Operational Procedures",
-    "category": "backup-recovery",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Which device helps protect computer components from electrostatic discharge?",
+    "answer": "An anti-static wrist strap",
+    "options": [
+      "An anti-static wrist strap",
+      "A surge protector",
+      "A power strip",
+      "A cable tester"
+    ],
+    "note": "An anti-static wrist strap grounds the technician to safely dissipate static electricity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Before working inside a computer, what should be done first?",
+    "answer": "Turn off the computer and disconnect power",
+    "options": [
+      "Turn off the computer and disconnect power",
+      "Install new drivers",
+      "Run Windows Update",
+      "Disconnect the monitor only"
+    ],
+    "note": "Removing power reduces the risk of electrical shock and hardware damage."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Which device should never be opened because it can retain dangerous electrical charges?",
+    "answer": "Power supply",
+    "options": [
+      "Power supply",
+      "Hard drive",
+      "Network adapter",
+      "Memory module"
+    ],
+    "note": "Power supplies contain capacitors that may hold dangerous voltages even after being unplugged."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "What type of fire extinguisher is appropriate for electrical fires?",
+    "answer": "Class C",
+    "options": [
+      "Class C",
+      "Class A",
+      "Class K",
+      "Water hose"
+    ],
+    "note": "Class C fire extinguishers are designed for energized electrical equipment."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Why should water never be used on an energized electrical fire?",
+    "answer": "Water conducts electricity and can cause electrocution",
+    "options": [
+      "Water conducts electricity and can cause electrocution",
+      "Water damages keyboards",
+      "Water causes smoke",
+      "Water cools the fire too quickly"
+    ],
+    "note": "Using water on energized electrical equipment creates a serious shock hazard."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "What does PPE stand for?",
+    "answer": "Personal Protective Equipment",
+    "options": [
+      "Personal Protective Equipment",
+      "Power Protection Equipment",
+      "Primary Power Extension",
+      "Professional Protection Equipment"
+    ],
+    "note": "PPE protects technicians from workplace hazards."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Which item is considered personal protective equipment (PPE)?",
+    "answer": "Safety glasses",
+    "options": [
+      "Safety glasses",
+      "Network switch",
+      "USB flash drive",
+      "Patch cable"
+    ],
+    "note": "Safety glasses help protect the eyes from debris and accidental hazards."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Why are environmental controls important in a server room?",
+    "answer": "They help maintain proper temperature and humidity",
+    "options": [
+      "They help maintain proper temperature and humidity",
+      "They improve Internet speed",
+      "They reduce software licensing costs",
+      "They increase processor performance"
+    ],
+    "note": "Proper environmental conditions prevent overheating and reduce static electricity."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "Which environmental condition can increase the risk of electrostatic discharge?",
+    "answer": "Low humidity",
+    "options": [
+      "Low humidity",
+      "High humidity",
+      "Dim lighting",
+      "Low network bandwidth"
+    ],
+    "note": "Dry environments allow static electricity to build up more easily."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
     "difficulty": "medium",
-    "question": "Which backup type copies all selected data regardless of previous backups?",
+    "question": "A technician replaces RAM without using an anti-static wrist strap and damages the memory. What caused the failure?",
+    "answer": "Electrostatic discharge",
+    "options": [
+      "Electrostatic discharge",
+      "Power surge",
+      "Malware infection",
+      "Overheating"
+    ],
+    "note": "Static electricity can permanently damage sensitive electronic components."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A technician notices smoke coming from a powered network switch. What should be done first?",
+    "answer": "Disconnect power if it is safe to do so",
+    "options": [
+      "Disconnect power if it is safe to do so",
+      "Spray the device with water",
+      "Continue working on the switch",
+      "Restart the switch repeatedly"
+    ],
+    "note": "Removing electrical power safely is the first priority before using a Class C extinguisher if necessary."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "Why should server rooms be kept clean and free of dust?",
+    "answer": "Dust restricts airflow and can cause overheating",
+    "options": [
+      "Dust restricts airflow and can cause overheating",
+      "Dust improves static protection",
+      "Dust increases wireless signal strength",
+      "Dust prevents power outages"
+    ],
+    "note": "Dust buildup blocks cooling and increases the risk of hardware failure."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A technician is working around damaged ceiling tiles that may contain hazardous materials. Which safety practice should be followed?",
+    "answer": "Wear appropriate personal protective equipment",
+    "options": [
+      "Wear appropriate personal protective equipment",
+      "Ignore the hazard",
+      "Continue working without protection",
+      "Touch the material to identify it"
+    ],
+    "note": "PPE helps protect technicians from environmental and workplace hazards."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "Which combination best represents safe computer repair practices?",
+    "answer": "Disconnect power, use ESD protection, wear appropriate PPE, and maintain a safe work environment",
+    "options": [
+      "Disconnect power, use ESD protection, wear appropriate PPE, and maintain a safe work environment",
+      "Leave the system powered on and avoid documentation",
+      "Use water to extinguish electrical fires",
+      "Open power supplies to inspect capacitors"
+    ],
+    "note": "Safe IT work includes electrical safety, ESD protection, proper PPE, and environmental awareness."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "When assisting a frustrated user, what is the most professional approach?",
+    "answer": "Remain calm and communicate respectfully",
+    "options": [
+      "Remain calm and communicate respectfully",
+      "Argue with the user",
+      "Ignore the user's concerns",
+      "End the conversation immediately"
+    ],
+    "note": "Professional communication helps build trust and resolve issues effectively."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "Which communication style is most appropriate when explaining a technical issue to a non-technical user?",
+    "answer": "Use clear, simple language and avoid unnecessary jargon",
+    "options": [
+      "Use clear, simple language and avoid unnecessary jargon",
+      "Use as many technical terms as possible",
+      "Read error codes without explanation",
+      "Assume the user understands networking concepts"
+    ],
+    "note": "Using plain language helps users understand the problem and the solution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "What is the primary goal of good customer service in IT support?",
+    "answer": "Resolve the user's issue while maintaining a positive experience",
+    "options": [
+      "Resolve the user's issue while maintaining a positive experience",
+      "Finish the ticket as quickly as possible",
+      "Avoid speaking with users",
+      "Reduce documentation requirements"
+    ],
+    "note": "Excellent customer service focuses on both solving the problem and treating the user professionally."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "If a technician cannot resolve an issue within their level of authority, what should they do?",
+    "answer": "Escalate the issue to the appropriate technician",
+    "options": [
+      "Escalate the issue to the appropriate technician",
+      "Guess at a solution",
+      "Close the ticket without resolving it",
+      "Tell the user to fix it themselves"
+    ],
+    "note": "Escalation ensures that issues are handled by someone with the appropriate expertise or authority."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "When escalating a support issue, what information should be included?",
+    "answer": "All troubleshooting steps already performed",
+    "options": [
+      "All troubleshooting steps already performed",
+      "Only the user's name",
+      "Only the computer model",
+      "No documentation is necessary"
+    ],
+    "note": "Providing complete documentation prevents duplicate work and speeds resolution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "Why should technicians set realistic expectations with users?",
+    "answer": "To keep users informed about timelines and progress",
+    "options": [
+      "To keep users informed about timelines and progress",
+      "To avoid documenting the repair",
+      "To shorten repair times automatically",
+      "To eliminate follow-up communication"
+    ],
+    "note": "Managing expectations reduces frustration and improves customer satisfaction."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "If a repair will take longer than expected, what should the technician do?",
+    "answer": "Update the user on the status and revised timeline",
+    "options": [
+      "Update the user on the status and revised timeline",
+      "Avoid contacting the user",
+      "Close the support ticket",
+      "Promise the repair will be finished immediately"
+    ],
+    "note": "Keeping users informed is an important part of managing expectations."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "What is active listening?",
+    "answer": "Carefully listening, asking clarifying questions, and confirming understanding",
+    "options": [
+      "Carefully listening, asking clarifying questions, and confirming understanding",
+      "Waiting for the user to stop talking",
+      "Interrupting with possible solutions",
+      "Ignoring details that seem unimportant"
+    ],
+    "note": "Active listening helps technicians fully understand the user's issue before troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "Which action demonstrates active listening?",
+    "answer": "Repeating the problem back to the user for confirmation",
+    "options": [
+      "Repeating the problem back to the user for confirmation",
+      "Interrupting the user frequently",
+      "Ignoring the user's description",
+      "Immediately replacing hardware"
+    ],
+    "note": "Restating the issue confirms that both the technician and user have the same understanding."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "easy",
+    "question": "Why should technicians avoid making promises they cannot guarantee?",
+    "answer": "It helps maintain trust and realistic expectations",
+    "options": [
+      "It helps maintain trust and realistic expectations",
+      "It speeds up computer performance",
+      "It reduces the need for documentation",
+      "It prevents hardware failures"
+    ],
+    "note": "Providing accurate information builds credibility with users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "A user becomes upset because their issue is taking longer than expected. What is the best response?",
+    "answer": "Explain the situation professionally and provide an updated timeline",
+    "options": [
+      "Explain the situation professionally and provide an updated timeline",
+      "Tell the user to stop complaining",
+      "Ignore the user's concerns",
+      "Close the support ticket"
+    ],
+    "note": "Professional communication and expectation management help reduce frustration."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "A technician has exhausted all approved troubleshooting steps but cannot resolve the issue. What should they do?",
+    "answer": "Escalate the issue with complete documentation",
+    "options": [
+      "Escalate the issue with complete documentation",
+      "Continue guessing at solutions",
+      "Close the ticket",
+      "Tell the user the problem cannot be fixed"
+    ],
+    "note": "Proper escalation includes documenting everything already attempted."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "A user explains an issue, but the technician is unsure about one detail. What should the technician do?",
+    "answer": "Ask clarifying questions before troubleshooting",
+    "options": [
+      "Ask clarifying questions before troubleshooting",
+      "Assume the missing information",
+      "Immediately reinstall Windows",
+      "Transfer the call without explanation"
+    ],
+    "note": "Clarifying questions are a key part of active listening and accurate troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "Which behavior demonstrates professionalism during a support call?",
+    "answer": "Treating the user respectfully even if they are frustrated",
+    "options": [
+      "Treating the user respectfully even if they are frustrated",
+      "Arguing to prove the user is wrong",
+      "Using technical jargon to impress the user",
+      "Ending the call without explanation"
+    ],
+    "note": "Professional technicians remain courteous regardless of the user's attitude."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "Which combination best represents professional IT support?",
+    "answer": "Communicate clearly, listen actively, manage expectations, and escalate when appropriate",
+    "options": [
+      "Communicate clearly, listen actively, manage expectations, and escalate when appropriate",
+      "Use technical jargon, avoid documentation, and promise immediate fixes",
+      "Guess at solutions and avoid asking questions",
+      "Ignore user concerns if the problem is difficult"
+    ],
+    "note": "Professionalism combines communication, customer service, active listening, realistic expectations, and proper escalation."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which type of Windows license is permanently tied to the computer it was originally installed on?",
+    "answer": "OEM license",
+    "options": [
+      "OEM license",
+      "Retail license",
+      "Volume license",
+      "Open source license"
+    ],
+    "note": "OEM (Original Equipment Manufacturer) licenses are generally not transferable to another computer."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "What does OEM stand for?",
+    "answer": "Original Equipment Manufacturer",
+    "options": [
+      "Original Equipment Manufacturer",
+      "Open Enterprise Management",
+      "Official Equipment Module",
+      "Operating Environment Manager"
+    ],
+    "note": "OEM licenses are typically preinstalled by the computer manufacturer."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which type of Windows license can usually be transferred to a new computer if removed from the old one?",
+    "answer": "Retail license",
+    "options": [
+      "Retail license",
+      "OEM license",
+      "Volume license",
+      "Subscription license"
+    ],
+    "note": "Retail licenses are purchased separately and are generally transferable to another device."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which licensing model is commonly purchased by individual consumers?",
+    "answer": "Retail licensing",
+    "options": [
+      "Retail licensing",
+      "Volume licensing",
+      "OEM licensing",
+      "Enterprise agreement"
+    ],
+    "note": "Retail licenses are intended for individual users and small businesses."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which licensing model allows an organization to activate many computers using a single licensing agreement?",
+    "answer": "Volume licensing",
+    "options": [
+      "Volume licensing",
+      "Retail licensing",
+      "OEM licensing",
+      "Trial licensing"
+    ],
+    "note": "Volume licensing simplifies software deployment and management for organizations."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Who most commonly uses volume licensing?",
+    "answer": "Large organizations and businesses",
+    "options": [
+      "Large organizations and businesses",
+      "Home users",
+      "Gaming enthusiasts",
+      "Individual students"
+    ],
+    "note": "Volume licensing is designed for organizations that deploy software to many devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "What is open-source software?",
+    "answer": "Software whose source code is available for anyone to view and modify under its license",
+    "options": [
+      "Software whose source code is available for anyone to view and modify under its license",
+      "Software that is always free for commercial use without restrictions",
+      "Software sold only through retail stores",
+      "Software that requires a monthly subscription"
+    ],
+    "note": "Open-source licenses allow access to the source code, but each license has its own terms."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which statement about open-source software is true?",
+    "answer": "It is distributed under a license that defines how it may be used and modified",
+    "options": [
+      "It is distributed under a license that defines how it may be used and modified",
+      "It cannot be modified",
+      "It is always proprietary",
+      "It always requires a subscription"
+    ],
+    "note": "Open-source software is still licensed, even when it is available at no cost."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "What is a subscription software license?",
+    "answer": "A license that requires recurring payments to continue using the software",
+    "options": [
+      "A license that requires recurring payments to continue using the software",
+      "A license permanently tied to a motherboard",
+      "A license that never expires",
+      "A license used only for open-source software"
+    ],
+    "note": "Subscription licensing typically requires monthly or annual payments."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "easy",
+    "question": "Which software is most commonly licensed using a subscription model?",
+    "answer": "Microsoft 365",
+    "options": [
+      "Microsoft 365",
+      "Windows OEM",
+      "BIOS firmware",
+      "Device drivers"
+    ],
+    "note": "Microsoft 365 is a well-known example of subscription-based software."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "A company needs to deploy Microsoft Office to 500 employees. Which licensing model is most appropriate?",
+    "answer": "Volume licensing",
+    "options": [
+      "Volume licensing",
+      "Retail licensing",
+      "OEM licensing",
+      "Trial licensing"
+    ],
+    "note": "Volume licensing is designed for organizations deploying software to many devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "A user purchases a new computer and wants to move their Windows license from their old computer. Which license type is most likely transferable?",
+    "answer": "Retail license",
+    "options": [
+      "Retail license",
+      "OEM license",
+      "Volume license",
+      "Evaluation license"
+    ],
+    "note": "Retail licenses are generally transferable as long as they are removed from the previous computer."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "A technician replaces the motherboard in a computer with an OEM Windows license. What licensing issue may occur?",
+    "answer": "Windows activation may fail because the OEM license is tied to the original hardware",
+    "options": [
+      "Windows activation may fail because the OEM license is tied to the original hardware",
+      "The retail license automatically transfers",
+      "Volume activation is required",
+      "The open-source license expires"
+    ],
+    "note": "OEM licenses are typically bound to the original motherboard."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "Which licensing model requires users to maintain active payments to continue receiving software updates and services?",
+    "answer": "Subscription licensing",
+    "options": [
+      "Subscription licensing",
+      "Retail licensing",
+      "OEM licensing",
+      "Open-source licensing"
+    ],
+    "note": "Subscription software often includes continuous updates while the subscription remains active."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "Which sequence correctly matches the licensing models with their primary use?",
+    "answer": "OEM = Preinstalled hardware, Retail = Individual purchase, Volume = Organizations, Open Source = Source code available, Subscription = Recurring payments",
+    "options": [
+      "OEM = Preinstalled hardware, Retail = Individual purchase, Volume = Organizations, Open Source = Source code available, Subscription = Recurring payments",
+      "OEM = Organizations, Retail = Subscription, Volume = Individual purchase, Open Source = Proprietary, Subscription = Hardware only",
+      "OEM = Open source, Retail = Organizations, Volume = Home users, Subscription = Permanent license",
+      "Retail = Hardware only, OEM = Monthly payments, Volume = Open source, Subscription = One-time purchase"
+    ],
+    "note": "Knowing the characteristics of each licensing model is a common CompTIA A+ exam objective."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "What is a full backup?",
+    "answer": "A backup of all selected data",
+    "options": [
+      "A backup of all selected data",
+      "A backup of only changed files since the last backup",
+      "A backup of only operating system files",
+      "A backup of deleted files only"
+    ],
+    "note": "A full backup copies all selected files regardless of previous backups."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "A differential backup contains which files?",
+    "answer": "Files changed since the last full backup",
+    "options": [
+      "Files changed since the last full backup",
+      "Files changed since the last differential backup",
+      "Only deleted files",
+      "Only operating system files"
+    ],
+    "note": "Differential backups continue growing until the next full backup because they always reference the last full backup."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "An incremental backup contains which files?",
+    "answer": "Files changed since the last backup of any type",
+    "options": [
+      "Files changed since the last backup of any type",
+      "Files changed since the last full backup",
+      "All selected files",
+      "Only application files"
+    ],
+    "note": "Incremental backups save only changes made since the most recent backup."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "Which backup type typically requires the least storage space each day?",
+    "answer": "Incremental backup",
+    "options": [
+      "Incremental backup",
+      "Full backup",
+      "Differential backup",
+      "Mirror backup"
+    ],
+    "note": "Incremental backups store only the newest changes, making them the smallest."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "Which backup type is usually the fastest to restore?",
     "answer": "Full backup",
-    "options": ["Full backup", "Incremental backup", "Differential backup", "Snapshot only"],
-    "note": "A full backup copies all selected data."
+    "options": [
+      "Full backup",
+      "Incremental backup",
+      "Differential backup",
+      "Snapshot"
+    ],
+    "note": "A full backup contains everything needed for restoration in a single backup set."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "What is a snapshot?",
+    "answer": "A point-in-time copy of a system or storage volume",
+    "options": [
+      "A point-in-time copy of a system or storage volume",
+      "A complete hardware replacement",
+      "A type of antivirus scan",
+      "A software license"
+    ],
+    "note": "Snapshots allow systems to be quickly restored to a previous state."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a snapshot?",
+    "answer": "To quickly restore a previous system state",
+    "options": [
+      "To quickly restore a previous system state",
+      "To permanently archive data",
+      "To encrypt a hard drive",
+      "To increase storage capacity"
+    ],
+    "note": "Snapshots are commonly used before updates or major system changes."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "Why should backup restores be tested regularly?",
+    "answer": "To verify that backups can actually be recovered",
+    "options": [
+      "To verify that backups can actually be recovered",
+      "To reduce storage usage",
+      "To improve processor performance",
+      "To prevent malware infections"
+    ],
+    "note": "A backup has little value if it cannot be successfully restored."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "What is restore testing?",
+    "answer": "Verifying that backed-up data can be successfully recovered",
+    "options": [
+      "Verifying that backed-up data can be successfully recovered",
+      "Running antivirus scans",
+      "Updating operating system files",
+      "Testing network bandwidth"
+    ],
+    "note": "Restore testing confirms backup integrity and recovery procedures."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "easy",
+    "question": "What is disaster recovery?",
+    "answer": "A plan for restoring IT services after a major outage or disaster",
+    "options": [
+      "A plan for restoring IT services after a major outage or disaster",
+      "Deleting unused backups",
+      "Installing software updates",
+      "Creating user accounts"
+    ],
+    "note": "Disaster recovery focuses on restoring business operations after significant events."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "A technician performs a full backup on Sunday and incremental backups every day afterward. To restore Thursday's data, which backups are required?",
+    "answer": "The Sunday full backup and every incremental backup through Thursday",
+    "options": [
+      "The Sunday full backup and every incremental backup through Thursday",
+      "Only Thursday's incremental backup",
+      "The Sunday full backup only",
+      "Only the most recent differential backup"
+    ],
+    "note": "Incremental restores require the last full backup plus every incremental backup created afterward."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "A technician performs a full backup on Sunday and differential backups every day afterward. To restore Thursday's data, which backups are required?",
+    "answer": "The Sunday full backup and Thursday's differential backup",
+    "options": [
+      "The Sunday full backup and Thursday's differential backup",
+      "Every differential backup since Sunday",
+      "Only Thursday's differential backup",
+      "The Sunday full backup and every incremental backup"
+    ],
+    "note": "Differential restores require only the last full backup and the latest differential backup."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "A system administrator plans to install a major software update. What should they create first to allow a quick rollback if necessary?",
+    "answer": "A snapshot",
+    "options": [
+      "A snapshot",
+      "A printer queue",
+      "A software license",
+      "A network diagram"
+    ],
+    "note": "Snapshots are commonly created before major changes so systems can be quickly reverted."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "A company has backups but has never attempted a restore. What is the greatest risk?",
+    "answer": "The backups may not be usable during an actual disaster",
+    "options": [
+      "The backups may not be usable during an actual disaster",
+      "The backups will automatically expire",
+      "The storage devices will become encrypted",
+      "The operating system will fail to boot"
+    ],
+    "note": "Backups should always be tested to ensure they can be successfully restored."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "Which sequence correctly matches the backup concepts?",
+    "answer": "Full = All data, Differential = Changes since last full, Incremental = Changes since last backup, Snapshot = Point-in-time copy, Restore Testing = Verify recovery, Disaster Recovery = Restore operations after major outages",
+    "options": [
+      "Full = All data, Differential = Changes since last full, Incremental = Changes since last backup, Snapshot = Point-in-time copy, Restore Testing = Verify recovery, Disaster Recovery = Restore operations after major outages",
+      "Full = Changes only, Differential = All data, Incremental = Point-in-time copy, Snapshot = Disaster recovery",
+      "Full = Restore testing, Differential = Snapshot, Incremental = Full backup, Disaster Recovery = Software licensing",
+      "Snapshot = Full backup, Incremental = All data, Differential = Changes since last backup, Disaster Recovery = Printer recovery"
+    ],
+    "note": "Knowing the purpose and differences between backup types is a common CompTIA A+ exam objective."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Why should electronic devices be recycled instead of thrown into the trash?",
+    "answer": "They may contain hazardous materials that can harm the environment",
+    "options": [
+      "They may contain hazardous materials that can harm the environment",
+      "They increase Internet speed",
+      "They improve computer performance",
+      "They reduce software licensing costs"
+    ],
+    "note": "Electronic devices often contain materials that require proper disposal or recycling."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "What is the best way to dispose of old computer equipment?",
+    "answer": "Recycle it through an approved e-waste recycling program",
+    "options": [
+      "Recycle it through an approved e-waste recycling program",
+      "Place it in household trash",
+      "Burn it",
+      "Leave it in a landfill"
+    ],
+    "note": "Approved recycling programs safely recover reusable materials and properly handle hazardous waste."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "How should rechargeable batteries be disposed of?",
+    "answer": "Take them to an approved battery recycling or disposal facility",
+    "options": [
+      "Take them to an approved battery recycling or disposal facility",
+      "Throw them in the trash",
+      "Burn them",
+      "Flush them down a drain"
+    ],
+    "note": "Many batteries contain hazardous chemicals and should be recycled properly."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Why do batteries require special disposal procedures?",
+    "answer": "They contain hazardous chemicals and heavy metals",
+    "options": [
+      "They contain hazardous chemicals and heavy metals",
+      "They can damage Wi-Fi signals",
+      "They erase stored files",
+      "They automatically catch fire"
+    ],
+    "note": "Improper battery disposal can contaminate soil and water."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "How should used printer toner cartridges be disposed of?",
+    "answer": "Use a manufacturer recycling or approved recycling program",
+    "options": [
+      "Use a manufacturer recycling or approved recycling program",
+      "Dump the toner into the trash",
+      "Burn the cartridge",
+      "Wash the toner down a sink"
+    ],
+    "note": "Many manufacturers provide recycling programs for toner cartridges."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Why should toner cartridges be recycled?",
+    "answer": "They can be reused and may contain materials that should not enter landfills",
+    "options": [
+      "They can be reused and may contain materials that should not enter landfills",
+      "They improve printer speed",
+      "They reduce electricity usage",
+      "They increase print quality"
+    ],
+    "note": "Recycling toner cartridges reduces waste and conserves resources."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "What does e-waste refer to?",
+    "answer": "Discarded electronic equipment",
+    "options": [
+      "Discarded electronic equipment",
+      "Expired software licenses",
+      "Network traffic logs",
+      "Unused printer paper"
+    ],
+    "note": "E-waste includes computers, monitors, phones, printers, and other electronic devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Which of the following is considered e-waste?",
+    "answer": "An old laptop",
+    "options": [
+      "An old laptop",
+      "A cardboard box",
+      "A paper user manual",
+      "A wooden desk"
+    ],
+    "note": "Electronic devices that have reached the end of their useful life are considered e-waste."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Why is proper e-waste disposal important?",
+    "answer": "It protects the environment and allows valuable materials to be recovered",
+    "options": [
+      "It protects the environment and allows valuable materials to be recovered",
+      "It increases processor speed",
+      "It improves network security",
+      "It prevents malware"
+    ],
+    "note": "Many electronic devices contain recyclable materials as well as hazardous substances."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "easy",
+    "question": "Which item should NOT normally be placed in household trash?",
+    "answer": "Lithium-ion battery",
+    "options": [
+      "Lithium-ion battery",
+      "Cardboard packaging",
+      "Printer paper",
+      "Plastic keyboard cover"
+    ],
+    "note": "Lithium-ion batteries should be recycled through approved collection programs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "A company replaces 100 desktop computers. What is the most environmentally responsible way to dispose of the old systems?",
+    "answer": "Use a certified electronic recycling program",
+    "options": [
+      "Use a certified electronic recycling program",
+      "Place them in a dumpster",
+      "Burn the computers",
+      "Leave them in storage indefinitely"
+    ],
+    "note": "Certified e-waste recyclers safely recover materials and properly dispose of hazardous components."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "A technician replaces a UPS battery. What should be done with the old battery?",
+    "answer": "Recycle it through an approved battery recycling program",
+    "options": [
+      "Recycle it through an approved battery recycling program",
+      "Throw it in a trash can",
+      "Place it in a shredder",
+      "Burn it outdoors"
+    ],
+    "note": "UPS batteries often contain lead or other hazardous materials that require proper recycling."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "A printer's toner cartridge is empty. What is the recommended action?",
+    "answer": "Return it through the manufacturer's recycling program",
+    "options": [
+      "Return it through the manufacturer's recycling program",
+      "Open it and dump out the toner",
+      "Burn the cartridge",
+      "Dispose of it with food waste"
+    ],
+    "note": "Most printer manufacturers offer toner cartridge recycling programs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "Which environmental concern is associated with improperly discarded electronics?",
+    "answer": "Hazardous materials may contaminate soil and water",
+    "options": [
+      "Hazardous materials may contaminate soil and water",
+      "Wi-Fi performance decreases",
+      "Software licenses expire",
+      "Cloud storage becomes unavailable"
+    ],
+    "note": "Improper disposal can release heavy metals and other hazardous substances into the environment."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "Which sequence correctly matches the environmental impact topics?",
+    "answer": "Recycling = Reuse materials, Battery Disposal = Approved recycling, Toner Disposal = Manufacturer or approved recycling, E-Waste = Proper electronic recycling",
+    "options": [
+      "Recycling = Reuse materials, Battery Disposal = Approved recycling, Toner Disposal = Manufacturer or approved recycling, E-Waste = Proper electronic recycling",
+      "Recycling = Burn electronics, Battery Disposal = Household trash, Toner Disposal = Drain disposal, E-Waste = Landfill",
+      "Battery Disposal = Compost, Toner Disposal = Burn, E-Waste = Household recycling bin",
+      "E-Waste = Printer paper, Recycling = Software updates, Battery Disposal = Storage only, Toner Disposal = Trash"
+    ],
+    "note": "CompTIA expects technicians to know the proper disposal methods for common IT-related waste."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "medium",
+    "question": "A technician resolves an issue but forgets to document the solution in the support ticket. What problem could this cause?",
+    "answer": "Future technicians may have to troubleshoot the same issue again",
+    "options": [
+      "Future technicians may have to troubleshoot the same issue again",
+      "The operating system will become unstable",
+      "The computer will fail to boot",
+      "The network configuration will be lost"
+    ],
+    "note": "Complete documentation improves consistency and reduces duplicated troubleshooting effort."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "medium",
+    "question": "A technician wants to update firmware on a production server. What should be completed before scheduling the maintenance window?",
+    "answer": "Testing and approval",
+    "options": [
+      "Testing and approval",
+      "User password changes",
+      "Installing unrelated software",
+      "Replacing the network cables"
+    ],
+    "note": "Changes should be tested and approved before implementation."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A technician is replacing a power supply inside a desktop computer. What should be done before opening the computer case?",
+    "answer": "Disconnect the power cable and discharge static electricity",
+    "options": [
+      "Disconnect the power cable and discharge static electricity",
+      "Run Windows Update",
+      "Disable the firewall",
+      "Reconnect the monitor"
+    ],
+    "note": "Electrical safety and ESD protection should always come first."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "A user begins explaining a problem and the technician immediately interrupts with a solution. Which professional practice was ignored?",
+    "answer": "Active listening",
+    "options": [
+      "Active listening",
+      "Change management",
+      "Asset management",
+      "Disaster recovery"
+    ],
+    "note": "Technicians should fully understand the problem before proposing a solution."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "professionalism",
+    "difficulty": "medium",
+    "question": "A user asks for an estimated completion time, but the technician is unsure. What is the best response?",
+    "answer": "Provide a realistic estimate and explain that it may change",
+    "options": [
+      "Provide a realistic estimate and explain that it may change",
+      "Guarantee it will be finished in five minutes",
+      "Tell the user not to ask again",
+      "Avoid answering the question"
+    ],
+    "note": "Setting realistic expectations builds trust with users."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "question": "A business purchases 1,000 copies of Windows under a single agreement. Which licensing model is being used?",
+    "answer": "Volume licensing",
+    "options": [
+      "Volume licensing",
+      "OEM licensing",
+      "Retail licensing",
+      "Subscription licensing"
+    ],
+    "note": "Volume licensing is designed for organizations managing many devices."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "medium",
+    "question": "Which backup strategy provides the fastest restore while requiring more storage space than incremental backups?",
+    "answer": "Differential backup",
+    "options": [
+      "Differential backup",
+      "Incremental backup",
+      "Snapshot",
+      "Mirror backup"
+    ],
+    "note": "Differential backups grow larger over time but restore faster than incremental backups."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-and-recovery",
+    "difficulty": "hard",
+    "question": "A company has a disaster recovery plan but has never tested it. What is the greatest concern?",
+    "answer": "The recovery procedures may fail during an actual disaster",
+    "options": [
+      "The recovery procedures may fail during an actual disaster",
+      "The operating system will stop receiving updates",
+      "The backups will automatically delete themselves",
+      "The network diagram will become inaccurate"
+    ],
+    "note": "Disaster recovery plans should be tested regularly to verify they work."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "environmental-impacts",
+    "difficulty": "medium",
+    "question": "A technician removes several damaged lithium-ion batteries from laptops. What is the proper disposal method?",
+    "answer": "Recycle them through an approved battery recycling program",
+    "options": [
+      "Recycle them through an approved battery recycling program",
+      "Place them in normal office trash",
+      "Burn them",
+      "Store them in a desk drawer indefinitely"
+    ],
+    "note": "Lithium-ion batteries require special handling because they present chemical and fire hazards."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "documentation",
+    "difficulty": "hard",
+    "question": "A network outage begins immediately after a router firmware upgrade. Which documentation would most quickly help identify what changed?",
+    "answer": "The change log",
+    "options": [
+      "The change log",
+      "The asset inventory",
+      "The knowledge base",
+      "The disaster recovery plan"
+    ],
+    "note": "Change logs provide a history of recent modifications and are invaluable during troubleshooting."
   }
 ]
