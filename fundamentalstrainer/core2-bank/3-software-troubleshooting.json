@@ -1,0 +1,22 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "windows-troubleshooting",
+    "difficulty": "easy",
+    "question": "Which Windows startup mode loads minimal drivers and services for troubleshooting?",
+    "answer": "Safe Mode",
+    "options": ["Safe Mode", "Hibernate", "Sleep", "Normal startup"],
+    "note": "Safe Mode starts Windows with a minimal set of drivers and services."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "application-troubleshooting",
+    "difficulty": "medium",
+    "question": "A user cannot run an older business application on a newer Windows version. What should be tried first?",
+    "answer": "Compatibility mode",
+    "options": ["Compatibility mode", "Disk defragmentation", "Changing DNS servers", "Removing RAM"],
+    "note": "Compatibility mode can help older applications run on newer Windows versions."
+  }
+]
