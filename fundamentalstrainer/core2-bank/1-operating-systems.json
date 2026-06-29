@@ -1,0 +1,82 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-editions",
+    "difficulty": "easy",
+    "question": "Which Windows edition is the BEST choice for joining an Active Directory domain?",
+    "answer": "Windows Pro",
+    "options": ["Windows Home", "Windows Pro", "Windows S Mode", "Windows SE"],
+    "note": "Windows Pro, Enterprise, and Education support domain join. Windows Home does not."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows tool is used to view hardware, driver, and device status?",
+    "answer": "Device Manager",
+    "options": ["Device Manager", "Disk Cleanup", "Task Scheduler", "Event Viewer"],
+    "note": "Device Manager is used to manage hardware devices and drivers."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "easy",
+    "question": "Which Windows tool is used to view application, security, setup, and system logs?",
+    "answer": "Event Viewer",
+    "options": ["Event Viewer", "Device Manager", "Disk Management", "Control Panel"],
+    "note": "Event Viewer is used to inspect Windows logs."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-commands",
+    "difficulty": "easy",
+    "question": "Which command displays IP address, subnet mask, gateway, and DNS configuration on Windows?",
+    "answer": "ipconfig",
+    "options": ["ipconfig", "ping", "tracert", "netstat"],
+    "note": "ipconfig displays Windows IP configuration."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-commands",
+    "difficulty": "medium",
+    "question": "Which command checks protected Windows system files and repairs them when possible?",
+    "answer": "sfc /scannow",
+    "options": ["sfc /scannow", "ipconfig /release", "netstat -ano", "gpupdate /force"],
+    "note": "System File Checker scans and repairs protected system files."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux-macos",
+    "difficulty": "easy",
+    "question": "Which Linux command lists files in a directory?",
+    "answer": "ls",
+    "options": ["ls", "pwd", "cd", "grep"],
+    "note": "ls lists directory contents."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "linux-macos",
+    "difficulty": "medium",
+    "question": "Which Linux command changes file permissions?",
+    "answer": "chmod",
+    "options": ["chmod", "chown", "grep", "ps"],
+    "note": "chmod modifies file and directory permissions."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "install-upgrade",
+    "difficulty": "medium",
+    "question": "Which installation method keeps user files and applications while replacing the operating system with a newer version?",
+    "answer": "In-place upgrade",
+    "options": ["Clean install", "In-place upgrade", "PXE boot only", "Factory reset"],
+    "note": "An in-place upgrade preserves supported apps, settings, and data."
+  }
+]
