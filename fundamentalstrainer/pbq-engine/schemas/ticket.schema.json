@@ -2,7 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://iantisdale.com/fundamentalstrainer/pbq-engine/schemas/ticket.schema.json",
   "title": "PBQ Engine Ticket Scenario",
+  "description": "Schema for a stateful Ticket Engine v2 scenario used by the standalone PBQ Engine.",
   "type": "object",
+  "additionalProperties": true,
   "required": [
     "id",
     "engine",
@@ -13,123 +15,238 @@
     "grading"
   ],
   "properties": {
-    "id": { "type": "string" },
-    "certification": { "type": "string" },
-    "exam": { "type": "string" },
-    "objective": { "type": "string" },
-    "category": { "type": "string" },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable unique scenario identifier."
+    },
+    "certification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exam": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
     "difficulty": {
       "type": "string",
       "enum": ["easy", "medium", "hard"]
     },
     "engine": {
-      "type": "string",
       "const": "ticket"
     },
-    "title": { "type": "string" },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
     "ticket": {
-      "type": "object",
-      "required": ["number", "priority", "user", "device", "description"],
-      "properties": {
-        "number": { "type": "string" },
-        "priority": { "type": "string" },
-        "user": { "type": "string" },
-        "department": { "type": "string" },
-        "device": { "type": "string" },
-        "description": { "type": "string" }
-      },
-      "additionalProperties": true
+      "$ref": "#/$defs/ticketMetadata"
     },
     "initialState": {
-      "type": "object",
-      "additionalProperties": {
-        "type": ["boolean", "string", "number", "null"]
-      }
+      "$ref": "#/$defs/stateMap"
     },
     "actions": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "type": "object",
-        "required": ["id", "type", "label", "result"],
-        "properties": {
-          "id": { "type": "string" },
-          "type": { "type": "string" },
-          "label": { "type": "string" },
-          "result": { "type": "string" },
-          "requires": {
-            "type": "object",
-            "additionalProperties": {
-              "type": ["boolean", "string", "number", "null"]
-            }
-          },
-          "sets": {
-            "type": "object",
-            "additionalProperties": {
-              "type": ["boolean", "string", "number", "null"]
-            }
-          },
-          "repeatable": { "type": "boolean" },
-          "good": { "type": "boolean" },
-          "evidence": {
-            "oneOf": [
-              { "$ref": "#/$defs/evidenceItem" },
-              {
-                "type": "array",
-                "items": { "$ref": "#/$defs/evidenceItem" }
-              }
-            ]
-          },
-          "penalty": {
-            "type": "object",
-            "required": ["type", "points", "reason"],
-            "properties": {
-              "type": { "type": "string" },
-              "points": { "type": "number" },
-              "reason": { "type": "string" }
-            },
-            "additionalProperties": true
-          }
+        "$ref": "#/$defs/action"
+      }
+    },
+    "grading": {
+      "$ref": "#/$defs/grading"
+    },
+    "teachingNotes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "ticketMetadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["description"],
+      "properties": {
+        "number": {
+          "type": "string"
         },
-        "additionalProperties": true
+        "priority": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High", "Critical"]
+        },
+        "user": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "stateMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["boolean", "string", "number", "null"]
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "label"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires": {
+          "$ref": "#/$defs/stateMap"
+        },
+        "sets": {
+          "$ref": "#/$defs/stateMap"
+        },
+        "result": {
+          "type": "string"
+        },
+        "good": {
+          "type": "boolean"
+        },
+        "repeatable": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "oneOf": [
+            { "$ref": "#/$defs/evidence" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/evidence" }
+            }
+          ]
+        },
+        "penalty": {
+          "$ref": "#/$defs/penalty"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "penalty": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["points"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "unsafe",
+            "insecure",
+            "too-invasive",
+            "not-relevant",
+            "premature-escalation",
+            "missed-verification",
+            "missed-documentation",
+            "penalty"
+          ]
+        },
+        "points": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reason": {
+          "type": "string"
+        }
       }
     },
     "grading": {
       "type": "object",
+      "additionalProperties": true,
       "required": ["requiredStates"],
       "properties": {
-        "maxScore": { "type": "number" },
-        "passingScore": { "type": "number" },
-        "pointsPerMissingState": { "type": "number" },
-        "summary": { "type": "string" },
+        "maxScore": {
+          "type": "number",
+          "minimum": 0,
+          "default": 100
+        },
+        "passingScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 75
+        },
+        "pointsPerMissingState": {
+          "type": "number",
+          "minimum": 0
+        },
+        "summary": {
+          "type": "string"
+        },
         "requiredStates": {
           "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "object",
-            "required": ["key", "value", "label"],
-            "properties": {
-              "key": { "type": "string" },
-              "value": { "type": ["boolean", "string", "number", "null"] },
-              "label": { "type": "string" }
-            },
-            "additionalProperties": true
+            "$ref": "#/$defs/requiredState"
           }
         }
-      },
-      "additionalProperties": true
-    }
-  },
-  "$defs": {
-    "evidenceItem": {
+      }
+    },
+    "requiredState": {
       "type": "object",
-      "required": ["title", "body"],
+      "additionalProperties": true,
+      "required": ["key", "value"],
       "properties": {
-        "id": { "type": "string" },
-        "title": { "type": "string" },
-        "body": { "type": "string" }
-      },
-      "additionalProperties": true
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": ["boolean", "string", "number", "null"]
+        },
+        "label": {
+          "type": "string"
+        }
+      }
     }
-  },
-  "additionalProperties": true
+  }
 }
