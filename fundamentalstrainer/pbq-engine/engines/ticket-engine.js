@@ -1,3 +1,5 @@
+import { createDocumentationComponent } from "../components/documentation-component.js";
+
 export function createTicketEngine({ scenario, elements }) {
   const state = {
     flags: {},
@@ -5,8 +7,10 @@ export function createTicketEngine({ scenario, elements }) {
     history: [],
     actionsTaken: new Set(),
     penalties: [],
-    completed: false
+    completed: false,
+    documentation: null
   };
+  let documentationComponent = null;
 
   function cloneInitialState() {
     return JSON.parse(JSON.stringify(scenario.initialState || {}));
@@ -186,6 +190,22 @@ export function createTicketEngine({ scenario, elements }) {
     `;
   }
 
+  function renderDocumentationReview() {
+    const documentation = documentationComponent?.getState() || state.documentation;
+    if (!documentation) {
+      return "<p>No documentation saved.</p>";
+    }
+
+    return `
+      <dl class="documentation-review">
+        <dt>Problem</dt><dd>${escapeHtml(documentation.values.problem || "Missing")}</dd>
+        <dt>Root Cause</dt><dd>${escapeHtml(documentation.values.rootCause || "Missing")}</dd>
+        <dt>Resolution</dt><dd>${escapeHtml(documentation.values.resolution || "Missing")}</dd>
+        <dt>Verification</dt><dd>${escapeHtml(documentation.values.verification || "Missing")}</dd>
+      </dl>
+    `;
+  }
+
   function renderAll() {
     renderTicket();
     renderRequirements();
@@ -275,7 +295,7 @@ export function createTicketEngine({ scenario, elements }) {
     elements.reviewPanel.innerHTML = `
       <h2>Final Review</h2>
       <div class="review-score">${score}% ${passed ? "Pass" : "Needs Work"}</div>
-      <p>${escapeHtml(grading.summary || scenario.note || "Review your evidence, actions, and required outcomes.")}</p>
+      <p>${escapeHtml(grading.summary || scenario.note || "Review your evidence, actions, documentation, and required outcomes.")}</p>
       <h3>Required Outcomes</h3>
       ${renderReviewStatePills(requiredStates)}
       <div class="review-grid" style="margin-top:1rem;">
@@ -295,10 +315,28 @@ export function createTicketEngine({ scenario, elements }) {
           <strong>Learner Notes</strong>
           <p>${escapeHtml(elements.learnerNotes.value || "No notes entered.")}</p>
         </div>
+        <div class="review-item wide-review-item">
+          <strong>Saved Documentation</strong>
+          ${renderDocumentationReview()}
+        </div>
       </div>
     `;
 
+    documentationComponent?.render({ completed: true });
     renderActions();
+  }
+
+  function setupDocumentation() {
+    documentationComponent = createDocumentationComponent({
+      element: elements.documentationPane,
+      onSave: documentationState => {
+        state.documentation = documentationState;
+        state.flags.documented = documentationState.saved;
+        elements.reviewPanel.hidden = true;
+        renderRequirements();
+      }
+    });
+    documentationComponent.reset();
   }
 
   function start() {
@@ -308,9 +346,11 @@ export function createTicketEngine({ scenario, elements }) {
     state.actionsTaken = new Set();
     state.penalties = [];
     state.completed = false;
+    state.documentation = null;
     elements.learnerNotes.value = "";
     elements.reviewPanel.hidden = true;
     elements.reviewPanel.innerHTML = "";
+    setupDocumentation();
     renderAll();
   }
 
