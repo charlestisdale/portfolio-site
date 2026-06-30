@@ -206,6 +206,73 @@
   font: inherit;
 }
 
+.terminal-shell {
+  display: grid;
+  gap: .75rem;
+}
+
+.terminal-output {
+  min-height: 18rem;
+  max-height: 28rem;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: .85rem;
+  background: rgba(2, 6, 23, .88);
+  border: 1px solid rgba(148, 163, 184, .18);
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.terminal-line.muted {
+  opacity: .72;
+}
+
+.terminal-command-line {
+  margin-top: .75rem;
+}
+
+.terminal-prompt {
+  opacity: .75;
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.terminal-result {
+  margin: .3rem 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  color: inherit;
+}
+
+.terminal-result.good {
+  border-left: 3px solid rgba(34, 197, 94, .55);
+  padding-left: .65rem;
+}
+
+.terminal-result.penalty {
+  border-left: 3px solid rgba(239, 68, 68, .65);
+  padding-left: .65rem;
+}
+
+.terminal-form {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: .6rem;
+  align-items: center;
+}
+
+.terminal-input {
+  width: 100%;
+  border-radius: .75rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(15, 23, 42, .75);
+  color: inherit;
+  padding: .75rem .85rem;
+  font: inherit;
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+}
+
 .review-panel,
 .validation-panel {
   margin-top: 1rem;
@@ -271,7 +338,8 @@
 @media (max-width: 900px) {
   .pbq-shell,
   .engine-grid,
-  .review-grid {
+  .review-grid,
+  .terminal-form {
     grid-template-columns: 1fr;
   }
 
