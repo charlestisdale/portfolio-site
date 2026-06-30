@@ -8,6 +8,7 @@ const elements = {
   restartBtn: document.getElementById("restartBtn"),
   gradeBtn: document.getElementById("gradeBtn"),
   ticketMeta: document.getElementById("ticketMeta"),
+  requirementsPane: document.getElementById("requirementsPane"),
   actionMenu: document.getElementById("actionMenu"),
   evidencePane: document.getElementById("evidencePane"),
   historyPane: document.getElementById("historyPane"),
