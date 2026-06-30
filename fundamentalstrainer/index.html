@@ -257,8 +257,9 @@
           </select>
 
           <select id="difficulty" class="trainer-select">
-            <option value="multiple">Multiple Choice / PBQ</option>
+            <option value="multiple">Multiple Choice</option>
             <option value="typed">Typed Answer</option>
+            <option value="pbq">PBQ Only</option>
           </select>
 
           <button id="newQuestionBtn" class="trainer-button primary">New Question</button>
@@ -471,6 +472,7 @@
     function filteredBank() {
       const objective = objectiveFilter.value;
       const category = categoryFilter.value;
+      const questionFormat = difficulty.value;
 
       let pool = bank;
 
@@ -481,11 +483,15 @@
       if (category === "weak") {
         const weakKeys = Object.keys(stats.misses).filter(key => stats.misses[key] > 0);
         const weakQuestions = pool.filter(item => weakKeys.includes(missKey(item)) || weakKeys.includes(item.category));
-        return weakQuestions.length ? weakQuestions : pool;
+        pool = weakQuestions.length ? weakQuestions : pool;
+      } else if (category !== "all") {
+        pool = pool.filter(item => item.category === category);
       }
 
-      if (category !== "all") {
-        pool = pool.filter(item => item.category === category);
+      if (questionFormat === "pbq") {
+        pool = pool.filter(isPbq);
+      } else {
+        pool = pool.filter(item => !isPbq(item));
       }
 
       return pool;
@@ -557,7 +563,7 @@
       const pool = filteredBank();
 
       if (!pool.length) {
-        question.textContent = "No questions match this filter yet.";
+        question.textContent = difficulty.value === "pbq" ? "No PBQs match this filter yet. Make sure the PBQ items were merged into core2-questions.json." : "No questions match this filter yet.";
         return;
       }
 
