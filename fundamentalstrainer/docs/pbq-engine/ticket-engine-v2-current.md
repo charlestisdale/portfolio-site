@@ -19,6 +19,7 @@ fundamentalstrainer/pbq-engine/app.js
 fundamentalstrainer/pbq-engine/engine-registry.js
 fundamentalstrainer/pbq-engine/engines/ticket-engine.js
 fundamentalstrainer/pbq-engine/validators/ticket-validator.js
+fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
 ```
 
@@ -43,6 +44,7 @@ The current ticket simulator supports:
 - final review screen
 - author-facing scenario validation warnings
 - engine registration through `engine-registry.js`
+- formal ticket scenario schema through `schemas/ticket.schema.json`
 
 ## Engine Registry
 
@@ -71,6 +73,34 @@ Current registry responsibilities:
 - report unknown engine types as authoring warnings
 
 This keeps the PBQ Engine moving toward the modular Phase 3 architecture without breaking the current Ticket Engine v2 prototype.
+
+## Ticket Scenario Schema
+
+The formal ticket scenario schema lives at:
+
+```text
+fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
+```
+
+The schema is the authoring contract for Ticket Engine v2 content. It defines the expected structure for:
+
+- scenario metadata
+- `ticket` metadata
+- `initialState`
+- `actions`
+- action `requires` maps
+- action `sets` maps
+- action evidence
+- action penalties
+- grading configuration
+- required grading states
+
+The schema is intentionally permissive with `additionalProperties: true` so the engine can evolve without breaking existing authored tickets. It still enforces the core fields needed for a working ticket scenario.
+
+The runtime validator and the schema serve different purposes:
+
+- `ticket.schema.json` defines the formal authoring contract.
+- `ticket-validator.js` catches practical authoring mistakes in the browser, especially state-key mismatches that JSON Schema cannot easily validate by itself.
 
 ## Ticket Scenario Shape
 
@@ -152,7 +182,7 @@ Example:
 
 ## Validation Rules
 
-The new validator is intentionally lightweight. It is not a full JSON Schema replacement yet.
+The runtime validator is intentionally lightweight. It complements the formal JSON Schema, but it is not a full JSON Schema validator.
 
 It currently checks:
 
@@ -181,17 +211,13 @@ The validator exists because the PBQ Engine is becoming data-driven. As more tic
 
 The engine registry exists because the PBQ Engine must support multiple simulation types over time. `app.js` should remain the generic application shell. Engine-specific behavior belongs in engine modules, validators, schemas, and scenario data.
 
-This is a bridge toward the documented Phase 3 goal of formal schema validation and modular engines. Future work may replace or supplement the lightweight validator with JSON Schema files under:
-
-```text
-fundamentalstrainer/pbq-engine/schemas/
-```
+The schema exists to make ticket authoring portable. A future build script, editor, CI check, or content pipeline can validate ticket JSON against the schema before content reaches the browser.
 
 ## Next Recommended Work
 
 Good next steps:
 
-1. Add a formal ticket JSON schema alongside the lightweight runtime validator.
+1. Add a development validation script that checks `data/core2/tickets.json` against `schemas/ticket.schema.json`.
 2. Add more Core 2 ticket scenarios only after the schema stabilizes.
 3. Add a richer terminal-style action type for command-based troubleshooting inside tickets.
 4. Add save/resume behavior for active ticket attempts using local storage.
