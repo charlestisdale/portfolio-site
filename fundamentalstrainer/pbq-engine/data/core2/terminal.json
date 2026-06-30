@@ -52,7 +52,7 @@
       {
         "command": "nslookup example.com",
         "aliases": ["nslookup www.example.com"],
-        "requires": { "ipConnectivityVerified": true },
+        "requires": { "ipConnectivityVerified": true, "dnsCacheFlushed": false },
         "output": "Server:  router.lan.local\nAddress:  192.168.10.1\n\nDNS request timed out.\n    timeout was 2 seconds.\n*** Request to router.lan.local timed-out",
         "summary": "Confirmed that DNS name resolution is failing while IP connectivity works.",
         "sets": { "dnsFailureIdentified": true },
