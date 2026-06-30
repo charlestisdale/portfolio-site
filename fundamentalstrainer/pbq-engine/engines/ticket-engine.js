@@ -60,26 +60,86 @@ export function createTicketEngine({ scenario, elements }) {
       .join("");
   }
 
+  function renderRequirements() {
+    const requiredStates = scenario.grading?.requiredStates || [];
+
+    if (!elements.requirementsPane) {
+      return;
+    }
+
+    if (!requiredStates.length) {
+      elements.requirementsPane.className = "requirement-list empty-pane";
+      elements.requirementsPane.textContent = "This ticket has no required outcomes defined.";
+      return;
+    }
+
+    elements.requirementsPane.className = "requirement-list";
+    elements.requirementsPane.innerHTML = requiredStates.map(item => {
+      const complete = state.flags[item.key] === item.value;
+      return `
+        <div class="requirement-item ${complete ? "complete" : "missing"}">
+          <span class="state-pill ${complete ? "complete" : "missing"}">${complete ? "Complete" : "Missing"}</span>
+          <span>${escapeHtml(item.label || item.key)}</span>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function groupActionsByType(actions) {
+    return actions.reduce((groups, action) => {
+      const key = action.type || "action";
+      if (!groups[key]) {
+        groups[key] = [];
+      }
+      groups[key].push(action);
+      return groups;
+    }, {});
+  }
+
+  function labelForActionType(type) {
+    return String(type || "action")
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, character => character.toUpperCase());
+  }
+
   function renderActions() {
     const visibleActions = (scenario.actions || []).filter(actionIsVisible);
 
     elements.actionMenu.innerHTML = "";
 
-    visibleActions.forEach(action => {
-      const button = document.createElement("button");
-      button.className = "engine-button action-button";
-      button.disabled = actionIsDisabled(action) || state.completed;
-      button.innerHTML = `
-        <span class="action-type">${escapeHtml(action.type || "action")}</span>
-        <span>${escapeHtml(action.label)}</span>
-      `;
-      button.addEventListener("click", () => runAction(action));
-      elements.actionMenu.appendChild(button);
-    });
-
     if (!visibleActions.length) {
       elements.actionMenu.innerHTML = `<p class="empty-pane">No available actions match the current scenario state.</p>`;
+      return;
     }
+
+    const groupedActions = groupActionsByType(visibleActions);
+
+    Object.entries(groupedActions).forEach(([type, actions]) => {
+      const group = document.createElement("section");
+      group.className = "action-group";
+
+      const heading = document.createElement("h3");
+      heading.textContent = labelForActionType(type);
+      group.appendChild(heading);
+
+      const list = document.createElement("div");
+      list.className = "action-list";
+
+      actions.forEach(action => {
+        const button = document.createElement("button");
+        button.className = "engine-button action-button";
+        button.disabled = actionIsDisabled(action) || state.completed;
+        button.innerHTML = `
+          <span class="action-type">${escapeHtml(action.type || "action")}</span>
+          <span>${escapeHtml(action.label)}</span>
+        `;
+        button.addEventListener("click", () => runAction(action));
+        list.appendChild(button);
+      });
+
+      group.appendChild(list);
+      elements.actionMenu.appendChild(group);
+    });
   }
 
   function renderEvidence() {
@@ -128,6 +188,7 @@ export function createTicketEngine({ scenario, elements }) {
 
   function renderAll() {
     renderTicket();
+    renderRequirements();
     renderActions();
     renderEvidence();
     renderHistory();
