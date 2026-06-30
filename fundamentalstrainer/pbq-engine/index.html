@@ -23,18 +23,18 @@
   <main class="container hero">
     <article class="panel project-shell">
       <div class="eyebrow">PBQ Engine v2 • Standalone Simulation Framework</div>
-      <h1>Ticket Engine v2</h1>
+      <h1>PBQ Engine v2</h1>
       <p>
         This is the separate PBQ Engine prototype. It is intentionally isolated from the regular Core 2 quiz app.
-        The first engine is a stateful help desk ticket simulator with evidence, action history, notes, branching,
-        required-state grading, and a final review screen.
+        It supports reusable simulation engines with evidence, history, notes, branching, required-state grading,
+        formal documentation, and final review.
       </p>
-      <p class="status-note" id="loadStatus">Loading ticket scenarios...</p>
+      <p class="status-note" id="loadStatus">Loading PBQ scenarios...</p>
       <section id="validationPanel" class="validation-panel" hidden></section>
 
       <section class="pbq-shell" aria-live="polite">
         <aside class="ticket-panel" id="ticketPanel">
-          <h2>Ticket</h2>
+          <h2>Scenario</h2>
           <div id="ticketMeta"></div>
           <div class="ticket-progress">
             <h3>Required Outcomes</h3>
@@ -44,15 +44,15 @@
 
         <section class="work-panel">
           <div class="engine-toolbar">
-            <select id="ticketSelect" class="engine-select" aria-label="Select ticket scenario"></select>
-            <button id="restartBtn" class="engine-button">Restart Ticket</button>
-            <button id="gradeBtn" class="engine-button primary">Grade Ticket</button>
+            <select id="ticketSelect" class="engine-select" aria-label="Select PBQ scenario"></select>
+            <button id="restartBtn" class="engine-button">Restart Scenario</button>
+            <button id="gradeBtn" class="engine-button primary">Grade Scenario</button>
           </div>
 
           <div class="engine-grid">
             <section class="engine-card">
-              <h2>Available Actions</h2>
-              <p class="status-note">Choose technician actions. Some actions reveal evidence, set scenario state, or add penalties.</p>
+              <h2>Simulation</h2>
+              <p class="status-note">Work the scenario using the available engine interaction.</p>
               <div id="actionMenu" class="action-menu"></div>
             </section>
 
@@ -69,6 +69,10 @@
             <section class="engine-card wide-card">
               <h2>Learner Notes</h2>
               <textarea id="learnerNotes" class="learner-notes" placeholder="Write your working notes, suspected cause, verification, and documentation plan..."></textarea>
+            </section>
+
+            <section class="engine-card wide-card">
+              <div id="documentationPane" class="documentation-pane"></div>
             </section>
           </div>
         </section>
