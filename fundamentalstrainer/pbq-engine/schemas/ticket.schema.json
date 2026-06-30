@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iantisdale.com/fundamentalstrainer/pbq-engine/schemas/ticket.schema.json",
+  "title": "PBQ Engine Ticket Scenario",
+  "type": "object",
+  "required": [
+    "id",
+    "engine",
+    "title",
+    "ticket",
+    "initialState",
+    "actions",
+    "grading"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "certification": { "type": "string" },
+    "exam": { "type": "string" },
+    "objective": { "type": "string" },
+    "category": { "type": "string" },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "engine": {
+      "type": "string",
+      "const": "ticket"
+    },
+    "title": { "type": "string" },
+    "ticket": {
+      "type": "object",
+      "required": ["number", "priority", "user", "device", "description"],
+      "properties": {
+        "number": { "type": "string" },
+        "priority": { "type": "string" },
+        "user": { "type": "string" },
+        "department": { "type": "string" },
+        "device": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "initialState": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["boolean", "string", "number", "null"]
+      }
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "label", "result"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "label": { "type": "string" },
+          "result": { "type": "string" },
+          "requires": {
+            "type": "object",
+            "additionalProperties": {
+              "type": ["boolean", "string", "number", "null"]
+            }
+          },
+          "sets": {
+            "type": "object",
+            "additionalProperties": {
+              "type": ["boolean", "string", "number", "null"]
+            }
+          },
+          "repeatable": { "type": "boolean" },
+          "good": { "type": "boolean" },
+          "evidence": {
+            "oneOf": [
+              { "$ref": "#/$defs/evidenceItem" },
+              {
+                "type": "array",
+                "items": { "$ref": "#/$defs/evidenceItem" }
+              }
+            ]
+          },
+          "penalty": {
+            "type": "object",
+            "required": ["type", "points", "reason"],
+            "properties": {
+              "type": { "type": "string" },
+              "points": { "type": "number" },
+              "reason": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "grading": {
+      "type": "object",
+      "required": ["requiredStates"],
+      "properties": {
+        "maxScore": { "type": "number" },
+        "passingScore": { "type": "number" },
+        "pointsPerMissingState": { "type": "number" },
+        "summary": { "type": "string" },
+        "requiredStates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "value", "label"],
+            "properties": {
+              "key": { "type": "string" },
+              "value": { "type": ["boolean", "string", "number", "null"] },
+              "label": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "evidenceItem": {
+      "type": "object",
+      "required": ["title", "body"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
