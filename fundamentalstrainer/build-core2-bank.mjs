@@ -12,8 +12,11 @@ const sourceFiles = [
   "1-operating-systems.json",
   "1-operating-systems-pbq-expansion.json",
   "2-security.json",
+  "2-security-pbq-expansion.json",
   "3-software-troubleshooting.json",
-  "4-operational-procedures.json"
+  "3-software-troubleshooting-pbq-expansion.json",
+  "4-operational-procedures.json",
+  "4-operational-procedures-pbq-expansion.json"
 ];
 
 const requiredFields = [
