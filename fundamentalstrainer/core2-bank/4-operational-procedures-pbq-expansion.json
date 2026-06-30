@@ -197,5 +197,403 @@
       "Verify the user can access the share",
       "Update and close the ticket with resolution notes"
     ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Ticket lifecycle",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "A support ticket should document the issue from creation through resolution.",
+    "type": "ordering",
+    "instructions": "Arrange the help desk ticket process in the correct order.",
+    "correctOrder": [
+      "Receive the support request",
+      "Gather information from the user",
+      "Document symptoms",
+      "Troubleshoot the issue",
+      "Verify the solution",
+      "Document the resolution",
+      "Close the ticket"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Documentation selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Different documents serve different operational purposes.",
+    "type": "matching",
+    "instructions": "Match each scenario to the correct documentation.",
+    "items": [
+      { "scenario": "Record completed maintenance", "answer": "Change Log" },
+      { "scenario": "Track a user's support issue", "answer": "Ticket" },
+      { "scenario": "Store troubleshooting procedures", "answer": "Knowledge Base" },
+      { "scenario": "Show network topology", "answer": "Network Diagram" },
+      { "scenario": "Track assigned hardware", "answer": "Asset Inventory" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Change management workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Changes should be approved, tested, and documented.",
+    "type": "ordering",
+    "instructions": "Arrange the change management process.",
+    "correctOrder": [
+      "Submit change request",
+      "Assess risk and impact",
+      "Receive approval",
+      "Schedule maintenance window",
+      "Perform the change",
+      "Verify success",
+      "Document the change"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: PPE selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Choose the correct protective equipment for each task.",
+    "type": "matching",
+    "instructions": "Match the task to the appropriate PPE.",
+    "items": [
+      { "scenario": "Replacing RAM", "answer": "ESD Strap" },
+      { "scenario": "Working with flying debris", "answer": "Safety Glasses" },
+      { "scenario": "Handling dusty equipment", "answer": "Dust Mask" },
+      { "scenario": "Handling broken glass", "answer": "Protective Gloves" },
+      { "scenario": "Working around loud equipment", "answer": "Hearing Protection" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Customer interaction workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Professional communication builds trust and improves troubleshooting.",
+    "type": "ordering",
+    "instructions": "Arrange the customer interaction steps.",
+    "correctOrder": [
+      "Greet the customer professionally",
+      "Listen without interrupting",
+      "Ask clarifying questions",
+      "Explain planned troubleshooting",
+      "Resolve the issue",
+      "Verify satisfaction",
+      "Thank the customer"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Backup method selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Understand which backup method best fits the requirement.",
+    "type": "matching",
+    "instructions": "Match the requirement to the backup type.",
+    "items": [
+      { "scenario": "Back up every file every day", "answer": "Full Backup" },
+      { "scenario": "Back up only changes since the last backup", "answer": "Incremental Backup" },
+      { "scenario": "Back up changes since the last full backup", "answer": "Differential Backup" },
+      { "scenario": "Capture VM state instantly", "answer": "Snapshot" },
+      { "scenario": "Verify backups are usable", "answer": "Restore Test" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Restore procedure",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Always verify before restoring production data.",
+    "type": "ordering",
+    "instructions": "Arrange the restore process.",
+    "correctOrder": [
+      "Confirm restore request",
+      "Locate the correct backup",
+      "Protect existing data if necessary",
+      "Restore files",
+      "Verify restored files",
+      "Document completion"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: License selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Identify the proper licensing model.",
+    "type": "matching",
+    "instructions": "Match each scenario to the license type.",
+    "items": [
+      { "scenario": "Preinstalled on a new PC", "answer": "OEM" },
+      { "scenario": "Purchased individually", "answer": "Retail" },
+      { "scenario": "Company-wide purchase", "answer": "Volume License" },
+      { "scenario": "Monthly payment required", "answer": "Subscription" },
+      { "scenario": "Source code available", "answer": "Open Source" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Fire extinguisher selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Choose the proper extinguisher for the fire type.",
+    "type": "matching",
+    "instructions": "Match the fire to the extinguisher class.",
+    "items": [
+      { "scenario": "Electrical equipment fire", "answer": "Class C" },
+      { "scenario": "Paper or wood fire", "answer": "Class A" },
+      { "scenario": "Grease fire", "answer": "Class K" },
+      { "scenario": "Gasoline fire", "answer": "Class B" },
+      { "scenario": "Magnesium fire", "answer": "Class D" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: ESD workstation setup",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Protect hardware from electrostatic discharge.",
+    "type": "ordering",
+    "instructions": "Arrange the ESD setup steps.",
+    "correctOrder": [
+      "Power off the computer",
+      "Disconnect power",
+      "Attach ESD strap",
+      "Connect strap to ground",
+      "Place components on ESD mat",
+      "Perform repair"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Escalation decision",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know when an issue should be escalated.",
+    "type": "matching",
+    "instructions": "Match each scenario to the best action.",
+    "items": [
+      { "scenario": "Beyond technician permissions", "answer": "Escalate" },
+      { "scenario": "Potential safety issue", "answer": "Escalate Immediately" },
+      { "scenario": "Issue resolved", "answer": "Close Ticket" },
+      { "scenario": "Need vendor assistance", "answer": "Vendor Escalation" },
+      { "scenario": "Need specialist knowledge", "answer": "Tier 2 Escalation" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Asset management lifecycle",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Assets should be tracked from purchase through disposal.",
+    "type": "ordering",
+    "instructions": "Arrange the asset lifecycle.",
+    "correctOrder": [
+      "Purchase asset",
+      "Assign inventory tag",
+      "Deploy to user",
+      "Track maintenance",
+      "Recover asset",
+      "Sanitize data",
+      "Dispose or recycle"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Environmental disposal",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Dispose of equipment safely and legally.",
+    "type": "matching",
+    "instructions": "Match each item to the proper disposal method.",
+    "items": [
+      { "scenario": "Lithium battery", "answer": "Battery Recycling" },
+      { "scenario": "Old monitor", "answer": "E-Waste Recycling" },
+      { "scenario": "Used toner cartridge", "answer": "Manufacturer Recycling Program" },
+      { "scenario": "Old hard drive", "answer": "Data Destruction" },
+      { "scenario": "Broken UPS battery", "answer": "Hazardous Waste Recycling" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Maintenance window planning",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Schedule changes to minimize business impact.",
+    "type": "ordering",
+    "instructions": "Arrange the planning process.",
+    "correctOrder": [
+      "Identify affected systems",
+      "Notify stakeholders",
+      "Schedule maintenance window",
+      "Create rollback plan",
+      "Perform maintenance",
+      "Verify services",
+      "Close maintenance"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Communication style selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Professional communication should always be respectful and appropriate.",
+    "type": "matching",
+    "instructions": "Match the situation to the best communication practice.",
+    "items": [
+      { "scenario": "User is frustrated", "answer": "Show Empathy" },
+      { "scenario": "Need technical explanation", "answer": "Avoid Jargon" },
+      { "scenario": "Need user approval", "answer": "Explain the Impact" },
+      { "scenario": "Issue requires more time", "answer": "Set Expectations" },
+      { "scenario": "Issue resolved", "answer": "Confirm Satisfaction" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Disaster recovery workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Disaster recovery focuses on restoring business operations after a major event.",
+    "type": "ordering",
+    "instructions": "Arrange the disaster recovery process.",
+    "correctOrder": [
+      "Declare the disaster",
+      "Assess the damage",
+      "Activate disaster recovery plan",
+      "Restore critical services",
+      "Restore remaining systems",
+      "Verify operations",
+      "Conduct lessons learned"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Incident documentation",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Accurate documentation improves future troubleshooting.",
+    "type": "matching",
+    "instructions": "Match each item to where it belongs.",
+    "items": [
+      { "scenario": "User description", "answer": "Ticket Notes" },
+      { "scenario": "Configuration modification", "answer": "Change Log" },
+      { "scenario": "Device serial number", "answer": "Asset Database" },
+      { "scenario": "Troubleshooting steps", "answer": "Ticket Notes" },
+      { "scenario": "Permanent solution", "answer": "Knowledge Base" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Safe lifting procedure",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Proper lifting reduces injury risk.",
+    "type": "ordering",
+    "instructions": "Arrange the lifting process.",
+    "correctOrder": [
+      "Assess the weight",
+      "Plan the path",
+      "Bend at the knees",
+      "Keep the load close",
+      "Lift with the legs",
+      "Avoid twisting",
+      "Set the load down safely"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Work authorization selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Always obtain the appropriate approval before making changes.",
+    "type": "matching",
+    "instructions": "Match each task to the required authorization.",
+    "items": [
+      { "scenario": "Modify production firewall", "answer": "Approved Change Request" },
+      { "scenario": "Reset user password", "answer": "Verify User Identity" },
+      { "scenario": "Dispose of company laptop", "answer": "Asset Approval" },
+      { "scenario": "Restore deleted files", "answer": "Manager Approval" },
+      { "scenario": "Install company software", "answer": "IT Authorization" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Complete support process",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "This combines documentation, troubleshooting, communication, and verification into one workflow.",
+    "type": "ordering",
+    "instructions": "Arrange the complete support process.",
+    "correctOrder": [
+      "Receive the request",
+      "Verify the user",
+      "Gather information",
+      "Troubleshoot",
+      "Implement the solution",
+      "Verify the issue is resolved",
+      "Document and close the ticket"
+    ]
   }
 ]

@@ -196,5 +196,414 @@
       { "scenario": "Block unauthorized inbound traffic", "answer": "Enable Firewall" },
       { "scenario": "Prevent boot-level tampering", "answer": "Enable Secure Boot" }
     ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Account security control selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Account security controls should reduce unauthorized access and limit damage if an account is compromised.",
+    "type": "matching",
+    "instructions": "Match each account security scenario to the best control.",
+    "items": [
+      { "scenario": "User account should be disabled after too many failed sign-in attempts", "answer": "Account Lockout Policy" },
+      { "scenario": "Users must change passwords after a set period", "answer": "Password Expiration" },
+      { "scenario": "Users must not reuse their last several passwords", "answer": "Password History" },
+      { "scenario": "A user only needs access to files required for their job", "answer": "Least Privilege" },
+      { "scenario": "Administrator actions should be performed using a separate elevated account", "answer": "Role-Based Access Control" },
+      { "scenario": "User access should be removed immediately after termination", "answer": "Account Disablement" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Password policy strength order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "A strong password policy balances security with usability and account protection.",
+    "type": "ordering",
+    "instructions": "Put the password policy implementation steps in the best order.",
+    "correctOrder": [
+      "Review organizational password requirements",
+      "Set minimum password length",
+      "Require password complexity or passphrase standards",
+      "Configure password history and reuse prevention",
+      "Configure account lockout settings",
+      "Communicate the policy to users",
+      "Monitor for lockouts and support issues"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: MFA method selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "MFA is strongest when factors come from separate categories.",
+    "type": "matching",
+    "instructions": "Match each authentication scenario to the best MFA-related option.",
+    "items": [
+      { "scenario": "User enters a password and approves a push notification", "answer": "Multifactor Authentication" },
+      { "scenario": "User signs in using only password plus PIN", "answer": "Single-Factor Authentication" },
+      { "scenario": "User authenticates with a fingerprint", "answer": "Biometric Authentication" },
+      { "scenario": "User inserts a physical card to authenticate", "answer": "Smart Card" },
+      { "scenario": "User receives a one-time code from an app", "answer": "Authenticator App" },
+      { "scenario": "User signs into multiple apps after one successful login", "answer": "Single Sign-On" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Permission troubleshooting workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Permission troubleshooting should verify identity, group membership, scope, and least privilege.",
+    "type": "ordering",
+    "instructions": "A user cannot access a shared folder they should be able to use. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Verify the user's identity and reported resource",
+      "Confirm the access request is approved",
+      "Check group membership",
+      "Check share permissions",
+      "Check NTFS permissions",
+      "Refresh sign-in or mapped drive access",
+      "Verify access and document the change"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Data protection method selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Different data protection tools protect data at different layers.",
+    "type": "matching",
+    "instructions": "Match each data protection need to the best method.",
+    "items": [
+      { "scenario": "Protect data on a stolen laptop", "answer": "Full Disk Encryption" },
+      { "scenario": "Protect a single sensitive folder", "answer": "File-Level Encryption" },
+      { "scenario": "Make deleted drive data unrecoverable before disposal", "answer": "Drive Wipe" },
+      { "scenario": "Destroy a failed drive containing sensitive data", "answer": "Physical Destruction" },
+      { "scenario": "Protect data while it travels across a website connection", "answer": "HTTPS" },
+      { "scenario": "Protect network traffic through an encrypted tunnel", "answer": "VPN" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Secure workstation setup order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "A secure workstation should be patched, protected, encrypted, and configured for least privilege.",
+    "type": "ordering",
+    "instructions": "Put the secure workstation setup tasks in the best order.",
+    "correctOrder": [
+      "Install or verify operating system updates",
+      "Install approved security software",
+      "Enable firewall protection",
+      "Enable full disk encryption",
+      "Create standard user accounts",
+      "Disable unnecessary services and startup apps",
+      "Verify security settings and document the build"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Threat type identification",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Security scenarios often test whether you can identify the attack type from clues.",
+    "type": "matching",
+    "instructions": "Match each scenario to the correct threat or attack type.",
+    "items": [
+      { "scenario": "Attacker watches a user type their password", "answer": "Shoulder Surfing" },
+      { "scenario": "Attacker searches discarded papers for sensitive data", "answer": "Dumpster Diving" },
+      { "scenario": "Attacker pretends to be IT support to get credentials", "answer": "Impersonation" },
+      { "scenario": "Attacker sends a fake delivery text with a malicious link", "answer": "Smishing" },
+      { "scenario": "Attacker calls pretending to be the bank", "answer": "Vishing" },
+      { "scenario": "Attacker leaves an infected USB drive in a parking lot", "answer": "USB Drop Attack" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Incident response first actions",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Security incidents should be contained and escalated without destroying evidence.",
+    "type": "ordering",
+    "instructions": "A user reports a suspected ransomware message. Put the first response steps in the best order.",
+    "correctOrder": [
+      "Tell the user to stop using the system",
+      "Disconnect the system from the network",
+      "Do not power off unless policy requires it",
+      "Escalate to the security or incident response team",
+      "Document symptoms and time discovered",
+      "Preserve evidence according to policy",
+      "Begin recovery only after approval"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows security feature matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Windows includes multiple built-in security features, each with a different purpose.",
+    "type": "matching",
+    "instructions": "Match each Windows security need to the best feature.",
+    "items": [
+      { "scenario": "Central dashboard for antivirus and account protection", "answer": "Windows Security" },
+      { "scenario": "Filter inbound and outbound network traffic", "answer": "Windows Defender Firewall" },
+      { "scenario": "Require confirmation before admin-level changes", "answer": "User Account Control" },
+      { "scenario": "Encrypt a drive", "answer": "BitLocker" },
+      { "scenario": "Store hardware-backed cryptographic keys", "answer": "TPM" },
+      { "scenario": "Verify trusted boot components", "answer": "Secure Boot" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Firewall rule decision",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Firewall rules should allow only required traffic and block unnecessary exposure.",
+    "type": "matching",
+    "instructions": "Match each firewall scenario to the best action.",
+    "items": [
+      { "scenario": "A required business app must accept connections from the local subnet", "answer": "Allow Specific Inbound Rule" },
+      { "scenario": "An unknown app requests public network access", "answer": "Block Access" },
+      { "scenario": "A laptop is on coffee shop Wi-Fi", "answer": "Use Public Network Profile" },
+      { "scenario": "A trusted office LAN is managed by company policy", "answer": "Use Domain Network Profile" },
+      { "scenario": "Only one port should be opened for one service", "answer": "Allow Required Port Only" },
+      { "scenario": "Old unused remote access software is listening", "answer": "Disable or Block the Service" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Secure wireless deployment order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Wireless security should be configured before users rely on the network.",
+    "type": "ordering",
+    "instructions": "Put the secure wireless deployment steps in the best order.",
+    "correctOrder": [
+      "Change default administrator credentials",
+      "Update access point firmware",
+      "Configure WPA3 or WPA2/WPA3 security",
+      "Use a strong passphrase or Enterprise authentication",
+      "Disable insecure legacy protocols",
+      "Create a separate guest or IoT network if needed",
+      "Test connectivity and document settings"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Browser warning response",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Certificate and browser warnings should not be ignored on sensitive sites.",
+    "type": "ordering",
+    "instructions": "A user sees a certificate warning while accessing a banking website. Put the safest response steps in order.",
+    "correctOrder": [
+      "Tell the user not to continue through the warning",
+      "Verify the website address is typed correctly",
+      "Check the system date and time",
+      "Try from a trusted network or known-good browser",
+      "Report the issue if the warning persists",
+      "Access the site only after the certificate issue is resolved"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile device security control selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Mobile security includes lock screens, encryption, remote wipe, app control, and updates.",
+    "type": "matching",
+    "instructions": "Match each mobile security requirement to the best control.",
+    "items": [
+      { "scenario": "Prevent casual access if the phone is left unattended", "answer": "Screen Lock" },
+      { "scenario": "Erase data from a lost company phone", "answer": "Remote Wipe" },
+      { "scenario": "Locate a missing phone", "answer": "Find My Device" },
+      { "scenario": "Prevent installation from unknown sources", "answer": "App Source Restriction" },
+      { "scenario": "Keep the mobile OS protected from known vulnerabilities", "answer": "Security Updates" },
+      { "scenario": "Require business policy enforcement on phones", "answer": "MDM" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Lost device response order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Lost-device response should protect data first, then document and replace access.",
+    "type": "ordering",
+    "instructions": "A user reports a lost company laptop. Put the response steps in the best order.",
+    "correctOrder": [
+      "Record when and where the device was lost",
+      "Confirm whether the device contains company data",
+      "Mark the device as lost in management tools",
+      "Attempt remote lock or wipe according to policy",
+      "Disable or reset affected credentials if needed",
+      "Report the loss to the proper internal team",
+      "Document the incident and replacement actions"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Data classification handling",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Data handling should match the sensitivity of the data.",
+    "type": "matching",
+    "instructions": "Match each data type to the best handling practice.",
+    "items": [
+      { "scenario": "Public marketing brochure", "answer": "Public Handling" },
+      { "scenario": "Internal procedure document", "answer": "Internal Use Only" },
+      { "scenario": "Employee Social Security numbers", "answer": "Confidential Handling" },
+      { "scenario": "Customer payment card data", "answer": "Restricted Handling" },
+      { "scenario": "Old drive containing customer records", "answer": "Secure Destruction" },
+      { "scenario": "Sensitive file sent outside the company", "answer": "Encrypt Before Sending" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Secure user onboarding workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Secure onboarding ensures the user receives only approved access and understands security expectations.",
+    "type": "ordering",
+    "instructions": "Put the secure onboarding steps in the best order.",
+    "correctOrder": [
+      "Receive approved onboarding request",
+      "Create the user account",
+      "Assign required groups based on job role",
+      "Require temporary password change at first login",
+      "Enroll the user in MFA",
+      "Provide security awareness instructions",
+      "Verify access and document completion"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Secure offboarding workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Offboarding should quickly remove access while preserving business data.",
+    "type": "ordering",
+    "instructions": "An employee is leaving the company. Put the secure offboarding steps in the best order.",
+    "correctOrder": [
+      "Receive approved termination or offboarding notice",
+      "Disable the user account at the required time",
+      "Revoke active sessions and remote access",
+      "Remove group memberships or application access",
+      "Transfer or preserve business data as required",
+      "Collect company-owned devices and badges",
+      "Document completed offboarding actions"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Email security record matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "SPF, DKIM, and DMARC work together to reduce email spoofing.",
+    "type": "matching",
+    "instructions": "Match each email security purpose to the correct record or mechanism.",
+    "items": [
+      { "scenario": "Lists servers allowed to send mail for a domain", "answer": "SPF" },
+      { "scenario": "Uses a cryptographic signature to verify message integrity", "answer": "DKIM" },
+      { "scenario": "Tells receivers what to do when SPF or DKIM fails", "answer": "DMARC" },
+      { "scenario": "Reject suspicious mail at the recipient side", "answer": "DMARC Reject Policy" },
+      { "scenario": "Mark suspicious mail but still deliver it", "answer": "DMARC Quarantine Policy" },
+      { "scenario": "Report authentication results without enforcement", "answer": "DMARC None Policy" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Secure disposal workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Secure disposal protects data after hardware leaves service.",
+    "type": "ordering",
+    "instructions": "A company is retiring old computers with sensitive data. Put the secure disposal steps in the best order.",
+    "correctOrder": [
+      "Identify devices scheduled for retirement",
+      "Verify whether storage contains sensitive data",
+      "Back up or transfer required business data",
+      "Sanitize or destroy storage media according to policy",
+      "Record serial numbers and disposal actions",
+      "Send hardware to approved recycling or disposal",
+      "Update asset inventory"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Security policy to scenario matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Policies define expected security behavior before incidents happen.",
+    "type": "matching",
+    "instructions": "Match each scenario to the most relevant security policy.",
+    "items": [
+      { "scenario": "Employee wants to use a personal laptop for work", "answer": "BYOD Policy" },
+      { "scenario": "User wants to install unapproved software", "answer": "Acceptable Use Policy" },
+      { "scenario": "Technician needs to access customer data", "answer": "Data Handling Policy" },
+      { "scenario": "User reports a suspicious email", "answer": "Incident Response Policy" },
+      { "scenario": "Company defines password and MFA rules", "answer": "Authentication Policy" },
+      { "scenario": "Admin access is reviewed every quarter", "answer": "Access Review Policy" }
+    ]
   }
 ]

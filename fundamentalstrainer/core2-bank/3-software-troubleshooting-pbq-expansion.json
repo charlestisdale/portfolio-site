@@ -197,5 +197,377 @@
       { "scenario": "Network printer cannot be reached by name", "answer": "Check DNS or Printer Share" },
       { "scenario": "Printer shows offline in Windows", "answer": "Check Printer Status and Connectivity" }
     ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: BSOD troubleshooting workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Blue screens are commonly caused by drivers, hardware, or corrupted system files.",
+    "type": "ordering",
+    "instructions": "Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Record the stop code",
+      "Determine what recently changed",
+      "Boot into Safe Mode if necessary",
+      "Roll back or update the suspected driver",
+      "Run SFC and DISM",
+      "Verify the system is stable",
+      "Document the repair"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Startup troubleshooting tool selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Choose the Windows recovery tool that best matches the symptom.",
+    "type": "matching",
+    "instructions": "Match the issue to the best recovery option.",
+    "items": [
+      { "scenario": "Windows won't boot after a bad driver update", "answer": "Safe Mode" },
+      { "scenario": "Startup files are damaged", "answer": "Startup Repair" },
+      { "scenario": "Need to undo yesterday's update", "answer": "System Restore" },
+      { "scenario": "Need to completely reinstall Windows", "answer": "Reset This PC" },
+      { "scenario": "Need command-line repair tools", "answer": "Windows Recovery Environment" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Application crash investigation",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Gather evidence before making changes.",
+    "type": "ordering",
+    "instructions": "Arrange the troubleshooting steps.",
+    "correctOrder": [
+      "Reproduce the crash",
+      "Review Event Viewer",
+      "Check for application updates",
+      "Repair or reinstall the application",
+      "Retest",
+      "Document the solution"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows utility matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know which utility gives the most useful information.",
+    "type": "matching",
+    "instructions": "Match each problem to the correct utility.",
+    "items": [
+      { "scenario": "Computer randomly restarts", "answer": "Event Viewer" },
+      { "scenario": "CPU usage is extremely high", "answer": "Task Manager" },
+      { "scenario": "Need long-term CPU statistics", "answer": "Performance Monitor" },
+      { "scenario": "Need live hardware resource usage", "answer": "Resource Monitor" },
+      { "scenario": "Driver has an error", "answer": "Device Manager" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Browser troubleshooting",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Browser issues often involve cache, extensions, or malware.",
+    "type": "ordering",
+    "instructions": "Arrange the browser troubleshooting process.",
+    "correctOrder": [
+      "Verify the problem",
+      "Test another browser",
+      "Clear cache and cookies",
+      "Disable extensions",
+      "Reset browser settings",
+      "Scan for malware"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile troubleshooting selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Choose the best first action.",
+    "type": "matching",
+    "instructions": "Match each symptom with the best first troubleshooting step.",
+    "items": [
+      { "scenario": "Battery drains rapidly", "answer": "Review Battery Usage" },
+      { "scenario": "Bluetooth won't connect", "answer": "Forget and Re-pair Device" },
+      { "scenario": "No cellular data", "answer": "Check APN Settings" },
+      { "scenario": "Email won't sync", "answer": "Verify Sync Settings" },
+      { "scenario": "Storage is full", "answer": "Remove Unused Apps" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware symptom identification",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Recognize common malware symptoms.",
+    "type": "matching",
+    "instructions": "Match the symptom to the likely issue.",
+    "items": [
+      { "scenario": "Homepage changes automatically", "answer": "Browser Hijacker" },
+      { "scenario": "Files become encrypted", "answer": "Ransomware" },
+      { "scenario": "Searches redirect elsewhere", "answer": "Browser Redirect Malware" },
+      { "scenario": "Unknown process consumes CPU", "answer": "Malware Infection" },
+      { "scenario": "Numerous pop-ups appear", "answer": "Adware" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Printing problem workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Start with the simplest checks.",
+    "type": "ordering",
+    "instructions": "Arrange the troubleshooting steps.",
+    "correctOrder": [
+      "Verify printer power",
+      "Check printer status",
+      "Clear print queue",
+      "Restart Print Spooler",
+      "Update printer driver",
+      "Print a test page"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Recovery environment tools",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know which recovery tool solves which problem.",
+    "type": "matching",
+    "instructions": "Match the task to the recovery feature.",
+    "items": [
+      { "scenario": "Repair startup files", "answer": "Startup Repair" },
+      { "scenario": "Open Command Prompt", "answer": "Advanced Startup" },
+      { "scenario": "Undo a driver installation", "answer": "System Restore" },
+      { "scenario": "Remove recent updates", "answer": "Uninstall Updates" },
+      { "scenario": "Reinstall Windows", "answer": "Reset This PC" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Network troubleshooting workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Always move from physical layer upward.",
+    "type": "ordering",
+    "instructions": "Arrange the troubleshooting process.",
+    "correctOrder": [
+      "Verify physical connectivity",
+      "Check IP configuration",
+      "Ping default gateway",
+      "Ping external IP",
+      "Test DNS resolution",
+      "Document findings"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows command selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know the purpose of common troubleshooting commands.",
+    "type": "matching",
+    "instructions": "Match each command to its purpose.",
+    "items": [
+      { "scenario": "Repair Windows image", "answer": "DISM" },
+      { "scenario": "Repair system files", "answer": "SFC" },
+      { "scenario": "Repair file system", "answer": "CHKDSK" },
+      { "scenario": "Show IP information", "answer": "IPCONFIG" },
+      { "scenario": "Display routing path", "answer": "TRACERT" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Software update troubleshooting",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Update failures should be investigated methodically.",
+    "type": "ordering",
+    "instructions": "Arrange the troubleshooting process.",
+    "correctOrder": [
+      "Verify Internet connectivity",
+      "Check available disk space",
+      "Restart Windows Update service",
+      "Retry update",
+      "Review update logs",
+      "Document results"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Boot symptom matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Recognize which symptom points to which repair option.",
+    "type": "matching",
+    "instructions": "Match the symptom to the best repair.",
+    "items": [
+      { "scenario": "Corrupt BCD", "answer": "Startup Repair" },
+      { "scenario": "Bad driver", "answer": "Safe Mode" },
+      { "scenario": "Corrupt Windows files", "answer": "SFC/DISM" },
+      { "scenario": "Recent software installation caused failure", "answer": "System Restore" },
+      { "scenario": "Completely unrecoverable installation", "answer": "Reset This PC" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows login troubleshooting",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Verify identity before making account changes.",
+    "type": "ordering",
+    "instructions": "Arrange the login troubleshooting steps.",
+    "correctOrder": [
+      "Verify user identity",
+      "Confirm username",
+      "Check password expiration",
+      "Check account lockout",
+      "Reset password if authorized",
+      "Verify login"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Event Viewer log matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know which log contains different event types.",
+    "type": "matching",
+    "instructions": "Match the event to the correct log.",
+    "items": [
+      { "scenario": "Driver error", "answer": "System Log" },
+      { "scenario": "Application crash", "answer": "Application Log" },
+      { "scenario": "Login failure", "answer": "Security Log" },
+      { "scenario": "Windows update installation", "answer": "Setup Log" },
+      { "scenario": "Forwarded event", "answer": "Forwarded Events" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Slow computer troubleshooting",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Check resource utilization before replacing hardware.",
+    "type": "ordering",
+    "instructions": "Arrange the troubleshooting process.",
+    "correctOrder": [
+      "Verify the complaint",
+      "Open Task Manager",
+      "Identify resource bottleneck",
+      "Disable unnecessary startup apps",
+      "Check for malware",
+      "Verify performance improvement"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows recovery command matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Know which recovery command solves which issue.",
+    "type": "matching",
+    "instructions": "Match each repair task with the proper command.",
+    "items": [
+      { "scenario": "Repair boot records", "answer": "BOOTREC" },
+      { "scenario": "Repair Windows image", "answer": "DISM" },
+      { "scenario": "Repair protected files", "answer": "SFC" },
+      { "scenario": "Repair disk errors", "answer": "CHKDSK" },
+      { "scenario": "Manage partitions", "answer": "DISKPART" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Safe Mode usage",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Safe Mode loads minimal drivers and services.",
+    "type": "matching",
+    "instructions": "Match each troubleshooting task to the correct Safe Mode option.",
+    "items": [
+      { "scenario": "Need Internet access while troubleshooting", "answer": "Safe Mode with Networking" },
+      { "scenario": "Need command-line tools only", "answer": "Safe Mode with Command Prompt" },
+      { "scenario": "Need minimal drivers", "answer": "Safe Mode" },
+      { "scenario": "Need to disable startup apps", "answer": "Safe Mode" },
+      { "scenario": "Need to uninstall a faulty driver", "answer": "Safe Mode" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Complete troubleshooting methodology",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "This is one of the highest-value PBQs on the exam.",
+    "type": "ordering",
+    "instructions": "Arrange the CompTIA troubleshooting methodology.",
+    "correctOrder": [
+      "Identify the problem",
+      "Establish a theory",
+      "Test the theory",
+      "Establish a plan",
+      "Implement the solution",
+      "Verify full functionality",
+      "Document findings"
+    ]
   }
 ]
