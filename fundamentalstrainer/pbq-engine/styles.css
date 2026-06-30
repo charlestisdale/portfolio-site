@@ -110,7 +110,8 @@
   gap: 1rem;
 }
 
-.wide-card {
+.wide-card,
+.wide-review-item {
   grid-column: 1 / -1;
 }
 
@@ -204,6 +205,86 @@
   color: inherit;
   padding: .85rem;
   font: inherit;
+}
+
+.documentation-pane {
+  display: grid;
+  gap: 1rem;
+}
+
+.documentation-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.documentation-header h2 {
+  margin-top: 0;
+}
+
+.documentation-status {
+  margin: 0;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .1);
+  font-size: .85rem;
+}
+
+.documentation-status.complete {
+  background: rgba(34, 197, 94, .14);
+  border-color: rgba(34, 197, 94, .35);
+}
+
+.documentation-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .85rem;
+}
+
+.documentation-form label {
+  display: grid;
+  gap: .35rem;
+}
+
+.documentation-form span {
+  font-size: .8rem;
+  opacity: .75;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.documentation-form textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+  border-radius: .85rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(15, 23, 42, .75);
+  color: inherit;
+  padding: .85rem;
+  font: inherit;
+}
+
+.documentation-form button {
+  justify-self: start;
+}
+
+.documentation-review {
+  display: grid;
+  gap: .35rem .85rem;
+  grid-template-columns: max-content minmax(0, 1fr);
+  margin: .75rem 0 0;
+}
+
+.documentation-review dt {
+  opacity: .7;
+  font-weight: 700;
+}
+
+.documentation-review dd {
+  margin: 0;
 }
 
 .terminal-shell {
@@ -339,7 +420,8 @@
   .pbq-shell,
   .engine-grid,
   .review-grid,
-  .terminal-form {
+  .terminal-form,
+  .documentation-form {
     grid-template-columns: 1fr;
   }
 
