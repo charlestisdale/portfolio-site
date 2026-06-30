@@ -1,0 +1,260 @@
+export function createTicketEngine({ scenario, elements }) {
+  const state = {
+    flags: {},
+    evidence: [],
+    history: [],
+    actionsTaken: new Set(),
+    penalties: [],
+    completed: false
+  };
+
+  function cloneInitialState() {
+    return JSON.parse(JSON.stringify(scenario.initialState || {}));
+  }
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = String(value ?? "");
+    return div.innerHTML;
+  }
+
+  function priorityClass(priority) {
+    return `priority-${String(priority || "").toLowerCase()}`;
+  }
+
+  function actionIsVisible(action) {
+    if (!action.requires) {
+      return true;
+    }
+
+    return Object.entries(action.requires).every(([key, value]) => state.flags[key] === value);
+  }
+
+  function actionIsDisabled(action) {
+    if (action.repeatable) {
+      return false;
+    }
+
+    return state.actionsTaken.has(action.id);
+  }
+
+  function renderTicket() {
+    const ticket = scenario.ticket || {};
+    const fields = [
+      ["Ticket", ticket.number || scenario.id],
+      ["Priority", ticket.priority || "Unspecified", priorityClass(ticket.priority)],
+      ["User", ticket.user],
+      ["Department", ticket.department],
+      ["Device", ticket.device],
+      ["Reported Symptom", ticket.description]
+    ];
+
+    elements.ticketMeta.innerHTML = fields
+      .filter(([, value]) => value)
+      .map(([label, value, className]) => `
+        <div class="ticket-field">
+          <span class="ticket-label">${escapeHtml(label)}</span>
+          <span class="ticket-value ${className || ""}">${escapeHtml(value)}</span>
+        </div>
+      `)
+      .join("");
+  }
+
+  function renderActions() {
+    const visibleActions = (scenario.actions || []).filter(actionIsVisible);
+
+    elements.actionMenu.innerHTML = "";
+
+    visibleActions.forEach(action => {
+      const button = document.createElement("button");
+      button.className = "engine-button action-button";
+      button.disabled = actionIsDisabled(action) || state.completed;
+      button.innerHTML = `
+        <span class="action-type">${escapeHtml(action.type || "action")}</span>
+        <span>${escapeHtml(action.label)}</span>
+      `;
+      button.addEventListener("click", () => runAction(action));
+      elements.actionMenu.appendChild(button);
+    });
+
+    if (!visibleActions.length) {
+      elements.actionMenu.innerHTML = `<p class="empty-pane">No available actions match the current scenario state.</p>`;
+    }
+  }
+
+  function renderEvidence() {
+    if (!state.evidence.length) {
+      elements.evidencePane.className = "evidence-pane empty-pane";
+      elements.evidencePane.textContent = "No evidence collected yet.";
+      return;
+    }
+
+    elements.evidencePane.className = "evidence-pane";
+    elements.evidencePane.innerHTML = state.evidence.map(item => `
+      <div class="evidence-item">
+        <strong>${escapeHtml(item.title || "Evidence")}</strong>
+        <p>${escapeHtml(item.body || item.result || "")}</p>
+      </div>
+    `).join("");
+  }
+
+  function renderHistory() {
+    if (!state.history.length) {
+      elements.historyPane.className = "history-pane empty-pane";
+      elements.historyPane.textContent = "No actions taken yet.";
+      return;
+    }
+
+    elements.historyPane.className = "history-pane";
+    elements.historyPane.innerHTML = state.history.map((item, index) => `
+      <div class="history-item ${item.penalty ? "penalty" : item.good ? "good" : ""}">
+        <strong>${index + 1}. ${escapeHtml(item.label)}</strong>
+        <p>${escapeHtml(item.result)}</p>
+        ${item.penalty ? `<p><strong>Penalty:</strong> ${escapeHtml(item.penalty.reason || item.penalty.type)}</p>` : ""}
+      </div>
+    `).join("");
+  }
+
+  function renderReviewStatePills(requiredStates) {
+    return `
+      <div class="state-pill-row">
+        ${requiredStates.map(item => {
+          const complete = state.flags[item.key] === item.value;
+          return `<span class="state-pill ${complete ? "complete" : "missing"}">${escapeHtml(item.label || item.key)}</span>`;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function renderAll() {
+    renderTicket();
+    renderActions();
+    renderEvidence();
+    renderHistory();
+  }
+
+  function addEvidenceFromAction(action) {
+    if (!action.evidence) {
+      return;
+    }
+
+    const evidenceItems = Array.isArray(action.evidence) ? action.evidence : [action.evidence];
+
+    evidenceItems.forEach(item => {
+      const evidenceId = item.id || `${action.id}-evidence-${state.evidence.length}`;
+      const alreadyExists = state.evidence.some(existing => existing.id === evidenceId);
+
+      if (!alreadyExists) {
+        state.evidence.push({
+          id: evidenceId,
+          title: item.title,
+          body: item.body || item.result
+        });
+      }
+    });
+  }
+
+  function applyStateChanges(action) {
+    Object.entries(action.sets || {}).forEach(([key, value]) => {
+      state.flags[key] = value;
+    });
+  }
+
+  function applyPenalty(action) {
+    if (!action.penalty) {
+      return null;
+    }
+
+    const penalty = {
+      actionId: action.id,
+      type: action.penalty.type || "penalty",
+      points: Number(action.penalty.points || 0),
+      reason: action.penalty.reason || "This action was not appropriate for the scenario."
+    };
+
+    state.penalties.push(penalty);
+    return penalty;
+  }
+
+  function runAction(action) {
+    if (state.completed) {
+      return;
+    }
+
+    state.actionsTaken.add(action.id);
+    applyStateChanges(action);
+    addEvidenceFromAction(action);
+    const penalty = applyPenalty(action);
+
+    state.history.push({
+      actionId: action.id,
+      label: action.label,
+      result: action.result || "Action completed.",
+      penalty,
+      good: action.good === true
+    });
+
+    elements.reviewPanel.hidden = true;
+    renderAll();
+  }
+
+  function grade() {
+    const grading = scenario.grading || {};
+    const requiredStates = grading.requiredStates || [];
+    const maxScore = Number(grading.maxScore || 100);
+    const missing = requiredStates.filter(item => state.flags[item.key] !== item.value);
+    const missingPenalty = missing.length * Number(grading.pointsPerMissingState || 15);
+    const actionPenalty = state.penalties.reduce((total, item) => total + Number(item.points || 0), 0);
+    const score = Math.max(0, maxScore - missingPenalty - actionPenalty);
+    const passed = score >= Number(grading.passingScore || 75) && missing.length === 0;
+
+    state.completed = true;
+
+    elements.reviewPanel.hidden = false;
+    elements.reviewPanel.innerHTML = `
+      <h2>Final Review</h2>
+      <div class="review-score">${score}% ${passed ? "Pass" : "Needs Work"}</div>
+      <p>${escapeHtml(grading.summary || scenario.note || "Review your evidence, actions, and required outcomes.")}</p>
+      <h3>Required Outcomes</h3>
+      ${renderReviewStatePills(requiredStates)}
+      <div class="review-grid" style="margin-top:1rem;">
+        <div class="review-item ${missing.length ? "missing" : "complete"}">
+          <strong>Missing Outcomes</strong>
+          ${missing.length ? `<ul>${missing.map(item => `<li>${escapeHtml(item.label || item.key)}</li>`).join("")}</ul>` : "<p>All required outcomes were completed.</p>"}
+        </div>
+        <div class="review-item ${state.penalties.length ? "penalty" : "complete"}">
+          <strong>Penalties</strong>
+          ${state.penalties.length ? `<ul>${state.penalties.map(item => `<li>${escapeHtml(item.reason)} (-${item.points})</li>`).join("")}</ul>` : "<p>No unsafe or unnecessary actions were taken.</p>"}
+        </div>
+        <div class="review-item">
+          <strong>Actions Taken</strong>
+          <p>${state.history.length}</p>
+        </div>
+        <div class="review-item">
+          <strong>Learner Notes</strong>
+          <p>${escapeHtml(elements.learnerNotes.value || "No notes entered.")}</p>
+        </div>
+      </div>
+    `;
+
+    renderActions();
+  }
+
+  function start() {
+    state.flags = cloneInitialState();
+    state.evidence = [];
+    state.history = [];
+    state.actionsTaken = new Set();
+    state.penalties = [];
+    state.completed = false;
+    elements.learnerNotes.value = "";
+    elements.reviewPanel.hidden = true;
+    elements.reviewPanel.innerHTML = "";
+    renderAll();
+  }
+
+  return {
+    start,
+    grade
+  };
+}
