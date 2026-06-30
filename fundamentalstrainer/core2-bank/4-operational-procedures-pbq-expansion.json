@@ -1,0 +1,201 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Change management workflow order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Change management protects production systems by requiring planning, approval, testing, rollback, and documentation.",
+    "type": "ordering",
+    "instructions": "A technician needs to update software on production computers. Put the change-management steps in the best order.",
+    "correctOrder": [
+      "Create a change request",
+      "Document risk, impact, and affected systems",
+      "Get approval from the appropriate authority",
+      "Schedule a maintenance window",
+      "Test the change and prepare a rollback plan",
+      "Implement the approved change",
+      "Verify functionality and document the outcome"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Documentation artifact selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Different documentation types solve different operational needs.",
+    "type": "matching",
+    "instructions": "Match each operational need to the best documentation artifact.",
+    "items": [
+      { "scenario": "Track a user's reported issue from start to finish", "answer": "Ticket" },
+      { "scenario": "Record what changed during a maintenance window", "answer": "Change Log" },
+      { "scenario": "Track assigned hardware and serial numbers", "answer": "Asset Inventory" },
+      { "scenario": "Show how switches, routers, and servers connect", "answer": "Network Diagram" },
+      { "scenario": "Provide repeatable steps for common fixes", "answer": "Knowledge Base Article" },
+      { "scenario": "List who to contact during an outage", "answer": "Escalation List" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Safety control selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Operational safety includes electrical safety, ESD prevention, PPE, fire safety, and environmental handling.",
+    "type": "matching",
+    "instructions": "Match each safety scenario to the best control or practice.",
+    "items": [
+      { "scenario": "Prevent static discharge while replacing RAM", "answer": "ESD Strap" },
+      { "scenario": "Protect eyes while cutting cable or working with debris", "answer": "Safety Glasses" },
+      { "scenario": "Handle a swollen lithium-ion battery", "answer": "Follow Battery Disposal Procedure" },
+      { "scenario": "Work inside a power supply", "answer": "Do Not Open; Replace Unit" },
+      { "scenario": "Suppress an electrical fire", "answer": "Class C Fire Extinguisher" },
+      { "scenario": "Avoid tripping over temporary cabling", "answer": "Cable Management" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Professional communication workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Professionalism means listening, setting expectations, avoiding blame, and following through.",
+    "type": "ordering",
+    "instructions": "A frustrated user reports that their computer is unusable before a meeting. Put the communication steps in the best order.",
+    "correctOrder": [
+      "Listen actively and let the user explain the issue",
+      "Show empathy and acknowledge the impact",
+      "Ask clarifying questions to determine urgency and scope",
+      "Set realistic expectations for next steps and timing",
+      "Provide a workaround if available",
+      "Follow up and document the interaction"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Backup type selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Full backups copy everything; incremental copies changes since the last backup; differential copies changes since the last full backup.",
+    "type": "matching",
+    "instructions": "Match each backup scenario to the best backup or recovery concept.",
+    "items": [
+      { "scenario": "Copy all selected data every time", "answer": "Full Backup" },
+      { "scenario": "Copy changes since the last backup of any type", "answer": "Incremental Backup" },
+      { "scenario": "Copy changes since the last full backup", "answer": "Differential Backup" },
+      { "scenario": "Capture a point-in-time state of a system or volume", "answer": "Snapshot" },
+      { "scenario": "Confirm backups can actually be used", "answer": "Restore Test" },
+      { "scenario": "Plan for recovery after a major outage", "answer": "Disaster Recovery Plan" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Backup restoration order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Restoration should be planned, verified, and documented to avoid overwriting good data or restoring the wrong version.",
+    "type": "ordering",
+    "instructions": "A user needs a folder restored from backup. Put the restore process in the best order.",
+    "correctOrder": [
+      "Verify the user's identity and restore request",
+      "Identify the correct file or folder and restore date",
+      "Confirm whether current data must be preserved first",
+      "Restore the requested data to the proper location or alternate location",
+      "Have the user verify the restored data",
+      "Document the restore action"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Licensing model selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Licensing questions test whether the license is tied to hardware, a user, an organization, source code rights, or recurring payment.",
+    "type": "matching",
+    "instructions": "Match each software licensing scenario to the best license type.",
+    "items": [
+      { "scenario": "License preinstalled and tied to a specific computer", "answer": "OEM" },
+      { "scenario": "License purchased by an individual from a store", "answer": "Retail" },
+      { "scenario": "Organization purchases licenses in bulk", "answer": "Volume Licensing" },
+      { "scenario": "Software source code can be viewed and modified under its license", "answer": "Open Source" },
+      { "scenario": "Software access continues only while recurring payments are active", "answer": "Subscription" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Environmental disposal selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Electronic waste, batteries, toner, and hazardous materials should follow approved disposal or recycling procedures.",
+    "type": "matching",
+    "instructions": "Match each item to the best disposal or handling method.",
+    "items": [
+      { "scenario": "Used toner cartridge", "answer": "Toner Recycling" },
+      { "scenario": "Old laptop battery", "answer": "Battery Recycling" },
+      { "scenario": "Retired desktop computer", "answer": "E-Waste Recycling" },
+      { "scenario": "Hard drive containing company data", "answer": "Secure Data Destruction" },
+      { "scenario": "Chemical cleaning product", "answer": "Follow Safety Data Sheet" },
+      { "scenario": "Mobile phone with swollen battery", "answer": "Hazardous Battery Procedure" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Incident escalation decision",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Escalate when the issue exceeds your permissions, skill level, time limit, scope, or safety boundaries.",
+    "type": "matching",
+    "instructions": "Match each situation to the best next action.",
+    "items": [
+      { "scenario": "Issue exceeds technician permissions", "answer": "Escalate to Higher Tier" },
+      { "scenario": "User needs immediate work continuity", "answer": "Provide Workaround" },
+      { "scenario": "Technician changed a setting successfully", "answer": "Document the Change" },
+      { "scenario": "Problem may affect multiple users", "answer": "Check Scope and Notify Team" },
+      { "scenario": "Safety hazard is discovered", "answer": "Stop Work and Follow Safety Procedure" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Ticket handling workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Good tickets preserve history, accountability, user communication, and final resolution details.",
+    "type": "ordering",
+    "instructions": "A support ticket comes in for a user who cannot access a shared drive. Put the ticket workflow in the best order.",
+    "correctOrder": [
+      "Review the ticket details and contact the user if needed",
+      "Confirm the user's identity and scope of the problem",
+      "Troubleshoot permissions, network connectivity, and mapped drive status",
+      "Apply the fix or escalate with notes",
+      "Verify the user can access the share",
+      "Update and close the ticket with resolution notes"
+    ]
+  }
+]
