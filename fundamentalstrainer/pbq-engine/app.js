@@ -1,5 +1,8 @@
-import { createTicketEngine } from "./engines/ticket-engine.js";
-import { validateTicketScenario } from "./validators/ticket-validator.js";
+import {
+  createEngineInstance,
+  getRegisteredEngineIds,
+  validateScenario
+} from "./engine-registry.js";
 
 const DATA_URL = "./data/core2/tickets.json";
 
@@ -31,7 +34,7 @@ function populateScenarioSelect() {
   scenarios.forEach((scenario, index) => {
     const option = document.createElement("option");
     option.value = String(index);
-    option.textContent = scenario.title;
+    option.textContent = `${scenario.title} (${scenario.engine})`;
     elements.ticketSelect.appendChild(option);
   });
 }
@@ -63,14 +66,14 @@ function escapeHtml(value) {
   return div.innerHTML;
 }
 
-function collectValidationWarnings(ticketScenarios) {
-  return ticketScenarios.flatMap((scenario, index) => validateTicketScenario(scenario, index));
+function collectValidationWarnings(loadedScenarios) {
+  return loadedScenarios.flatMap((scenario, index) => validateScenario(scenario, index));
 }
 
 function loadSelectedScenario() {
   const scenario = scenarios[Number(elements.ticketSelect.value)] || scenarios[0];
 
-  engine = createTicketEngine({
+  engine = createEngineInstance({
     scenario,
     elements
   });
@@ -89,13 +92,14 @@ async function loadScenarios() {
     const raw = await response.json();
 
     if (!Array.isArray(raw)) {
-      throw new Error("Ticket data must be a JSON array.");
+      throw new Error("PBQ data must be a JSON array.");
     }
 
-    scenarios = raw.filter(item => item.engine === "ticket");
+    const registeredEngineIds = getRegisteredEngineIds();
+    scenarios = raw.filter(item => registeredEngineIds.includes(item.engine));
 
     if (!scenarios.length) {
-      throw new Error("No ticket-engine scenarios found.");
+      throw new Error(`No scenarios found for registered PBQ engines: ${registeredEngineIds.join(", ")}.`);
     }
 
     const warnings = collectValidationWarnings(scenarios);
@@ -105,11 +109,11 @@ async function loadScenarios() {
 
     populateScenarioSelect();
     renderValidationWarnings(warnings);
-    setStatus(`Loaded ${scenarios.length} Ticket Engine v2 scenarios${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
+    setStatus(`Loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
     loadSelectedScenario();
   } catch (error) {
     console.error(error);
-    setStatus("Ticket Engine failed to load. Check data/core2/tickets.json.");
+    setStatus("PBQ Engine failed to load. Check the scenario data and registered engines.");
     renderValidationWarnings([error.message]);
   }
 }
