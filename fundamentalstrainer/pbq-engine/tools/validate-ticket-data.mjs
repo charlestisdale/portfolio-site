@@ -9,6 +9,17 @@ const __dirname = path.dirname(__filename);
 const engineRoot = path.resolve(__dirname, "..");
 const defaultDataPath = path.join(engineRoot, "data", "core2", "tickets.json");
 const defaultSchemaPath = path.join(engineRoot, "schemas", "ticket.schema.json");
+const allowedPenaltyTypes = [
+  "unsafe",
+  "insecure",
+  "too-invasive",
+  "not-relevant",
+  "wrong-root-cause",
+  "premature-escalation",
+  "missed-verification",
+  "missed-documentation",
+  "penalty"
+];
 
 const args = new Map(
   process.argv.slice(2).map(arg => {
@@ -181,16 +192,7 @@ function validatePenalty({ penalty, pathLabel, errors }) {
     return;
   }
 
-  if (penalty.type && ![
-    "unsafe",
-    "insecure",
-    "too-invasive",
-    "not-relevant",
-    "premature-escalation",
-    "missed-verification",
-    "missed-documentation",
-    "penalty"
-  ].includes(penalty.type)) {
+  if (penalty.type && !allowedPenaltyTypes.includes(penalty.type)) {
     errors.push(`${pathLabel}.type is not a recognized penalty category.`);
   }
 
@@ -261,6 +263,12 @@ function validateSchemaFile(schema) {
 
   if (!schema.$defs?.action || !schema.$defs?.grading || !schema.$defs?.stateMap) {
     errors.push("Schema should define reusable $defs for action, grading, and stateMap.");
+  }
+
+  const schemaPenaltyTypes = schema.$defs?.penalty?.properties?.type?.enum || [];
+  const missingPenaltyTypes = allowedPenaltyTypes.filter(type => !schemaPenaltyTypes.includes(type));
+  if (missingPenaltyTypes.length) {
+    errors.push(`Schema penalty enum is missing: ${missingPenaltyTypes.join(", ")}.`);
   }
 
   return errors;
