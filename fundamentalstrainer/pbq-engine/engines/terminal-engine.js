@@ -1,6 +1,7 @@
 import { createDocumentationComponent } from "../components/documentation-component.js";
 import { gradeRequiredStateScenario } from "../grading/grader.js";
 import { renderPbqReview } from "../grading/review-renderer.js";
+import { createEventBus, PBQ_EVENTS } from "../runtime/event-bus.js";
 
 export function createTerminalEngine({ scenario, elements }) {
   const state = {
@@ -11,7 +12,9 @@ export function createTerminalEngine({ scenario, elements }) {
     completed: false,
     documentation: null
   };
+  const events = createEventBus();
   let documentationComponent = null;
+  let unsubscribeDocumentationSaved = null;
 
   function cloneInitialState() {
     return JSON.parse(JSON.stringify(scenario.initialState || {}));
@@ -269,15 +272,20 @@ export function createTerminalEngine({ scenario, elements }) {
     renderAll();
   }
 
+  function handleDocumentationSaved(documentationState) {
+    state.documentation = documentationState;
+    state.flags.documented = documentationState.saved;
+    elements.reviewPanel.hidden = true;
+    renderRequirements();
+  }
+
   function setupDocumentation() {
+    unsubscribeDocumentationSaved?.();
+    unsubscribeDocumentationSaved = events.on(PBQ_EVENTS.DOCUMENTATION_SAVED, handleDocumentationSaved);
+
     documentationComponent = createDocumentationComponent({
       element: elements.documentationPane,
-      onSave: documentationState => {
-        state.documentation = documentationState;
-        state.flags.documented = documentationState.saved;
-        elements.reviewPanel.hidden = true;
-        renderRequirements();
-      }
+      events
     });
     documentationComponent.reset();
   }
