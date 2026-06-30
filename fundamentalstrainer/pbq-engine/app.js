@@ -4,7 +4,10 @@ import {
   validateScenario
 } from "./engine-registry.js";
 
-const DATA_URL = "./data/core2/tickets.json";
+const DATA_URLS = [
+  "./data/core2/tickets.json",
+  "./data/core2/terminal.json"
+];
 
 const elements = {
   loadStatus: document.getElementById("loadStatus"),
@@ -81,20 +84,26 @@ function loadSelectedScenario() {
   engine.start();
 }
 
+async function loadScenarioFile(dataUrl) {
+  const response = await fetch(dataUrl, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`Could not load ${dataUrl}`);
+  }
+
+  const raw = await response.json();
+
+  if (!Array.isArray(raw)) {
+    throw new Error(`${dataUrl} must contain a JSON array.`);
+  }
+
+  return raw;
+}
+
 async function loadScenarios() {
   try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error(`Could not load ${DATA_URL}`);
-    }
-
-    const raw = await response.json();
-
-    if (!Array.isArray(raw)) {
-      throw new Error("PBQ data must be a JSON array.");
-    }
-
+    const files = await Promise.all(DATA_URLS.map(loadScenarioFile));
+    const raw = files.flat();
     const registeredEngineIds = getRegisteredEngineIds();
     scenarios = raw.filter(item => registeredEngineIds.includes(item.engine));
 
@@ -109,7 +118,7 @@ async function loadScenarios() {
 
     populateScenarioSelect();
     renderValidationWarnings(warnings);
-    setStatus(`Loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
+    setStatus(`Loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} from ${DATA_URLS.length} data source${DATA_URLS.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
     loadSelectedScenario();
   } catch (error) {
     console.error(error);
