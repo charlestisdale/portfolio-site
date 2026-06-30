@@ -1,4 +1,6 @@
+import { createTerminalEngine } from "./engines/terminal-engine.js";
 import { createTicketEngine } from "./engines/ticket-engine.js";
+import { validateTerminalScenario } from "./validators/terminal-validator.js";
 import { validateTicketScenario } from "./validators/ticket-validator.js";
 
 const engineDefinitions = new Map();
@@ -8,6 +10,13 @@ registerEngine({
   label: "Ticket Engine",
   create: createTicketEngine,
   validate: validateTicketScenario
+});
+
+registerEngine({
+  id: "terminal",
+  label: "Terminal Engine",
+  create: createTerminalEngine,
+  validate: validateTerminalScenario
 });
 
 export function registerEngine(definition) {
