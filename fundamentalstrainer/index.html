@@ -90,6 +90,51 @@
       text-align: left;
     }
 
+    .pbq-area {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .pbq-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, .75fr);
+      gap: .75rem;
+      align-items: center;
+      padding: .75rem;
+      margin-bottom: .75rem;
+      border-radius: .85rem;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pbq-prompt {
+      line-height: 1.35;
+    }
+
+    .pbq-select {
+      width: 100%;
+    }
+
+    .pbq-order-list {
+      display: grid;
+      gap: .75rem;
+    }
+
+    .pbq-order-item {
+      display: grid;
+      grid-template-columns: 4rem minmax(0, 1fr);
+      gap: .75rem;
+      align-items: center;
+      padding: .75rem;
+      border-radius: .85rem;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pbq-order-number {
+      width: 100%;
+    }
+
     .feedback {
       display: none;
       margin-top: 1rem;
@@ -157,7 +202,9 @@
 
     @media(max-width:760px) {
       .answer-grid,
-      .stats-row {
+      .stats-row,
+      .pbq-row,
+      .pbq-order-item {
         grid-template-columns: 1fr;
       }
     }
@@ -210,7 +257,7 @@
           </select>
 
           <select id="difficulty" class="trainer-select">
-            <option value="multiple">Multiple Choice</option>
+            <option value="multiple">Multiple Choice / PBQ</option>
             <option value="typed">Typed Answer</option>
           </select>
 
@@ -233,6 +280,8 @@
             <input id="typedAnswer" class="trainer-input" type="text" placeholder="Type your answer..." />
             <button id="submitTypedBtn" class="trainer-button primary">Submit</button>
           </div>
+
+          <div id="pbqArea" class="pbq-area"></div>
 
           <div id="feedback" class="feedback"></div>
 
@@ -290,13 +339,20 @@
       "browser-security": "Browser Security",
       "change-management": "Change Management",
       "encryption": "Encryption",
+      "file-systems": "File Systems",
       "install-upgrade": "Installation and Upgrade",
+      "linux": "Linux",
       "linux-macos": "Linux and macOS",
+      "macos": "macOS",
+      "performance-based-questions": "Performance-Based Questions",
       "permissions": "Permissions",
       "safety": "Safety",
       "security-troubleshooting": "Security Troubleshooting",
+      "windows-command-line": "Windows Command Line",
       "windows-commands": "Windows Commands",
       "windows-editions": "Windows Editions",
+      "windows-features": "Windows Features",
+      "windows-installation": "Windows Installation",
       "windows-tools": "Windows Tools",
       "windows-troubleshooting": "Windows Troubleshooting",
       "wireless-security": "Wireless Security"
@@ -323,6 +379,7 @@
     const typedArea = document.getElementById("typedArea");
     const typedAnswer = document.getElementById("typedAnswer");
     const submitTypedBtn = document.getElementById("submitTypedBtn");
+    const pbqArea = document.getElementById("pbqArea");
     const feedback = document.getElementById("feedback");
     const correctStat = document.getElementById("correctStat");
     const wrongStat = document.getElementById("wrongStat");
@@ -346,15 +403,53 @@
       return String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
     }
 
+    function escapeHtml(value) {
+      const div = document.createElement("div");
+      div.textContent = String(value ?? "");
+      return div.innerHTML;
+    }
+
     function categoryLabel(category) {
       return categoryNames[category] || String(category).replace(/-/g, " ");
     }
 
+    function isPbq(item) {
+      return item?.format === "pbq" || item?.type === "matching" || item?.type === "ordering";
+    }
+
+    function itemTitle(item) {
+      return item.question || item.title || item.instructions || "Performance-based question";
+    }
+
     function missKey(item) {
-      return item.objective || item.category || "uncategorized";
+      return item.objective || item.category || item.type || "uncategorized";
+    }
+
+    function flattenQuestionBank(rawBank) {
+      if (!Array.isArray(rawBank)) {
+        return [];
+      }
+
+      return rawBank.flatMap(section => {
+        if (Array.isArray(section.questions) && !section.question) {
+          return section.questions.map((questionItem, index) => ({
+            exam: questionItem.exam || section.exam || "core-2",
+            objective: questionItem.objective || section.objective,
+            category: questionItem.category || section.category || "performance-based-questions",
+            difficulty: questionItem.difficulty || section.difficulty || "hard",
+            ...questionItem,
+            id: questionItem.id || `${section.category || "section"}-${index}`
+          }));
+        }
+
+        return section;
+      });
     }
 
     function populateFilters() {
+      objectiveFilter.querySelectorAll("option:not([value='all'])").forEach(option => option.remove());
+      categoryFilter.querySelectorAll("option:not([value='all']):not([value='weak'])").forEach(option => option.remove());
+
       const objectives = [...new Set(bank.map(item => item.objective).filter(Boolean))].sort();
       const categories = [...new Set(bank.map(item => item.category).filter(Boolean))].sort();
 
@@ -428,22 +523,41 @@
       });
     }
 
+    function setQuestionImage(item) {
+      if (item.image) {
+        questionImage.src = item.image;
+        questionImage.alt = item.answer || item.title || "Question image";
+        imageContainer.style.display = "block";
+      } else {
+        questionImage.src = "";
+        questionImage.alt = "";
+        imageContainer.style.display = "none";
+      }
+    }
+
+    function resetQuestionUi() {
+      answered = false;
+      feedback.className = "feedback";
+      feedback.textContent = "";
+      answerGrid.innerHTML = "";
+      answerGrid.style.display = "none";
+      typedArea.style.display = "none";
+      pbqArea.innerHTML = "";
+      pbqArea.style.display = "none";
+      typedAnswer.value = "";
+    }
+
     function newQuestion() {
       if (!bank.length) {
         return;
       }
 
-      answered = false;
-      feedback.className = "feedback";
-      feedback.textContent = "";
-      typedAnswer.value = "";
+      resetQuestionUi();
 
       const pool = filteredBank();
 
       if (!pool.length) {
         question.textContent = "No questions match this filter yet.";
-        answerGrid.innerHTML = "";
-        typedArea.style.display = "none";
         return;
       }
 
@@ -463,6 +577,10 @@
           if (questionItem.difficulty === "medium" || questionItem.difficulty === "hard") {
             weight += 1;
           }
+
+          if (isPbq(questionItem)) {
+            weight += 1;
+          }
         }
 
         for (let i = 0; i < weight; i++) {
@@ -474,25 +592,21 @@
 
       if (weightedPool.length > 1) {
         let guard = 0;
-        while (current.question === lastQuestionText && guard < 10) {
+        while (itemTitle(current) === lastQuestionText && guard < 10) {
           current = weightedPool[Math.floor(Math.random() * weightedPool.length)];
           guard++;
         }
       }
 
-      lastQuestionText = current.question;
+      lastQuestionText = itemTitle(current);
 
       subtitle.textContent = (current.objective || "Core 2") + " • " + categoryLabel(current.category);
-      question.textContent = current.question;
+      question.textContent = itemTitle(current);
+      setQuestionImage(current);
 
-      if (current.image) {
-        questionImage.src = current.image;
-        questionImage.alt = current.answer || "Question image";
-        imageContainer.style.display = "block";
-      } else {
-        questionImage.src = "";
-        questionImage.alt = "";
-        imageContainer.style.display = "none";
+      if (isPbq(current)) {
+        renderPbq(current);
+        return;
       }
 
       if (difficulty.value === "typed") {
@@ -504,7 +618,6 @@
 
       typedArea.style.display = "none";
       answerGrid.style.display = "grid";
-      answerGrid.innerHTML = "";
 
       shuffle(current.options || []).forEach(optionText => {
         const button = document.createElement("button");
@@ -515,6 +628,132 @@
       });
     }
 
+    function renderPbq(item) {
+      typedArea.style.display = "none";
+      answerGrid.style.display = "none";
+      pbqArea.style.display = "block";
+      pbqArea.innerHTML = "";
+
+      const instructions = document.createElement("p");
+      instructions.className = "status-note";
+      instructions.textContent = item.instructions || "Complete the performance-based task, then submit your answer.";
+      pbqArea.appendChild(instructions);
+
+      if (item.type === "matching") {
+        renderMatchingPbq(item);
+        return;
+      }
+
+      if (item.type === "ordering") {
+        renderOrderingPbq(item);
+        return;
+      }
+
+      pbqArea.innerHTML += "<p class='status-note'>Unsupported PBQ type. Use type: matching or type: ordering.</p>";
+    }
+
+    function renderMatchingPbq(item) {
+      const answers = shuffle([...new Set((item.items || []).map(entry => entry.answer).filter(Boolean))]);
+
+      (item.items || []).forEach((entry, index) => {
+        const row = document.createElement("div");
+        row.className = "pbq-row";
+
+        const prompt = document.createElement("div");
+        prompt.className = "pbq-prompt";
+        prompt.textContent = entry.problem || entry.task || entry.scenario || entry.prompt || `Item ${index + 1}`;
+
+        const select = document.createElement("select");
+        select.className = "trainer-select pbq-select";
+        select.dataset.correct = entry.answer;
+
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose an answer";
+        select.appendChild(placeholder);
+
+        answers.forEach(answer => {
+          const option = document.createElement("option");
+          option.value = answer;
+          option.textContent = answer;
+          select.appendChild(option);
+        });
+
+        row.appendChild(prompt);
+        row.appendChild(select);
+        pbqArea.appendChild(row);
+      });
+
+      const submit = document.createElement("button");
+      submit.className = "trainer-button primary";
+      submit.textContent = "Submit PBQ";
+      submit.addEventListener("click", checkMatchingPbq);
+      pbqArea.appendChild(submit);
+    }
+
+    function renderOrderingPbq(item) {
+      const steps = item.steps || item.correctOrder || [];
+      const shuffledSteps = shuffle(steps);
+
+      const list = document.createElement("div");
+      list.className = "pbq-order-list";
+
+      shuffledSteps.forEach(step => {
+        const row = document.createElement("div");
+        row.className = "pbq-order-item";
+
+        const numberInput = document.createElement("input");
+        numberInput.className = "trainer-input pbq-order-number";
+        numberInput.type = "number";
+        numberInput.min = "1";
+        numberInput.max = String(steps.length);
+        numberInput.placeholder = "#";
+        numberInput.dataset.step = step;
+
+        const label = document.createElement("div");
+        label.textContent = step;
+
+        row.appendChild(numberInput);
+        row.appendChild(label);
+        list.appendChild(row);
+      });
+
+      pbqArea.appendChild(list);
+
+      const submit = document.createElement("button");
+      submit.className = "trainer-button primary";
+      submit.textContent = "Submit PBQ";
+      submit.addEventListener("click", checkOrderingPbq);
+      pbqArea.appendChild(submit);
+    }
+
+    function recordResult(correct, successNote, failureNote) {
+      const key = missKey(current);
+
+      if (correct) {
+        stats.correct++;
+        stats.streak++;
+        stats.xp += isPbq(current) ? 30 : difficulty.value === "typed" ? 20 : 10;
+
+        if (stats.misses[key]) {
+          stats.misses[key] = Math.max(0, stats.misses[key] - 1);
+        }
+
+        feedback.className = "feedback correct";
+        feedback.innerHTML = "<strong>Correct.</strong> " + (successNote || current.note || "");
+      } else {
+        stats.wrong++;
+        stats.streak = 0;
+        stats.misses[key] = (stats.misses[key] || 0) + 1;
+
+        feedback.className = "feedback wrong";
+        feedback.innerHTML = "<strong>Not quite.</strong> " + (failureNote || current.note || "");
+      }
+
+      save();
+      updateStats();
+    }
+
     function check(answer) {
       if (answered || !current) {
         return;
@@ -523,36 +762,80 @@
       answered = true;
 
       const correct = norm(answer) === norm(current.answer);
-      const key = missKey(current);
+      const failureNote = "Correct answer: <strong>" + escapeHtml(current.answer) + "</strong>. " + escapeHtml(current.note || "");
 
-      if (correct) {
-        stats.correct++;
-        stats.streak++;
-        stats.xp += difficulty.value === "typed" ? 20 : 10;
-
-        if (stats.misses[key]) {
-          stats.misses[key] = Math.max(0, stats.misses[key] - 1);
-        }
-
-        feedback.className = "feedback correct";
-        feedback.innerHTML = "<strong>Correct.</strong> " + (current.note || "");
-      } else {
-        stats.wrong++;
-        stats.streak = 0;
-        stats.misses[key] = (stats.misses[key] || 0) + 1;
-
-        feedback.className = "feedback wrong";
-        feedback.innerHTML = "<strong>Not quite.</strong> Correct answer: <strong>" + current.answer + "</strong>. " + (current.note || "");
-      }
-
-      save();
-      updateStats();
+      recordResult(correct, current.note || "", failureNote);
 
       Array.from(answerGrid.children).forEach(button => {
         if (norm(button.textContent) === norm(current.answer)) {
           button.classList.add("primary");
         }
       });
+    }
+
+    function checkMatchingPbq() {
+      if (answered || !current) {
+        return;
+      }
+
+      const selects = Array.from(pbqArea.querySelectorAll(".pbq-select"));
+      if (selects.some(select => !select.value)) {
+        feedback.className = "feedback wrong";
+        feedback.innerHTML = "<strong>Almost there.</strong> Complete every match before submitting.";
+        return;
+      }
+
+      answered = true;
+
+      const missed = selects
+        .filter(select => norm(select.value) !== norm(select.dataset.correct))
+        .map(select => ({
+          prompt: select.closest(".pbq-row")?.querySelector(".pbq-prompt")?.textContent || "Item",
+          correct: select.dataset.correct
+        }));
+
+      const correct = missed.length === 0;
+      const failureNote = missed.length
+        ? "Review these matches:<br>" + missed.map(item => `• ${escapeHtml(item.prompt)} → <strong>${escapeHtml(item.correct)}</strong>`).join("<br>")
+        : "";
+
+      recordResult(correct, current.note || "All matches are correct.", failureNote);
+    }
+
+    function checkOrderingPbq() {
+      if (answered || !current) {
+        return;
+      }
+
+      const inputs = Array.from(pbqArea.querySelectorAll(".pbq-order-number"));
+      const correctOrder = current.steps || current.correctOrder || [];
+
+      if (inputs.some(input => !input.value)) {
+        feedback.className = "feedback wrong";
+        feedback.innerHTML = "<strong>Almost there.</strong> Number every step before submitting.";
+        return;
+      }
+
+      const submittedNumbers = inputs.map(input => Number(input.value));
+      const uniqueNumbers = new Set(submittedNumbers);
+
+      if (uniqueNumbers.size !== inputs.length || submittedNumbers.some(number => number < 1 || number > inputs.length)) {
+        feedback.className = "feedback wrong";
+        feedback.innerHTML = "<strong>Check the order numbers.</strong> Use each number from 1 to " + inputs.length + " one time.";
+        return;
+      }
+
+      answered = true;
+
+      const submittedOrder = inputs
+        .map(input => ({ number: Number(input.value), step: input.dataset.step }))
+        .sort((a, b) => a.number - b.number)
+        .map(entry => entry.step);
+
+      const correct = submittedOrder.every((step, index) => norm(step) === norm(correctOrder[index]));
+      const failureNote = "Correct order:<br>" + correctOrder.map((step, index) => `${index + 1}. ${escapeHtml(step)}`).join("<br>");
+
+      recordResult(correct, current.note || "The sequence is correct.", failureNote);
     }
 
     async function loadQuestions() {
@@ -563,11 +846,13 @@
           throw new Error("Could not load " + questionBankFile);
         }
 
-        bank = await response.json();
+        const rawBank = await response.json();
+        bank = flattenQuestionBank(rawBank);
 
         populateFilters();
 
-        loadStatus.textContent = "Loaded " + bank.length + " Core 2 questions from core2-questions.json. Original questions.json was not changed.";
+        const pbqCount = bank.filter(isPbq).length;
+        loadStatus.textContent = "Loaded " + bank.length + " Core 2 questions from core2-questions.json, including " + pbqCount + " PBQ activities.";
 
         updateStats();
         newQuestion();
