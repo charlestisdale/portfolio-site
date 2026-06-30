@@ -715,29 +715,56 @@
         const row = document.createElement("div");
         row.className = "pbq-order-item";
 
-        const numberInput = document.createElement("input");
-        numberInput.className = "trainer-input pbq-order-number";
-        numberInput.type = "number";
-        numberInput.min = "1";
-        numberInput.max = String(steps.length);
-        numberInput.placeholder = "#";
-        numberInput.dataset.step = step;
+        const numberSelect = document.createElement("select");
+        numberSelect.className = "trainer-select pbq-order-number";
+        numberSelect.dataset.step = step;
+
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose order";
+        numberSelect.appendChild(placeholder);
+
+        for (let number = 1; number <= steps.length; number++) {
+          const option = document.createElement("option");
+          option.value = String(number);
+          option.textContent = String(number);
+          numberSelect.appendChild(option);
+        }
+
+        numberSelect.addEventListener("change", updateOrderingChoices);
 
         const label = document.createElement("div");
         label.textContent = step;
 
-        row.appendChild(numberInput);
+        row.appendChild(numberSelect);
         row.appendChild(label);
         list.appendChild(row);
       });
 
       pbqArea.appendChild(list);
+      updateOrderingChoices();
 
       const submit = document.createElement("button");
       submit.className = "trainer-button primary";
       submit.textContent = "Submit PBQ";
       submit.addEventListener("click", checkOrderingPbq);
       pbqArea.appendChild(submit);
+    }
+
+    function updateOrderingChoices() {
+      const selects = Array.from(pbqArea.querySelectorAll(".pbq-order-number"));
+      const selectedValues = selects.map(select => select.value).filter(Boolean);
+
+      selects.forEach(select => {
+        Array.from(select.options).forEach(option => {
+          if (!option.value) {
+            option.disabled = false;
+            return;
+          }
+
+          option.disabled = selectedValues.includes(option.value) && option.value !== select.value;
+        });
+      });
     }
 
     function recordResult(correct, successNote, failureNote) {
