@@ -1,0 +1,201 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows boot issue troubleshooting order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Start with symptoms and simple recovery options before destructive repair actions.",
+    "type": "ordering",
+    "instructions": "A Windows PC fails to boot correctly after an update. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Identify the exact boot error or symptom",
+      "Attempt Startup Repair or Safe Mode",
+      "Uninstall the recent update or driver if Safe Mode works",
+      "Run repair commands such as DISM and SFC if needed",
+      "Restore from a restore point or backup if repair fails",
+      "Verify normal boot and document the fix"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows symptom to tool matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Use the tool that gives the most direct evidence for the symptom.",
+    "type": "matching",
+    "instructions": "Match each troubleshooting symptom to the best Windows tool.",
+    "items": [
+      { "scenario": "Application crashes repeatedly", "answer": "Event Viewer" },
+      { "scenario": "System is slow due to high disk usage", "answer": "Resource Monitor" },
+      { "scenario": "Unknown startup app launches at sign-in", "answer": "Task Manager Startup Tab" },
+      { "scenario": "Driver has a yellow warning icon", "answer": "Device Manager" },
+      { "scenario": "Need to check long-term performance counters", "answer": "Performance Monitor" },
+      { "scenario": "Need to disable services for clean boot testing", "answer": "System Configuration" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile app troubleshooting order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Mobile troubleshooting should start with simple user-safe fixes before reinstalling or resetting.",
+    "type": "ordering",
+    "instructions": "A mobile app crashes immediately after opening. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Confirm whether one app or multiple apps are affected",
+      "Force close the app and reopen it",
+      "Restart the mobile device",
+      "Check for app and operating system updates",
+      "Clear app cache or storage if appropriate",
+      "Uninstall and reinstall the app",
+      "Escalate or factory reset only if required and backed up"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile symptom to likely cause",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Mobile symptoms often map to connectivity, configuration, battery, sync, or application issues.",
+    "type": "matching",
+    "instructions": "Match each mobile symptom to the most likely cause or setting to check.",
+    "items": [
+      { "scenario": "Cellular data does not work after carrier change", "answer": "APN Settings" },
+      { "scenario": "Email no longer syncs on the phone", "answer": "Account Sync Settings" },
+      { "scenario": "Battery drains quickly after installing an app", "answer": "Background App Activity" },
+      { "scenario": "Bluetooth headset will not connect", "answer": "Bluetooth Pairing" },
+      { "scenario": "User cannot install apps because storage is full", "answer": "Device Storage" },
+      { "scenario": "Mobile browser keeps redirecting to ads", "answer": "Malware or Browser Hijack" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware symptom identification",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Symptoms alone do not prove malware, but they help determine the most likely investigation path.",
+    "type": "matching",
+    "instructions": "Match each symptom to the most likely malware-related issue.",
+    "items": [
+      { "scenario": "Browser homepage changes without permission", "answer": "Browser Hijacking" },
+      { "scenario": "Frequent unsolicited advertising windows", "answer": "Pop-ups or Adware" },
+      { "scenario": "Search results redirect to unrelated websites", "answer": "Redirect Malware" },
+      { "scenario": "Unknown processes consume CPU", "answer": "Malware Process" },
+      { "scenario": "Files are encrypted and renamed", "answer": "Ransomware" },
+      { "scenario": "System is unusually slow after suspicious download", "answer": "Malware Infection" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Troubleshooting methodology order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "This is the standard CompTIA troubleshooting flow.",
+    "type": "ordering",
+    "instructions": "Put the CompTIA troubleshooting methodology in the correct order.",
+    "correctOrder": [
+      "Identify the problem",
+      "Establish a theory of probable cause",
+      "Test the theory to determine the cause",
+      "Establish a plan of action and implement the solution",
+      "Verify full system functionality and implement preventive measures",
+      "Document findings, actions, and outcomes"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Network connectivity symptom matching",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Use symptoms to separate local device, DNS, gateway, Wi-Fi, and service-specific problems.",
+    "type": "matching",
+    "instructions": "Match each connectivity symptom to the first setting or area to check.",
+    "items": [
+      { "scenario": "Can ping IP addresses but not domain names", "answer": "DNS Configuration" },
+      { "scenario": "No connectivity outside the local network", "answer": "Default Gateway" },
+      { "scenario": "Only one Wi-Fi network has poor signal", "answer": "Wireless Signal Strength" },
+      { "scenario": "Valid IP begins with 169.254", "answer": "DHCP Failure" },
+      { "scenario": "VPN connects but internal apps are unreachable", "answer": "VPN Routes or DNS" },
+      { "scenario": "Only one website fails while others work", "answer": "Website or DNS Record Issue" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Application repair workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Preserve user data and gather evidence before reinstalling or escalating.",
+    "type": "ordering",
+    "instructions": "A business application opens but crashes during login. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Confirm the error message and affected users",
+      "Check whether the application service or website is available",
+      "Review application and Windows logs",
+      "Clear cache or repair the application if appropriate",
+      "Update or reinstall the application if needed",
+      "Verify login works and document the resolution"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: OS recovery option selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Choose the least destructive recovery option that solves the problem.",
+    "type": "matching",
+    "instructions": "Match each recovery scenario to the best Windows recovery option.",
+    "items": [
+      { "scenario": "Undo a recent system change without deleting personal files", "answer": "System Restore" },
+      { "scenario": "Boot into troubleshooting tools when Windows will not start", "answer": "Windows Recovery Environment" },
+      { "scenario": "Repair startup files automatically", "answer": "Startup Repair" },
+      { "scenario": "Remove a bad update from recovery tools", "answer": "Uninstall Updates" },
+      { "scenario": "Reinstall Windows with options to keep or remove files", "answer": "Reset This PC" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Printer software troubleshooting selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Software-side printer issues often involve the queue, driver, default printer, or network path.",
+    "type": "matching",
+    "instructions": "Match each printing symptom to the best first action.",
+    "items": [
+      { "scenario": "Jobs are stuck and not printing", "answer": "Clear Print Queue" },
+      { "scenario": "Wrong printer receives the job", "answer": "Check Default Printer" },
+      { "scenario": "Prints garbled characters", "answer": "Reinstall or Update Driver" },
+      { "scenario": "Network printer cannot be reached by name", "answer": "Check DNS or Printer Share" },
+      { "scenario": "Printer shows offline in Windows", "answer": "Check Printer Status and Connectivity" }
+    ]
+  }
+]
