@@ -1,14 +1,21 @@
-# Ticket Engine v2 Current Implementation
+# PBQ Engine Current Implementation
 
 ## Status
 
-Ticket Engine v2 now exists as a standalone PBQ Engine prototype under:
+PBQ Engine v2 now exists as a standalone simulation prototype under:
 
 ```text
 fundamentalstrainer/pbq-engine/
 ```
 
 It remains separate from the regular Core 2 quiz trainer and the older PBQ Lab v1.
+
+Current implemented engines:
+
+```text
+ticket
+terminal
+```
 
 ## Current Files
 
@@ -18,29 +25,28 @@ fundamentalstrainer/pbq-engine/styles.css
 fundamentalstrainer/pbq-engine/app.js
 fundamentalstrainer/pbq-engine/engine-registry.js
 fundamentalstrainer/pbq-engine/engines/ticket-engine.js
+fundamentalstrainer/pbq-engine/engines/terminal-engine.js
 fundamentalstrainer/pbq-engine/validators/ticket-validator.js
+fundamentalstrainer/pbq-engine/validators/terminal-validator.js
 fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/terminal.json
 ```
 
 ## Implemented Capabilities
 
-The current ticket simulator supports:
+The PBQ Engine currently supports:
 
-- JSON-loaded ticket scenarios
-- scenario selection
-- restartable tickets
-- ticket metadata pane
+- JSON-loaded scenarios from multiple data files
+- scenario selection across registered engines
+- restartable scenarios
 - required outcomes pane
-- action grouping by action type
-- stateful action execution
-- action dependencies through `requires`
-- state mutation through `sets`
-- evidence revealed by actions
-- action history
 - learner notes
-- penalties for unsafe, irrelevant, or overly invasive actions
+- stateful scenario execution
+- evidence collection
+- action/command history
+- penalties for unsafe, irrelevant, overly invasive, or wrong-root-cause choices
 - required-state grading
 - final review screen
 - author-facing scenario validation warnings
@@ -50,21 +56,22 @@ The current ticket simulator supports:
 
 ## Engine Registry
 
-The PBQ Engine now has a small registry layer:
+The PBQ Engine has a registry layer:
 
 ```text
 fundamentalstrainer/pbq-engine/engine-registry.js
 ```
 
-The registry is responsible for mapping a scenario's `engine` value to the correct engine factory and validator.
+The registry maps a scenario's `engine` value to the correct engine factory and validator.
 
-Current registered engine:
+Current registered engines:
 
 ```text
 ticket
+terminal
 ```
 
-The loader in `app.js` should stay generic. It should not directly import individual engines such as `ticket-engine.js`. Instead, engines should be registered in `engine-registry.js`.
+The loader in `app.js` should stay generic. It should not directly import individual engines such as `ticket-engine.js` or `terminal-engine.js`. Engines should be registered in `engine-registry.js`.
 
 Current registry responsibilities:
 
@@ -74,7 +81,38 @@ Current registry responsibilities:
 - route scenario validation to the correct engine-specific validator
 - report unknown engine types as authoring warnings
 
-This keeps the PBQ Engine moving toward the modular Phase 3 architecture without breaking the current Ticket Engine v2 prototype.
+This keeps the PBQ Engine moving toward the modular Phase 3 architecture.
+
+## Data Sources
+
+The app currently loads scenarios from:
+
+```text
+fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/terminal.json
+```
+
+`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios, and then renders the selected scenario through the correct engine.
+
+## Ticket Engine
+
+The Ticket Engine is a stateful help desk simulator. It supports:
+
+- ticket metadata
+- available technician actions
+- action grouping by action type
+- action dependencies through `requires`
+- state mutation through `sets`
+- evidence revealed by actions
+- action history
+- required-state grading
+- final review
+
+Ticket scenarios are loaded from:
+
+```text
+fundamentalstrainer/pbq-engine/data/core2/tickets.json
+```
 
 ## Ticket Scenario Schema
 
@@ -113,10 +151,10 @@ Run the ticket data validation script from the repository root:
 node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
 ```
 
-Optional custom paths:
+If already inside `fundamentalstrainer/`, run:
 
 ```bash
-node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/tickets.json --schema=fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
+node pbq-engine/tools/validate-ticket-data.mjs
 ```
 
 The script checks:
@@ -135,125 +173,131 @@ The script checks:
 
 The script exits with a non-zero status when validation fails, so it can later be used by CI or a pre-commit workflow.
 
-## Ticket Scenario Shape
+## Terminal Engine Prototype
 
-Ticket scenarios are loaded from:
+The Terminal Engine is the first non-ticket engine. It simulates command-line troubleshooting tasks inside the same PBQ shell.
+
+Current Terminal Engine file:
 
 ```text
-fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/engines/terminal-engine.js
 ```
 
-Each ticket should use this general shape:
+Current Terminal Engine data file:
+
+```text
+fundamentalstrainer/pbq-engine/data/core2/terminal.json
+```
+
+Current Terminal Engine validator:
+
+```text
+fundamentalstrainer/pbq-engine/validators/terminal-validator.js
+```
+
+The first terminal scenario is:
+
+```text
+core2-terminal-dns-troubleshooting-001
+```
+
+It practices Windows DNS troubleshooting using commands such as:
+
+```text
+ipconfig /all
+ping 8.8.8.8
+nslookup example.com
+ipconfig /flushdns
+document ticket
+```
+
+Terminal scenarios currently support:
+
+- prompt rendering
+- command input
+- command aliases
+- command output
+- command prerequisites through `requires`
+- state mutation through `sets`
+- evidence collection
+- command history
+- penalties
+- required-state grading
+- final review
+
+## Terminal Scenario Shape
+
+A terminal scenario should use this general shape:
 
 ```json
 {
-  "id": "core2-ticket-example-001",
-  "certification": "CompTIA A+",
-  "exam": "Core 2",
-  "objective": "3.0 Software Troubleshooting",
-  "category": "ticket-simulator",
-  "difficulty": "medium",
-  "engine": "ticket",
-  "title": "Troubleshoot an example issue",
-  "ticket": {
-    "number": "HD-2202-000",
-    "priority": "Medium",
-    "user": "Example User",
-    "department": "Example Department",
-    "device": "Windows 11 laptop",
-    "description": "The user reports a realistic symptom."
+  "id": "core2-terminal-example-001",
+  "engine": "terminal",
+  "title": "Troubleshoot an example issue from Command Prompt",
+  "description": "Use simulated commands to identify and verify the issue.",
+  "terminal": {
+    "environment": "Windows Command Prompt",
+    "prompt": "C:\\Users\\Student>",
+    "welcome": "Type a command to begin.",
+    "unknownCommandOutput": "This command is not recognized in this simulation."
   },
   "initialState": {
-    "issueScoped": false,
-    "rootCauseIdentified": false,
-    "fixApplied": false,
-    "verified": false,
+    "evidenceCollected": false,
+    "issueIdentified": false,
+    "fixVerified": false,
     "documented": false
   },
-  "actions": [],
+  "commands": [
+    {
+      "command": "ipconfig /all",
+      "aliases": ["ipconfig"],
+      "output": "Simulated command output.",
+      "summary": "Short history-pane summary.",
+      "sets": { "evidenceCollected": true },
+      "good": true
+    }
+  ],
   "grading": {
     "maxScore": 100,
     "passingScore": 75,
     "pointsPerMissingState": 15,
-    "summary": "Explain the ideal troubleshooting path.",
     "requiredStates": [
-      { "key": "issueScoped", "value": true, "label": "Scoped the issue" }
+      { "key": "evidenceCollected", "value": true, "label": "Collected evidence" }
     ]
   }
 }
 ```
 
-## Action Model
-
-Each action can:
-
-- appear immediately or only after required state exists
-- set one or more state flags
-- reveal one or more evidence items
-- add a penalty
-- be marked as a good action
-- be repeatable when needed
-
-Example:
-
-```json
-{
-  "id": "open-task-manager",
-  "type": "inspect-tool",
-  "label": "Open Task Manager and check resource usage",
-  "requires": { "issueScoped": true },
-  "result": "Task Manager shows Disk at 100%, CPU at 7%, and Memory at 43%.",
-  "sets": { "resourceUsageChecked": true },
-  "good": true,
-  "evidence": {
-    "id": "task-manager",
-    "title": "Task Manager",
-    "body": "Disk is saturated at 100%; CPU and memory are not the bottleneck."
-  }
-}
-```
-
-## Validation Rules
-
-The runtime validator is intentionally lightweight. It complements the formal JSON Schema, but it is not a full JSON Schema validator.
-
-It currently checks:
-
-- scenario `id`
-- scenario `title`
-- `engine: "ticket"`
-- ticket object and ticket description
-- initial state object
-- non-empty actions array
-- action IDs
-- duplicate action IDs
-- action labels
-- unknown state keys in `requires`
-- unknown state keys in `sets`
-- numeric penalty points
-- grading object
-- non-empty required states
-- unknown required-state keys
-- missing required-state values
-
-Validation warnings are shown in the PBQ Engine UI and logged to the browser console. Warnings do not prevent valid scenarios from loading.
-
 ## Design Notes
 
-The validator exists because the PBQ Engine is becoming data-driven. As more tickets are added, authoring mistakes should be caught close to the page instead of silently causing broken actions or impossible grading.
+The PBQ Engine is now a multi-engine shell. `app.js` should remain generic and only coordinate loading, validation, scenario selection, and engine startup.
 
-The engine registry exists because the PBQ Engine must support multiple simulation types over time. `app.js` should remain the generic application shell. Engine-specific behavior belongs in engine modules, validators, schemas, and scenario data.
+Engine-specific behavior belongs in:
 
-The schema exists to make ticket authoring portable. A future build script, editor, CI check, or content pipeline can validate ticket JSON against the schema before content reaches the browser.
+```text
+fundamentalstrainer/pbq-engine/engines/
+```
 
-The development validation script is intentionally dependency-free because the portfolio currently does not have a local Node package setup for the PBQ Engine. If the project later adds `package.json`, this script can be wired into an npm command.
+Engine-specific validators belong in:
+
+```text
+fundamentalstrainer/pbq-engine/validators/
+```
+
+Engine-specific schemas should eventually live in:
+
+```text
+fundamentalstrainer/pbq-engine/schemas/
+```
+
+The Terminal Engine is intentionally a prototype. It is enough to prove the interaction model, but it does not yet have a formal JSON Schema or development validation script.
 
 ## Next Recommended Work
 
 Good next steps:
 
-1. Run `node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs` locally and fix any reported ticket-data issues.
-2. Add more Core 2 ticket scenarios only after the script passes cleanly.
-3. Add a richer terminal-style action type for command-based troubleshooting inside tickets.
-4. Add save/resume behavior for active ticket attempts using local storage.
-5. Add the next engine by registering it in `engine-registry.js` instead of changing `app.js` directly.
+1. Test the Terminal Engine in the browser and verify the DNS scenario flow.
+2. Add a formal `terminal.schema.json` file.
+3. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
+4. Add additional terminal scenarios for `ping`, `tracert`, `netstat`, `sfc`, `DISM`, `gpupdate`, and Linux commands.
+5. Add save/resume behavior for active PBQ attempts using local storage.
