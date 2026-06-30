@@ -1,4 +1,6 @@
 import { createDocumentationComponent } from "../components/documentation-component.js";
+import { gradeRequiredStateScenario } from "../grading/grader.js";
+import { renderPbqReview } from "../grading/review-renderer.js";
 
 export function createTicketEngine({ scenario, elements }) {
   const state = {
@@ -179,33 +181,6 @@ export function createTicketEngine({ scenario, elements }) {
     `).join("");
   }
 
-  function renderReviewStatePills(requiredStates) {
-    return `
-      <div class="state-pill-row">
-        ${requiredStates.map(item => {
-          const complete = state.flags[item.key] === item.value;
-          return `<span class="state-pill ${complete ? "complete" : "missing"}">${escapeHtml(item.label || item.key)}</span>`;
-        }).join("")}
-      </div>
-    `;
-  }
-
-  function renderDocumentationReview() {
-    const documentation = documentationComponent?.getState() || state.documentation;
-    if (!documentation) {
-      return "<p>No documentation saved.</p>";
-    }
-
-    return `
-      <dl class="documentation-review">
-        <dt>Problem</dt><dd>${escapeHtml(documentation.values.problem || "Missing")}</dd>
-        <dt>Root Cause</dt><dd>${escapeHtml(documentation.values.rootCause || "Missing")}</dd>
-        <dt>Resolution</dt><dd>${escapeHtml(documentation.values.resolution || "Missing")}</dd>
-        <dt>Verification</dt><dd>${escapeHtml(documentation.values.verification || "Missing")}</dd>
-      </dl>
-    `;
-  }
-
   function renderAll() {
     renderTicket();
     renderRequirements();
@@ -279,48 +254,27 @@ export function createTicketEngine({ scenario, elements }) {
     renderAll();
   }
 
+  function getReviewState() {
+    return {
+      ...state,
+      learnerNotes: elements.learnerNotes.value || "",
+      documentation: documentationComponent?.getState() || state.documentation
+    };
+  }
+
   function grade() {
-    const grading = scenario.grading || {};
-    const requiredStates = grading.requiredStates || [];
-    const maxScore = Number(grading.maxScore || 100);
-    const missing = requiredStates.filter(item => state.flags[item.key] !== item.value);
-    const missingPenalty = missing.length * Number(grading.pointsPerMissingState || 15);
-    const actionPenalty = state.penalties.reduce((total, item) => total + Number(item.points || 0), 0);
-    const score = Math.max(0, maxScore - missingPenalty - actionPenalty);
-    const passed = score >= Number(grading.passingScore || 75) && missing.length === 0;
+    const reviewState = getReviewState();
+    const gradeResult = gradeRequiredStateScenario({ scenario, state: reviewState });
 
     state.completed = true;
 
     elements.reviewPanel.hidden = false;
-    elements.reviewPanel.innerHTML = `
-      <h2>Final Review</h2>
-      <div class="review-score">${score}% ${passed ? "Pass" : "Needs Work"}</div>
-      <p>${escapeHtml(grading.summary || scenario.note || "Review your evidence, actions, documentation, and required outcomes.")}</p>
-      <h3>Required Outcomes</h3>
-      ${renderReviewStatePills(requiredStates)}
-      <div class="review-grid" style="margin-top:1rem;">
-        <div class="review-item ${missing.length ? "missing" : "complete"}">
-          <strong>Missing Outcomes</strong>
-          ${missing.length ? `<ul>${missing.map(item => `<li>${escapeHtml(item.label || item.key)}</li>`).join("")}</ul>` : "<p>All required outcomes were completed.</p>"}
-        </div>
-        <div class="review-item ${state.penalties.length ? "penalty" : "complete"}">
-          <strong>Penalties</strong>
-          ${state.penalties.length ? `<ul>${state.penalties.map(item => `<li>${escapeHtml(item.reason)} (-${item.points})</li>`).join("")}</ul>` : "<p>No unsafe or unnecessary actions were taken.</p>"}
-        </div>
-        <div class="review-item">
-          <strong>Actions Taken</strong>
-          <p>${state.history.length}</p>
-        </div>
-        <div class="review-item">
-          <strong>Learner Notes</strong>
-          <p>${escapeHtml(elements.learnerNotes.value || "No notes entered.")}</p>
-        </div>
-        <div class="review-item wide-review-item">
-          <strong>Saved Documentation</strong>
-          ${renderDocumentationReview()}
-        </div>
-      </div>
-    `;
+    elements.reviewPanel.innerHTML = renderPbqReview({
+      scenario,
+      state: reviewState,
+      gradeResult,
+      activityLabel: "Actions Taken"
+    });
 
     documentationComponent?.render({ completed: true });
     renderActions();
