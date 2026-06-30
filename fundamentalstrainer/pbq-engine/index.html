@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PBQ Engine v2 | Charles Tisdale</title>
+  <meta name="description" content="Standalone PBQ Engine v2 for stateful ticket-based performance-based question simulations." />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Charles Tisdale</a>
+      <div class="nav-links">
+        <a href="/fundamentalstrainer/">Core 2 Trainer</a>
+        <a href="/fundamentalstrainer/pbq-lab.html">PBQ Lab v1</a>
+        <a href="/projects/">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container hero">
+    <article class="panel project-shell">
+      <div class="eyebrow">PBQ Engine v2 • Standalone Simulation Framework</div>
+      <h1>Ticket Engine v2</h1>
+      <p>
+        This is the separate PBQ Engine prototype. It is intentionally isolated from the regular Core 2 quiz app.
+        The first engine is a stateful help desk ticket simulator with evidence, action history, notes, branching,
+        required-state grading, and a final review screen.
+      </p>
+      <p class="status-note" id="loadStatus">Loading ticket scenarios...</p>
+
+      <section class="pbq-shell" aria-live="polite">
+        <aside class="ticket-panel" id="ticketPanel">
+          <h2>Ticket</h2>
+          <div id="ticketMeta"></div>
+        </aside>
+
+        <section class="work-panel">
+          <div class="engine-toolbar">
+            <select id="ticketSelect" class="engine-select" aria-label="Select ticket scenario"></select>
+            <button id="restartBtn" class="engine-button">Restart Ticket</button>
+            <button id="gradeBtn" class="engine-button primary">Grade Ticket</button>
+          </div>
+
+          <div class="engine-grid">
+            <section class="engine-card">
+              <h2>Available Actions</h2>
+              <p class="status-note">Choose technician actions. Some actions reveal evidence, set scenario state, or add penalties.</p>
+              <div id="actionMenu" class="action-menu"></div>
+            </section>
+
+            <section class="engine-card">
+              <h2>Evidence</h2>
+              <div id="evidencePane" class="evidence-pane empty-pane">No evidence collected yet.</div>
+            </section>
+
+            <section class="engine-card wide-card">
+              <h2>Action History</h2>
+              <div id="historyPane" class="history-pane empty-pane">No actions taken yet.</div>
+            </section>
+
+            <section class="engine-card wide-card">
+              <h2>Learner Notes</h2>
+              <textarea id="learnerNotes" class="learner-notes" placeholder="Write your working notes, suspected cause, verification, and documentation plan..."></textarea>
+            </section>
+          </div>
+        </section>
+      </section>
+
+      <section id="reviewPanel" class="review-panel" hidden></section>
+
+      <a class="back-link" href="/fundamentalstrainer/">← Back to Core 2 Trainer</a>
+    </article>
+  </main>
+
+  <footer class="footer container">
+    <p>Built on charlestisdale.com • Focused on networking, cybersecurity, and hands-on infrastructure learning</p>
+    <p><a class="footer-link" href="/privacy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
