@@ -1,0 +1,749 @@
+[
+  {
+    "id": "core2-pbq-malware-removal-order-001",
+    "objective": "2.0 Security",
+    "category": "malware-removal",
+    "difficulty": "hard",
+    "type": "ordering",
+    "title": "Put the malware removal process in order",
+    "instructions": "A workstation shows signs of malware infection. Number the remediation steps in the correct CompTIA order.",
+    "steps": [
+      "Identify and research malware symptoms",
+      "Quarantine the infected system",
+      "Disable System Restore in Windows",
+      "Remediate infected systems",
+      "Schedule scans and run updates",
+      "Enable System Restore and create a restore point",
+      "Educate the end user"
+    ],
+    "note": "CompTIA expects the malware removal sequence: identify, quarantine, disable restore, remediate, schedule scans/updates, re-enable restore, educate."
+  },
+  {
+    "id": "core2-pbq-windows-repair-commands-002",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "hard",
+    "type": "matching",
+    "title": "Match Windows repair commands to the correct task",
+    "instructions": "Match each support task to the command that best fits.",
+    "items": [
+      {
+        "prompt": "Repair protected Windows system files",
+        "answer": "sfc /scannow"
+      },
+      {
+        "prompt": "Repair the Windows component store used by SFC",
+        "answer": "DISM /Online /Cleanup-Image /RestoreHealth"
+      },
+      {
+        "prompt": "Check and repair file-system errors on the next reboot if needed",
+        "answer": "chkdsk /f"
+      },
+      {
+        "prompt": "Rebuild boot configuration data after boot failure",
+        "answer": "bootrec /rebuildbcd"
+      },
+      {
+        "prompt": "Refresh domain Group Policy settings",
+        "answer": "gpupdate /force"
+      }
+    ],
+    "note": "SFC repairs system files, DISM repairs the component store, CHKDSK repairs file-system errors, Bootrec repairs boot records/BCD, and GPUpdate refreshes policy."
+  },
+  {
+    "id": "core2-pbq-network-dns-commands-003",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-command-line",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match network symptoms to commands",
+    "instructions": "Choose the best first command for each troubleshooting task.",
+    "items": [
+      {
+        "prompt": "A PC can ping 8.8.8.8 but cannot resolve google.com",
+        "answer": "nslookup google.com"
+      },
+      {
+        "prompt": "A stale DNS record is cached locally",
+        "answer": "ipconfig /flushdns"
+      },
+      {
+        "prompt": "The PC has a 169.254.x.x APIPA address",
+        "answer": "ipconfig /release && ipconfig /renew"
+      },
+      {
+        "prompt": "You need to see the default gateway, DNS servers, and DHCP status",
+        "answer": "ipconfig /all"
+      },
+      {
+        "prompt": "You need to see the path packets take to a remote host",
+        "answer": "tracert"
+      }
+    ],
+    "note": "Match the command to the evidence. DNS resolution, DHCP lease problems, and route/path testing use different tools."
+  },
+  {
+    "id": "core2-pbq-bitlocker-security-match-004",
+    "objective": "2.0 Security",
+    "category": "encryption",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match security technologies to protections",
+    "instructions": "Match each technology to what it primarily protects.",
+    "items": [
+      {
+        "prompt": "Protects an entire Windows volume if the drive is removed",
+        "answer": "BitLocker"
+      },
+      {
+        "prompt": "Encrypts individual files and folders for a user",
+        "answer": "EFS"
+      },
+      {
+        "prompt": "Stores cryptographic keys and supports measured boot",
+        "answer": "TPM"
+      },
+      {
+        "prompt": "Verifies trusted bootloaders before OS startup",
+        "answer": "Secure Boot"
+      },
+      {
+        "prompt": "Controls file access while the OS enforces permissions",
+        "answer": "NTFS permissions"
+      }
+    ],
+    "note": "BitLocker is full-volume encryption. EFS is file/folder encryption. Secure Boot is boot integrity, not data encryption."
+  },
+  {
+    "id": "core2-pbq-backup-types-005",
+    "objective": "4.0 Operational Procedures",
+    "category": "backup-recovery",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match backup types to behavior",
+    "instructions": "Match the backup type to its behavior.",
+    "items": [
+      {
+        "prompt": "Backs up everything selected every time",
+        "answer": "Full backup"
+      },
+      {
+        "prompt": "Backs up changes since the last full backup",
+        "answer": "Differential backup"
+      },
+      {
+        "prompt": "Backs up changes since the last backup of any type",
+        "answer": "Incremental backup"
+      },
+      {
+        "prompt": "Point-in-time copy often used before risky changes",
+        "answer": "Snapshot"
+      },
+      {
+        "prompt": "Proves that backups are usable before a disaster",
+        "answer": "Restore testing"
+      }
+    ],
+    "note": "Differential grows until the next full backup. Incremental chains depend on the previous backup set."
+  },
+  {
+    "id": "core2-pbq-change-management-order-006",
+    "objective": "4.0 Operational Procedures",
+    "category": "change-management",
+    "difficulty": "hard",
+    "type": "ordering",
+    "title": "Order a safe change-management workflow",
+    "instructions": "A technician needs to deploy a firewall configuration change. Put the steps in the safest order.",
+    "steps": [
+      "Document the proposed change and business reason",
+      "Assess risk and affected systems",
+      "Get approval from the proper authority or CAB",
+      "Schedule the maintenance window and notify stakeholders",
+      "Back up the current configuration and prepare a rollback plan",
+      "Implement the approved change",
+      "Validate the change and monitor for issues",
+      "Document the result and lessons learned"
+    ],
+    "note": "Change management protects production systems by requiring planning, approval, rollback, validation, and documentation."
+  },
+  {
+    "id": "core2-pbq-printer-troubleshooting-order-007",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "printer-troubleshooting",
+    "difficulty": "medium",
+    "type": "ordering",
+    "title": "Order printer troubleshooting steps",
+    "instructions": "A user cannot print to a network printer. Put these actions in the best troubleshooting order.",
+    "steps": [
+      "Identify whether one user or multiple users are affected",
+      "Verify the printer is powered on and online",
+      "Check network connectivity to the printer",
+      "Check the print queue for stuck jobs",
+      "Restart the print spooler if jobs are stuck",
+      "Update or reinstall the printer driver if needed",
+      "Print a test page and document the fix"
+    ],
+    "note": "Start by scoping the issue, then verify simple causes before changing drivers or services."
+  },
+  {
+    "id": "core2-pbq-mobile-email-match-008",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "mobile-troubleshooting",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match mobile symptoms to likely fixes",
+    "instructions": "Match each mobile support scenario to the best first action.",
+    "items": [
+      {
+        "prompt": "New cellular provider; mobile data does not work",
+        "answer": "Verify APN settings"
+      },
+      {
+        "prompt": "Work email stopped syncing after password change",
+        "answer": "Update saved account credentials"
+      },
+      {
+        "prompt": "Battery drains quickly after installing a new app",
+        "answer": "Check battery usage by app"
+      },
+      {
+        "prompt": "Phone will not pair with car audio",
+        "answer": "Forget and re-pair Bluetooth device"
+      },
+      {
+        "prompt": "User needs mail synchronized across phone, tablet, and laptop",
+        "answer": "Use IMAP or Exchange/modern sync"
+      }
+    ],
+    "note": "Mobile questions often hinge on the clue: APN for carrier data, credentials for sync, app usage for battery, pairing for Bluetooth."
+  },
+  {
+    "id": "core2-pbq-linux-commands-009",
+    "objective": "1.0 Operating Systems",
+    "category": "linux",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match Linux commands to tasks",
+    "instructions": "Match each Linux task to the most appropriate command.",
+    "items": [
+      {
+        "prompt": "Show the current working directory",
+        "answer": "pwd"
+      },
+      {
+        "prompt": "List files, including hidden files, in long format",
+        "answer": "ls -la"
+      },
+      {
+        "prompt": "Change file permissions",
+        "answer": "chmod"
+      },
+      {
+        "prompt": "Change file ownership",
+        "answer": "chown"
+      },
+      {
+        "prompt": "Search a text stream for matching lines",
+        "answer": "grep"
+      },
+      {
+        "prompt": "Show running processes",
+        "answer": "ps"
+      }
+    ],
+    "note": "Core 2 expects basic Linux command recognition, especially file navigation, permissions, and process viewing."
+  },
+  {
+    "id": "core2-pbq-permissions-match-010",
+    "objective": "2.0 Security",
+    "category": "permissions",
+    "difficulty": "hard",
+    "type": "matching",
+    "title": "Match permission requirements to best control",
+    "instructions": "Choose the best permission/control for each requirement.",
+    "items": [
+      {
+        "prompt": "Allow a user to read and run a program but not modify it",
+        "answer": "Read & execute"
+      },
+      {
+        "prompt": "Allow a department to add files but not change NTFS ownership",
+        "answer": "Modify"
+      },
+      {
+        "prompt": "Allow administrators to change permissions and ownership",
+        "answer": "Full control"
+      },
+      {
+        "prompt": "Apply access based on group membership instead of individual users",
+        "answer": "Security group"
+      },
+      {
+        "prompt": "Preserve least privilege when a user moves departments",
+        "answer": "Remove old group memberships"
+      }
+    ],
+    "note": "CompTIA favors least privilege and group-based access over direct user-by-user permissions."
+  },
+  {
+    "id": "core2-pbq-social-engineering-match-011",
+    "objective": "2.0 Security",
+    "category": "social-engineering",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match social engineering attacks",
+    "instructions": "Match the attack description to the correct term.",
+    "items": [
+      {
+        "prompt": "A text message asks the user to verify a bank login",
+        "answer": "Smishing"
+      },
+      {
+        "prompt": "A phone caller impersonates IT support",
+        "answer": "Vishing"
+      },
+      {
+        "prompt": "A targeted email is sent to the CFO",
+        "answer": "Whaling"
+      },
+      {
+        "prompt": "An attacker follows an employee through a secured door",
+        "answer": "Tailgating"
+      },
+      {
+        "prompt": "An attacker watches a user type a PIN",
+        "answer": "Shoulder surfing"
+      },
+      {
+        "prompt": "An attacker searches discarded paperwork for information",
+        "answer": "Dumpster diving"
+      }
+    ],
+    "note": "Know the communication channel and target: SMS is smishing, voice is vishing, executives are whaling."
+  },
+  {
+    "id": "core2-pbq-windows-tools-match-012",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-tools",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match Windows tools to tasks",
+    "instructions": "Match the administrative task to the Windows tool.",
+    "items": [
+      {
+        "prompt": "View CPU, memory, disk, and startup app usage",
+        "answer": "Task Manager"
+      },
+      {
+        "prompt": "Manage local users, disks, services, and Event Viewer from one console",
+        "answer": "Computer Management"
+      },
+      {
+        "prompt": "View driver status and roll back a driver",
+        "answer": "Device Manager"
+      },
+      {
+        "prompt": "View system and application logs",
+        "answer": "Event Viewer"
+      },
+      {
+        "prompt": "Create or shrink disk partitions",
+        "answer": "Disk Management"
+      },
+      {
+        "prompt": "Schedule scripts or maintenance jobs",
+        "answer": "Task Scheduler"
+      }
+    ],
+    "note": "Windows tool PBQs are often scenario-based: pick the utility that directly exposes the setting or evidence."
+  },
+  {
+    "id": "core2-pbq-ticket-slow-pc-013",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "type": "scenario",
+    "title": "Ticket simulator: slow Windows PC",
+    "instructions": "Work the ticket by choosing the best action at each step. Use least-invasive troubleshooting.",
+    "stages": [
+      {
+        "prompt": "Ticket: User reports the PC is extremely slow after login. What do you do first?",
+        "options": [
+          "Open Task Manager and check resource usage",
+          "Replace the hard drive",
+          "Run a clean install",
+          "Disable the firewall"
+        ],
+        "answer": "Open Task Manager and check resource usage",
+        "result": "Task Manager shows Disk at 100%, CPU at 8%, Memory at 45%."
+      },
+      {
+        "prompt": "What should you check next?",
+        "options": [
+          "Processes sorted by disk usage",
+          "GPU temperature",
+          "Windows activation",
+          "BitLocker recovery key"
+        ],
+        "answer": "Processes sorted by disk usage",
+        "result": "A backup client is constantly retrying a failed cloud sync job."
+      },
+      {
+        "prompt": "What is the best next action?",
+        "options": [
+          "Pause/fix the backup client and verify performance",
+          "Delete the user profile",
+          "Replace RAM",
+          "Format the disk"
+        ],
+        "answer": "Pause/fix the backup client and verify performance",
+        "result": "Disk usage drops and applications open normally."
+      },
+      {
+        "prompt": "What should you do before closing the ticket?",
+        "options": [
+          "Document symptoms, cause, fix, and verification",
+          "Delete Event Viewer logs",
+          "Disable all startup apps permanently",
+          "Tell the user to reboot weekly only"
+        ],
+        "answer": "Document symptoms, cause, fix, and verification",
+        "result": "Ticket is complete."
+      }
+    ],
+    "note": "The scenario tests evidence gathering, resource bottleneck analysis, least-invasive action, verification, and documentation."
+  },
+  {
+    "id": "core2-pbq-ticket-browser-hijack-014",
+    "objective": "2.0 Security",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "type": "scenario",
+    "title": "Ticket simulator: browser redirects and pop-ups",
+    "instructions": "Work the malware-style ticket using the best next action.",
+    "stages": [
+      {
+        "prompt": "User reports homepage changes, redirects, and pop-ups. What is the most likely issue?",
+        "options": [
+          "Browser hijacker",
+          "Failed RAM",
+          "Disk fragmentation",
+          "Incorrect subnet mask"
+        ],
+        "answer": "Browser hijacker",
+        "result": "The browser has unknown extensions installed."
+      },
+      {
+        "prompt": "What should you do next?",
+        "options": [
+          "Quarantine the system and prevent spread",
+          "Join it to a new domain",
+          "Replace the monitor",
+          "Disable Secure Boot"
+        ],
+        "answer": "Quarantine the system and prevent spread",
+        "result": "The system is isolated from the network."
+      },
+      {
+        "prompt": "Which remediation action fits best?",
+        "options": [
+          "Remove suspicious extensions and run updated anti-malware scans",
+          "Run gpupdate only",
+          "Clear the print queue",
+          "Create a new partition"
+        ],
+        "answer": "Remove suspicious extensions and run updated anti-malware scans",
+        "result": "Scans remove unwanted software and browser settings are reset."
+      },
+      {
+        "prompt": "What final action is required?",
+        "options": [
+          "Educate the user about suspicious downloads/extensions",
+          "Disable Windows Update",
+          "Give the user local admin permanently",
+          "Close without notes"
+        ],
+        "answer": "Educate the user about suspicious downloads/extensions",
+        "result": "User education reduces recurrence."
+      }
+    ],
+    "note": "This blends browser hijacker symptoms with the malware removal process."
+  },
+  {
+    "id": "core2-pbq-ticket-cert-error-015",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "medium",
+    "type": "scenario",
+    "title": "Ticket simulator: secure website certificate error",
+    "instructions": "Choose the best step for each stage.",
+    "stages": [
+      {
+        "prompt": "User can browse most sites, but a secure site says 'Your connection is not private.' What do you check first?",
+        "options": [
+          "System date and time",
+          "Video driver version",
+          "Local user groups",
+          "Recycle Bin"
+        ],
+        "answer": "System date and time",
+        "result": "The laptop date is set two years in the past."
+      },
+      {
+        "prompt": "What should you do next?",
+        "options": [
+          "Correct date/time and time zone, then retry",
+          "Flush the print spooler",
+          "Replace the NIC",
+          "Disable antivirus permanently"
+        ],
+        "answer": "Correct date/time and time zone, then retry",
+        "result": "The secure site now loads without certificate errors."
+      },
+      {
+        "prompt": "What should you document?",
+        "options": [
+          "Symptom, incorrect clock, correction, and verification",
+          "Only the browser name",
+          "Nothing because it was simple",
+          "The user's password"
+        ],
+        "answer": "Symptom, incorrect clock, correction, and verification",
+        "result": "The ticket has useful closure notes."
+      }
+    ],
+    "note": "Incorrect system time can make valid certificates appear expired or not yet valid."
+  },
+  {
+    "id": "core2-pbq-ticket-domain-password-016",
+    "objective": "2.0 Security",
+    "category": "authentication",
+    "difficulty": "medium",
+    "type": "scenario",
+    "title": "Ticket simulator: domain password reset",
+    "instructions": "Choose the best action in a domain-joined environment.",
+    "stages": [
+      {
+        "prompt": "A user forgot their password on a domain-joined Windows laptop. What should you use?",
+        "options": [
+          "Active Directory Users and Computers or approved identity tool",
+          "Local Disk Management",
+          "Task Scheduler",
+          "System Restore"
+        ],
+        "answer": "Active Directory Users and Computers or approved identity tool",
+        "result": "The user account is found in AD."
+      },
+      {
+        "prompt": "What should you do before resetting?",
+        "options": [
+          "Verify the user's identity according to policy",
+          "Ask the user for their old password",
+          "Disable MFA for everyone",
+          "Create an unknown local admin"
+        ],
+        "answer": "Verify the user's identity according to policy",
+        "result": "Identity is verified."
+      },
+      {
+        "prompt": "After reset, what should the user be required to do?",
+        "options": [
+          "Change password at next sign-in",
+          "Use a shared password",
+          "Disable screen lock",
+          "Store password in a text file"
+        ],
+        "answer": "Change password at next sign-in",
+        "result": "The user signs in and sets a new password."
+      }
+    ],
+    "note": "Domain accounts are managed centrally. Always verify identity before password resets."
+  },
+  {
+    "id": "core2-pbq-command-typed-017",
+    "objective": "1.0 Operating Systems",
+    "category": "command-line-simulation",
+    "difficulty": "medium",
+    "type": "command",
+    "title": "Command simulator: flush a corrupted DNS cache",
+    "instructions": "Type the Windows command that clears the local DNS resolver cache.",
+    "acceptedAnswers": [
+      "ipconfig /flushdns"
+    ],
+    "note": "Use ipconfig /flushdns when a stale or corrupted local DNS cache is suspected."
+  },
+  {
+    "id": "core2-pbq-command-typed-018",
+    "objective": "1.0 Operating Systems",
+    "category": "command-line-simulation",
+    "difficulty": "medium",
+    "type": "command",
+    "title": "Command simulator: repair Windows system files",
+    "instructions": "Type the command that scans and repairs protected Windows system files.",
+    "acceptedAnswers": [
+      "sfc /scannow"
+    ],
+    "note": "SFC repairs protected Windows system files."
+  },
+  {
+    "id": "core2-pbq-command-typed-019",
+    "objective": "1.0 Operating Systems",
+    "category": "command-line-simulation",
+    "difficulty": "hard",
+    "type": "command",
+    "title": "Command simulator: repair the Windows component store",
+    "instructions": "SFC cannot repair files because the component store is damaged. Type the DISM command to repair it.",
+    "acceptedAnswers": [
+      "dism /online /cleanup-image /restorehealth",
+      "DISM /Online /Cleanup-Image /RestoreHealth"
+    ],
+    "note": "DISM /Online /Cleanup-Image /RestoreHealth repairs the online Windows image/component store."
+  },
+  {
+    "id": "core2-pbq-command-typed-020",
+    "objective": "1.0 Operating Systems",
+    "category": "command-line-simulation",
+    "difficulty": "medium",
+    "type": "command",
+    "title": "Command simulator: force Group Policy update",
+    "instructions": "Type the command that forces a Windows computer to refresh Group Policy.",
+    "acceptedAnswers": [
+      "gpupdate /force"
+    ],
+    "note": "gpupdate /force refreshes local and domain Group Policy settings."
+  },
+  {
+    "id": "core2-pbq-incident-response-order-021",
+    "objective": "4.0 Operational Procedures",
+    "category": "incident-response",
+    "difficulty": "hard",
+    "type": "ordering",
+    "title": "Order incident response actions",
+    "instructions": "A user opened a suspicious attachment and ransomware activity is suspected. Put the actions in the best order.",
+    "steps": [
+      "Disconnect the system from the network",
+      "Escalate according to incident response policy",
+      "Preserve evidence and document observed symptoms",
+      "Identify affected systems and scope",
+      "Contain the threat",
+      "Eradicate malware and remove persistence",
+      "Recover from known-good backups",
+      "Review lessons learned and update controls"
+    ],
+    "note": "Containment and escalation happen before broad remediation. Do not destroy evidence by jumping straight to reinstalling."
+  },
+  {
+    "id": "core2-pbq-licensing-match-022",
+    "objective": "4.0 Operational Procedures",
+    "category": "licensing",
+    "difficulty": "medium",
+    "type": "matching",
+    "title": "Match software licensing models",
+    "instructions": "Match each licensing model to its description.",
+    "items": [
+      {
+        "prompt": "License tied to original hardware/manufacturer installation",
+        "answer": "OEM"
+      },
+      {
+        "prompt": "Purchased by an individual or small organization, transferable depending on terms",
+        "answer": "Retail"
+      },
+      {
+        "prompt": "Used by organizations to manage many licenses centrally",
+        "answer": "Volume licensing"
+      },
+      {
+        "prompt": "Source code is available under license terms",
+        "answer": "Open source"
+      },
+      {
+        "prompt": "Access continues while recurring payment remains active",
+        "answer": "Subscription"
+      }
+    ],
+    "note": "Core 2 tests licensing at a practical technician level: know the model and follow the license terms."
+  },
+  {
+    "id": "core2-pbq-safety-match-023",
+    "objective": "4.0 Operational Procedures",
+    "category": "safety",
+    "difficulty": "easy",
+    "type": "matching",
+    "title": "Match safety concerns to best action",
+    "instructions": "Match each safety situation to the best response.",
+    "items": [
+      {
+        "prompt": "Working inside a desktop PC",
+        "answer": "Use ESD protection"
+      },
+      {
+        "prompt": "Swollen laptop battery",
+        "answer": "Stop using it and follow battery disposal/escalation procedures"
+      },
+      {
+        "prompt": "Printer toner spill",
+        "answer": "Use proper cleanup method and PPE; do not use a regular vacuum"
+      },
+      {
+        "prompt": "Damaged power cable",
+        "answer": "Remove from service and replace it"
+      },
+      {
+        "prompt": "Heavy equipment must be moved",
+        "answer": "Use proper lifting technique or get assistance"
+      }
+    ],
+    "note": "Safety questions usually reward avoiding harm before continuing technical work."
+  },
+  {
+    "id": "core2-pbq-windows-recovery-match-024",
+    "objective": "1.0 Operating Systems",
+    "category": "windows-troubleshooting",
+    "difficulty": "hard",
+    "type": "matching",
+    "title": "Match Windows recovery options",
+    "instructions": "Match each problem to the least-invasive recovery option.",
+    "items": [
+      {
+        "prompt": "Bad display driver after update; Windows can boot into Safe Mode",
+        "answer": "Roll back or uninstall the driver in Safe Mode"
+      },
+      {
+        "prompt": "Recent application install broke Windows features; restore point exists",
+        "answer": "System Restore"
+      },
+      {
+        "prompt": "Windows will not boot and startup files are damaged",
+        "answer": "Startup Repair"
+      },
+      {
+        "prompt": "User needs Windows reinstalled while preserving personal files",
+        "answer": "Reset this PC - Keep my files"
+      },
+      {
+        "prompt": "Drive has failed SMART diagnostics",
+        "answer": "Replace the drive and restore data"
+      }
+    ],
+    "note": "Always pick the least-invasive option that addresses the evidence."
+  },
+  {
+    "id": "core2-pbq-helpdesk-methodology-order-025",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "troubleshooting-methodology",
+    "difficulty": "medium",
+    "type": "ordering",
+    "title": "Order the troubleshooting methodology",
+    "instructions": "Put the standard troubleshooting process in order.",
+    "steps": [
+      "Identify the problem",
+      "Establish a theory of probable cause",
+      "Test the theory to determine cause",
+      "Establish a plan of action and implement the solution",
+      "Verify full system functionality and implement preventive measures",
+      "Document findings, actions, and outcomes"
+    ],
+    "note": "This methodology applies across Windows, mobile, malware, networking, and operational scenarios."
+  }
+]
