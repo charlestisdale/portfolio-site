@@ -54,6 +54,7 @@ The PBQ Engine currently supports:
 - required outcomes pane
 - learner notes
 - formal ticket documentation component
+- documentation saved events through `PBQ_EVENTS.DOCUMENTATION_SAVED`
 - stateful scenario execution
 - evidence collection
 - action/command history
@@ -91,6 +92,27 @@ Current runtime foundation responsibilities:
 - `state-manager.js`: structured runtime state with `get`, `set`, `merge`, `reset`, and `serialize`
 - `component-manager.js`: component registration and lifecycle mounting
 - `runtime.js`: orchestrator skeleton that creates event bus, state manager, and component manager
+
+## Event Bus Migration Status
+
+The first live event-bus migration is complete for documentation saves.
+
+Current flow:
+
+```text
+Documentation Component
+  emits PBQ_EVENTS.DOCUMENTATION_SAVED
+
+Ticket / Terminal Engine
+  subscribes to DOCUMENTATION_SAVED
+  updates state.documentation
+  updates state.flags.documented
+  refreshes required outcomes
+```
+
+This replaces the previous direct `onSave` callback path in the active engines while preserving the same learner-facing behavior.
+
+The documentation component still accepts an optional `onSave` fallback for compatibility, but new runtime-oriented work should prefer event emission.
 
 ## Shared Grading And Review
 
@@ -156,7 +178,13 @@ Current documentation fields:
 - Resolution
 - Verification
 
-A documentation save counts as complete only when all four fields contain text. When saved, the component returns a documentation state object to the active engine. Engines can then set their own scenario state, usually:
+A documentation save counts as complete only when all four fields contain text. When saved, the component emits:
+
+```text
+PBQ_EVENTS.DOCUMENTATION_SAVED
+```
+
+The active engine subscribes to this event and updates its scenario state, usually:
 
 ```json
 { "documented": true }
@@ -189,6 +217,7 @@ The Ticket Engine is a stateful help desk simulator. It supports:
 - evidence revealed by actions
 - action history
 - shared documentation component
+- documentation saved event handling
 - shared required-state grading
 - shared final review rendering
 
@@ -307,6 +336,7 @@ Terminal scenarios currently support:
 - evidence collection
 - command history
 - shared documentation component
+- documentation saved event handling
 - penalties
 - shared required-state grading
 - shared final review rendering
@@ -401,9 +431,8 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 
 Good next steps:
 
-1. Test Ticket and Terminal scenarios after the shared grader/review integration.
-2. Move documentation save handling to the runtime event bus.
-3. Make one engine internally use `state-manager.js` without changing visible behavior.
-4. Add a formal `terminal.schema.json` file.
-5. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
-6. Add save/resume behavior for active PBQ attempts using local storage.
+1. Test Ticket and Terminal documentation saving after the event-bus migration.
+2. Make one engine internally use `state-manager.js` without changing visible behavior.
+3. Add a formal `terminal.schema.json` file.
+4. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
+5. Add save/resume behavior for active PBQ attempts using local storage.
