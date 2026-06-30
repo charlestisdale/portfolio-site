@@ -1,0 +1,200 @@
+[
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Physical security control selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Physical controls protect systems and spaces before logical security controls are even reached.",
+    "type": "matching",
+    "instructions": "Match each physical security requirement to the best control.",
+    "items": [
+      { "scenario": "Prevent a laptop from being easily removed from a desk", "answer": "Cable Lock" },
+      { "scenario": "Control who can enter a server room", "answer": "Badge Reader" },
+      { "scenario": "Record activity in a hallway near network equipment", "answer": "Security Camera" },
+      { "scenario": "Prevent a door from being held open by an unauthorized person", "answer": "Mantrap" },
+      { "scenario": "Detect if a device case was opened", "answer": "Tamper Detection" },
+      { "scenario": "Track visitors while inside a facility", "answer": "Visitor Badge" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Authentication factor identification",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "MFA requires factors from different categories, not just two examples from the same category.",
+    "type": "matching",
+    "instructions": "Match each authentication example to the correct factor type.",
+    "items": [
+      { "scenario": "Password", "answer": "Something You Know" },
+      { "scenario": "PIN", "answer": "Something You Know" },
+      { "scenario": "Smart card", "answer": "Something You Have" },
+      { "scenario": "Authenticator app code", "answer": "Something You Have" },
+      { "scenario": "Fingerprint", "answer": "Something You Are" },
+      { "scenario": "Face scan", "answer": "Something You Are" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware response process order",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "CompTIA expects malware removal to follow a careful order: identify, quarantine, remediate, scan, restore protections, and educate.",
+    "type": "ordering",
+    "instructions": "A Windows computer shows signs of malware. Put the malware-removal process in the best order.",
+    "correctOrder": [
+      "Identify and research malware symptoms",
+      "Quarantine the infected system",
+      "Disable System Restore if required by procedure",
+      "Remediate infected systems and remove malware",
+      "Schedule scans and run updates",
+      "Enable System Restore and create a restore point",
+      "Educate the user"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware type selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Each malware type behaves differently, so symptoms are important clues.",
+    "type": "matching",
+    "instructions": "Match each symptom or behavior to the most likely malware type.",
+    "items": [
+      { "scenario": "Encrypts files and demands payment", "answer": "Ransomware" },
+      { "scenario": "Disguises itself as legitimate software", "answer": "Trojan" },
+      { "scenario": "Records keystrokes to capture credentials", "answer": "Keylogger" },
+      { "scenario": "Hides deep in the operating system", "answer": "Rootkit" },
+      { "scenario": "Spreads across systems without user action", "answer": "Worm" },
+      { "scenario": "Displays unwanted advertisements", "answer": "Adware" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Encryption feature selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "BitLocker protects volumes, EFS protects files, TPM stores hardware-backed keys, and Secure Boot protects the boot process.",
+    "type": "matching",
+    "instructions": "Match each security requirement to the best Windows feature or technology.",
+    "items": [
+      { "scenario": "Encrypt the entire system drive", "answer": "BitLocker" },
+      { "scenario": "Encrypt individual files or folders", "answer": "EFS" },
+      { "scenario": "Store encryption keys in hardware", "answer": "TPM" },
+      { "scenario": "Prevent unsigned bootloaders from running", "answer": "Secure Boot" },
+      { "scenario": "Recover access when a BitLocker-protected drive is locked", "answer": "Recovery Key" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Wireless security configuration selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Modern wireless security favors WPA3 with SAE when supported, and WPA2/WPA3 Enterprise for centralized authentication.",
+    "type": "matching",
+    "instructions": "Match each wireless requirement to the best security option.",
+    "items": [
+      { "scenario": "Best modern personal wireless security", "answer": "WPA3-Personal" },
+      { "scenario": "Modern personal authentication handshake", "answer": "SAE" },
+      { "scenario": "Business wireless using RADIUS authentication", "answer": "WPA2/WPA3-Enterprise" },
+      { "scenario": "Encryption used with modern WPA2/WPA3 networks", "answer": "AES" },
+      { "scenario": "Older insecure wireless standard that should be avoided", "answer": "WEP" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Browser security feature selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Browser security questions often test HTTPS, certificate warnings, password managers, pop-up blockers, and privacy mode.",
+    "type": "matching",
+    "instructions": "Match each browser security concern to the best feature or concept.",
+    "items": [
+      { "scenario": "Verify a website connection is encrypted", "answer": "HTTPS" },
+      { "scenario": "Warn that a site identity cannot be trusted", "answer": "Certificate Warning" },
+      { "scenario": "Store complex unique passwords securely", "answer": "Password Manager" },
+      { "scenario": "Reduce unwanted advertising windows", "answer": "Pop-up Blocker" },
+      { "scenario": "Avoid saving local browsing history for a session", "answer": "Private Browsing" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Social engineering attack identification",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Social engineering attacks target people rather than only technical systems.",
+    "type": "matching",
+    "instructions": "Match each situation to the correct social engineering term.",
+    "items": [
+      { "scenario": "Generic fraudulent email asking users to reset passwords", "answer": "Phishing" },
+      { "scenario": "Highly targeted email sent to one department", "answer": "Spear Phishing" },
+      { "scenario": "Attack aimed at a CEO or executive", "answer": "Whaling" },
+      { "scenario": "Fraudulent text message", "answer": "Smishing" },
+      { "scenario": "Fraudulent phone call", "answer": "Vishing" },
+      { "scenario": "Following an employee through a secure door", "answer": "Tailgating" }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Least privilege access workflow",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Least privilege means granting only the access required for the job and verifying the result.",
+    "type": "ordering",
+    "instructions": "A user needs access to a restricted folder for a new job role. Put the access-control workflow in the best order.",
+    "correctOrder": [
+      "Verify the user's identity and business need",
+      "Confirm manager or data owner approval",
+      "Add the user to the correct security group",
+      "Have the user sign out and back in or refresh access",
+      "Verify the user can access only the required folder",
+      "Document the access change"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Security hardening task selection",
+    "answer": "PBQ Activity",
+    "options": ["PBQ Activity", "Review PBQ"],
+    "note": "Endpoint hardening combines patching, removing unnecessary services, using least privilege, and enabling built-in security features.",
+    "type": "matching",
+    "instructions": "Match each endpoint hardening goal to the best action.",
+    "items": [
+      { "scenario": "Reduce known software vulnerabilities", "answer": "Install Updates" },
+      { "scenario": "Reduce the impact of a compromised user account", "answer": "Use Least Privilege" },
+      { "scenario": "Remove unnecessary attack surface", "answer": "Disable Unneeded Services" },
+      { "scenario": "Protect the system volume if the device is stolen", "answer": "Enable BitLocker" },
+      { "scenario": "Block unauthorized inbound traffic", "answer": "Enable Firewall" },
+      { "scenario": "Prevent boot-level tampering", "answer": "Enable Secure Boot" }
+    ]
+  }
+]
