@@ -21,6 +21,7 @@ const elements = {
   evidencePane: document.getElementById("evidencePane"),
   historyPane: document.getElementById("historyPane"),
   learnerNotes: document.getElementById("learnerNotes"),
+  documentationPane: document.getElementById("documentationPane"),
   reviewPanel: document.getElementById("reviewPanel")
 };
 
