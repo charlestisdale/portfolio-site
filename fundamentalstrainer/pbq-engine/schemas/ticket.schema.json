@@ -184,6 +184,7 @@
             "insecure",
             "too-invasive",
             "not-relevant",
+            "wrong-root-cause",
             "premature-escalation",
             "missed-verification",
             "missed-documentation",
