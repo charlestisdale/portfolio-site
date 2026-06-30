@@ -29,6 +29,25 @@ export function validateTerminalScenario(scenario, index = 0) {
     });
   }
 
+  function normalizeCommand(value) {
+    return String(value || "").trim().replace(/\s+/g, " ").toLowerCase();
+  }
+
+  function requiresSignature(requires) {
+    if (!isPlainObject(requires)) {
+      return "{}";
+    }
+
+    return JSON.stringify(
+      Object.keys(requires)
+        .sort()
+        .reduce((signature, key) => {
+          signature[key] = requires[key];
+          return signature;
+        }, {})
+    );
+  }
+
   requireString("id", scenario?.id);
   requireString("title", scenario?.title);
 
@@ -49,19 +68,25 @@ export function validateTerminalScenario(scenario, index = 0) {
   if (!Array.isArray(scenario?.commands) || !scenario.commands.length) {
     errors.push(`${label}: commands must be a non-empty array.`);
   } else {
-    const seenCommands = new Set();
+    const seenCommandStates = new Map();
+
     scenario.commands.forEach((command, commandIndex) => {
       const commandLabel = command?.command || `command-${commandIndex + 1}`;
 
       requireString(`commands[${commandIndex}].command`, command?.command);
 
-      const normalizedCommand = String(command?.command || "").trim().toLowerCase();
-      if (normalizedCommand) {
-        if (seenCommands.has(normalizedCommand)) {
-          errors.push(`${label}: duplicate command "${command.command}".`);
+      const commandKeys = [command?.command, ...(command?.aliases || [])]
+        .map(normalizeCommand)
+        .filter(Boolean);
+      const stateSignature = requiresSignature(command?.requires);
+
+      commandKeys.forEach(commandKey => {
+        const key = `${commandKey}|${stateSignature}`;
+        if (seenCommandStates.has(key)) {
+          errors.push(`${label}: command or alias "${commandKey}" duplicates another command with the same requires state.`);
         }
-        seenCommands.add(normalizedCommand);
-      }
+        seenCommandStates.set(key, true);
+      });
 
       if (command?.aliases && !Array.isArray(command.aliases)) {
         errors.push(`${label}: ${commandLabel}.aliases must be an array when provided.`);
