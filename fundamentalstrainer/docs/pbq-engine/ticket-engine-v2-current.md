@@ -24,6 +24,7 @@ fundamentalstrainer/pbq-engine/index.html
 fundamentalstrainer/pbq-engine/styles.css
 fundamentalstrainer/pbq-engine/app.js
 fundamentalstrainer/pbq-engine/engine-registry.js
+fundamentalstrainer/pbq-engine/components/documentation-component.js
 fundamentalstrainer/pbq-engine/engines/ticket-engine.js
 fundamentalstrainer/pbq-engine/engines/terminal-engine.js
 fundamentalstrainer/pbq-engine/validators/ticket-validator.js
@@ -43,6 +44,7 @@ The PBQ Engine currently supports:
 - restartable scenarios
 - required outcomes pane
 - learner notes
+- formal ticket documentation component
 - stateful scenario execution
 - evidence collection
 - action/command history
@@ -83,6 +85,33 @@ Current registry responsibilities:
 
 This keeps the PBQ Engine moving toward the modular Phase 3 architecture.
 
+## Shared Documentation Component
+
+The PBQ Engine now includes a reusable documentation component:
+
+```text
+fundamentalstrainer/pbq-engine/components/documentation-component.js
+```
+
+This component is separate from learner scratch notes. It represents the formal ticket documentation a technician would save before closing the ticket.
+
+Current documentation fields:
+
+- Problem / Symptom
+- Root Cause
+- Resolution
+- Verification
+
+A documentation save counts as complete only when all four fields contain text. When saved, the component returns a documentation state object to the active engine. Engines can then set their own scenario state, usually:
+
+```json
+{ "documented": true }
+```
+
+The saved documentation is also shown in the final review screen.
+
+This component is shared by both the Ticket Engine and the Terminal Engine. Future engines should reuse it instead of creating engine-specific documentation forms.
+
 ## Data Sources
 
 The app currently loads scenarios from:
@@ -105,6 +134,7 @@ The Ticket Engine is a stateful help desk simulator. It supports:
 - state mutation through `sets`
 - evidence revealed by actions
 - action history
+- shared documentation component
 - required-state grading
 - final review
 
@@ -208,8 +238,9 @@ ipconfig /all
 ping 8.8.8.8
 nslookup example.com
 ipconfig /flushdns
-document ticket
 ```
+
+The final documentation requirement is completed through the shared documentation component, not through a fake terminal command.
 
 Terminal scenarios currently support:
 
@@ -221,6 +252,7 @@ Terminal scenarios currently support:
 - state mutation through `sets`
 - evidence collection
 - command history
+- shared documentation component
 - penalties
 - required-state grading
 - final review
@@ -262,7 +294,8 @@ A terminal scenario should use this general shape:
     "passingScore": 75,
     "pointsPerMissingState": 15,
     "requiredStates": [
-      { "key": "evidenceCollected", "value": true, "label": "Collected evidence" }
+      { "key": "evidenceCollected", "value": true, "label": "Collected evidence" },
+      { "key": "documented", "value": true, "label": "Saved ticket documentation" }
     ]
   }
 }
@@ -271,6 +304,12 @@ A terminal scenario should use this general shape:
 ## Design Notes
 
 The PBQ Engine is now a multi-engine shell. `app.js` should remain generic and only coordinate loading, validation, scenario selection, and engine startup.
+
+Shared learner workflow components belong in:
+
+```text
+fundamentalstrainer/pbq-engine/components/
+```
 
 Engine-specific behavior belongs in:
 
@@ -296,8 +335,8 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 
 Good next steps:
 
-1. Test the Terminal Engine in the browser and verify the DNS scenario flow.
-2. Add a formal `terminal.schema.json` file.
-3. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
-4. Add additional terminal scenarios for `ping`, `tracert`, `netstat`, `sfc`, `DISM`, `gpupdate`, and Linux commands.
+1. Test the shared documentation component in both Ticket and Terminal scenarios.
+2. Add minimum keyword checks for documentation quality.
+3. Add a formal `terminal.schema.json` file.
+4. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
 5. Add save/resume behavior for active PBQ attempts using local storage.
