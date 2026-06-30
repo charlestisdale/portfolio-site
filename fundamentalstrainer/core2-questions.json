@@ -4802,6 +4802,369 @@
   },
   {
     "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Physical security control selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Physical controls protect systems and spaces before logical security controls are even reached.",
+    "type": "matching",
+    "instructions": "Match each physical security requirement to the best control.",
+    "items": [
+      {
+        "scenario": "Prevent a laptop from being easily removed from a desk",
+        "answer": "Cable Lock"
+      },
+      {
+        "scenario": "Control who can enter a server room",
+        "answer": "Badge Reader"
+      },
+      {
+        "scenario": "Record activity in a hallway near network equipment",
+        "answer": "Security Camera"
+      },
+      {
+        "scenario": "Prevent a door from being held open by an unauthorized person",
+        "answer": "Mantrap"
+      },
+      {
+        "scenario": "Detect if a device case was opened",
+        "answer": "Tamper Detection"
+      },
+      {
+        "scenario": "Track visitors while inside a facility",
+        "answer": "Visitor Badge"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Authentication factor identification",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "MFA requires factors from different categories, not just two examples from the same category.",
+    "type": "matching",
+    "instructions": "Match each authentication example to the correct factor type.",
+    "items": [
+      {
+        "scenario": "Password",
+        "answer": "Something You Know"
+      },
+      {
+        "scenario": "PIN",
+        "answer": "Something You Know"
+      },
+      {
+        "scenario": "Smart card",
+        "answer": "Something You Have"
+      },
+      {
+        "scenario": "Authenticator app code",
+        "answer": "Something You Have"
+      },
+      {
+        "scenario": "Fingerprint",
+        "answer": "Something You Are"
+      },
+      {
+        "scenario": "Face scan",
+        "answer": "Something You Are"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware response process order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "CompTIA expects malware removal to follow a careful order: identify, quarantine, remediate, scan, restore protections, and educate.",
+    "type": "ordering",
+    "instructions": "A Windows computer shows signs of malware. Put the malware-removal process in the best order.",
+    "correctOrder": [
+      "Identify and research malware symptoms",
+      "Quarantine the infected system",
+      "Disable System Restore if required by procedure",
+      "Remediate infected systems and remove malware",
+      "Schedule scans and run updates",
+      "Enable System Restore and create a restore point",
+      "Educate the user"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware type selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Each malware type behaves differently, so symptoms are important clues.",
+    "type": "matching",
+    "instructions": "Match each symptom or behavior to the most likely malware type.",
+    "items": [
+      {
+        "scenario": "Encrypts files and demands payment",
+        "answer": "Ransomware"
+      },
+      {
+        "scenario": "Disguises itself as legitimate software",
+        "answer": "Trojan"
+      },
+      {
+        "scenario": "Records keystrokes to capture credentials",
+        "answer": "Keylogger"
+      },
+      {
+        "scenario": "Hides deep in the operating system",
+        "answer": "Rootkit"
+      },
+      {
+        "scenario": "Spreads across systems without user action",
+        "answer": "Worm"
+      },
+      {
+        "scenario": "Displays unwanted advertisements",
+        "answer": "Adware"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Encryption feature selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "BitLocker protects volumes, EFS protects files, TPM stores hardware-backed keys, and Secure Boot protects the boot process.",
+    "type": "matching",
+    "instructions": "Match each security requirement to the best Windows feature or technology.",
+    "items": [
+      {
+        "scenario": "Encrypt the entire system drive",
+        "answer": "BitLocker"
+      },
+      {
+        "scenario": "Encrypt individual files or folders",
+        "answer": "EFS"
+      },
+      {
+        "scenario": "Store encryption keys in hardware",
+        "answer": "TPM"
+      },
+      {
+        "scenario": "Prevent unsigned bootloaders from running",
+        "answer": "Secure Boot"
+      },
+      {
+        "scenario": "Recover access when a BitLocker-protected drive is locked",
+        "answer": "Recovery Key"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Wireless security configuration selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Modern wireless security favors WPA3 with SAE when supported, and WPA2/WPA3 Enterprise for centralized authentication.",
+    "type": "matching",
+    "instructions": "Match each wireless requirement to the best security option.",
+    "items": [
+      {
+        "scenario": "Best modern personal wireless security",
+        "answer": "WPA3-Personal"
+      },
+      {
+        "scenario": "Modern personal authentication handshake",
+        "answer": "SAE"
+      },
+      {
+        "scenario": "Business wireless using RADIUS authentication",
+        "answer": "WPA2/WPA3-Enterprise"
+      },
+      {
+        "scenario": "Encryption used with modern WPA2/WPA3 networks",
+        "answer": "AES"
+      },
+      {
+        "scenario": "Older insecure wireless standard that should be avoided",
+        "answer": "WEP"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Browser security feature selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Browser security questions often test HTTPS, certificate warnings, password managers, pop-up blockers, and privacy mode.",
+    "type": "matching",
+    "instructions": "Match each browser security concern to the best feature or concept.",
+    "items": [
+      {
+        "scenario": "Verify a website connection is encrypted",
+        "answer": "HTTPS"
+      },
+      {
+        "scenario": "Warn that a site identity cannot be trusted",
+        "answer": "Certificate Warning"
+      },
+      {
+        "scenario": "Store complex unique passwords securely",
+        "answer": "Password Manager"
+      },
+      {
+        "scenario": "Reduce unwanted advertising windows",
+        "answer": "Pop-up Blocker"
+      },
+      {
+        "scenario": "Avoid saving local browsing history for a session",
+        "answer": "Private Browsing"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Social engineering attack identification",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Social engineering attacks target people rather than only technical systems.",
+    "type": "matching",
+    "instructions": "Match each situation to the correct social engineering term.",
+    "items": [
+      {
+        "scenario": "Generic fraudulent email asking users to reset passwords",
+        "answer": "Phishing"
+      },
+      {
+        "scenario": "Highly targeted email sent to one department",
+        "answer": "Spear Phishing"
+      },
+      {
+        "scenario": "Attack aimed at a CEO or executive",
+        "answer": "Whaling"
+      },
+      {
+        "scenario": "Fraudulent text message",
+        "answer": "Smishing"
+      },
+      {
+        "scenario": "Fraudulent phone call",
+        "answer": "Vishing"
+      },
+      {
+        "scenario": "Following an employee through a secure door",
+        "answer": "Tailgating"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Least privilege access workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Least privilege means granting only the access required for the job and verifying the result.",
+    "type": "ordering",
+    "instructions": "A user needs access to a restricted folder for a new job role. Put the access-control workflow in the best order.",
+    "correctOrder": [
+      "Verify the user's identity and business need",
+      "Confirm manager or data owner approval",
+      "Add the user to the correct security group",
+      "Have the user sign out and back in or refresh access",
+      "Verify the user can access only the required folder",
+      "Document the access change"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "2.0 Security",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Security hardening task selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Endpoint hardening combines patching, removing unnecessary services, using least privilege, and enabling built-in security features.",
+    "type": "matching",
+    "instructions": "Match each endpoint hardening goal to the best action.",
+    "items": [
+      {
+        "scenario": "Reduce known software vulnerabilities",
+        "answer": "Install Updates"
+      },
+      {
+        "scenario": "Reduce the impact of a compromised user account",
+        "answer": "Use Least Privilege"
+      },
+      {
+        "scenario": "Remove unnecessary attack surface",
+        "answer": "Disable Unneeded Services"
+      },
+      {
+        "scenario": "Protect the system volume if the device is stolen",
+        "answer": "Enable BitLocker"
+      },
+      {
+        "scenario": "Block unauthorized inbound traffic",
+        "answer": "Enable Firewall"
+      },
+      {
+        "scenario": "Prevent boot-level tampering",
+        "answer": "Enable Secure Boot"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
     "objective": "3.0 Software Troubleshooting",
     "category": "windows-problems",
     "difficulty": "easy",
@@ -6149,6 +6512,337 @@
       "The monitor cable is loose"
     ],
     "note": "Multiple malware symptoms occurring together strongly indicate a malware infection."
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows boot issue troubleshooting order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Start with symptoms and simple recovery options before destructive repair actions.",
+    "type": "ordering",
+    "instructions": "A Windows PC fails to boot correctly after an update. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Identify the exact boot error or symptom",
+      "Attempt Startup Repair or Safe Mode",
+      "Uninstall the recent update or driver if Safe Mode works",
+      "Run repair commands such as DISM and SFC if needed",
+      "Restore from a restore point or backup if repair fails",
+      "Verify normal boot and document the fix"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows symptom to tool matching",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Use the tool that gives the most direct evidence for the symptom.",
+    "type": "matching",
+    "instructions": "Match each troubleshooting symptom to the best Windows tool.",
+    "items": [
+      {
+        "scenario": "Application crashes repeatedly",
+        "answer": "Event Viewer"
+      },
+      {
+        "scenario": "System is slow due to high disk usage",
+        "answer": "Resource Monitor"
+      },
+      {
+        "scenario": "Unknown startup app launches at sign-in",
+        "answer": "Task Manager Startup Tab"
+      },
+      {
+        "scenario": "Driver has a yellow warning icon",
+        "answer": "Device Manager"
+      },
+      {
+        "scenario": "Need to check long-term performance counters",
+        "answer": "Performance Monitor"
+      },
+      {
+        "scenario": "Need to disable services for clean boot testing",
+        "answer": "System Configuration"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile app troubleshooting order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Mobile troubleshooting should start with simple user-safe fixes before reinstalling or resetting.",
+    "type": "ordering",
+    "instructions": "A mobile app crashes immediately after opening. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Confirm whether one app or multiple apps are affected",
+      "Force close the app and reopen it",
+      "Restart the mobile device",
+      "Check for app and operating system updates",
+      "Clear app cache or storage if appropriate",
+      "Uninstall and reinstall the app",
+      "Escalate or factory reset only if required and backed up"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Mobile symptom to likely cause",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Mobile symptoms often map to connectivity, configuration, battery, sync, or application issues.",
+    "type": "matching",
+    "instructions": "Match each mobile symptom to the most likely cause or setting to check.",
+    "items": [
+      {
+        "scenario": "Cellular data does not work after carrier change",
+        "answer": "APN Settings"
+      },
+      {
+        "scenario": "Email no longer syncs on the phone",
+        "answer": "Account Sync Settings"
+      },
+      {
+        "scenario": "Battery drains quickly after installing an app",
+        "answer": "Background App Activity"
+      },
+      {
+        "scenario": "Bluetooth headset will not connect",
+        "answer": "Bluetooth Pairing"
+      },
+      {
+        "scenario": "User cannot install apps because storage is full",
+        "answer": "Device Storage"
+      },
+      {
+        "scenario": "Mobile browser keeps redirecting to ads",
+        "answer": "Malware or Browser Hijack"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Malware symptom identification",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Symptoms alone do not prove malware, but they help determine the most likely investigation path.",
+    "type": "matching",
+    "instructions": "Match each symptom to the most likely malware-related issue.",
+    "items": [
+      {
+        "scenario": "Browser homepage changes without permission",
+        "answer": "Browser Hijacking"
+      },
+      {
+        "scenario": "Frequent unsolicited advertising windows",
+        "answer": "Pop-ups or Adware"
+      },
+      {
+        "scenario": "Search results redirect to unrelated websites",
+        "answer": "Redirect Malware"
+      },
+      {
+        "scenario": "Unknown processes consume CPU",
+        "answer": "Malware Process"
+      },
+      {
+        "scenario": "Files are encrypted and renamed",
+        "answer": "Ransomware"
+      },
+      {
+        "scenario": "System is unusually slow after suspicious download",
+        "answer": "Malware Infection"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Troubleshooting methodology order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This is the standard CompTIA troubleshooting flow.",
+    "type": "ordering",
+    "instructions": "Put the CompTIA troubleshooting methodology in the correct order.",
+    "correctOrder": [
+      "Identify the problem",
+      "Establish a theory of probable cause",
+      "Test the theory to determine the cause",
+      "Establish a plan of action and implement the solution",
+      "Verify full system functionality and implement preventive measures",
+      "Document findings, actions, and outcomes"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Network connectivity symptom matching",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Use symptoms to separate local device, DNS, gateway, Wi-Fi, and service-specific problems.",
+    "type": "matching",
+    "instructions": "Match each connectivity symptom to the first setting or area to check.",
+    "items": [
+      {
+        "scenario": "Can ping IP addresses but not domain names",
+        "answer": "DNS Configuration"
+      },
+      {
+        "scenario": "No connectivity outside the local network",
+        "answer": "Default Gateway"
+      },
+      {
+        "scenario": "Only one Wi-Fi network has poor signal",
+        "answer": "Wireless Signal Strength"
+      },
+      {
+        "scenario": "Valid IP begins with 169.254",
+        "answer": "DHCP Failure"
+      },
+      {
+        "scenario": "VPN connects but internal apps are unreachable",
+        "answer": "VPN Routes or DNS"
+      },
+      {
+        "scenario": "Only one website fails while others work",
+        "answer": "Website or DNS Record Issue"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Application repair workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Preserve user data and gather evidence before reinstalling or escalating.",
+    "type": "ordering",
+    "instructions": "A business application opens but crashes during login. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Confirm the error message and affected users",
+      "Check whether the application service or website is available",
+      "Review application and Windows logs",
+      "Clear cache or repair the application if appropriate",
+      "Update or reinstall the application if needed",
+      "Verify login works and document the resolution"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: OS recovery option selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Choose the least destructive recovery option that solves the problem.",
+    "type": "matching",
+    "instructions": "Match each recovery scenario to the best Windows recovery option.",
+    "items": [
+      {
+        "scenario": "Undo a recent system change without deleting personal files",
+        "answer": "System Restore"
+      },
+      {
+        "scenario": "Boot into troubleshooting tools when Windows will not start",
+        "answer": "Windows Recovery Environment"
+      },
+      {
+        "scenario": "Repair startup files automatically",
+        "answer": "Startup Repair"
+      },
+      {
+        "scenario": "Remove a bad update from recovery tools",
+        "answer": "Uninstall Updates"
+      },
+      {
+        "scenario": "Reinstall Windows with options to keep or remove files",
+        "answer": "Reset This PC"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Printer software troubleshooting selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Software-side printer issues often involve the queue, driver, default printer, or network path.",
+    "type": "matching",
+    "instructions": "Match each printing symptom to the best first action.",
+    "items": [
+      {
+        "scenario": "Jobs are stuck and not printing",
+        "answer": "Clear Print Queue"
+      },
+      {
+        "scenario": "Wrong printer receives the job",
+        "answer": "Check Default Printer"
+      },
+      {
+        "scenario": "Prints garbled characters",
+        "answer": "Reinstall or Update Driver"
+      },
+      {
+        "scenario": "Network printer cannot be reached by name",
+        "answer": "Check DNS or Printer Share"
+      },
+      {
+        "scenario": "Printer shows offline in Windows",
+        "answer": "Check Printer Status and Connectivity"
+      }
+    ]
   },
   {
     "exam": "core-2",
@@ -7874,5 +8568,336 @@
       "The disaster recovery plan"
     ],
     "note": "Change logs provide a history of recent modifications and are invaluable during troubleshooting."
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Change management workflow order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Change management protects production systems by requiring planning, approval, testing, rollback, and documentation.",
+    "type": "ordering",
+    "instructions": "A technician needs to update software on production computers. Put the change-management steps in the best order.",
+    "correctOrder": [
+      "Create a change request",
+      "Document risk, impact, and affected systems",
+      "Get approval from the appropriate authority",
+      "Schedule a maintenance window",
+      "Test the change and prepare a rollback plan",
+      "Implement the approved change",
+      "Verify functionality and document the outcome"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Documentation artifact selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Different documentation types solve different operational needs.",
+    "type": "matching",
+    "instructions": "Match each operational need to the best documentation artifact.",
+    "items": [
+      {
+        "scenario": "Track a user's reported issue from start to finish",
+        "answer": "Ticket"
+      },
+      {
+        "scenario": "Record what changed during a maintenance window",
+        "answer": "Change Log"
+      },
+      {
+        "scenario": "Track assigned hardware and serial numbers",
+        "answer": "Asset Inventory"
+      },
+      {
+        "scenario": "Show how switches, routers, and servers connect",
+        "answer": "Network Diagram"
+      },
+      {
+        "scenario": "Provide repeatable steps for common fixes",
+        "answer": "Knowledge Base Article"
+      },
+      {
+        "scenario": "List who to contact during an outage",
+        "answer": "Escalation List"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Safety control selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Operational safety includes electrical safety, ESD prevention, PPE, fire safety, and environmental handling.",
+    "type": "matching",
+    "instructions": "Match each safety scenario to the best control or practice.",
+    "items": [
+      {
+        "scenario": "Prevent static discharge while replacing RAM",
+        "answer": "ESD Strap"
+      },
+      {
+        "scenario": "Protect eyes while cutting cable or working with debris",
+        "answer": "Safety Glasses"
+      },
+      {
+        "scenario": "Handle a swollen lithium-ion battery",
+        "answer": "Follow Battery Disposal Procedure"
+      },
+      {
+        "scenario": "Work inside a power supply",
+        "answer": "Do Not Open; Replace Unit"
+      },
+      {
+        "scenario": "Suppress an electrical fire",
+        "answer": "Class C Fire Extinguisher"
+      },
+      {
+        "scenario": "Avoid tripping over temporary cabling",
+        "answer": "Cable Management"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Professional communication workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Professionalism means listening, setting expectations, avoiding blame, and following through.",
+    "type": "ordering",
+    "instructions": "A frustrated user reports that their computer is unusable before a meeting. Put the communication steps in the best order.",
+    "correctOrder": [
+      "Listen actively and let the user explain the issue",
+      "Show empathy and acknowledge the impact",
+      "Ask clarifying questions to determine urgency and scope",
+      "Set realistic expectations for next steps and timing",
+      "Provide a workaround if available",
+      "Follow up and document the interaction"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Backup type selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Full backups copy everything; incremental copies changes since the last backup; differential copies changes since the last full backup.",
+    "type": "matching",
+    "instructions": "Match each backup scenario to the best backup or recovery concept.",
+    "items": [
+      {
+        "scenario": "Copy all selected data every time",
+        "answer": "Full Backup"
+      },
+      {
+        "scenario": "Copy changes since the last backup of any type",
+        "answer": "Incremental Backup"
+      },
+      {
+        "scenario": "Copy changes since the last full backup",
+        "answer": "Differential Backup"
+      },
+      {
+        "scenario": "Capture a point-in-time state of a system or volume",
+        "answer": "Snapshot"
+      },
+      {
+        "scenario": "Confirm backups can actually be used",
+        "answer": "Restore Test"
+      },
+      {
+        "scenario": "Plan for recovery after a major outage",
+        "answer": "Disaster Recovery Plan"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Backup restoration order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Restoration should be planned, verified, and documented to avoid overwriting good data or restoring the wrong version.",
+    "type": "ordering",
+    "instructions": "A user needs a folder restored from backup. Put the restore process in the best order.",
+    "correctOrder": [
+      "Verify the user's identity and restore request",
+      "Identify the correct file or folder and restore date",
+      "Confirm whether current data must be preserved first",
+      "Restore the requested data to the proper location or alternate location",
+      "Have the user verify the restored data",
+      "Document the restore action"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Licensing model selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Licensing questions test whether the license is tied to hardware, a user, an organization, source code rights, or recurring payment.",
+    "type": "matching",
+    "instructions": "Match each software licensing scenario to the best license type.",
+    "items": [
+      {
+        "scenario": "License preinstalled and tied to a specific computer",
+        "answer": "OEM"
+      },
+      {
+        "scenario": "License purchased by an individual from a store",
+        "answer": "Retail"
+      },
+      {
+        "scenario": "Organization purchases licenses in bulk",
+        "answer": "Volume Licensing"
+      },
+      {
+        "scenario": "Software source code can be viewed and modified under its license",
+        "answer": "Open Source"
+      },
+      {
+        "scenario": "Software access continues only while recurring payments are active",
+        "answer": "Subscription"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Environmental disposal selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Electronic waste, batteries, toner, and hazardous materials should follow approved disposal or recycling procedures.",
+    "type": "matching",
+    "instructions": "Match each item to the best disposal or handling method.",
+    "items": [
+      {
+        "scenario": "Used toner cartridge",
+        "answer": "Toner Recycling"
+      },
+      {
+        "scenario": "Old laptop battery",
+        "answer": "Battery Recycling"
+      },
+      {
+        "scenario": "Retired desktop computer",
+        "answer": "E-Waste Recycling"
+      },
+      {
+        "scenario": "Hard drive containing company data",
+        "answer": "Secure Data Destruction"
+      },
+      {
+        "scenario": "Chemical cleaning product",
+        "answer": "Follow Safety Data Sheet"
+      },
+      {
+        "scenario": "Mobile phone with swollen battery",
+        "answer": "Hazardous Battery Procedure"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Incident escalation decision",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Escalate when the issue exceeds your permissions, skill level, time limit, scope, or safety boundaries.",
+    "type": "matching",
+    "instructions": "Match each situation to the best next action.",
+    "items": [
+      {
+        "scenario": "Issue exceeds technician permissions",
+        "answer": "Escalate to Higher Tier"
+      },
+      {
+        "scenario": "User needs immediate work continuity",
+        "answer": "Provide Workaround"
+      },
+      {
+        "scenario": "Technician changed a setting successfully",
+        "answer": "Document the Change"
+      },
+      {
+        "scenario": "Problem may affect multiple users",
+        "answer": "Check Scope and Notify Team"
+      },
+      {
+        "scenario": "Safety hazard is discovered",
+        "answer": "Stop Work and Follow Safety Procedure"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "4.0 Operational Procedures",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Ticket handling workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Good tickets preserve history, accountability, user communication, and final resolution details.",
+    "type": "ordering",
+    "instructions": "A support ticket comes in for a user who cannot access a shared drive. Put the ticket workflow in the best order.",
+    "correctOrder": [
+      "Review the ticket details and contact the user if needed",
+      "Confirm the user's identity and scope of the problem",
+      "Troubleshoot permissions, network connectivity, and mapped drive status",
+      "Apply the fix or escalate with notes",
+      "Verify the user can access the share",
+      "Update and close the ticket with resolution notes"
+    ]
   }
 ]
