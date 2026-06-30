@@ -2317,6 +2317,736 @@
   },
   {
     "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows startup troubleshooting workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Use the most appropriate Windows tools in a logical troubleshooting order.",
+    "type": "ordering",
+    "instructions": "A Windows PC boots slowly after a new application was installed. Put the troubleshooting steps in the best order.",
+    "correctOrder": [
+      "Ask the user what changed before the issue started",
+      "Open Task Manager and review startup impact",
+      "Open System Configuration or Startup Apps to disable suspected startup items",
+      "Restart the computer and test boot time",
+      "Document the change and result"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows command selection for support tasks",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Match the support task to the command that performs it best.",
+    "type": "matching",
+    "instructions": "Match each task with the best Windows command.",
+    "items": [
+      {
+        "task": "List running processes",
+        "answer": "tasklist"
+      },
+      {
+        "task": "Terminate a frozen process",
+        "answer": "taskkill"
+      },
+      {
+        "task": "Restart the computer from the command line",
+        "answer": "shutdown"
+      },
+      {
+        "task": "Check a disk for file system errors",
+        "answer": "chkdsk"
+      },
+      {
+        "task": "Manage partitions from the command line",
+        "answer": "diskpart"
+      },
+      {
+        "task": "Copy a folder tree with restartable copies",
+        "answer": "robocopy"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows network command troubleshooting",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "These commands are common first-line network troubleshooting tools in Windows.",
+    "type": "matching",
+    "instructions": "Match each network troubleshooting task to the best command.",
+    "items": [
+      {
+        "task": "View IP address, gateway, and DNS information",
+        "answer": "ipconfig"
+      },
+      {
+        "task": "Test whether a host replies over the network",
+        "answer": "ping"
+      },
+      {
+        "task": "Show each router hop to a destination",
+        "answer": "tracert"
+      },
+      {
+        "task": "Show route and packet loss information",
+        "answer": "pathping"
+      },
+      {
+        "task": "Display active connections and listening ports",
+        "answer": "netstat"
+      },
+      {
+        "task": "Query DNS records",
+        "answer": "nslookup"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows repair command order",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "DISM repairs the Windows image/component store; SFC then repairs protected system files.",
+    "type": "ordering",
+    "instructions": "Windows system files appear corrupted. Put the repair steps in the best order.",
+    "correctOrder": [
+      "Open Command Prompt as Administrator",
+      "Run DISM /Online /Cleanup-Image /RestoreHealth",
+      "Run sfc /scannow",
+      "Restart the computer",
+      "Verify the original problem is resolved"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows installation method selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Choose the installation or deployment method based on whether data must be preserved, replaced, repaired, or deployed at scale.",
+    "type": "matching",
+    "instructions": "Match each scenario to the best Windows installation or deployment method.",
+    "items": [
+      {
+        "scenario": "Upgrade Windows while keeping installed apps and user files",
+        "answer": "In-place Upgrade"
+      },
+      {
+        "scenario": "Start over with a fresh OS and remove the old installation",
+        "answer": "Clean Install"
+      },
+      {
+        "scenario": "Repair Windows while attempting to preserve apps and files",
+        "answer": "Repair Installation"
+      },
+      {
+        "scenario": "Deploy the same configured image to many computers",
+        "answer": "Image Deployment"
+      },
+      {
+        "scenario": "Install an OS from a deployment server over the network",
+        "answer": "PXE Boot"
+      },
+      {
+        "scenario": "Make Windows Setup detect a RAID controller",
+        "answer": "Load Third-Party Driver"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: File system selection scenarios",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "NTFS is best for Windows system volumes and permissions; exFAT is best for large cross-platform removable files; FAT32 is older and broadly compatible; ReFS focuses on resilience.",
+    "type": "matching",
+    "instructions": "Match each storage scenario to the best file system.",
+    "items": [
+      {
+        "scenario": "Windows system partition with permissions and EFS",
+        "answer": "NTFS"
+      },
+      {
+        "scenario": "USB drive used by Windows and macOS with files larger than 4 GB",
+        "answer": "exFAT"
+      },
+      {
+        "scenario": "Older removable device requiring maximum compatibility",
+        "answer": "FAT32"
+      },
+      {
+        "scenario": "Large Microsoft storage volume focused on integrity and resiliency",
+        "answer": "ReFS"
+      },
+      {
+        "scenario": "Need to store a 10 GB video on a removable drive for modern systems",
+        "answer": "exFAT"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows edition selection scenarios",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Windows edition questions usually test which features are available in Home, Pro, Enterprise, Education, S Mode, and Pro for Workstations.",
+    "type": "matching",
+    "instructions": "Match each business or user requirement to the best Windows edition or mode.",
+    "items": [
+      {
+        "scenario": "Basic family computer for web browsing and home use",
+        "answer": "Windows Home"
+      },
+      {
+        "scenario": "Small business laptop requiring BitLocker and Remote Desktop host",
+        "answer": "Windows Pro"
+      },
+      {
+        "scenario": "Large organization requiring advanced centralized management",
+        "answer": "Windows Enterprise"
+      },
+      {
+        "scenario": "School-managed computer lab",
+        "answer": "Windows Education"
+      },
+      {
+        "scenario": "High-performance workstation with demanding professional workloads",
+        "answer": "Windows Pro for Workstations"
+      },
+      {
+        "scenario": "Locked-down device that only installs Microsoft Store apps",
+        "answer": "Windows S Mode"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows administrative tool selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Match the symptom or administrative goal to the tool most directly used to solve it.",
+    "type": "matching",
+    "instructions": "Match each administrative need to the best Windows tool.",
+    "items": [
+      {
+        "scenario": "Review application and system logs",
+        "answer": "Event Viewer"
+      },
+      {
+        "scenario": "Start or stop a background service",
+        "answer": "Services"
+      },
+      {
+        "scenario": "Create, shrink, or extend a partition",
+        "answer": "Disk Management"
+      },
+      {
+        "scenario": "Update, roll back, or disable a device driver",
+        "answer": "Device Manager"
+      },
+      {
+        "scenario": "View detailed hardware and software inventory",
+        "answer": "System Information"
+      },
+      {
+        "scenario": "Host administrative snap-ins in one console",
+        "answer": "Microsoft Management Console"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Remote access technology selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Remote Desktop is full remote control; Remote Assistance and Quick Assist are support-oriented; Sandbox and Hyper-V isolate workloads locally.",
+    "type": "matching",
+    "instructions": "Match each scenario to the best Windows remote access or isolation technology.",
+    "items": [
+      {
+        "scenario": "Full remote control of an unattended office PC",
+        "answer": "Remote Desktop"
+      },
+      {
+        "scenario": "User invites help desk to view and control their session",
+        "answer": "Remote Assistance"
+      },
+      {
+        "scenario": "Quick support session using Microsoft's modern assistance app",
+        "answer": "Quick Assist"
+      },
+      {
+        "scenario": "Safely test a suspicious executable in a disposable environment",
+        "answer": "Windows Sandbox"
+      },
+      {
+        "scenario": "Run multiple operating systems at the same time",
+        "answer": "Hyper-V"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Linux command selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "These are foundational Linux commands from Objective 1.",
+    "type": "matching",
+    "instructions": "Match each Linux task to the best command.",
+    "items": [
+      {
+        "task": "List files in the current directory",
+        "answer": "ls"
+      },
+      {
+        "task": "Show the current working directory",
+        "answer": "pwd"
+      },
+      {
+        "task": "Change directories",
+        "answer": "cd"
+      },
+      {
+        "task": "Search text for a pattern",
+        "answer": "grep"
+      },
+      {
+        "task": "Change file permissions",
+        "answer": "chmod"
+      },
+      {
+        "task": "Change file ownership",
+        "answer": "chown"
+      },
+      {
+        "task": "Run a command with elevated privileges",
+        "answer": "sudo"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Linux file management workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This checks Linux file-navigation and file-management sequencing.",
+    "type": "ordering",
+    "instructions": "A Linux user needs to create a working directory, copy a file into it, rename it, and verify it exists. Put the commands in the best order.",
+    "correctOrder": [
+      "pwd",
+      "mkdir project",
+      "cp source.txt project/",
+      "cd project",
+      "mv source.txt notes.txt",
+      "ls"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Linux package manager selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "APT is associated with Debian/Ubuntu; YUM is associated with older Red Hat-family systems.",
+    "type": "matching",
+    "instructions": "Match each Linux software-management scenario to the best package manager or command.",
+    "items": [
+      {
+        "scenario": "Install software on Ubuntu",
+        "answer": "apt"
+      },
+      {
+        "scenario": "Install software on a Red Hat-based system",
+        "answer": "yum"
+      },
+      {
+        "scenario": "Read command documentation before using an unfamiliar command",
+        "answer": "man"
+      },
+      {
+        "scenario": "Check mounted file system disk usage",
+        "answer": "df"
+      },
+      {
+        "scenario": "View real-time process and resource usage",
+        "answer": "top"
+      },
+      {
+        "scenario": "List currently running processes",
+        "answer": "ps"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: macOS utility selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "macOS utility questions usually test which built-in feature solves a user or technician task.",
+    "type": "matching",
+    "instructions": "Match each macOS task to the best utility or feature.",
+    "items": [
+      {
+        "task": "Browse files and folders",
+        "answer": "Finder"
+      },
+      {
+        "task": "Quickly search for and launch applications",
+        "answer": "Spotlight"
+      },
+      {
+        "task": "Restore a deleted file from yesterday",
+        "answer": "Time Machine"
+      },
+      {
+        "task": "Partition, erase, or repair a storage device",
+        "answer": "Disk Utility"
+      },
+      {
+        "task": "Securely store passwords and certificates",
+        "answer": "Keychain"
+      },
+      {
+        "task": "Encrypt the startup disk",
+        "answer": "FileVault"
+      },
+      {
+        "task": "Terminate an unresponsive app",
+        "answer": "Force Quit"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: macOS recovery workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This checks the logical order for restoring a deleted file with Time Machine.",
+    "type": "ordering",
+    "instructions": "A user deleted a file yesterday on macOS and has Time Machine configured. Put the recovery steps in the best order.",
+    "correctOrder": [
+      "Connect or confirm access to the Time Machine backup disk",
+      "Open Time Machine",
+      "Navigate to the date before the file was deleted",
+      "Select the deleted file",
+      "Click Restore",
+      "Verify the file opens successfully"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows feature update vs quality update",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Feature updates add or change functionality; quality updates usually provide security and reliability fixes.",
+    "type": "matching",
+    "instructions": "Match each update-related situation to the correct Windows update type or feature.",
+    "items": [
+      {
+        "scenario": "Monthly security and bug fixes",
+        "answer": "Quality Update"
+      },
+      {
+        "scenario": "Major release that adds new Windows functionality",
+        "answer": "Feature Update"
+      },
+      {
+        "scenario": "Built-in service that downloads and installs patches",
+        "answer": "Windows Update"
+      },
+      {
+        "scenario": "User downloads applications from Microsoft's app platform",
+        "answer": "Microsoft Store"
+      },
+      {
+        "scenario": "Enable IIS or Hyper-V from a Windows dialog",
+        "answer": "Turn Windows features on or off"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Disk preparation workflow during Windows install",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "The order moves from boot media to disk selection, driver loading if needed, partitioning, formatting, and installation.",
+    "type": "ordering",
+    "instructions": "A technician is performing a clean Windows installation. Put the disk-preparation steps in the best order.",
+    "correctOrder": [
+      "Boot from Windows installation media",
+      "Choose the target disk or storage controller",
+      "Load third-party storage drivers if the disk is not detected",
+      "Delete or create partitions as required",
+      "Format the target partition as NTFS",
+      "Continue Windows installation"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows security and system tools",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This focuses on Windows tools and features from Objective 1 rather than security policy depth.",
+    "type": "matching",
+    "instructions": "Match each Windows task to the best built-in tool or feature.",
+    "items": [
+      {
+        "task": "View antivirus and device security status",
+        "answer": "Windows Security"
+      },
+      {
+        "task": "Allow or block traffic with network rules",
+        "answer": "Windows Defender Firewall"
+      },
+      {
+        "task": "Prompt before administrative system changes",
+        "answer": "User Account Control"
+      },
+      {
+        "task": "Manage local users and groups",
+        "answer": "Local Users and Groups"
+      },
+      {
+        "task": "Edit registry keys and values",
+        "answer": "Registry Editor"
+      },
+      {
+        "task": "Launch many administrative snap-ins",
+        "answer": "MMC"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Objective 1 mixed operating system utilities",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Objective 1 includes Windows, Linux, and macOS tools, so this PBQ mixes platforms.",
+    "type": "matching",
+    "instructions": "Match each scenario to the correct operating system utility or command.",
+    "items": [
+      {
+        "scenario": "Windows user needs to view hardware driver status",
+        "answer": "Device Manager"
+      },
+      {
+        "scenario": "Windows admin needs to view system logs",
+        "answer": "Event Viewer"
+      },
+      {
+        "scenario": "Linux user needs elevated privileges",
+        "answer": "sudo"
+      },
+      {
+        "scenario": "Linux admin needs to search a log for a keyword",
+        "answer": "grep"
+      },
+      {
+        "scenario": "macOS user needs to find a saved password",
+        "answer": "Keychain"
+      },
+      {
+        "scenario": "macOS user needs to erase a disk",
+        "answer": "Disk Utility"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows support escalation data collection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This reinforces gathering evidence before changing settings or escalating.",
+    "type": "ordering",
+    "instructions": "A user reports random Windows application crashes. Put the technician's data-collection steps in the best order.",
+    "correctOrder": [
+      "Ask what application is crashing and when it started",
+      "Check Event Viewer for application errors",
+      "Check Task Manager or Resource Monitor for resource pressure",
+      "Verify recent updates or application changes",
+      "Apply the most likely fix or escalate with collected evidence",
+      "Document the symptoms, evidence, and resolution"
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Windows disk troubleshooting tool selection",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "Use Disk Management for GUI partition work, DiskPart for command-line partitioning, Format for file system creation, and CHKDSK for file system errors.",
+    "type": "matching",
+    "instructions": "Match each disk-related task to the best Windows tool or command.",
+    "items": [
+      {
+        "task": "Extend a partition using a graphical tool",
+        "answer": "Disk Management"
+      },
+      {
+        "task": "Script partition creation from the command line",
+        "answer": "diskpart"
+      },
+      {
+        "task": "Prepare a volume with a file system",
+        "answer": "format"
+      },
+      {
+        "task": "Scan for file system errors",
+        "answer": "chkdsk"
+      },
+      {
+        "task": "Copy a large directory tree reliably",
+        "answer": "robocopy"
+      },
+      {
+        "task": "Check system file integrity",
+        "answer": "sfc"
+      }
+    ]
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "PBQ: Post-install Windows setup workflow",
+    "answer": "PBQ Activity",
+    "options": [
+      "PBQ Activity",
+      "Review PBQ"
+    ],
+    "note": "This is a realistic post-install order for a newly installed Windows workstation.",
+    "type": "ordering",
+    "instructions": "After installing Windows on a business laptop, put the post-install tasks in the best order.",
+    "correctOrder": [
+      "Install missing device drivers",
+      "Run Windows Update",
+      "Verify Device Manager has no unresolved devices",
+      "Configure required Windows features or business settings",
+      "Install approved applications",
+      "Verify user can sign in and access required resources",
+      "Document the setup"
+    ]
+  },
+  {
+    "exam": "core-2",
     "objective": "2.0 Security",
     "category": "physical-security",
     "difficulty": "easy",
