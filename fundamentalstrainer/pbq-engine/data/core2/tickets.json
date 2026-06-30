@@ -1,0 +1,516 @@
+[
+  {
+    "id": "core2-ticket-slow-windows-pc-001",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "engine": "ticket",
+    "title": "Troubleshoot a slow Windows PC",
+    "ticket": {
+      "number": "HD-2202-001",
+      "priority": "Medium",
+      "user": "Morgan Parker",
+      "department": "Accounting",
+      "device": "Windows 11 desktop",
+      "description": "Applications take several minutes to open after the user signs in."
+    },
+    "initialState": {
+      "scopedIssue": false,
+      "resourceUsageChecked": false,
+      "rootCauseIdentified": false,
+      "fixApplied": false,
+      "verified": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "ask-scope",
+        "type": "ask-user",
+        "label": "Ask whether only this user/device is affected",
+        "result": "The user says only this workstation is slow. Other Accounting users are working normally.",
+        "sets": {
+          "scopedIssue": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "scope",
+          "title": "Scope",
+          "body": "Only one workstation appears affected. This points away from a department-wide outage."
+        }
+      },
+      {
+        "id": "open-task-manager",
+        "type": "inspect-tool",
+        "label": "Open Task Manager and check resource usage",
+        "result": "Task Manager shows Disk at 100%, CPU at 7%, and Memory at 43%.",
+        "sets": {
+          "resourceUsageChecked": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "task-manager",
+          "title": "Task Manager",
+          "body": "Disk is saturated at 100%; CPU and memory are not the bottleneck."
+        }
+      },
+      {
+        "id": "inspect-disk-processes",
+        "type": "inspect-tool",
+        "label": "Sort processes by disk usage",
+        "requires": {
+          "resourceUsageChecked": true
+        },
+        "result": "A backup sync client is constantly retrying a failed job and consuming disk I/O.",
+        "sets": {
+          "rootCauseIdentified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "backup-client",
+          "title": "Root Cause",
+          "body": "The backup client retry loop is causing constant disk activity."
+        }
+      },
+      {
+        "id": "pause-backup-client",
+        "type": "change-setting",
+        "label": "Pause the backup client and clear the failed job",
+        "requires": {
+          "rootCauseIdentified": true
+        },
+        "result": "The backup client stops retrying the failed job. Disk activity returns to normal.",
+        "sets": {
+          "fixApplied": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "fix",
+          "title": "Fix Applied",
+          "body": "The backup client retry loop was stopped and the failed job was cleared."
+        }
+      },
+      {
+        "id": "verify-performance",
+        "type": "verify-fix",
+        "label": "Verify applications open normally",
+        "requires": {
+          "fixApplied": true
+        },
+        "result": "Applications now open normally and disk usage remains low.",
+        "sets": {
+          "verified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "verification",
+          "title": "Verification",
+          "body": "Performance returned to normal after correcting the backup client issue."
+        }
+      },
+      {
+        "id": "document-ticket",
+        "type": "document",
+        "label": "Document symptoms, root cause, fix, and verification",
+        "requires": {
+          "verified": true
+        },
+        "result": "Ticket notes include symptoms, evidence, root cause, action taken, and verification results.",
+        "sets": {
+          "documented": true
+        },
+        "good": true
+      },
+      {
+        "id": "replace-ram",
+        "type": "change-hardware",
+        "label": "Replace the RAM",
+        "result": "RAM replacement does not improve performance because memory usage was not high.",
+        "penalty": {
+          "type": "too-invasive",
+          "points": 20,
+          "reason": "Replacing RAM was too invasive and not supported by the evidence."
+        }
+      },
+      {
+        "id": "clean-install",
+        "type": "reinstall-os",
+        "label": "Perform a clean Windows installation",
+        "result": "This would be highly disruptive and is not justified before identifying the bottleneck.",
+        "penalty": {
+          "type": "too-invasive",
+          "points": 30,
+          "reason": "A clean install is too invasive before basic troubleshooting and verification."
+        }
+      },
+      {
+        "id": "disable-firewall",
+        "type": "security-change",
+        "label": "Disable Windows Firewall",
+        "result": "The firewall has no relationship to slow local application launch times.",
+        "penalty": {
+          "type": "insecure",
+          "points": 25,
+          "reason": "Disabling the firewall is insecure and unrelated to the symptom."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong troubleshooting path scopes the issue, checks resource usage, identifies disk saturation, fixes the responsible process, verifies performance, and documents the ticket.",
+      "requiredStates": [
+        { "key": "scopedIssue", "value": true, "label": "Scoped the issue" },
+        { "key": "resourceUsageChecked", "value": true, "label": "Checked resource usage" },
+        { "key": "rootCauseIdentified", "value": true, "label": "Identified root cause" },
+        { "key": "fixApplied", "value": true, "label": "Applied fix" },
+        { "key": "verified", "value": true, "label": "Verified fix" },
+        { "key": "documented", "value": true, "label": "Documented result" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-browser-hijacker-002",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "2.0 Security",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "engine": "ticket",
+    "title": "Browser redirects and pop-ups",
+    "ticket": {
+      "number": "HD-2202-002",
+      "priority": "High",
+      "user": "Jordan Lee",
+      "department": "Sales",
+      "device": "Windows 11 laptop",
+      "description": "Browser homepage changes by itself, search results redirect, and pop-ups appear after login."
+    },
+    "initialState": {
+      "symptomsIdentified": false,
+      "systemQuarantined": false,
+      "restoreDisabled": false,
+      "malwareRemoved": false,
+      "scanScheduled": false,
+      "restoreEnabled": false,
+      "userEducated": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "ask-recent-change",
+        "type": "ask-user",
+        "label": "Ask what changed before the issue started",
+        "result": "The user installed a free coupon browser extension yesterday.",
+        "sets": {
+          "symptomsIdentified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "recent-change",
+          "title": "User Interview",
+          "body": "Symptoms started after installing a suspicious browser extension."
+        }
+      },
+      {
+        "id": "quarantine-system",
+        "type": "quarantine-system",
+        "label": "Quarantine the system from the network",
+        "result": "The laptop is isolated from the network to reduce potential spread and unwanted traffic.",
+        "sets": {
+          "systemQuarantined": true
+        },
+        "good": true
+      },
+      {
+        "id": "disable-system-restore",
+        "type": "change-setting",
+        "label": "Disable System Restore before remediation",
+        "requires": {
+          "systemQuarantined": true
+        },
+        "result": "System Restore is disabled so malware cannot be restored from old restore points.",
+        "sets": {
+          "restoreDisabled": true
+        },
+        "good": true
+      },
+      {
+        "id": "remove-extension-run-scan",
+        "type": "remediate",
+        "label": "Remove suspicious extension and run updated anti-malware scan",
+        "requires": {
+          "restoreDisabled": true
+        },
+        "result": "The suspicious extension is removed and the scan removes unwanted software.",
+        "sets": {
+          "malwareRemoved": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "scan-results",
+          "title": "Anti-malware Results",
+          "body": "Potentially unwanted browser software was removed. Browser settings were reset."
+        }
+      },
+      {
+        "id": "schedule-scans-updates",
+        "type": "remediate",
+        "label": "Schedule scans and confirm security updates",
+        "requires": {
+          "malwareRemoved": true
+        },
+        "result": "Future scans are scheduled and signatures are updated.",
+        "sets": {
+          "scanScheduled": true
+        },
+        "good": true
+      },
+      {
+        "id": "enable-restore-create-point",
+        "type": "change-setting",
+        "label": "Re-enable System Restore and create a clean restore point",
+        "requires": {
+          "scanScheduled": true
+        },
+        "result": "System Restore is re-enabled and a clean restore point is created.",
+        "sets": {
+          "restoreEnabled": true
+        },
+        "good": true
+      },
+      {
+        "id": "educate-user",
+        "type": "educate-user",
+        "label": "Educate the user about browser extensions and downloads",
+        "requires": {
+          "restoreEnabled": true
+        },
+        "result": "The user is advised to avoid untrusted extensions and bundled installers.",
+        "sets": {
+          "userEducated": true
+        },
+        "good": true
+      },
+      {
+        "id": "document-malware-ticket",
+        "type": "document",
+        "label": "Document symptoms, containment, remediation, and education",
+        "requires": {
+          "userEducated": true
+        },
+        "result": "Ticket includes symptoms, actions taken, scan results, and user education.",
+        "sets": {
+          "documented": true
+        },
+        "good": true
+      },
+      {
+        "id": "ignore-popups",
+        "type": "close-ticket",
+        "label": "Tell the user to ignore the pop-ups",
+        "result": "The browser continues redirecting and the underlying issue remains.",
+        "penalty": {
+          "type": "missed-remediation",
+          "points": 30,
+          "reason": "Ignoring malware symptoms fails to protect the system or user."
+        }
+      },
+      {
+        "id": "wipe-drive-first",
+        "type": "reinstall-os",
+        "label": "Immediately wipe and reinstall Windows",
+        "result": "This may work eventually but is too invasive before following the malware removal process.",
+        "penalty": {
+          "type": "too-invasive",
+          "points": 25,
+          "reason": "A clean install should not be the first response to browser hijacker symptoms."
+        }
+      },
+      {
+        "id": "disable-antivirus",
+        "type": "security-change",
+        "label": "Disable anti-malware protection permanently",
+        "result": "This reduces protection and does not remediate the issue.",
+        "penalty": {
+          "type": "insecure",
+          "points": 35,
+          "reason": "Disabling protection permanently is unsafe and contrary to remediation best practices."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 12,
+      "summary": "The malware-removal path should identify symptoms, quarantine, disable restore, remediate, schedule scans/updates, re-enable restore, educate the user, and document the work.",
+      "requiredStates": [
+        { "key": "symptomsIdentified", "value": true, "label": "Identified symptoms" },
+        { "key": "systemQuarantined", "value": true, "label": "Quarantined system" },
+        { "key": "restoreDisabled", "value": true, "label": "Disabled System Restore" },
+        { "key": "malwareRemoved", "value": true, "label": "Remediated malware" },
+        { "key": "scanScheduled", "value": true, "label": "Scheduled scans/updates" },
+        { "key": "restoreEnabled", "value": true, "label": "Re-enabled restore" },
+        { "key": "userEducated", "value": true, "label": "Educated user" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-domain-password-003",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "2.0 Security",
+    "category": "ticket-simulator",
+    "difficulty": "medium",
+    "engine": "ticket",
+    "title": "Domain user password reset",
+    "ticket": {
+      "number": "HD-2202-003",
+      "priority": "Medium",
+      "user": "Riley Smith",
+      "department": "Operations",
+      "device": "Domain-joined Windows 11 laptop",
+      "description": "The user forgot their password and cannot sign in."
+    },
+    "initialState": {
+      "environmentIdentified": false,
+      "identityVerified": false,
+      "passwordReset": false,
+      "mustChangeSet": false,
+      "signInVerified": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "confirm-domain",
+        "type": "inspect-ticket",
+        "label": "Confirm whether this is a domain account",
+        "result": "The device is joined to the CORP domain and the user signs in with a domain account.",
+        "sets": {
+          "environmentIdentified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "domain-account",
+          "title": "Account Type",
+          "body": "The user account is managed centrally in Active Directory or the approved identity tool."
+        }
+      },
+      {
+        "id": "verify-identity",
+        "type": "security-check",
+        "label": "Verify the user's identity according to policy",
+        "requires": {
+          "environmentIdentified": true
+        },
+        "result": "The user identity is verified through the approved help desk process.",
+        "sets": {
+          "identityVerified": true
+        },
+        "good": true
+      },
+      {
+        "id": "reset-ad-password",
+        "type": "identity-admin",
+        "label": "Reset the domain password in the approved identity tool",
+        "requires": {
+          "identityVerified": true
+        },
+        "result": "The domain password is reset.",
+        "sets": {
+          "passwordReset": true
+        },
+        "good": true
+      },
+      {
+        "id": "require-change",
+        "type": "identity-admin",
+        "label": "Require password change at next sign-in",
+        "requires": {
+          "passwordReset": true
+        },
+        "result": "The user must set a new private password at next sign-in.",
+        "sets": {
+          "mustChangeSet": true
+        },
+        "good": true
+      },
+      {
+        "id": "verify-signin",
+        "type": "verify-fix",
+        "label": "Verify the user can sign in and change the password",
+        "requires": {
+          "mustChangeSet": true
+        },
+        "result": "The user signs in successfully and creates a new password.",
+        "sets": {
+          "signInVerified": true
+        },
+        "good": true
+      },
+      {
+        "id": "document-password-ticket",
+        "type": "document",
+        "label": "Document identity verification and password reset completion",
+        "requires": {
+          "signInVerified": true
+        },
+        "result": "Ticket is documented without recording the user's password.",
+        "sets": {
+          "documented": true
+        },
+        "good": true
+      },
+      {
+        "id": "ask-for-old-password",
+        "type": "security-error",
+        "label": "Ask the user for their old password",
+        "result": "Users should never be asked to disclose passwords.",
+        "penalty": {
+          "type": "insecure",
+          "points": 35,
+          "reason": "Asking for a user's password violates security best practices."
+        }
+      },
+      {
+        "id": "create-local-admin",
+        "type": "identity-admin",
+        "label": "Create a local administrator account instead",
+        "result": "This does not solve access to the user's domain account and creates unnecessary risk.",
+        "penalty": {
+          "type": "insecure",
+          "points": 25,
+          "reason": "Creating a local admin account is unnecessary and risky for a normal domain password reset."
+        }
+      },
+      {
+        "id": "skip-verification",
+        "type": "close-ticket",
+        "label": "Close the ticket without verifying sign-in",
+        "result": "The fix was not verified with the user.",
+        "penalty": {
+          "type": "missed-verification",
+          "points": 20,
+          "reason": "Troubleshooting requires verifying full functionality before closing the ticket."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A secure password reset requires identifying the account type, verifying identity, resetting through the approved identity system, requiring change at sign-in, verifying access, and documenting without storing passwords.",
+      "requiredStates": [
+        { "key": "environmentIdentified", "value": true, "label": "Confirmed domain account" },
+        { "key": "identityVerified", "value": true, "label": "Verified identity" },
+        { "key": "passwordReset", "value": true, "label": "Reset password" },
+        { "key": "mustChangeSet", "value": true, "label": "Required change at sign-in" },
+        { "key": "signInVerified", "value": true, "label": "Verified sign-in" },
+        { "key": "documented", "value": true, "label": "Documented securely" }
+      ]
+    }
+  }
+]
