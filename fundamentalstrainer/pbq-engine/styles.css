@@ -8,7 +8,8 @@
 
 .ticket-panel,
 .engine-card,
-.review-panel {
+.review-panel,
+.validation-panel {
   padding: 1rem;
   border-radius: 1rem;
   background: rgba(255, 255, 255, .04);
@@ -205,8 +206,22 @@
   font: inherit;
 }
 
-.review-panel {
+.review-panel,
+.validation-panel {
   margin-top: 1rem;
+}
+
+.validation-panel {
+  border-color: rgba(245, 158, 11, .4);
+  background: rgba(245, 158, 11, .08);
+}
+
+.validation-panel h2 {
+  margin-top: 0;
+}
+
+.validation-panel ul {
+  margin-bottom: 0;
 }
 
 .review-score {
