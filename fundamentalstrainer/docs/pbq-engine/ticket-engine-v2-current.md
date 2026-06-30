@@ -17,6 +17,8 @@ ticket
 terminal
 ```
 
+The current page still uses the Phase 1 engine registry, but Phase 2 runtime foundation files now exist beside it as a non-breaking migration path.
+
 ## Current Files
 
 ```text
@@ -27,12 +29,19 @@ fundamentalstrainer/pbq-engine/engine-registry.js
 fundamentalstrainer/pbq-engine/components/documentation-component.js
 fundamentalstrainer/pbq-engine/engines/ticket-engine.js
 fundamentalstrainer/pbq-engine/engines/terminal-engine.js
+fundamentalstrainer/pbq-engine/runtime/event-bus.js
+fundamentalstrainer/pbq-engine/runtime/state-manager.js
+fundamentalstrainer/pbq-engine/runtime/component-manager.js
+fundamentalstrainer/pbq-engine/runtime/runtime.js
+fundamentalstrainer/pbq-engine/grading/grader.js
+fundamentalstrainer/pbq-engine/grading/review-renderer.js
 fundamentalstrainer/pbq-engine/validators/ticket-validator.js
 fundamentalstrainer/pbq-engine/validators/terminal-validator.js
 fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
 fundamentalstrainer/pbq-engine/data/core2/terminal.json
+fundamentalstrainer/docs/pbq-engine/phase-2-runtime-architecture.md
 ```
 
 ## Implemented Capabilities
@@ -49,16 +58,61 @@ The PBQ Engine currently supports:
 - evidence collection
 - action/command history
 - penalties for unsafe, irrelevant, overly invasive, or wrong-root-cause choices
-- required-state grading
-- final review screen
+- shared required-state grading through `grading/grader.js`
+- shared final review rendering through `grading/review-renderer.js`
 - author-facing scenario validation warnings
 - engine registration through `engine-registry.js`
 - formal ticket scenario schema through `schemas/ticket.schema.json`
 - development ticket data validation through `tools/validate-ticket-data.mjs`
+- Phase 2 runtime skeleton files for future migration
+
+## Phase 2 Runtime Foundation
+
+The Phase 2 runtime architecture is documented at:
+
+```text
+fundamentalstrainer/docs/pbq-engine/phase-2-runtime-architecture.md
+```
+
+The first non-breaking runtime files now exist:
+
+```text
+fundamentalstrainer/pbq-engine/runtime/event-bus.js
+fundamentalstrainer/pbq-engine/runtime/state-manager.js
+fundamentalstrainer/pbq-engine/runtime/component-manager.js
+fundamentalstrainer/pbq-engine/runtime/runtime.js
+```
+
+These files are intentionally not the primary execution path yet. They are the foundation for moving from separate engines toward one runtime that manages reusable components.
+
+Current runtime foundation responsibilities:
+
+- `event-bus.js`: publish/subscribe event system and standard PBQ event names
+- `state-manager.js`: structured runtime state with `get`, `set`, `merge`, `reset`, and `serialize`
+- `component-manager.js`: component registration and lifecycle mounting
+- `runtime.js`: orchestrator skeleton that creates event bus, state manager, and component manager
+
+## Shared Grading And Review
+
+Shared grading files now exist:
+
+```text
+fundamentalstrainer/pbq-engine/grading/grader.js
+fundamentalstrainer/pbq-engine/grading/review-renderer.js
+```
+
+Current behavior:
+
+- Ticket Engine uses the shared required-state grader.
+- Terminal Engine uses the shared required-state grader.
+- Ticket Engine uses the shared final review renderer.
+- Terminal Engine uses the shared final review renderer.
+
+This removes duplicated score/missing-outcome/penalty review logic while preserving current visible behavior.
 
 ## Engine Registry
 
-The PBQ Engine has a registry layer:
+The PBQ Engine still has a Phase 1 registry layer:
 
 ```text
 fundamentalstrainer/pbq-engine/engine-registry.js
@@ -83,11 +137,11 @@ Current registry responsibilities:
 - route scenario validation to the correct engine-specific validator
 - report unknown engine types as authoring warnings
 
-This keeps the PBQ Engine moving toward the modular Phase 3 architecture.
+This keeps the PBQ Engine working while the Phase 2 runtime is introduced.
 
 ## Shared Documentation Component
 
-The PBQ Engine now includes a reusable documentation component:
+The PBQ Engine includes a reusable documentation component:
 
 ```text
 fundamentalstrainer/pbq-engine/components/documentation-component.js
@@ -135,8 +189,8 @@ The Ticket Engine is a stateful help desk simulator. It supports:
 - evidence revealed by actions
 - action history
 - shared documentation component
-- required-state grading
-- final review
+- shared required-state grading
+- shared final review rendering
 
 Ticket scenarios are loaded from:
 
@@ -254,8 +308,8 @@ Terminal scenarios currently support:
 - command history
 - shared documentation component
 - penalties
-- required-state grading
-- final review
+- shared required-state grading
+- shared final review rendering
 
 ## Terminal Scenario Shape
 
@@ -311,10 +365,22 @@ Shared learner workflow components belong in:
 fundamentalstrainer/pbq-engine/components/
 ```
 
-Engine-specific behavior belongs in:
+Engine-specific behavior currently remains in:
 
 ```text
 fundamentalstrainer/pbq-engine/engines/
+```
+
+Runtime orchestration belongs in:
+
+```text
+fundamentalstrainer/pbq-engine/runtime/
+```
+
+Shared grading and review belongs in:
+
+```text
+fundamentalstrainer/pbq-engine/grading/
 ```
 
 Engine-specific validators belong in:
@@ -335,8 +401,9 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 
 Good next steps:
 
-1. Test the shared documentation component in both Ticket and Terminal scenarios.
-2. Add minimum keyword checks for documentation quality.
-3. Add a formal `terminal.schema.json` file.
-4. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
-5. Add save/resume behavior for active PBQ attempts using local storage.
+1. Test Ticket and Terminal scenarios after the shared grader/review integration.
+2. Move documentation save handling to the runtime event bus.
+3. Make one engine internally use `state-manager.js` without changing visible behavior.
+4. Add a formal `terminal.schema.json` file.
+5. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
+6. Add save/resume behavior for active PBQ attempts using local storage.
