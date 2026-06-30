@@ -1993,5 +1993,326 @@
       "Windows Update"
     ],
     "note": "Hyper-V allows multiple virtual machines to run concurrently."
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "medium",
+    "question": "Windows Troubleshooting Utility Selection",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Match each problem with the BEST Windows utility to solve it.",
+    "instructions": "Match each problem with the BEST Windows utility to solve it.",
+    "type": "matching",
+    "items": [
+      {
+        "problem": "A USB device shows a yellow exclamation mark.",
+        "answer": "Device Manager"
+      },
+      {
+        "problem": "The system crashes every morning at exactly 8:00 AM.",
+        "answer": "Task Scheduler"
+      },
+      {
+        "problem": "The C: drive needs to be extended into unallocated space.",
+        "answer": "Disk Management"
+      },
+      {
+        "problem": "An application keeps crashing and you need to review the error logs.",
+        "answer": "Event Viewer"
+      },
+      {
+        "problem": "A service failed to start after boot.",
+        "answer": "Services"
+      },
+      {
+        "problem": "The computer is running slowly and you need to identify which process is consuming disk activity.",
+        "answer": "Resource Monitor"
+      },
+      {
+        "problem": "You need long-term CPU performance statistics.",
+        "answer": "Performance Monitor"
+      },
+      {
+        "problem": "You need to modify startup options for troubleshooting.",
+        "answer": "System Configuration (msconfig)"
+      },
+      {
+        "problem": "You need detailed hardware information.",
+        "answer": "System Information (msinfo32)"
+      },
+      {
+        "problem": "You need to edit the Windows Registry.",
+        "answer": "Registry Editor"
+      }
+    ],
+    "title": "Windows Troubleshooting Utility Selection"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "medium",
+    "question": "Choose the Correct Windows Command",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Select the command that completes each task.",
+    "instructions": "Select the command that completes each task.",
+    "type": "matching",
+    "items": [
+      {
+        "task": "Repair Windows system files.",
+        "answer": "sfc /scannow"
+      },
+      {
+        "task": "Repair the Windows image before running SFC.",
+        "answer": "DISM /Online /Cleanup-Image /RestoreHealth"
+      },
+      {
+        "task": "Display IP configuration.",
+        "answer": "ipconfig"
+      },
+      {
+        "task": "Display the route packets take to another computer.",
+        "answer": "tracert"
+      },
+      {
+        "task": "Test network connectivity.",
+        "answer": "ping"
+      },
+      {
+        "task": "Display active TCP connections.",
+        "answer": "netstat"
+      },
+      {
+        "task": "Query DNS records.",
+        "answer": "nslookup"
+      },
+      {
+        "task": "Map a network drive.",
+        "answer": "net use"
+      },
+      {
+        "task": "Force Group Policy to refresh.",
+        "answer": "gpupdate /force"
+      },
+      {
+        "task": "Display applied Group Policies.",
+        "answer": "gpresult"
+      }
+    ],
+    "title": "Choose the Correct Windows Command"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "Windows Installation Decision",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Choose the BEST installation method.",
+    "instructions": "Choose the BEST installation method.",
+    "type": "matching",
+    "items": [
+      {
+        "scenario": "A user wants Windows 10 upgraded to Windows 11 while keeping files and applications.",
+        "answer": "In-place Upgrade"
+      },
+      {
+        "scenario": "A company needs to deploy Windows to 300 identical computers.",
+        "answer": "Image Deployment"
+      },
+      {
+        "scenario": "A computer has severe malware and needs a completely fresh installation.",
+        "answer": "Clean Install"
+      },
+      {
+        "scenario": "Windows is damaged but applications and files should remain.",
+        "answer": "Repair Installation"
+      },
+      {
+        "scenario": "A computer has no OS and boots from the network.",
+        "answer": "PXE"
+      },
+      {
+        "scenario": "Windows Setup cannot detect the RAID controller.",
+        "answer": "Load Third-Party Driver"
+      }
+    ],
+    "title": "Windows Installation Decision"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "medium",
+    "question": "Choose the Correct File System",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Select the BEST file system.",
+    "instructions": "Select the BEST file system.",
+    "type": "matching",
+    "items": [
+      {
+        "scenario": "Installing Windows.",
+        "answer": "NTFS"
+      },
+      {
+        "scenario": "USB drive used on Windows and macOS with files larger than 4 GB.",
+        "answer": "exFAT"
+      },
+      {
+        "scenario": "Older device requiring maximum compatibility.",
+        "answer": "FAT32"
+      },
+      {
+        "scenario": "Enterprise storage requiring resiliency against corruption.",
+        "answer": "ReFS"
+      },
+      {
+        "scenario": "Need file permissions and EFS.",
+        "answer": "NTFS"
+      }
+    ],
+    "title": "Choose the Correct File System"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "medium",
+    "question": "Windows Edition Selection",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Choose the BEST Windows edition.",
+    "instructions": "Choose the BEST Windows edition.",
+    "type": "matching",
+    "items": [
+      {
+        "scenario": "Family computer used for web browsing.",
+        "answer": "Windows Home"
+      },
+      {
+        "scenario": "Business laptop requiring BitLocker and Group Policy.",
+        "answer": "Windows Pro"
+      },
+      {
+        "scenario": "Large corporation using centralized management.",
+        "answer": "Windows Enterprise"
+      },
+      {
+        "scenario": "School computer lab.",
+        "answer": "Windows Education"
+      },
+      {
+        "scenario": "High-end engineering workstation with multiple CPUs.",
+        "answer": "Windows Pro for Workstations"
+      },
+      {
+        "scenario": "Computer that only allows Microsoft Store applications.",
+        "answer": "Windows S Mode"
+      }
+    ],
+    "title": "Windows Edition Selection"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "medium",
+    "question": "Remote Access Technologies",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "Choose the BEST technology.",
+    "instructions": "Choose the BEST technology.",
+    "type": "matching",
+    "items": [
+      {
+        "scenario": "You need full remote control of an unattended office PC.",
+        "answer": "Remote Desktop"
+      },
+      {
+        "scenario": "Help desk needs permission to temporarily control a user's PC.",
+        "answer": "Remote Assistance"
+      },
+      {
+        "scenario": "Test suspicious software without affecting Windows.",
+        "answer": "Windows Sandbox"
+      },
+      {
+        "scenario": "Run multiple operating systems simultaneously.",
+        "answer": "Hyper-V"
+      }
+    ],
+    "title": "Remote Access Technologies"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "Windows Administrative Tools",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "A technician must prepare a newly installed Windows PC. Arrange the tasks in the most logical order.",
+    "instructions": "A technician must prepare a newly installed Windows PC. Arrange the tasks in the most logical order.",
+    "type": "ordering",
+    "correctOrder": [
+      "Install Windows",
+      "Install Device Drivers",
+      "Run Windows Update",
+      "Verify Device Manager",
+      "Enable BitLocker",
+      "Create Restore Point",
+      "Install Applications",
+      "Verify System Functionality"
+    ],
+    "title": "Windows Administrative Tools"
+  },
+  {
+    "exam": "core-2",
+    "objective": "1.0 Operating Systems",
+    "category": "performance-based-questions",
+    "difficulty": "hard",
+    "question": "Command Line Workflow",
+    "answer": "Complete PBQ",
+    "options": [
+      "Complete PBQ",
+      "Review PBQ"
+    ],
+    "note": "A Windows installation appears corrupted. Arrange the troubleshooting steps.",
+    "instructions": "A Windows installation appears corrupted. Arrange the troubleshooting steps.",
+    "type": "ordering",
+    "correctOrder": [
+      "Open Command Prompt as Administrator",
+      "Run DISM /Online /Cleanup-Image /RestoreHealth",
+      "Run sfc /scannow",
+      "Restart Computer",
+      "Verify System Integrity"
+    ],
+    "title": "Command Line Workflow"
   }
 ]
