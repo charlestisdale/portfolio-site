@@ -30,96 +30,56 @@
         "type": "ask-user",
         "label": "Ask whether only this user/device is affected",
         "result": "The user says only this workstation is slow. Other Accounting users are working normally.",
-        "sets": {
-          "scopedIssue": true
-        },
+        "sets": { "scopedIssue": true },
         "good": true,
-        "evidence": {
-          "id": "scope",
-          "title": "Scope",
-          "body": "Only one workstation appears affected. This points away from a department-wide outage."
-        }
+        "evidence": { "id": "scope", "title": "Scope", "body": "Only one workstation appears affected. This points away from a department-wide outage." }
       },
       {
         "id": "open-task-manager",
         "type": "inspect-tool",
         "label": "Open Task Manager and check resource usage",
         "result": "Task Manager shows Disk at 100%, CPU at 7%, and Memory at 43%.",
-        "sets": {
-          "resourceUsageChecked": true
-        },
+        "sets": { "resourceUsageChecked": true },
         "good": true,
-        "evidence": {
-          "id": "task-manager",
-          "title": "Task Manager",
-          "body": "Disk is saturated at 100%; CPU and memory are not the bottleneck."
-        }
+        "evidence": { "id": "task-manager", "title": "Task Manager", "body": "Disk is saturated at 100%; CPU and memory are not the bottleneck." }
       },
       {
         "id": "inspect-disk-processes",
         "type": "inspect-tool",
         "label": "Sort processes by disk usage",
-        "requires": {
-          "resourceUsageChecked": true
-        },
+        "requires": { "resourceUsageChecked": true },
         "result": "A backup sync client is constantly retrying a failed job and consuming disk I/O.",
-        "sets": {
-          "rootCauseIdentified": true
-        },
+        "sets": { "rootCauseIdentified": true },
         "good": true,
-        "evidence": {
-          "id": "backup-client",
-          "title": "Root Cause",
-          "body": "The backup client retry loop is causing constant disk activity."
-        }
+        "evidence": { "id": "backup-client", "title": "Root Cause", "body": "The backup client retry loop is causing constant disk activity." }
       },
       {
         "id": "pause-backup-client",
         "type": "change-setting",
         "label": "Pause the backup client and clear the failed job",
-        "requires": {
-          "rootCauseIdentified": true
-        },
+        "requires": { "rootCauseIdentified": true },
         "result": "The backup client stops retrying the failed job. Disk activity returns to normal.",
-        "sets": {
-          "fixApplied": true
-        },
+        "sets": { "fixApplied": true },
         "good": true,
-        "evidence": {
-          "id": "fix",
-          "title": "Fix Applied",
-          "body": "The backup client retry loop was stopped and the failed job was cleared."
-        }
+        "evidence": { "id": "fix", "title": "Fix Applied", "body": "The backup client retry loop was stopped and the failed job was cleared." }
       },
       {
         "id": "verify-performance",
         "type": "verify-fix",
         "label": "Verify applications open normally",
-        "requires": {
-          "fixApplied": true
-        },
+        "requires": { "fixApplied": true },
         "result": "Applications now open normally and disk usage remains low.",
-        "sets": {
-          "verified": true
-        },
+        "sets": { "verified": true },
         "good": true,
-        "evidence": {
-          "id": "verification",
-          "title": "Verification",
-          "body": "Performance returned to normal after correcting the backup client issue."
-        }
+        "evidence": { "id": "verification", "title": "Verification", "body": "Performance returned to normal after correcting the backup client issue." }
       },
       {
         "id": "document-ticket",
         "type": "document",
         "label": "Document symptoms, root cause, fix, and verification",
-        "requires": {
-          "verified": true
-        },
+        "requires": { "verified": true },
         "result": "Ticket notes include symptoms, evidence, root cause, action taken, and verification results.",
-        "sets": {
-          "documented": true
-        },
+        "sets": { "documented": true },
         "good": true
       },
       {
@@ -127,33 +87,14 @@
         "type": "change-hardware",
         "label": "Replace the RAM",
         "result": "RAM replacement does not improve performance because memory usage was not high.",
-        "penalty": {
-          "type": "too-invasive",
-          "points": 20,
-          "reason": "Replacing RAM was too invasive and not supported by the evidence."
-        }
+        "penalty": { "type": "too-invasive", "points": 20, "reason": "Replacing RAM was too invasive and not supported by the evidence." }
       },
       {
         "id": "clean-install",
         "type": "reinstall-os",
         "label": "Perform a clean Windows installation",
         "result": "This would be highly disruptive and is not justified before identifying the bottleneck.",
-        "penalty": {
-          "type": "too-invasive",
-          "points": 30,
-          "reason": "A clean install is too invasive before basic troubleshooting and verification."
-        }
-      },
-      {
-        "id": "disable-firewall",
-        "type": "security-change",
-        "label": "Disable Windows Firewall",
-        "result": "The firewall has no relationship to slow local application launch times.",
-        "penalty": {
-          "type": "insecure",
-          "points": 25,
-          "reason": "Disabling the firewall is insecure and unrelated to the symptom."
-        }
+        "penalty": { "type": "too-invasive", "points": 30, "reason": "A clean install is too invasive before basic troubleshooting and verification." }
       }
     ],
     "grading": {
@@ -204,141 +145,79 @@
         "type": "ask-user",
         "label": "Ask what changed before the issue started",
         "result": "The user installed a free coupon browser extension yesterday.",
-        "sets": {
-          "symptomsIdentified": true
-        },
+        "sets": { "symptomsIdentified": true },
         "good": true,
-        "evidence": {
-          "id": "recent-change",
-          "title": "User Interview",
-          "body": "Symptoms started after installing a suspicious browser extension."
-        }
+        "evidence": { "id": "recent-change", "title": "User Interview", "body": "Symptoms started after installing a suspicious browser extension." }
       },
       {
         "id": "quarantine-system",
         "type": "quarantine-system",
         "label": "Quarantine the system from the network",
         "result": "The laptop is isolated from the network to reduce potential spread and unwanted traffic.",
-        "sets": {
-          "systemQuarantined": true
-        },
+        "sets": { "systemQuarantined": true },
         "good": true
       },
       {
         "id": "disable-system-restore",
         "type": "change-setting",
         "label": "Disable System Restore before remediation",
-        "requires": {
-          "systemQuarantined": true
-        },
+        "requires": { "systemQuarantined": true },
         "result": "System Restore is disabled so malware cannot be restored from old restore points.",
-        "sets": {
-          "restoreDisabled": true
-        },
+        "sets": { "restoreDisabled": true },
         "good": true
       },
       {
         "id": "remove-extension-run-scan",
         "type": "remediate",
         "label": "Remove suspicious extension and run updated anti-malware scan",
-        "requires": {
-          "restoreDisabled": true
-        },
+        "requires": { "restoreDisabled": true },
         "result": "The suspicious extension is removed and the scan removes unwanted software.",
-        "sets": {
-          "malwareRemoved": true
-        },
+        "sets": { "malwareRemoved": true },
         "good": true,
-        "evidence": {
-          "id": "scan-results",
-          "title": "Anti-malware Results",
-          "body": "Potentially unwanted browser software was removed. Browser settings were reset."
-        }
+        "evidence": { "id": "scan-results", "title": "Anti-malware Results", "body": "Potentially unwanted browser software was removed. Browser settings were reset." }
       },
       {
         "id": "schedule-scans-updates",
         "type": "remediate",
         "label": "Schedule scans and confirm security updates",
-        "requires": {
-          "malwareRemoved": true
-        },
+        "requires": { "malwareRemoved": true },
         "result": "Future scans are scheduled and signatures are updated.",
-        "sets": {
-          "scanScheduled": true
-        },
+        "sets": { "scanScheduled": true },
         "good": true
       },
       {
         "id": "enable-restore-create-point",
         "type": "change-setting",
         "label": "Re-enable System Restore and create a clean restore point",
-        "requires": {
-          "scanScheduled": true
-        },
+        "requires": { "scanScheduled": true },
         "result": "System Restore is re-enabled and a clean restore point is created.",
-        "sets": {
-          "restoreEnabled": true
-        },
+        "sets": { "restoreEnabled": true },
         "good": true
       },
       {
         "id": "educate-user",
         "type": "educate-user",
         "label": "Educate the user about browser extensions and downloads",
-        "requires": {
-          "restoreEnabled": true
-        },
+        "requires": { "restoreEnabled": true },
         "result": "The user is advised to avoid untrusted extensions and bundled installers.",
-        "sets": {
-          "userEducated": true
-        },
+        "sets": { "userEducated": true },
         "good": true
       },
       {
         "id": "document-malware-ticket",
         "type": "document",
         "label": "Document symptoms, containment, remediation, and education",
-        "requires": {
-          "userEducated": true
-        },
+        "requires": { "userEducated": true },
         "result": "Ticket includes symptoms, actions taken, scan results, and user education.",
-        "sets": {
-          "documented": true
-        },
+        "sets": { "documented": true },
         "good": true
-      },
-      {
-        "id": "ignore-popups",
-        "type": "close-ticket",
-        "label": "Tell the user to ignore the pop-ups",
-        "result": "The browser continues redirecting and the underlying issue remains.",
-        "penalty": {
-          "type": "missed-remediation",
-          "points": 30,
-          "reason": "Ignoring malware symptoms fails to protect the system or user."
-        }
       },
       {
         "id": "wipe-drive-first",
         "type": "reinstall-os",
         "label": "Immediately wipe and reinstall Windows",
         "result": "This may work eventually but is too invasive before following the malware removal process.",
-        "penalty": {
-          "type": "too-invasive",
-          "points": 25,
-          "reason": "A clean install should not be the first response to browser hijacker symptoms."
-        }
-      },
-      {
-        "id": "disable-antivirus",
-        "type": "security-change",
-        "label": "Disable anti-malware protection permanently",
-        "result": "This reduces protection and does not remediate the issue.",
-        "penalty": {
-          "type": "insecure",
-          "points": 35,
-          "reason": "Disabling protection permanently is unsafe and contrary to remediation best practices."
-        }
+        "penalty": { "type": "too-invasive", "points": 25, "reason": "A clean install should not be the first response to browser hijacker symptoms." }
       }
     ],
     "grading": {
@@ -389,79 +268,53 @@
         "type": "inspect-ticket",
         "label": "Confirm whether this is a domain account",
         "result": "The device is joined to the CORP domain and the user signs in with a domain account.",
-        "sets": {
-          "environmentIdentified": true
-        },
+        "sets": { "environmentIdentified": true },
         "good": true,
-        "evidence": {
-          "id": "domain-account",
-          "title": "Account Type",
-          "body": "The user account is managed centrally in Active Directory or the approved identity tool."
-        }
+        "evidence": { "id": "domain-account", "title": "Account Type", "body": "The user account is managed centrally in Active Directory or the approved identity tool." }
       },
       {
         "id": "verify-identity",
         "type": "security-check",
         "label": "Verify the user's identity according to policy",
-        "requires": {
-          "environmentIdentified": true
-        },
+        "requires": { "environmentIdentified": true },
         "result": "The user identity is verified through the approved help desk process.",
-        "sets": {
-          "identityVerified": true
-        },
+        "sets": { "identityVerified": true },
         "good": true
       },
       {
         "id": "reset-ad-password",
         "type": "identity-admin",
         "label": "Reset the domain password in the approved identity tool",
-        "requires": {
-          "identityVerified": true
-        },
+        "requires": { "identityVerified": true },
         "result": "The domain password is reset.",
-        "sets": {
-          "passwordReset": true
-        },
+        "sets": { "passwordReset": true },
         "good": true
       },
       {
         "id": "require-change",
         "type": "identity-admin",
         "label": "Require password change at next sign-in",
-        "requires": {
-          "passwordReset": true
-        },
+        "requires": { "passwordReset": true },
         "result": "The user must set a new private password at next sign-in.",
-        "sets": {
-          "mustChangeSet": true
-        },
+        "sets": { "mustChangeSet": true },
         "good": true
       },
       {
         "id": "verify-signin",
         "type": "verify-fix",
         "label": "Verify the user can sign in and change the password",
-        "requires": {
-          "mustChangeSet": true
-        },
+        "requires": { "mustChangeSet": true },
         "result": "The user signs in successfully and creates a new password.",
-        "sets": {
-          "signInVerified": true
-        },
+        "sets": { "signInVerified": true },
         "good": true
       },
       {
         "id": "document-password-ticket",
         "type": "document",
         "label": "Document identity verification and password reset completion",
-        "requires": {
-          "signInVerified": true
-        },
+        "requires": { "signInVerified": true },
         "result": "Ticket is documented without recording the user's password.",
-        "sets": {
-          "documented": true
-        },
+        "sets": { "documented": true },
         "good": true
       },
       {
@@ -469,33 +322,7 @@
         "type": "security-error",
         "label": "Ask the user for their old password",
         "result": "Users should never be asked to disclose passwords.",
-        "penalty": {
-          "type": "insecure",
-          "points": 35,
-          "reason": "Asking for a user's password violates security best practices."
-        }
-      },
-      {
-        "id": "create-local-admin",
-        "type": "identity-admin",
-        "label": "Create a local administrator account instead",
-        "result": "This does not solve access to the user's domain account and creates unnecessary risk.",
-        "penalty": {
-          "type": "insecure",
-          "points": 25,
-          "reason": "Creating a local admin account is unnecessary and risky for a normal domain password reset."
-        }
-      },
-      {
-        "id": "skip-verification",
-        "type": "close-ticket",
-        "label": "Close the ticket without verifying sign-in",
-        "result": "The fix was not verified with the user.",
-        "penalty": {
-          "type": "missed-verification",
-          "points": 20,
-          "reason": "Troubleshooting requires verifying full functionality before closing the ticket."
-        }
+        "penalty": { "type": "insecure", "points": 35, "reason": "Asking for a user's password violates security best practices." }
       }
     ],
     "grading": {
@@ -510,6 +337,550 @@
         { "key": "mustChangeSet", "value": true, "label": "Required change at sign-in" },
         { "key": "signInVerified", "value": true, "label": "Verified sign-in" },
         { "key": "documented", "value": true, "label": "Documented securely" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-print-spooler-004",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "medium",
+    "engine": "ticket",
+    "title": "Network printer will not print",
+    "ticket": {
+      "number": "HD-2202-004",
+      "priority": "Medium",
+      "user": "Avery Brooks",
+      "department": "Shipping",
+      "device": "Windows 11 workstation",
+      "description": "The user sent several labels to the network printer, but nothing prints."
+    },
+    "initialState": {
+      "scopeChecked": false,
+      "printerOnlineChecked": false,
+      "queueChecked": false,
+      "spoolerRestarted": false,
+      "testPrinted": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "ask-scope-printer",
+        "type": "ask-user",
+        "label": "Ask if other users can print to the same printer",
+        "result": "Other users can print. The issue appears isolated to this workstation.",
+        "sets": { "scopeChecked": true },
+        "good": true,
+        "evidence": { "id": "printer-scope", "title": "Scope", "body": "Only one workstation is affected; the printer itself is likely available." }
+      },
+      {
+        "id": "check-printer-online",
+        "type": "inspect-tool",
+        "label": "Verify the printer is powered on and online",
+        "result": "The printer is online and has paper and toner.",
+        "sets": { "printerOnlineChecked": true },
+        "good": true,
+        "evidence": { "id": "printer-online", "title": "Printer Status", "body": "The network printer is online and ready." }
+      },
+      {
+        "id": "check-print-queue",
+        "type": "inspect-tool",
+        "label": "Check the local print queue",
+        "requires": { "printerOnlineChecked": true },
+        "result": "Several label jobs are stuck in the queue with an error status.",
+        "sets": { "queueChecked": true },
+        "good": true,
+        "evidence": { "id": "stuck-queue", "title": "Print Queue", "body": "Jobs are stuck locally, pointing to a print queue or spooler issue." }
+      },
+      {
+        "id": "restart-spooler",
+        "type": "restart-service",
+        "label": "Restart the Print Spooler service and clear stuck jobs",
+        "requires": { "queueChecked": true },
+        "result": "The stuck jobs clear and the Print Spooler restarts successfully.",
+        "sets": { "spoolerRestarted": true },
+        "good": true
+      },
+      {
+        "id": "print-test-page",
+        "type": "verify-fix",
+        "label": "Print a test page or test label",
+        "requires": { "spoolerRestarted": true },
+        "result": "The test label prints successfully.",
+        "sets": { "testPrinted": true },
+        "good": true,
+        "evidence": { "id": "print-verified", "title": "Verification", "body": "A test label printed successfully after restarting the spooler." }
+      },
+      {
+        "id": "document-printer-ticket",
+        "type": "document",
+        "label": "Document queue issue, spooler restart, and successful test print",
+        "requires": { "testPrinted": true },
+        "result": "The ticket includes the symptom, root cause, fix, and verification.",
+        "sets": { "documented": true },
+        "good": true
+      },
+      {
+        "id": "replace-printer",
+        "type": "change-hardware",
+        "label": "Replace the printer immediately",
+        "result": "Replacing the printer is unnecessary because other users can print and the printer is online.",
+        "penalty": { "type": "too-invasive", "points": 25, "reason": "Replacing hardware before checking scope and queue state is too invasive." }
+      },
+      {
+        "id": "reinstall-windows-printer",
+        "type": "reinstall-os",
+        "label": "Reinstall Windows on the workstation",
+        "result": "This is disruptive and not justified for a stuck print queue.",
+        "penalty": { "type": "too-invasive", "points": 35, "reason": "A clean install is not appropriate for a routine printer queue issue." }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A good printer path scopes the issue, checks printer status, checks the queue, restarts the spooler when appropriate, verifies printing, and documents the work.",
+      "requiredStates": [
+        { "key": "scopeChecked", "value": true, "label": "Scoped printer issue" },
+        { "key": "printerOnlineChecked", "value": true, "label": "Verified printer online" },
+        { "key": "queueChecked", "value": true, "label": "Checked print queue" },
+        { "key": "spoolerRestarted", "value": true, "label": "Restarted spooler" },
+        { "key": "testPrinted", "value": true, "label": "Verified test print" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-secure-site-cert-005",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "medium",
+    "engine": "ticket",
+    "title": "Secure website certificate warning",
+    "ticket": {
+      "number": "HD-2202-005",
+      "priority": "Low",
+      "user": "Casey Nguyen",
+      "department": "HR",
+      "device": "Windows 11 laptop",
+      "description": "One secure website displays 'Your connection is not private.' Other websites load normally."
+    },
+    "initialState": {
+      "scopeChecked": false,
+      "clockChecked": false,
+      "clockCorrected": false,
+      "siteVerified": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "ask-other-sites",
+        "type": "ask-user",
+        "label": "Ask whether other websites work",
+        "result": "Other websites load normally. The issue appears related to HTTPS validation for the secure site.",
+        "sets": { "scopeChecked": true },
+        "good": true,
+        "evidence": { "id": "site-scope", "title": "Scope", "body": "General connectivity works. The symptom points toward certificate validation rather than total network failure." }
+      },
+      {
+        "id": "check-date-time",
+        "type": "inspect-setting",
+        "label": "Check the system date, time, and time zone",
+        "result": "The laptop date is set two years in the past.",
+        "sets": { "clockChecked": true },
+        "good": true,
+        "evidence": { "id": "wrong-clock", "title": "System Clock", "body": "The incorrect date can make valid certificates appear expired or not yet valid." }
+      },
+      {
+        "id": "correct-clock",
+        "type": "change-setting",
+        "label": "Correct the date, time, and time zone",
+        "requires": { "clockChecked": true },
+        "result": "The laptop is set to the correct date, time, and time zone.",
+        "sets": { "clockCorrected": true },
+        "good": true
+      },
+      {
+        "id": "retry-site",
+        "type": "verify-fix",
+        "label": "Reopen the secure site and verify the certificate warning is gone",
+        "requires": { "clockCorrected": true },
+        "result": "The secure site opens normally without certificate warnings.",
+        "sets": { "siteVerified": true },
+        "good": true,
+        "evidence": { "id": "cert-verified", "title": "Verification", "body": "Correcting the system clock resolved the certificate warning." }
+      },
+      {
+        "id": "document-cert-ticket",
+        "type": "document",
+        "label": "Document incorrect system clock and verification",
+        "requires": { "siteVerified": true },
+        "result": "Ticket notes explain the incorrect date/time and successful retest.",
+        "sets": { "documented": true },
+        "good": true
+      },
+      {
+        "id": "disable-browser-security",
+        "type": "security-change",
+        "label": "Disable browser certificate warnings",
+        "result": "This hides a security warning instead of fixing the root cause.",
+        "penalty": { "type": "insecure", "points": 35, "reason": "Disabling certificate warnings is unsafe and not a valid fix." }
+      },
+      {
+        "id": "flush-dns-only",
+        "type": "run-command",
+        "label": "Run ipconfig /flushdns and close the ticket",
+        "result": "DNS cache cleanup does not resolve a certificate validity warning caused by time drift.",
+        "penalty": { "type": "wrong-root-cause", "points": 20, "reason": "DNS cache issues usually cause name resolution problems, not certificate date validation errors." }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 18,
+      "summary": "Certificate warnings often require checking the system clock before making invasive browser or network changes.",
+      "requiredStates": [
+        { "key": "scopeChecked", "value": true, "label": "Scoped website issue" },
+        { "key": "clockChecked", "value": true, "label": "Checked system clock" },
+        { "key": "clockCorrected", "value": true, "label": "Corrected clock" },
+        { "key": "siteVerified", "value": true, "label": "Verified site loads" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-bitlocker-recovery-006",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "2.0 Security",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "engine": "ticket",
+    "title": "BitLocker recovery after firmware update",
+    "ticket": {
+      "number": "HD-2202-006",
+      "priority": "High",
+      "user": "Sam Patel",
+      "department": "Finance",
+      "device": "Windows 11 laptop",
+      "description": "After a firmware update, the laptop boots to a BitLocker recovery key screen."
+    },
+    "initialState": {
+      "identityVerified": false,
+      "deviceVerified": false,
+      "recoveryKeyRetrieved": false,
+      "bootVerified": false,
+      "causeDocumented": false,
+      "userEducated": false
+    },
+    "actions": [
+      {
+        "id": "verify-user-identity-bitlocker",
+        "type": "security-check",
+        "label": "Verify the user's identity according to policy",
+        "result": "The user's identity is verified through the approved process.",
+        "sets": { "identityVerified": true },
+        "good": true
+      },
+      {
+        "id": "verify-device-ownership",
+        "type": "security-check",
+        "label": "Verify the device asset tag and ownership",
+        "requires": { "identityVerified": true },
+        "result": "The asset tag matches the user's assigned laptop in inventory.",
+        "sets": { "deviceVerified": true },
+        "good": true,
+        "evidence": { "id": "asset-match", "title": "Asset Verification", "body": "Device ownership was confirmed before releasing recovery material." }
+      },
+      {
+        "id": "retrieve-approved-recovery-key",
+        "type": "identity-admin",
+        "label": "Retrieve the BitLocker recovery key from the approved management system",
+        "requires": { "deviceVerified": true },
+        "result": "The recovery key is retrieved from the approved system and provided according to policy.",
+        "sets": { "recoveryKeyRetrieved": true },
+        "good": true
+      },
+      {
+        "id": "verify-boot-after-key",
+        "type": "verify-fix",
+        "label": "Verify the laptop boots and BitLocker protection resumes",
+        "requires": { "recoveryKeyRetrieved": true },
+        "result": "The laptop boots successfully and BitLocker protection is active.",
+        "sets": { "bootVerified": true },
+        "good": true,
+        "evidence": { "id": "bitlocker-verified", "title": "Verification", "body": "System booted successfully after recovery key entry and protection remains enabled." }
+      },
+      {
+        "id": "document-firmware-trigger",
+        "type": "document",
+        "label": "Document firmware update as likely trigger and record verification",
+        "requires": { "bootVerified": true },
+        "result": "Ticket documents the trigger, key retrieval process, and successful boot verification.",
+        "sets": { "causeDocumented": true },
+        "good": true
+      },
+      {
+        "id": "educate-bitlocker-user",
+        "type": "educate-user",
+        "label": "Explain not to store recovery keys insecurely",
+        "requires": { "causeDocumented": true },
+        "result": "The user is reminded not to write recovery keys in unsecured notes or messages.",
+        "sets": { "userEducated": true },
+        "good": true
+      },
+      {
+        "id": "disable-bitlocker",
+        "type": "security-change",
+        "label": "Disable BitLocker permanently to prevent future prompts",
+        "result": "This removes full-disk protection from a Finance laptop.",
+        "penalty": { "type": "insecure", "points": 40, "reason": "Disabling BitLocker permanently weakens data protection and does not address policy requirements." }
+      },
+      {
+        "id": "give-key-without-verification",
+        "type": "security-error",
+        "label": "Provide the recovery key without verifying identity or asset ownership",
+        "result": "Recovery keys are sensitive and must not be released without verification.",
+        "penalty": { "type": "insecure", "points": 45, "reason": "Recovery key release requires identity and device verification." }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "BitLocker recovery must protect sensitive recovery material while restoring access and documenting the trigger and verification.",
+      "requiredStates": [
+        { "key": "identityVerified", "value": true, "label": "Verified user identity" },
+        { "key": "deviceVerified", "value": true, "label": "Verified device ownership" },
+        { "key": "recoveryKeyRetrieved", "value": true, "label": "Retrieved recovery key properly" },
+        { "key": "bootVerified", "value": true, "label": "Verified boot/protection" },
+        { "key": "causeDocumented", "value": true, "label": "Documented trigger" },
+        { "key": "userEducated", "value": true, "label": "Educated user" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-windows-update-black-screen-007",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "hard",
+    "engine": "ticket",
+    "title": "Black screen after Windows update",
+    "ticket": {
+      "number": "HD-2202-007",
+      "priority": "High",
+      "user": "Taylor Reed",
+      "department": "Design",
+      "device": "Windows 11 workstation",
+      "description": "After a Windows update, the user can sign in but only sees a black screen with a movable mouse pointer."
+    },
+    "initialState": {
+      "recentChangeIdentified": false,
+      "safeModeUsed": false,
+      "driverRolledBack": false,
+      "normalBootVerified": false,
+      "updatePaused": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "ask-recent-update",
+        "type": "ask-user",
+        "label": "Ask what changed before the issue started",
+        "result": "The user says the issue started immediately after a Windows update last night.",
+        "sets": { "recentChangeIdentified": true },
+        "good": true,
+        "evidence": { "id": "recent-update", "title": "Recent Change", "body": "The symptom began after a Windows update, suggesting a driver or update issue." }
+      },
+      {
+        "id": "boot-safe-mode",
+        "type": "recovery-tool",
+        "label": "Boot into Safe Mode or Windows Recovery startup settings",
+        "requires": { "recentChangeIdentified": true },
+        "result": "The system loads in Safe Mode using minimal drivers.",
+        "sets": { "safeModeUsed": true },
+        "good": true
+      },
+      {
+        "id": "rollback-display-driver",
+        "type": "inspect-tool",
+        "label": "Roll back or uninstall the recent display driver/update",
+        "requires": { "safeModeUsed": true },
+        "result": "The recently updated display driver is rolled back.",
+        "sets": { "driverRolledBack": true },
+        "good": true,
+        "evidence": { "id": "driver-rollback", "title": "Driver Action", "body": "A display driver rollback was performed from Safe Mode." }
+      },
+      {
+        "id": "reboot-normal",
+        "type": "verify-fix",
+        "label": "Restart normally and verify desktop loads",
+        "requires": { "driverRolledBack": true },
+        "result": "The workstation boots normally and the desktop loads.",
+        "sets": { "normalBootVerified": true },
+        "good": true
+      },
+      {
+        "id": "pause-bad-driver-update",
+        "type": "change-setting",
+        "label": "Pause or block the problematic driver update according to policy",
+        "requires": { "normalBootVerified": true },
+        "result": "The problematic update is paused while the issue is reviewed.",
+        "sets": { "updatePaused": true },
+        "good": true
+      },
+      {
+        "id": "document-black-screen-ticket",
+        "type": "document",
+        "label": "Document update, Safe Mode recovery, rollback, and verification",
+        "requires": { "updatePaused": true },
+        "result": "Ticket includes recent change, recovery steps, fix, and verification.",
+        "sets": { "documented": true },
+        "good": true
+      },
+      {
+        "id": "replace-gpu",
+        "type": "change-hardware",
+        "label": "Replace the graphics card immediately",
+        "result": "There is not enough evidence of hardware failure. The issue started after an update.",
+        "penalty": { "type": "too-invasive", "points": 25, "reason": "Replacing hardware before Safe Mode/driver rollback is too invasive." }
+      },
+      {
+        "id": "clean-install-black-screen",
+        "type": "reinstall-os",
+        "label": "Perform a clean installation of Windows",
+        "result": "A clean install is not the least-invasive first response when Safe Mode and rollback are available.",
+        "penalty": { "type": "too-invasive", "points": 35, "reason": "Clean install should be a last resort, not the first recovery step." }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong recovery path identifies the recent update, uses Safe Mode, rolls back the likely driver/update, verifies normal boot, prevents recurrence, and documents the work.",
+      "requiredStates": [
+        { "key": "recentChangeIdentified", "value": true, "label": "Identified recent change" },
+        { "key": "safeModeUsed", "value": true, "label": "Used Safe Mode" },
+        { "key": "driverRolledBack", "value": true, "label": "Rolled back driver/update" },
+        { "key": "normalBootVerified", "value": true, "label": "Verified normal boot" },
+        { "key": "updatePaused", "value": true, "label": "Prevented recurrence" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
+      ]
+    }
+  },
+  {
+    "id": "core2-ticket-mobile-email-sync-008",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting",
+    "category": "ticket-simulator",
+    "difficulty": "medium",
+    "engine": "ticket",
+    "title": "Mobile email stopped syncing",
+    "ticket": {
+      "number": "HD-2202-008",
+      "priority": "Medium",
+      "user": "Jamie Carter",
+      "department": "Management",
+      "device": "iPhone with corporate email",
+      "description": "Corporate email stopped syncing on the phone after the user changed their password."
+    },
+    "initialState": {
+      "recentPasswordChangeConfirmed": false,
+      "connectivityChecked": false,
+      "credentialsUpdated": false,
+      "syncVerified": false,
+      "userEducated": false,
+      "documented": false
+    },
+    "actions": [
+      {
+        "id": "confirm-password-change",
+        "type": "ask-user",
+        "label": "Confirm whether the issue started after a password change",
+        "result": "The user changed their password this morning and email stopped syncing shortly after.",
+        "sets": { "recentPasswordChangeConfirmed": true },
+        "good": true,
+        "evidence": { "id": "password-change", "title": "Recent Change", "body": "Email sync failure started after a password change." }
+      },
+      {
+        "id": "check-mobile-connectivity",
+        "type": "inspect-setting",
+        "label": "Verify Wi-Fi or cellular data connectivity",
+        "result": "The phone has working internet access. Websites load normally.",
+        "sets": { "connectivityChecked": true },
+        "good": true
+      },
+      {
+        "id": "update-saved-credentials",
+        "type": "change-setting",
+        "label": "Update the saved email account password on the phone",
+        "requires": { "recentPasswordChangeConfirmed": true },
+        "result": "The stored password is updated in the email account settings.",
+        "sets": { "credentialsUpdated": true },
+        "good": true
+      },
+      {
+        "id": "verify-mobile-sync",
+        "type": "verify-fix",
+        "label": "Send and receive a test email",
+        "requires": { "credentialsUpdated": true },
+        "result": "The phone receives new mail and sends a test message successfully.",
+        "sets": { "syncVerified": true },
+        "good": true,
+        "evidence": { "id": "sync-test", "title": "Verification", "body": "Test send/receive succeeded after updating saved credentials." }
+      },
+      {
+        "id": "educate-mobile-passwords",
+        "type": "educate-user",
+        "label": "Explain that mobile apps may need updated credentials after password changes",
+        "requires": { "syncVerified": true },
+        "result": "The user understands why mobile mail prompted after the password change.",
+        "sets": { "userEducated": true },
+        "good": true
+      },
+      {
+        "id": "document-mobile-sync-ticket",
+        "type": "document",
+        "label": "Document password-change cause and successful sync test",
+        "requires": { "userEducated": true },
+        "result": "Ticket notes include the password change, credential update, and verification.",
+        "sets": { "documented": true },
+        "good": true
+      },
+      {
+        "id": "factory-reset-phone",
+        "type": "reset-device",
+        "label": "Factory reset the phone immediately",
+        "result": "This is unnecessarily disruptive for a likely saved-credential issue.",
+        "penalty": { "type": "too-invasive", "points": 35, "reason": "Factory reset is too invasive before checking saved credentials and connectivity." }
+      },
+      {
+        "id": "change-apn",
+        "type": "change-setting",
+        "label": "Change the APN settings",
+        "result": "APN settings are not indicated because internet connectivity works and the issue followed a password change.",
+        "penalty": { "type": "wrong-root-cause", "points": 20, "reason": "APN is for carrier data access, not a password-related email sync failure." }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "When email stops syncing after a password change, verify connectivity, update saved credentials, test sync, educate the user, and document the fix.",
+      "requiredStates": [
+        { "key": "recentPasswordChangeConfirmed", "value": true, "label": "Confirmed password change" },
+        { "key": "connectivityChecked", "value": true, "label": "Checked connectivity" },
+        { "key": "credentialsUpdated", "value": true, "label": "Updated credentials" },
+        { "key": "syncVerified", "value": true, "label": "Verified email sync" },
+        { "key": "userEducated", "value": true, "label": "Educated user" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
       ]
     }
   }
