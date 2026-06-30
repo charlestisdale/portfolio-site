@@ -1,0 +1,132 @@
+[
+  {
+    "id": "core2-terminal-dns-troubleshooting-001",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "1.0 Operating Systems / 3.0 Software Troubleshooting",
+    "category": "terminal-simulator",
+    "difficulty": "medium",
+    "engine": "terminal",
+    "title": "Troubleshoot DNS name resolution from Command Prompt",
+    "description": "A Windows user can reach the network by IP address but cannot browse to websites by name. Use terminal commands to identify and correct the issue.",
+    "terminal": {
+      "environment": "Windows Command Prompt",
+      "prompt": "C:\\Users\\Student>",
+      "welcome": "The user reports that websites fail by name, but direct IP connectivity appears to work. Type commands to investigate.",
+      "unknownCommandOutput": "This simulation only supports the commands needed for this troubleshooting path. Try a basic Windows network diagnostic command."
+    },
+    "initialState": {
+      "ipConfigChecked": false,
+      "ipConnectivityVerified": false,
+      "dnsFailureIdentified": false,
+      "dnsCacheFlushed": false,
+      "nameResolutionVerified": false,
+      "documented": false
+    },
+    "commands": [
+      {
+        "command": "ipconfig /all",
+        "aliases": ["ipconfig"],
+        "output": "Windows IP Configuration\n\nEthernet adapter Ethernet:\n   Connection-specific DNS Suffix  . : lan.local\n   IPv4 Address. . . . . . . . . . . : 192.168.10.84\n   Subnet Mask . . . . . . . . . . . : 255.255.255.0\n   Default Gateway . . . . . . . . . : 192.168.10.1\n   DNS Servers . . . . . . . . . . . : 192.168.10.1",
+        "summary": "Collected IP configuration, gateway, and DNS server information.",
+        "sets": { "ipConfigChecked": true },
+        "good": true,
+        "evidence": {
+          "id": "ip-config",
+          "title": "IP Configuration",
+          "body": "The workstation has a valid private IPv4 address, subnet mask, default gateway, and DNS server."
+        }
+      },
+      {
+        "command": "ping 8.8.8.8",
+        "output": "Pinging 8.8.8.8 with 32 bytes of data:\nReply from 8.8.8.8: bytes=32 time=18ms TTL=117\nReply from 8.8.8.8: bytes=32 time=17ms TTL=117\n\nPing statistics for 8.8.8.8:\n    Packets: Sent = 2, Received = 2, Lost = 0 (0% loss)",
+        "summary": "Verified IP connectivity outside the local network.",
+        "sets": { "ipConnectivityVerified": true },
+        "good": true,
+        "evidence": {
+          "id": "ip-connectivity",
+          "title": "IP Connectivity",
+          "body": "The workstation can reach an external IP address, so the issue is not total network connectivity."
+        }
+      },
+      {
+        "command": "nslookup example.com",
+        "aliases": ["nslookup www.example.com"],
+        "requires": { "ipConnectivityVerified": true },
+        "output": "Server:  router.lan.local\nAddress:  192.168.10.1\n\nDNS request timed out.\n    timeout was 2 seconds.\n*** Request to router.lan.local timed-out",
+        "summary": "Confirmed that DNS name resolution is failing while IP connectivity works.",
+        "sets": { "dnsFailureIdentified": true },
+        "good": true,
+        "evidence": {
+          "id": "dns-failure",
+          "title": "DNS Failure",
+          "body": "Name resolution fails even though external IP connectivity works."
+        }
+      },
+      {
+        "command": "ipconfig /flushdns",
+        "requires": { "dnsFailureIdentified": true },
+        "output": "Windows IP Configuration\n\nSuccessfully flushed the DNS Resolver Cache.",
+        "summary": "Cleared the local DNS resolver cache.",
+        "sets": { "dnsCacheFlushed": true },
+        "good": true
+      },
+      {
+        "command": "nslookup example.com",
+        "requires": { "dnsCacheFlushed": true },
+        "output": "Server:  router.lan.local\nAddress:  192.168.10.1\n\nNon-authoritative answer:\nName:    example.com\nAddresses:  2606:2800:220:1:248:1893:25c8:1946\n          93.184.216.34",
+        "summary": "Verified that name resolution works after clearing the resolver cache.",
+        "sets": { "nameResolutionVerified": true },
+        "good": true,
+        "evidence": {
+          "id": "dns-verified",
+          "title": "Verification",
+          "body": "DNS lookup succeeds after flushing the resolver cache."
+        }
+      },
+      {
+        "command": "document ticket",
+        "aliases": ["document", "close ticket"],
+        "requires": { "nameResolutionVerified": true },
+        "output": "Ticket documented: verified IP connectivity, confirmed DNS lookup failure, flushed resolver cache, retested successful name resolution.",
+        "summary": "Documented symptoms, evidence, action taken, and verification.",
+        "sets": { "documented": true },
+        "good": true
+      },
+      {
+        "command": "netsh winsock reset",
+        "output": "Successfully reset the Winsock Catalog. You must restart the computer in order to complete the reset.",
+        "summary": "Reset Winsock before proving it was necessary.",
+        "penalty": {
+          "type": "too-invasive",
+          "points": 20,
+          "reason": "Resetting Winsock is more disruptive than checking IP connectivity and DNS behavior first."
+        }
+      },
+      {
+        "command": "format c:",
+        "output": "Access denied. This destructive action is not appropriate for a DNS troubleshooting issue.",
+        "summary": "Attempted a destructive command unrelated to DNS troubleshooting.",
+        "penalty": {
+          "type": "unsafe",
+          "points": 50,
+          "reason": "Destructive disk actions are unsafe and unrelated to a DNS name-resolution problem."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong command-line troubleshooting path checks IP configuration, verifies IP connectivity, confirms DNS failure, applies a targeted DNS cache fix, verifies name resolution, and documents the result.",
+      "requiredStates": [
+        { "key": "ipConfigChecked", "value": true, "label": "Checked IP configuration" },
+        { "key": "ipConnectivityVerified", "value": true, "label": "Verified IP connectivity" },
+        { "key": "dnsFailureIdentified", "value": true, "label": "Identified DNS failure" },
+        { "key": "dnsCacheFlushed", "value": true, "label": "Flushed DNS cache" },
+        { "key": "nameResolutionVerified", "value": true, "label": "Verified name resolution" },
+        { "key": "documented", "value": true, "label": "Documented result" }
+      ]
+    }
+  }
+]
