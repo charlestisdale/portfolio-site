@@ -257,9 +257,10 @@
           </select>
 
           <select id="difficulty" class="trainer-select">
-            <option value="multiple">Multiple Choice</option>
-            <option value="typed">Typed Answer</option>
+            <option value="mixed">Normal Mode</option>
+            <option value="multiple">Multiple Choice Only</option>
             <option value="pbq">PBQ Only</option>
+            <option value="typed">Typed Answer</option>
           </select>
 
           <button id="newQuestionBtn" class="trainer-button primary">New Question</button>
@@ -490,7 +491,7 @@
 
       if (questionFormat === "pbq") {
         pool = pool.filter(isPbq);
-      } else {
+      } else if (questionFormat === "multiple" || questionFormat === "typed") {
         pool = pool.filter(item => !isPbq(item));
       }
 
@@ -563,7 +564,13 @@
       const pool = filteredBank();
 
       if (!pool.length) {
-        question.textContent = difficulty.value === "pbq" ? "No PBQs match this filter yet. Make sure the PBQ items were merged into core2-questions.json." : "No questions match this filter yet.";
+        const emptyMessages = {
+          pbq: "No PBQs match this filter yet. Make sure the PBQ items were merged into core2-questions.json.",
+          multiple: "No multiple-choice questions match this filter yet.",
+          typed: "No typed-answer questions match this filter yet.",
+          mixed: "No questions match this filter yet."
+        };
+        question.textContent = emptyMessages[difficulty.value] || "No questions match this filter yet.";
         return;
       }
 
