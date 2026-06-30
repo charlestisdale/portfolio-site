@@ -10,6 +10,7 @@ const outputFile = path.join(__dirname, "core2-questions.json");
 
 const sourceFiles = [
   "1-operating-systems.json",
+  "1-operating-systems-pbq-expansion.json",
   "2-security.json",
   "3-software-troubleshooting.json",
   "4-operational-procedures.json"
