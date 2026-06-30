@@ -1,4 +1,6 @@
-export function createDocumentationComponent({ element, onSave }) {
+import { PBQ_EVENTS } from "../runtime/event-bus.js";
+
+export function createDocumentationComponent({ element, events, onSave }) {
   const state = {
     saved: false,
     values: getEmptyValues()
@@ -30,6 +32,24 @@ export function createDocumentationComponent({ element, onSave }) {
 
   function countCompletedFields(values) {
     return Object.values(values).filter(Boolean).length;
+  }
+
+  function getState() {
+    return {
+      saved: state.saved,
+      values: { ...state.values },
+      completedFields: countCompletedFields(state.values)
+    };
+  }
+
+  function notifySave(documentationState) {
+    if (events && typeof events.emit === "function") {
+      events.emit(PBQ_EVENTS.DOCUMENTATION_SAVED, documentationState);
+    }
+
+    if (typeof onSave === "function") {
+      onSave(documentationState);
+    }
   }
 
   function render({ completed = false } = {}) {
@@ -80,15 +100,7 @@ export function createDocumentationComponent({ element, onSave }) {
   function save() {
     state.values = getValues();
     state.saved = countCompletedFields(state.values) === 4;
-
-    if (typeof onSave === "function") {
-      onSave({
-        saved: state.saved,
-        values: { ...state.values },
-        completedFields: countCompletedFields(state.values)
-      });
-    }
-
+    notifySave(getState());
     render();
   }
 
@@ -96,14 +108,6 @@ export function createDocumentationComponent({ element, onSave }) {
     state.saved = false;
     state.values = getEmptyValues();
     render();
-  }
-
-  function getState() {
-    return {
-      saved: state.saved,
-      values: { ...state.values },
-      completedFields: countCompletedFields(state.values)
-    };
   }
 
   return {
