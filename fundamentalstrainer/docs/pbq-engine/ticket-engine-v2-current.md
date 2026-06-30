@@ -20,6 +20,7 @@ fundamentalstrainer/pbq-engine/engine-registry.js
 fundamentalstrainer/pbq-engine/engines/ticket-engine.js
 fundamentalstrainer/pbq-engine/validators/ticket-validator.js
 fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
+fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
 ```
 
@@ -45,6 +46,7 @@ The current ticket simulator supports:
 - author-facing scenario validation warnings
 - engine registration through `engine-registry.js`
 - formal ticket scenario schema through `schemas/ticket.schema.json`
+- development ticket data validation through `tools/validate-ticket-data.mjs`
 
 ## Engine Registry
 
@@ -101,6 +103,37 @@ The runtime validator and the schema serve different purposes:
 
 - `ticket.schema.json` defines the formal authoring contract.
 - `ticket-validator.js` catches practical authoring mistakes in the browser, especially state-key mismatches that JSON Schema cannot easily validate by itself.
+- `tools/validate-ticket-data.mjs` provides a dependency-free development check before committing ticket content.
+
+## Development Validation Command
+
+Run the ticket data validation script from the repository root:
+
+```bash
+node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
+```
+
+Optional custom paths:
+
+```bash
+node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/tickets.json --schema=fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
+```
+
+The script checks:
+
+- valid JSON parsing
+- expected ticket schema structure
+- ticket scenario shape
+- required scenario fields
+- ticket metadata
+- initial state values
+- action IDs and duplicate IDs
+- action `requires` and `sets` references against `initialState`
+- penalty categories and point values
+- grading score values
+- required state references against `initialState`
+
+The script exits with a non-zero status when validation fails, so it can later be used by CI or a pre-commit workflow.
 
 ## Ticket Scenario Shape
 
@@ -213,12 +246,14 @@ The engine registry exists because the PBQ Engine must support multiple simulati
 
 The schema exists to make ticket authoring portable. A future build script, editor, CI check, or content pipeline can validate ticket JSON against the schema before content reaches the browser.
 
+The development validation script is intentionally dependency-free because the portfolio currently does not have a local Node package setup for the PBQ Engine. If the project later adds `package.json`, this script can be wired into an npm command.
+
 ## Next Recommended Work
 
 Good next steps:
 
-1. Add a development validation script that checks `data/core2/tickets.json` against `schemas/ticket.schema.json`.
-2. Add more Core 2 ticket scenarios only after the schema stabilizes.
+1. Run `node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs` locally and fix any reported ticket-data issues.
+2. Add more Core 2 ticket scenarios only after the script passes cleanly.
 3. Add a richer terminal-style action type for command-based troubleshooting inside tickets.
 4. Add save/resume behavior for active ticket attempts using local storage.
 5. Add the next engine by registering it in `engine-registry.js` instead of changing `app.js` directly.
