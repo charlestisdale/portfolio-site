@@ -45,6 +45,14 @@
         <section class="work-panel">
           <div class="engine-toolbar">
             <div id="currentScenarioLabel" class="current-scenario-label" aria-live="polite">No PBQ loaded yet.</div>
+            <label class="engine-filter-label">
+              <span>Practice Mode</span>
+              <select id="practiceFilter" class="engine-select" aria-label="Filter random PBQs by engine type">
+                <option value="all">All PBQs</option>
+                <option value="ticket">Ticket PBQs only</option>
+                <option value="terminal">Terminal PBQs only</option>
+              </select>
+            </label>
             <button id="randomBtn" class="engine-button">New Random PBQ</button>
             <button id="restartBtn" class="engine-button">Restart Current PBQ</button>
             <button id="gradeBtn" class="engine-button primary">Grade Scenario</button>
