@@ -74,19 +74,7 @@ Current terminal PBQ coverage:
 
 ## Validation Status
 
-Last repository-known validated baseline before this sprint batch:
-
-```text
-node pbq-engine/tools/validate-ticket-data.mjs
-Ticket data validation passed.
-Scenario count: 8
-
-node pbq-engine/tools/validate-terminal-data.mjs
-Terminal data validation passed.
-Scenario count: 4
-```
-
-The new sprint scenarios were authored to match the existing Ticket and Terminal validation contracts. Run the original and sprint data files before committing further PBQ changes.
+Run the original and sprint data files before committing further PBQ content changes.
 
 From the repository root:
 
@@ -142,7 +130,6 @@ The PBQ Engine currently supports:
 - JSON-loaded scenarios from multiple data files
 - scenario selection across registered engines
 - restartable scenarios
-- required outcomes pane
 - learner notes
 - formal ticket documentation component
 - documentation saved events through `PBQ_EVENTS.DOCUMENTATION_SAVED`
@@ -199,12 +186,10 @@ Ticket / Terminal Engine
   subscribes to DOCUMENTATION_SAVED
   updates state.documentation
   updates state.flags.documented
-  refreshes required outcomes
+  refreshes progress / required outcomes
 ```
 
 This replaces the previous direct `onSave` callback path in the active engines while preserving the same learner-facing behavior.
-
-The documentation component still accepts an optional `onSave` fallback for compatibility, but new runtime-oriented work should prefer event emission.
 
 ## Shared Grading And Review
 
@@ -221,8 +206,6 @@ Current behavior:
 - Terminal Engine uses the shared required-state grader.
 - Ticket Engine uses the shared final review renderer.
 - Terminal Engine uses the shared final review renderer.
-
-This removes duplicated score/missing-outcome/penalty review logic while preserving current visible behavior.
 
 ## Engine Registry
 
@@ -291,19 +274,51 @@ The sprint data files are separate from the original baseline files so exam-focu
 
 ## Ticket Engine
 
-The Ticket Engine is a stateful help desk simulator. It supports:
+The Ticket Engine is now an investigation-style help desk simulator rather than a linear click-through checklist.
+
+The Ticket Engine supports:
 
 - ticket metadata
-- available technician actions
+- a full visible pool of available technician actions
 - action grouping by action type
 - action dependencies through `requires`
+- premature-action handling when a learner tries an action before evidence or state supports it
 - state mutation through `sets`
 - evidence revealed by actions
 - action history
+- penalties for unsafe, irrelevant, overly invasive, wrong-root-cause, or premature actions
 - shared documentation component
 - documentation saved event handling
+- hidden exact outcome checklist during the attempt
+- progress summary without revealing required-state labels
 - shared required-state grading
 - shared final review rendering
+
+Current learner-facing behavior:
+
+```text
+Ticket metadata
+  ↓
+Full action pool
+  ↓
+Learner chooses investigative actions
+  ↓
+Evidence appears
+  ↓
+Learner chooses remediation / verification / documentation
+  ↓
+Final review reveals missing outcomes and penalties
+```
+
+Important behavior changes from the original linear model:
+
+- `requires` no longer hides future actions from the action list.
+- The exact required-outcomes checklist is hidden during the attempt.
+- The left progress panel shows evidence count, action count, penalty count, and overall progress count.
+- If an action has unmet `requires`, clicking it does not apply its `sets` or evidence.
+- A premature action creates a small `premature-escalation` penalty once for that action/requirement state.
+- The action remains available later so the learner can still perform it after gathering the right evidence.
+- Completed non-repeatable actions are disabled after successful execution.
 
 Ticket scenarios are loaded from:
 
@@ -417,7 +432,7 @@ A terminal scenario should use this general shape:
 
 ## Design Notes
 
-The PBQ Engine is now a multi-engine shell. `app.js` should remain generic and only coordinate loading, validation, scenario selection, and engine startup.
+The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, scenario selection, and engine startup.
 
 Shared learner workflow components belong in:
 
@@ -462,8 +477,9 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 Good next steps during the Core 2 sprint:
 
 1. Run the ticket and terminal validators against both the baseline and sprint data files.
-2. Test the new PBQs in the browser dropdown.
-3. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
-4. Add additional ticket scenarios only when they cover exam-relevant gaps.
-5. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
-6. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
+2. Browser-test the redesigned Ticket Engine against multiple ticket scenarios.
+3. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
+4. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
+5. Add additional ticket scenarios only when they cover exam-relevant gaps.
+6. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+7. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
