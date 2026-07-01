@@ -39,6 +39,7 @@ let allScenarios = [];
 let scenarios = [];
 let currentScenarioIndex = -1;
 let currentScenario = null;
+let currentAttemptGraded = false;
 let engine = null;
 let loadedSourceCount = 0;
 let registeredEngineCount = 0;
@@ -48,8 +49,7 @@ const sessionStats = {
   attempts: 0,
   passed: 0,
   totalScore: 0,
-  bestScore: null,
-  gradedScenarioKeys: new Set()
+  bestScore: null
 };
 
 function setStatus(message) {
@@ -104,39 +104,60 @@ function resetSessionStats() {
   sessionStats.passed = 0;
   sessionStats.totalScore = 0;
   sessionStats.bestScore = null;
-  sessionStats.gradedScenarioKeys = new Set();
+  currentAttemptGraded = false;
   renderSessionStats();
 }
 
-function currentAttemptKey() {
-  return currentScenario ? `${currentScenario.id}:${currentScenarioIndex}` : null;
+function parseReviewResult() {
+  const scoreElement = elements.reviewPanel?.querySelector(".review-score");
+
+  if (!scoreElement) {
+    return null;
+  }
+
+  const text = scoreElement.textContent || "";
+  const scoreMatch = text.match(/(\d+(?:\.\d+)?)%/);
+
+  if (!scoreMatch) {
+    return null;
+  }
+
+  return {
+    score: Number(scoreMatch[1]),
+    passed: /\bPass\b/i.test(text)
+  };
 }
 
-function recordGrade({ detail } = {}) {
-  if (!detail?.gradeResult) {
+function recordGradeFromReview() {
+  if (currentAttemptGraded) {
     return;
   }
 
-  const key = detail.attemptKey || currentAttemptKey();
+  const result = parseReviewResult();
 
-  if (key && sessionStats.gradedScenarioKeys.has(key)) {
+  if (!result) {
     return;
   }
 
-  if (key) {
-    sessionStats.gradedScenarioKeys.add(key);
-  }
-
-  const score = Number(detail.gradeResult.score || 0);
-
+  currentAttemptGraded = true;
   sessionStats.attempts += 1;
-  sessionStats.passed += detail.gradeResult.passed ? 1 : 0;
-  sessionStats.totalScore += score;
+  sessionStats.passed += result.passed ? 1 : 0;
+  sessionStats.totalScore += result.score;
   sessionStats.bestScore = sessionStats.bestScore === null
-    ? score
-    : Math.max(sessionStats.bestScore, score);
+    ? result.score
+    : Math.max(sessionStats.bestScore, result.score);
 
   renderSessionStats();
+}
+
+function gradeCurrentScenario() {
+  engine?.grade();
+  recordGradeFromReview();
+}
+
+function restartCurrentScenario() {
+  currentAttemptGraded = false;
+  engine?.start();
 }
 
 function setCurrentScenarioLabel(scenario) {
@@ -176,6 +197,7 @@ function filterScenarios() {
 
   currentScenarioIndex = -1;
   currentScenario = null;
+  currentAttemptGraded = false;
   updateLoadStatus();
 }
 
@@ -227,6 +249,7 @@ function collectValidationWarnings(loadedScenarios) {
 function clearScenarioPanels(message) {
   setCurrentScenarioLabel(null);
   currentScenario = null;
+  currentAttemptGraded = false;
   engine = null;
 
   elements.ticketMeta.innerHTML = "";
@@ -253,12 +276,12 @@ function loadScenarioAtIndex(index) {
 
   currentScenarioIndex = scenarios.indexOf(scenario);
   currentScenario = scenario;
+  currentAttemptGraded = false;
   setCurrentScenarioLabel(scenario);
 
   engine = createEngineInstance({
     scenario,
-    elements,
-    attemptKey: currentAttemptKey()
+    elements
   });
 
   engine.start();
@@ -276,7 +299,7 @@ function changePracticeFilter() {
 function changeExamMode() {
   document.body.classList.toggle("exam-mode", examModeEnabled());
   setCurrentScenarioLabel(currentScenario);
-  engine?.start();
+  restartCurrentScenario();
 }
 
 async function loadScenarioFile(dataUrl) {
@@ -329,12 +352,11 @@ async function loadScenarios() {
   }
 }
 
-window.addEventListener("pbq:graded", recordGrade);
 elements.practiceFilter?.addEventListener("change", changePracticeFilter);
 elements.examModeToggle?.addEventListener("change", changeExamMode);
 elements.randomBtn?.addEventListener("click", loadRandomScenario);
-elements.restartBtn.addEventListener("click", () => engine?.start());
-elements.gradeBtn.addEventListener("click", () => engine?.grade());
+elements.restartBtn.addEventListener("click", restartCurrentScenario);
+elements.gradeBtn.addEventListener("click", gradeCurrentScenario);
 elements.resetSessionBtn?.addEventListener("click", resetSessionStats);
 
 loadScenarios();
