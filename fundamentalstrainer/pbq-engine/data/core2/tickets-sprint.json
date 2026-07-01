@@ -14,190 +14,100 @@
       "user": "Nina Alvarez",
       "department": "Projects",
       "device": "Domain-joined Windows 11 laptop",
-      "description": "The user receives Access Denied when opening the Projects shared folder they should be able to use."
+      "description": "The user receives Access Denied when opening the approved Projects shared folder."
     },
     "initialState": {
       "scopeChecked": false,
       "identityVerified": false,
-      "sharePathConfirmed": false,
       "permissionsChecked": false,
-      "groupMembershipFixed": false,
-      "accessVerified": false,
+      "accessFixed": false,
+      "verified": false,
       "documented": false
     },
     "actions": [
       {
-        "id": "ask-access-scope",
+        "id": "ask-scope",
         "type": "ask-user",
-        "label": "Ask whether the user can access other network resources",
-        "result": "The user can reach the intranet and other shares, but only the Projects share returns Access Denied.",
-        "sets": {
-          "scopeChecked": true
-        },
+        "label": "Ask whether other network resources work",
+        "result": "Other network resources work; only the Projects share is denied.",
+        "sets": { "scopeChecked": true },
         "good": true,
-        "evidence": {
-          "id": "share-scope",
-          "title": "Scope",
-          "body": "Network connectivity works; the failure is isolated to one shared folder."
-        }
+        "evidence": { "id": "scope", "title": "Scope", "body": "The issue is isolated to one shared folder, not general network access." }
       },
       {
-        "id": "verify-user-identity-permissions",
+        "id": "verify-identity",
         "type": "security-check",
-        "label": "Verify the user's identity before changing access",
-        "requires": {
-          "scopeChecked": true
-        },
-        "result": "The user's identity is verified through the approved help desk process.",
-        "sets": {
-          "identityVerified": true
-        },
+        "label": "Verify the user's identity and business need",
+        "requires": { "scopeChecked": true },
+        "result": "Identity and department assignment are verified.",
+        "sets": { "identityVerified": true },
         "good": true
       },
       {
-        "id": "confirm-share-path",
-        "type": "inspect-ticket",
-        "label": "Confirm the correct UNC path and department need",
-        "requires": {
-          "identityVerified": true
-        },
-        "result": "The correct path is \\FS01\Projects and the user is assigned to the Projects department.",
-        "sets": {
-          "sharePathConfirmed": true
-        },
+        "id": "check-group",
+        "type": "identity-admin",
+        "label": "Check the approved share access group",
+        "requires": { "identityVerified": true },
+        "result": "The user is missing the Projects share security group.",
+        "sets": { "permissionsChecked": true },
         "good": true,
-        "evidence": {
-          "id": "unc-path",
-          "title": "Share Path",
-          "body": "The user is trying to access the correct approved share path."
-        }
+        "evidence": { "id": "missing-group", "title": "Root Cause", "body": "The user lacks the group membership used to grant access." }
       },
       {
-        "id": "check-group-membership",
+        "id": "add-group",
         "type": "identity-admin",
-        "label": "Check AD group membership for the Projects share",
-        "requires": {
-          "sharePathConfirmed": true
-        },
-        "result": "The user is missing the Projects-Share-RW group required for access.",
-        "sets": {
-          "permissionsChecked": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "missing-group",
-          "title": "Permission Root Cause",
-          "body": "The account is missing the security group used to grant share access."
-        }
-      },
-      {
-        "id": "add-approved-group",
-        "type": "identity-admin",
-        "label": "Add the user to the approved Projects share group",
-        "requires": {
-          "permissionsChecked": true
-        },
-        "result": "The user is added to the approved group after confirming business need.",
-        "sets": {
-          "groupMembershipFixed": true
-        },
+        "label": "Add the user to the approved least-privilege group",
+        "requires": { "permissionsChecked": true },
+        "result": "The approved group membership is added.",
+        "sets": { "accessFixed": true },
         "good": true
       },
       {
-        "id": "verify-share-access",
+        "id": "verify-access",
         "type": "verify-fix",
-        "label": "Have the user sign out/in and verify shared folder access",
-        "requires": {
-          "groupMembershipFixed": true
-        },
-        "result": "After refreshing the logon token, the user can open the Projects share and create a test file.",
-        "sets": {
-          "accessVerified": true
-        },
+        "label": "Have the user sign out and back in, then test access",
+        "requires": { "accessFixed": true },
+        "result": "The user can open the share and create a test file.",
+        "sets": { "verified": true },
         "good": true,
-        "evidence": {
-          "id": "share-verified",
-          "title": "Verification",
-          "body": "The user successfully accessed the share after approved group membership was corrected."
-        }
+        "evidence": { "id": "verified", "title": "Verification", "body": "Share access works after the approved group change." }
       },
       {
-        "id": "document-share-ticket",
+        "id": "document",
         "type": "document",
-        "label": "Document identity verification, missing group, fix, and verification",
-        "requires": {
-          "accessVerified": true
-        },
-        "result": "Ticket notes include the access request validation, group correction, and user verification.",
-        "sets": {
-          "documented": true
-        },
+        "label": "Document identity check, permissions fix, and verification",
+        "requires": { "verified": true },
+        "result": "Ticket is documented.",
+        "sets": { "documented": true },
         "good": true
       },
       {
-        "id": "grant-everyone-full-control",
+        "id": "everyone-full-control",
         "type": "security-change",
-        "label": "Grant Everyone Full Control on the share",
-        "result": "This would expose the share to unauthorized users.",
-        "penalty": {
-          "type": "insecure",
-          "points": 45,
-          "reason": "Broad permissions violate least privilege and are not an appropriate fix."
-        }
+        "label": "Grant Everyone Full Control",
+        "result": "This exposes the share to unauthorized users.",
+        "penalty": { "type": "insecure", "points": 45, "reason": "Broad permissions violate least privilege." }
       },
       {
-        "id": "map-random-drive",
-        "type": "change-setting",
-        "label": "Map a different drive letter without checking permissions",
-        "result": "Mapping a drive letter does not resolve missing share permissions.",
-        "penalty": {
-          "type": "wrong-root-cause",
-          "points": 20,
-          "reason": "The issue is authorization, not the local drive letter."
-        }
+        "id": "close-without-test",
+        "type": "close-ticket",
+        "label": "Close the ticket without verifying access",
+        "result": "The issue is not proven resolved.",
+        "penalty": { "type": "missed-verification", "points": 25, "reason": "Access changes must be verified." }
       }
     ],
     "grading": {
       "maxScore": 100,
       "passingScore": 75,
-      "pointsPerMissingState": 12,
-      "summary": "A strong permissions workflow scopes the issue, verifies identity and business need, checks the correct share/group, applies least-privilege access, verifies, and documents the change.",
+      "pointsPerMissingState": 15,
+      "summary": "A strong permissions workflow scopes the issue, verifies identity and need, fixes least-privilege group membership, verifies access, and documents the ticket.",
       "requiredStates": [
-        {
-          "key": "scopeChecked",
-          "value": true,
-          "label": "Scoped access issue"
-        },
-        {
-          "key": "identityVerified",
-          "value": true,
-          "label": "Verified identity"
-        },
-        {
-          "key": "sharePathConfirmed",
-          "value": true,
-          "label": "Confirmed correct share/path"
-        },
-        {
-          "key": "permissionsChecked",
-          "value": true,
-          "label": "Checked permissions/group membership"
-        },
-        {
-          "key": "groupMembershipFixed",
-          "value": true,
-          "label": "Applied least-privilege fix"
-        },
-        {
-          "key": "accessVerified",
-          "value": true,
-          "label": "Verified share access"
-        },
-        {
-          "key": "documented",
-          "value": true,
-          "label": "Documented ticket"
-        }
+        { "key": "scopeChecked", "value": true, "label": "Scoped issue" },
+        { "key": "identityVerified", "value": true, "label": "Verified identity" },
+        { "key": "permissionsChecked", "value": true, "label": "Checked permissions" },
+        { "key": "accessFixed", "value": true, "label": "Fixed access" },
+        { "key": "verified", "value": true, "label": "Verified access" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
       ]
     }
   },
@@ -216,166 +126,88 @@
       "user": "Owen Brooks",
       "department": "Legal",
       "device": "Windows 11 desktop",
-      "description": "The user accidentally deleted a document from a shared folder and needs the latest recoverable copy restored."
+      "description": "The user accidentally deleted a contract document from a shared folder and needs it restored."
     },
     "initialState": {
-      "impactScoped": false,
-      "backupLocated": false,
-      "restorePointSelected": false,
-      "fileRestored": false,
-      "restoreVerified": false,
+      "fileScoped": false,
+      "backupFound": false,
+      "itemRestored": false,
+      "verified": false,
       "documented": false
     },
     "actions": [
       {
         "id": "ask-file-details",
         "type": "ask-user",
-        "label": "Ask for the file name, location, and last known good time",
-        "result": "The file was in \\FS01\Legal\Contracts and was last known good yesterday afternoon.",
-        "sets": {
-          "impactScoped": true
-        },
+        "label": "Ask for file name, location, and last known good time",
+        "result": "The user provides the file name, folder, and last known good time.",
+        "sets": { "fileScoped": true },
         "good": true,
-        "evidence": {
-          "id": "file-details",
-          "title": "Restore Scope",
-          "body": "The user identified the file path and approximate restore point needed."
-        }
+        "evidence": { "id": "restore-scope", "title": "Restore Scope", "body": "The affected file and restore point are known." }
       },
       {
-        "id": "check-backup-console",
+        "id": "find-backup",
         "type": "inspect-tool",
         "label": "Check the approved backup or previous-version source",
-        "requires": {
-          "impactScoped": true
-        },
-        "result": "A successful backup exists from last night for the shared folder.",
-        "sets": {
-          "backupLocated": true
-        },
+        "requires": { "fileScoped": true },
+        "result": "A successful backup from last night contains the file.",
+        "sets": { "backupFound": true },
+        "good": true
+      },
+      {
+        "id": "restore-one-file",
+        "type": "backup-restore",
+        "label": "Restore only the deleted file",
+        "requires": { "backupFound": true },
+        "result": "The file is restored without overwriting unrelated data.",
+        "sets": { "itemRestored": true },
         "good": true,
-        "evidence": {
-          "id": "backup-found",
-          "title": "Backup Found",
-          "body": "A recent successful backup is available for the affected shared folder."
-        }
+        "evidence": { "id": "restored", "title": "Restore Complete", "body": "Only the requested file was restored." }
       },
       {
-        "id": "select-latest-good-copy",
-        "type": "backup-restore",
-        "label": "Select the latest known-good copy without overwriting newer unrelated files",
-        "requires": {
-          "backupLocated": true
-        },
-        "result": "The latest known-good file version is selected for item-level restore.",
-        "sets": {
-          "restorePointSelected": true
-        },
-        "good": true
-      },
-      {
-        "id": "restore-to-original-or-review-location",
-        "type": "backup-restore",
-        "label": "Restore the file and preserve permissions",
-        "requires": {
-          "restorePointSelected": true
-        },
-        "result": "The file is restored with the expected folder permissions intact.",
-        "sets": {
-          "fileRestored": true
-        },
-        "good": true
-      },
-      {
-        "id": "verify-restored-file",
+        "id": "verify-file",
         "type": "verify-fix",
-        "label": "Have the user open the restored file and verify contents",
-        "requires": {
-          "fileRestored": true
-        },
-        "result": "The user confirms the restored file opens and contains the expected content.",
-        "sets": {
-          "restoreVerified": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "restore-verified",
-          "title": "Verification",
-          "body": "The restored document was opened and verified by the user."
-        }
-      },
-      {
-        "id": "document-restore-ticket",
-        "type": "document",
-        "label": "Document restore source, time, result, and verification",
-        "requires": {
-          "restoreVerified": true
-        },
-        "result": "Ticket notes record the backup source, restore time, file restored, and user verification.",
-        "sets": {
-          "documented": true
-        },
+        "label": "Have the user open the restored file",
+        "requires": { "itemRestored": true },
+        "result": "The user confirms the restored file opens and has the expected content.",
+        "sets": { "verified": true },
         "good": true
       },
       {
-        "id": "restore-entire-share",
-        "type": "backup-restore",
-        "label": "Restore the entire Legal share over the current folder",
-        "result": "This could overwrite newer files that were not affected.",
-        "penalty": {
-          "type": "too-invasive",
-          "points": 35,
-          "reason": "An entire-share restore is too broad for a single deleted file."
-        }
+        "id": "document",
+        "type": "document",
+        "label": "Document restore source, file restored, and verification",
+        "requires": { "verified": true },
+        "result": "Ticket is documented.",
+        "sets": { "documented": true },
+        "good": true
       },
       {
-        "id": "close-without-verification",
-        "type": "document",
-        "label": "Close the ticket after starting the restore without user verification",
-        "result": "The ticket is closed before proving the correct file was restored.",
-        "penalty": {
-          "type": "missed-verification",
-          "points": 25,
-          "reason": "Restore jobs must be verified before closing the ticket."
-        }
+        "id": "restore-whole-share",
+        "type": "backup-restore",
+        "label": "Restore the entire shared folder",
+        "result": "This may overwrite newer files that were not affected.",
+        "penalty": { "type": "too-invasive", "points": 35, "reason": "A whole-share restore is too broad for one deleted file." }
+      },
+      {
+        "id": "skip-verification",
+        "type": "close-ticket",
+        "label": "Close after starting the restore",
+        "result": "The restore is not confirmed.",
+        "penalty": { "type": "missed-verification", "points": 25, "reason": "Restores must be verified before closure." }
       }
     ],
     "grading": {
       "maxScore": 100,
       "passingScore": 75,
-      "pointsPerMissingState": 15,
-      "summary": "A good restore workflow scopes the deleted item, finds a valid backup, restores only what is needed, verifies with the user, and documents the result.",
+      "pointsPerMissingState": 18,
+      "summary": "A good restore workflow scopes the file, finds a valid backup, restores only what is needed, verifies with the user, and documents the result.",
       "requiredStates": [
-        {
-          "key": "impactScoped",
-          "value": true,
-          "label": "Scoped deleted file"
-        },
-        {
-          "key": "backupLocated",
-          "value": true,
-          "label": "Located backup"
-        },
-        {
-          "key": "restorePointSelected",
-          "value": true,
-          "label": "Selected correct restore point"
-        },
-        {
-          "key": "fileRestored",
-          "value": true,
-          "label": "Restored file"
-        },
-        {
-          "key": "restoreVerified",
-          "value": true,
-          "label": "Verified restore"
-        },
-        {
-          "key": "documented",
-          "value": true,
-          "label": "Documented ticket"
-        }
+        { "key": "fileScoped", "value": true, "label": "Scoped deleted file" },
+        { "key": "backupFound", "value": true, "label": "Found backup" },
+        { "key": "itemRestored", "value": true, "label": "Restored item" },
+        { "key": "verified", "value": true, "label": "Verified restore" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
       ]
     }
   },
@@ -399,180 +231,94 @@
     "initialState": {
       "scopeChecked": false,
       "internetVerified": false,
-      "credentialsVerified": false,
-      "mfaIssueIdentified": false,
-      "mfaResetCompleted": false,
+      "accountChecked": false,
+      "mfaFixed": false,
       "vpnVerified": false,
       "documented": false
     },
     "actions": [
       {
-        "id": "ask-vpn-error",
+        "id": "ask-error",
         "type": "ask-user",
-        "label": "Ask for the VPN error and whether internet access works",
-        "result": "Websites load normally. VPN reports that the MFA push was denied or expired.",
-        "sets": {
-          "scopeChecked": true
-        },
+        "label": "Ask for the VPN error and whether internet works",
+        "result": "Web browsing works. The VPN fails during MFA approval.",
+        "sets": { "scopeChecked": true },
         "good": true,
-        "evidence": {
-          "id": "vpn-error",
-          "title": "VPN Error",
-          "body": "The VPN failure occurs during MFA, not during basic internet connectivity."
-        }
+        "evidence": { "id": "vpn-error", "title": "VPN Error", "body": "The VPN reaches MFA, so basic internet access is not the root cause." }
       },
       {
         "id": "verify-internet",
         "type": "inspect-setting",
-        "label": "Verify internet access outside the VPN",
-        "requires": {
-          "scopeChecked": true
-        },
-        "result": "The laptop can browse external websites and resolve DNS normally.",
-        "sets": {
-          "internetVerified": true
-        },
+        "label": "Verify internet access outside VPN",
+        "requires": { "scopeChecked": true },
+        "result": "External websites load normally.",
+        "sets": { "internetVerified": true },
         "good": true
       },
       {
-        "id": "verify-user-account-status",
+        "id": "check-account",
         "type": "identity-admin",
-        "label": "Verify the user account is active and not locked",
-        "requires": {
-          "internetVerified": true
-        },
-        "result": "The account is active, password is valid, and there are no lockouts.",
-        "sets": {
-          "credentialsVerified": true
-        },
-        "good": true
-      },
-      {
-        "id": "check-mfa-registration",
-        "type": "security-check",
-        "label": "Check MFA registration and recent authentication attempts",
-        "requires": {
-          "credentialsVerified": true
-        },
-        "result": "The user's old phone is still registered for MFA. Push attempts are going to the wrong device.",
-        "sets": {
-          "mfaIssueIdentified": true
-        },
+        "label": "Check account status and MFA registration",
+        "requires": { "internetVerified": true },
+        "result": "The account is active, but MFA is still registered to the user's old phone.",
+        "sets": { "accountChecked": true },
         "good": true,
-        "evidence": {
-          "id": "mfa-root-cause",
-          "title": "MFA Root Cause",
-          "body": "MFA prompts are being sent to the user's old registered device."
-        }
+        "evidence": { "id": "mfa", "title": "Root Cause", "body": "MFA prompts are going to the wrong registered device." }
       },
       {
-        "id": "reset-mfa-approved",
+        "id": "reset-mfa",
         "type": "identity-admin",
-        "label": "Reset MFA registration using the approved identity process",
-        "requires": {
-          "mfaIssueIdentified": true
-        },
-        "result": "After verifying identity, MFA is re-registered on the user's current phone.",
-        "sets": {
-          "mfaResetCompleted": true
-        },
+        "label": "Reset MFA using the approved identity process",
+        "requires": { "accountChecked": true },
+        "result": "MFA is re-registered on the user's current phone after identity verification.",
+        "sets": { "mfaFixed": true },
         "good": true
       },
       {
-        "id": "verify-vpn-login",
+        "id": "verify-vpn",
         "type": "verify-fix",
-        "label": "Verify the user completes MFA and connects to VPN",
-        "requires": {
-          "mfaResetCompleted": true
-        },
-        "result": "The user approves MFA on the current phone and connects to the VPN successfully.",
-        "sets": {
-          "vpnVerified": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "vpn-verified",
-          "title": "Verification",
-          "body": "VPN connection succeeded after approved MFA re-registration."
-        }
+        "label": "Verify VPN login with MFA",
+        "requires": { "mfaFixed": true },
+        "result": "The user approves MFA and connects successfully.",
+        "sets": { "vpnVerified": true },
+        "good": true
       },
       {
-        "id": "document-vpn-ticket",
+        "id": "document",
         "type": "document",
-        "label": "Document MFA root cause, reset process, and VPN verification",
-        "requires": {
-          "vpnVerified": true
-        },
-        "result": "Ticket notes include the VPN error, MFA registration correction, and successful connection test.",
-        "sets": {
-          "documented": true
-        },
+        "label": "Document MFA issue, correction, and VPN verification",
+        "requires": { "vpnVerified": true },
+        "result": "Ticket is documented.",
+        "sets": { "documented": true },
         "good": true
       },
       {
         "id": "disable-mfa",
         "type": "security-change",
-        "label": "Disable MFA so the user can connect immediately",
-        "result": "Disabling MFA weakens remote-access security.",
-        "penalty": {
-          "type": "insecure",
-          "points": 45,
-          "reason": "MFA should not be bypassed for convenience; fix the enrollment issue securely."
-        }
+        "label": "Disable MFA to get the user connected",
+        "result": "This weakens remote-access security.",
+        "penalty": { "type": "insecure", "points": 45, "reason": "MFA should not be bypassed." }
       },
       {
-        "id": "reinstall-vpn-client",
+        "id": "reinstall-client",
         "type": "reinstall-app",
-        "label": "Reinstall the VPN client before checking the error",
-        "result": "The VPN client was not the root cause because authentication was reaching MFA.",
-        "penalty": {
-          "type": "wrong-root-cause",
-          "points": 20,
-          "reason": "The evidence points to MFA registration, not a broken VPN client."
-        }
+        "label": "Reinstall the VPN client first",
+        "result": "The evidence points to MFA registration, not the VPN client.",
+        "penalty": { "type": "wrong-root-cause", "points": 20, "reason": "The client reached MFA successfully." }
       }
     ],
     "grading": {
       "maxScore": 100,
       "passingScore": 75,
-      "pointsPerMissingState": 12,
+      "pointsPerMissingState": 15,
       "summary": "A strong VPN workflow separates internet connectivity from VPN authentication, checks account and MFA state, fixes MFA securely, verifies connection, and documents the ticket.",
       "requiredStates": [
-        {
-          "key": "scopeChecked",
-          "value": true,
-          "label": "Scoped VPN error"
-        },
-        {
-          "key": "internetVerified",
-          "value": true,
-          "label": "Verified internet connectivity"
-        },
-        {
-          "key": "credentialsVerified",
-          "value": true,
-          "label": "Checked account status"
-        },
-        {
-          "key": "mfaIssueIdentified",
-          "value": true,
-          "label": "Identified MFA issue"
-        },
-        {
-          "key": "mfaResetCompleted",
-          "value": true,
-          "label": "Completed approved MFA reset"
-        },
-        {
-          "key": "vpnVerified",
-          "value": true,
-          "label": "Verified VPN connection"
-        },
-        {
-          "key": "documented",
-          "value": true,
-          "label": "Documented ticket"
-        }
+        { "key": "scopeChecked", "value": true, "label": "Scoped VPN error" },
+        { "key": "internetVerified", "value": true, "label": "Verified internet" },
+        { "key": "accountChecked", "value": true, "label": "Checked account/MFA" },
+        { "key": "mfaFixed", "value": true, "label": "Fixed MFA" },
+        { "key": "vpnVerified", "value": true, "label": "Verified VPN" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
       ]
     }
   },
@@ -594,177 +340,95 @@
       "description": "The user received a phone call from someone claiming to be IT and asking for their password and MFA code."
     },
     "initialState": {
-      "userReassured": false,
-      "incidentDetailsCollected": false,
-      "passwordNotDisclosedConfirmed": false,
+      "userProtected": false,
+      "detailsCollected": false,
       "securityReported": false,
-      "accountProtected": false,
-      "userEducated": false,
+      "accountChecked": false,
+      "educated": false,
       "documented": false
     },
     "actions": [
       {
-        "id": "reassure-and-stop-contact",
+        "id": "stop-sharing",
         "type": "communication",
         "label": "Tell the user not to share credentials or MFA codes",
-        "result": "The user ends the call and confirms they will not share credentials or MFA codes.",
-        "sets": {
-          "userReassured": true
-        },
+        "result": "The user ends the call and confirms no credentials will be shared.",
+        "sets": { "userProtected": true },
         "good": true
       },
       {
-        "id": "collect-call-details",
+        "id": "collect-details",
         "type": "inspect-ticket",
-        "label": "Collect caller number, time, request, and any links or callback numbers",
-        "requires": {
-          "userReassured": true
-        },
-        "result": "The caller spoofed a help desk number and requested the user's password and MFA approval.",
-        "sets": {
-          "incidentDetailsCollected": true
-        },
+        "label": "Collect caller number, time, and request details",
+        "requires": { "userProtected": true },
+        "result": "The caller impersonated IT and pressured the user for password and MFA approval.",
+        "sets": { "detailsCollected": true },
         "good": true,
-        "evidence": {
-          "id": "vishing-details",
-          "title": "Incident Details",
-          "body": "The call used IT impersonation and credential/MFA pressure, consistent with vishing."
-        }
+        "evidence": { "id": "vishing", "title": "Incident Details", "body": "The call matches a vishing attempt." }
       },
       {
-        "id": "confirm-no-credential-disclosure",
-        "type": "security-check",
-        "label": "Confirm whether the user disclosed password or approved MFA",
-        "requires": {
-          "incidentDetailsCollected": true
-        },
-        "result": "The user did not disclose the password and did not approve an MFA prompt.",
-        "sets": {
-          "passwordNotDisclosedConfirmed": true
-        },
-        "good": true
-      },
-      {
-        "id": "escalate-security-team",
+        "id": "report-security",
         "type": "escalation",
-        "label": "Report the incident to the security team according to procedure",
-        "requires": {
-          "passwordNotDisclosedConfirmed": true
-        },
-        "result": "The security team receives the incident details for investigation and awareness.",
-        "sets": {
-          "securityReported": true
-        },
+        "label": "Report the incident to security",
+        "requires": { "detailsCollected": true },
+        "result": "Security receives the details for investigation and awareness.",
+        "sets": { "securityReported": true },
         "good": true
       },
       {
-        "id": "monitor-and-reset-if-needed",
+        "id": "check-account",
         "type": "security-check",
-        "label": "Check for suspicious sign-ins and reset credentials only if policy requires",
-        "requires": {
-          "securityReported": true
-        },
-        "result": "No suspicious sign-ins are found. The account is monitored and the user is advised to report any MFA prompts.",
-        "sets": {
-          "accountProtected": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "account-check",
-          "title": "Account Check",
-          "body": "No evidence of account compromise was found after the reported vishing call."
-        }
+        "label": "Check for suspicious sign-ins or MFA prompts",
+        "requires": { "securityReported": true },
+        "result": "No suspicious sign-ins are found.",
+        "sets": { "accountChecked": true },
+        "good": true
       },
       {
-        "id": "educate-vishing-user",
+        "id": "educate-user",
         "type": "educate-user",
-        "label": "Educate the user on vishing, MFA fatigue, and reporting procedures",
-        "requires": {
-          "accountProtected": true
-        },
+        "label": "Educate the user on vishing and MFA fatigue",
+        "requires": { "accountChecked": true },
         "result": "The user understands that IT will not ask for passwords or MFA codes.",
-        "sets": {
-          "userEducated": true
-        },
+        "sets": { "educated": true },
         "good": true
       },
       {
-        "id": "document-vishing-ticket",
+        "id": "document",
         "type": "document",
-        "label": "Document reported vishing attempt, escalation, account check, and education",
-        "requires": {
-          "userEducated": true
-        },
-        "result": "Ticket documents the incident details, security escalation, account check, and user education.",
-        "sets": {
-          "documented": true
-        },
+        "label": "Document incident report, account check, and education",
+        "requires": { "educated": true },
+        "result": "Ticket is documented.",
+        "sets": { "documented": true },
         "good": true
       },
       {
-        "id": "ask-for-password-to-test",
+        "id": "ask-password",
         "type": "security-error",
-        "label": "Ask the user for their password to test the account",
+        "label": "Ask for the user's password to test the account",
         "result": "This repeats the attacker's unsafe request.",
-        "penalty": {
-          "type": "insecure",
-          "points": 45,
-          "reason": "Technicians should never ask users to disclose passwords."
-        }
+        "penalty": { "type": "insecure", "points": 45, "reason": "Technicians should never ask users to disclose passwords." }
       },
       {
-        "id": "ignore-because-no-loss",
+        "id": "ignore",
         "type": "close-ticket",
-        "label": "Close the ticket because the user did not share the password",
-        "result": "Potential social engineering attempts still need reporting and documentation.",
-        "penalty": {
-          "type": "missed-documentation",
-          "points": 25,
-          "reason": "Security incidents should be reported even if compromise was avoided."
-        }
+        "label": "Ignore the report because no password was shared",
+        "result": "Security incidents still need reporting.",
+        "penalty": { "type": "missed-documentation", "points": 25, "reason": "Reported social engineering attempts should be documented and escalated." }
       }
     ],
     "grading": {
       "maxScore": 100,
       "passingScore": 75,
-      "pointsPerMissingState": 12,
-      "summary": "A strong social-engineering response stops credential sharing, collects details, checks for compromise, escalates, educates the user, and documents the incident.",
+      "pointsPerMissingState": 15,
+      "summary": "A strong social-engineering response stops credential sharing, collects details, escalates, checks for compromise, educates, and documents the incident.",
       "requiredStates": [
-        {
-          "key": "userReassured",
-          "value": true,
-          "label": "Stopped credential sharing"
-        },
-        {
-          "key": "incidentDetailsCollected",
-          "value": true,
-          "label": "Collected incident details"
-        },
-        {
-          "key": "passwordNotDisclosedConfirmed",
-          "value": true,
-          "label": "Checked credential/MFA exposure"
-        },
-        {
-          "key": "securityReported",
-          "value": true,
-          "label": "Reported to security"
-        },
-        {
-          "key": "accountProtected",
-          "value": true,
-          "label": "Checked/protected account"
-        },
-        {
-          "key": "userEducated",
-          "value": true,
-          "label": "Educated user"
-        },
-        {
-          "key": "documented",
-          "value": true,
-          "label": "Documented incident"
-        }
+        { "key": "userProtected", "value": true, "label": "Protected user" },
+        { "key": "detailsCollected", "value": true, "label": "Collected details" },
+        { "key": "securityReported", "value": true, "label": "Reported to security" },
+        { "key": "accountChecked", "value": true, "label": "Checked account" },
+        { "key": "educated", "value": true, "label": "Educated user" },
+        { "key": "documented", "value": true, "label": "Documented incident" }
       ]
     }
   },
@@ -787,124 +451,81 @@
     },
     "initialState": {
       "errorReviewed": false,
-      "storageChecked": false,
+      "spaceChecked": false,
       "spaceFreed": false,
-      "updateRetried": false,
-      "rebootVerified": false,
+      "updateInstalled": false,
+      "verified": false,
       "documented": false
     },
     "actions": [
       {
-        "id": "review-update-error",
+        "id": "review-error",
         "type": "inspect-tool",
         "label": "Review Windows Update history and error details",
-        "result": "Update history shows repeated failures with an error indicating insufficient free space.",
-        "sets": {
-          "errorReviewed": true
-        },
+        "result": "The update repeatedly fails with an insufficient free space error.",
+        "sets": { "errorReviewed": true },
         "good": true,
-        "evidence": {
-          "id": "update-error",
-          "title": "Update Error",
-          "body": "The failure code and update history point to insufficient disk space."
-        }
+        "evidence": { "id": "update-error", "title": "Update Error", "body": "The error points to low disk space." }
       },
       {
-        "id": "check-free-space",
+        "id": "check-space",
         "type": "inspect-tool",
-        "label": "Check free disk space on the system drive",
-        "requires": {
-          "errorReviewed": true
-        },
-        "result": "The C: drive has less than 2 GB free.",
-        "sets": {
-          "storageChecked": true
-        },
+        "label": "Check free space on the system drive",
+        "requires": { "errorReviewed": true },
+        "result": "The system drive has less than 2 GB free.",
+        "sets": { "spaceChecked": true },
         "good": true
       },
       {
-        "id": "run-disk-cleanup",
+        "id": "free-space",
         "type": "cleanup",
-        "label": "Free space using Disk Cleanup or Storage Sense",
-        "requires": {
-          "storageChecked": true
-        },
-        "result": "Temporary files and old update cleanup free more than 12 GB of disk space.",
-        "sets": {
-          "spaceFreed": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "space-freed",
-          "title": "Disk Space",
-          "body": "Enough free space is available for the update after cleanup."
-        }
-      },
-      {
-        "id": "retry-windows-update",
-        "type": "update-os",
-        "label": "Retry Windows Update after freeing space",
-        "requires": {
-          "spaceFreed": true
-        },
-        "result": "The update downloads and installs successfully.",
-        "sets": {
-          "updateRetried": true
-        },
+        "label": "Free space with Disk Cleanup or Storage Sense",
+        "requires": { "spaceChecked": true },
+        "result": "Temporary files and old update cleanup free more than 12 GB.",
+        "sets": { "spaceFreed": true },
         "good": true
       },
       {
-        "id": "reboot-and-verify-update",
-        "type": "verify-fix",
-        "label": "Restart and verify Windows Update reports current status",
-        "requires": {
-          "updateRetried": true
-        },
-        "result": "After restart, Windows Update shows the device is up to date.",
-        "sets": {
-          "rebootVerified": true
-        },
-        "good": true,
-        "evidence": {
-          "id": "update-verified",
-          "title": "Verification",
-          "body": "Windows Update completed successfully and reports current status."
-        }
+        "id": "retry-update",
+        "type": "update-os",
+        "label": "Retry Windows Update",
+        "requires": { "spaceFreed": true },
+        "result": "The update installs successfully.",
+        "sets": { "updateInstalled": true },
+        "good": true
       },
       {
-        "id": "document-update-ticket",
+        "id": "reboot-verify",
+        "type": "verify-fix",
+        "label": "Restart and verify update status",
+        "requires": { "updateInstalled": true },
+        "result": "After restart, Windows Update reports the system is up to date.",
+        "sets": { "verified": true },
+        "good": true,
+        "evidence": { "id": "update-verified", "title": "Verification", "body": "Windows Update completed successfully." }
+      },
+      {
+        "id": "document",
         "type": "document",
-        "label": "Document update error, cleanup, successful install, and verification",
-        "requires": {
-          "rebootVerified": true
-        },
-        "result": "Ticket documents the error, disk cleanup, successful update, and final verification.",
-        "sets": {
-          "documented": true
-        },
+        "label": "Document error, cleanup, update install, and verification",
+        "requires": { "verified": true },
+        "result": "Ticket is documented.",
+        "sets": { "documented": true },
         "good": true
       },
       {
         "id": "disable-updates",
         "type": "security-change",
-        "label": "Disable Windows Update to stop the errors",
-        "result": "This leaves the workstation without security updates.",
-        "penalty": {
-          "type": "insecure",
-          "points": 40,
-          "reason": "Disabling updates is unsafe and does not fix the underlying storage issue."
-        }
+        "label": "Disable Windows Update",
+        "result": "The workstation would miss security updates.",
+        "penalty": { "type": "insecure", "points": 40, "reason": "Disabling updates is unsafe." }
       },
       {
-        "id": "reimage-first",
+        "id": "reimage",
         "type": "reinstall-os",
-        "label": "Reimage the workstation before checking the error",
-        "result": "A reimage is unnecessary before reviewing the update error and disk space.",
-        "penalty": {
-          "type": "too-invasive",
-          "points": 35,
-          "reason": "Reimaging is too invasive for an update failure caused by low disk space."
-        }
+        "label": "Reimage the workstation first",
+        "result": "A reimage is unnecessary before fixing low disk space.",
+        "penalty": { "type": "too-invasive", "points": 35, "reason": "Reimaging is too invasive for this issue." }
       }
     ],
     "grading": {
@@ -913,36 +534,12 @@
       "pointsPerMissingState": 15,
       "summary": "A good Windows Update workflow reviews the error, checks disk space, frees space safely, retries the update, verifies after reboot, and documents the result.",
       "requiredStates": [
-        {
-          "key": "errorReviewed",
-          "value": true,
-          "label": "Reviewed update error"
-        },
-        {
-          "key": "storageChecked",
-          "value": true,
-          "label": "Checked free space"
-        },
-        {
-          "key": "spaceFreed",
-          "value": true,
-          "label": "Freed disk space"
-        },
-        {
-          "key": "updateRetried",
-          "value": true,
-          "label": "Retried update"
-        },
-        {
-          "key": "rebootVerified",
-          "value": true,
-          "label": "Verified after reboot"
-        },
-        {
-          "key": "documented",
-          "value": true,
-          "label": "Documented ticket"
-        }
+        { "key": "errorReviewed", "value": true, "label": "Reviewed update error" },
+        { "key": "spaceChecked", "value": true, "label": "Checked free space" },
+        { "key": "spaceFreed", "value": true, "label": "Freed disk space" },
+        { "key": "updateInstalled", "value": true, "label": "Installed update" },
+        { "key": "verified", "value": true, "label": "Verified update" },
+        { "key": "documented", "value": true, "label": "Documented ticket" }
       ]
     }
   }
