@@ -20,6 +20,11 @@ const elements = {
   randomBtn: document.getElementById("randomBtn"),
   restartBtn: document.getElementById("restartBtn"),
   gradeBtn: document.getElementById("gradeBtn"),
+  resetSessionBtn: document.getElementById("resetSessionBtn"),
+  sessionAttempts: document.getElementById("sessionAttempts"),
+  sessionPassed: document.getElementById("sessionPassed"),
+  sessionAverage: document.getElementById("sessionAverage"),
+  sessionBest: document.getElementById("sessionBest"),
   ticketMeta: document.getElementById("ticketMeta"),
   requirementsPane: document.getElementById("requirementsPane"),
   actionMenu: document.getElementById("actionMenu"),
@@ -38,6 +43,14 @@ let engine = null;
 let loadedSourceCount = 0;
 let registeredEngineCount = 0;
 let validationWarningCount = 0;
+
+const sessionStats = {
+  attempts: 0,
+  passed: 0,
+  totalScore: 0,
+  bestScore: null,
+  gradedScenarioKeys: new Set()
+};
 
 function setStatus(message) {
   elements.loadStatus.textContent = message;
@@ -61,6 +74,69 @@ function labelForFilter(filterValue = currentFilter()) {
   }
 
   return "All PBQs";
+}
+
+function formatScore(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) {
+    return "--";
+  }
+
+  return `${Math.round(Number(value))}%`;
+}
+
+function renderSessionStats() {
+  if (!elements.sessionAttempts) {
+    return;
+  }
+
+  const average = sessionStats.attempts
+    ? sessionStats.totalScore / sessionStats.attempts
+    : null;
+
+  elements.sessionAttempts.textContent = String(sessionStats.attempts);
+  elements.sessionPassed.textContent = String(sessionStats.passed);
+  elements.sessionAverage.textContent = formatScore(average);
+  elements.sessionBest.textContent = formatScore(sessionStats.bestScore);
+}
+
+function resetSessionStats() {
+  sessionStats.attempts = 0;
+  sessionStats.passed = 0;
+  sessionStats.totalScore = 0;
+  sessionStats.bestScore = null;
+  sessionStats.gradedScenarioKeys = new Set();
+  renderSessionStats();
+}
+
+function currentAttemptKey() {
+  return currentScenario ? `${currentScenario.id}:${currentScenarioIndex}` : null;
+}
+
+function recordGrade({ detail } = {}) {
+  if (!detail?.gradeResult) {
+    return;
+  }
+
+  const key = detail.attemptKey || currentAttemptKey();
+
+  if (key && sessionStats.gradedScenarioKeys.has(key)) {
+    return;
+  }
+
+  if (key) {
+    sessionStats.gradedScenarioKeys.add(key);
+  }
+
+  const score = Number(detail.gradeResult.score || 0);
+
+  sessionStats.attempts += 1;
+  sessionStats.passed += detail.gradeResult.passed ? 1 : 0;
+  sessionStats.totalScore += score;
+  sessionStats.bestScore = sessionStats.bestScore === null
+    ? score
+    : Math.max(sessionStats.bestScore, score);
+
+  renderSessionStats();
 }
 
 function setCurrentScenarioLabel(scenario) {
@@ -181,7 +257,8 @@ function loadScenarioAtIndex(index) {
 
   engine = createEngineInstance({
     scenario,
-    elements
+    elements,
+    attemptKey: currentAttemptKey()
   });
 
   engine.start();
@@ -242,6 +319,7 @@ async function loadScenarios() {
     renderValidationWarnings(warnings);
     filterScenarios();
     document.body.classList.toggle("exam-mode", examModeEnabled());
+    renderSessionStats();
     loadRandomScenario();
   } catch (error) {
     console.error(error);
@@ -251,10 +329,12 @@ async function loadScenarios() {
   }
 }
 
+window.addEventListener("pbq:graded", recordGrade);
 elements.practiceFilter?.addEventListener("change", changePracticeFilter);
 elements.examModeToggle?.addEventListener("change", changeExamMode);
 elements.randomBtn?.addEventListener("click", loadRandomScenario);
 elements.restartBtn.addEventListener("click", () => engine?.start());
 elements.gradeBtn.addEventListener("click", () => engine?.grade());
+elements.resetSessionBtn?.addEventListener("click", resetSessionStats);
 
 loadScenarios();
