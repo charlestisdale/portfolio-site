@@ -37,24 +37,44 @@ Major runtime refactors, new engine types, and larger architecture changes shoul
 
 ## Current PBQ Inventory
 
-Current validated PBQ count:
+Current Core 2 PBQ count loaded by the browser runtime:
 
 ```text
-Ticket PBQs:   8
-Terminal PBQs: 4
-Total PBQs:    12
+Ticket PBQs:   13
+Terminal PBQs: 8
+Total PBQs:    21
 ```
 
-Current terminal PBQs:
+Current ticket PBQ coverage:
 
-1. DNS name resolution troubleshooting
-2. Windows system file corruption repair with `sfc` and `DISM`
+1. Slow Windows PC
+2. Browser hijacker / malware removal flow
+3. Domain password reset
+4. Printer spooler troubleshooting
+5. Secure website certificate warning
+6. BitLocker recovery
+7. Black screen after Windows update
+8. Mobile email sync after password change
+9. Shared folder permissions
+10. Backup restore after accidental deletion
+11. VPN cannot connect / MFA registration issue
+12. Social engineering / vishing incident report
+13. Failed Windows Update with low disk space
+
+Current terminal PBQ coverage:
+
+1. DNS name resolution troubleshooting with `ipconfig`, `ping`, `nslookup`, and `ipconfig /flushdns`
+2. Windows system file corruption repair with `sfc`, `DISM`, and `shutdown`
 3. Group Policy update and verification with `gpupdate` and `gpresult`
 4. Suspicious listening process investigation with `netstat`, `tasklist`, and `taskkill`
+5. Windows startup repair with `bootrec`
+6. File-system repair with `chkdsk`
+7. Mapped drive troubleshooting with `net use`
+8. Linux permissions with `ls`, `chown`, and `chmod`
 
 ## Validation Status
 
-Last confirmed validation result from local development environment:
+Last repository-known validated baseline before this sprint batch:
 
 ```text
 node pbq-engine/tools/validate-ticket-data.mjs
@@ -66,20 +86,24 @@ Terminal data validation passed.
 Scenario count: 4
 ```
 
-Run both validators after editing PBQ scenario data.
+The new sprint scenarios were authored to match the existing Ticket and Terminal validation contracts. Run the original and sprint data files before committing further PBQ changes.
 
 From the repository root:
 
 ```bash
 node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
+node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
 node fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs
+node fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
 If already inside `fundamentalstrainer/`:
 
 ```bash
 node pbq-engine/tools/validate-ticket-data.mjs
+node pbq-engine/tools/validate-ticket-data.mjs --data=pbq-engine/data/core2/tickets-sprint.json
 node pbq-engine/tools/validate-terminal-data.mjs
+node pbq-engine/tools/validate-terminal-data.mjs --data=pbq-engine/data/core2/terminal-sprint.json
 ```
 
 ## Current Files
@@ -104,7 +128,9 @@ fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
 fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
 fundamentalstrainer/pbq-engine/data/core2/terminal.json
+fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 fundamentalstrainer/docs/pbq-engine/phase-2-runtime-architecture.md
 fundamentalstrainer/docs/pbq-engine/core-2-two-week-pbq-sprint.md
 ```
@@ -123,7 +149,7 @@ The PBQ Engine currently supports:
 - stateful scenario execution
 - evidence collection
 - action/command history
-- penalties for unsafe, irrelevant, overly invasive, or wrong-root-cause choices
+- penalties for unsafe, insecure, irrelevant, overly invasive, premature escalation, missed verification, missed documentation, or wrong-root-cause choices
 - shared required-state grading through `grading/grader.js`
 - shared final review rendering through `grading/review-renderer.js`
 - author-facing scenario validation warnings
@@ -217,16 +243,6 @@ terminal
 
 The loader in `app.js` should stay generic. It should not directly import individual engines such as `ticket-engine.js` or `terminal-engine.js`. Engines should be registered in `engine-registry.js`.
 
-Current registry responsibilities:
-
-- register available PBQ engines
-- return registered engine IDs
-- create the correct engine instance for a scenario
-- route scenario validation to the correct engine-specific validator
-- report unknown engine types as authoring warnings
-
-This keeps the PBQ Engine working while the Phase 2 runtime is introduced.
-
 ## Shared Documentation Component
 
 The PBQ Engine includes a reusable documentation component:
@@ -258,18 +274,20 @@ The active engine subscribes to this event and updates its scenario state, usual
 
 The saved documentation is also shown in the final review screen.
 
-This component is shared by both the Ticket Engine and the Terminal Engine. Future engines should reuse it instead of creating engine-specific documentation forms.
-
 ## Data Sources
 
 The app currently loads scenarios from:
 
 ```text
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
 fundamentalstrainer/pbq-engine/data/core2/terminal.json
+fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
-`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios, and then renders the selected scenario through the correct engine.
+`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios through the registry, and then renders the selected scenario through the correct engine.
+
+The sprint data files are separate from the original baseline files so exam-focused content can be added quickly without destabilizing the original validated set.
 
 ## Ticket Engine
 
@@ -291,9 +309,10 @@ Ticket scenarios are loaded from:
 
 ```text
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
 ```
 
-Current ticket scenario count: **8**.
+Current ticket scenario count: **13**.
 
 ## Ticket Scenario Schema
 
@@ -303,20 +322,7 @@ The formal ticket scenario schema lives at:
 fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 ```
 
-The schema is the authoring contract for Ticket Engine v2 content. It defines the expected structure for:
-
-- scenario metadata
-- `ticket` metadata
-- `initialState`
-- `actions`
-- action `requires` maps
-- action `sets` maps
-- action evidence
-- action penalties
-- grading configuration
-- required grading states
-
-The schema is intentionally permissive with `additionalProperties: true` so the engine can evolve without breaking existing authored tickets. It still enforces the core fields needed for a working ticket scenario.
+The schema is the authoring contract for Ticket Engine v2 content. It defines the expected structure for scenario metadata, ticket metadata, `initialState`, `actions`, action `requires` maps, action `sets` maps, action evidence, action penalties, grading configuration, and required grading states.
 
 The runtime validator and the schema serve different purposes:
 
@@ -326,7 +332,7 @@ The runtime validator and the schema serve different purposes:
 
 ## Terminal Engine Prototype
 
-The Terminal Engine is the first non-ticket engine. It simulates command-line troubleshooting tasks inside the same PBQ shell.
+The Terminal Engine simulates command-line troubleshooting tasks inside the same PBQ shell.
 
 Current Terminal Engine file:
 
@@ -334,10 +340,11 @@ Current Terminal Engine file:
 fundamentalstrainer/pbq-engine/engines/terminal-engine.js
 ```
 
-Current Terminal Engine data file:
+Current Terminal Engine data files:
 
 ```text
 fundamentalstrainer/pbq-engine/data/core2/terminal.json
+fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
 Current Terminal Engine validator:
@@ -346,7 +353,7 @@ Current Terminal Engine validator:
 fundamentalstrainer/pbq-engine/validators/terminal-validator.js
 ```
 
-Current terminal scenario count: **4**.
+Current terminal scenario count: **8**.
 
 Terminal scenarios currently support:
 
@@ -454,8 +461,9 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 
 Good next steps during the Core 2 sprint:
 
-1. Add more high-yield Core 2 PBQ scenarios.
-2. Keep both validation scripts passing after every content change.
-3. Test new PBQs in the browser dropdown.
-4. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
-5. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
+1. Run the ticket and terminal validators against both the baseline and sprint data files.
+2. Test the new PBQs in the browser dropdown.
+3. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
+4. Add additional ticket scenarios only when they cover exam-relevant gaps.
+5. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+6. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
