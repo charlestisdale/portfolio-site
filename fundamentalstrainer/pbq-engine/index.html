@@ -62,6 +62,26 @@
             <button id="gradeBtn" class="engine-button primary">Grade Scenario</button>
           </div>
 
+          <section class="session-stats-panel" aria-live="polite">
+            <div>
+              <span class="ticket-label">Attempts</span>
+              <strong id="sessionAttempts">0</strong>
+            </div>
+            <div>
+              <span class="ticket-label">Passed</span>
+              <strong id="sessionPassed">0</strong>
+            </div>
+            <div>
+              <span class="ticket-label">Average</span>
+              <strong id="sessionAverage">--</strong>
+            </div>
+            <div>
+              <span class="ticket-label">Best</span>
+              <strong id="sessionBest">--</strong>
+            </div>
+            <button id="resetSessionBtn" class="engine-button" type="button">Reset Session</button>
+          </section>
+
           <div class="engine-grid">
             <section class="engine-card">
               <h2>Simulation</h2>
