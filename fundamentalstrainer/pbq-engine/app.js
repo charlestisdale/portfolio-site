@@ -15,6 +15,7 @@ const elements = {
   loadStatus: document.getElementById("loadStatus"),
   validationPanel: document.getElementById("validationPanel"),
   currentScenarioLabel: document.getElementById("currentScenarioLabel"),
+  practiceFilter: document.getElementById("practiceFilter"),
   randomBtn: document.getElementById("randomBtn"),
   restartBtn: document.getElementById("restartBtn"),
   gradeBtn: document.getElementById("gradeBtn"),
@@ -28,12 +29,32 @@ const elements = {
   reviewPanel: document.getElementById("reviewPanel")
 };
 
+let allScenarios = [];
 let scenarios = [];
 let currentScenarioIndex = -1;
 let engine = null;
+let loadedSourceCount = 0;
+let registeredEngineCount = 0;
+let validationWarningCount = 0;
 
 function setStatus(message) {
   elements.loadStatus.textContent = message;
+}
+
+function currentFilter() {
+  return elements.practiceFilter?.value || "all";
+}
+
+function labelForFilter(filterValue = currentFilter()) {
+  if (filterValue === "ticket") {
+    return "Ticket PBQs only";
+  }
+
+  if (filterValue === "terminal") {
+    return "Terminal PBQs only";
+  }
+
+  return "All PBQs";
 }
 
 function setCurrentScenarioLabel(scenario) {
@@ -47,6 +68,27 @@ function setCurrentScenarioLabel(scenario) {
   }
 
   elements.currentScenarioLabel.textContent = `Current PBQ: ${scenario.title} (${scenario.engine})`;
+}
+
+function updateLoadStatus() {
+  const warningText = validationWarningCount
+    ? ` with ${validationWarningCount} validation warning${validationWarningCount === 1 ? "" : "s"}`
+    : "";
+
+  setStatus(`Random practice mode loaded ${scenarios.length} ${labelForFilter().toLowerCase()} from ${allScenarios.length} total PBQ scenario${allScenarios.length === 1 ? "" : "s"} across ${loadedSourceCount} data source${loadedSourceCount === 1 ? "" : "s"} for ${registeredEngineCount} registered engine${registeredEngineCount === 1 ? "" : "s"}${warningText}.`);
+}
+
+function filterScenarios() {
+  const filterValue = currentFilter();
+
+  if (filterValue === "all") {
+    scenarios = allScenarios.slice();
+  } else {
+    scenarios = allScenarios.filter(scenario => scenario.engine === filterValue);
+  }
+
+  currentScenarioIndex = -1;
+  updateLoadStatus();
 }
 
 function pickRandomScenarioIndex() {
@@ -94,10 +136,29 @@ function collectValidationWarnings(loadedScenarios) {
   return loadedScenarios.flatMap((scenario, index) => validateScenario(scenario, index));
 }
 
+function clearScenarioPanels(message) {
+  setCurrentScenarioLabel(null);
+  engine = null;
+
+  elements.ticketMeta.innerHTML = "";
+  elements.requirementsPane.className = "requirement-list empty-pane";
+  elements.requirementsPane.textContent = message;
+  elements.actionMenu.innerHTML = `<p class="empty-pane">${escapeHtml(message)}</p>`;
+  elements.evidencePane.className = "evidence-pane empty-pane";
+  elements.evidencePane.textContent = "No evidence collected yet.";
+  elements.historyPane.className = "history-pane empty-pane";
+  elements.historyPane.textContent = "No actions taken yet.";
+  elements.documentationPane.innerHTML = "";
+  elements.reviewPanel.hidden = true;
+  elements.reviewPanel.innerHTML = "";
+  elements.learnerNotes.value = "";
+}
+
 function loadScenarioAtIndex(index) {
   const scenario = scenarios[index] || scenarios[0];
 
   if (!scenario) {
+    clearScenarioPanels(`No PBQs are available for ${labelForFilter()}.`);
     return;
   }
 
@@ -114,6 +175,11 @@ function loadScenarioAtIndex(index) {
 
 function loadRandomScenario() {
   loadScenarioAtIndex(pickRandomScenarioIndex());
+}
+
+function changePracticeFilter() {
+  filterScenarios();
+  loadRandomScenario();
 }
 
 async function loadScenarioFile(dataUrl) {
@@ -137,19 +203,24 @@ async function loadScenarios() {
     const files = await Promise.all(DATA_URLS.map(loadScenarioFile));
     const raw = files.flat();
     const registeredEngineIds = getRegisteredEngineIds();
-    scenarios = raw.filter(item => registeredEngineIds.includes(item.engine));
 
-    if (!scenarios.length) {
+    loadedSourceCount = DATA_URLS.length;
+    registeredEngineCount = registeredEngineIds.length;
+    allScenarios = raw.filter(item => registeredEngineIds.includes(item.engine));
+
+    if (!allScenarios.length) {
       throw new Error(`No scenarios found for registered PBQ engines: ${registeredEngineIds.join(", ")}.`);
     }
 
-    const warnings = collectValidationWarnings(scenarios);
+    const warnings = collectValidationWarnings(allScenarios);
+    validationWarningCount = warnings.length;
+
     if (warnings.length) {
       console.warn("PBQ scenario validation warnings:", warnings);
     }
 
     renderValidationWarnings(warnings);
-    setStatus(`Random practice mode loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} from ${DATA_URLS.length} data source${DATA_URLS.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
+    filterScenarios();
     loadRandomScenario();
   } catch (error) {
     console.error(error);
@@ -159,6 +230,7 @@ async function loadScenarios() {
   }
 }
 
+elements.practiceFilter?.addEventListener("change", changePracticeFilter);
 elements.randomBtn?.addEventListener("click", loadRandomScenario);
 elements.restartBtn.addEventListener("click", () => engine?.start());
 elements.gradeBtn.addEventListener("click", () => engine?.grade());
