@@ -16,6 +16,7 @@ const elements = {
   validationPanel: document.getElementById("validationPanel"),
   currentScenarioLabel: document.getElementById("currentScenarioLabel"),
   practiceFilter: document.getElementById("practiceFilter"),
+  examModeToggle: document.getElementById("examModeToggle"),
   randomBtn: document.getElementById("randomBtn"),
   restartBtn: document.getElementById("restartBtn"),
   gradeBtn: document.getElementById("gradeBtn"),
@@ -32,6 +33,7 @@ const elements = {
 let allScenarios = [];
 let scenarios = [];
 let currentScenarioIndex = -1;
+let currentScenario = null;
 let engine = null;
 let loadedSourceCount = 0;
 let registeredEngineCount = 0;
@@ -43,6 +45,10 @@ function setStatus(message) {
 
 function currentFilter() {
   return elements.practiceFilter?.value || "all";
+}
+
+function examModeEnabled() {
+  return elements.examModeToggle?.checked === true;
 }
 
 function labelForFilter(filterValue = currentFilter()) {
@@ -67,6 +73,11 @@ function setCurrentScenarioLabel(scenario) {
     return;
   }
 
+  if (examModeEnabled()) {
+    elements.currentScenarioLabel.textContent = `Current PBQ: Hidden (${scenario.engine})`;
+    return;
+  }
+
   elements.currentScenarioLabel.textContent = `Current PBQ: ${scenario.title} (${scenario.engine})`;
 }
 
@@ -88,6 +99,7 @@ function filterScenarios() {
   }
 
   currentScenarioIndex = -1;
+  currentScenario = null;
   updateLoadStatus();
 }
 
@@ -138,6 +150,7 @@ function collectValidationWarnings(loadedScenarios) {
 
 function clearScenarioPanels(message) {
   setCurrentScenarioLabel(null);
+  currentScenario = null;
   engine = null;
 
   elements.ticketMeta.innerHTML = "";
@@ -163,6 +176,7 @@ function loadScenarioAtIndex(index) {
   }
 
   currentScenarioIndex = scenarios.indexOf(scenario);
+  currentScenario = scenario;
   setCurrentScenarioLabel(scenario);
 
   engine = createEngineInstance({
@@ -180,6 +194,12 @@ function loadRandomScenario() {
 function changePracticeFilter() {
   filterScenarios();
   loadRandomScenario();
+}
+
+function changeExamMode() {
+  document.body.classList.toggle("exam-mode", examModeEnabled());
+  setCurrentScenarioLabel(currentScenario);
+  engine?.start();
 }
 
 async function loadScenarioFile(dataUrl) {
@@ -221,6 +241,7 @@ async function loadScenarios() {
 
     renderValidationWarnings(warnings);
     filterScenarios();
+    document.body.classList.toggle("exam-mode", examModeEnabled());
     loadRandomScenario();
   } catch (error) {
     console.error(error);
@@ -231,6 +252,7 @@ async function loadScenarios() {
 }
 
 elements.practiceFilter?.addEventListener("change", changePracticeFilter);
+elements.examModeToggle?.addEventListener("change", changeExamMode);
 elements.randomBtn?.addEventListener("click", loadRandomScenario);
 elements.restartBtn.addEventListener("click", () => engine?.start());
 elements.gradeBtn.addEventListener("click", () => engine?.grade());
