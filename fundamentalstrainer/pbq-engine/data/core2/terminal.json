@@ -26,10 +26,14 @@
     "commands": [
       {
         "command": "ipconfig /all",
-        "aliases": ["ipconfig"],
+        "aliases": [
+          "ipconfig"
+        ],
         "output": "Windows IP Configuration\n\nEthernet adapter Ethernet:\n   Connection-specific DNS Suffix  . : lan.local\n   IPv4 Address. . . . . . . . . . . : 192.168.10.84\n   Subnet Mask . . . . . . . . . . . : 255.255.255.0\n   Default Gateway . . . . . . . . . : 192.168.10.1\n   DNS Servers . . . . . . . . . . . : 192.168.10.1",
         "summary": "Collected IP configuration, gateway, and DNS server information.",
-        "sets": { "ipConfigChecked": true },
+        "sets": {
+          "ipConfigChecked": true
+        },
         "good": true,
         "evidence": {
           "id": "ip-config",
@@ -41,7 +45,9 @@
         "command": "ping 8.8.8.8",
         "output": "Pinging 8.8.8.8 with 32 bytes of data:\nReply from 8.8.8.8: bytes=32 time=18ms TTL=117\nReply from 8.8.8.8: bytes=32 time=17ms TTL=117\n\nPing statistics for 8.8.8.8:\n    Packets: Sent = 2, Received = 2, Lost = 0 (0% loss)",
         "summary": "Verified IP connectivity outside the local network.",
-        "sets": { "ipConnectivityVerified": true },
+        "sets": {
+          "ipConnectivityVerified": true
+        },
         "good": true,
         "evidence": {
           "id": "ip-connectivity",
@@ -51,11 +57,18 @@
       },
       {
         "command": "nslookup example.com",
-        "aliases": ["nslookup www.example.com"],
-        "requires": { "ipConnectivityVerified": true, "dnsCacheFlushed": false },
+        "aliases": [
+          "nslookup www.example.com"
+        ],
+        "requires": {
+          "ipConnectivityVerified": true,
+          "dnsCacheFlushed": false
+        },
         "output": "Server:  router.lan.local\nAddress:  192.168.10.1\n\nDNS request timed out.\n    timeout was 2 seconds.\n*** Request to router.lan.local timed-out",
         "summary": "Confirmed that DNS name resolution is failing while IP connectivity works.",
-        "sets": { "dnsFailureIdentified": true },
+        "sets": {
+          "dnsFailureIdentified": true
+        },
         "good": true,
         "evidence": {
           "id": "dns-failure",
@@ -65,18 +78,26 @@
       },
       {
         "command": "ipconfig /flushdns",
-        "requires": { "dnsFailureIdentified": true },
+        "requires": {
+          "dnsFailureIdentified": true
+        },
         "output": "Windows IP Configuration\n\nSuccessfully flushed the DNS Resolver Cache.",
         "summary": "Cleared the local DNS resolver cache.",
-        "sets": { "dnsCacheFlushed": true },
+        "sets": {
+          "dnsCacheFlushed": true
+        },
         "good": true
       },
       {
         "command": "nslookup example.com",
-        "requires": { "dnsCacheFlushed": true },
+        "requires": {
+          "dnsCacheFlushed": true
+        },
         "output": "Server:  router.lan.local\nAddress:  192.168.10.1\n\nNon-authoritative answer:\nName:    example.com\nAddresses:  2606:2800:220:1:248:1893:25c8:1946\n          93.184.216.34",
         "summary": "Verified that name resolution works after clearing the resolver cache.",
-        "sets": { "nameResolutionVerified": true },
+        "sets": {
+          "nameResolutionVerified": true
+        },
         "good": true,
         "evidence": {
           "id": "dns-verified",
@@ -111,12 +132,452 @@
       "pointsPerMissingState": 15,
       "summary": "A strong command-line troubleshooting path checks IP configuration, verifies IP connectivity, confirms DNS failure, applies a targeted DNS cache fix, verifies name resolution, and documents the result.",
       "requiredStates": [
-        { "key": "ipConfigChecked", "value": true, "label": "Checked IP configuration" },
-        { "key": "ipConnectivityVerified", "value": true, "label": "Verified IP connectivity" },
-        { "key": "dnsFailureIdentified", "value": true, "label": "Identified DNS failure" },
-        { "key": "dnsCacheFlushed", "value": true, "label": "Flushed DNS cache" },
-        { "key": "nameResolutionVerified", "value": true, "label": "Verified name resolution" },
-        { "key": "documented", "value": true, "label": "Saved ticket documentation" }
+        {
+          "key": "ipConfigChecked",
+          "value": true,
+          "label": "Checked IP configuration"
+        },
+        {
+          "key": "ipConnectivityVerified",
+          "value": true,
+          "label": "Verified IP connectivity"
+        },
+        {
+          "key": "dnsFailureIdentified",
+          "value": true,
+          "label": "Identified DNS failure"
+        },
+        {
+          "key": "dnsCacheFlushed",
+          "value": true,
+          "label": "Flushed DNS cache"
+        },
+        {
+          "key": "nameResolutionVerified",
+          "value": true,
+          "label": "Verified name resolution"
+        },
+        {
+          "key": "documented",
+          "value": true,
+          "label": "Saved ticket documentation"
+        }
+      ]
+    }
+  },
+  {
+    "id": "core2-terminal-windows-corruption-repair-002",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "1.0 Operating Systems / 3.0 Software Troubleshooting",
+    "category": "terminal-simulator",
+    "difficulty": "medium",
+    "engine": "terminal",
+    "title": "Repair corrupted Windows system files",
+    "description": "A Windows 11 user reports that built-in apps crash and Windows Update recently failed. Use command-line repair tools in the correct order and verify the repair.",
+    "terminal": {
+      "environment": "Administrator Command Prompt",
+      "prompt": "C:\\Windows\\System32>",
+      "welcome": "You are in an elevated Command Prompt. The system is bootable but unstable. Use Windows repair commands carefully.",
+      "unknownCommandOutput": "This simulation supports the Windows repair commands needed for this scenario."
+    },
+    "initialState": {
+      "initialSfcRun": false,
+      "componentStoreRepaired": false,
+      "secondSfcRun": false,
+      "repairVerified": false,
+      "documented": false
+    },
+    "commands": [
+      {
+        "command": "sfc /scannow",
+        "requires": {
+          "componentStoreRepaired": false
+        },
+        "output": "Beginning system scan. This process will take some time.\n\nWindows Resource Protection found corrupt files but was unable to fix some of them.",
+        "summary": "Ran SFC and confirmed system file corruption that could not be fully repaired yet.",
+        "sets": {
+          "initialSfcRun": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "sfc-initial",
+          "title": "Initial SFC Result",
+          "body": "SFC found corrupt files but could not repair all of them, suggesting DISM should repair the component store first."
+        }
+      },
+      {
+        "command": "dism /online /cleanup-image /restorehealth",
+        "requires": {
+          "initialSfcRun": true
+        },
+        "output": "Deployment Image Servicing and Management tool\n\n[==========================100.0%==========================]\nThe restore operation completed successfully.\nThe operation completed successfully.",
+        "summary": "Repaired the Windows component store with DISM.",
+        "sets": {
+          "componentStoreRepaired": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "dism-restorehealth",
+          "title": "DISM RestoreHealth",
+          "body": "DISM successfully repaired the Windows component store."
+        }
+      },
+      {
+        "command": "sfc /scannow",
+        "requires": {
+          "componentStoreRepaired": true
+        },
+        "output": "Beginning system scan. This process will take some time.\n\nWindows Resource Protection found corrupt files and successfully repaired them.",
+        "summary": "Ran SFC again after DISM and repaired remaining system files.",
+        "sets": {
+          "secondSfcRun": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "sfc-second",
+          "title": "Second SFC Result",
+          "body": "SFC successfully repaired remaining system file corruption after DISM completed."
+        }
+      },
+      {
+        "command": "shutdown /r /t 0",
+        "requires": {
+          "secondSfcRun": true
+        },
+        "output": "The system rebooted and the user confirmed built-in apps open normally.",
+        "summary": "Rebooted after repairs and verified the symptoms were resolved.",
+        "sets": {
+          "repairVerified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "repair-verified",
+          "title": "Verification",
+          "body": "After reboot, the original app crash symptom no longer occurs."
+        }
+      },
+      {
+        "command": "chkdsk c: /f",
+        "output": "The type of the file system is NTFS.\nCannot lock current drive. Chkdsk cannot run because the volume is in use by another process.",
+        "summary": "Started a disk repair path before evidence pointed to file-system damage.",
+        "penalty": {
+          "type": "not-relevant",
+          "points": 10,
+          "reason": "CHKDSK is not the best first repair for Windows component store or protected system file corruption."
+        }
+      },
+      {
+        "command": "format c:",
+        "output": "Access denied. This destructive action is not appropriate for this repair scenario.",
+        "summary": "Attempted a destructive disk command.",
+        "penalty": {
+          "type": "unsafe",
+          "points": 50,
+          "reason": "Formatting the system drive is destructive and not an appropriate troubleshooting step."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong Windows repair path runs SFC to confirm corruption, uses DISM to repair the component store, reruns SFC, verifies after reboot, and documents the result.",
+      "requiredStates": [
+        {
+          "key": "initialSfcRun",
+          "value": true,
+          "label": "Ran initial SFC scan"
+        },
+        {
+          "key": "componentStoreRepaired",
+          "value": true,
+          "label": "Repaired component store with DISM"
+        },
+        {
+          "key": "secondSfcRun",
+          "value": true,
+          "label": "Reran SFC after DISM"
+        },
+        {
+          "key": "repairVerified",
+          "value": true,
+          "label": "Verified repair after reboot"
+        },
+        {
+          "key": "documented",
+          "value": true,
+          "label": "Saved ticket documentation"
+        }
+      ]
+    }
+  },
+  {
+    "id": "core2-terminal-group-policy-update-003",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "1.0 Operating Systems / 2.0 Security",
+    "category": "terminal-simulator",
+    "difficulty": "easy",
+    "engine": "terminal",
+    "title": "Force and verify Group Policy update",
+    "description": "A domain user reports that a new password policy and mapped drive policy have not applied yet. Use command-line tools to check and refresh policy.",
+    "terminal": {
+      "environment": "Windows Command Prompt",
+      "prompt": "C:\\Users\\Student>",
+      "welcome": "The workstation is domain-joined and online. The user says a new policy has not applied.",
+      "unknownCommandOutput": "This scenario supports the policy commands needed for this task."
+    },
+    "initialState": {
+      "policyChecked": false,
+      "policyUpdated": false,
+      "policyVerified": false,
+      "documented": false
+    },
+    "commands": [
+      {
+        "command": "gpresult /r",
+        "requires": {
+          "policyUpdated": false
+        },
+        "output": "COMPUTER SETTINGS\n-----------------\n    CN=CLIENT01,OU=Workstations,DC=corp,DC=local\n    Last time Group Policy was applied: 2 days ago\n\nUSER SETTINGS\n-------------\n    The following GPOs were not applied because they were filtered out.",
+        "summary": "Checked current policy status and confirmed policy is stale.",
+        "sets": {
+          "policyChecked": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "gpresult-before",
+          "title": "Policy Status Before Update",
+          "body": "Group Policy has not updated recently, which explains why the new settings are missing."
+        }
+      },
+      {
+        "command": "gpupdate /force",
+        "requires": {
+          "policyChecked": true
+        },
+        "output": "Updating policy...\n\nComputer Policy update has completed successfully.\nUser Policy update has completed successfully.",
+        "summary": "Forced a Group Policy refresh.",
+        "sets": {
+          "policyUpdated": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "gpupdate",
+          "title": "Policy Refresh",
+          "body": "Both computer and user policy updated successfully."
+        }
+      },
+      {
+        "command": "gpresult /r",
+        "requires": {
+          "policyUpdated": true
+        },
+        "output": "COMPUTER SETTINGS\n-----------------\n    Last time Group Policy was applied: today\n    Applied Group Policy Objects\n        Default Domain Policy\n        Workstation Security Baseline\n\nUSER SETTINGS\n-------------\n    Applied Group Policy Objects\n        Department Drive Mapping Policy",
+        "summary": "Verified that the expected GPOs are now applied.",
+        "sets": {
+          "policyVerified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "gpresult-after",
+          "title": "Policy Status After Update",
+          "body": "Expected workstation and user policies are now applied."
+        }
+      },
+      {
+        "command": "secedit /refreshpolicy machine_policy /enforce",
+        "output": "The command is deprecated on this operating system.",
+        "summary": "Used an outdated policy refresh command.",
+        "penalty": {
+          "type": "not-relevant",
+          "points": 10,
+          "reason": "gpupdate /force is the modern command expected for refreshing Group Policy."
+        }
+      },
+      {
+        "command": "net user student /domain",
+        "output": "User name                    student\nAccount active               Yes\nPassword last set            4/11/2026",
+        "summary": "Checked the domain user account but did not refresh or verify Group Policy.",
+        "penalty": {
+          "type": "wrong-root-cause",
+          "points": 10,
+          "reason": "The symptom points to stale policy application, not a disabled user account."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong Group Policy troubleshooting path checks current policy, forces an update with gpupdate /force, verifies with gpresult /r, and documents the result.",
+      "requiredStates": [
+        {
+          "key": "policyChecked",
+          "value": true,
+          "label": "Checked current policy state"
+        },
+        {
+          "key": "policyUpdated",
+          "value": true,
+          "label": "Forced Group Policy update"
+        },
+        {
+          "key": "policyVerified",
+          "value": true,
+          "label": "Verified applied GPOs"
+        },
+        {
+          "key": "documented",
+          "value": true,
+          "label": "Saved ticket documentation"
+        }
+      ]
+    }
+  },
+  {
+    "id": "core2-terminal-open-port-process-004",
+    "certification": "CompTIA A+",
+    "exam": "Core 2",
+    "objective": "3.0 Software Troubleshooting / 2.0 Security",
+    "category": "terminal-simulator",
+    "difficulty": "medium",
+    "engine": "terminal",
+    "title": "Identify a suspicious listening process",
+    "description": "A Windows workstation is running slowly and a security tool reported an unexpected listening port. Use command-line tools to identify and stop the suspicious process.",
+    "terminal": {
+      "environment": "Administrator Command Prompt",
+      "prompt": "C:\\Windows\\System32>",
+      "welcome": "The workstation is online but sluggish. A security alert mentions an unexpected listening port.",
+      "unknownCommandOutput": "This scenario supports process and network inspection commands needed for the investigation."
+    },
+    "initialState": {
+      "listeningPortsChecked": false,
+      "processIdentified": false,
+      "processStopped": false,
+      "remediationVerified": false,
+      "documented": false
+    },
+    "commands": [
+      {
+        "command": "netstat -ano",
+        "requires": {
+          "processStopped": false
+        },
+        "output": "Active Connections\n\n  Proto  Local Address          Foreign Address        State           PID\n  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       936\n  TCP    0.0.0.0:4444           0.0.0.0:0              LISTENING       4321\n  TCP    192.168.10.84:49720    13.107.42.14:443       ESTABLISHED     1080",
+        "summary": "Found an unexpected listening port and associated PID.",
+        "sets": {
+          "listeningPortsChecked": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "netstat-before",
+          "title": "Listening Port",
+          "body": "Port 4444 is listening under PID 4321 and should be investigated."
+        }
+      },
+      {
+        "command": "tasklist /fi \"PID eq 4321\"",
+        "aliases": [
+          "tasklist /fi PID eq 4321"
+        ],
+        "requires": {
+          "listeningPortsChecked": true
+        },
+        "output": "Image Name                     PID Session Name        Mem Usage\n========================= ======== ================ ============\nunknownsvc.exe                 4321 Services             84,216 K",
+        "summary": "Mapped the suspicious PID to an unexpected process name.",
+        "sets": {
+          "processIdentified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "tasklist-pid",
+          "title": "Process Identification",
+          "body": "PID 4321 maps to unknownsvc.exe, which is not expected on this workstation."
+        }
+      },
+      {
+        "command": "taskkill /pid 4321 /f",
+        "requires": {
+          "processIdentified": true
+        },
+        "output": "SUCCESS: The process with PID 4321 has been terminated.",
+        "summary": "Stopped the suspicious process.",
+        "sets": {
+          "processStopped": true
+        },
+        "good": true
+      },
+      {
+        "command": "netstat -ano",
+        "requires": {
+          "processStopped": true
+        },
+        "output": "Active Connections\n\n  Proto  Local Address          Foreign Address        State           PID\n  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       936\n  TCP    192.168.10.84:49720    13.107.42.14:443       ESTABLISHED     1080",
+        "summary": "Verified the suspicious listening port is no longer present.",
+        "sets": {
+          "remediationVerified": true
+        },
+        "good": true,
+        "evidence": {
+          "id": "netstat-after",
+          "title": "Verification",
+          "body": "Port 4444 is no longer listening after stopping the suspicious process."
+        }
+      },
+      {
+        "command": "ipconfig /release",
+        "output": "Windows IP Configuration\n\nEthernet adapter Ethernet:\n   Connection-specific DNS Suffix  . :",
+        "summary": "Released the workstation's IP address without evidence of a DHCP problem.",
+        "penalty": {
+          "type": "not-relevant",
+          "points": 10,
+          "reason": "The issue is a suspicious listening process, not DHCP lease failure."
+        }
+      },
+      {
+        "command": "format c:",
+        "output": "Access denied. This destructive action is not appropriate as an initial response.",
+        "summary": "Attempted destructive remediation before identifying scope.",
+        "penalty": {
+          "type": "unsafe",
+          "points": 50,
+          "reason": "Destructive disk actions are unsafe and unrelated to identifying a suspicious listening process."
+        }
+      }
+    ],
+    "grading": {
+      "maxScore": 100,
+      "passingScore": 75,
+      "pointsPerMissingState": 15,
+      "summary": "A strong process investigation checks listening ports, maps the PID to a process, stops the suspicious process, verifies the port is gone, and documents the result.",
+      "requiredStates": [
+        {
+          "key": "listeningPortsChecked",
+          "value": true,
+          "label": "Checked listening ports"
+        },
+        {
+          "key": "processIdentified",
+          "value": true,
+          "label": "Identified process from PID"
+        },
+        {
+          "key": "processStopped",
+          "value": true,
+          "label": "Stopped suspicious process"
+        },
+        {
+          "key": "remediationVerified",
+          "value": true,
+          "label": "Verified port closed"
+        },
+        {
+          "key": "documented",
+          "value": true,
+          "label": "Saved ticket documentation"
+        }
       ]
     }
   }
