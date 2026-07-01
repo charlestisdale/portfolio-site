@@ -121,6 +121,7 @@ The PBQ Engine currently supports:
 - random practice mode across registered engines
 - random practice filtering by engine type: All, Ticket only, Terminal only
 - Exam Mode for hiding PBQ titles that give away the answer
+- browser-session stats for attempts, passes, average score, and best score
 - current scenario restart
 - current scenario grading
 - learner notes
@@ -167,8 +168,22 @@ Current controls:
 - `New Random PBQ`: selects a random scenario from the active filtered scenario pool. When more than one scenario exists, it avoids immediately repeating the currently loaded scenario.
 - `Restart Current PBQ`: restarts the currently loaded scenario without selecting a new one.
 - `Grade Scenario`: grades the currently loaded scenario and opens final review.
+- `Reset Session`: clears the browser-session stats panel.
 
 Exam Mode exists because some PBQ titles, such as command-specific terminal titles, can reveal the intended troubleshooting path before the learner has investigated the issue.
+
+## Session Stats
+
+A browser-session stats panel appears above the PBQ work area.
+
+It tracks:
+
+- attempts graded
+- passed attempts
+- average score
+- best score
+
+Session stats are intentionally lightweight and do not persist after refresh. The app records an attempt when the learner clicks `Grade Scenario` and the final review score is rendered. Re-clicking grade on the same attempt does not double-count. Restarting the current PBQ or loading a new random PBQ starts a fresh countable attempt.
 
 ## Ticket Engine
 
@@ -261,7 +276,7 @@ The sprint data files are separate from the original baseline files so exam-focu
 
 ## Architecture Notes
 
-The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, practice filtering, random scenario selection, Exam Mode display state, and engine startup.
+The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, practice filtering, random scenario selection, Exam Mode display state, session stats, and engine startup.
 
 Shared learner workflow components belong in:
 
@@ -308,10 +323,11 @@ Good next steps during the Core 2 sprint:
 1. Run the ticket and terminal validators against both the baseline and sprint data files.
 2. Browser-test random PBQ loading across All, Ticket only, and Terminal only practice modes.
 3. Browser-test Exam Mode against both Ticket and Terminal scenarios.
-4. Browser-test terminal hints on `net use`, DNS, Windows repair, Group Policy, and Linux permission scenarios.
-5. Add weak-area filtering later if it directly supports studying.
-6. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
-7. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
-8. Add additional ticket scenarios only when they cover exam-relevant gaps.
-9. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
-10. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
+4. Browser-test session stats by grading multiple PBQs, restarting one, and resetting the session.
+5. Browser-test terminal hints on `net use`, DNS, Windows repair, Group Policy, and Linux permission scenarios.
+6. Add weak-area filtering later if it directly supports studying.
+7. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
+8. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
+9. Add additional ticket scenarios only when they cover exam-relevant gaps.
+10. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+11. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
