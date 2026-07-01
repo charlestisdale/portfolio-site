@@ -18,6 +18,30 @@ Build and stabilize Core 2 practice around:
 - change management and documentation
 - operational procedure tickets
 
+## Current Validated PBQ Inventory
+
+Current confirmed scenario counts:
+
+```text
+Ticket PBQs:   8
+Terminal PBQs: 4
+Total PBQs:    12
+```
+
+Last confirmed local validation:
+
+```text
+node pbq-engine/tools/validate-ticket-data.mjs
+Ticket data validation passed.
+Scenario count: 8
+
+node pbq-engine/tools/validate-terminal-data.mjs
+Terminal data validation passed.
+Scenario count: 4
+```
+
+Both validators should stay green throughout the sprint.
+
 ## Current Terminal PBQ Coverage
 
 The terminal PBQ data file is:
@@ -62,6 +86,7 @@ Until the exam is passed:
 5. Every PBQ should include at least one bad-but-plausible action or command.
 6. Every PBQ should grade required outcomes, not just command memorization.
 7. Do not break existing Ticket or Terminal scenarios.
+8. Do not start new architecture work unless it directly improves exam readiness.
 
 ## High-Yield PBQ Targets
 
@@ -83,11 +108,17 @@ Add scenarios for:
 - `ping`
 - `ipconfig`
 - `nslookup`
+- Linux commands such as `ls`, `cd`, `grep`, `chmod`, `chown`, `ps`, `kill`, `ip`, and `dig`
+
+Already represented in current terminal PBQs:
+
 - `sfc`
 - `DISM`
 - `gpupdate`
 - `gpresult`
-- Linux commands such as `ls`, `cd`, `grep`, `chmod`, `chown`, `ps`, `kill`, `ip`, and `dig`
+- `netstat`
+- `tasklist`
+- `taskkill`
 
 ### Ticket PBQs
 
@@ -102,9 +133,12 @@ Add scenarios for:
 - backup restore decision
 - accidental file deletion
 - permissions or access denied
-- mobile email sync issue
 - social engineering report
 - change request with rollback plan
+
+Already represented in current ticket PBQs:
+
+- mobile email sync issue
 
 ## Two-Week Practice Cadence
 
@@ -139,10 +173,12 @@ Focus on:
 
 Pause architecture work if any of the following are true:
 
-- fewer than 10 Core 2 PBQs are available
+- fewer than 20 Core 2 PBQs are available
 - validation scripts are failing
 - existing PBQs are broken in the browser
 - the work does not directly help exam readiness
+
+The previous minimum stop threshold was 10 PBQs. The project now has 12 validated PBQs, so the next practical content milestone is 20.
 
 ## Next Recommended Content Batch
 
@@ -161,3 +197,15 @@ Add terminal scenarios for:
 3. `net use` drive mapping troubleshooting
 4. Linux permissions with `chmod` and `chown`
 5. Network path troubleshooting with `tracert` and `pathping`
+
+## Short-Term Goal
+
+Reach at least 20 validated Core 2 PBQs before returning to deeper runtime architecture work.
+
+Suggested target mix:
+
+```text
+Ticket PBQs:   12+
+Terminal PBQs: 8+
+Total PBQs:    20+
+```
