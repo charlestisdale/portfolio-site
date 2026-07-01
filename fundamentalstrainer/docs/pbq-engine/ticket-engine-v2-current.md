@@ -129,6 +129,7 @@ The PBQ Engine currently supports:
 
 - JSON-loaded scenarios from multiple data files
 - random practice mode across registered engines
+- random practice filtering by engine type: All, Ticket only, Terminal only
 - current scenario restart
 - current scenario grading
 - learner notes
@@ -158,14 +159,17 @@ Load PBQ page
   ↓
 Random PBQ is selected automatically
   ↓
+Learner may filter random practice by All, Ticket only, or Terminal only
+  ↓
 Learner works the scenario
   ↓
-Learner may restart current PBQ, grade current PBQ, or load a new random PBQ
+Learner may restart current PBQ, grade current PBQ, or load a new random PBQ from the active filter
 ```
 
 Current controls:
 
-- `New Random PBQ`: selects a random scenario from the loaded scenario pool. When more than one scenario exists, it avoids immediately repeating the currently loaded scenario.
+- `Practice Mode`: filters the random scenario pool. Supported values are All PBQs, Ticket PBQs only, and Terminal PBQs only.
+- `New Random PBQ`: selects a random scenario from the active filtered scenario pool. When more than one scenario exists, it avoids immediately repeating the currently loaded scenario.
 - `Restart Current PBQ`: restarts the currently loaded scenario without selecting a new one.
 - `Grade Scenario`: grades the currently loaded scenario and opens final review.
 
@@ -284,7 +288,7 @@ fundamentalstrainer/pbq-engine/data/core2/terminal.json
 fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
-`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios through the registry, and then randomly renders one selected scenario through the correct engine.
+`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios through the registry, optionally filters by the selected practice mode, and then randomly renders one selected scenario through the correct engine.
 
 The sprint data files are separate from the original baseline files so exam-focused content can be added quickly without destabilizing the original validated set.
 
@@ -404,7 +408,7 @@ Terminal scenarios currently support:
 
 ## Design Notes
 
-The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, random scenario selection, and engine startup.
+The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, practice filtering, random scenario selection, and engine startup.
 
 Shared learner workflow components belong in:
 
@@ -449,8 +453,8 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 Good next steps during the Core 2 sprint:
 
 1. Run the ticket and terminal validators against both the baseline and sprint data files.
-2. Browser-test random PBQ loading across multiple ticket and terminal scenarios.
-3. Add optional filters later if needed, such as Ticket only, Terminal only, or weak-area only.
+2. Browser-test random PBQ loading across All, Ticket only, and Terminal only practice modes.
+3. Add weak-area filtering later if it directly supports studying.
 4. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
 5. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
 6. Add additional ticket scenarios only when they cover exam-relevant gaps.
