@@ -146,6 +146,52 @@
   letter-spacing: .04em;
 }
 
+.investigation-note,
+.case-progress-card {
+  padding: .75rem;
+  border-radius: .85rem;
+  background: rgba(59, 130, 246, .09);
+  border: 1px solid rgba(96, 165, 250, .22);
+  line-height: 1.4;
+}
+
+.investigation-action:not(:disabled) {
+  border-color: rgba(148, 163, 184, .22);
+}
+
+.investigation-action:not(:disabled):hover {
+  border-color: rgba(96, 165, 250, .45);
+}
+
+.case-progress {
+  display: grid;
+  gap: .75rem;
+}
+
+.case-progress-card p,
+.status-note {
+  margin: .45rem 0 0;
+}
+
+.case-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem;
+}
+
+.case-progress-stats > div {
+  padding: .65rem;
+  border-radius: .75rem;
+  background: rgba(255, 255, 255, .035);
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.case-progress-stats strong {
+  display: block;
+  margin-top: .2rem;
+  font-size: 1.15rem;
+}
+
 .evidence-pane,
 .history-pane,
 .requirement-list {
