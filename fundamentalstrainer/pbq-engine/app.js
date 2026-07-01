@@ -6,7 +6,9 @@ import {
 
 const DATA_URLS = [
   "./data/core2/tickets.json",
-  "./data/core2/terminal.json"
+  "./data/core2/tickets-sprint.json",
+  "./data/core2/terminal.json",
+  "./data/core2/terminal-sprint.json"
 ];
 
 const elements = {
