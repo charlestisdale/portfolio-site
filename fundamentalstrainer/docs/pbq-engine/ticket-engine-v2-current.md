@@ -2,7 +2,7 @@
 
 ## Status
 
-PBQ Engine v2 now exists as a standalone simulation prototype under:
+PBQ Engine v2 exists as a standalone simulation prototype under:
 
 ```text
 fundamentalstrainer/pbq-engine/
@@ -17,7 +17,70 @@ ticket
 terminal
 ```
 
-The current page still uses the Phase 1 engine registry, but Phase 2 runtime foundation files now exist beside it as a non-breaking migration path.
+The current page still uses the Phase 1 engine registry, but Phase 2 runtime foundation files exist beside it as a non-breaking migration path.
+
+## Current Development Focus
+
+Temporary priority: **CompTIA A+ Core 2 exam readiness**.
+
+Until the exam is complete, development should prioritize:
+
+- new Core 2 PBQ scenarios
+- high-yield command practice
+- ticket troubleshooting workflows
+- malware, security, backup, and operational procedure scenarios
+- validation tooling
+- bug fixes
+- study workflow improvements
+
+Major runtime refactors, new engine types, and larger architecture changes should be deferred unless they directly improve Core 2 study effectiveness.
+
+## Current PBQ Inventory
+
+Current validated PBQ count:
+
+```text
+Ticket PBQs:   8
+Terminal PBQs: 4
+Total PBQs:    12
+```
+
+Current terminal PBQs:
+
+1. DNS name resolution troubleshooting
+2. Windows system file corruption repair with `sfc` and `DISM`
+3. Group Policy update and verification with `gpupdate` and `gpresult`
+4. Suspicious listening process investigation with `netstat`, `tasklist`, and `taskkill`
+
+## Validation Status
+
+Last confirmed validation result from local development environment:
+
+```text
+node pbq-engine/tools/validate-ticket-data.mjs
+Ticket data validation passed.
+Scenario count: 8
+
+node pbq-engine/tools/validate-terminal-data.mjs
+Terminal data validation passed.
+Scenario count: 4
+```
+
+Run both validators after editing PBQ scenario data.
+
+From the repository root:
+
+```bash
+node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
+node fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs
+```
+
+If already inside `fundamentalstrainer/`:
+
+```bash
+node pbq-engine/tools/validate-ticket-data.mjs
+node pbq-engine/tools/validate-terminal-data.mjs
+```
 
 ## Current Files
 
@@ -39,9 +102,11 @@ fundamentalstrainer/pbq-engine/validators/ticket-validator.js
 fundamentalstrainer/pbq-engine/validators/terminal-validator.js
 fundamentalstrainer/pbq-engine/schemas/ticket.schema.json
 fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
+fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
 fundamentalstrainer/pbq-engine/data/core2/terminal.json
 fundamentalstrainer/docs/pbq-engine/phase-2-runtime-architecture.md
+fundamentalstrainer/docs/pbq-engine/core-2-two-week-pbq-sprint.md
 ```
 
 ## Implemented Capabilities
@@ -65,6 +130,7 @@ The PBQ Engine currently supports:
 - engine registration through `engine-registry.js`
 - formal ticket scenario schema through `schemas/ticket.schema.json`
 - development ticket data validation through `tools/validate-ticket-data.mjs`
+- development terminal data validation through `tools/validate-terminal-data.mjs`
 - Phase 2 runtime skeleton files for future migration
 
 ## Phase 2 Runtime Foundation
@@ -75,7 +141,7 @@ The Phase 2 runtime architecture is documented at:
 fundamentalstrainer/docs/pbq-engine/phase-2-runtime-architecture.md
 ```
 
-The first non-breaking runtime files now exist:
+The first non-breaking runtime files exist:
 
 ```text
 fundamentalstrainer/pbq-engine/runtime/event-bus.js
@@ -116,7 +182,7 @@ The documentation component still accepts an optional `onSave` fallback for comp
 
 ## Shared Grading And Review
 
-Shared grading files now exist:
+Shared grading files exist:
 
 ```text
 fundamentalstrainer/pbq-engine/grading/grader.js
@@ -227,6 +293,8 @@ Ticket scenarios are loaded from:
 fundamentalstrainer/pbq-engine/data/core2/tickets.json
 ```
 
+Current ticket scenario count: **8**.
+
 ## Ticket Scenario Schema
 
 The formal ticket scenario schema lives at:
@@ -256,36 +324,6 @@ The runtime validator and the schema serve different purposes:
 - `ticket-validator.js` catches practical authoring mistakes in the browser, especially state-key mismatches that JSON Schema cannot easily validate by itself.
 - `tools/validate-ticket-data.mjs` provides a dependency-free development check before committing ticket content.
 
-## Development Validation Command
-
-Run the ticket data validation script from the repository root:
-
-```bash
-node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
-```
-
-If already inside `fundamentalstrainer/`, run:
-
-```bash
-node pbq-engine/tools/validate-ticket-data.mjs
-```
-
-The script checks:
-
-- valid JSON parsing
-- expected ticket schema structure
-- ticket scenario shape
-- required scenario fields
-- ticket metadata
-- initial state values
-- action IDs and duplicate IDs
-- action `requires` and `sets` references against `initialState`
-- penalty categories and point values
-- grading score values
-- required state references against `initialState`
-
-The script exits with a non-zero status when validation fails, so it can later be used by CI or a pre-commit workflow.
-
 ## Terminal Engine Prototype
 
 The Terminal Engine is the first non-ticket engine. It simulates command-line troubleshooting tasks inside the same PBQ shell.
@@ -308,22 +346,7 @@ Current Terminal Engine validator:
 fundamentalstrainer/pbq-engine/validators/terminal-validator.js
 ```
 
-The first terminal scenario is:
-
-```text
-core2-terminal-dns-troubleshooting-001
-```
-
-It practices Windows DNS troubleshooting using commands such as:
-
-```text
-ipconfig /all
-ping 8.8.8.8
-nslookup example.com
-ipconfig /flushdns
-```
-
-The final documentation requirement is completed through the shared documentation component, not through a fake terminal command.
+Current terminal scenario count: **4**.
 
 Terminal scenarios currently support:
 
@@ -425,14 +448,14 @@ Engine-specific schemas should eventually live in:
 fundamentalstrainer/pbq-engine/schemas/
 ```
 
-The Terminal Engine is intentionally a prototype. It is enough to prove the interaction model, but it does not yet have a formal JSON Schema or development validation script.
+The Terminal Engine is intentionally a prototype. It is enough to prove the interaction model, but it does not yet have a formal JSON Schema.
 
 ## Next Recommended Work
 
-Good next steps:
+Good next steps during the Core 2 sprint:
 
-1. Test Ticket and Terminal documentation saving after the event-bus migration.
-2. Make one engine internally use `state-manager.js` without changing visible behavior.
-3. Add a formal `terminal.schema.json` file.
-4. Add a development validation script for terminal scenarios or generalize the existing script into a multi-engine validator.
-5. Add save/resume behavior for active PBQ attempts using local storage.
+1. Add more high-yield Core 2 PBQ scenarios.
+2. Keep both validation scripts passing after every content change.
+3. Test new PBQs in the browser dropdown.
+4. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+5. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
