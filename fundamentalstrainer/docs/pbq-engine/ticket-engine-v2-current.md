@@ -130,7 +130,9 @@ The PBQ Engine currently supports:
 - stateful scenario execution
 - evidence collection
 - action/command history
-- progressive terminal hints after repeated unsuccessful commands
+- explicit terminal `hint` command with progressive scenario-aware hints
+- realistic unknown-command output for Windows/Linux-style terminals
+- forgiving terminal aliases for common incomplete commands such as `chkdsk`, `chkdsk /f`, `sfc`, `gpupdate`, and `shutdown /r`
 - penalties for unsafe, insecure, irrelevant, overly invasive, premature escalation, missed verification, missed documentation, or wrong-root-cause choices
 - shared required-state grading through `grading/grader.js`
 - shared final review rendering through `grading/review-renderer.js`
@@ -214,14 +216,21 @@ Current ticket scenario count: **13**.
 
 The Terminal Engine simulates command-line troubleshooting tasks inside the same PBQ shell.
 
-Terminal scenarios currently support prompt rendering, command input, command aliases, command output, command prerequisites through `requires`, state mutation through `sets`, evidence collection, command history, documentation, penalties, progressive hints, recognized-but-premature command feedback, shared required-state grading, and shared final review rendering.
+Terminal scenarios currently support prompt rendering, command input, command aliases, command output, command prerequisites through `requires`, state mutation through `sets`, evidence collection, command history, documentation, penalties, explicit hints, recognized-but-premature command feedback, shared required-state grading, and shared final review rendering.
 
-Current terminal hint behavior:
+Current terminal help/hint behavior:
 
-- After repeated unrecognized, unavailable, or penalty commands, the engine injects a hint into terminal output and action history.
+- Unknown commands now return OS-style errors instead of scenario answer text.
+- Windows-style terminals return messages like `'command' is not recognized as an internal or external command, operable program or batch file.`
+- Linux-style terminals return `command: command not found`.
+- After repeated unsuccessful attempts, the engine prompts the learner with `Need a hint? Type: hint`.
+- The engine does not automatically reveal hints after failed attempts.
+- Typing `hint` displays the next progressive hint.
+- Typing `help`, `?`, or `/?` displays terminal simulation help.
 - Hints are generated from the next incomplete required state and the next available good command.
 - Generic command-family hints exist for common Core 2 commands such as `net use`, `ipconfig`, `ping`, `nslookup`, `sfc`, `DISM`, `gpupdate`, `gpresult`, `netstat`, `tasklist`, `taskkill`, `bootrec`, `chkdsk`, `ls`, `chown`, and `chmod`.
 - Scenario authors may later add a `hint` field to individual commands for more precise hints, but existing JSON works without it.
+- Common learner shorthand is accepted for several commands without editing JSON, such as `chkdsk` for `chkdsk c:`, `chkdsk /f` for `chkdsk c: /f`, `sfc` for `sfc /scannow`, `gpupdate` for `gpupdate /force`, and `shutdown /r` for `shutdown /r /t 0`.
 
 Current Terminal Engine files:
 
@@ -324,7 +333,7 @@ Good next steps during the Core 2 sprint:
 2. Browser-test random PBQ loading across All, Ticket only, and Terminal only practice modes.
 3. Browser-test Exam Mode against both Ticket and Terminal scenarios.
 4. Browser-test session stats by grading multiple PBQs, restarting one, and resetting the session.
-5. Browser-test terminal hints on `net use`, DNS, Windows repair, Group Policy, and Linux permission scenarios.
+5. Browser-test terminal `hint`, `help`, realistic unknown-command output, and shorthand command acceptance on `chkdsk`, `net use`, DNS, Windows repair, Group Policy, and Linux permission scenarios.
 6. Add weak-area filtering later if it directly supports studying.
 7. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
 8. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
