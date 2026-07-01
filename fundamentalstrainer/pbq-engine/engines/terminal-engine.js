@@ -3,12 +3,110 @@ import { gradeRequiredStateScenario } from "../grading/grader.js";
 import { renderPbqReview } from "../grading/review-renderer.js";
 import { createEventBus, PBQ_EVENTS } from "../runtime/event-bus.js";
 
+const HINT_THRESHOLDS = [3, 5, 8];
+
+const COMMAND_HINTS = [
+  {
+    pattern: /^net use$/,
+    hint: "You may need to list the current mapped drives before changing anything.",
+    strongerHint: "For mapped drive issues, start by running net use to see existing drive mappings."
+  },
+  {
+    pattern: /^net use .+ \/delete$/,
+    hint: "After identifying a stale mapped drive, remove only that affected drive mapping.",
+    strongerHint: "Use net use with the drive letter and /delete to remove the stale mapping."
+  },
+  {
+    pattern: /^net use .+ \\\\.+/,
+    hint: "After removing a stale mapping, recreate the drive mapping to the correct share path.",
+    strongerHint: "Use net use with the drive letter, UNC share path, and /persistent:yes when the mapping should remain."
+  },
+  {
+    pattern: /^ipconfig/,
+    hint: "This scenario may require checking Windows IP or DNS settings.",
+    strongerHint: "Use ipconfig commands when the symptoms point to IP configuration or DNS resolver cache problems."
+  },
+  {
+    pattern: /^ping/,
+    hint: "A connectivity test can help confirm whether a host is reachable.",
+    strongerHint: "Use ping when you need to test basic reachability before moving deeper."
+  },
+  {
+    pattern: /^nslookup/,
+    hint: "A DNS lookup can help confirm whether a hostname resolves correctly.",
+    strongerHint: "Use nslookup when the issue sounds like name resolution rather than the service itself."
+  },
+  {
+    pattern: /^sfc/,
+    hint: "This scenario may involve checking Windows system file integrity.",
+    strongerHint: "Use sfc /scannow when symptoms point to corrupted Windows system files."
+  },
+  {
+    pattern: /^dism/,
+    hint: "If system file repair needs a healthy component store, DISM may be part of the workflow.",
+    strongerHint: "Use DISM restore health before rerunning SFC when the component store needs repair."
+  },
+  {
+    pattern: /^gpupdate/,
+    hint: "This scenario may involve refreshing Group Policy.",
+    strongerHint: "Use gpupdate /force when a policy change needs to be applied immediately."
+  },
+  {
+    pattern: /^gpresult/,
+    hint: "This scenario may require verifying which policies applied.",
+    strongerHint: "Use gpresult when you need evidence of applied user or computer policy."
+  },
+  {
+    pattern: /^netstat/,
+    hint: "This scenario may require checking active network connections or listening ports.",
+    strongerHint: "Use netstat with options that show listening ports and process IDs."
+  },
+  {
+    pattern: /^tasklist/,
+    hint: "After finding a process ID, identify which process owns it.",
+    strongerHint: "Use tasklist when you need to match a PID to a process name."
+  },
+  {
+    pattern: /^taskkill/,
+    hint: "After identifying a suspicious process, you may need to stop that process.",
+    strongerHint: "Use taskkill with the PID when the scenario supports terminating the suspicious process."
+  },
+  {
+    pattern: /^bootrec/,
+    hint: "This scenario may involve Windows Recovery boot repair commands.",
+    strongerHint: "Use bootrec commands when Windows will not boot and the boot records or BCD may be damaged."
+  },
+  {
+    pattern: /^chkdsk/,
+    hint: "This scenario may involve checking or repairing file-system errors.",
+    strongerHint: "Use chkdsk first to inspect the volume, then add repair options when evidence supports it."
+  },
+  {
+    pattern: /^ls /,
+    hint: "On Linux, inspect the file before changing ownership or permissions.",
+    strongerHint: "Use ls -l to view Linux ownership and permission bits."
+  },
+  {
+    pattern: /^sudo chown/,
+    hint: "The group owner may need to match the team that should access the file.",
+    strongerHint: "Use chown when ownership or group ownership is wrong."
+  },
+  {
+    pattern: /^sudo chmod/,
+    hint: "Apply least-privilege permissions after confirming ownership.",
+    strongerHint: "Use chmod to grant only the needed read/write/execute permissions."
+  }
+];
+
 export function createTerminalEngine({ scenario, elements }) {
   const state = {
     flags: {},
     history: [],
     evidence: [],
     penalties: [],
+    failedAttemptsSinceHint: 0,
+    totalFailedAttempts: 0,
+    hintsShown: 0,
     completed: false,
     documentation: null
   };
@@ -96,7 +194,7 @@ export function createTerminalEngine({ scenario, elements }) {
           <div class="terminal-line muted">${escapeHtml(welcome)}</div>
           ${state.history.map(item => `
             <div class="terminal-command-line"><span class="terminal-prompt">${escapeHtml(prompt)}</span> ${escapeHtml(item.input)}</div>
-            <pre class="terminal-result ${item.penalty ? "penalty" : item.good ? "good" : ""}">${escapeHtml(item.output)}</pre>
+            <pre class="terminal-result ${item.hint ? "hint" : item.penalty ? "penalty" : item.good ? "good" : ""}">${escapeHtml(item.output)}</pre>
           `).join("")}
         </div>
         <form class="terminal-form" id="terminalForm">
@@ -108,8 +206,11 @@ export function createTerminalEngine({ scenario, elements }) {
       </div>
     `;
 
+    const terminalOutput = document.getElementById("terminalOutput");
     const form = document.getElementById("terminalForm");
     const input = document.getElementById("terminalInput");
+
+    terminalOutput?.scrollTo({ top: terminalOutput.scrollHeight });
 
     form?.addEventListener("submit", event => {
       event.preventDefault();
@@ -144,8 +245,8 @@ export function createTerminalEngine({ scenario, elements }) {
 
     elements.historyPane.className = "history-pane";
     elements.historyPane.innerHTML = state.history.map((item, index) => `
-      <div class="history-item ${item.penalty ? "penalty" : item.good ? "good" : ""}">
-        <strong>${index + 1}. ${escapeHtml(item.input)}</strong>
+      <div class="history-item ${item.hint ? "hint" : item.penalty ? "penalty" : item.good ? "good" : ""}">
+        <strong>${index + 1}. ${escapeHtml(item.hint ? "Hint" : item.input)}</strong>
         <p>${escapeHtml(item.summary || item.output)}</p>
         ${item.penalty ? `<p><strong>Penalty:</strong> ${escapeHtml(item.penalty.reason || item.penalty.type)}</p>` : ""}
       </div>
@@ -207,6 +308,85 @@ export function createTerminalEngine({ scenario, elements }) {
     return (scenario.commands || []).find(command => commandIsAvailable(command) && commandMatches(command, input));
   }
 
+  function findKnownUnavailableCommand(input) {
+    return (scenario.commands || []).find(command => !commandIsAvailable(command) && commandMatches(command, input));
+  }
+
+  function nextIncompleteRequiredState() {
+    return (scenario.grading?.requiredStates || []).find(item => state.flags[item.key] !== item.value);
+  }
+
+  function nextAvailableGoodCommand() {
+    const requiredState = nextIncompleteRequiredState();
+    const commands = scenario.commands || [];
+
+    if (requiredState) {
+      const commandForRequiredState = commands.find(command => (
+        command.good === true
+        && commandIsAvailable(command)
+        && command.sets
+        && command.sets[requiredState.key] === requiredState.value
+      ));
+
+      if (commandForRequiredState) {
+        return commandForRequiredState;
+      }
+    }
+
+    return commands.find(command => command.good === true && commandIsAvailable(command));
+  }
+
+  function hintForCommand(command) {
+    if (!command) {
+      return "Review the scenario, then start with an information-gathering command before trying to fix anything.";
+    }
+
+    if (command.hint) {
+      return command.hint;
+    }
+
+    const normalizedCommand = normalizeCommand(command.command);
+    const matchedHint = COMMAND_HINTS.find(item => item.pattern.test(normalizedCommand));
+
+    if (!matchedHint) {
+      return `Think about what evidence you still need before running a repair command. The next useful command is related to: ${command.summary || command.command}`;
+    }
+
+    if (state.hintsShown >= 1 && matchedHint.strongerHint) {
+      return matchedHint.strongerHint;
+    }
+
+    return matchedHint.hint;
+  }
+
+  function maybeAddHint() {
+    const nextThreshold = HINT_THRESHOLDS[state.hintsShown];
+
+    if (!nextThreshold || state.failedAttemptsSinceHint < nextThreshold) {
+      return;
+    }
+
+    const command = nextAvailableGoodCommand();
+    const hint = hintForCommand(command);
+
+    state.history.push({
+      input: "hint",
+      output: `Hint: ${hint}`,
+      summary: hint,
+      hint: true,
+      good: false
+    });
+
+    state.failedAttemptsSinceHint = 0;
+    state.hintsShown += 1;
+  }
+
+  function recordFailedAttempt() {
+    state.failedAttemptsSinceHint += 1;
+    state.totalFailedAttempts += 1;
+    maybeAddHint();
+  }
+
   function runCommand(rawInput) {
     if (state.completed) {
       return;
@@ -220,12 +400,18 @@ export function createTerminalEngine({ scenario, elements }) {
     const command = findCommand(input);
 
     if (!command) {
+      const unavailableCommand = findKnownUnavailableCommand(input);
+      const output = unavailableCommand
+        ? "That command may be useful later, but the current evidence does not support running it yet. Gather or verify the required information first."
+        : scenario.terminal?.unknownCommandOutput || "The command is not recognized in this simulation.";
+
       state.history.push({
         input,
-        output: scenario.terminal?.unknownCommandOutput || "The command is not recognized in this simulation.",
-        summary: "Unrecognized or unavailable command.",
+        output,
+        summary: unavailableCommand ? "Recognized command, but not justified yet." : "Unrecognized or unavailable command.",
         good: false
       });
+      recordFailedAttempt();
       renderAll();
       return;
     }
@@ -241,6 +427,12 @@ export function createTerminalEngine({ scenario, elements }) {
       good: command.good === true,
       penalty
     });
+
+    if (penalty || command.good !== true) {
+      recordFailedAttempt();
+    } else {
+      state.failedAttemptsSinceHint = 0;
+    }
 
     elements.reviewPanel.hidden = true;
     renderAll();
@@ -295,6 +487,9 @@ export function createTerminalEngine({ scenario, elements }) {
     state.history = [];
     state.evidence = [];
     state.penalties = [];
+    state.failedAttemptsSinceHint = 0;
+    state.totalFailedAttempts = 0;
+    state.hintsShown = 0;
     state.completed = false;
     state.documentation = null;
     elements.learnerNotes.value = "";
