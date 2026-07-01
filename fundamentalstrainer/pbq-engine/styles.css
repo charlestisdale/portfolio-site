@@ -104,6 +104,36 @@
   cursor: not-allowed;
 }
 
+.session-stats-panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  gap: .75rem;
+  align-items: stretch;
+  margin-bottom: 1rem;
+  padding: .75rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .035);
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.session-stats-panel > div {
+  padding: .65rem;
+  border-radius: .75rem;
+  background: rgba(15, 23, 42, .45);
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.session-stats-panel strong {
+  display: block;
+  margin-top: .2rem;
+  font-size: 1.25rem;
+}
+
+.session-stats-panel .engine-button {
+  align-self: center;
+  white-space: nowrap;
+}
+
 .engine-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -478,7 +508,8 @@
   .engine-grid,
   .review-grid,
   .terminal-form,
-  .documentation-form {
+  .documentation-form,
+  .session-stats-panel {
     grid-template-columns: 1fr;
   }
 
