@@ -14,7 +14,8 @@ const DATA_URLS = [
 const elements = {
   loadStatus: document.getElementById("loadStatus"),
   validationPanel: document.getElementById("validationPanel"),
-  ticketSelect: document.getElementById("ticketSelect"),
+  currentScenarioLabel: document.getElementById("currentScenarioLabel"),
+  randomBtn: document.getElementById("randomBtn"),
   restartBtn: document.getElementById("restartBtn"),
   gradeBtn: document.getElementById("gradeBtn"),
   ticketMeta: document.getElementById("ticketMeta"),
@@ -28,21 +29,38 @@ const elements = {
 };
 
 let scenarios = [];
+let currentScenarioIndex = -1;
 let engine = null;
 
 function setStatus(message) {
   elements.loadStatus.textContent = message;
 }
 
-function populateScenarioSelect() {
-  elements.ticketSelect.innerHTML = "";
+function setCurrentScenarioLabel(scenario) {
+  if (!elements.currentScenarioLabel) {
+    return;
+  }
 
-  scenarios.forEach((scenario, index) => {
-    const option = document.createElement("option");
-    option.value = String(index);
-    option.textContent = `${scenario.title} (${scenario.engine})`;
-    elements.ticketSelect.appendChild(option);
-  });
+  if (!scenario) {
+    elements.currentScenarioLabel.textContent = "No PBQ loaded yet.";
+    return;
+  }
+
+  elements.currentScenarioLabel.textContent = `Current PBQ: ${scenario.title} (${scenario.engine})`;
+}
+
+function pickRandomScenarioIndex() {
+  if (scenarios.length <= 1) {
+    return 0;
+  }
+
+  let nextIndex = currentScenarioIndex;
+
+  while (nextIndex === currentScenarioIndex) {
+    nextIndex = Math.floor(Math.random() * scenarios.length);
+  }
+
+  return nextIndex;
 }
 
 function renderValidationWarnings(warnings) {
@@ -76,8 +94,15 @@ function collectValidationWarnings(loadedScenarios) {
   return loadedScenarios.flatMap((scenario, index) => validateScenario(scenario, index));
 }
 
-function loadSelectedScenario() {
-  const scenario = scenarios[Number(elements.ticketSelect.value)] || scenarios[0];
+function loadScenarioAtIndex(index) {
+  const scenario = scenarios[index] || scenarios[0];
+
+  if (!scenario) {
+    return;
+  }
+
+  currentScenarioIndex = scenarios.indexOf(scenario);
+  setCurrentScenarioLabel(scenario);
 
   engine = createEngineInstance({
     scenario,
@@ -85,6 +110,10 @@ function loadSelectedScenario() {
   });
 
   engine.start();
+}
+
+function loadRandomScenario() {
+  loadScenarioAtIndex(pickRandomScenarioIndex());
 }
 
 async function loadScenarioFile(dataUrl) {
@@ -119,18 +148,18 @@ async function loadScenarios() {
       console.warn("PBQ scenario validation warnings:", warnings);
     }
 
-    populateScenarioSelect();
     renderValidationWarnings(warnings);
-    setStatus(`Loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} from ${DATA_URLS.length} data source${DATA_URLS.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
-    loadSelectedScenario();
+    setStatus(`Random practice mode loaded ${scenarios.length} PBQ scenario${scenarios.length === 1 ? "" : "s"} from ${DATA_URLS.length} data source${DATA_URLS.length === 1 ? "" : "s"} for ${registeredEngineIds.length} registered engine${registeredEngineIds.length === 1 ? "" : "s"}${warnings.length ? ` with ${warnings.length} validation warning${warnings.length === 1 ? "" : "s"}` : ""}.`);
+    loadRandomScenario();
   } catch (error) {
     console.error(error);
     setStatus("PBQ Engine failed to load. Check the scenario data and registered engines.");
+    setCurrentScenarioLabel(null);
     renderValidationWarnings([error.message]);
   }
 }
 
-elements.ticketSelect.addEventListener("change", loadSelectedScenario);
+elements.randomBtn?.addEventListener("click", loadRandomScenario);
 elements.restartBtn.addEventListener("click", () => engine?.start());
 elements.gradeBtn.addEventListener("click", () => engine?.grade());
 
