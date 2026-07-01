@@ -18,62 +18,83 @@ Build and stabilize Core 2 practice around:
 - change management and documentation
 - operational procedure tickets
 
-## Current Validated PBQ Inventory
+## Current PBQ Inventory
 
-Current confirmed scenario counts:
-
-```text
-Ticket PBQs:   8
-Terminal PBQs: 4
-Total PBQs:    12
-```
-
-Last confirmed local validation:
+Current browser-loaded scenario counts after the sprint content batch:
 
 ```text
-node pbq-engine/tools/validate-ticket-data.mjs
-Ticket data validation passed.
-Scenario count: 8
-
-node pbq-engine/tools/validate-terminal-data.mjs
-Terminal data validation passed.
-Scenario count: 4
+Ticket PBQs:   13
+Terminal PBQs: 8
+Total PBQs:    21
 ```
 
-Both validators should stay green throughout the sprint.
+This clears the short-term 20+ PBQ milestone while staying in exam-focused content mode.
+
+## Current Data Files
+
+The PBQ runtime currently loads:
+
+```text
+fundamentalstrainer/pbq-engine/data/core2/tickets.json
+fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
+fundamentalstrainer/pbq-engine/data/core2/terminal.json
+fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
+```
+
+The sprint files keep new exam-focused content separate from the original baseline data files.
+
+## Current Ticket PBQ Coverage
+
+Implemented ticket PBQs:
+
+1. Slow Windows PC
+2. Browser hijacker / malware removal flow
+3. Domain password reset
+4. Printer spooler troubleshooting
+5. Secure website certificate warning
+6. BitLocker recovery
+7. Black screen after Windows update
+8. Mobile email sync after password change
+9. Shared folder permissions
+10. Backup restore after accidental deletion
+11. VPN cannot connect / MFA registration issue
+12. Social engineering / vishing incident report
+13. Failed Windows Update with low disk space
 
 ## Current Terminal PBQ Coverage
 
-The terminal PBQ data file is:
+Implemented terminal PBQs:
 
-```text
-fundamentalstrainer/pbq-engine/data/core2/terminal.json
-```
-
-Current terminal PBQs:
-
-1. DNS name resolution troubleshooting
-2. Windows system file corruption repair with `sfc` and `DISM`
+1. DNS name resolution troubleshooting with `ipconfig`, `ping`, `nslookup`, and `ipconfig /flushdns`
+2. Windows system file corruption repair with `sfc`, `DISM`, and `shutdown`
 3. Group Policy update and verification with `gpupdate` and `gpresult`
 4. Suspicious listening process investigation with `netstat`, `tasklist`, and `taskkill`
+5. Windows startup repair with `bootrec`
+6. File-system repair with `chkdsk`
+7. Mapped drive troubleshooting with `net use`
+8. Linux permissions with `ls`, `chown`, and `chmod`
 
 ## Validation Commands
+
+Run both baseline files and sprint files after adding or editing PBQ data.
 
 From the repository root:
 
 ```bash
 node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs
+node fundamentalstrainer/pbq-engine/tools/validate-ticket-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/tickets-sprint.json
 node fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs
+node fundamentalstrainer/pbq-engine/tools/validate-terminal-data.mjs --data=fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
 If already inside `fundamentalstrainer/`:
 
 ```bash
 node pbq-engine/tools/validate-ticket-data.mjs
+node pbq-engine/tools/validate-ticket-data.mjs --data=pbq-engine/data/core2/tickets-sprint.json
 node pbq-engine/tools/validate-terminal-data.mjs
+node pbq-engine/tools/validate-terminal-data.mjs --data=pbq-engine/data/core2/terminal-sprint.json
 ```
-
-Run these after adding or editing PBQ data.
 
 ## Study-First Development Rules
 
@@ -90,55 +111,56 @@ Until the exam is passed:
 
 ## High-Yield PBQ Targets
 
-### Terminal PBQs
+### Already represented well enough for the first sprint milestone
 
-Add scenarios for:
-
-- `chkdsk`
-- `diskpart`
-- `bootrec`
-- `shutdown`
-- `robocopy`
-- `xcopy`
-- `net use`
-- `net user`
-- `net localgroup`
-- `tracert`
-- `pathping`
-- `ping`
-- `ipconfig`
-- `nslookup`
-- Linux commands such as `ls`, `cd`, `grep`, `chmod`, `chown`, `ps`, `kill`, `ip`, and `dig`
-
-Already represented in current terminal PBQs:
-
+- malware removal process
+- browser redirect or pop-up infection
+- failed Windows Update
+- printer spooler failure
+- shared folder permissions
+- backup restore decision
+- accidental file deletion
+- BitLocker recovery key request
+- password reset
+- VPN issue
+- slow PC
+- social engineering report
 - `sfc`
 - `DISM`
+- `shutdown`
 - `gpupdate`
 - `gpresult`
 - `netstat`
 - `tasklist`
 - `taskkill`
+- `bootrec`
+- `chkdsk`
+- `net use`
+- Linux `ls`, `chown`, and `chmod`
 
-### Ticket PBQs
+### Remaining useful terminal targets
 
 Add scenarios for:
 
-- malware removal process
-- browser redirect or pop-up infection
+- `diskpart`
+- `robocopy`
+- `xcopy`
+- `net user`
+- `net localgroup`
+- `tracert`
+- `pathping`
+- Linux process management with `ps` and `kill`
+- Linux networking with `ip` and `dig`
+
+### Remaining useful ticket targets
+
+Add scenarios for:
+
+- Outlook profile or cached-credential issue
 - user profile corruption
-- BitLocker recovery key request
-- failed Windows Update
-- printer spooler failure
-- backup restore decision
-- accidental file deletion
-- permissions or access denied
-- social engineering report
 - change request with rollback plan
-
-Already represented in current ticket PBQs:
-
-- mobile email sync issue
+- software installation blocked by policy
+- mobile app permissions/privacy issue
 
 ## Two-Week Practice Cadence
 
@@ -173,39 +195,38 @@ Focus on:
 
 Pause architecture work if any of the following are true:
 
-- fewer than 20 Core 2 PBQs are available
 - validation scripts are failing
 - existing PBQs are broken in the browser
 - the work does not directly help exam readiness
 
-The previous minimum stop threshold was 10 PBQs. The project now has 12 validated PBQs, so the next practical content milestone is 20.
+The previous minimum content milestone was 20 Core 2 PBQs. The project now has 21 browser-loaded Core 2 PBQs, so the next sprint priority is stability, browser testing, and filling remaining command gaps rather than runtime migration.
 
 ## Next Recommended Content Batch
 
-Add ticket scenarios for:
-
-1. Malware browser redirect remediation
-2. Failed Windows Update repair
-3. Printer spooler troubleshooting
-4. User cannot access a shared folder
-5. Backup restore after accidental deletion
-
 Add terminal scenarios for:
 
-1. `bootrec` startup repair
-2. `chkdsk` disk error workflow
-3. `net use` drive mapping troubleshooting
-4. Linux permissions with `chmod` and `chown`
-5. Network path troubleshooting with `tracert` and `pathping`
+1. `tracert` and `pathping` network path troubleshooting
+2. `diskpart` partition/volume inspection
+3. `robocopy` backup/copy workflow
+4. `xcopy` copy workflow
+5. `net user` and `net localgroup` local account/group management
+
+Add ticket scenarios for:
+
+1. Outlook profile or cached credential issue
+2. User profile corruption
+3. Change request with rollback plan
 
 ## Short-Term Goal
 
-Reach at least 20 validated Core 2 PBQs before returning to deeper runtime architecture work.
+The 20+ validated/browser-loaded PBQ milestone is reached in content count.
 
-Suggested target mix:
+Before returning to architecture work, confirm:
 
 ```text
-Ticket PBQs:   12+
-Terminal PBQs: 8+
-Total PBQs:    20+
+Ticket PBQs:   13
+Terminal PBQs: 8
+Total PBQs:    21
 ```
+
+Then run the validation commands and test the new sprint scenarios in the browser dropdown.
