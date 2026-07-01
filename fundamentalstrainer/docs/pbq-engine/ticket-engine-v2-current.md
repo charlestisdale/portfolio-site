@@ -138,6 +138,7 @@ The PBQ Engine currently supports:
 - stateful scenario execution
 - evidence collection
 - action/command history
+- progressive terminal hints after repeated unsuccessful commands
 - penalties for unsafe, insecure, irrelevant, overly invasive, premature escalation, missed verification, missed documentation, or wrong-root-cause choices
 - shared required-state grading through `grading/grader.js`
 - shared final review rendering through `grading/review-renderer.js`
@@ -403,8 +404,17 @@ Terminal scenarios currently support:
 - shared documentation component
 - documentation saved event handling
 - penalties
+- progressive hints after repeated unsuccessful commands
+- recognized-but-premature command feedback when a command exists but its prerequisites are not met
 - shared required-state grading
 - shared final review rendering
+
+Current terminal hint behavior:
+
+- After repeated unrecognized, unavailable, or penalty commands, the engine injects a hint into terminal output and action history.
+- Hints are generated from the next incomplete required state and the next available good command.
+- Generic command-family hints exist for common Core 2 commands such as `net use`, `ipconfig`, `ping`, `nslookup`, `sfc`, `DISM`, `gpupdate`, `gpresult`, `netstat`, `tasklist`, `taskkill`, `bootrec`, `chkdsk`, `ls`, `chown`, and `chmod`.
+- Scenario authors may later add a `hint` field to individual commands for more precise hints, but existing JSON works without it.
 
 ## Design Notes
 
@@ -454,9 +464,10 @@ Good next steps during the Core 2 sprint:
 
 1. Run the ticket and terminal validators against both the baseline and sprint data files.
 2. Browser-test random PBQ loading across All, Ticket only, and Terminal only practice modes.
-3. Add weak-area filtering later if it directly supports studying.
-4. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
-5. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
-6. Add additional ticket scenarios only when they cover exam-relevant gaps.
-7. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
-8. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
+3. Browser-test terminal hints on `net use`, DNS, Windows repair, Group Policy, and Linux permission scenarios.
+4. Add weak-area filtering later if it directly supports studying.
+5. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
+6. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
+7. Add additional ticket scenarios only when they cover exam-relevant gaps.
+8. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+9. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
