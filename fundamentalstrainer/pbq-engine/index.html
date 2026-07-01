@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PBQ Engine v2 | Charles Tisdale</title>
-  <meta name="description" content="Standalone PBQ Engine v2 for stateful ticket-based performance-based question simulations." />
+  <meta name="description" content="Standalone PBQ Engine v2 for stateful performance-based question simulations." />
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -37,15 +37,16 @@
           <h2>Scenario</h2>
           <div id="ticketMeta"></div>
           <div class="ticket-progress">
-            <h3>Required Outcomes</h3>
+            <h3>Progress</h3>
             <div id="requirementsPane" class="requirement-list empty-pane">No scenario loaded yet.</div>
           </div>
         </aside>
 
         <section class="work-panel">
           <div class="engine-toolbar">
-            <select id="ticketSelect" class="engine-select" aria-label="Select PBQ scenario"></select>
-            <button id="restartBtn" class="engine-button">Restart Scenario</button>
+            <div id="currentScenarioLabel" class="current-scenario-label" aria-live="polite">No PBQ loaded yet.</div>
+            <button id="randomBtn" class="engine-button">New Random PBQ</button>
+            <button id="restartBtn" class="engine-button">Restart Current PBQ</button>
             <button id="gradeBtn" class="engine-button primary">Grade Scenario</button>
           </div>
 
