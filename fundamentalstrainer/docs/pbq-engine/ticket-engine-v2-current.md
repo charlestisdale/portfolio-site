@@ -128,8 +128,9 @@ fundamentalstrainer/docs/pbq-engine/core-2-two-week-pbq-sprint.md
 The PBQ Engine currently supports:
 
 - JSON-loaded scenarios from multiple data files
-- scenario selection across registered engines
-- restartable scenarios
+- random practice mode across registered engines
+- current scenario restart
+- current scenario grading
 - learner notes
 - formal ticket documentation component
 - documentation saved events through `PBQ_EVENTS.DOCUMENTATION_SAVED`
@@ -145,6 +146,30 @@ The PBQ Engine currently supports:
 - development ticket data validation through `tools/validate-ticket-data.mjs`
 - development terminal data validation through `tools/validate-terminal-data.mjs`
 - Phase 2 runtime skeleton files for future migration
+
+## Random Practice Mode
+
+The PBQ page no longer uses a scenario dropdown as the primary learner workflow.
+
+Current learner-facing flow:
+
+```text
+Load PBQ page
+  ↓
+Random PBQ is selected automatically
+  ↓
+Learner works the scenario
+  ↓
+Learner may restart current PBQ, grade current PBQ, or load a new random PBQ
+```
+
+Current controls:
+
+- `New Random PBQ`: selects a random scenario from the loaded scenario pool. When more than one scenario exists, it avoids immediately repeating the currently loaded scenario.
+- `Restart Current PBQ`: restarts the currently loaded scenario without selecting a new one.
+- `Grade Scenario`: grades the currently loaded scenario and opens final review.
+
+The page still displays the current PBQ title and engine type so the learner knows what was loaded, but the learner no longer browses PBQs from a dropdown.
 
 ## Phase 2 Runtime Foundation
 
@@ -165,13 +190,6 @@ fundamentalstrainer/pbq-engine/runtime/runtime.js
 
 These files are intentionally not the primary execution path yet. They are the foundation for moving from separate engines toward one runtime that manages reusable components.
 
-Current runtime foundation responsibilities:
-
-- `event-bus.js`: publish/subscribe event system and standard PBQ event names
-- `state-manager.js`: structured runtime state with `get`, `set`, `merge`, `reset`, and `serialize`
-- `component-manager.js`: component registration and lifecycle mounting
-- `runtime.js`: orchestrator skeleton that creates event bus, state manager, and component manager
-
 ## Event Bus Migration Status
 
 The first live event-bus migration is complete for documentation saves.
@@ -188,8 +206,6 @@ Ticket / Terminal Engine
   updates state.flags.documented
   refreshes progress / required outcomes
 ```
-
-This replaces the previous direct `onSave` callback path in the active engines while preserving the same learner-facing behavior.
 
 ## Shared Grading And Review
 
@@ -268,7 +284,7 @@ fundamentalstrainer/pbq-engine/data/core2/terminal.json
 fundamentalstrainer/pbq-engine/data/core2/terminal-sprint.json
 ```
 
-`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios through the registry, and then renders the selected scenario through the correct engine.
+`app.js` combines those arrays, filters by registered engines, validates the loaded scenarios through the registry, and then randomly renders one selected scenario through the correct engine.
 
 The sprint data files are separate from the original baseline files so exam-focused content can be added quickly without destabilizing the original validated set.
 
@@ -386,53 +402,9 @@ Terminal scenarios currently support:
 - shared required-state grading
 - shared final review rendering
 
-## Terminal Scenario Shape
-
-A terminal scenario should use this general shape:
-
-```json
-{
-  "id": "core2-terminal-example-001",
-  "engine": "terminal",
-  "title": "Troubleshoot an example issue from Command Prompt",
-  "description": "Use simulated commands to identify and verify the issue.",
-  "terminal": {
-    "environment": "Windows Command Prompt",
-    "prompt": "C:\\Users\\Student>",
-    "welcome": "Type a command to begin.",
-    "unknownCommandOutput": "This command is not recognized in this simulation."
-  },
-  "initialState": {
-    "evidenceCollected": false,
-    "issueIdentified": false,
-    "fixVerified": false,
-    "documented": false
-  },
-  "commands": [
-    {
-      "command": "ipconfig /all",
-      "aliases": ["ipconfig"],
-      "output": "Simulated command output.",
-      "summary": "Short history-pane summary.",
-      "sets": { "evidenceCollected": true },
-      "good": true
-    }
-  ],
-  "grading": {
-    "maxScore": 100,
-    "passingScore": 75,
-    "pointsPerMissingState": 15,
-    "requiredStates": [
-      { "key": "evidenceCollected", "value": true, "label": "Collected evidence" },
-      { "key": "documented", "value": true, "label": "Saved ticket documentation" }
-    ]
-  }
-}
-```
-
 ## Design Notes
 
-The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, scenario selection, and engine startup.
+The PBQ Engine remains a multi-engine shell. `app.js` should stay generic and only coordinate loading, validation, random scenario selection, and engine startup.
 
 Shared learner workflow components belong in:
 
@@ -477,9 +449,10 @@ The Terminal Engine is intentionally a prototype. It is enough to prove the inte
 Good next steps during the Core 2 sprint:
 
 1. Run the ticket and terminal validators against both the baseline and sprint data files.
-2. Browser-test the redesigned Ticket Engine against multiple ticket scenarios.
-3. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
-4. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
-5. Add additional ticket scenarios only when they cover exam-relevant gaps.
-6. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
-7. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
+2. Browser-test random PBQ loading across multiple ticket and terminal scenarios.
+3. Add optional filters later if needed, such as Ticket only, Terminal only, or weak-area only.
+4. Add distractor actions to older ticket scenarios where the full action pool still feels too obvious.
+5. Add the next terminal batch for `tracert`, `pathping`, `diskpart`, `xcopy`, `robocopy`, `net user`, and `net localgroup`.
+6. Add additional ticket scenarios only when they cover exam-relevant gaps.
+7. Add formal `terminal.schema.json` only if it speeds up reliable PBQ authoring.
+8. Defer deeper runtime migration until after the exam unless it directly improves study workflow.
