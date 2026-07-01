@@ -3,98 +3,160 @@ import { gradeRequiredStateScenario } from "../grading/grader.js";
 import { renderPbqReview } from "../grading/review-renderer.js";
 import { createEventBus, PBQ_EVENTS } from "../runtime/event-bus.js";
 
-const HINT_THRESHOLDS = [3, 5, 8];
+const HINT_PROMPT_THRESHOLD = 3;
 
 const COMMAND_HINTS = [
   {
     pattern: /^net use$/,
-    hint: "You may need to list the current mapped drives before changing anything.",
-    strongerHint: "For mapped drive issues, start by running net use to see existing drive mappings."
+    hints: [
+      "Think about how Windows shows existing mapped network drives.",
+      "For mapped drive issues, first list the current drive mappings.",
+      "Try the command that lists current network drive mappings: net use"
+    ]
   },
   {
     pattern: /^net use .+ \/delete$/,
-    hint: "After identifying a stale mapped drive, remove only that affected drive mapping.",
-    strongerHint: "Use net use with the drive letter and /delete to remove the stale mapping."
+    hints: [
+      "You found a stale mapping. Think about removing only the affected drive mapping.",
+      "Do not delete every mapped drive. Target the disconnected drive letter.",
+      "Use net use with the affected drive letter and /delete."
+    ]
   },
   {
     pattern: /^net use .+ \\\\.+/,
-    hint: "After removing a stale mapping, recreate the drive mapping to the correct share path.",
-    strongerHint: "Use net use with the drive letter, UNC share path, and /persistent:yes when the mapping should remain."
+    hints: [
+      "After removing the stale mapping, recreate the mapping to the correct share path.",
+      "Mapped drives use a drive letter and a UNC path that starts with two backslashes.",
+      "Use net use with the drive letter, the correct UNC share, and /persistent:yes if it should remain."
+    ]
   },
   {
     pattern: /^ipconfig/,
-    hint: "This scenario may require checking Windows IP or DNS settings.",
-    strongerHint: "Use ipconfig commands when the symptoms point to IP configuration or DNS resolver cache problems."
+    hints: [
+      "Think about a command that displays Windows IP configuration.",
+      "If the issue involves IP settings or DNS cache, ipconfig is usually involved.",
+      "Use the ipconfig option that matches the task: view settings, show all details, or flush DNS."
+    ]
   },
   {
     pattern: /^ping/,
-    hint: "A connectivity test can help confirm whether a host is reachable.",
-    strongerHint: "Use ping when you need to test basic reachability before moving deeper."
+    hints: [
+      "You may need to test whether another host is reachable.",
+      "A basic ICMP reachability test can separate connectivity from name resolution.",
+      "Use ping with the host or address you need to test."
+    ]
   },
   {
     pattern: /^nslookup/,
-    hint: "A DNS lookup can help confirm whether a hostname resolves correctly.",
-    strongerHint: "Use nslookup when the issue sounds like name resolution rather than the service itself."
+    hints: [
+      "Think about a command that checks DNS name resolution.",
+      "If the hostname is suspicious, test DNS resolution directly.",
+      "Use nslookup with the hostname."
+    ]
   },
   {
     pattern: /^sfc/,
-    hint: "This scenario may involve checking Windows system file integrity.",
-    strongerHint: "Use sfc /scannow when symptoms point to corrupted Windows system files."
+    hints: [
+      "This scenario may involve corrupted Windows system files.",
+      "Think about the Windows command that scans protected system files.",
+      "Use sfc /scannow when system file corruption is suspected."
+    ]
   },
   {
     pattern: /^dism/,
-    hint: "If system file repair needs a healthy component store, DISM may be part of the workflow.",
-    strongerHint: "Use DISM restore health before rerunning SFC when the component store needs repair."
+    hints: [
+      "If SFC cannot repair files, the Windows component store may need repair.",
+      "DISM can repair the Windows image that SFC relies on.",
+      "Use the DISM restore health workflow before rerunning SFC when the component store is damaged."
+    ]
   },
   {
     pattern: /^gpupdate/,
-    hint: "This scenario may involve refreshing Group Policy.",
-    strongerHint: "Use gpupdate /force when a policy change needs to be applied immediately."
+    hints: [
+      "This scenario may involve applying Group Policy immediately.",
+      "Think about the command that refreshes Group Policy.",
+      "Use gpupdate /force when a policy change needs to apply now."
+    ]
   },
   {
     pattern: /^gpresult/,
-    hint: "This scenario may require verifying which policies applied.",
-    strongerHint: "Use gpresult when you need evidence of applied user or computer policy."
+    hints: [
+      "After applying policy, you may need evidence of what actually applied.",
+      "Think about the command that reports Resultant Set of Policy.",
+      "Use gpresult to verify applied user or computer policy."
+    ]
   },
   {
     pattern: /^netstat/,
-    hint: "This scenario may require checking active network connections or listening ports.",
-    strongerHint: "Use netstat with options that show listening ports and process IDs."
+    hints: [
+      "This scenario may involve checking listening ports or active connections.",
+      "You may need a command that can show ports and process IDs.",
+      "Use netstat with options that show listening ports and PIDs."
+    ]
   },
   {
     pattern: /^tasklist/,
-    hint: "After finding a process ID, identify which process owns it.",
-    strongerHint: "Use tasklist when you need to match a PID to a process name."
+    hints: [
+      "After finding a PID, identify which process owns it.",
+      "Think about the command that lists running processes.",
+      "Use tasklist when you need to match a PID to a process name."
+    ]
   },
   {
     pattern: /^taskkill/,
-    hint: "After identifying a suspicious process, you may need to stop that process.",
-    strongerHint: "Use taskkill with the PID when the scenario supports terminating the suspicious process."
+    hints: [
+      "After identifying a suspicious process, the next step may be stopping it.",
+      "Use the process ID rather than guessing by name when the evidence gives you a PID.",
+      "Use taskkill with the PID when the scenario supports terminating the suspicious process."
+    ]
   },
   {
     pattern: /^bootrec/,
-    hint: "This scenario may involve Windows Recovery boot repair commands.",
-    strongerHint: "Use bootrec commands when Windows will not boot and the boot records or BCD may be damaged."
+    hints: [
+      "This scenario is in Windows Recovery, so normal in-OS repair tools may not be the first step.",
+      "Think about the Windows Recovery command that repairs boot records and BCD.",
+      "Use bootrec commands when Windows will not boot and the boot records or BCD may be damaged."
+    ]
   },
   {
-    pattern: /^chkdsk/,
-    hint: "This scenario may involve checking or repairing file-system errors.",
-    strongerHint: "Use chkdsk first to inspect the volume, then add repair options when evidence supports it."
+    pattern: /^chkdsk\s+c:$/,
+    hints: [
+      "Think about the Windows utility that checks a disk volume for file-system problems.",
+      "The command begins with chk and checks the disk.",
+      "Try chkdsk first to inspect the volume before repairing it."
+    ]
+  },
+  {
+    pattern: /^chkdsk\s+c:\s+\/f$/,
+    hints: [
+      "The disk has been checked. Now think about the switch that fixes file-system errors.",
+      "CHKDSK repair uses the /f switch.",
+      "Use chkdsk with the target volume and /f to schedule or perform repair."
+    ]
   },
   {
     pattern: /^ls /,
-    hint: "On Linux, inspect the file before changing ownership or permissions.",
-    strongerHint: "Use ls -l to view Linux ownership and permission bits."
+    hints: [
+      "On Linux, inspect the file before changing ownership or permissions.",
+      "You need to see ownership and permission bits.",
+      "Use ls -l to view Linux ownership and permissions."
+    ]
   },
   {
     pattern: /^sudo chown/,
-    hint: "The group owner may need to match the team that should access the file.",
-    strongerHint: "Use chown when ownership or group ownership is wrong."
+    hints: [
+      "The group owner may need to match the team that should access the file.",
+      "Think about the command that changes owner or group ownership.",
+      "Use chown when ownership or group ownership is wrong."
+    ]
   },
   {
     pattern: /^sudo chmod/,
-    hint: "Apply least-privilege permissions after confirming ownership.",
-    strongerHint: "Use chmod to grant only the needed read/write/execute permissions."
+    hints: [
+      "After ownership is correct, apply least-privilege permissions.",
+      "Think about the command that changes Linux permission bits.",
+      "Use chmod to grant only the needed read, write, and execute permissions."
+    ]
   }
 ];
 
@@ -104,8 +166,9 @@ export function createTerminalEngine({ scenario, elements }) {
     history: [],
     evidence: [],
     penalties: [],
-    failedAttemptsSinceHint: 0,
+    failedAttemptsSinceHintPrompt: 0,
     totalFailedAttempts: 0,
+    hintPromptsShown: 0,
     hintsShown: 0,
     completed: false,
     documentation: null
@@ -132,6 +195,15 @@ export function createTerminalEngine({ scenario, elements }) {
     return String(value || "").trim().replace(/\s+/g, " ").toLowerCase();
   }
 
+  function baseCommand(value) {
+    return normalizeCommand(value).split(" ")[0] || "command";
+  }
+
+  function terminalIsWindows() {
+    const environment = `${scenario.terminal?.environment || ""} ${scenario.terminal?.prompt || ""}`.toLowerCase();
+    return !environment.includes("linux") && !environment.includes("bash");
+  }
+
   function commandIsAvailable(command) {
     if (!command.requires) {
       return true;
@@ -140,10 +212,48 @@ export function createTerminalEngine({ scenario, elements }) {
     return Object.entries(command.requires).every(([key, value]) => state.flags[key] === value);
   }
 
+  function implicitAliases(commandText) {
+    const normalized = normalizeCommand(commandText);
+    const aliases = [];
+
+    if (normalized === "chkdsk c:") {
+      aliases.push("chkdsk");
+    }
+
+    if (normalized === "chkdsk c: /f") {
+      aliases.push("chkdsk /f");
+    }
+
+    if (normalized === "gpupdate /force") {
+      aliases.push("gpupdate");
+    }
+
+    if (normalized === "sfc /scannow") {
+      aliases.push("sfc");
+    }
+
+    if (normalized.includes("dism") && normalized.includes("restorehealth")) {
+      aliases.push("dism /restorehealth");
+    }
+
+    if (normalized === "shutdown /r /t 0") {
+      aliases.push("shutdown /r");
+    }
+
+    return aliases;
+  }
+
+  function acceptedCommands(command) {
+    return [
+      command.command,
+      ...(command.aliases || []),
+      ...implicitAliases(command.command)
+    ].map(normalizeCommand);
+  }
+
   function commandMatches(command, input) {
     const normalizedInput = normalizeCommand(input);
-    const accepted = [command.command, ...(command.aliases || [])].map(normalizeCommand);
-    return accepted.includes(normalizedInput);
+    return acceptedCommands(command).includes(normalizedInput);
   }
 
   function renderScenarioMeta() {
@@ -342,7 +452,7 @@ export function createTerminalEngine({ scenario, elements }) {
 
   function hintForCommand(command) {
     if (!command) {
-      return "Review the scenario, then start with an information-gathering command before trying to fix anything.";
+      return "Review the scenario and start with a command that gathers evidence before trying to fix anything.";
     }
 
     if (command.hint) {
@@ -353,42 +463,92 @@ export function createTerminalEngine({ scenario, elements }) {
     const matchedHint = COMMAND_HINTS.find(item => item.pattern.test(normalizedCommand));
 
     if (!matchedHint) {
-      return `Think about what evidence you still need before running a repair command. The next useful command is related to: ${command.summary || command.command}`;
+      return `Think about what evidence you still need. The next useful command is related to: ${command.summary || command.command}`;
     }
 
-    if (state.hintsShown >= 1 && matchedHint.strongerHint) {
-      return matchedHint.strongerHint;
-    }
-
-    return matchedHint.hint;
+    const hintIndex = Math.min(state.hintsShown, matchedHint.hints.length - 1);
+    return matchedHint.hints[hintIndex];
   }
 
-  function maybeAddHint() {
-    const nextThreshold = HINT_THRESHOLDS[state.hintsShown];
+  function addHintOutput(message) {
+    state.history.push({
+      input: "hint",
+      output: `Hint: ${message}`,
+      summary: message,
+      hint: true,
+      good: false
+    });
+  }
 
-    if (!nextThreshold || state.failedAttemptsSinceHint < nextThreshold) {
+  function showHint() {
+    const command = nextAvailableGoodCommand();
+    const hint = hintForCommand(command);
+    addHintOutput(hint);
+    state.failedAttemptsSinceHintPrompt = 0;
+    state.hintPromptsShown = 0;
+    state.hintsShown += 1;
+  }
+
+  function maybePromptForHint() {
+    if (state.failedAttemptsSinceHintPrompt < HINT_PROMPT_THRESHOLD || state.hintPromptsShown > 0) {
       return;
     }
 
-    const command = nextAvailableGoodCommand();
-    const hint = hintForCommand(command);
-
     state.history.push({
-      input: "hint",
-      output: `Hint: ${hint}`,
-      summary: hint,
+      input: "notice",
+      output: "Need a hint? Type: hint",
+      summary: "Need a hint? Type: hint",
       hint: true,
       good: false
     });
 
-    state.failedAttemptsSinceHint = 0;
-    state.hintsShown += 1;
+    state.hintPromptsShown += 1;
   }
 
   function recordFailedAttempt() {
-    state.failedAttemptsSinceHint += 1;
+    state.failedAttemptsSinceHintPrompt += 1;
     state.totalFailedAttempts += 1;
-    maybeAddHint();
+    maybePromptForHint();
+  }
+
+  function unknownCommandOutput(input) {
+    const commandName = baseCommand(input);
+
+    if (terminalIsWindows()) {
+      return `'${commandName}' is not recognized as an internal or external command,\noperable program or batch file.`;
+    }
+
+    return `${commandName}: command not found`;
+  }
+
+  function unavailableCommandOutput() {
+    return "That command may be useful later, but the current evidence does not support running it yet. Gather or verify the required information first.";
+  }
+
+  function helpOutput() {
+    const environment = scenario.terminal?.environment || "Terminal";
+    return [
+      `${environment} help`,
+      "",
+      "This is a simulated PBQ terminal. Use real troubleshooting commands for the scenario.",
+      "Type hint for progressive study help.",
+      "Unknown commands return normal terminal-style errors instead of PBQ answer text.",
+      "The scenario tracks evidence, command history, verification, documentation, and grading in the background."
+    ].join("\n");
+  }
+
+  function commandOutput(command, input) {
+    const normalizedInput = normalizeCommand(input);
+
+    if (normalizeCommand(command.command) === "chkdsk c:" && normalizedInput === "chkdsk") {
+      return command.output || "The type of the file system is NTFS.\nWindows has scanned the file system.";
+    }
+
+    if (normalizeCommand(command.command) === "chkdsk c: /f" && normalizedInput === "chkdsk /f") {
+      return command.output || "Cannot lock current drive.\nChkdsk cannot run because the volume is in use by another process.";
+    }
+
+    return command.output || "Command completed.";
   }
 
   function runCommand(rawInput) {
@@ -401,18 +561,34 @@ export function createTerminalEngine({ scenario, elements }) {
       return;
     }
 
+    const normalizedInput = normalizeCommand(input);
+
+    if (["hint", "hints"].includes(normalizedInput)) {
+      showHint();
+      renderAll();
+      return;
+    }
+
+    if (["help", "/?", "?"].includes(normalizedInput)) {
+      state.history.push({
+        input,
+        output: helpOutput(),
+        summary: "Displayed terminal help.",
+        good: false
+      });
+      renderAll();
+      return;
+    }
+
     const command = findCommand(input);
 
     if (!command) {
       const unavailableCommand = findKnownUnavailableCommand(input);
-      const output = unavailableCommand
-        ? "That command may be useful later, but the current evidence does not support running it yet. Gather or verify the required information first."
-        : scenario.terminal?.unknownCommandOutput || "The command is not recognized in this simulation.";
 
       state.history.push({
         input,
-        output,
-        summary: unavailableCommand ? "Recognized command, but not justified yet." : "Unrecognized or unavailable command.",
+        output: unavailableCommand ? unavailableCommandOutput() : unknownCommandOutput(input),
+        summary: unavailableCommand ? "Recognized command, but not justified yet." : "Unrecognized command.",
         good: false
       });
       recordFailedAttempt();
@@ -426,7 +602,7 @@ export function createTerminalEngine({ scenario, elements }) {
 
     state.history.push({
       input,
-      output: command.output || "Command completed.",
+      output: commandOutput(command, input),
       summary: command.summary || command.output || "Command completed.",
       good: command.good === true,
       penalty
@@ -435,7 +611,8 @@ export function createTerminalEngine({ scenario, elements }) {
     if (penalty || command.good !== true) {
       recordFailedAttempt();
     } else {
-      state.failedAttemptsSinceHint = 0;
+      state.failedAttemptsSinceHintPrompt = 0;
+      state.hintPromptsShown = 0;
     }
 
     elements.reviewPanel.hidden = true;
@@ -491,8 +668,9 @@ export function createTerminalEngine({ scenario, elements }) {
     state.history = [];
     state.evidence = [];
     state.penalties = [];
-    state.failedAttemptsSinceHint = 0;
+    state.failedAttemptsSinceHintPrompt = 0;
     state.totalFailedAttempts = 0;
+    state.hintPromptsShown = 0;
     state.hintsShown = 0;
     state.completed = false;
     state.documentation = null;
