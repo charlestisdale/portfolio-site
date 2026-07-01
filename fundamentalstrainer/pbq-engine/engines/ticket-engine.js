@@ -9,6 +9,7 @@ export function createTicketEngine({ scenario, elements }) {
     evidence: [],
     history: [],
     actionsTaken: new Set(),
+    prematureAttempts: new Set(),
     penalties: [],
     completed: false,
     documentation: null
@@ -31,7 +32,7 @@ export function createTicketEngine({ scenario, elements }) {
     return `priority-${String(priority || "").toLowerCase()}`;
   }
 
-  function actionIsVisible(action) {
+  function requirementsAreMet(action) {
     if (!action.requires) {
       return true;
     }
@@ -39,7 +40,21 @@ export function createTicketEngine({ scenario, elements }) {
     return Object.entries(action.requires).every(([key, value]) => state.flags[key] === value);
   }
 
+  function getUnmetRequirements(action) {
+    if (!action.requires) {
+      return [];
+    }
+
+    return Object.entries(action.requires)
+      .filter(([key, value]) => state.flags[key] !== value)
+      .map(([key]) => key);
+  }
+
   function actionIsDisabled(action) {
+    if (state.completed) {
+      return true;
+    }
+
     if (action.repeatable) {
       return false;
     }
@@ -77,21 +92,43 @@ export function createTicketEngine({ scenario, elements }) {
     }
 
     if (!requiredStates.length) {
-      elements.requirementsPane.className = "requirement-list empty-pane";
-      elements.requirementsPane.textContent = "This ticket has no required outcomes defined.";
+      elements.requirementsPane.className = "case-progress empty-pane";
+      elements.requirementsPane.textContent = "This case has no graded outcomes defined.";
       return;
     }
 
-    elements.requirementsPane.className = "requirement-list";
-    elements.requirementsPane.innerHTML = requiredStates.map(item => {
-      const complete = state.flags[item.key] === item.value;
-      return `
-        <div class="requirement-item ${complete ? "complete" : "missing"}">
-          <span class="state-pill ${complete ? "complete" : "missing"}">${complete ? "Complete" : "Missing"}</span>
-          <span>${escapeHtml(item.label || item.key)}</span>
+    const completedCount = requiredStates.filter(item => state.flags[item.key] === item.value).length;
+    const totalCount = requiredStates.length;
+    const penaltyCount = state.penalties.length;
+    const documentationSaved = state.flags.documented === true;
+
+    elements.requirementsPane.className = "case-progress";
+    elements.requirementsPane.innerHTML = `
+      <div class="case-progress-card">
+        <span class="ticket-label">Case Mode</span>
+        <strong>Investigation</strong>
+        <p>Choose actions based on the ticket, evidence, and troubleshooting logic. The exact graded checklist is hidden until review.</p>
+      </div>
+      <div class="case-progress-stats">
+        <div>
+          <span class="ticket-label">Evidence</span>
+          <strong>${state.evidence.length}</strong>
         </div>
-      `;
-    }).join("");
+        <div>
+          <span class="ticket-label">Actions</span>
+          <strong>${state.history.length}</strong>
+        </div>
+        <div>
+          <span class="ticket-label">Penalties</span>
+          <strong>${penaltyCount}</strong>
+        </div>
+        <div>
+          <span class="ticket-label">Progress</span>
+          <strong>${completedCount}/${totalCount}</strong>
+        </div>
+      </div>
+      <p class="status-note">${documentationSaved ? "Documentation saved." : "Document the ticket before grading."}</p>
+    `;
   }
 
   function groupActionsByType(actions) {
@@ -111,44 +148,62 @@ export function createTicketEngine({ scenario, elements }) {
       .replace(/\b\w/g, character => character.toUpperCase());
   }
 
+  function compareActionGroups([leftType], [rightType]) {
+    return labelForActionType(leftType).localeCompare(labelForActionType(rightType));
+  }
+
+  function compareActions(left, right) {
+    return String(left.label || "").localeCompare(String(right.label || ""));
+  }
+
   function renderActions() {
-    const visibleActions = (scenario.actions || []).filter(actionIsVisible);
+    const actions = scenario.actions || [];
 
     elements.actionMenu.innerHTML = "";
 
-    if (!visibleActions.length) {
-      elements.actionMenu.innerHTML = `<p class="empty-pane">No available actions match the current scenario state.</p>`;
+    if (!actions.length) {
+      elements.actionMenu.innerHTML = `<p class="empty-pane">No actions are defined for this scenario.</p>`;
       return;
     }
 
-    const groupedActions = groupActionsByType(visibleActions);
+    const intro = document.createElement("div");
+    intro.className = "investigation-note";
+    intro.innerHTML = `
+      <strong>Investigation mode:</strong>
+      Pick the action you would actually take. Some actions are useful, some are irrelevant, and some are unsafe or premature.
+    `;
+    elements.actionMenu.appendChild(intro);
 
-    Object.entries(groupedActions).forEach(([type, actions]) => {
-      const group = document.createElement("section");
-      group.className = "action-group";
+    const groupedActions = groupActionsByType(actions);
 
-      const heading = document.createElement("h3");
-      heading.textContent = labelForActionType(type);
-      group.appendChild(heading);
+    Object.entries(groupedActions)
+      .sort(compareActionGroups)
+      .forEach(([type, groupActions]) => {
+        const group = document.createElement("section");
+        group.className = "action-group";
 
-      const list = document.createElement("div");
-      list.className = "action-list";
+        const heading = document.createElement("h3");
+        heading.textContent = labelForActionType(type);
+        group.appendChild(heading);
 
-      actions.forEach(action => {
-        const button = document.createElement("button");
-        button.className = "engine-button action-button";
-        button.disabled = actionIsDisabled(action) || state.completed;
-        button.innerHTML = `
-          <span class="action-type">${escapeHtml(action.type || "action")}</span>
-          <span>${escapeHtml(action.label)}</span>
-        `;
-        button.addEventListener("click", () => runAction(action));
-        list.appendChild(button);
+        const list = document.createElement("div");
+        list.className = "action-list";
+
+        groupActions.slice().sort(compareActions).forEach(action => {
+          const button = document.createElement("button");
+          button.className = "engine-button action-button investigation-action";
+          button.disabled = actionIsDisabled(action);
+          button.innerHTML = `
+            <span class="action-type">${escapeHtml(action.type || "action")}</span>
+            <span>${escapeHtml(action.label)}</span>
+          `;
+          button.addEventListener("click", () => runAction(action));
+          list.appendChild(button);
+        });
+
+        group.appendChild(list);
+        elements.actionMenu.appendChild(group);
       });
-
-      group.appendChild(list);
-      elements.actionMenu.appendChild(group);
-    });
   }
 
   function renderEvidence() {
@@ -219,24 +274,65 @@ export function createTicketEngine({ scenario, elements }) {
     });
   }
 
-  function applyPenalty(action) {
-    if (!action.penalty) {
-      return null;
-    }
-
+  function addPenalty({ action, type, points, reason }) {
     const penalty = {
       actionId: action.id,
-      type: action.penalty.type || "penalty",
-      points: Number(action.penalty.points || 0),
-      reason: action.penalty.reason || "This action was not appropriate for the scenario."
+      type: type || "penalty",
+      points: Number(points || 0),
+      reason: reason || "This action was not appropriate for the scenario."
     };
 
     state.penalties.push(penalty);
     return penalty;
   }
 
+  function applyPenalty(action) {
+    if (!action.penalty) {
+      return null;
+    }
+
+    return addPenalty({
+      action,
+      type: action.penalty.type,
+      points: action.penalty.points,
+      reason: action.penalty.reason
+    });
+  }
+
+  function runPrematureAction(action) {
+    const unmetRequirements = getUnmetRequirements(action);
+    const attemptKey = `${action.id}:${unmetRequirements.join(",")}`;
+    const shouldPenalize = !state.prematureAttempts.has(attemptKey);
+    let penalty = null;
+
+    if (shouldPenalize) {
+      state.prematureAttempts.add(attemptKey);
+      penalty = addPenalty({
+        action,
+        type: "premature-escalation",
+        points: 5,
+        reason: "This action was chosen before enough evidence or required conditions supported it."
+      });
+    }
+
+    state.history.push({
+      actionId: action.id,
+      label: action.label,
+      result: "You do not have enough evidence or required conditions to justify this action yet. Gather more information first.",
+      penalty,
+      good: false
+    });
+  }
+
   function runAction(action) {
-    if (state.completed) {
+    if (state.completed || actionIsDisabled(action)) {
+      return;
+    }
+
+    if (!requirementsAreMet(action)) {
+      runPrematureAction(action);
+      elements.reviewPanel.hidden = true;
+      renderAll();
       return;
     }
 
@@ -306,6 +402,7 @@ export function createTicketEngine({ scenario, elements }) {
     state.evidence = [];
     state.history = [];
     state.actionsTaken = new Set();
+    state.prematureAttempts = new Set();
     state.penalties = [];
     state.completed = false;
     state.documentation = null;
