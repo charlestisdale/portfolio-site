@@ -124,6 +124,10 @@ export function createTerminalEngine({ scenario, elements }) {
     return div.innerHTML;
   }
 
+  function examModeEnabled() {
+    return elements.examModeToggle?.checked === true;
+  }
+
   function normalizeCommand(value) {
     return String(value || "").trim().replace(/\s+/g, " ").toLowerCase();
   }
@@ -145,7 +149,7 @@ export function createTerminalEngine({ scenario, elements }) {
   function renderScenarioMeta() {
     const terminal = scenario.terminal || {};
     const fields = [
-      ["Scenario", scenario.title],
+      ["Scenario", examModeEnabled() ? "Hidden in Exam Mode" : scenario.title],
       ["Engine", "Terminal"],
       ["Objective", scenario.objective],
       ["Environment", terminal.environment || terminal.prompt || "Simulated terminal"],
@@ -155,7 +159,7 @@ export function createTerminalEngine({ scenario, elements }) {
     elements.ticketMeta.innerHTML = fields
       .filter(([, value]) => value)
       .map(([label, value]) => `
-        <div class="ticket-field">
+        <div class="ticket-field ${label === "Scenario" && examModeEnabled() ? "exam-hidden-field" : ""}">
           <span class="ticket-label">${escapeHtml(label)}</span>
           <span class="ticket-value">${escapeHtml(value)}</span>
         </div>
