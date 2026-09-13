@@ -780,14 +780,14 @@
         }
 
         feedback.className = "feedback correct";
-        feedback.innerHTML = "<strong>Correct.</strong> " + (successNote || current.note || "");
+        feedback.innerHTML = "<strong>Correct.</strong> " + escapeHtml(successNote || current.note || "");
       } else {
         stats.wrong++;
         stats.streak = 0;
         stats.misses[key] = (stats.misses[key] || 0) + 1;
 
         feedback.className = "feedback wrong";
-        feedback.innerHTML = "<strong>Not quite.</strong> " + (failureNote || current.note || "");
+        feedback.innerHTML = "<strong>Not quite.</strong> " + (failureNote || escapeHtml(current.note || ""));
       }
 
       save();
